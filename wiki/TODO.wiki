@@ -1,9 +1,4 @@
-#summary One-sentence summary of this page.
-
-= TODO =
-
-一些已知但是還沒有時間做的項目
-
+#summary 一些已知但是還沒有時間做的項目
 
 = Details =
 
