@@ -4343,7 +4343,15 @@ public class C_ItemUSe extends ClientBasePacket {
 		int i6 = 0;
 		for (int skillId = 1; skillId < 81; skillId++) {
 			L1Skills l1skills = SkillsTable.getInstance().getTemplate(skillId);
-			String s1 = "魔法書(" + l1skills.getName() + ")";
+			String s1 = null;
+			if (Config.CLIENT_LANGUAGE == 3) {
+				s1 = (new StringBuilder()).append("魔法書 (").append(
+						l1skills.getName()).append(")").toString();
+			}
+			else {
+				s1 = (new StringBuilder()).append("魔法書(").append(
+						l1skills.getName()).append(")").toString();
+			}
 			if (item.getItem().getName().equalsIgnoreCase(s1)) {
 				int skillLevel = l1skills.getSkillLevel();
 				int i7 = l1skills.getId();
@@ -4492,7 +4500,15 @@ public class C_ItemUSe extends ClientBasePacket {
 		int i6 = 0;
 		for (int j6 = 97; j6 < 112; j6++) {
 			L1Skills l1skills = SkillsTable.getInstance().getTemplate(j6);
-			String s1 = "闇精霊の水晶(" + l1skills.getName() + ")";
+			String s1 = null;
+			if (Config.CLIENT_LANGUAGE == 3) {
+				s1 = (new StringBuilder()).append("黑暗精靈水晶(").append(
+						l1skills.getName()).append(")").toString();
+			}
+			else {
+				s1 = (new StringBuilder()).append("闇精霊の水晶(").append(
+						l1skills.getName()).append(")").toString();
+			}
 			if (l1iteminstance.getItem().getName().equalsIgnoreCase(s1)) {
 				int l6 = l1skills.getSkillLevel();
 				int i7 = l1skills.getId();
@@ -4637,7 +4653,15 @@ public class C_ItemUSe extends ClientBasePacket {
 		int i6 = 0;
 		for (int j6 = 129; j6 <= 176; j6++) {
 			L1Skills l1skills = SkillsTable.getInstance().getTemplate(j6);
-			String s1 = "精霊の水晶(" + l1skills.getName() + ")";
+			String s1 = null;
+			if (Config.CLIENT_LANGUAGE == 3) {
+				s1 = (new StringBuilder()).append("精靈水晶(").append(
+						l1skills.getName()).append(")").toString();
+			}
+			else {
+				s1 = (new StringBuilder()).append("精霊の水晶(").append(
+						l1skills.getName()).append(")").toString();
+			}
 			if (l1iteminstance.getItem().getName().equalsIgnoreCase(s1)) {
 				if (!pc.isGm() && l1skills.getAttr() != 0
 						&& pc.getElfAttr() != l1skills.getAttr()) {
@@ -4792,8 +4816,16 @@ public class C_ItemUSe extends ClientBasePacket {
 		int i6 = 0;
 		for (int j6 = 87; j6 <= 91; j6++) {
 			L1Skills l1skills = SkillsTable.getInstance().getTemplate(j6);
-			String s1 = (new StringBuilder()).append("技術書(").append(
-					l1skills.getName()).append(")").toString();
+			
+			String s1 = null;
+			if (Config.CLIENT_LANGUAGE == 3) {
+				s1 = (new StringBuilder()).append("技術書(").append(
+						l1skills.getName()).append(")").toString();
+			}
+			else {
+				s1 = (new StringBuilder()).append("技術書(").append(
+						l1skills.getName()).append(")").toString();
+			}
 			if (l1iteminstance.getItem().getName().equalsIgnoreCase(s1)) {
 				int l6 = l1skills.getSkillLevel();
 				int i7 = l1skills.getId();
@@ -4939,7 +4971,15 @@ public class C_ItemUSe extends ClientBasePacket {
 		int i6 = 0;
 		for (int j6 = 113; j6 < 121; j6++) {
 			L1Skills l1skills = SkillsTable.getInstance().getTemplate(j6);
-			String s1 = "魔法書(" + l1skills.getName() + ")";
+			String s1 = null;
+			if (Config.CLIENT_LANGUAGE == 3) {
+				s1 = (new StringBuilder()).append("魔法書 (").append(
+						l1skills.getName()).append(")").toString();
+			}
+			else {
+				s1 = (new StringBuilder()).append("魔法書(").append(
+						l1skills.getName()).append(")").toString();
+			}
 			if (l1iteminstance.getItem().getName().equalsIgnoreCase(s1)) {
 				int l6 = l1skills.getSkillLevel();
 				int i7 = l1skills.getId();
@@ -5089,7 +5129,15 @@ public class C_ItemUSe extends ClientBasePacket {
 		int l8 = 0;
 		for (int j6 = 181; j6 <= 195; j6++) {
 			L1Skills l1skills = SkillsTable.getInstance().getTemplate(j6);
-			String s1 = "ドラゴンナイトの書板（" + l1skills.getName() + "）";
+			String s1 = null;
+			if (Config.CLIENT_LANGUAGE == 3) {
+				s1 = (new StringBuilder()).append("龍騎士書板(").append(
+						l1skills.getName()).append(")").toString();
+			}
+			else {
+				s1 = (new StringBuilder()).append("ドラゴンナイトの書板（").append(
+						l1skills.getName()).append("）").toString();
+			}
 			if (l1iteminstance.getItem().getName().equalsIgnoreCase(s1)) {
 				int l6 = l1skills.getSkillLevel();
 				int i7 = l1skills.getId();
@@ -5254,7 +5302,15 @@ public class C_ItemUSe extends ClientBasePacket {
 		int l8 = 0;
 		for (int j6 = 201; j6 <= 220; j6++) {
 			L1Skills l1skills = SkillsTable.getInstance().getTemplate(j6);
-			String s1 = "記憶の水晶（" + l1skills.getName() + "）";
+			String s1 = null;
+			if (Config.CLIENT_LANGUAGE == 3) {
+				s1 = (new StringBuilder()).append("記憶水晶(").append(
+						l1skills.getName()).append(")").toString();
+			}
+			else {
+				s1 = (new StringBuilder()).append("記憶の水晶（").append(
+						l1skills.getName()).append("）").toString();
+			}
 			if (l1iteminstance.getItem().getName().equalsIgnoreCase(s1)) {
 				int l6 = l1skills.getSkillLevel();
 				int i7 = l1skills.getId();
