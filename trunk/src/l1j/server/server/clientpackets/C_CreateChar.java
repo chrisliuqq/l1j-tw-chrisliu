@@ -259,6 +259,10 @@ public class C_CreateChar extends ClientBasePacket {
 
 	private static boolean isInvalidName(String name) {
 		int numOfNameBytes = 0;
+		
+		//TODO:Check the badNameList is working well ?
+		if (BadNamesList.getInstance().isBadName(name)) return true;
+		
 		try {
 			numOfNameBytes = name.getBytes(CLIENT_LANGUAGE_CODE).length;
 		} catch (UnsupportedEncodingException e) {
