@@ -1,0 +1,11 @@
+#summary One-sentence summary of this page.
+
+= TODO =
+
+一些已知但是還沒有時間做的項目
+
+
+= Details =
+
+  * 資料庫翻譯
+  * 看 3.1 的版本更新了什麼，再決定是否要更新到 3.1
