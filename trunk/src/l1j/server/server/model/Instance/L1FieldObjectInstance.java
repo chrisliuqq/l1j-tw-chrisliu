@@ -45,7 +45,7 @@ public class L1FieldObjectInstance extends L1NpcInstance {
 
 	@Override
 	public void onAction(L1PcInstance pc) {
-		if (getNpcTemplate().get_npcId() == 81171) { // ‚¨‚Î‚¯‰®•~‚ÌƒS[ƒ‹‚Ì‰Š
+		if (getNpcTemplate().get_npcId() == 81171) { // ãŠã°ã‘å±‹æ•·ã®ã‚´ãƒ¼ãƒ«ã®ç‚
 			if (L1HauntedHouse.getInstance().getHauntedHouseStatus() ==
 					L1HauntedHouse.STATUS_PLAYING) {
 				int winnersCount = L1HauntedHouse.getInstance().
@@ -53,7 +53,7 @@ public class L1FieldObjectInstance extends L1NpcInstance {
 				int goalCount = L1HauntedHouse.getInstance().getGoalCount();
 				if (winnersCount == goalCount + 1) {
 					L1ItemInstance item = ItemTable.getInstance()
-							.createItem(49280); // —EÒ‚Ìƒpƒ“ƒvƒLƒ“‘Ü(“º)
+							.createItem(49280); // å‹‡è€…ã®ãƒ‘ãƒ³ãƒ—ã‚­ãƒ³è¢‹(éŠ…)
 					int count = 1;
 					if (item != null) {
 						if (pc.getInventory().checkAddItem(item, count) ==
@@ -61,7 +61,7 @@ public class L1FieldObjectInstance extends L1NpcInstance {
 							item.setCount(count);
 							pc.getInventory().storeItem(item);
 							pc.sendPackets(new S_ServerMessage(403, item
-									.getLogName())); // %0‚ğè‚É“ü‚ê‚Ü‚µ‚½B
+									.getLogName())); // %0ã‚’æ‰‹ã«å…¥ã‚Œã¾ã—ãŸã€‚
 						}
 					}
 					L1HauntedHouse.getInstance().endHauntedHouse();
@@ -72,14 +72,14 @@ public class L1FieldObjectInstance extends L1NpcInstance {
 					if (winnersCount == 3) {
 						if (goalCount == 1) {
 							item = ItemTable.getInstance()
-									.createItem(49278); // —EÒ‚Ìƒpƒ“ƒvƒLƒ“‘Ü(‹à)
+									.createItem(49278); // å‹‡è€…ã®ãƒ‘ãƒ³ãƒ—ã‚­ãƒ³è¢‹(é‡‘)
 						} else if (goalCount == 2) {
 							item = ItemTable.getInstance()
-									.createItem(49279); // —EÒ‚Ìƒpƒ“ƒvƒLƒ“‘Ü(‹â)
+									.createItem(49279); // å‹‡è€…ã®ãƒ‘ãƒ³ãƒ—ã‚­ãƒ³è¢‹(éŠ€)
 						}
 					} else if (winnersCount == 2) {
 						item = ItemTable.getInstance()
-								.createItem(49279); // —EÒ‚Ìƒpƒ“ƒvƒLƒ“‘Ü(‹â)
+								.createItem(49279); // å‹‡è€…ã®ãƒ‘ãƒ³ãƒ—ã‚­ãƒ³è¢‹(éŠ€)
 					}
 					int count = 1;
 					if (item != null) {
@@ -88,7 +88,7 @@ public class L1FieldObjectInstance extends L1NpcInstance {
 							item.setCount(count);
 							pc.getInventory().storeItem(item);
 							pc.sendPackets(new S_ServerMessage(403, item
-									.getLogName())); // %0‚ğè‚É“ü‚ê‚Ü‚µ‚½B
+									.getLogName())); // %0ã‚’æ‰‹ã«å…¥ã‚Œã¾ã—ãŸã€‚
 						}
 					}
 					L1SkillUse l1skilluse = new L1SkillUse();

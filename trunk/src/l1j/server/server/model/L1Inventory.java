@@ -52,17 +52,17 @@ public class L1Inventory extends L1Object {
 		//
 	}
 
-	// ƒCƒ“ƒxƒ“ƒgƒŠ“à‚ÌƒAƒCƒeƒ€‚Ì‘”
+	// ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªå†…ã®ã‚¢ã‚¤ãƒ†ãƒ ã®ç·æ•°
 	public int getSize() {
 		return _items.size();
 	}
 
-	// ƒCƒ“ƒxƒ“ƒgƒŠ“à‚Ì‘S‚Ä‚ÌƒAƒCƒeƒ€
+	// ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªå†…ã®å…¨ã¦ã®ã‚¢ã‚¤ãƒ†ãƒ 
 	public List<L1ItemInstance> getItems() {
 		return _items;
 	}
 
-	// ƒCƒ“ƒxƒ“ƒgƒŠ“à‚Ì‘d—Ê
+	// ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªå†…ã®ç·é‡é‡
 	public int getWeight() {
 		int weight = 0;
 
@@ -73,7 +73,7 @@ public class L1Inventory extends L1Object {
 		return weight;
 	}
 
-	// ˆø”‚ÌƒAƒCƒeƒ€‚ğ’Ç‰Á‚µ‚Ä‚à—e—Ê‚Æd—Ê‚ª‘åä•v‚©Šm”F
+	// å¼•æ•°ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’è¿½åŠ ã—ã¦ã‚‚å®¹é‡ã¨é‡é‡ãŒå¤§ä¸ˆå¤«ã‹ç¢ºèª
 	public static final int OK = 0;
 
 	public static final int SIZE_OVER = 1;
@@ -91,7 +91,7 @@ public class L1Inventory extends L1Object {
 		}
 		if (getSize() > Config.MAX_NPC_ITEM
 				|| (getSize() == Config.MAX_NPC_ITEM && (!item.isStackable() || !checkItem(item
-						.getItem().getItemId())))) { // —e—ÊŠm”F
+						.getItem().getItemId())))) { // å®¹é‡ç¢ºèª
 			return SIZE_OVER;
 		}
 
@@ -100,7 +100,7 @@ public class L1Inventory extends L1Object {
 		if (weight < 0 || (item.getItem().getWeight() * count / 1000) < 0) {
 			return WEIGHT_OVER;
 		}
-		if (weight > (MAX_WEIGHT * Config.RATE_WEIGHT_LIMIT_PET)) { // ‚»‚Ì‘¼‚Ìd—ÊŠm”Fiå‚ÉƒTƒ‚ƒ“‚Æƒyƒbƒgj
+		if (weight > (MAX_WEIGHT * Config.RATE_WEIGHT_LIMIT_PET)) { // ãã®ä»–ã®é‡é‡ç¢ºèªï¼ˆä¸»ã«ã‚µãƒ¢ãƒ³ã¨ãƒšãƒƒãƒˆï¼‰
 			return WEIGHT_OVER;
 		}
 
@@ -112,7 +112,7 @@ public class L1Inventory extends L1Object {
 		return OK;
 	}
 
-	// ˆø”‚ÌƒAƒCƒeƒ€‚ğ’Ç‰Á‚µ‚Ä‚à‘qŒÉ‚Ì—e—Ê‚ª‘åä•v‚©Šm”F
+	// å¼•æ•°ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’è¿½åŠ ã—ã¦ã‚‚å€‰åº«ã®å®¹é‡ãŒå¤§ä¸ˆå¤«ã‹ç¢ºèª
 	public static final int WAREHOUSE_TYPE_PERSONAL = 0;
 
 	public static final int WAREHOUSE_TYPE_CLAN = 1;
@@ -133,14 +133,14 @@ public class L1Inventory extends L1Object {
 		}
 		if (getSize() > maxSize
 				|| (getSize() == maxSize && (!item.isStackable() || !checkItem(item
-						.getItem().getItemId())))) { // —e—ÊŠm”F
+						.getItem().getItemId())))) { // å®¹é‡ç¢ºèª
 			return SIZE_OVER;
 		}
 
 		return OK;
 	}
 
-	// V‚µ‚¢ƒAƒCƒeƒ€‚ÌŠi”[
+	// æ–°ã—ã„ã‚¢ã‚¤ãƒ†ãƒ ã®æ ¼ç´
 	public synchronized L1ItemInstance storeItem(int id, int count) {
 		if (count <= 0) {
 			return null;
@@ -153,7 +153,7 @@ public class L1Inventory extends L1Object {
 		if (temp.isStackable()) {
 			L1ItemInstance item = new L1ItemInstance(temp, count);
 
-			if (findItemId(id) == null) { // V‚µ‚­¶¬‚·‚é•K—v‚ª‚ ‚éê‡‚Ì‚İID‚Ì”­s‚ÆL1World‚Ö‚Ì“o˜^‚ğs‚¤
+			if (findItemId(id) == null) { // æ–°ã—ãç”Ÿæˆã™ã‚‹å¿…è¦ãŒã‚ã‚‹å ´åˆã®ã¿IDã®ç™ºè¡Œã¨L1Worldã¸ã®ç™»éŒ²ã‚’è¡Œã†
 				item.setId(IdFactory.getInstance().nextId());
 				L1World.getInstance().storeObject(item);
 			}
@@ -161,7 +161,7 @@ public class L1Inventory extends L1Object {
 			return storeItem(item);
 		}
 
-		// ƒXƒ^ƒbƒN‚Å‚«‚È‚¢ƒAƒCƒeƒ€‚Ìê‡
+		// ã‚¹ã‚¿ãƒƒã‚¯ã§ããªã„ã‚¢ã‚¤ãƒ†ãƒ ã®å ´åˆ
 		L1ItemInstance result = null;
 		for (int i = 0; i < count; i++) {
 			L1ItemInstance item = new L1ItemInstance(temp, 1);
@@ -170,11 +170,11 @@ public class L1Inventory extends L1Object {
 			storeItem(item);
 			result = item;
 		}
-		// ÅŒã‚Éì‚Á‚½ƒAƒCƒeƒ€‚ğ•Ô‚·B”z—ñ‚ğ–ß‚·‚æ‚¤‚Éƒƒ\ƒbƒh’è‹`‚ğ•ÏX‚µ‚½‚Ù‚¤‚ª—Ç‚¢‚©‚à‚µ‚ê‚È‚¢B
+		// æœ€å¾Œã«ä½œã£ãŸã‚¢ã‚¤ãƒ†ãƒ ã‚’è¿”ã™ã€‚é…åˆ—ã‚’æˆ»ã™ã‚ˆã†ã«ãƒ¡ã‚½ãƒƒãƒ‰å®šç¾©ã‚’å¤‰æ›´ã—ãŸã»ã†ãŒè‰¯ã„ã‹ã‚‚ã—ã‚Œãªã„ã€‚
 		return result;
 	}
 
-	// DROPAw“üAGMƒRƒ}ƒ“ƒh‚Å“üè‚µ‚½V‚µ‚¢ƒAƒCƒeƒ€‚ÌŠi”[
+	// DROPã€è³¼å…¥ã€GMã‚³ãƒãƒ³ãƒ‰ã§å…¥æ‰‹ã—ãŸæ–°ã—ã„ã‚¢ã‚¤ãƒ†ãƒ ã®æ ¼ç´
 	public synchronized L1ItemInstance storeItem(L1ItemInstance item) {
 		if (item.getCount() <= 0) {
 			return null;
@@ -201,7 +201,7 @@ public class L1Inventory extends L1Object {
 			chargeCount = 50;
 		}
 		item.setChargeCount(chargeCount);
-		if (item.getItem().getType2() == 0 && item.getItem().getType() == 2) { // lightŒnƒAƒCƒeƒ€
+		if (item.getItem().getType2() == 0 && item.getItem().getType() == 2) { // lightç³»ã‚¢ã‚¤ãƒ†ãƒ 
 			item.setRemainingTime(item.getItem().getLightFuel());
 		} else {
 			item.setRemainingTime(item.getItem().getMaxUseTime());
@@ -212,7 +212,7 @@ public class L1Inventory extends L1Object {
 		return item;
 	}
 
-	// /tradeA‘qŒÉ‚©‚ç“üè‚µ‚½ƒAƒCƒeƒ€‚ÌŠi”[
+	// /tradeã€å€‰åº«ã‹ã‚‰å…¥æ‰‹ã—ãŸã‚¢ã‚¤ãƒ†ãƒ ã®æ ¼ç´
 	public synchronized L1ItemInstance storeTradeItem(L1ItemInstance item) {
 		if (item.isStackable()) {
 			L1ItemInstance findItem = findItemId(item.getItem().getItemId());
@@ -231,14 +231,14 @@ public class L1Inventory extends L1Object {
 	}
 
 	/**
-	 * ƒCƒ“ƒxƒ“ƒgƒŠ‚©‚çw’è‚³‚ê‚½ƒAƒCƒeƒ€ID‚ÌƒAƒCƒeƒ€‚ğíœ‚·‚éBL1ItemInstance‚Ö‚ÌQÆ
-	 * ‚ª‚ ‚éê‡‚ÍremoveItem‚Ì•û‚ğg—p‚·‚é‚Ì‚ª‚æ‚¢B i‚±‚¿‚ç‚Í–î‚Æ‚©–‚Î‚Æ‚©“Á’è‚ÌƒAƒCƒeƒ€‚ğÁ”ï‚³‚¹‚é‚Æ‚«‚Ég‚¤j
+	 * ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸã‚¢ã‚¤ãƒ†ãƒ IDã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’å‰Šé™¤ã™ã‚‹ã€‚L1ItemInstanceã¸ã®å‚ç…§
+	 * ãŒã‚ã‚‹å ´åˆã¯removeItemã®æ–¹ã‚’ä½¿ç”¨ã™ã‚‹ã®ãŒã‚ˆã„ã€‚ ï¼ˆã“ã¡ã‚‰ã¯çŸ¢ã¨ã‹é­”çŸ³ã¨ã‹ç‰¹å®šã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ¶ˆè²»ã•ã›ã‚‹ã¨ãã«ä½¿ã†ï¼‰
 	 * 
 	 * @param itemid -
-	 *            íœ‚·‚éƒAƒCƒeƒ€‚Ìitemid(objid‚Å‚Í‚È‚¢)
+	 *            å‰Šé™¤ã™ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã®itemid(objidã§ã¯ãªã„)
 	 * @param count -
-	 *            íœ‚·‚éŒÂ”
-	 * @return ÀÛ‚Éíœ‚³‚ê‚½ê‡‚Ítrue‚ğ•Ô‚·B
+	 *            å‰Šé™¤ã™ã‚‹å€‹æ•°
+	 * @return å®Ÿéš›ã«å‰Šé™¤ã•ã‚ŒãŸå ´åˆã¯trueã‚’è¿”ã™ã€‚
 	 */
 	public boolean consumeItem(int itemid, int count) {
 		if (count <= 0) {
@@ -257,9 +257,9 @@ public class L1Inventory extends L1Object {
 					removeItem(itemList[i], 1);
 				}
 				return true;
-			} else if (itemList.length > count) { // w’èŒÂ”‚æ‚è‘½‚­Š‚µ‚Ä‚¢‚éê‡
+			} else if (itemList.length > count) { // æŒ‡å®šå€‹æ•°ã‚ˆã‚Šå¤šãæ‰€æŒã—ã¦ã„ã‚‹å ´åˆ
 				DataComparator dc = new DataComparator();
-				Arrays.sort(itemList, dc); // ƒGƒ“ƒ`ƒƒƒ“ƒg‡‚Éƒ\[ƒg‚µAƒGƒ“ƒ`ƒƒƒ“ƒg”‚Ì­‚È‚¢‚à‚Ì‚©‚çÁ”ï‚³‚¹‚é
+				Arrays.sort(itemList, dc); // ã‚¨ãƒ³ãƒãƒ£ãƒ³ãƒˆé †ã«ã‚½ãƒ¼ãƒˆã—ã€ã‚¨ãƒ³ãƒãƒ£ãƒ³ãƒˆæ•°ã®å°‘ãªã„ã‚‚ã®ã‹ã‚‰æ¶ˆè²»ã•ã›ã‚‹
 				for (int i = 0; i < count; i++) {
 					removeItem(itemList[i], 1);
 				}
@@ -276,7 +276,7 @@ public class L1Inventory extends L1Object {
 		}
 	}
 
-	// w’è‚µ‚½ƒAƒCƒeƒ€‚©‚çw’èŒÂ”‚ğíœig‚Á‚½‚èƒSƒ~” ‚ÉÌ‚Ä‚ç‚ê‚½‚Æ‚«j–ß‚è’lFÀÛ‚Éíœ‚µ‚½”
+	// æŒ‡å®šã—ãŸã‚¢ã‚¤ãƒ†ãƒ ã‹ã‚‰æŒ‡å®šå€‹æ•°ã‚’å‰Šé™¤ï¼ˆä½¿ã£ãŸã‚Šã‚´ãƒŸç®±ã«æ¨ã¦ã‚‰ã‚ŒãŸã¨ãï¼‰æˆ»ã‚Šå€¤ï¼šå®Ÿéš›ã«å‰Šé™¤ã—ãŸæ•°
 	public int removeItem(int objectId, int count) {
 		L1ItemInstance item = getItem(objectId);
 		return removeItem(item, count);
@@ -298,16 +298,16 @@ public class L1Inventory extends L1Object {
 		}
 		if (item.getCount() == count) {
 			int itemId = item.getItem().getItemId();
-			if (itemId == 40314 || itemId == 40316) { // ƒyƒbƒg‚ÌƒAƒ~ƒ…ƒŒƒbƒg
+			if (itemId == 40314 || itemId == 40316) { // ãƒšãƒƒãƒˆã®ã‚¢ãƒŸãƒ¥ãƒ¬ãƒƒãƒˆ
 				PetTable.getInstance().deletePet(item.getId());
-			} else if (itemId >= 49016 && itemId <= 49025) { // •Öâ³
+			} else if (itemId >= 49016 && itemId <= 49025) { // ä¾¿ç®‹
 				LetterTable lettertable = new LetterTable();
 				lettertable.deleteLetter(item.getId());
-			} else if (itemId >= 41383 && itemId <= 41400) { // ‰Æ‹ï
+			} else if (itemId >= 41383 && itemId <= 41400) { // å®¶å…·
 				for (L1Object l1object : L1World.getInstance().getObject()) {
 					if (l1object instanceof L1FurnitureInstance) {
 						L1FurnitureInstance furniture = (L1FurnitureInstance) l1object;
-						if (furniture.getItemObjId() == item.getId()) { // Šù‚Éˆø‚«o‚µ‚Ä‚¢‚é‰Æ‹ï
+						if (furniture.getItemObjId() == item.getId()) { // æ—¢ã«å¼•ãå‡ºã—ã¦ã„ã‚‹å®¶å…·
 							FurnitureSpawnTable.getInstance().deleteFurniture(
 									furniture);
 						}
@@ -323,12 +323,12 @@ public class L1Inventory extends L1Object {
 		return count;
 	}
 
-	// _items‚©‚çw’èƒIƒuƒWƒFƒNƒg‚ğíœ(L1PcInstanceAL1DwarfInstanceAL1GroundInstance‚Å‚±‚Ì•”•ª‚ğƒI[ƒoƒ‰ƒCƒh‚·‚é)
+	// _itemsã‹ã‚‰æŒ‡å®šã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤(L1PcInstanceã€L1DwarfInstanceã€L1GroundInstanceã§ã“ã®éƒ¨åˆ†ã‚’ã‚ªãƒ¼ãƒãƒ©ã‚¤ãƒ‰ã™ã‚‹)
 	public void deleteItem(L1ItemInstance item) {
 		_items.remove(item);
 	}
 
-	// ˆø”‚ÌƒCƒ“ƒxƒ“ƒgƒŠ‚ÉƒAƒCƒeƒ€‚ğˆÚ÷
+	// å¼•æ•°ã®ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªã«ã‚¢ã‚¤ãƒ†ãƒ ã‚’ç§»è­²
 	public synchronized L1ItemInstance tradeItem(int objectId, int count,
 			L1Inventory inventory) {
 		L1ItemInstance item = getItem(objectId);
@@ -371,7 +371,7 @@ public class L1Inventory extends L1Object {
 	}
 
 	/*
-	 * ƒAƒCƒeƒ€‚ğ‘¹E‘¹–Õ‚³‚¹‚éi•ŠíE–h‹ï‚àŠÜ‚Şj ƒAƒCƒeƒ€‚Ìê‡A‘¹–Õ‚È‚Ì‚Åƒ}ƒCƒiƒX‚·‚é‚ª •ŠíE–h‹ï‚Í‘¹“x‚ğ•\‚·‚Ì‚Åƒvƒ‰ƒX‚É‚·‚éB
+	 * ã‚¢ã‚¤ãƒ†ãƒ ã‚’æå‚·ãƒ»æè€—ã•ã›ã‚‹ï¼ˆæ­¦å™¨ãƒ»é˜²å…·ã‚‚å«ã‚€ï¼‰ ã‚¢ã‚¤ãƒ†ãƒ ã®å ´åˆã€æè€—ãªã®ã§ãƒã‚¤ãƒŠã‚¹ã™ã‚‹ãŒ æ­¦å™¨ãƒ»é˜²å…·ã¯æå‚·åº¦ã‚’è¡¨ã™ã®ã§ãƒ—ãƒ©ã‚¹ã«ã™ã‚‹ã€‚
 	 */
 	public L1ItemInstance receiveDamage(int objectId) {
 		L1ItemInstance item = getItem(objectId);
@@ -395,7 +395,7 @@ public class L1Inventory extends L1Object {
 			return null;
 		}
 
-		// •ŠíE–h‹ï‚Ì‚İ‘¹“x‚ğƒvƒ‰ƒX
+		// æ­¦å™¨ãƒ»é˜²å…·ã®ã¿æå‚·åº¦ã‚’ãƒ—ãƒ©ã‚¹
 		if (itemType == 0) {
 			int minDurability = (item.getEnchantLevel() + 5) * -1;
 			int durability = currentDurability - count;
@@ -434,10 +434,10 @@ public class L1Inventory extends L1Object {
 		}
 
 		if (itemType == 0) {
-			// ‘Ï‹v“x‚ğƒvƒ‰ƒX‚µ‚Ä‚¢‚éB
+			// è€ä¹…åº¦ã‚’ãƒ—ãƒ©ã‚¹ã—ã¦ã„ã‚‹ã€‚
 			item.set_durability(durability + 1);
 		} else {
-			// ‘¹“x‚ğƒ}ƒCƒiƒX‚µ‚Ä‚¢‚éB
+			// æå‚·åº¦ã‚’ãƒã‚¤ãƒŠã‚¹ã—ã¦ã„ã‚‹ã€‚
 			item.set_durability(durability - 1);
 		}
 
@@ -445,7 +445,7 @@ public class L1Inventory extends L1Object {
 		return item;
 	}
 
-	// ƒAƒCƒeƒ€‚h‚c‚©‚çŒŸõ
+	// ã‚¢ã‚¤ãƒ†ãƒ ï¼©ï¼¤ã‹ã‚‰æ¤œç´¢
 	public L1ItemInstance findItemId(int id) {
 		for (L1ItemInstance item : _items) {
 			if (item.getItem().getItemId() == id) {
@@ -477,7 +477,7 @@ public class L1Inventory extends L1Object {
 		return itemList.toArray(new L1ItemInstance[] {});
 	}
 
-	// ƒIƒuƒWƒFƒNƒg‚h‚c‚©‚çŒŸõ
+	// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼©ï¼¤ã‹ã‚‰æ¤œç´¢
 	public L1ItemInstance getItem(int objectId) {
 		for (Object itemObject : _items) {
 			L1ItemInstance item = (L1ItemInstance) itemObject;
@@ -488,7 +488,7 @@ public class L1Inventory extends L1Object {
 		return null;
 	}
 
-	// “Á’è‚ÌƒAƒCƒeƒ€‚ğw’è‚³‚ê‚½ŒÂ”ˆÈãŠ‚µ‚Ä‚¢‚é‚©Šm”Fi–î‚Æ‚©–‚Î‚ÌŠm”Fj
+	// ç‰¹å®šã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’æŒ‡å®šã•ã‚ŒãŸå€‹æ•°ä»¥ä¸Šæ‰€æŒã—ã¦ã„ã‚‹ã‹ç¢ºèªï¼ˆçŸ¢ã¨ã‹é­”çŸ³ã®ç¢ºèªï¼‰
 	public boolean checkItem(int id) {
 		return checkItem(id, 1);
 	}
@@ -511,12 +511,12 @@ public class L1Inventory extends L1Object {
 		return false;
 	}
 
-	// ‹­‰»‚³‚ê‚½“Á’è‚ÌƒAƒCƒeƒ€‚ğw’è‚³‚ê‚½ŒÂ”ˆÈãŠ‚µ‚Ä‚¢‚é‚©Šm”F
-	// ‘•”õ’†‚ÌƒAƒCƒeƒ€‚ÍŠ‚µ‚Ä‚¢‚È‚¢‚Æ”»•Ê‚·‚é
+	// å¼·åŒ–ã•ã‚ŒãŸç‰¹å®šã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’æŒ‡å®šã•ã‚ŒãŸå€‹æ•°ä»¥ä¸Šæ‰€æŒã—ã¦ã„ã‚‹ã‹ç¢ºèª
+	// è£…å‚™ä¸­ã®ã‚¢ã‚¤ãƒ†ãƒ ã¯æ‰€æŒã—ã¦ã„ãªã„ã¨åˆ¤åˆ¥ã™ã‚‹
 	public boolean checkEnchantItem(int id, int enchant, int count) {
 		int num = 0;
 		for (L1ItemInstance item : _items) {
-			if (item.isEquipped()) { // ‘•”õ‚µ‚Ä‚¢‚é‚à‚Ì‚ÍŠY“–‚µ‚È‚¢
+			if (item.isEquipped()) { // è£…å‚™ã—ã¦ã„ã‚‹ã‚‚ã®ã¯è©²å½“ã—ãªã„
 				continue;
 			}
 			if (item.getItemId() == id && item.getEnchantLevel() == enchant) {
@@ -529,11 +529,11 @@ public class L1Inventory extends L1Object {
 		return false;
 	}
 
-	// ‹­‰»‚³‚ê‚½“Á’è‚ÌƒAƒCƒeƒ€‚ğÁ”ï‚·‚é
-	// ‘•”õ’†‚ÌƒAƒCƒeƒ€‚ÍŠ‚µ‚Ä‚¢‚È‚¢‚Æ”»•Ê‚·‚é
+	// å¼·åŒ–ã•ã‚ŒãŸç‰¹å®šã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ¶ˆè²»ã™ã‚‹
+	// è£…å‚™ä¸­ã®ã‚¢ã‚¤ãƒ†ãƒ ã¯æ‰€æŒã—ã¦ã„ãªã„ã¨åˆ¤åˆ¥ã™ã‚‹
 	public boolean consumeEnchantItem(int id, int enchant, int count) {
 		for (L1ItemInstance item : _items) {
-			if (item.isEquipped()) { // ‘•”õ‚µ‚Ä‚¢‚é‚à‚Ì‚ÍŠY“–‚µ‚È‚¢
+			if (item.isEquipped()) { // è£…å‚™ã—ã¦ã„ã‚‹ã‚‚ã®ã¯è©²å½“ã—ãªã„
 				continue;
 			}
 			if (item.getItemId() == id && item.getEnchantLevel() == enchant) {
@@ -544,8 +544,8 @@ public class L1Inventory extends L1Object {
 		return false;
 	}
 
-	// “Á’è‚ÌƒAƒCƒeƒ€‚ğw’è‚³‚ê‚½ŒÂ”ˆÈãŠ‚µ‚Ä‚¢‚é‚©Šm”F
-	// ‘•”õ’†‚ÌƒAƒCƒeƒ€‚ÍŠ‚µ‚Ä‚¢‚È‚¢‚Æ”»•Ê‚·‚é
+	// ç‰¹å®šã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’æŒ‡å®šã•ã‚ŒãŸå€‹æ•°ä»¥ä¸Šæ‰€æŒã—ã¦ã„ã‚‹ã‹ç¢ºèª
+	// è£…å‚™ä¸­ã®ã‚¢ã‚¤ãƒ†ãƒ ã¯æ‰€æŒã—ã¦ã„ãªã„ã¨åˆ¤åˆ¥ã™ã‚‹
 	public boolean checkItemNotEquipped(int id, int count) {
 		if (count == 0) {
 			return true;
@@ -553,7 +553,7 @@ public class L1Inventory extends L1Object {
 		return count <= countItems(id);
 	}
 
-	// “Á’è‚ÌƒAƒCƒeƒ€‚ğ‘S‚Ä•K—v‚ÈŒÂ”Š‚µ‚Ä‚¢‚é‚©Šm”FiƒCƒxƒ“ƒg‚Æ‚©‚Å•¡”‚ÌƒAƒCƒeƒ€‚ğŠ‚µ‚Ä‚¢‚é‚©Šm”F‚·‚é‚½‚ßj
+	// ç‰¹å®šã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’å…¨ã¦å¿…è¦ãªå€‹æ•°æ‰€æŒã—ã¦ã„ã‚‹ã‹ç¢ºèªï¼ˆã‚¤ãƒ™ãƒ³ãƒˆã¨ã‹ã§è¤‡æ•°ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ‰€æŒã—ã¦ã„ã‚‹ã‹ç¢ºèªã™ã‚‹ãŸã‚ï¼‰
 	public boolean checkItem(int[] ids) {
 		int len = ids.length;
 		int[] counts = new int[len];
@@ -573,7 +573,7 @@ public class L1Inventory extends L1Object {
 	}
 
 	/**
-	 * ‚±‚ÌƒCƒ“ƒxƒ“ƒgƒŠ“à‚É‚ ‚éAw’è‚³‚ê‚½ID‚ÌƒAƒCƒeƒ€‚Ì”‚ğ”‚¦‚éB
+	 * ã“ã®ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªå†…ã«ã‚ã‚‹ã€æŒ‡å®šã•ã‚ŒãŸIDã®ã‚¢ã‚¤ãƒ†ãƒ ã®æ•°ã‚’æ•°ãˆã‚‹ã€‚
 	 * 
 	 * @return
 	 */
@@ -594,7 +594,7 @@ public class L1Inventory extends L1Object {
 		Collections.shuffle(_items);
 	}
 
-	// ƒCƒ“ƒxƒ“ƒgƒŠ“à‚Ì‘S‚Ä‚ÌƒAƒCƒeƒ€‚ğÁ‚·iŠ—LÒ‚ğÁ‚·‚Æ‚«‚È‚Çj
+	// ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªå†…ã®å…¨ã¦ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ¶ˆã™ï¼ˆæ‰€æœ‰è€…ã‚’æ¶ˆã™ã¨ããªã©ï¼‰
 	public void clearItems() {
 		for (Object itemObject : _items) {
 			L1ItemInstance item = (L1ItemInstance) itemObject;
@@ -603,7 +603,7 @@ public class L1Inventory extends L1Object {
 		_items.clear();
 	}
 
-	// ƒI[ƒo[ƒ‰ƒCƒh—p
+	// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ç”¨
 	public void loadItems() {
 	}
 

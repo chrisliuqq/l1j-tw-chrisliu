@@ -52,12 +52,12 @@ public class L1InsertSpawn implements L1CommandExecutor {
 			L1Npc template = NpcTable.getInstance().getTemplate(npcId);
 
 			if (template == null) {
-				msg = "ŠY“–‚·‚éNPC‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB";
+				msg = "è©²å½“ã™ã‚‹NPCãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚";
 				return;
 			}
 			if (type.equals("mob")) {
 				if (!template.getImpl().equals("L1Monster")) {
-					msg = "w’è‚µ‚½NPC‚ÍL1Monster‚Å‚Í‚ ‚è‚Ü‚¹‚ñB";
+					msg = "æŒ‡å®šã—ãŸNPCã¯L1Monsterã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚";
 					return;
 				}
 				SpawnTable.storeSpawn(pc, template);
@@ -66,10 +66,10 @@ public class L1InsertSpawn implements L1CommandExecutor {
 			}
 			L1SpawnUtil.spawn(pc, npcId, 0, 0);
 			msg = new StringBuilder().append(template.get_name()).append(
-					" (" + npcId + ") ").append("‚ğ’Ç‰Á‚µ‚Ü‚µ‚½B").toString();
+					" (" + npcId + ") ").append("ã‚’è¿½åŠ ã—ã¾ã—ãŸã€‚").toString();
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, "", e);
-			msg = cmdName + " mob|npc NPCID ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B";
+			msg = cmdName + " mob|npc NPCID ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚";
 		} finally {
 			if (msg != null) {
 				pc.sendPackets(new S_SystemMessage(msg));

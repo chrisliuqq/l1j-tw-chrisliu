@@ -60,15 +60,15 @@ public class L1MonsterInstance extends L1NpcInstance {
 
 	private static Random _random = new Random();
 
-	private boolean _storeDroped; // ƒhƒƒbƒvƒAƒCƒeƒ€‚Ì“Ç‚ªŠ®—¹‚µ‚½‚©
+	private boolean _storeDroped; // ãƒ‰ãƒ­ãƒƒãƒ—ã‚¢ã‚¤ãƒ†ãƒ ã®èª­è¾¼ãŒå®Œäº†ã—ãŸã‹
 
-	// ƒAƒCƒeƒ€g—pˆ—
+	// ã‚¢ã‚¤ãƒ†ãƒ ä½¿ç”¨å‡¦ç†
 	@Override
 	public void onItemUse() {
 		if (!isActived() && _target != null) {
-			useItem(USEITEM_HASTE, 40); // ‚S‚O“‚ÌŠm—¦‚ÅƒwƒCƒXƒgƒ|[ƒVƒ‡ƒ“g—p
+			useItem(USEITEM_HASTE, 40); // ï¼”ï¼ï¼…ã®ç¢ºç‡ã§ãƒ˜ã‚¤ã‚¹ãƒˆãƒãƒ¼ã‚·ãƒ§ãƒ³ä½¿ç”¨
 
-			// ƒAƒCƒeƒ€‚¶‚á‚È‚¢‚¯‚Çƒhƒbƒyƒ‹ˆ—
+			// ã‚¢ã‚¤ãƒ†ãƒ ã˜ã‚ƒãªã„ã‘ã©ãƒ‰ãƒƒãƒšãƒ«å‡¦ç†
 			if (getNpcTemplate().is_doppel() && _target instanceof L1PcInstance) {
 				L1PcInstance targetPc = (L1PcInstance) _target;
 				setName(_target.getName());
@@ -78,7 +78,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 				setTempCharGfx(targetPc.getClassId());
 				setGfxId(targetPc.getClassId());
 				setPassispeed(640);
-				setAtkspeed(900); // ³Šm‚È’l‚ª‚í‚©‚ç‚ñ
+				setAtkspeed(900); // æ­£ç¢ºãªå€¤ãŒã‚ã‹ã‚‰ã‚“
 				for (L1PcInstance pc : L1World.getInstance()
 						.getRecognizePlayer(this)) {
 					pc.sendPackets(new S_RemoveObject(this));
@@ -87,8 +87,8 @@ public class L1MonsterInstance extends L1NpcInstance {
 				}
 			}
 		}
-		if (getCurrentHp() * 100 / getMaxHp() < 40) { // ‚g‚o‚ª‚S‚O“‚«‚Á‚½‚ç
-			useItem(USEITEM_HEAL, 50); // ‚T‚O“‚ÌŠm—¦‚Å‰ñ•œƒ|[ƒVƒ‡ƒ“g—p
+		if (getCurrentHp() * 100 / getMaxHp() < 40) { // ï¼¨ï¼°ãŒï¼”ï¼ï¼…ãã£ãŸã‚‰
+			useItem(USEITEM_HEAL, 50); // ï¼•ï¼ï¼…ã®ç¢ºç‡ã§å›å¾©ãƒãƒ¼ã‚·ãƒ§ãƒ³ä½¿ç”¨
 		}
 	}
 
@@ -105,8 +105,8 @@ public class L1MonsterInstance extends L1NpcInstance {
 						ActionCodes.ACTION_Moveup));
 			}
 			perceivedFrom.sendPackets(new S_NPCPack(this));
-			onNpcAI(); // ƒ‚ƒ“ƒXƒ^[‚Ì‚`‚h‚ğŠJn
-			if (getBraveSpeed() == 1) { // ‚¿‚á‚ñ‚Æ‚µ‚½•û–@‚ª‚í‚©‚ç‚È‚¢
+			onNpcAI(); // ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã®ï¼¡ï¼©ã‚’é–‹å§‹
+			if (getBraveSpeed() == 1) { // ã¡ã‚ƒã‚“ã¨ã—ãŸæ–¹æ³•ãŒã‚ã‹ã‚‰ãªã„
 				perceivedFrom.sendPackets(new S_SkillBrave(getId(), 1, 600000));
 			}
 		} else {
@@ -114,13 +114,13 @@ public class L1MonsterInstance extends L1NpcInstance {
 		}
 	}
 
-	// ƒ^[ƒQƒbƒg‚ğ’T‚·
+	// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚’æ¢ã™
 	public static int[][] _classGfxId = { { 0, 1 }, { 48, 61 }, { 37, 138 },
 			{ 734, 1186 }, { 2786, 2796 } };
 
 	@Override
 	public void searchTarget() {
-		// ƒ^[ƒQƒbƒg‘{õ
+		// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆæœç´¢
 		L1PcInstance targetPlayer = null;
 
 		for (L1PcInstance pc : L1World.getInstance().getVisiblePlayer(this)) {
@@ -129,32 +129,32 @@ public class L1MonsterInstance extends L1NpcInstance {
 				continue;
 			}
 
-			// “¬‹Zê“à‚Í•Ïg^–¢•Ïg‚ÉŒÀ‚ç‚¸‘S‚ÄƒAƒNƒeƒBƒu
+			// é—˜æŠ€å ´å†…ã¯å¤‰èº«ï¼æœªå¤‰èº«ã«é™ã‚‰ãšå…¨ã¦ã‚¢ã‚¯ãƒ†ã‚£ãƒ–
 			int mapId = getMapId();
 			if (mapId == 88 || mapId == 98 || mapId == 92 || mapId == 91
 					|| mapId == 95) {
-				if (!pc.isInvisble() || getNpcTemplate().is_agrocoi()) { // ƒCƒ“ƒrƒWƒ`ƒFƒbƒN
+				if (!pc.isInvisble() || getNpcTemplate().is_agrocoi()) { // ã‚¤ãƒ³ãƒ“ã‚¸ãƒã‚§ãƒƒã‚¯
 					targetPlayer = pc;
 					break;
 				}
 			}
 
-			if (getNpcId() == 45600){ // ƒJ[ƒc
+			if (getNpcId() == 45600){ // ã‚«ãƒ¼ãƒ„
 				if (pc.isCrown() || pc.isDarkelf()
-						|| pc.getTempCharGfx() != pc.getClassId()) { // –¢•Ïg‚ÌŒNåADE‚É‚ÍƒAƒNƒeƒBƒu
+						|| pc.getTempCharGfx() != pc.getClassId()) { // æœªå¤‰èº«ã®å›ä¸»ã€DEã«ã¯ã‚¢ã‚¯ãƒ†ã‚£ãƒ–
 					targetPlayer = pc;
 					break;
 				}
 			}
 
-			// ‚Ç‚¿‚ç‚©‚ÌğŒ‚ğ–‚½‚·ê‡A—FD‚ÆŒ©‚È‚³‚êæ§UŒ‚‚³‚ê‚È‚¢B
-			// Eƒ‚ƒ“ƒXƒ^[‚ÌƒJƒ‹ƒ}‚ªƒ}ƒCƒiƒX’liƒoƒ‹ƒƒO‘¤ƒ‚ƒ“ƒXƒ^[j‚ÅPC‚ÌƒJƒ‹ƒ}ƒŒƒxƒ‹‚ª1ˆÈãiƒoƒ‹ƒƒO—FDj
-			// Eƒ‚ƒ“ƒXƒ^[‚ÌƒJƒ‹ƒ}‚ªƒvƒ‰ƒX’liƒ„ƒq‘¤ƒ‚ƒ“ƒXƒ^[j‚ÅPC‚ÌƒJƒ‹ƒ}ƒŒƒxƒ‹‚ª-1ˆÈ‰ºiƒ„ƒq—FDj
+			// ã©ã¡ã‚‰ã‹ã®æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã€å‹å¥½ã¨è¦‹ãªã•ã‚Œå…ˆåˆ¶æ”»æ’ƒã•ã‚Œãªã„ã€‚
+			// ãƒ»ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã®ã‚«ãƒ«ãƒãŒãƒã‚¤ãƒŠã‚¹å€¤ï¼ˆãƒãƒ«ãƒ­ã‚°å´ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ï¼‰ã§PCã®ã‚«ãƒ«ãƒãƒ¬ãƒ™ãƒ«ãŒ1ä»¥ä¸Šï¼ˆãƒãƒ«ãƒ­ã‚°å‹å¥½ï¼‰
+			// ãƒ»ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã®ã‚«ãƒ«ãƒãŒãƒ—ãƒ©ã‚¹å€¤ï¼ˆãƒ¤ãƒ’å´ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ï¼‰ã§PCã®ã‚«ãƒ«ãƒãƒ¬ãƒ™ãƒ«ãŒ-1ä»¥ä¸‹ï¼ˆãƒ¤ãƒ’å‹å¥½ï¼‰
 			if ((getNpcTemplate().getKarma() < 0 && pc.getKarmaLevel() >= 1)
 					|| (getNpcTemplate().getKarma() > 0 && pc.getKarmaLevel() <= -1)) {
 				continue;
 			}
-			// Œ©Šü‚Ä‚ç‚ê‚½Ò‚½‚¿‚Ì’n ƒJƒ‹ƒ}ƒNƒGƒXƒg‚Ì•Ïg’†‚ÍAŠew‰c‚Ìƒ‚ƒ“ƒXƒ^[‚©‚çæ§UŒ‚‚³‚ê‚È‚¢
+			// è¦‹æ£„ã¦ã‚‰ã‚ŒãŸè€…ãŸã¡ã®åœ° ã‚«ãƒ«ãƒã‚¯ã‚¨ã‚¹ãƒˆã®å¤‰èº«ä¸­ã¯ã€å„é™£å–¶ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‹ã‚‰å…ˆåˆ¶æ”»æ’ƒã•ã‚Œãªã„
 			if (pc.getTempCharGfx() == 6034 && getNpcTemplate().getKarma() < 0 
 					|| pc.getTempCharGfx() == 6035 && getNpcTemplate().getKarma() > 0
 					|| pc.getTempCharGfx() == 6035 && getNpcTemplate().get_npcId() == 46070
@@ -164,28 +164,28 @@ public class L1MonsterInstance extends L1NpcInstance {
 
 			if (!getNpcTemplate().is_agro() && !getNpcTemplate().is_agrososc()
 					&& getNpcTemplate().is_agrogfxid1() < 0
-					&& getNpcTemplate().is_agrogfxid2() < 0) { // Š®‘S‚Èƒmƒ“ƒAƒNƒeƒBƒuƒ‚ƒ“ƒXƒ^[
-				if (pc.getLawful() < -1000) { // ƒvƒŒƒCƒ„[‚ªƒJƒIƒeƒBƒbƒN
+					&& getNpcTemplate().is_agrogfxid2() < 0) { // å®Œå…¨ãªãƒãƒ³ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼
+				if (pc.getLawful() < -1000) { // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã‚«ã‚ªãƒ†ã‚£ãƒƒã‚¯
 					targetPlayer = pc;
 					break;
 				}
 				continue;
 			}
 
-			if (!pc.isInvisble() || getNpcTemplate().is_agrocoi()) { // ƒCƒ“ƒrƒWƒ`ƒFƒbƒN
-				if (pc.hasSkillEffect(67)) { // •Ïg‚µ‚Ä‚é
-					if (getNpcTemplate().is_agrososc()) { // •Ïg‚É‘Î‚µ‚ÄƒAƒNƒeƒBƒu
+			if (!pc.isInvisble() || getNpcTemplate().is_agrocoi()) { // ã‚¤ãƒ³ãƒ“ã‚¸ãƒã‚§ãƒƒã‚¯
+				if (pc.hasSkillEffect(67)) { // å¤‰èº«ã—ã¦ã‚‹
+					if (getNpcTemplate().is_agrososc()) { // å¤‰èº«ã«å¯¾ã—ã¦ã‚¢ã‚¯ãƒ†ã‚£ãƒ–
 						targetPlayer = pc;
 						break;
 					}
-				} else if (getNpcTemplate().is_agro()) { // ƒAƒNƒeƒBƒuƒ‚ƒ“ƒXƒ^[
+				} else if (getNpcTemplate().is_agro()) { // ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼
 					targetPlayer = pc;
 					break;
 				}
 
-				// “Á’è‚ÌƒNƒ‰ƒXorƒOƒ‰ƒtƒBƒbƒN‚h‚c‚ÉƒAƒNƒeƒBƒu
+				// ç‰¹å®šã®ã‚¯ãƒ©ã‚¹orã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ï¼©ï¼¤ã«ã‚¢ã‚¯ãƒ†ã‚£ãƒ–
 				if (getNpcTemplate().is_agrogfxid1() >= 0
-						&& getNpcTemplate().is_agrogfxid1() <= 4) { // ƒNƒ‰ƒXw’è
+						&& getNpcTemplate().is_agrogfxid1() <= 4) { // ã‚¯ãƒ©ã‚¹æŒ‡å®š
 					if (_classGfxId[getNpcTemplate().is_agrogfxid1()][0] == pc
 							.getTempCharGfx()
 							|| _classGfxId[getNpcTemplate().is_agrogfxid1()][1] == pc
@@ -194,13 +194,13 @@ public class L1MonsterInstance extends L1NpcInstance {
 						break;
 					}
 				} else if (pc.getTempCharGfx() == getNpcTemplate()
-						.is_agrogfxid1()) { // ƒOƒ‰ƒtƒBƒbƒN‚h‚cw’è
+						.is_agrogfxid1()) { // ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ï¼©ï¼¤æŒ‡å®š
 					targetPlayer = pc;
 					break;
 				}
 
 				if (getNpcTemplate().is_agrogfxid2() >= 0
-						&& getNpcTemplate().is_agrogfxid2() <= 4) { // ƒNƒ‰ƒXw’è
+						&& getNpcTemplate().is_agrogfxid2() <= 4) { // ã‚¯ãƒ©ã‚¹æŒ‡å®š
 					if (_classGfxId[getNpcTemplate().is_agrogfxid2()][0] == pc
 							.getTempCharGfx()
 							|| _classGfxId[getNpcTemplate().is_agrogfxid2()][1] == pc
@@ -209,7 +209,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 						break;
 					}
 				} else if (pc.getTempCharGfx() == getNpcTemplate()
-						.is_agrogfxid2()) { // ƒOƒ‰ƒtƒBƒbƒN‚h‚cw’è
+						.is_agrogfxid2()) { // ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ï¼©ï¼¤æŒ‡å®š
 					targetPlayer = pc;
 					break;
 				}
@@ -221,10 +221,10 @@ public class L1MonsterInstance extends L1NpcInstance {
 		}
 	}
 
-	// ƒŠƒ“ƒN‚Ìİ’è
+	// ãƒªãƒ³ã‚¯ã®è¨­å®š
 	@Override
 	public void setLink(L1Character cha) {
-		if (cha != null && _hateList.isEmpty()) { // ƒ^[ƒQƒbƒg‚ª‚¢‚È‚¢ê‡‚Ì‚İ’Ç‰Á
+		if (cha != null && _hateList.isEmpty()) { // ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãŒã„ãªã„å ´åˆã®ã¿è¿½åŠ 
 			_hateList.add(cha, 0);
 			checkTarget();
 		}
@@ -240,7 +240,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 		if (isAiRunning()) {
 			return;
 		}
-		if (!_storeDroped) // –³‘Ê‚ÈƒIƒuƒWƒFƒNƒg‚h‚c‚ğ”­s‚µ‚È‚¢‚æ‚¤‚É‚±‚±‚ÅƒZƒbƒg
+		if (!_storeDroped) // ç„¡é§„ãªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼©ï¼¤ã‚’ç™ºè¡Œã—ãªã„ã‚ˆã†ã«ã“ã“ã§ã‚»ãƒƒãƒˆ
 		{
 			DropTable.getInstance().setDrop(this, getInventory());
 			getInventory().shuffle();
@@ -258,16 +258,16 @@ public class L1MonsterInstance extends L1NpcInstance {
 		String htmlid = null;
 		String[] htmldata = null;
 
-			// html•\¦ƒpƒPƒbƒg‘—M
-			if (htmlid != null) { // htmlid‚ªw’è‚³‚ê‚Ä‚¢‚éê‡
-				if (htmldata != null) { // htmlw’è‚ª‚ ‚éê‡‚Í•\¦
+			// htmlè¡¨ç¤ºãƒ‘ã‚±ãƒƒãƒˆé€ä¿¡
+			if (htmlid != null) { // htmlidãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆ
+				if (htmldata != null) { // htmlæŒ‡å®šãŒã‚ã‚‹å ´åˆã¯è¡¨ç¤º
 					pc.sendPackets(new S_NPCTalkReturn(objid, htmlid,
 							htmldata));
 				} else {
 					pc.sendPackets(new S_NPCTalkReturn(objid, htmlid));
 				}
 			} else {
-				if (pc.getLawful() < -1000) { // ƒvƒŒƒCƒ„[‚ªƒJƒIƒeƒBƒbƒN
+				if (pc.getLawful() < -1000) { // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã‚«ã‚ªãƒ†ã‚£ãƒƒã‚¯
 					pc.sendPackets(new S_NPCTalkReturn(talking, objid, 2));
 				} else {
 					pc.sendPackets(new S_NPCTalkReturn(talking, objid, 1));
@@ -291,15 +291,15 @@ public class L1MonsterInstance extends L1NpcInstance {
 	}
 
 	@Override
-	public void ReceiveManaDamage(L1Character attacker, int mpDamage) { // UŒ‚‚Å‚l‚o‚ğŒ¸‚ç‚·‚Æ‚«‚Í‚±‚±‚ğg—p
+	public void ReceiveManaDamage(L1Character attacker, int mpDamage) { // æ”»æ’ƒã§ï¼­ï¼°ã‚’æ¸›ã‚‰ã™ã¨ãã¯ã“ã“ã‚’ä½¿ç”¨
 		if (mpDamage > 0 && !isDead()) {
-			// int Hate = mpDamage / 10 + 10; // ’ˆÓIŒvZ“K“– ƒ_ƒ[ƒW‚Ì‚P‚O•ª‚Ì‚P{ƒqƒbƒgƒwƒCƒg‚P‚O
+			// int Hate = mpDamage / 10 + 10; // æ³¨æ„ï¼è¨ˆç®—é©å½“ ãƒ€ãƒ¡ãƒ¼ã‚¸ã®ï¼‘ï¼åˆ†ã®ï¼‘ï¼‹ãƒ’ãƒƒãƒˆãƒ˜ã‚¤ãƒˆï¼‘ï¼
 			// setHate(attacker, Hate);
 			setHate(attacker, mpDamage);
 
 			onNpcAI();
 
-			if (attacker instanceof L1PcInstance) { // ’‡ŠÔˆÓ¯‚ğ‚à‚Âƒ‚ƒ“ƒXƒ^[‚Ìƒ^[ƒQƒbƒg‚Éİ’è
+			if (attacker instanceof L1PcInstance) { // ä»²é–“æ„è­˜ã‚’ã‚‚ã¤ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã®ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã«è¨­å®š
 				serchLink((L1PcInstance) attacker, getNpcTemplate()
 						.get_family());
 			}
@@ -313,14 +313,14 @@ public class L1MonsterInstance extends L1NpcInstance {
 	}
 
 	@Override
-	public void receiveDamage(L1Character attacker, int damage) { // UŒ‚‚Å‚g‚o‚ğŒ¸‚ç‚·‚Æ‚«‚Í‚±‚±‚ğg—p
+	public void receiveDamage(L1Character attacker, int damage) { // æ”»æ’ƒã§ï¼¨ï¼°ã‚’æ¸›ã‚‰ã™ã¨ãã¯ã“ã“ã‚’ä½¿ç”¨
 		if (getCurrentHp() > 0 && !isDead()) {
 			if (getHiddenStatus() == HIDDEN_STATUS_SINK
 					|| getHiddenStatus() == HIDDEN_STATUS_FLY) {
 				return;
 			}
 			if (damage >= 0) {
-				if (!(attacker instanceof L1EffectInstance)) { // FW‚ÍƒwƒCƒg‚È‚µ
+				if (!(attacker instanceof L1EffectInstance)) { // FWã¯ãƒ˜ã‚¤ãƒˆãªã—
 					setHate(attacker, damage);
 				}
 			}
@@ -330,7 +330,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 
 			onNpcAI();
 
-			if (attacker instanceof L1PcInstance) { // ’‡ŠÔˆÓ¯‚ğ‚à‚Âƒ‚ƒ“ƒXƒ^[‚Ìƒ^[ƒQƒbƒg‚Éİ’è
+			if (attacker instanceof L1PcInstance) { // ä»²é–“æ„è­˜ã‚’ã‚‚ã¤ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã®ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã«è¨­å®š
 				serchLink((L1PcInstance) attacker, getNpcTemplate()
 						.get_family());
 			}
@@ -339,10 +339,10 @@ public class L1MonsterInstance extends L1NpcInstance {
 				L1PcInstance player = (L1PcInstance) attacker;
 				player.setPetTarget(this);
 
-				if (getNpcTemplate().get_npcId() == 45681 // ƒŠƒ“ƒhƒrƒIƒ‹
-						|| getNpcTemplate().get_npcId() == 45682 // ƒAƒ“ƒ^ƒ‰ƒX
-						|| getNpcTemplate().get_npcId() == 45683 // ƒpƒvƒŠƒIƒ“
-						|| getNpcTemplate().get_npcId() == 45684) // ƒ”ƒ@ƒ‰ƒJƒX
+				if (getNpcTemplate().get_npcId() == 45681 // ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«
+						|| getNpcTemplate().get_npcId() == 45682 // ã‚¢ãƒ³ã‚¿ãƒ©ã‚¹
+						|| getNpcTemplate().get_npcId() == 45683 // ãƒ‘ãƒ—ãƒªã‚ªãƒ³
+						|| getNpcTemplate().get_npcId() == 45684) // ãƒ´ã‚¡ãƒ©ã‚«ã‚¹
 				{
 					recall(player);
 				}
@@ -351,7 +351,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 			int newHp = getCurrentHp() - damage;
 			if (newHp <= 0 && !isDead()) {
 				int transformId = getNpcTemplate().getTransformId();
-				// •Ïg‚µ‚È‚¢ƒ‚ƒ“ƒXƒ^[
+				// å¤‰èº«ã—ãªã„ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼
 				if (transformId == -1) {
 					setCurrentHpDirect(0);
 					setDead(true);
@@ -360,7 +360,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 					Death death = new Death(attacker);
 					GeneralThreadPool.getInstance().execute(death);
 					// Death(attacker);
-				} else { // •Ïg‚·‚éƒ‚ƒ“ƒXƒ^[
+				} else { // å¤‰èº«ã™ã‚‹ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼
 // distributeExpDropKarma(attacker);
 					transform(transformId);
 				}
@@ -369,7 +369,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 				setCurrentHp(newHp);
 				hide();
 			}
-		} else if (!isDead()) { // ”O‚Ì‚½‚ß
+		} else if (!isDead()) { // å¿µã®ãŸã‚
 			setDead(true);
 			setStatus(ActionCodes.ACTION_Die);
 			Death death = new Death(attacker);
@@ -403,7 +403,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 	}
 
 	/**
-	 * ‹——£‚ª5ˆÈã—£‚ê‚Ä‚¢‚épc‚ğ‹——£3`4‚ÌˆÊ’u‚Éˆø‚«Šñ‚¹‚éB
+	 * è·é›¢ãŒ5ä»¥ä¸Šé›¢ã‚Œã¦ã„ã‚‹pcã‚’è·é›¢3ï½4ã®ä½ç½®ã«å¼•ãå¯„ã›ã‚‹ã€‚
 	 * 
 	 * @param pc
 	 */
@@ -500,17 +500,17 @@ public class L1MonsterInstance extends L1NpcInstance {
 			ArrayList<Integer> hateList = _hateList.toHateArrayList();
 			int exp = getExp();
 			CalcExp.calcExp(pc, getId(), targetList, hateList, exp);
-			// €–S‚µ‚½ê‡‚Íƒhƒƒbƒv‚ÆƒJƒ‹ƒ}‚à•ª”zA€–S‚¹‚¸•Ïg‚µ‚½ê‡‚ÍEXP‚Ì‚İ
+			// æ­»äº¡ã—ãŸå ´åˆã¯ãƒ‰ãƒ­ãƒƒãƒ—ã¨ã‚«ãƒ«ãƒã‚‚åˆ†é…ã€æ­»äº¡ã›ãšå¤‰èº«ã—ãŸå ´åˆã¯EXPã®ã¿
 			if (isDead()) {
 				distributeDrop();
 				giveKarma(pc);
 			}
-		} else if (lastAttacker instanceof L1EffectInstance) { // FW‚ª“|‚µ‚½ê‡
+		} else if (lastAttacker instanceof L1EffectInstance) { // FWãŒå€’ã—ãŸå ´åˆ
 			ArrayList<L1Character> targetList = _hateList.toTargetArrayList();
 			ArrayList<Integer> hateList = _hateList.toHateArrayList();
-			// ƒwƒCƒgƒŠƒXƒg‚ÉƒLƒƒƒ‰ƒNƒ^[‚ª‘¶İ‚·‚é
+			// ãƒ˜ã‚¤ãƒˆãƒªã‚¹ãƒˆã«ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒå­˜åœ¨ã™ã‚‹
 			if (hateList.size() != 0) {
-				// Å‘åƒwƒCƒg‚ğ‚ÂƒLƒƒƒ‰ƒNƒ^[‚ª“|‚µ‚½‚à‚Ì‚Æ‚·‚é
+				// æœ€å¤§ãƒ˜ã‚¤ãƒˆã‚’æŒã¤ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒå€’ã—ãŸã‚‚ã®ã¨ã™ã‚‹
 				int maxHate = 0;
 				for (int i = hateList.size() - 1; i >= 0; i--) {
 					if (maxHate < ((Integer) hateList.get(i))) {
@@ -530,7 +530,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 				if (pc != null) {
 					int exp = getExp();
 					CalcExp.calcExp(pc, getId(), targetList, hateList, exp);
-					// €–S‚µ‚½ê‡‚Íƒhƒƒbƒv‚ÆƒJƒ‹ƒ}‚à•ª”zA€–S‚¹‚¸•Ïg‚µ‚½ê‡‚ÍEXP‚Ì‚İ
+					// æ­»äº¡ã—ãŸå ´åˆã¯ãƒ‰ãƒ­ãƒƒãƒ—ã¨ã‚«ãƒ«ãƒã‚‚åˆ†é…ã€æ­»äº¡ã›ãšå¤‰èº«ã—ãŸå ´åˆã¯EXPã®ã¿
 					if (isDead()) {
 						distributeDrop();
 						giveKarma(pc);
@@ -562,17 +562,17 @@ public class L1MonsterInstance extends L1NpcInstance {
 			int karmaSign = Integer.signum(karma);
 			int pcKarmaLevel = pc.getKarmaLevel();
 			int pcKarmaLevelSign = Integer.signum(pcKarmaLevel);
-			// ƒJƒ‹ƒ}”wMsˆ×‚Í5”{
+			// ã‚«ãƒ«ãƒèƒŒä¿¡è¡Œç‚ºã¯5å€
 			if (pcKarmaLevelSign != 0 && karmaSign != pcKarmaLevelSign) {
 				karma *= 5;
 			}
-			// ƒJƒ‹ƒ}‚Í~‚ß‚ğh‚µ‚½ƒvƒŒƒCƒ„[‚Éİ’èBƒyƒbƒgorƒTƒ‚ƒ“‚Å“|‚µ‚½ê‡‚à“ü‚éB
+			// ã‚«ãƒ«ãƒã¯æ­¢ã‚ã‚’åˆºã—ãŸãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã«è¨­å®šã€‚ãƒšãƒƒãƒˆorã‚µãƒ¢ãƒ³ã§å€’ã—ãŸå ´åˆã‚‚å…¥ã‚‹ã€‚
 			pc.addKarma((int) (karma * Config.RATE_KARMA));
 		}
 	}
 
 	private void giveUbSeal() {
-		if (getUbSealCount() != 0) { // UB‚Ì—EÒ‚ÌØ
+		if (getUbSealCount() != 0) { // UBã®å‹‡è€…ã®è¨¼
 			L1UltimateBattle ub = UBTable.getInstance().getUb(getUbId());
 			if (ub != null) {
 				for (L1PcInstance pc : ub.getMembersArray()) {
@@ -580,7 +580,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 						L1ItemInstance item = pc.getInventory()
 								.storeItem(41402, getUbSealCount());
 						pc.sendPackets(new S_ServerMessage(403, item
-								.getLogName())); // %0‚ğè‚É“ü‚ê‚Ü‚µ‚½B
+								.getLogName())); // %0ã‚’æ‰‹ã«å…¥ã‚Œã¾ã—ãŸã€‚
 					}
 				}
 			}
@@ -595,7 +595,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 		_storeDroped = flag;
 	}
 
-	private int _ubSealCount = 0; // UB‚Å“|‚³‚ê‚½AQ‰ÁÒ‚É—^‚¦‚ç‚ê‚é—EÒ‚ÌØ‚ÌŒÂ”
+	private int _ubSealCount = 0; // UBã§å€’ã•ã‚ŒãŸæ™‚ã€å‚åŠ è€…ã«ä¸ãˆã‚‰ã‚Œã‚‹å‹‡è€…ã®è¨¼ã®å€‹æ•°
 
 	public int getUbSealCount() {
 		return _ubSealCount;
@@ -617,10 +617,10 @@ public class L1MonsterInstance extends L1NpcInstance {
 
 	private void hide() {
 		int npcid = getNpcTemplate().get_npcId();
-		if (npcid == 45061 // ƒJ[ƒYƒhƒXƒpƒ‹ƒgƒC
-				|| npcid == 45161 // ƒXƒpƒ‹ƒgƒC
-				|| npcid == 45181 // ƒXƒpƒ‹ƒgƒC
-				|| npcid == 45455) { // ƒfƒbƒhƒŠ[ƒXƒpƒ‹ƒgƒC
+		if (npcid == 45061 // ã‚«ãƒ¼ã‚ºãƒ‰ã‚¹ãƒ‘ãƒ«ãƒˆã‚¤
+				|| npcid == 45161 // ã‚¹ãƒ‘ãƒ«ãƒˆã‚¤
+				|| npcid == 45181 // ã‚¹ãƒ‘ãƒ«ãƒˆã‚¤
+				|| npcid == 45455) { // ãƒ‡ãƒƒãƒ‰ãƒªãƒ¼ã‚¹ãƒ‘ãƒ«ãƒˆã‚¤
 			if (getMaxHp() / 3 > getCurrentHp()) {
 				int rnd = _random.nextInt(10);
 				if (1 > rnd) {
@@ -632,7 +632,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 					broadcastPacket(new S_NPCPack(this));
 				}
 			}
-		} else if (npcid == 45682) { // ƒAƒ“ƒ^ƒ‰ƒX
+		} else if (npcid == 45682) { // ã‚¢ãƒ³ã‚¿ãƒ©ã‚¹
 			if (getMaxHp() / 3 > getCurrentHp()) {
 				int rnd = _random.nextInt(50);
 				if (1 > rnd) {
@@ -644,12 +644,12 @@ public class L1MonsterInstance extends L1NpcInstance {
 					broadcastPacket(new S_NPCPack(this));
 				}
 			}
-		} else if (npcid == 45067 // ƒoƒŒ[ƒn[ƒs[
-				|| npcid == 45264 // ƒn[ƒs[
-				|| npcid == 45452 // ƒn[ƒs[
-				|| npcid == 45090 // ƒoƒŒ[ƒOƒŠƒtƒHƒ“
-				|| npcid == 45321 // ƒOƒŠƒtƒHƒ“
-				|| npcid == 45445) { // ƒOƒŠƒtƒHƒ“
+		} else if (npcid == 45067 // ãƒãƒ¬ãƒ¼ãƒãƒ¼ãƒ”ãƒ¼
+				|| npcid == 45264 // ãƒãƒ¼ãƒ”ãƒ¼
+				|| npcid == 45452 // ãƒãƒ¼ãƒ”ãƒ¼
+				|| npcid == 45090 // ãƒãƒ¬ãƒ¼ã‚°ãƒªãƒ•ã‚©ãƒ³
+				|| npcid == 45321 // ã‚°ãƒªãƒ•ã‚©ãƒ³
+				|| npcid == 45445) { // ã‚°ãƒªãƒ•ã‚©ãƒ³
 			if (getMaxHp() / 3 > getCurrentHp()) {
 				int rnd = _random.nextInt(10);
 				if (1 > rnd) {
@@ -661,7 +661,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 					broadcastPacket(new S_NPCPack(this));
 				}
 			}
-		} else if (npcid == 45681) { // ƒŠƒ“ƒhƒrƒIƒ‹
+		} else if (npcid == 45681) { // ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«
 			if (getMaxHp() / 3 > getCurrentHp()) {
 				int rnd = _random.nextInt(50);
 				if (1 > rnd) {
@@ -673,8 +673,8 @@ public class L1MonsterInstance extends L1NpcInstance {
 					broadcastPacket(new S_NPCPack(this));
 				}
 			}
-		} else if (npcid == 46107 // ƒe[ƒx ƒ}ƒ“ƒhƒ‰ƒSƒ‰(”’)
-				 || npcid == 46108) { // ƒe[ƒx ƒ}ƒ“ƒhƒ‰ƒSƒ‰(•)
+		} else if (npcid == 46107 // ãƒ†ãƒ¼ãƒ™ ãƒãƒ³ãƒ‰ãƒ©ã‚´ãƒ©(ç™½)
+				 || npcid == 46108) { // ãƒ†ãƒ¼ãƒ™ ãƒãƒ³ãƒ‰ãƒ©ã‚´ãƒ©(é»’)
 			if (getMaxHp() / 4 > getCurrentHp()) {
 				int rnd = _random.nextInt(10);
 				if (1 > rnd) {
@@ -690,41 +690,41 @@ public class L1MonsterInstance extends L1NpcInstance {
 	}
 
 	public void initHide() {
-		// oŒ»’¼Œã‚Ì‰B‚ê‚é“®ì
-		// ö‚éMOB‚Íˆê’è‚ÌŠm—¦‚Å’n’†‚Éö‚Á‚½ó‘Ô‚ÉA
-		// ”ò‚ÔMOB‚Í”ò‚ñ‚¾ó‘Ô‚É‚µ‚Ä‚¨‚­
+		// å‡ºç¾ç›´å¾Œã®éš ã‚Œã‚‹å‹•ä½œ
+		// æ½œã‚‹MOBã¯ä¸€å®šã®ç¢ºç‡ã§åœ°ä¸­ã«æ½œã£ãŸçŠ¶æ…‹ã«ã€
+		// é£›ã¶MOBã¯é£›ã‚“ã çŠ¶æ…‹ã«ã—ã¦ãŠã
 		int npcid = getNpcTemplate().get_npcId();
-		if (npcid == 45061 // ƒJ[ƒYƒhƒXƒpƒ‹ƒgƒC
-				|| npcid == 45161 // ƒXƒpƒ‹ƒgƒC
-				|| npcid == 45181 // ƒXƒpƒ‹ƒgƒC
-				|| npcid == 45455) { // ƒfƒbƒhƒŠ[ƒXƒpƒ‹ƒgƒC
+		if (npcid == 45061 // ã‚«ãƒ¼ã‚ºãƒ‰ã‚¹ãƒ‘ãƒ«ãƒˆã‚¤
+				|| npcid == 45161 // ã‚¹ãƒ‘ãƒ«ãƒˆã‚¤
+				|| npcid == 45181 // ã‚¹ãƒ‘ãƒ«ãƒˆã‚¤
+				|| npcid == 45455) { // ãƒ‡ãƒƒãƒ‰ãƒªãƒ¼ã‚¹ãƒ‘ãƒ«ãƒˆã‚¤
 			int rnd = _random.nextInt(3);
 			if (1 > rnd) {
 				setHiddenStatus(HIDDEN_STATUS_SINK);
 				setStatus(13);
 			}
-		} else if (npcid == 45045 // ƒNƒŒƒCƒS[ƒŒƒ€
-				|| npcid == 45126 // ƒXƒg[ƒ“ƒS[ƒŒƒ€
-				|| npcid == 45134 // ƒXƒg[ƒ“ƒS[ƒŒƒ€
-				|| npcid == 45281) { // ƒMƒ‰ƒ“ƒXƒg[ƒ“ƒS[ƒŒƒ€
+		} else if (npcid == 45045 // ã‚¯ãƒ¬ã‚¤ã‚´ãƒ¼ãƒ¬ãƒ 
+				|| npcid == 45126 // ã‚¹ãƒˆãƒ¼ãƒ³ã‚´ãƒ¼ãƒ¬ãƒ 
+				|| npcid == 45134 // ã‚¹ãƒˆãƒ¼ãƒ³ã‚´ãƒ¼ãƒ¬ãƒ 
+				|| npcid == 45281) { // ã‚®ãƒ©ãƒ³ã‚¹ãƒˆãƒ¼ãƒ³ã‚´ãƒ¼ãƒ¬ãƒ 
 			int rnd = _random.nextInt(3);
 			if (1 > rnd) {
 				setHiddenStatus(HIDDEN_STATUS_SINK);
 				setStatus(4);
 			}
-		} else if (npcid == 45067 // ƒoƒŒ[ƒn[ƒs[
-				|| npcid == 45264 // ƒn[ƒs[
-				|| npcid == 45452 // ƒn[ƒs[
-				|| npcid == 45090 // ƒoƒŒ[ƒOƒŠƒtƒHƒ“
-				|| npcid == 45321 // ƒOƒŠƒtƒHƒ“
-				|| npcid == 45445) { // ƒOƒŠƒtƒHƒ“
+		} else if (npcid == 45067 // ãƒãƒ¬ãƒ¼ãƒãƒ¼ãƒ”ãƒ¼
+				|| npcid == 45264 // ãƒãƒ¼ãƒ”ãƒ¼
+				|| npcid == 45452 // ãƒãƒ¼ãƒ”ãƒ¼
+				|| npcid == 45090 // ãƒãƒ¬ãƒ¼ã‚°ãƒªãƒ•ã‚©ãƒ³
+				|| npcid == 45321 // ã‚°ãƒªãƒ•ã‚©ãƒ³
+				|| npcid == 45445) { // ã‚°ãƒªãƒ•ã‚©ãƒ³
 			setHiddenStatus(HIDDEN_STATUS_FLY);
 			setStatus(4);
-		} else if (npcid == 45681) { // ƒŠƒ“ƒhƒrƒIƒ‹
+		} else if (npcid == 45681) { // ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«
 			setHiddenStatus(HIDDEN_STATUS_FLY);
 			setStatus(11);
-		} else if (npcid == 46107 // ƒe[ƒx ƒ}ƒ“ƒhƒ‰ƒSƒ‰(”’)
-				 || npcid == 46108) { // ƒe[ƒx ƒ}ƒ“ƒhƒ‰ƒSƒ‰(•)
+		} else if (npcid == 46107 // ãƒ†ãƒ¼ãƒ™ ãƒãƒ³ãƒ‰ãƒ©ã‚´ãƒ©(ç™½)
+				 || npcid == 46108) { // ãƒ†ãƒ¼ãƒ™ ãƒãƒ³ãƒ‰ãƒ©ã‚´ãƒ©(é»’)
 			int rnd = _random.nextInt(3);
 			if (1 > rnd) {
 				setHiddenStatus(HIDDEN_STATUS_SINK);
@@ -737,36 +737,36 @@ public class L1MonsterInstance extends L1NpcInstance {
 	}
 
 	public void initHideForMinion(L1NpcInstance leader) {
-		// ƒOƒ‹[ƒv‚É‘®‚·‚éƒ‚ƒ“ƒXƒ^[‚ÌoŒ»’¼Œã‚Ì‰B‚ê‚é“®ìiƒŠ[ƒ_[‚Æ“¯‚¶“®ì‚É‚·‚éj
+		// ã‚°ãƒ«ãƒ¼ãƒ—ã«å±ã™ã‚‹ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã®å‡ºç¾ç›´å¾Œã®éš ã‚Œã‚‹å‹•ä½œï¼ˆãƒªãƒ¼ãƒ€ãƒ¼ã¨åŒã˜å‹•ä½œã«ã™ã‚‹ï¼‰
 		int npcid = getNpcTemplate().get_npcId();
 		if (leader.getHiddenStatus() == HIDDEN_STATUS_SINK) {
-			if (npcid == 45061 // ƒJ[ƒYƒhƒXƒpƒ‹ƒgƒC
-					|| npcid == 45161 // ƒXƒpƒ‹ƒgƒC
-					|| npcid == 45181 // ƒXƒpƒ‹ƒgƒC
-					|| npcid == 45455) { // ƒfƒbƒhƒŠ[ƒXƒpƒ‹ƒgƒC
+			if (npcid == 45061 // ã‚«ãƒ¼ã‚ºãƒ‰ã‚¹ãƒ‘ãƒ«ãƒˆã‚¤
+					|| npcid == 45161 // ã‚¹ãƒ‘ãƒ«ãƒˆã‚¤
+					|| npcid == 45181 // ã‚¹ãƒ‘ãƒ«ãƒˆã‚¤
+					|| npcid == 45455) { // ãƒ‡ãƒƒãƒ‰ãƒªãƒ¼ã‚¹ãƒ‘ãƒ«ãƒˆã‚¤
 				setHiddenStatus(HIDDEN_STATUS_SINK);
 				setStatus(13);
-			} else if (npcid == 45045 // ƒNƒŒƒCƒS[ƒŒƒ€
-					|| npcid == 45126 // ƒXƒg[ƒ“ƒS[ƒŒƒ€
-					|| npcid == 45134 // ƒXƒg[ƒ“ƒS[ƒŒƒ€
-					|| npcid == 45281) { // ƒMƒ‰ƒ“ƒXƒg[ƒ“ƒS[ƒŒƒ€
+			} else if (npcid == 45045 // ã‚¯ãƒ¬ã‚¤ã‚´ãƒ¼ãƒ¬ãƒ 
+					|| npcid == 45126 // ã‚¹ãƒˆãƒ¼ãƒ³ã‚´ãƒ¼ãƒ¬ãƒ 
+					|| npcid == 45134 // ã‚¹ãƒˆãƒ¼ãƒ³ã‚´ãƒ¼ãƒ¬ãƒ 
+					|| npcid == 45281) { // ã‚®ãƒ©ãƒ³ã‚¹ãƒˆãƒ¼ãƒ³ã‚´ãƒ¼ãƒ¬ãƒ 
 				setHiddenStatus(HIDDEN_STATUS_SINK);
 				setStatus(4);
-			} else if (npcid == 46107 // ƒe[ƒx ƒ}ƒ“ƒhƒ‰ƒSƒ‰(”’)
-					 || npcid == 46108) { // ƒe[ƒx ƒ}ƒ“ƒhƒ‰ƒSƒ‰(•)
+			} else if (npcid == 46107 // ãƒ†ãƒ¼ãƒ™ ãƒãƒ³ãƒ‰ãƒ©ã‚´ãƒ©(ç™½)
+					 || npcid == 46108) { // ãƒ†ãƒ¼ãƒ™ ãƒãƒ³ãƒ‰ãƒ©ã‚´ãƒ©(é»’)
 				setHiddenStatus(HIDDEN_STATUS_SINK);
 				setStatus(13);
 			}
 		} else if (leader.getHiddenStatus() == HIDDEN_STATUS_FLY) {
-			if (npcid == 45067 // ƒoƒŒ[ƒn[ƒs[
-					|| npcid == 45264 // ƒn[ƒs[
-					|| npcid == 45452 // ƒn[ƒs[
-					|| npcid == 45090 // ƒoƒŒ[ƒOƒŠƒtƒHƒ“
-					|| npcid == 45321 // ƒOƒŠƒtƒHƒ“
-					|| npcid == 45445) { // ƒOƒŠƒtƒHƒ“
+			if (npcid == 45067 // ãƒãƒ¬ãƒ¼ãƒãƒ¼ãƒ”ãƒ¼
+					|| npcid == 45264 // ãƒãƒ¼ãƒ”ãƒ¼
+					|| npcid == 45452 // ãƒãƒ¼ãƒ”ãƒ¼
+					|| npcid == 45090 // ãƒãƒ¬ãƒ¼ã‚°ãƒªãƒ•ã‚©ãƒ³
+					|| npcid == 45321 // ã‚°ãƒªãƒ•ã‚©ãƒ³
+					|| npcid == 45445) { // ã‚°ãƒªãƒ•ã‚©ãƒ³
 				setHiddenStatus(HIDDEN_STATUS_FLY);
 				setStatus(4);
-			} else if (npcid == 45681) { // ƒŠƒ“ƒhƒrƒIƒ‹
+			} else if (npcid == 45681) { // ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«
 				setHiddenStatus(HIDDEN_STATUS_FLY);
 				setStatus(11);
 			}
@@ -780,7 +780,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 	protected void transform(int transformId) {
 		super.transform(transformId);
 
-		// DROP‚ÌÄİ’è
+		// DROPã®å†è¨­å®š
 		getInventory().clearItems();
 		DropTable.getInstance().setDrop(this, getInventory());
 		getInventory().shuffle();

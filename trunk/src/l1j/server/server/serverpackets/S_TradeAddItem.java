@@ -35,11 +35,11 @@ public class S_TradeAddItem extends ServerBasePacket {
 
 	public S_TradeAddItem(L1ItemInstance item, int count, int type) {
 		writeC(Opcodes.S_OPCODE_TRADEADDITEM);
-		writeC(type); // 0:ƒgƒŒ[ƒhƒEƒBƒ“ƒhƒEã’i 1:ƒgƒŒ[ƒhƒEƒBƒ“ƒhƒE‰º’i
+		writeC(type); // 0:ãƒˆãƒ¬ãƒ¼ãƒ‰ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ä¸Šæ®µ 1:ãƒˆãƒ¬ãƒ¼ãƒ‰ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ä¸‹æ®µ
 		writeH(item.getItem().getGfxId());
 		writeS(item.getNumberedViewName(count));
-		// 0:j•Ÿ  1:’Êí 2:ô‚¢ 3:–¢ŠÓ’è
-		// 128:j•Ÿ&••ˆó 129:&••ˆó 130:ô‚¢&••ˆó 131:–¢ŠÓ’è&••ˆó
+		// 0:ç¥ç¦  1:é€šå¸¸ 2:å‘ªã„ 3:æœªé‘‘å®š
+		// 128:ç¥ç¦&å°å° 129:&å°å° 130:å‘ªã„&å°å° 131:æœªé‘‘å®š&å°å°
 		writeC(item.getBless());
 		writeC(0x00);
 	}

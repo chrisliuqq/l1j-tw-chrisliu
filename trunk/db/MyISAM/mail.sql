@@ -11,7 +11,7 @@ CREATE TABLE `mail` (
   `subject` BLOB,
   `content` BLOB,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=sjis;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 #----------------------------
 # No Records for table mail
 #----------------------------

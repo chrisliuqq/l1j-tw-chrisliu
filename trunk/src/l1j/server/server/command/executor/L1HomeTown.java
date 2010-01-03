@@ -49,7 +49,7 @@ public class L1HomeTown implements L1CommandExecutor {
 			}
 		} catch (Exception e) {
 			pc.sendPackets(new S_SystemMessage(
-					".hometown daily|monthly ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+					".hometown daily|monthly ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

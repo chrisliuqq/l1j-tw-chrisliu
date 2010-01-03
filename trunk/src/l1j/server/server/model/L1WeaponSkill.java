@@ -67,7 +67,7 @@ public class L1WeaponSkill {
 
 	private int _effectId;
 
-	private int _effectTarget; // ƒGƒtƒFƒNƒg‚Ì‘ÎÛ 0:‘Šè 1:©•ª
+	private int _effectTarget; // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®å¯¾è±¡ 0:ç›¸æ‰‹ 1:è‡ªåˆ†
 
 	private boolean _isArrowType;
 
@@ -150,7 +150,7 @@ public class L1WeaponSkill {
 		if (skillId != 0) {
 			L1Skills skill = SkillsTable.getInstance().getTemplate(skillId);
 			if (skill != null && skill.getTarget().equals("buff")) {
-				if (!isFreeze(cha)) { // “€Œ‹ó‘ÔorƒJƒEƒ“ƒ^[ƒ}ƒWƒbƒN’†
+				if (!isFreeze(cha)) { // å‡çµçŠ¶æ…‹orã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ãƒã‚¸ãƒƒã‚¯ä¸­
 					cha.setSkillEffect(skillId, weaponSkill
 							.getSkillTime() * 1000);
 				}
@@ -186,7 +186,7 @@ public class L1WeaponSkill {
 		damage += weaponSkill.getFixDamage();
 
 		int area = weaponSkill.getArea();
-		if (area > 0 || area == -1) { // ”ÍˆÍ‚Ìê‡
+		if (area > 0 || area == -1) { // ç¯„å›²ã®å ´åˆ
 			for (L1Object object : L1World.getInstance()
 					.getVisibleObjects(cha, area)) {
 				if (object == null) {
@@ -198,12 +198,12 @@ public class L1WeaponSkill {
 				if (object.getId() == pc.getId()) {
 					continue;
 				}
-				if (object.getId() == cha.getId()) { // UŒ‚‘ÎÛ‚ÍL1Attack‚Åˆ—‚·‚é‚½‚ßœŠO
+				if (object.getId() == cha.getId()) { // æ”»æ’ƒå¯¾è±¡ã¯L1Attackã§å‡¦ç†ã™ã‚‹ãŸã‚é™¤å¤–
 					continue;
 				}
 
-				// UŒ‚‘ÎÛ‚ªMOB‚Ìê‡‚ÍA”ÍˆÍ“à‚ÌMOB‚É‚Ì‚İ“–‚½‚é
-				// UŒ‚‘ÎÛ‚ªPC,Summon,Pet‚Ìê‡‚ÍA”ÍˆÍ“à‚ÌPC,Summon,Pet,MOB‚É“–‚½‚é
+				// æ”»æ’ƒå¯¾è±¡ãŒMOBã®å ´åˆã¯ã€ç¯„å›²å†…ã®MOBã«ã®ã¿å½“ãŸã‚‹
+				// æ”»æ’ƒå¯¾è±¡ãŒPC,Summon,Petã®å ´åˆã¯ã€ç¯„å›²å†…ã®PC,Summon,Pet,MOBã«å½“ãŸã‚‹
 				if (cha instanceof L1MonsterInstance) {
 					if (!(object instanceof L1MonsterInstance)) {
 						continue;
@@ -279,7 +279,7 @@ public class L1WeaponSkill {
 			}
 			String msg = weapon.getLogName();
 			pc.sendPackets(new S_ServerMessage(158, msg));
-			// \f1%0‚ªö”­‚µ‚Ä‚È‚­‚È‚è‚Ü‚µ‚½B
+			// \f1%0ãŒè’¸ç™ºã—ã¦ãªããªã‚Šã¾ã—ãŸã€‚
 			pc.getInventory().removeItem(weapon, 1);
 		}
 		return dmg;
@@ -304,7 +304,7 @@ public class L1WeaponSkill {
 		}
 		kiringkuDamage += value;
 
-		int spByItem = pc.getSp() - pc.getTrueSp(); // ƒAƒCƒeƒ€‚É‚æ‚éSP•Ï“®
+		int spByItem = pc.getSp() - pc.getTrueSp(); // ã‚¢ã‚¤ãƒ†ãƒ ã«ã‚ˆã‚‹SPå¤‰å‹•
 		charaIntelligence = pc.getInt() + spByItem - 12;
 		if (charaIntelligence < 1) {
 			charaIntelligence = 1;
@@ -339,10 +339,10 @@ public class L1WeaponSkill {
 		int probability = 0;
 		int attr = 0;
 		int chance = _random.nextInt(100) + 1;
-		if (weaponId == 263) { // ƒtƒŠ[ƒWƒ“ƒOƒ‰ƒ“ƒT[
+		if (weaponId == 263) { // ãƒ•ãƒªãƒ¼ã‚¸ãƒ³ã‚°ãƒ©ãƒ³ã‚µãƒ¼
 			probability = 5;
 			attr = L1Skills.ATTR_WATER;
-		} else if (weaponId == 260) { // ƒŒƒCƒWƒ“ƒOƒEƒBƒ“ƒh
+		} else if (weaponId == 260) { // ãƒ¬ã‚¤ã‚¸ãƒ³ã‚°ã‚¦ã‚£ãƒ³ãƒ‰
 			probability = 4;
 			attr = L1Skills.ATTR_WIND;
 		}
@@ -355,13 +355,13 @@ public class L1WeaponSkill {
 			L1Character areaBase = cha;
 			double damageRate = 0;
 
-			if (weaponId == 263) { // ƒtƒŠ[ƒWƒ“ƒOƒ‰ƒ“ƒT[
+			if (weaponId == 263) { // ãƒ•ãƒªãƒ¼ã‚¸ãƒ³ã‚°ãƒ©ãƒ³ã‚µãƒ¼
 				area = 3;
 				damageRate = 1.4D;
 				effectTargetId = cha.getId();
 				effectId = 1804;
 				areaBase = cha;
-			} else if (weaponId == 260) { // ƒŒƒCƒWƒ“ƒOƒEƒBƒ“ƒh
+			} else if (weaponId == 260) { // ãƒ¬ã‚¤ã‚¸ãƒ³ã‚°ã‚¦ã‚£ãƒ³ãƒ‰
 				area = 4;
 				damageRate = 1.5D;
 				effectTargetId = pc.getId();
@@ -388,12 +388,12 @@ public class L1WeaponSkill {
 				if (object.getId() == pc.getId()) {
 					continue;
 				}
-				if (object.getId() == cha.getId()) { // UŒ‚‘ÎÛ‚ÍœŠO
+				if (object.getId() == cha.getId()) { // æ”»æ’ƒå¯¾è±¡ã¯é™¤å¤–
 					continue;
 				}
 
-				// UŒ‚‘ÎÛ‚ªMOB‚Ìê‡‚ÍA”ÍˆÍ“à‚ÌMOB‚É‚Ì‚İ“–‚½‚é
-				// UŒ‚‘ÎÛ‚ªPC,Summon,Pet‚Ìê‡‚ÍA”ÍˆÍ“à‚ÌPC,Summon,Pet,MOB‚É“–‚½‚é
+				// æ”»æ’ƒå¯¾è±¡ãŒMOBã®å ´åˆã¯ã€ç¯„å›²å†…ã®MOBã«ã®ã¿å½“ãŸã‚‹
+				// æ”»æ’ƒå¯¾è±¡ãŒPC,Summon,Petã®å ´åˆã¯ã€ç¯„å›²å†…ã®PC,Summon,Pet,MOBã«å½“ãŸã‚‹
 				if (cha instanceof L1MonsterInstance) {
 					if (!(object instanceof L1MonsterInstance)) {
 						continue;
@@ -470,7 +470,7 @@ public class L1WeaponSkill {
 
 	public static void giveFettersEffect(L1PcInstance pc, L1Character cha) {
 		int fettersTime = 8000;
-		if (isFreeze(cha)) { // “€Œ‹ó‘ÔorƒJƒEƒ“ƒ^[ƒ}ƒWƒbƒN’†
+		if (isFreeze(cha)) { // å‡çµçŠ¶æ…‹orã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ãƒã‚¸ãƒƒã‚¯ä¸­
 			return;
 		}
 		if ((_random.nextInt(100) + 1) <= 2) {
@@ -497,12 +497,12 @@ public class L1WeaponSkill {
 
 	public static double calcDamageReduction(L1PcInstance pc, L1Character cha,
 			double dmg, int attr) {
-		// “€Œ‹ó‘ÔorƒJƒEƒ“ƒ^[ƒ}ƒWƒbƒN’†
+		// å‡çµçŠ¶æ…‹orã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ãƒã‚¸ãƒƒã‚¯ä¸­
 		if (isFreeze(cha)) {
 			return 0;
 		}
 
-		// MR‚É‚æ‚éƒ_ƒ[ƒWŒyŒ¸
+		// MRã«ã‚ˆã‚‹ãƒ€ãƒ¡ãƒ¼ã‚¸è»½æ¸›
 		int mr = cha.getMr();
 		double mrFloor = 0;
 		if (mr <= 100) {
@@ -518,7 +518,7 @@ public class L1WeaponSkill {
 		}
 		dmg *= mrCoefficient;
 
-		// ‘®«‚É‚æ‚éƒ_ƒ[ƒWŒyŒ¸
+		// å±æ€§ã«ã‚ˆã‚‹ãƒ€ãƒ¡ãƒ¼ã‚¸è»½æ¸›
 		int resist = 0;
 		if (attr == L1Skills.ATTR_EARTH) {
 			resist = cha.getEarth();
@@ -561,7 +561,7 @@ public class L1WeaponSkill {
 			return true;
 		}
 
-		// ƒJƒEƒ“ƒ^[ƒ}ƒWƒbƒN”»’è
+		// ã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ãƒã‚¸ãƒƒã‚¯åˆ¤å®š
 		if (cha.hasSkillEffect(COUNTER_MAGIC)) {
 			cha.removeSkillEffect(COUNTER_MAGIC);
 			int castgfx = SkillsTable.getInstance().getTemplate(

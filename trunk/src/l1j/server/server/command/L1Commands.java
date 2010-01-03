@@ -41,7 +41,7 @@ public class L1Commands {
 
 	public static L1Command get(String name) {
 		/*
-		 * �f�o�b�O��e�X�g�e�Ր��ׂ̈ɖ���DB�ɓǂ݂ɍs���܂��B �L���b�V�������藝�_��p�t�H�[�}���X�͉�����܂����A�����ł���͈͂ł��B
+		 * デバッグやテスト容易性の為に毎回DBに読みに行きます。 キャッシュするより理論上パフォーマンスは下がりますが、無視できる範囲です。
 		 */
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -56,7 +56,7 @@ public class L1Commands {
 			}
 			return fromResultSet(rs);
 		} catch (SQLException e) {
-			_log.log(Level.SEVERE, "�R�}���h�擾�G���[", e);
+			_log.log(Level.SEVERE, "コマンド取得エラー", e);
 		} finally {
 			SQLUtil.close(rs);
 			SQLUtil.close(pstm);
@@ -80,7 +80,7 @@ public class L1Commands {
 				result.add(fromResultSet(rs));
 			}
 		} catch (SQLException e) {
-			_log.log(Level.SEVERE, "�R�}���h�擾�G���[", e);
+			_log.log(Level.SEVERE, "コマンド取得エラー", e);
 		} finally {
 			SQLUtil.close(rs);
 			SQLUtil.close(pstm);

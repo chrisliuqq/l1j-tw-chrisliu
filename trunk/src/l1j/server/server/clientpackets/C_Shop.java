@@ -51,7 +51,7 @@ public class C_Shop extends ClientBasePacket {
 
 		int mapId = pc.getMapId();
 		if (mapId != 340 && mapId != 350 && mapId != 360 && mapId != 370) {
-			pc.sendPackets(new S_ServerMessage(876)); // ‚±‚ÌêŠ‚Å‚ÍŒÂl¤“X‚ğŠJ‚¯‚Ü‚¹‚ñB
+			pc.sendPackets(new S_ServerMessage(876)); // ã“ã®å ´æ‰€ã§ã¯å€‹äººå•†åº—ã‚’é–‹ã‘ã¾ã›ã‚“ã€‚
 			return;
 		}
 
@@ -61,7 +61,7 @@ public class C_Shop extends ClientBasePacket {
 		boolean tradable = true;
 
 		int type = readC();
-		if (type == 0) { // ŠJn
+		if (type == 0) { // é–‹å§‹
 			int sellTotalCount = readH();
 			int sellObjectId;
 			int sellPrice;
@@ -70,12 +70,12 @@ public class C_Shop extends ClientBasePacket {
 				sellObjectId = readD();
 				sellPrice = readD();
 				sellCount = readD();
-				// æˆø‰Â”\‚ÈƒAƒCƒeƒ€‚©ƒ`ƒFƒbƒN
+				// å–å¼•å¯èƒ½ãªã‚¢ã‚¤ãƒ†ãƒ ã‹ãƒã‚§ãƒƒã‚¯
 				checkItem = pc.getInventory().getItem(sellObjectId);
 				if (!checkItem.getItem().isTradable()) {
 					tradable = false;
-					pc.sendPackets(new S_ServerMessage(166, // \f1%0‚ª%4%1%3%2
-							checkItem.getItem().getName(), "æˆø•s‰Â”\‚Å‚·B"));
+					pc.sendPackets(new S_ServerMessage(166, // \f1%0ãŒ%4%1%3%2
+							checkItem.getItem().getName(), "å–å¼•ä¸å¯èƒ½ã§ã™ã€‚"));
 				}
 				Object[] petlist = pc.getPetList().values().toArray();
 				for (Object petObject : petlist) {
@@ -83,9 +83,9 @@ public class C_Shop extends ClientBasePacket {
 						L1PetInstance pet = (L1PetInstance) petObject;
 						if (checkItem.getId() == pet.getItemObjId()) {
 							tradable = false;
-							pc.sendPackets(new S_ServerMessage(166, // \f1%0‚ª%4%1%3%2
+							pc.sendPackets(new S_ServerMessage(166, // \f1%0ãŒ%4%1%3%2
 									checkItem.getItem().getName(),
-									"æˆø•s‰Â”\‚Å‚·B"));
+									"å–å¼•ä¸å¯èƒ½ã§ã™ã€‚"));
 							break;
 						}
 					}
@@ -104,15 +104,15 @@ public class C_Shop extends ClientBasePacket {
 				buyObjectId = readD();
 				buyPrice = readD();
 				buyCount = readD();
-				// æˆø‰Â”\‚ÈƒAƒCƒeƒ€‚©ƒ`ƒFƒbƒN
+				// å–å¼•å¯èƒ½ãªã‚¢ã‚¤ãƒ†ãƒ ã‹ãƒã‚§ãƒƒã‚¯
 				checkItem = pc.getInventory().getItem(buyObjectId);
 				if (!checkItem.getItem().isTradable()) {
 					tradable = false;
-					pc.sendPackets(new S_ServerMessage(166, // \f1%0‚ª%4%1%3%2
-							checkItem.getItem().getName(), "æˆø•s‰Â”\‚Å‚·B"));
+					pc.sendPackets(new S_ServerMessage(166, // \f1%0ãŒ%4%1%3%2
+							checkItem.getItem().getName(), "å–å¼•ä¸å¯èƒ½ã§ã™ã€‚"));
 				}
-				if (checkItem.getBless() >= 128) { // ••ˆó‚³‚ê‚½‘•”õ
-					// \f1%0‚ÍÌ‚Ä‚½‚è‚Ü‚½‚Í‘¼l‚Éæ¨‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+				if (checkItem.getBless() >= 128) { // å°å°ã•ã‚ŒãŸè£…å‚™
+					// \f1%0ã¯æ¨ã¦ãŸã‚Šã¾ãŸã¯ä»–äººã«è®“ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 					pc.sendPackets(new S_ServerMessage(210, checkItem.getItem()
 							.getName()));
 					return;
@@ -124,9 +124,9 @@ public class C_Shop extends ClientBasePacket {
 						L1PetInstance pet = (L1PetInstance) petObject;
 						if (checkItem.getId() == pet.getItemObjId()) {
 							tradable = false;
-							pc.sendPackets(new S_ServerMessage(166, // \f1%0‚ª%4%1%3%2
+							pc.sendPackets(new S_ServerMessage(166, // \f1%0ãŒ%4%1%3%2
 									checkItem.getItem().getName(),
-									"æˆø•s‰Â”\‚Å‚·B"));
+									"å–å¼•ä¸å¯èƒ½ã§ã™ã€‚"));
 							break;
 						}
 					}
@@ -137,7 +137,7 @@ public class C_Shop extends ClientBasePacket {
 				psbl.setBuyTotalCount(buyCount);
 				buyList.add(psbl);
 			}
-			if (!tradable) { // æˆø•s‰Â”\‚ÈƒAƒCƒeƒ€‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡AŒÂl¤“XI—¹
+			if (!tradable) { // å–å¼•ä¸å¯èƒ½ãªã‚¢ã‚¤ãƒ†ãƒ ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã€å€‹äººå•†åº—çµ‚äº†
 				sellList.clear();
 				buyList.clear();
 				pc.setPrivateShop(false);
@@ -154,7 +154,7 @@ public class C_Shop extends ClientBasePacket {
 					ActionCodes.ACTION_Shop, chat));
 			pc.broadcastPacket(new S_DoActionShop(pc.getId(),
 					ActionCodes.ACTION_Shop, chat));
-		} else if (type == 1) { // I—¹
+		} else if (type == 1) { // çµ‚äº†
 			sellList.clear();
 			buyList.clear();
 			pc.setPrivateShop(false);

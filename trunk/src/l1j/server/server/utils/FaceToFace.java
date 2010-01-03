@@ -43,8 +43,8 @@ public class FaceToFace {
 		List<L1PcInstance> players = L1World.getInstance().getVisiblePlayer(pc,
 				1);
 
-		if (players.size() == 0) { // 1ƒZƒ‹ˆÈ“à‚ÉPC‚ª‹‚È‚¢ê‡
-			pc.sendPackets(new S_ServerMessage(93)); // \f1‚»‚±‚É‚Í’N‚à‚¢‚Ü‚¹‚ñB
+		if (players.size() == 0) { // 1ã‚»ãƒ«ä»¥å†…ã«PCãŒå±…ãªã„å ´åˆ
+			pc.sendPackets(new S_ServerMessage(93)); // \f1ãã“ã«ã¯èª°ã‚‚ã„ã¾ã›ã‚“ã€‚
 			return null;
 		}
 		for (L1PcInstance target : players) {
@@ -55,7 +55,7 @@ public class FaceToFace {
 				if (targetHeading == 4) {
 					return target;
 				} else {
-					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0‚ª‚ ‚È‚½‚ğŒ©‚Ä‚¢‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0ãŒã‚ãªãŸã‚’è¦‹ã¦ã„ã¾ã›ã‚“ã€‚
 					return null;
 				}
 			} else if (pcHeading == 1 && pcX == (targetX - 1)
@@ -63,14 +63,14 @@ public class FaceToFace {
 				if (targetHeading == 5) {
 					return target;
 				} else {
-					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0‚ª‚ ‚È‚½‚ğŒ©‚Ä‚¢‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0ãŒã‚ãªãŸã‚’è¦‹ã¦ã„ã¾ã›ã‚“ã€‚
 					return null;
 				}
 			} else if (pcHeading == 2 && pcX == (targetX - 1) && pcY == targetY) {
 				if (targetHeading == 6) {
 					return target;
 				} else {
-					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0‚ª‚ ‚È‚½‚ğŒ©‚Ä‚¢‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0ãŒã‚ãªãŸã‚’è¦‹ã¦ã„ã¾ã›ã‚“ã€‚
 					return null;
 				}
 			} else if (pcHeading == 3 && pcX == (targetX - 1)
@@ -78,14 +78,14 @@ public class FaceToFace {
 				if (targetHeading == 7) {
 					return target;
 				} else {
-					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0‚ª‚ ‚È‚½‚ğŒ©‚Ä‚¢‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0ãŒã‚ãªãŸã‚’è¦‹ã¦ã„ã¾ã›ã‚“ã€‚
 					return null;
 				}
 			} else if (pcHeading == 4 && pcX == targetX && pcY == (targetY - 1)) {
 				if (targetHeading == 0) {
 					return target;
 				} else {
-					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0‚ª‚ ‚È‚½‚ğŒ©‚Ä‚¢‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0ãŒã‚ãªãŸã‚’è¦‹ã¦ã„ã¾ã›ã‚“ã€‚
 					return null;
 				}
 			} else if (pcHeading == 5 && pcX == (targetX + 1)
@@ -93,14 +93,14 @@ public class FaceToFace {
 				if (targetHeading == 1) {
 					return target;
 				} else {
-					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0‚ª‚ ‚È‚½‚ğŒ©‚Ä‚¢‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0ãŒã‚ãªãŸã‚’è¦‹ã¦ã„ã¾ã›ã‚“ã€‚
 					return null;
 				}
 			} else if (pcHeading == 6 && pcX == (targetX + 1) && pcY == targetY) {
 				if (targetHeading == 2) {
 					return target;
 				} else {
-					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0‚ª‚ ‚È‚½‚ğŒ©‚Ä‚¢‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0ãŒã‚ãªãŸã‚’è¦‹ã¦ã„ã¾ã›ã‚“ã€‚
 					return null;
 				}
 			} else if (pcHeading == 7 && pcX == (targetX + 1)
@@ -108,12 +108,12 @@ public class FaceToFace {
 				if (targetHeading == 3) {
 					return target;
 				} else {
-					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0‚ª‚ ‚È‚½‚ğŒ©‚Ä‚¢‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(91, target.getName())); // \f1%0ãŒã‚ãªãŸã‚’è¦‹ã¦ã„ã¾ã›ã‚“ã€‚
 					return null;
 				}
 			}
 		}
-		pc.sendPackets(new S_ServerMessage(93)); // \f1‚»‚±‚É‚Í’N‚à‚¢‚Ü‚¹‚ñB
+		pc.sendPackets(new S_ServerMessage(93)); // \f1ãã“ã«ã¯èª°ã‚‚ã„ã¾ã›ã‚“ã€‚
 		return null;
 	}
 }

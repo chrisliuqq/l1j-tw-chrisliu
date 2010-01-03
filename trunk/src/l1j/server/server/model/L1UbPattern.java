@@ -46,7 +46,7 @@ public class L1UbPattern {
 			return;
 		}
 
-		// Ši”[‚³‚ê‚Ä‚¢‚éƒOƒ‹[ƒv‚ÌƒXƒ|[ƒ“ƒŠƒXƒg‚ğID‡‚Éƒ\[ƒg
+		// æ ¼ç´ã•ã‚Œã¦ã„ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®ã‚¹ãƒãƒ¼ãƒ³ãƒªã‚¹ãƒˆã‚’IDé †ã«ã‚½ãƒ¼ãƒˆ
 		for (ArrayList<L1UbSpawn> spawnList : _groups.values()) {
 			Collections.sort(spawnList);
 		}

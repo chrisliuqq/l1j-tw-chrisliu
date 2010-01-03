@@ -17,15 +17,15 @@ import l1j.server.server.utils.BinaryInputStream;
 import l1j.server.server.utils.FileUtil;
 
 /**
- * ƒeƒLƒXƒgƒ}ƒbƒv(v2maps/\d*.txt)‚ğ“Ç‚İ‚ŞiƒeƒXƒg—p).
+ * ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ—(v2maps/\d*.txt)ã‚’èª­ã¿è¾¼ã‚€ï¼ˆãƒ†ã‚¹ãƒˆç”¨).
  */
 public class V2MapReader extends MapReader {
 
-	/** ƒ}ƒbƒvƒzƒ‹ƒ_[. */
+	/** ãƒãƒƒãƒ—ãƒ›ãƒ«ãƒ€ãƒ¼. */
 	private static final String MAP_DIR = "./v2maps/";
 
 	/**
-	 * ‘Sƒ}ƒbƒvID‚ÌƒŠƒXƒg‚ğ•Ô‚·.
+	 * å…¨ãƒãƒƒãƒ—IDã®ãƒªã‚¹ãƒˆã‚’è¿”ã™.
 	 * 
 	 * @return ArraryList
 	 */
@@ -54,7 +54,7 @@ public class V2MapReader extends MapReader {
 	}
 
 	/**
-	 * ‘S‚Ä‚ÌƒeƒLƒXƒgƒ}ƒbƒv‚ğ“Ç‚İ‚Ş.
+	 * å…¨ã¦ã®ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ—ã‚’èª­ã¿è¾¼ã‚€.
 	 * 
 	 * @return Map
 	 * @throws IOException
@@ -69,10 +69,10 @@ public class V2MapReader extends MapReader {
 	}
 
 	/**
-	 * w’è‚Ìƒ}ƒbƒv”Ô†‚ÌƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚ğ“Ç‚İ‚Ş.
+	 * æŒ‡å®šã®ãƒãƒƒãƒ—ç•ªå·ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚’èª­ã¿è¾¼ã‚€.
 	 * 
 	 * @param mapId
-	 *            ƒ}ƒbƒv”Ô†
+	 *            ãƒãƒƒãƒ—ç•ªå·
 	 * @return L1Map
 	 * @throws IOException
 	 */

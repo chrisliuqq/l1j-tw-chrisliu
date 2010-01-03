@@ -54,7 +54,7 @@ public class L1Status implements L1CommandExecutor {
 			}
 
 			if (target == null) {
-				pc.sendPackets(new S_ServerMessage(73, char_name)); // \f1%0‚ÍƒQ[ƒ€‚ğ‚µ‚Ä‚¢‚Ü‚¹‚ñB
+				pc.sendPackets(new S_ServerMessage(73, char_name)); // \f1%0ã¯ã‚²ãƒ¼ãƒ ã‚’ã—ã¦ã„ã¾ã›ã‚“ã€‚
 				return;
 			}
 
@@ -93,7 +93,7 @@ public class L1Status implements L1CommandExecutor {
 					}
 					target.setAccessLevel((short) value);
 					target.sendPackets(new S_SystemMessage(
-							"ƒŠƒXƒ^[ƒg‚·‚ê‚ÎAGM‚É¸Ši‚³‚ê‚Ä‚¢‚Ü‚·B"));
+							"ãƒªã‚¹ã‚¿ãƒ¼ãƒˆã™ã‚Œã°ã€GMã«æ˜‡æ ¼ã•ã‚Œã¦ã„ã¾ã™ã€‚"));
 				} else if (param.equalsIgnoreCase("STR")) {
 					target.addBaseStr((byte) (value - target.getBaseStr()));
 				} else if (param.equalsIgnoreCase("CON")) {
@@ -107,18 +107,18 @@ public class L1Status implements L1CommandExecutor {
 				} else if (param.equalsIgnoreCase("CHA")) {
 					target.addBaseCha((byte) (value - target.getBaseCha()));
 				} else {
-					pc.sendPackets(new S_SystemMessage("ƒXƒe[ƒ^ƒX " + param
-							+ " ‚Í•s–¾‚Å‚·B"));
+					pc.sendPackets(new S_SystemMessage("ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ " + param
+							+ " ã¯ä¸æ˜ã§ã™ã€‚"));
 					return;
 				}
-				target.save(); // DB‚ÉƒLƒƒƒ‰ƒNƒ^[î•ñ‚ğ‘‚«‚Ş
+				target.save(); // DBã«ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æƒ…å ±ã‚’æ›¸ãè¾¼ã‚€
 			}
 			target.sendPackets(new S_OwnCharStatus(target));
-			pc.sendPackets(new S_SystemMessage(target.getName() + " ‚Ì" + param
-					+ "‚ğ" + value + "‚É•ÏX‚µ‚Ü‚µ‚½B"));
+			pc.sendPackets(new S_SystemMessage(target.getName() + " ã®" + param
+					+ "ã‚’" + value + "ã«å¤‰æ›´ã—ã¾ã—ãŸã€‚"));
 		} catch (Exception e) {
 			pc.sendPackets(new S_SystemMessage(cmdName
-					+ " ƒLƒƒƒ‰ƒNƒ^[–¼|me ƒXƒe[ƒ^ƒX •ÏX’l ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+					+ " ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å|me ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ å¤‰æ›´å€¤ ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

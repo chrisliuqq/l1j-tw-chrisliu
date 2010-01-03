@@ -27,7 +27,7 @@ public class CalcInitHpMp {
 	}
 
 	/**
-	 * 各クラスの初期HPを返す
+	 * 蜷�繧ｯ繝ｩ繧ｹ縺ｮ蛻晄悄HP繧定ｿ斐☆
 	 * 
 	 * @param pc
 	 * @return hp
@@ -54,7 +54,7 @@ public class CalcInitHpMp {
 	}
 
 	/**
-	 * 各クラスの初期MPを返す
+	 * 蜷�繧ｯ繝ｩ繧ｹ縺ｮ蛻晄悄MP繧定ｿ斐☆
 	 * 
 	 * @param pc
 	 * @return mp

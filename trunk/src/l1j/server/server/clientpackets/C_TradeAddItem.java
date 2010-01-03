@@ -48,11 +48,11 @@ public class C_TradeAddItem extends ClientBasePacket {
 		L1Trade trade = new L1Trade();
 		L1ItemInstance item = pc.getInventory().getItem(itemid);
 		if (!item.getItem().isTradable()) {
-			pc.sendPackets(new S_ServerMessage(210, item.getItem().getName())); // \f1%0‚ÍÌ‚Ä‚½‚è‚Ü‚½‚Í‘¼l‚Éæ¨‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+			pc.sendPackets(new S_ServerMessage(210, item.getItem().getName())); // \f1%0ã¯æ¨ã¦ãŸã‚Šã¾ãŸã¯ä»–äººã«è®“ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 			return;
 		}
-		if (item.getBless() >= 128) { // ••ˆó‚³‚ê‚½‘•”õ
-			// \f1%0‚ÍÌ‚Ä‚½‚è‚Ü‚½‚Í‘¼l‚Éæ¨‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+		if (item.getBless() >= 128) { // å°å°ã•ã‚ŒãŸè£…å‚™
+			// \f1%0ã¯æ¨ã¦ãŸã‚Šã¾ãŸã¯ä»–äººã«è®“ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 			pc.sendPackets(new S_ServerMessage(210, item.getItem().getName()));
 			return;
 		}
@@ -61,7 +61,7 @@ public class C_TradeAddItem extends ClientBasePacket {
 			if (petObject instanceof L1PetInstance) {
 				L1PetInstance pet = (L1PetInstance) petObject;
 				if (item.getId() == pet.getItemObjId()) {
-					// \f1%0‚ÍÌ‚Ä‚½‚è‚Ü‚½‚Í‘¼l‚Éæ¨‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+					// \f1%0ã¯æ¨ã¦ãŸã‚Šã¾ãŸã¯ä»–äººã«è®“ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 					pc.sendPackets(new S_ServerMessage(210, item.getItem()
 							.getName()));
 					return;
@@ -78,9 +78,9 @@ public class C_TradeAddItem extends ClientBasePacket {
 			return;
 		}
 		if (tradingPartner.getInventory().checkAddItem(item, itemcount)
-				!= L1Inventory.OK) { // —e—Êd—ÊŠm”F‹y‚ÑƒƒbƒZ[ƒW‘—M
-			tradingPartner.sendPackets(new S_ServerMessage(270)); // \f1‚Á‚Ä‚¢‚é‚à‚Ì‚ªd‚­‚Äæˆø‚Å‚«‚Ü‚¹‚ñB
-			pc.sendPackets(new S_ServerMessage(271)); // \f1‘Šè‚ª•¨‚ğ‚¿‚·‚¬‚Ä‚¢‚Äæˆø‚Å‚«‚Ü‚¹‚ñB
+				!= L1Inventory.OK) { // å®¹é‡é‡é‡ç¢ºèªåŠã³ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡
+			tradingPartner.sendPackets(new S_ServerMessage(270)); // \f1æŒã£ã¦ã„ã‚‹ã‚‚ã®ãŒé‡ãã¦å–å¼•ã§ãã¾ã›ã‚“ã€‚
+			pc.sendPackets(new S_ServerMessage(271)); // \f1ç›¸æ‰‹ãŒç‰©ã‚’æŒã¡ã™ãã¦ã„ã¦å–å¼•ã§ãã¾ã›ã‚“ã€‚
 			return;
 		}
 

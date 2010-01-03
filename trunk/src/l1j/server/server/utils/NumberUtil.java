@@ -23,11 +23,11 @@ import java.util.Random;
 public class NumberUtil {
 
 	/**
-	 * ­”‚ğ¬”“_‘æ“ñˆÊ‚Ü‚Å‚ÌŠm—¦‚Åã‚©‰º‚ÉŠÛ‚ß‚½®”‚ğ•Ô‚·B
-	 * —á‚¦‚Î1.3‚Í30%‚ÌŠm—¦‚ÅØ‚èÌ‚ÄA70%‚ÌŠm—¦‚ÅØ‚èã‚°‚ç‚ê‚éB
+	 * å°‘æ•°ã‚’å°æ•°ç‚¹ç¬¬äºŒä½ã¾ã§ã®ç¢ºç‡ã§ä¸Šã‹ä¸‹ã«ä¸¸ã‚ãŸæ•´æ•°ã‚’è¿”ã™ã€‚
+	 * ä¾‹ãˆã°1.3ã¯30%ã®ç¢ºç‡ã§åˆ‡ã‚Šæ¨ã¦ã€70%ã®ç¢ºç‡ã§åˆ‡ã‚Šä¸Šã’ã‚‰ã‚Œã‚‹ã€‚
 	 * 
-	 * @param number - ‚à‚Æ‚Ì­”
-	 * @return ŠÛ‚ß‚ç‚ê‚½®”
+	 * @param number - ã‚‚ã¨ã®å°‘æ•°
+	 * @return ä¸¸ã‚ã‚‰ã‚ŒãŸæ•´æ•°
 	 */
 	public static int randomRound(double number) {
 		double percentage = (number - Math.floor(number)) * 100;

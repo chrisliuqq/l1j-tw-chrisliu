@@ -44,13 +44,13 @@ public class L1ToPC implements L1CommandExecutor {
 				L1Teleport.teleport(pc, target.getX(), target.getY(), target
 						.getMapId(), 5, false);
 				pc.sendPackets(new S_SystemMessage((new StringBuilder())
-						.append(arg).append("‚³‚ñ‚ÌŒ³‚ÖˆÚ“®‚µ‚Ü‚µ‚½B").toString()));
+						.append(arg).append("ã•ã‚“ã®å…ƒã¸ç§»å‹•ã—ã¾ã—ãŸã€‚").toString()));
 			} else {
 				pc.sendPackets(new S_SystemMessage((new StringBuilder())
-						.append(arg).append("‚³‚ñ‚Í‚¢‚Ü‚¹‚ñB").toString()));
+						.append(arg).append("ã•ã‚“ã¯ã„ã¾ã›ã‚“ã€‚").toString()));
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(cmdName + " ƒLƒƒƒ‰ƒNƒ^[–¼ ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+			pc.sendPackets(new S_SystemMessage(cmdName + " ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

@@ -55,7 +55,7 @@ public class S_OtherCharPacks extends ServerBasePacket {
 	private void buildPacket(L1PcInstance pc, boolean isFindInvis) {
 		int status = STATUS_PC;
 
-		if (pc.getPoison() != null) { // “Åó‘Ô
+		if (pc.getPoison() != null) { // æ¯’çŠ¶æ…‹
 			if (pc.getPoison().getEffectId() == 1) {
 				status |= STATUS_POISON;
 			}
@@ -67,8 +67,8 @@ public class S_OtherCharPacks extends ServerBasePacket {
 			status |= STATUS_BRAVE;
 		}
 		if (pc.isElfBrave()) {
-			// ƒGƒ‹ƒ”ƒ“ƒƒbƒtƒ‹‚Ìê‡‚ÍASTATUS_BRAVE‚ÆSTATUS_ELFBRAVE‚ğ—§‚Ä‚éB
-			// STATUS_ELFBRAVE‚Ì‚İ‚Å‚ÍŒø‰Ê‚ª–³‚¢H
+			// ã‚¨ãƒ«ãƒ´ãƒ³ãƒ¯ãƒƒãƒ•ãƒ«ã®å ´åˆã¯ã€STATUS_BRAVEã¨STATUS_ELFBRAVEã‚’ç«‹ã¦ã‚‹ã€‚
+			// STATUS_ELFBRAVEã®ã¿ã§ã¯åŠ¹æœãŒç„¡ã„ï¼Ÿ
 			status |= STATUS_BRAVE;
 			status |= STATUS_ELFBRAVE;
 		}
@@ -104,18 +104,18 @@ public class S_OtherCharPacks extends ServerBasePacket {
 		writeS(pc.getTitle());
 		writeC(status);
 		writeD(pc.getClanid());
-		writeS(pc.getClanname()); // ƒNƒ‰ƒ“–¼
-		writeS(null); // ƒyƒbƒzƒ`ƒ“ƒOH
-		writeC(0); // H
+		writeS(pc.getClanname()); // ã‚¯ãƒ©ãƒ³å
+		writeS(null); // ãƒšãƒƒãƒ›ãƒãƒ³ã‚°ï¼Ÿ
+		writeC(0); // ï¼Ÿ
 		/*
-		 * if(pc.is_isInParty()) // ƒp[ƒeƒB[’† { writeC(100 * pc.get_currentHp() /
+		 * if(pc.is_isInParty()) // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä¸­ { writeC(100 * pc.get_currentHp() /
 		 * pc.get_maxHp()); } else { writeC(0xFF); }
 		 */
 
 		writeC(0xFF);
-		writeC(0); // ƒ^ƒ‹ƒNƒbƒN‹——£(’Ê‚è)
+		writeC(0); // ã‚¿ãƒ«ã‚¯ãƒƒã‚¯è·é›¢(é€šã‚Š)
 		writeC(0); // PC = 0, Mon = Lv
-		writeC(0); // H
+		writeC(0); // ï¼Ÿ
 		writeC(0xFF);
 		writeC(0xFF);
 	}

@@ -32,11 +32,11 @@ public class S_SystemMessage extends ServerBasePacket {
 	private final String _msg;
 
 	/**
-	 * ƒNƒ‰ƒCƒAƒ“ƒg‚Éƒf[ƒ^‚Ì‘¶İ‚µ‚È‚¢ƒIƒŠƒWƒiƒ‹‚ÌƒƒbƒZ[ƒW‚ğ•\¦‚·‚éB
-	 * ƒƒbƒZ[ƒW‚Énameid($xxx)‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡‚ÍƒI[ƒo[ƒ[ƒh‚³‚ê‚½‚à‚¤ˆê•û‚ğg—p‚·‚éB
+	 * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã«ãƒ‡ãƒ¼ã‚¿ã®å­˜åœ¨ã—ãªã„ã‚ªãƒªã‚¸ãƒŠãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹ã€‚
+	 * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«nameid($xxx)ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã¯ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚‚ã†ä¸€æ–¹ã‚’ä½¿ç”¨ã™ã‚‹ã€‚
 	 * 
 	 * @param msg -
-	 *            •\¦‚·‚é•¶š—ñ
+	 *            è¡¨ç¤ºã™ã‚‹æ–‡å­—åˆ—
 	 */
 	public S_SystemMessage(String msg) {
 		_msg = msg;
@@ -46,12 +46,12 @@ public class S_SystemMessage extends ServerBasePacket {
 	}
 
 	/**
-	 * ƒNƒ‰ƒCƒAƒ“ƒg‚Éƒf[ƒ^‚Ì‘¶İ‚µ‚È‚¢ƒIƒŠƒWƒiƒ‹‚ÌƒƒbƒZ[ƒW‚ğ•\¦‚·‚éB
+	 * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã«ãƒ‡ãƒ¼ã‚¿ã®å­˜åœ¨ã—ãªã„ã‚ªãƒªã‚¸ãƒŠãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹ã€‚
 	 * 
 	 * @param msg -
-	 *            •\¦‚·‚é•¶š—ñ
+	 *            è¡¨ç¤ºã™ã‚‹æ–‡å­—åˆ—
 	 * @param nameid -
-	 *            •¶š—ñ‚Énameid($xxx)‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡true‚É‚·‚éB
+	 *            æ–‡å­—åˆ—ã«nameid($xxx)ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆtrueã«ã™ã‚‹ã€‚
 	 */
 	public S_SystemMessage(String msg, boolean nameid) {
 		_msg = msg;
@@ -59,7 +59,7 @@ public class S_SystemMessage extends ServerBasePacket {
 		writeC(2);
 		writeD(0);
 		writeS(msg);
-		// NPCƒ`ƒƒƒbƒgƒpƒPƒbƒg‚Å‚ ‚ê‚Înameid‚ª‰ğß‚³‚ê‚é‚½‚ß‚±‚ê‚ğ—˜—p‚·‚é
+		// NPCãƒãƒ£ãƒƒãƒˆãƒ‘ã‚±ãƒƒãƒˆã§ã‚ã‚Œã°nameidãŒè§£é‡ˆã•ã‚Œã‚‹ãŸã‚ã“ã‚Œã‚’åˆ©ç”¨ã™ã‚‹
 	}
 
 	@Override

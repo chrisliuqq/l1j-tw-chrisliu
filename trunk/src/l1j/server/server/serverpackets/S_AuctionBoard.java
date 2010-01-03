@@ -64,22 +64,22 @@ public class S_AuctionBoard extends ServerBasePacket {
 			rs = pstm.executeQuery();
 			while (rs.next()) {
 				houseId = rs.getInt(1);
-				if (board.getX() == 33421 && board.getY() == 32823) { // ‹£”„ŒfŽ¦”Â(ƒMƒ‰ƒ“)
+				if (board.getX() == 33421 && board.getY() == 32823) { // ç«¶å£²æŽ²ç¤ºæ¿(ã‚®ãƒ©ãƒ³)
 					if (houseId >= 262145 && houseId <= 262189) {
 						houseList.add(houseId);
 						count++;
 					}
-				} else if (board.getX() == 33585 && board.getY() == 33235) { // ‹£”„ŒfŽ¦”Â(ƒnƒCƒl)
+				} else if (board.getX() == 33585 && board.getY() == 33235) { // ç«¶å£²æŽ²ç¤ºæ¿(ãƒã‚¤ãƒ)
 					if (houseId >= 327681 && houseId <= 327691) {
 						houseList.add(houseId);
 						count++;
 					}
-				} else if (board.getX() == 33959 && board.getY() == 33253) { // ‹£”„ŒfŽ¦”Â(ƒAƒfƒ“)
+				} else if (board.getX() == 33959 && board.getY() == 33253) { // ç«¶å£²æŽ²ç¤ºæ¿(ã‚¢ãƒ‡ãƒ³)
 					if (houseId >= 458753 && houseId <= 458819) {
 						houseList.add(houseId);
 						count++;
 					}
-				} else if (board.getX() == 32611 && board.getY() == 32775) { // ‹£”„ŒfŽ¦”Â(ƒOƒ‹[ƒfƒBƒ“)
+				} else if (board.getX() == 32611 && board.getY() == 32775) { // ç«¶å£²æŽ²ç¤ºæ¿(ã‚°ãƒ«ãƒ¼ãƒ‡ã‚£ãƒ³)
 					if (houseId >= 524289 && houseId <= 524294) {
 						houseList.add(houseId);
 						count++;
@@ -119,14 +119,14 @@ public class S_AuctionBoard extends ServerBasePacket {
 
 		writeC(Opcodes.S_OPCODE_HOUSELIST);
 		writeD(board.getId());
-		writeH(count); // ƒŒƒR[ƒh”
+		writeH(count); // ãƒ¬ã‚³ãƒ¼ãƒ‰æ•°
 		for (int i = 0; i < count; ++i) {
-			writeD(id[i]); // ƒAƒWƒg‚Ì”Ô†
-			writeS(name[i]); // ƒAƒWƒg‚Ì–¼‘O
-			writeH(area[i]); // ƒAƒWƒg‚ÌL‚³
-			writeC(month[i]); // ’÷ØŒŽ
-			writeC(day[i]); // ’÷Ø“ú
-			writeD(price[i]); // Œ»Ý‚Ì“üŽD‰¿Ši
+			writeD(id[i]); // ã‚¢ã‚¸ãƒˆã®ç•ªå·
+			writeS(name[i]); // ã‚¢ã‚¸ãƒˆã®åå‰
+			writeH(area[i]); // ã‚¢ã‚¸ãƒˆã®åºƒã•
+			writeC(month[i]); // ç· åˆ‡æœˆ
+			writeC(day[i]); // ç· åˆ‡æ—¥
+			writeD(price[i]); // ç¾åœ¨ã®å…¥æœ­ä¾¡æ ¼
 		}
 	}
 

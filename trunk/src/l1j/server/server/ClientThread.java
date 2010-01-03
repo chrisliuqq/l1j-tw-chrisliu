@@ -114,7 +114,7 @@ public class ClientThread implements Runnable, PacketOutput {
 		_in = socket.getInputStream();
 		_out = new BufferedOutputStream(socket.getOutputStream());
 
-		// PacketHandler ‰Šúİ’è
+		// PacketHandler åˆæœŸè¨­å®š
 		_handler = new PacketHandler(this);
 	}
 
@@ -126,9 +126,9 @@ public class ClientThread implements Runnable, PacketOutput {
 		return _hostname;
 	}
 
-	// ClientThread‚É‚æ‚éˆê’èŠÔŠu©“®ƒZ[ƒu‚ğ§ŒÀ‚·‚éˆ×‚Ìƒtƒ‰ƒOitrue:§ŒÀ false:§ŒÀ–³‚µj
-	// Œ»İ‚ÍC_LoginToServer‚ªÀs‚³‚ê‚½Û‚Éfalse‚Æ‚È‚èA
-	// C_NewCharSelect‚ªÀs‚³‚ê‚½Û‚Étrue‚Æ‚È‚é
+	// ClientThreadã«ã‚ˆã‚‹ä¸€å®šé–“éš”è‡ªå‹•ã‚»ãƒ¼ãƒ–ã‚’åˆ¶é™ã™ã‚‹ç‚ºã®ãƒ•ãƒ©ã‚°ï¼ˆtrue:åˆ¶é™ false:åˆ¶é™ç„¡ã—ï¼‰
+	// ç¾åœ¨ã¯C_LoginToServerãŒå®Ÿè¡Œã•ã‚ŒãŸéš›ã«falseã¨ãªã‚Šã€
+	// C_NewCharSelectãŒå®Ÿè¡Œã•ã‚ŒãŸéš›ã«trueã¨ãªã‚‹
 	private boolean _charRestart = true;
 
 	public void CharReStart(boolean flag) {
@@ -175,14 +175,14 @@ public class ClientThread implements Runnable, PacketOutput {
 			return;
 		}
 		try {
-			// ƒLƒƒƒ‰ƒNƒ^[î•ñ
+			// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æƒ…å ±
 			if (Config.AUTOSAVE_INTERVAL * 1000
 					< System.currentTimeMillis() - _lastSavedTime) {
 				_activeChar.save();
 				_lastSavedTime = System.currentTimeMillis();
 			}
 
-			// ŠƒAƒCƒeƒ€î•ñ
+			// æ‰€æŒã‚¢ã‚¤ãƒ†ãƒ æƒ…å ±
 			if (Config.AUTOSAVE_INTERVAL_INVENTORY * 1000
 					< System.currentTimeMillis() - _lastSavedTime_inventory) {
 				_activeChar.saveInventory();
@@ -197,18 +197,18 @@ public class ClientThread implements Runnable, PacketOutput {
 
 	@Override
 	public void run() {
-		_log.info("(" + _hostname + ")‚ªƒT[ƒo[‚ÉÚ‘±‚µ‚Ü‚µ‚½B");
-		System.out.println("—˜—pƒƒ‚ƒŠ: " + SystemUtil.getUsedMemoryMB() + "MB");
-		System.out.println("ƒNƒ‰ƒCƒAƒ“ƒgÚ‘±‘Ò‹@’†...");
+		_log.info("(" + _hostname + ")ãŒã‚µãƒ¼ãƒãƒ¼ã«æ¥ç¶šã—ã¾ã—ãŸã€‚");
+		System.out.println("åˆ©ç”¨ãƒ¡ãƒ¢ãƒª: " + SystemUtil.getUsedMemoryMB() + "MB");
+		System.out.println("ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆæ¥ç¶šå¾…æ©Ÿä¸­...");
 
 		Socket socket = _csocket;
 		/*
-		 * ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚ÌƒpƒPƒbƒg‚ğ‚ ‚é’ö“x§ŒÀ‚·‚éB ——RF•s³‚ÌŒëŒŸo‚ª‘½”­‚·‚é‹°‚ê‚ª‚ ‚é‚½‚ß
-		 * ex1.ƒT[ƒo‚É‰ß•‰‰×‚ªŠ|‚©‚Á‚Ä‚¢‚éê‡A•‰‰×‚ª—‚¿‚½‚Æ‚«‚ÉƒNƒ‰ƒCƒAƒ“ƒgƒpƒPƒbƒg‚ğˆê‹C‚Éˆ—‚µAŒ‹‰Ê“I‚É•s³ˆµ‚¢‚Æ‚È‚éB
-		 * ex2.ƒT[ƒo‘¤‚Ìƒlƒbƒgƒ[ƒNi‰º‚èj‚Éƒ‰ƒO‚ª‚ ‚éê‡AƒNƒ‰ƒCƒAƒ“ƒgƒpƒPƒbƒg‚ªˆê‹C‚É—¬‚ê‚İAŒ‹‰Ê“I‚É•s³ˆµ‚¢‚Æ‚È‚éB
-		 * ex3.ƒNƒ‰ƒCƒAƒ“ƒg‘¤‚Ìƒlƒbƒgƒ[ƒNiã‚èj‚Éƒ‰ƒO‚ª‚ ‚éê‡AˆÈ‰º“¯—lB
+		 * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®ãƒ‘ã‚±ãƒƒãƒˆã‚’ã‚ã‚‹ç¨‹åº¦åˆ¶é™ã™ã‚‹ã€‚ ç†ç”±ï¼šä¸æ­£ã®èª¤æ¤œå‡ºãŒå¤šç™ºã™ã‚‹æã‚ŒãŒã‚ã‚‹ãŸã‚
+		 * ex1.ã‚µãƒ¼ãƒã«éè² è·ãŒæ›ã‹ã£ã¦ã„ã‚‹å ´åˆã€è² è·ãŒè½ã¡ãŸã¨ãã«ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ‘ã‚±ãƒƒãƒˆã‚’ä¸€æ°—ã«å‡¦ç†ã—ã€çµæœçš„ã«ä¸æ­£æ‰±ã„ã¨ãªã‚‹ã€‚
+		 * ex2.ã‚µãƒ¼ãƒå´ã®ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ï¼ˆä¸‹ã‚Šï¼‰ã«ãƒ©ã‚°ãŒã‚ã‚‹å ´åˆã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ‘ã‚±ãƒƒãƒˆãŒä¸€æ°—ã«æµã‚Œè¾¼ã¿ã€çµæœçš„ã«ä¸æ­£æ‰±ã„ã¨ãªã‚‹ã€‚
+		 * ex3.ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆå´ã®ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ï¼ˆä¸Šã‚Šï¼‰ã«ãƒ©ã‚°ãŒã‚ã‚‹å ´åˆã€ä»¥ä¸‹åŒæ§˜ã€‚
 		 * 
-		 * –³§ŒÀ‚É‚·‚é‘O‚É•s³ŒŸo•û–@‚ğŒ©’¼‚·•K—v‚ª‚ ‚éB
+		 * ç„¡åˆ¶é™ã«ã™ã‚‹å‰ã«ä¸æ­£æ¤œå‡ºæ–¹æ³•ã‚’è¦‹ç›´ã™å¿…è¦ãŒã‚ã‚‹ã€‚
 		 */
 		HcPacket movePacket = new HcPacket(M_CAPACITY);
 		HcPacket hcPacket = new HcPacket(H_CAPACITY);
@@ -216,9 +216,9 @@ public class ClientThread implements Runnable, PacketOutput {
 		GeneralThreadPool.getInstance().execute(hcPacket);
 
 		ClientThreadObserver observer =
-				new ClientThreadObserver(Config.AUTOMATIC_KICK * 60 * 1000); // ©“®Ø’f‚Ü‚Å‚ÌŠÔi’PˆÊ:msj
+				new ClientThreadObserver(Config.AUTOMATIC_KICK * 60 * 1000); // è‡ªå‹•åˆ‡æ–­ã¾ã§ã®æ™‚é–“ï¼ˆå˜ä½:msï¼‰
 
-		// ƒNƒ‰ƒCƒAƒ“ƒgƒXƒŒƒbƒh‚ÌŠÄ‹
+		// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚¹ãƒ¬ãƒƒãƒ‰ã®ç›£è¦–
 		if (Config.AUTOMATIC_KICK > 0) {
 			observer.start();
 		}
@@ -258,7 +258,7 @@ public class ClientThread implements Runnable, PacketOutput {
 
 				int opcode = data[0] & 0xFF;
 
-				// ‘½dƒƒOƒCƒ“‘Îô
+				// å¤šé‡ãƒ­ã‚°ã‚¤ãƒ³å¯¾ç­–
 				if (opcode == Opcodes.C_OPCODE_COMMONCLICK
 						|| opcode == Opcodes.C_OPCODE_CHANGECHAR) {
 					_loginStatus = 1;
@@ -274,29 +274,29 @@ public class ClientThread implements Runnable, PacketOutput {
 				}
 
 				if (opcode != Opcodes.C_OPCODE_KEEPALIVE) {
-					// C_OPCODE_KEEPALIVEˆÈŠO‚Ì‰½‚©‚µ‚ç‚ÌƒpƒPƒbƒg‚ğó‚¯æ‚Á‚½‚çObserver‚Ö’Ê’m
+					// C_OPCODE_KEEPALIVEä»¥å¤–ã®ä½•ã‹ã—ã‚‰ã®ãƒ‘ã‚±ãƒƒãƒˆã‚’å—ã‘å–ã£ãŸã‚‰Observerã¸é€šçŸ¥
 					observer.packetReceived();
 				}
-				// null‚Ìê‡‚ÍƒLƒƒƒ‰ƒNƒ^[‘I‘ğ‘O‚È‚Ì‚ÅOpcode‚ÌæÌ‘I‘ğ‚Í‚¹‚¸‘S‚ÄÀs
+				// nullã®å ´åˆã¯ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼é¸æŠå‰ãªã®ã§Opcodeã®å–æ¨é¸æŠã¯ã›ãšå…¨ã¦å®Ÿè¡Œ
 				if (_activeChar == null) {
 					_handler.handlePacket(data, _activeChar);
 					continue;
 				}
 
-				// ˆÈ~APacketHandler‚Ìˆ—ó‹µ‚ªClientThread‚É‰e‹¿‚ğ—^‚¦‚È‚¢‚æ‚¤‚É‚·‚éˆ×‚Ìˆ—
-				// –Ú“I‚ÍOpcode‚ÌæÌ‘I‘ğ‚ÆClientThread‚ÆPacketHandler‚ÌØ‚è—£‚µ
+				// ä»¥é™ã€PacketHandlerã®å‡¦ç†çŠ¶æ³ãŒClientThreadã«å½±éŸ¿ã‚’ä¸ãˆãªã„ã‚ˆã†ã«ã™ã‚‹ç‚ºã®å‡¦ç†
+				// ç›®çš„ã¯Opcodeã®å–æ¨é¸æŠã¨ClientThreadã¨PacketHandlerã®åˆ‡ã‚Šé›¢ã—
 
-				// ”jŠü‚µ‚Ä‚Í‚¢‚¯‚È‚¢OpecodeŒQ
-				// ƒŠƒXƒ^[ƒgAƒAƒCƒeƒ€ƒhƒƒbƒvAƒAƒCƒeƒ€íœ
+				// ç ´æ£„ã—ã¦ã¯ã„ã‘ãªã„Opecodeç¾¤
+				// ãƒªã‚¹ã‚¿ãƒ¼ãƒˆã€ã‚¢ã‚¤ãƒ†ãƒ ãƒ‰ãƒ­ãƒƒãƒ—ã€ã‚¢ã‚¤ãƒ†ãƒ å‰Šé™¤
 				if (opcode == Opcodes.C_OPCODE_CHANGECHAR
 						|| opcode == Opcodes.C_OPCODE_DROPITEM
 						|| opcode == Opcodes.C_OPCODE_DELETEINVENTORYITEM) {
 					_handler.handlePacket(data, _activeChar);
 				} else if (opcode == Opcodes.C_OPCODE_MOVECHAR) {
-					// ˆÚ“®‚Í‚È‚é‚×‚­ŠmÀ‚És‚¤ˆ×AˆÚ“®ê—pƒXƒŒƒbƒh‚Öó‚¯“n‚µ
+					// ç§»å‹•ã¯ãªã‚‹ã¹ãç¢ºå®Ÿã«è¡Œã†ç‚ºã€ç§»å‹•å°‚ç”¨ã‚¹ãƒ¬ãƒƒãƒ‰ã¸å—ã‘æ¸¡ã—
 					movePacket.requestWork(data);
 				} else {
-					// ƒpƒPƒbƒgˆ—ƒXƒŒƒbƒh‚Öó‚¯“n‚µ
+					// ãƒ‘ã‚±ãƒƒãƒˆå‡¦ç†ã‚¹ãƒ¬ãƒƒãƒ‰ã¸å—ã‘æ¸¡ã—
 					hcPacket.requestWork(data);
 				}
 			}
@@ -308,13 +308,13 @@ public class ClientThread implements Runnable, PacketOutput {
 					quitGame(_activeChar);
 
 					synchronized (_activeChar) {
-						// ƒLƒƒƒ‰ƒNƒ^[‚ğƒ[ƒ‹ƒh“à‚©‚çœ‹
+						// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‚’ãƒ¯ãƒ¼ãƒ«ãƒ‰å†…ã‹ã‚‰é™¤å»
 						_activeChar.logout();
 						setActiveChar(null);
 					}
 				}
 
-				// ”O‚Ì‚½‚ß‘—M
+				// å¿µã®ãŸã‚é€ä¿¡
 				sendPacket(new S_Disconnect());
 
 				StreamUtil.close(_out, _in);
@@ -328,9 +328,9 @@ public class ClientThread implements Runnable, PacketOutput {
 		_log.fine("Server thread[C] stopped");
 		if (_kick < 1) {
 			_log.info("(" + getAccountName() + ":" + _hostname
-					+ ")‚Æ‚ÌÚ‘±‚ğI—¹‚µ‚Ü‚µ‚½B");
-			System.out.println("—˜—pƒƒ‚ƒŠ: " + SystemUtil.getUsedMemoryMB() + "MB");
-			System.out.println("ƒNƒ‰ƒCƒAƒ“ƒgÚ‘±‘Ò‹@’†...");
+					+ ")ã¨ã®æ¥ç¶šã‚’çµ‚äº†ã—ã¾ã—ãŸã€‚");
+			System.out.println("åˆ©ç”¨ãƒ¡ãƒ¢ãƒª: " + SystemUtil.getUsedMemoryMB() + "MB");
+			System.out.println("ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆæ¥ç¶šå¾…æ©Ÿä¸­...");
 		}
 		return;
 	}
@@ -343,11 +343,11 @@ public class ClientThread implements Runnable, PacketOutput {
 		StreamUtil.close(_out, _in);
 	}
 
-	private static final int M_CAPACITY = 3; // ˆÚ“®—v‹‚ğˆê•Ó‚Éó‚¯•t‚¯‚éÅ‘å—e—Ê
+	private static final int M_CAPACITY = 3; // ç§»å‹•è¦æ±‚ã‚’ä¸€è¾ºã«å—ã‘ä»˜ã‘ã‚‹æœ€å¤§å®¹é‡
 
-	private static final int H_CAPACITY = 2;// s“®—v‹‚ğˆê•Ó‚Éó‚¯•t‚¯‚éÅ‘å—e—Ê
+	private static final int H_CAPACITY = 2;// è¡Œå‹•è¦æ±‚ã‚’ä¸€è¾ºã«å—ã‘ä»˜ã‘ã‚‹æœ€å¤§å®¹é‡
 
-	// ƒLƒƒƒ‰ƒNƒ^[‚Ìs“®ˆ—ƒXƒŒƒbƒh
+	// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®è¡Œå‹•å‡¦ç†ã‚¹ãƒ¬ãƒƒãƒ‰
 	class HcPacket implements Runnable {
 		private final Queue<byte[]> _queue;
 
@@ -388,7 +388,7 @@ public class ClientThread implements Runnable, PacketOutput {
 
 	private static Timer _observerTimer = new Timer();
 
-	// ƒNƒ‰ƒCƒAƒ“ƒgƒXƒŒƒbƒh‚ÌŠÄ‹ƒ^ƒCƒ}[
+	// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚¹ãƒ¬ãƒƒãƒ‰ã®ç›£è¦–ã‚¿ã‚¤ãƒãƒ¼
 	class ClientThreadObserver extends TimerTask {
 		private int _checkct = 1;
 
@@ -416,11 +416,11 @@ public class ClientThread implements Runnable, PacketOutput {
 					return;
 				}
 
-				if (_activeChar == null // ƒLƒƒƒ‰ƒNƒ^[‘I‘ğ‘O
-						|| _activeChar != null && !_activeChar.isPrivateShop()) { // ŒÂl¤“X’†
+				if (_activeChar == null // ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼é¸æŠå‰
+						|| _activeChar != null && !_activeChar.isPrivateShop()) { // å€‹äººå•†åº—ä¸­
 					kick();
-					_log.warning("ˆê’èŠÔ‰“š‚ª“¾‚ç‚ê‚È‚©‚Á‚½ˆ×(" + _hostname
-							+ ")‚Æ‚ÌÚ‘±‚ğ‹­§Ø’f‚µ‚Ü‚µ‚½B");
+					_log.warning("ä¸€å®šæ™‚é–“å¿œç­”ãŒå¾—ã‚‰ã‚Œãªã‹ã£ãŸç‚º(" + _hostname
+							+ ")ã¨ã®æ¥ç¶šã‚’å¼·åˆ¶åˆ‡æ–­ã—ã¾ã—ãŸã€‚");
 					cancel();
 					return;
 				}
@@ -482,7 +482,7 @@ public class ClientThread implements Runnable, PacketOutput {
 	}
 
 	public static void quitGame(L1PcInstance pc) {
-		// €–S‚µ‚Ä‚¢‚½‚çŠX‚É–ß‚µA‹ó• ó‘Ô‚É‚·‚é
+		// æ­»äº¡ã—ã¦ã„ãŸã‚‰è¡—ã«æˆ»ã—ã€ç©ºè…¹çŠ¶æ…‹ã«ã™ã‚‹
 		if (pc.isDead()) {
 			int[] loc = Getback.GetBack_Location(pc, true);
 			pc.setX(loc[0]);
@@ -492,13 +492,13 @@ public class ClientThread implements Runnable, PacketOutput {
 			pc.set_food(40);
 		}
 
-		// ƒgƒŒ[ƒh‚ğ’†~‚·‚é
-		if (pc.getTradeID() != 0) { // ƒgƒŒ[ƒh’†
+		// ãƒˆãƒ¬ãƒ¼ãƒ‰ã‚’ä¸­æ­¢ã™ã‚‹
+		if (pc.getTradeID() != 0) { // ãƒˆãƒ¬ãƒ¼ãƒ‰ä¸­
 			L1Trade trade = new L1Trade();
 			trade.TradeCancel(pc);
 		}
 
-		// Œˆ“¬‚ğ’†~‚·‚é
+		// æ±ºé—˜ã‚’ä¸­æ­¢ã™ã‚‹
 		if (pc.getFightId() != 0) {
 			pc.setFightId(0);
 			L1PcInstance fightPc = (L1PcInstance) L1World.getInstance()
@@ -510,18 +510,18 @@ public class ClientThread implements Runnable, PacketOutput {
 			}
 		}
 
-		// ƒp[ƒeƒB[‚ğ”²‚¯‚é
-		if (pc.isInParty()) { // ƒp[ƒeƒB[’†
+		// ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã‚’æŠœã‘ã‚‹
+		if (pc.isInParty()) { // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä¸­
 			pc.getParty().leaveMember(pc);
 		}
 
-		// ƒ`ƒƒƒbƒgƒp[ƒeƒB[‚ğ”²‚¯‚é
-		if (pc.isInChatParty()) { // ƒ`ƒƒƒbƒgƒp[ƒeƒB[’†
+		// ãƒãƒ£ãƒƒãƒˆãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã‚’æŠœã‘ã‚‹
+		if (pc.isInChatParty()) { // ãƒãƒ£ãƒƒãƒˆãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä¸­
 			pc.getChatParty().leaveMember(pc);
 		}
 
-		// ƒyƒbƒg‚ğƒ[ƒ‹ƒhƒ}ƒbƒvã‚©‚çÁ‚·
-		// ƒTƒ‚ƒ“‚Ì•\¦–¼‚ğ•ÏX‚·‚é
+		// ãƒšãƒƒãƒˆã‚’ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒãƒƒãƒ—ä¸Šã‹ã‚‰æ¶ˆã™
+		// ã‚µãƒ¢ãƒ³ã®è¡¨ç¤ºåã‚’å¤‰æ›´ã™ã‚‹
 		Object[] petList = pc.getPetList().values().toArray();
 		for (Object petObject : petList) {
 			if (petObject instanceof L1PetInstance) {
@@ -540,14 +540,14 @@ public class ClientThread implements Runnable, PacketOutput {
 			}
 		}
 
-		// ƒ}ƒWƒbƒNƒh[ƒ‹‚ğƒ[ƒ‹ƒhƒ}ƒbƒvã‚©‚çÁ‚·
+		// ãƒã‚¸ãƒƒã‚¯ãƒ‰ãƒ¼ãƒ«ã‚’ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒãƒƒãƒ—ä¸Šã‹ã‚‰æ¶ˆã™
 		Object[] dollList = pc.getDollList().values().toArray();
 		for (Object dollObject : dollList) {
 			L1DollInstance doll = (L1DollInstance) dollObject;
 			doll.deleteDoll();
 		}
 
-		// ]Ò‚ğƒ[ƒ‹ƒhƒ}ƒbƒvã‚©‚çÁ‚µA“¯’n“_‚ÉÄoŒ»‚³‚¹‚é
+		// å¾“è€…ã‚’ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒãƒƒãƒ—ä¸Šã‹ã‚‰æ¶ˆã—ã€åŒåœ°ç‚¹ã«å†å‡ºç¾ã•ã›ã‚‹
 		Object[] followerList = pc.getFollowerList().values().toArray();
 		for (Object followerObject : followerList) {
 			L1FollowerInstance follower = (L1FollowerInstance) followerObject;
@@ -558,14 +558,14 @@ public class ClientThread implements Runnable, PacketOutput {
 			follower.deleteMe();
 		}
 
-		// ƒGƒ“ƒ`ƒƒƒ“ƒg‚ğDB‚Ìcharacter_buff‚É•Û‘¶‚·‚é
+		// ã‚¨ãƒ³ãƒãƒ£ãƒ³ãƒˆã‚’DBã®character_buffã«ä¿å­˜ã™ã‚‹
 		CharBuffTable.DeleteBuff(pc);
 		CharBuffTable.SaveBuff(pc);
 		pc.clearSkillEffectTimer();
 
-		// pc‚Ìƒ‚ƒjƒ^[‚ğstop‚·‚éB
+		// pcã®ãƒ¢ãƒ‹ã‚¿ãƒ¼ã‚’stopã™ã‚‹ã€‚
 		pc.stopEtcMonitor();
-		// ƒIƒ“ƒ‰ƒCƒ“ó‘Ô‚ğOFF‚É‚µADB‚ÉƒLƒƒƒ‰ƒNƒ^[î•ñ‚ğ‘‚«‚Ş
+		// ã‚ªãƒ³ãƒ©ã‚¤ãƒ³çŠ¶æ…‹ã‚’OFFã«ã—ã€DBã«ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æƒ…å ±ã‚’æ›¸ãè¾¼ã‚€
 		pc.setOnlineStatus(0);
 		try {
 			pc.save();

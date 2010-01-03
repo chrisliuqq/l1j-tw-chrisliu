@@ -52,12 +52,12 @@ public class L1ChatNG implements L1CommandExecutor {
 				tg.setSkillEffect(STATUS_CHAT_PROHIBITED,
 						time * 60 * 1000);
 				tg.sendPackets(new S_SkillIconGFX(36, time * 60));
-				tg.sendPackets(new S_ServerMessage(286, String.valueOf(time))); // \f3ƒQ[ƒ€‚É“K‡‚µ‚È‚¢s“®‚Å‚ ‚é‚½‚ßA¡Œã%0•ªŠÔƒ`ƒƒƒbƒg‚ğ‹Ö‚¶‚Ü‚·B
-				pc.sendPackets(new S_ServerMessage(287, name)); // %0‚Ìƒ`ƒƒƒbƒg‚ğ‹Ö‚¶‚Ü‚µ‚½B
+				tg.sendPackets(new S_ServerMessage(286, String.valueOf(time))); // \f3ã‚²ãƒ¼ãƒ ã«é©åˆã—ãªã„è¡Œå‹•ã§ã‚ã‚‹ãŸã‚ã€ä»Šå¾Œ%0åˆ†é–“ãƒãƒ£ãƒƒãƒˆã‚’ç¦ã˜ã¾ã™ã€‚
+				pc.sendPackets(new S_ServerMessage(287, name)); // %0ã®ãƒãƒ£ãƒƒãƒˆã‚’ç¦ã˜ã¾ã—ãŸã€‚
 			}
 		} catch (Exception e) {
 			pc.sendPackets(new S_SystemMessage(cmdName
-					+ " ƒLƒƒƒ‰ƒNƒ^[–¼ ŠÔi•ªj ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+					+ " ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å æ™‚é–“ï¼ˆåˆ†ï¼‰ ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

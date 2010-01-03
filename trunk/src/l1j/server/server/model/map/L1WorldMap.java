@@ -47,10 +47,10 @@ public class L1WorldMap {
 		try {
 			_maps = in.read();
 			if (_maps == null) {
-				throw new RuntimeException("ƒ}ƒbƒv‚Ì“Ç‚İ‚İ‚É¸”s");
+				throw new RuntimeException("ãƒãƒƒãƒ—ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—");
 			}
 		} catch (Exception e) {
-			// •œ‹A•s”\
+			// å¾©å¸°ä¸èƒ½
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 
 			System.exit(0);
@@ -60,16 +60,16 @@ public class L1WorldMap {
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒ}ƒbƒv‚Ìî•ñ‚ğ•Û‚·‚éL1Map‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã®æƒ…å ±ã‚’ä¿æŒã™ã‚‹L1Mapã‚’è¿”ã™ã€‚
 	 * 
 	 * @param mapId
-	 *            ƒ}ƒbƒvID
-	 * @return ƒ}ƒbƒvî•ñ‚ğ•Û‚·‚éAL1MapƒIƒuƒWƒFƒNƒgB
+	 *            ãƒãƒƒãƒ—ID
+	 * @return ãƒãƒƒãƒ—æƒ…å ±ã‚’ä¿æŒã™ã‚‹ã€L1Mapã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public L1Map getMap(short mapId) {
 		L1Map map = _maps.get((int) mapId);
-		if (map == null) { // ƒ}ƒbƒvî•ñ‚ª–³‚¢
-			map = L1Map.newNull(); // ‰½‚à‚µ‚È‚¢Map‚ğ•Ô‚·B
+		if (map == null) { // ãƒãƒƒãƒ—æƒ…å ±ãŒç„¡ã„
+			map = L1Map.newNull(); // ä½•ã‚‚ã—ãªã„Mapã‚’è¿”ã™ã€‚
 		}
 		return map;
 	}

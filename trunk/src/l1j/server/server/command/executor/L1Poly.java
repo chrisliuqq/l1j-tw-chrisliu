@@ -47,19 +47,19 @@ public class L1Poly implements L1CommandExecutor {
 			L1PcInstance tg = L1World.getInstance().getPlayer(name);
 
 			if (tg == null) {
-				pc.sendPackets(new S_ServerMessage(73, name)); // \f1%0‚ÍƒQ[ƒ€‚ğ‚µ‚Ä‚¢‚Ü‚¹‚ñB
+				pc.sendPackets(new S_ServerMessage(73, name)); // \f1%0ã¯ã‚²ãƒ¼ãƒ ã‚’ã—ã¦ã„ã¾ã›ã‚“ã€‚
 			} else {
 				try {
 					L1PolyMorph.doPoly(tg, polyid, 7200,
 							L1PolyMorph.MORPH_BY_GM);
 				} catch (Exception exception) {
 					pc.sendPackets(new S_SystemMessage(
-							".poly ƒLƒƒƒ‰ƒNƒ^[–¼ ƒOƒ‰ƒtƒBƒbƒNID ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+							".poly ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ID ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 				}
 			}
 		} catch (Exception e) {
 			pc.sendPackets(new S_SystemMessage(cmdName
-					+ " ƒLƒƒƒ‰ƒNƒ^[–¼ ƒOƒ‰ƒtƒBƒbƒNID ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+					+ " ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ID ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

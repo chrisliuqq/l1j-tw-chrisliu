@@ -28,7 +28,7 @@ public abstract class L1Poison {
 		if (cha == null) {
 			return false;
 		}
-		// “Å‚Íd•¡‚µ‚È‚¢
+		// æ¯’ã¯é‡è¤‡ã—ãªã„
 		if (cha.getPoison() != null) {
 			return false;
 		}
@@ -38,7 +38,7 @@ public abstract class L1Poison {
 		}
 
 		L1PcInstance player = (L1PcInstance) cha;
-		// ƒ[ƒjƒX ƒŠƒ“ƒO‘•”õ’†AƒoƒtƒH ƒƒbƒgƒA[ƒ}[‘•”õ’† Aƒxƒmƒ€ ƒŒƒWƒXƒg’†
+		// ã‚¼ãƒ‹ã‚¹ ãƒªãƒ³ã‚°è£…å‚™ä¸­ã€ãƒãƒ•ã‚© ãƒ¡ãƒƒãƒˆã‚¢ãƒ¼ãƒãƒ¼è£…å‚™ä¸­ ã€ãƒ™ãƒãƒ  ãƒ¬ã‚¸ã‚¹ãƒˆä¸­
 		if (player.getInventory().checkEquipped(20298)
 				|| player.getInventory().checkEquipped(20117)
 				|| player.hasSkillEffect(104)) {
@@ -47,7 +47,7 @@ public abstract class L1Poison {
 		return true;
 	}
 
-	// ”÷–­EEE‘f’¼‚ÉsendPackets‚ğL1Character‚Öˆø‚«ã‚°‚é‚×‚«‚©‚à‚µ‚ê‚È‚¢
+	// å¾®å¦™ãƒ»ãƒ»ãƒ»ç´ ç›´ã«sendPacketsã‚’L1Characterã¸å¼•ãä¸Šã’ã‚‹ã¹ãã‹ã‚‚ã—ã‚Œãªã„
 	protected static void sendMessageIfPlayer(L1Character cha, int msgId) {
 		if (!(cha instanceof L1PcInstance)) {
 			return;
@@ -58,16 +58,16 @@ public abstract class L1Poison {
 	}
 
 	/**
-	 * ‚±‚Ì“Å‚ÌƒGƒtƒFƒNƒgID‚ğ•Ô‚·B
+	 * ã“ã®æ¯’ã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆIDã‚’è¿”ã™ã€‚
 	 * 
 	 * @see S_Poison#S_Poison(int, int)
 	 * 
-	 * @return S_Poison‚Åg—p‚³‚ê‚éƒGƒtƒFƒNƒgID
+	 * @return S_Poisonã§ä½¿ç”¨ã•ã‚Œã‚‹ã‚¨ãƒ•ã‚§ã‚¯ãƒˆID
 	 */
 	public abstract int getEffectId();
 
 	/**
-	 * ‚±‚Ì“Å‚ÌŒø‰Ê‚ğæ‚èœ‚­B<br>
+	 * ã“ã®æ¯’ã®åŠ¹æœã‚’å–ã‚Šé™¤ãã€‚<br>
 	 * 
 	 * @see L1Character#curePoison()
 	 */

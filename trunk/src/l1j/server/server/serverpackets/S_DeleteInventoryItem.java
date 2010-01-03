@@ -32,8 +32,8 @@ public class S_DeleteInventoryItem extends ServerBasePacket {
 			.getName());
 
 	/**
-	 * ƒCƒ“ƒxƒ“ƒgƒŠ‚©‚çƒAƒCƒeƒ€‚ğíœ‚·‚éB
-	 * @param item - íœ‚·‚éƒAƒCƒeƒ€
+	 * ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªã‹ã‚‰ã‚¢ã‚¤ãƒ†ãƒ ã‚’å‰Šé™¤ã™ã‚‹ã€‚
+	 * @param item - å‰Šé™¤ã™ã‚‹ã‚¢ã‚¤ãƒ†ãƒ 
 	 */
 	public S_DeleteInventoryItem(L1ItemInstance item) {
 		if (item != null) {

@@ -39,11 +39,11 @@ public class GeneralThreadPool {
 
 	private static final int SCHEDULED_CORE_POOL_SIZE = 10;
 
-	private Executor _executor; // ”Ä—pExecutorService
-	private ScheduledExecutorService _scheduler; // ”Ä—pScheduledExecutorService
-	private ScheduledExecutorService _pcScheduler; // ƒvƒŒƒCƒ„[‚Ìƒ‚ƒjƒ^[—pScheduledExecutorService
-	// ˆê‰L1JƒfƒtƒHƒ‹ƒg‚Ìó‘Ô‚ÅAmap:4‚É‚¢‚é‰½‚à‚µ‚Ä‚¢‚È‚¢PC‚ª1•bŠÔ‚Éè—L‚·‚éÀsŠÔ‚Í–ñ6ms(AutoUpdate:–ñ6ms,ExpMonitor:‹É¬)
-	private final int _pcSchedulerPoolSize = 1 + Config.MAX_ONLINE_USERS / 20; // “K“–(20User‚É1‚Â‚­‚ç‚¢‚ÌŠ„‚è“–‚Ä)
+	private Executor _executor; // æ±ç”¨ExecutorService
+	private ScheduledExecutorService _scheduler; // æ±ç”¨ScheduledExecutorService
+	private ScheduledExecutorService _pcScheduler; // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãƒ¢ãƒ‹ã‚¿ãƒ¼ç”¨ScheduledExecutorService
+	// ä¸€å¿œL1Jãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®çŠ¶æ…‹ã§ã€map:4ã«ã„ã‚‹ä½•ã‚‚ã—ã¦ã„ãªã„PCãŒ1ç§’é–“ã«å æœ‰ã™ã‚‹å®Ÿè¡Œæ™‚é–“ã¯ç´„6ms(AutoUpdate:ç´„6ms,ExpMonitor:æ¥µå°)
+	private final int _pcSchedulerPoolSize = 1 + Config.MAX_ONLINE_USERS / 20; // é©å½“(20Userã«1ã¤ãã‚‰ã„ã®å‰²ã‚Šå½“ã¦)
 
 	public static GeneralThreadPool getInstance() {
 		if (_instance == null) {
@@ -119,7 +119,7 @@ public class GeneralThreadPool {
 				TimeUnit.MILLISECONDS);
 	}
 
-	// ThreadPoolManager ‚©‚ç”qØ
+	// ThreadPoolManager ã‹ã‚‰æ‹å€Ÿ
 	private class PriorityThreadFactory implements ThreadFactory {
 		private final int _prio;
 

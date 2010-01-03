@@ -27,9 +27,9 @@ public class S_HowManyMake extends ServerBasePacket {
 		writeC(Opcodes.S_OPCODE_INPUTAMOUNT);
 		writeD(objId);
 		writeD(0); // ?
-		writeD(0); // スピンコントロールの初期価格
-		writeD(0); // 価格の下限
-		writeD(max); // 価格の上限
+		writeD(0); // 繧ｹ繝斐Φ繧ｳ繝ｳ繝医Ο繝ｼ繝ｫ縺ｮ蛻晄悄萓｡譬ｼ
+		writeD(0); // 萓｡譬ｼ縺ｮ荳矩剞
+		writeD(max); // 萓｡譬ｼ縺ｮ荳企剞
 		writeH(0); // ?
 		writeS("request");
 		writeS(htmlId);

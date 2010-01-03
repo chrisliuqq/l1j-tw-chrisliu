@@ -30,7 +30,7 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 import l1j.server.server.serverpackets.S_SystemMessage;
 
 /**
- * ‰Á‘¬Ší‚Ìg—p‚ğƒ`ƒFƒbƒN‚·‚éƒNƒ‰ƒXB
+ * åŠ é€Ÿå™¨ã®ä½¿ç”¨ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚
  */
 public class AcceleratorChecker {
 
@@ -47,8 +47,8 @@ public class AcceleratorChecker {
 
 	private static final int JUSTICE_COUNT_LIMIT = Config.JUSTICE_COUNT;
 
-	// ÀÛ‚É‚ÍˆÚ“®‚ÆUŒ‚‚ÌƒpƒPƒbƒgŠÔŠu‚Íspr‚Ì—˜_’l‚æ‚è5%‚Ù‚Ç’x‚¢B
-	// ‚»‚ê‚ğl—¶‚µ‚Ä-5‚Æ‚µ‚Ä‚¢‚éB
+	// å®Ÿéš›ã«ã¯ç§»å‹•ã¨æ”»æ’ƒã®ãƒ‘ã‚±ãƒƒãƒˆé–“éš”ã¯sprã®ç†è«–å€¤ã‚ˆã‚Š5%ã»ã©é…ã„ã€‚
+	// ãã‚Œã‚’è€ƒæ…®ã—ã¦-5ã¨ã—ã¦ã„ã‚‹ã€‚
 	private static final double CHECK_STRICTNESS = (Config.CHECK_STRICTNESS - 5) / 100D;
 
 	private static final double HASTE_RATE = 0.745;
@@ -65,7 +65,7 @@ public class AcceleratorChecker {
 		MOVE, ATTACK, SPELL_DIR, SPELL_NODIR
 	}
 
-	// ƒ`ƒFƒbƒN‚ÌŒ‹‰Ê
+	// ãƒã‚§ãƒƒã‚¯ã®çµæœ
 	public static final int R_OK = 0;
 
 	public static final int R_DETECTED = 1;
@@ -84,11 +84,11 @@ public class AcceleratorChecker {
 	}
 
 	/**
-	 * ƒAƒNƒVƒ‡ƒ“‚ÌŠÔŠu‚ª•s³‚Å‚È‚¢‚©ƒ`ƒFƒbƒN‚µA“K‹Xˆ—‚ğs‚¤B
+	 * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®é–“éš”ãŒä¸æ­£ã§ãªã„ã‹ãƒã‚§ãƒƒã‚¯ã—ã€é©å®œå‡¦ç†ã‚’è¡Œã†ã€‚
 	 * 
 	 * @param type -
-	 *            ƒ`ƒFƒbƒN‚·‚éƒAƒNƒVƒ‡ƒ“‚Ìƒ^ƒCƒv
-	 * @return –â‘è‚ª‚È‚©‚Á‚½ê‡‚Í0A•s³‚Å‚ ‚Á‚½ê‡‚Í1A•s³“®ì‚ªˆê’è‰ñ”‚É’B‚µ‚½ ‚½‚ßƒvƒŒƒCƒ„[‚ğØ’f‚µ‚½ê‡‚Í2‚ğ•Ô‚·B
+	 *            ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ã‚¿ã‚¤ãƒ—
+	 * @return å•é¡ŒãŒãªã‹ã£ãŸå ´åˆã¯0ã€ä¸æ­£ã§ã‚ã£ãŸå ´åˆã¯1ã€ä¸æ­£å‹•ä½œãŒä¸€å®šå›æ•°ã«é”ã—ãŸ ãŸã‚ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’åˆ‡æ–­ã—ãŸå ´åˆã¯2ã‚’è¿”ã™ã€‚
 	 */
 	public int checkInterval(ACT_TYPE type) {
 		int result = R_OK;
@@ -114,7 +114,7 @@ public class AcceleratorChecker {
 			}
 		}
 
-		// ŒŸØ—p
+		// æ¤œè¨¼ç”¨
 // double rate = (double) interval / rightInterval;
 // System.out.println(String.format("%s: %d / %d = %.2f (o-%d x-%d)",
 // type.toString(), interval, rightInterval, rate,
@@ -126,26 +126,26 @@ public class AcceleratorChecker {
 
 	private void doDisconnect() {
 		if (!_pc.isGm()) {
-			_pc.sendPackets(new S_ServerMessage(945)); // ˆá–@ƒvƒƒOƒ‰ƒ€‚ªŒ©‚Â‚©‚Á‚½‚Ì‚ÅAI—¹‚µ‚Ü‚·B
+			_pc.sendPackets(new S_ServerMessage(945)); // é•æ³•ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒè¦‹ã¤ã‹ã£ãŸã®ã§ã€çµ‚äº†ã—ã¾ã™ã€‚
 			_pc.sendPackets(new S_Disconnect());
 			_log.info(String.format(
-					"‰Á‘¬ŠíŒŸ’m‚Ì‚½‚ß%s‚ğ‹­§Ø’f‚µ‚Ü‚µ‚½B", _pc.getName()));
+					"åŠ é€Ÿå™¨æ¤œçŸ¥ã®ãŸã‚%sã‚’å¼·åˆ¶åˆ‡æ–­ã—ã¾ã—ãŸã€‚", _pc.getName()));
 		} else {
-			// GM‚ÍØ’f‚µ‚È‚¢
+			// GMã¯åˆ‡æ–­ã—ãªã„
 			_pc.sendPackets(new S_SystemMessage(
-					"‰Á‘¬ŠíŒŸ’m‚É‚Ğ‚Á‚©‚©‚Á‚Ä‚¢‚Ü‚·B"));
+					"åŠ é€Ÿå™¨æ¤œçŸ¥ã«ã²ã£ã‹ã‹ã£ã¦ã„ã¾ã™ã€‚"));
 			_injusticeCount = 0;
 		}
 	}
 
 	/**
-	 * PC‚Ìó‘Ô‚©‚çw’è‚³‚ê‚½í—Ş‚ÌƒAƒNƒVƒ‡ƒ“‚Ì³‚µ‚¢ƒCƒ“ƒ^[ƒoƒ‹(ms)‚ğŒvZ‚µA•Ô‚·B
+	 * PCã®çŠ¶æ…‹ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸç¨®é¡ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®æ­£ã—ã„ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(ms)ã‚’è¨ˆç®—ã—ã€è¿”ã™ã€‚
 	 * 
 	 * @param type -
-	 *            ƒAƒNƒVƒ‡ƒ“‚Ìí—Ş
+	 *            ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ç¨®é¡
 	 * @param _pc -
-	 *            ’²‚×‚éPC
-	 * @return ³‚µ‚¢ƒCƒ“ƒ^[ƒoƒ‹(ms)
+	 *            èª¿ã¹ã‚‹PC
+	 * @return æ­£ã—ã„ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(ms)
 	 */
 	private int getRightInterval(ACT_TYPE type) {
 		int interval;

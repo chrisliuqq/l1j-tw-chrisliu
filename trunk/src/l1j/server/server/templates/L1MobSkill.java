@@ -97,7 +97,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * ƒXƒLƒ‹‚Ìƒ^ƒCƒv 0¨‰½‚à‚µ‚È‚¢A1¨•¨—UŒ‚A2¨–‚–@UŒ‚A3¨ƒTƒ‚ƒ“
+	 * ã‚¹ã‚­ãƒ«ã®ã‚¿ã‚¤ãƒ— 0â†’ä½•ã‚‚ã—ãªã„ã€1â†’ç‰©ç†æ”»æ’ƒã€2â†’é­”æ³•æ”»æ’ƒã€3â†’ã‚µãƒ¢ãƒ³
 	 */
 	private int type[];
 
@@ -116,7 +116,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * ƒXƒLƒ‹”­“®ğŒFƒ‰ƒ“ƒ_ƒ€‚ÈŠm—¦i0%`100%j‚ÅƒXƒLƒ‹”­“®
+	 * ã‚¹ã‚­ãƒ«ç™ºå‹•æ¡ä»¶ï¼šãƒ©ãƒ³ãƒ€ãƒ ãªç¢ºç‡ï¼ˆ0%ï½100%ï¼‰ã§ã‚¹ã‚­ãƒ«ç™ºå‹•
 	 */
 	private int triRnd[];
 
@@ -135,7 +135,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * ƒXƒLƒ‹”­“®ğŒFHP‚ª%ˆÈ‰º‚Å”­“®
+	 * ã‚¹ã‚­ãƒ«ç™ºå‹•æ¡ä»¶ï¼šHPãŒ%ä»¥ä¸‹ã§ç™ºå‹•
 	 */
 	int triHp[];
 
@@ -154,7 +154,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * ƒXƒLƒ‹”­“®ğŒF“¯‘°‚ÌHP‚ª%ˆÈ‰º‚Å”­“®
+	 * ã‚¹ã‚­ãƒ«ç™ºå‹•æ¡ä»¶ï¼šåŒæ—ã®HPãŒ%ä»¥ä¸‹ã§ç™ºå‹•
 	 */
 	int triCompanionHp[];
 
@@ -173,8 +173,8 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * ƒXƒLƒ‹”­“®ğŒFtriRange<0‚Ìê‡A‘ÎÛ‚Æ‚Ì‹——£‚ªabs(triRange)ˆÈ‰º‚Ì‚Æ‚«”­“®
-	 * triRange>0‚Ìê‡A‘ÎÛ‚Æ‚Ì‹——£‚ªtriRangeˆÈã‚Ì‚Æ‚«”­“®
+	 * ã‚¹ã‚­ãƒ«ç™ºå‹•æ¡ä»¶ï¼štriRange<0ã®å ´åˆã€å¯¾è±¡ã¨ã®è·é›¢ãŒabs(triRange)ä»¥ä¸‹ã®ã¨ãç™ºå‹•
+	 * triRange>0ã®å ´åˆã€å¯¾è±¡ã¨ã®è·é›¢ãŒtriRangeä»¥ä¸Šã®ã¨ãç™ºå‹•
 	 */
 	int triRange[];
 
@@ -192,7 +192,7 @@ public class L1MobSkill implements Cloneable {
 		triRange[idx] = i;
 	}
 
-	// distance‚ªw’èidxƒXƒLƒ‹‚Ì”­“®ğŒ‚ğ–‚½‚µ‚Ä‚¢‚é‚©
+	// distanceãŒæŒ‡å®šidxã‚¹ã‚­ãƒ«ã®ç™ºå‹•æ¡ä»¶ã‚’æº€ãŸã—ã¦ã„ã‚‹ã‹
 	public boolean isTriggerDistance(int idx, int distance) {
 		int triggerRange = getTriggerRange(idx);
 
@@ -206,7 +206,7 @@ public class L1MobSkill implements Cloneable {
 	int triCount[];
 
 	/*
-	 * ƒXƒLƒ‹”­“®ğŒFƒXƒLƒ‹‚Ì”­“®‰ñ”‚ªtriCountˆÈ‰º‚Ì‚Æ‚«”­“®
+	 * ã‚¹ã‚­ãƒ«ç™ºå‹•æ¡ä»¶ï¼šã‚¹ã‚­ãƒ«ã®ç™ºå‹•å›æ•°ãŒtriCountä»¥ä¸‹ã®ã¨ãç™ºå‹•
 	 */
 	public int getTriggerCount(int idx) {
 		if (idx < 0 || idx >= getSkillSize()) {
@@ -223,7 +223,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * ƒXƒLƒ‹”­“®Aƒ^[ƒQƒbƒg‚ğ•ÏX‚·‚é‚©
+	 * ã‚¹ã‚­ãƒ«ç™ºå‹•æ™‚ã€ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚’å¤‰æ›´ã™ã‚‹ã‹
 	 */
 	int changeTarget[];
 
@@ -242,7 +242,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * range‚Ü‚Å‚Ì‹——£‚È‚ç‚ÎUŒ‚‰Â”\A•¨—UŒ‚‚ğ‚·‚é‚È‚ç‚Î‹ßÚUŒ‚‚Ìê‡‚Å‚à1ˆÈã‚ğİ’è
+	 * rangeã¾ã§ã®è·é›¢ãªã‚‰ã°æ”»æ’ƒå¯èƒ½ã€ç‰©ç†æ”»æ’ƒã‚’ã™ã‚‹ãªã‚‰ã°è¿‘æ¥æ”»æ’ƒã®å ´åˆã§ã‚‚1ä»¥ä¸Šã‚’è¨­å®š
 	 */
 	int range[];
 
@@ -261,9 +261,9 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * ”ÍˆÍUŒ‚‚Ì‰¡•A’P‘ÌUŒ‚‚È‚ç‚Î0‚ğİ’èA”ÍˆÍUŒ‚‚·‚é‚È‚ç‚Î0ˆÈã‚ğİ’è
-	 * Width‚ÆHeight‚Ìİ’è‚ÍUŒ‚Ò‚©‚ç‚İ‚Ä‰¡•‚ğWidthA‰œs‚«‚ğHeight‚Æ‚·‚éB
-	 * Width‚Í+-‚ ‚é‚Ì‚ÅA1‚ğw’è‚·‚ê‚ÎAƒ^[ƒQƒbƒg‚ğ’†S‚Æ‚µ‚Ä¶‰E1‚Ü‚Å‚ª‘ÎÛ‚Æ‚È‚éB
+	 * ç¯„å›²æ”»æ’ƒã®æ¨ªå¹…ã€å˜ä½“æ”»æ’ƒãªã‚‰ã°0ã‚’è¨­å®šã€ç¯„å›²æ”»æ’ƒã™ã‚‹ãªã‚‰ã°0ä»¥ä¸Šã‚’è¨­å®š
+	 * Widthã¨Heightã®è¨­å®šã¯æ”»æ’ƒè€…ã‹ã‚‰ã¿ã¦æ¨ªå¹…ã‚’Widthã€å¥¥è¡Œãã‚’Heightã¨ã™ã‚‹ã€‚
+	 * Widthã¯+-ã‚ã‚‹ã®ã§ã€1ã‚’æŒ‡å®šã™ã‚Œã°ã€ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚’ä¸­å¿ƒã¨ã—ã¦å·¦å³1ã¾ã§ãŒå¯¾è±¡ã¨ãªã‚‹ã€‚
 	 */
 	int areaWidth[];
 
@@ -282,7 +282,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * ”ÍˆÍUŒ‚‚Ì‚‚³A’P‘ÌUŒ‚‚È‚ç‚Î0‚ğİ’èA”ÍˆÍUŒ‚‚·‚é‚È‚ç‚Î1ˆÈã‚ğİ’è
+	 * ç¯„å›²æ”»æ’ƒã®é«˜ã•ã€å˜ä½“æ”»æ’ƒãªã‚‰ã°0ã‚’è¨­å®šã€ç¯„å›²æ”»æ’ƒã™ã‚‹ãªã‚‰ã°1ä»¥ä¸Šã‚’è¨­å®š
 	 */
 	int areaHeight[];
 
@@ -301,7 +301,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * ƒ_ƒ[ƒW‚Ì”{—¦A1/10‚Å•\‚·B•¨—UŒ‚A–‚–@UŒ‚‹¤‚É—LŒø
+	 * ãƒ€ãƒ¡ãƒ¼ã‚¸ã®å€ç‡ã€1/10ã§è¡¨ã™ã€‚ç‰©ç†æ”»æ’ƒã€é­”æ³•æ”»æ’ƒå…±ã«æœ‰åŠ¹
 	 */
 	int leverage[];
 
@@ -320,7 +320,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * –‚–@‚ğg‚¤ê‡ASkillId‚ğw’è
+	 * é­”æ³•ã‚’ä½¿ã†å ´åˆã€SkillIdã‚’æŒ‡å®š
 	 */
 	int skillId[];
 
@@ -339,7 +339,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * •¨—UŒ‚‚Ìƒ‚[ƒVƒ‡ƒ“ƒOƒ‰ƒtƒBƒbƒN
+	 * ç‰©ç†æ”»æ’ƒã®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯
 	 */
 	int gfxid[];
 
@@ -358,7 +358,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * •¨—UŒ‚‚ÌƒOƒ‰ƒtƒBƒbƒN‚ÌƒAƒNƒVƒ‡ƒ“ID
+	 * ç‰©ç†æ”»æ’ƒã®ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
 	 */
 	int actid[];
 
@@ -377,7 +377,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * ƒTƒ‚ƒ“‚·‚éƒ‚ƒ“ƒXƒ^[‚ÌNPCID
+	 * ã‚µãƒ¢ãƒ³ã™ã‚‹ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã®NPCID
 	 */
 	int summon[];
 
@@ -396,7 +396,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * ƒTƒ‚ƒ“‚·‚éƒ‚ƒ“ƒXƒ^[‚ÌÅ­”
+	 * ã‚µãƒ¢ãƒ³ã™ã‚‹ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã®æœ€å°‘æ•°
 	 */
 	int summonMin[];
 
@@ -415,7 +415,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * ƒTƒ‚ƒ“‚·‚éƒ‚ƒ“ƒXƒ^[‚ÌÅ‘å”
+	 * ã‚µãƒ¢ãƒ³ã™ã‚‹ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã®æœ€å¤§æ•°
 	 */
 	int summonMax[];
 
@@ -434,7 +434,7 @@ public class L1MobSkill implements Cloneable {
 	}
 
 	/*
-	 * ‰½‚É‹­§•Ïg‚³‚¹‚é‚©
+	 * ä½•ã«å¼·åˆ¶å¤‰èº«ã•ã›ã‚‹ã‹
 	 */
 	int polyId[];
 

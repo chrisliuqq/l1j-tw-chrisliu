@@ -36,9 +36,9 @@ public class L1HateList {
 
 	public L1HateList() {
 		/*
-		 * ConcurrentHashMap�𗘗p������A �S�Ẵ��\�b�h�𓯊���������������g�p�ʁA���x���ɗD��Ă����B
-		 * �A���A���ケ�̃N���X�̗��p���@���ς�����ꍇ�A �Ⴆ�Α����̃X���b�h���瓯���ɓǂݏo����������悤�ɂȂ����ꍇ�́A
-		 * ConcurrentHashMap�𗘗p���������ǂ���������Ȃ��B
+		 * ConcurrentHashMapを利用するより、 全てのメソッドを同期する方がメモリ使用量、速度共に優れていた。
+		 * 但し、今後このクラスの利用方法が変わった場合、 例えば多くのスレッドから同時に読み出しがかかるようになった場合は、
+		 * ConcurrentHashMapを利用した方が良いかもしれない。
 		 */
 		_hateMap = new HashMap<L1Character, Integer>();
 	}

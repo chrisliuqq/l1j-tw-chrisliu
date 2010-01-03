@@ -97,19 +97,19 @@ public class L1ItemInstance extends L1Object {
 	}
 
 	/**
-	 * ƒAƒCƒeƒ€‚ªŠm”F(ŠÓ’è)Ï‚İ‚Å‚ ‚é‚©‚ğ•Ô‚·B
+	 * ã‚¢ã‚¤ãƒ†ãƒ ãŒç¢ºèª(é‘‘å®š)æ¸ˆã¿ã§ã‚ã‚‹ã‹ã‚’è¿”ã™ã€‚
 	 * 
-	 * @return Šm”FÏ‚İ‚È‚çtrueA–¢Šm”F‚È‚çfalseB
+	 * @return ç¢ºèªæ¸ˆã¿ãªã‚‰trueã€æœªç¢ºèªãªã‚‰falseã€‚
 	 */
 	public boolean isIdentified() {
 		return _isIdentified;
 	}
 
 	/**
-	 * ƒAƒCƒeƒ€‚ªŠm”F(ŠÓ’è)Ï‚İ‚Å‚ ‚é‚©‚ğİ’è‚·‚éB
+	 * ã‚¢ã‚¤ãƒ†ãƒ ãŒç¢ºèª(é‘‘å®š)æ¸ˆã¿ã§ã‚ã‚‹ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
 	 * 
 	 * @param identified
-	 *            Šm”FÏ‚İ‚È‚çtrueA–¢Šm”F‚È‚çfalseB
+	 *            ç¢ºèªæ¸ˆã¿ãªã‚‰trueã€æœªç¢ºèªãªã‚‰falseã€‚
 	 */
 	public void setIdentified(boolean identified) {
 		_isIdentified = identified;
@@ -120,38 +120,38 @@ public class L1ItemInstance extends L1Object {
 	}
 
 	/**
-	 * ƒAƒCƒeƒ€‚ÌŒÂ”‚ğ•Ô‚·B
+	 * ã‚¢ã‚¤ãƒ†ãƒ ã®å€‹æ•°ã‚’è¿”ã™ã€‚
 	 * 
-	 * @return ƒAƒCƒeƒ€‚ÌŒÂ”
+	 * @return ã‚¢ã‚¤ãƒ†ãƒ ã®å€‹æ•°
 	 */
 	public int getCount() {
 		return _count;
 	}
 
 	/**
-	 * ƒAƒCƒeƒ€‚ÌŒÂ”‚ğİ’è‚·‚éB
+	 * ã‚¢ã‚¤ãƒ†ãƒ ã®å€‹æ•°ã‚’è¨­å®šã™ã‚‹ã€‚
 	 * 
 	 * @param count
-	 *            ƒAƒCƒeƒ€‚ÌŒÂ”
+	 *            ã‚¢ã‚¤ãƒ†ãƒ ã®å€‹æ•°
 	 */
 	public void setCount(int count) {
 		_count = count;
 	}
 
 	/**
-	 * ƒAƒCƒeƒ€‚ª‘•”õ‚³‚ê‚Ä‚¢‚é‚©‚ğ•Ô‚·B
+	 * ã‚¢ã‚¤ãƒ†ãƒ ãŒè£…å‚™ã•ã‚Œã¦ã„ã‚‹ã‹ã‚’è¿”ã™ã€‚
 	 * 
-	 * @return ƒAƒCƒeƒ€‚ª‘•”õ‚³‚ê‚Ä‚¢‚ê‚ÎtrueA‘•”õ‚³‚ê‚Ä‚¢‚È‚¯‚ê‚ÎfalseB
+	 * @return ã‚¢ã‚¤ãƒ†ãƒ ãŒè£…å‚™ã•ã‚Œã¦ã„ã‚Œã°trueã€è£…å‚™ã•ã‚Œã¦ã„ãªã‘ã‚Œã°falseã€‚
 	 */
 	public boolean isEquipped() {
 		return _isEquipped;
 	}
 
 	/**
-	 * ƒAƒCƒeƒ€‚ª‘•”õ‚³‚ê‚Ä‚¢‚é‚©‚ğİ’è‚·‚éB
+	 * ã‚¢ã‚¤ãƒ†ãƒ ãŒè£…å‚™ã•ã‚Œã¦ã„ã‚‹ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
 	 * 
 	 * @param equipped
-	 *            ƒAƒCƒeƒ€‚ª‘•”õ‚³‚ê‚Ä‚¢‚ê‚Îtrue,‘•”õ‚³‚ê‚Ä‚¢‚È‚¯‚ê‚ÎfalseB
+	 *            ã‚¢ã‚¤ãƒ†ãƒ ãŒè£…å‚™ã•ã‚Œã¦ã„ã‚Œã°true,è£…å‚™ã•ã‚Œã¦ã„ãªã‘ã‚Œã°falseã€‚
 	 */
 	public void setEquipped(boolean equipped) {
 		_isEquipped = equipped;
@@ -268,7 +268,7 @@ public class L1ItemInstance extends L1Object {
 	}
 
 	/*
-	 * ‘Ï‹v«A0~127‚Ü‚Å -‚Ì’l‚Í‹–‰Â‚µ‚È‚¢B
+	 * è€ä¹…æ€§ã€0~127ã¾ã§ -ã®å€¤ã¯è¨±å¯ã—ãªã„ã€‚
 	 */
 	public void set_durability(int i) {
 		if (i < 0) {
@@ -291,7 +291,7 @@ public class L1ItemInstance extends L1Object {
 	
 	
 	/**
-	 * ‘O‰ñDB‚Ö•Û‘¶‚µ‚½Û‚ÌƒAƒCƒeƒ€‚ÌƒXƒe[ƒ^ƒX‚ğŠi”[‚·‚éƒNƒ‰ƒX
+	 * å‰å›DBã¸ä¿å­˜ã—ãŸéš›ã®ã‚¢ã‚¤ãƒ†ãƒ ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’æ ¼ç´ã™ã‚‹ã‚¯ãƒ©ã‚¹
 	 */
 	public class LastStatus {
 		public int count;
@@ -387,7 +387,7 @@ public class L1ItemInstance extends L1Object {
 	}
 
 	/**
-	 * ‘O‰ñDB‚É•Û‘¶‚µ‚½‚©‚ç•Ï‰»‚µ‚Ä‚¢‚éƒJƒ‰ƒ€‚ğƒrƒbƒgW‡‚Æ‚µ‚Ä•Ô‚·B
+	 * å‰å›DBã«ä¿å­˜ã—ãŸæ™‚ã‹ã‚‰å¤‰åŒ–ã—ã¦ã„ã‚‹ã‚«ãƒ©ãƒ ã‚’ãƒ“ãƒƒãƒˆé›†åˆã¨ã—ã¦è¿”ã™ã€‚
 	 */
 	public int getRecordingColumns() {
 		int column = 0;
@@ -433,14 +433,14 @@ public class L1ItemInstance extends L1Object {
 	}
 	
 	/**
-	 * Š“‚â‘qŒÉ‚Å•\¦‚³‚ê‚éŒ`®‚Ì–¼‘O‚ğŒÂ”‚ğw’è‚µ‚Äæ“¾‚·‚éB<br>
+	 * é„ã‚„å€‰åº«ã§è¡¨ç¤ºã•ã‚Œã‚‹å½¢å¼ã®åå‰ã‚’å€‹æ•°ã‚’æŒ‡å®šã—ã¦å–å¾—ã™ã‚‹ã€‚<br>
 	 */
 	public String getNumberedViewName(int count) {
 		StringBuilder name = new StringBuilder(getNumberedName(count));
 		int itemType2 = getItem().getType2();
 		int itemId = getItem().getItemId();
 
-		if (itemId == 40314 || itemId == 40316) { // ƒyƒbƒg‚ÌƒAƒ~ƒ…ƒŒƒbƒg
+		if (itemId == 40314 || itemId == 40316) { // ãƒšãƒƒãƒˆã®ã‚¢ãƒŸãƒ¥ãƒ¬ãƒƒãƒˆ
 			L1Pet pet = PetTable.getInstance().getTemplate(getId());
 			if (pet != null) {
 				L1Npc npc = NpcTable.getInstance().getTemplate(pet.get_npcid());
@@ -451,11 +451,11 @@ public class L1ItemInstance extends L1Object {
 			}
 		}
 
-		if (getItem().getType2() == 0 && getItem().getType() == 2) { // lightŒnƒAƒCƒeƒ€
+		if (getItem().getType2() == 0 && getItem().getType() == 2) { // lightç³»ã‚¢ã‚¤ãƒ†ãƒ 
 			if (isNowLighting()) {
 				name.append(" ($10)");
 			}
-			if (itemId == 40001 || itemId == 40002) { // ƒ‰ƒ“ƒvorƒ‰ƒ“ƒ^ƒ“
+			if (itemId == 40001 || itemId == 40002) { // ãƒ©ãƒ³ãƒ—orãƒ©ãƒ³ã‚¿ãƒ³
 				if (getRemainingTime() <= 0) {
 					name.append(" ($11)");
 				}
@@ -464,45 +464,45 @@ public class L1ItemInstance extends L1Object {
 
 		if (isEquipped()) {
 			if (itemType2 == 1) {
-				name.append(" ($9)"); // ‘•”õ(Armed)
+				name.append(" ($9)"); // è£…å‚™(Armed)
 			} else if (itemType2 == 2) {
-				name.append(" ($117)"); // ‘•”õ(Worn)
+				name.append(" ($117)"); // è£…å‚™(Worn)
 			} else if (itemType2 == 0 && getItem().getType() == 11) { // petitem
-				name.append(" ($117)"); // ‘•”õ(Worn)
+				name.append(" ($117)"); // è£…å‚™(Worn)
 			}
 		}
 		return name.toString();
 	}
 
 	/**
-	 * Š“‚â‘qŒÉ‚Å•\¦‚³‚ê‚éŒ`®‚Ì–¼‘O‚ğ•Ô‚·B<br>
-	 * —á:+10 ƒJƒ^ƒi (‘•”õ)
+	 * é„ã‚„å€‰åº«ã§è¡¨ç¤ºã•ã‚Œã‚‹å½¢å¼ã®åå‰ã‚’è¿”ã™ã€‚<br>
+	 * ä¾‹:+10 ã‚«ã‚¿ãƒŠ (è£…å‚™)
 	 */
 	public String getViewName() {
 		return getNumberedViewName(_count);
 	}
 
 	/**
-	 * ƒƒO‚É•\¦‚³‚ê‚éŒ`®‚Ì–¼‘O‚ğ•Ô‚·B<br>
-	 * —á:ƒAƒfƒi(250) / +6 ƒ_ƒK[
+	 * ãƒ­ã‚°ã«è¡¨ç¤ºã•ã‚Œã‚‹å½¢å¼ã®åå‰ã‚’è¿”ã™ã€‚<br>
+	 * ä¾‹:ã‚¢ãƒ‡ãƒŠ(250) / +6 ãƒ€ã‚¬ãƒ¼
 	 */
 	public String getLogName() {
 		return getNumberedName(_count);
 	}
 
 	/**
-	 * ƒƒO‚É•\¦‚³‚ê‚éŒ`®‚Ì–¼‘O‚ğAŒÂ”‚ğw’è‚µ‚Äæ“¾‚·‚éB
+	 * ãƒ­ã‚°ã«è¡¨ç¤ºã•ã‚Œã‚‹å½¢å¼ã®åå‰ã‚’ã€å€‹æ•°ã‚’æŒ‡å®šã—ã¦å–å¾—ã™ã‚‹ã€‚
 	 */
 	public String getNumberedName(int count) {
 		StringBuilder name = new StringBuilder();
 
 		if (isIdentified()) {
-			if (getItem().getType2() == 1) { // •Ší
+			if (getItem().getType2() == 1) { // æ­¦å™¨
 				int attrEnchantLevel = getAttrEnchantLevel();
 				if (attrEnchantLevel > 0) {
 					String attrStr = null;
 					switch (getAttrEnchantKind()) {
-					case 1: // ’n
+					case 1: // åœ°
 						if (attrEnchantLevel == 1) {
 							attrStr = "$6124";
 						} else if (attrEnchantLevel == 2) {
@@ -511,7 +511,7 @@ public class L1ItemInstance extends L1Object {
 							attrStr = "$6126";
 						}
 						break;
-					case 2: // ‰Î
+					case 2: // ç«
 						if (attrEnchantLevel == 1) {
 							attrStr = "$6115";
 						} else if (attrEnchantLevel == 2) {
@@ -520,7 +520,7 @@ public class L1ItemInstance extends L1Object {
 							attrStr = "$6117";
 						}
 						break;
-					case 4: // …
+					case 4: // æ°´
 						if (attrEnchantLevel == 1) {
 							attrStr = "$6118";
 						} else if (attrEnchantLevel == 2) {
@@ -529,7 +529,7 @@ public class L1ItemInstance extends L1Object {
 							attrStr = "$6120";
 						}
 						break;
-					case 8: // •—
+					case 8: // é¢¨
 						if (attrEnchantLevel == 1) {
 							attrStr = "$6121";
 						} else if (attrEnchantLevel == 2) {
@@ -544,7 +544,7 @@ public class L1ItemInstance extends L1Object {
 					name.append(attrStr + " ");
 				}
 			}
-			if (getItem().getType2() == 1 || getItem().getType2() == 2) { // •ŠíE–h‹ï
+			if (getItem().getType2() == 1 || getItem().getType2() == 2) { // æ­¦å™¨ãƒ»é˜²å…·
 				if (getEnchantLevel() >= 0) {
 					name.append("+" + getEnchantLevel() + " ");
 				} else if (getEnchantLevel() < 0) {
@@ -561,10 +561,10 @@ public class L1ItemInstance extends L1Object {
 			if (getItem().getMaxChargeCount() > 0) {
 				name.append(" (" + getChargeCount() + ")");
 			}
-			if (getItem().getItemId() == 20383) { // ‹R”n—pƒwƒ‹ƒ€
+			if (getItem().getItemId() == 20383) { // é¨é¦¬ç”¨ãƒ˜ãƒ«ãƒ 
 				name.append(" (" + getChargeCount() + ")");
 			}
-			if (getItem().getMaxUseTime() > 0 && getItem().getType2() != 0) { // •Ší–h‹ï‚Åg—pŠÔ§ŒÀ‚ ‚è
+			if (getItem().getMaxUseTime() > 0 && getItem().getType2() != 0) { // æ­¦å™¨é˜²å…·ã§ä½¿ç”¨æ™‚é–“åˆ¶é™ã‚ã‚Š
 				name.append(" (" + getRemainingTime() + ")");
 			}
 		}
@@ -577,7 +577,7 @@ public class L1ItemInstance extends L1Object {
 	}
 
 	/**
-	 * ƒAƒCƒeƒ€‚Ìó‘Ô‚©‚çƒT[ƒo[ƒpƒPƒbƒg‚Å—˜—p‚·‚éŒ`®‚ÌƒoƒCƒg—ñ‚ğ¶¬‚µA•Ô‚·B
+	 * ã‚¢ã‚¤ãƒ†ãƒ ã®çŠ¶æ…‹ã‹ã‚‰ã‚µãƒ¼ãƒãƒ¼ãƒ‘ã‚±ãƒƒãƒˆã§åˆ©ç”¨ã™ã‚‹å½¢å¼ã®ãƒã‚¤ãƒˆåˆ—ã‚’ç”Ÿæˆã—ã€è¿”ã™ã€‚
 	 */
 	public byte[] getStatusBytes() {
 		int itemType2 = getItem().getType2();
@@ -587,22 +587,22 @@ public class L1ItemInstance extends L1Object {
 		if (itemType2 == 0) { // etcitem
 			switch (getItem().getType()) {
 			case 2: // light
-				os.writeC(22); // –¾‚é‚³
+				os.writeC(22); // æ˜ã‚‹ã•
 				os.writeH(getItem().getLightRange());
 				break;
 			case 7: // food
 				os.writeC(21);
-				// ‰h—{
+				// æ „é¤Š
 				os.writeH(getItem().getFoodVolume());
 				break;
 			case 0: // arrow
 			case 15: // sting
-				os.writeC(1); // ‘ÅŒ‚’l
+				os.writeC(1); // æ‰“æ’ƒå€¤
 				os.writeC(getItem().getDmgSmall());
 				os.writeC(getItem().getDmgLarge());
 				break;
 			default:
-				os.writeC(23); // Ş¿
+				os.writeC(23); // æè³ª
 				break;
 			}
 			os.writeC(getItem().getMaterial());
@@ -610,7 +610,7 @@ public class L1ItemInstance extends L1Object {
 			
 		} else if (itemType2 == 1 || itemType2 == 2) { // weapon | armor
 			if (itemType2 == 1) { // weapon
-				// ‘ÅŒ‚’l
+				// æ‰“æ’ƒå€¤
 				os.writeC(1);
 				os.writeC(getItem().getDmgSmall());
 				os.writeC(getItem().getDmgLarge());
@@ -627,21 +627,21 @@ public class L1ItemInstance extends L1Object {
 				os.writeC(getItem().getMaterial());
 				os.writeD(getWeight());
 			}
-			// ‹­‰»”
+			// å¼·åŒ–æ•°
 			if (getEnchantLevel() != 0) {
 				os.writeC(2);
 				os.writeC(getEnchantLevel());
 			}
-			// ‘¹“x
+			// æå‚·åº¦
 			if (get_durability() != 0) {
 				os.writeC(3);
 				os.writeC(get_durability());
 			}
-			// —¼è•Ší
+			// ä¸¡æ‰‹æ­¦å™¨
 			if (getItem().isTwohandedWeapon()) {
 				os.writeC(4);
 			}
-			// UŒ‚¬Œ÷
+			// æ”»æ’ƒæˆåŠŸ
 			if (itemType2 == 1) { // weapon
 				if (getItem().getHitModifier() != 0) {
 					os.writeC(5);
@@ -653,7 +653,7 @@ public class L1ItemInstance extends L1Object {
 					os.writeC(getItem().getHitModifierByArmor());
 				}
 			}
- 			// ’Ç‰Á‘ÅŒ‚
+ 			// è¿½åŠ æ‰“æ’ƒ
 			if (itemType2 == 1) { // weapon
 				if (getItem().getDmgModifier() != 0) {
 					os.writeC(6);
@@ -665,7 +665,7 @@ public class L1ItemInstance extends L1Object {
 					os.writeC(getItem().getDmgModifierByArmor());
 				}
 			}
-			// g—p‰Â”\
+			// ä½¿ç”¨å¯èƒ½
 			int bit = 0;
 			bit |= getItem().isUseRoyal()   ? 1 : 0;
 			bit |= getItem().isUseKnight()  ? 2 : 0;
@@ -674,25 +674,25 @@ public class L1ItemInstance extends L1Object {
 			bit |= getItem().isUseDarkelf() ? 16 : 0;
 			bit |= getItem().isUseDragonknight() ? 32 : 0;
 			bit |= getItem().isUseIllusionist() ? 64 : 0;
-			// bit |= getItem().isUseHiPet() ? 64 : 0; // ƒnƒCƒyƒbƒg
+			// bit |= getItem().isUseHiPet() ? 64 : 0; // ãƒã‚¤ãƒšãƒƒãƒˆ
 			os.writeC(7);
 			os.writeC(bit);
-			// ‹|‚Ì–½’†—¦•â³
+			// å¼“ã®å‘½ä¸­ç‡è£œæ­£
 			if (getItem().getBowHitModifierByArmor() != 0) {
 				os.writeC(24);
 				os.writeC(getItem().getBowHitModifierByArmor());
 			}
-			// ‹|‚Ìƒ_ƒ[ƒW•â³
+			// å¼“ã®ãƒ€ãƒ¡ãƒ¼ã‚¸è£œæ­£
 			if (getItem().getBowDmgModifierByArmor() != 0) {
 				os.writeC(35);
 				os.writeC(getItem().getBowDmgModifierByArmor());
 			}
-			// MP‹zû
-			if (itemId == 126 || itemId == 127) { // ƒ}ƒiƒXƒ^ƒbƒtA|“S‚Ìƒ}ƒiƒXƒ^ƒbƒt
+			// MPå¸å
+			if (itemId == 126 || itemId == 127) { // ãƒãƒŠã‚¹ã‚¿ãƒƒãƒ•ã€é‹¼é‰„ã®ãƒãƒŠã‚¹ã‚¿ãƒƒãƒ•
 				os.writeC(16);
 			}
-			// HP‹zû
-			if (itemId == 262) { // ƒfƒBƒXƒgƒ‰ƒNƒVƒ‡ƒ“
+			// HPå¸å
+			if (itemId == 262) { // ãƒ‡ã‚£ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³
 				os.writeC(34);
 			}
 			// STR~CHA
@@ -734,88 +734,88 @@ public class L1ItemInstance extends L1Object {
 				os.writeC(15);
 				os.writeH(getMr());
 			}
-			// SP(–‚—Í)
+			// SP(é­”åŠ›)
 			if (getItem().get_addsp() != 0) {
 				os.writeC(17);
 				os.writeC(getItem().get_addsp());
 			}
-			// ƒwƒCƒXƒg
+			// ãƒ˜ã‚¤ã‚¹ãƒˆ
 			if (getItem().isHasteItem()) {
 				os.writeC(18);
 			}
-			// ‰Î‚Ì‘®«
+			// ç«ã®å±æ€§
 			if (getItem().get_defense_fire() != 0) {
 				os.writeC(27);
 				os.writeC(getItem().get_defense_fire());
 			}
-			// …‚Ì‘®«
+			// æ°´ã®å±æ€§
 			if (getItem().get_defense_water() != 0) {
 				os.writeC(28);
 				os.writeC(getItem().get_defense_water());
 			}
-			// •—‚Ì‘®«
+			// é¢¨ã®å±æ€§
 			if (getItem().get_defense_wind() != 0) {
 				os.writeC(29);
 				os.writeC(getItem().get_defense_wind());
 			}
-			// ’n‚Ì‘®«
+			// åœ°ã®å±æ€§
 			if (getItem().get_defense_earth() != 0) {
 				os.writeC(30);
 				os.writeC(getItem().get_defense_earth());
 			}
-			// “€Œ‹‘Ï«
+			// å‡çµè€æ€§
 			if (getItem().get_regist_freeze() != 0) {
 				os.writeC(15);
 				os.writeH(getItem().get_regist_freeze());
 				os.writeC(33);
 				os.writeC(1);
 			}
-			// Î‰»‘Ï«
+			// çŸ³åŒ–è€æ€§
 			if (getItem().get_regist_stone() != 0) {
 				os.writeC(15);
 				os.writeH(getItem().get_regist_stone());
 				os.writeC(33);
 				os.writeC(2);
 			}
-			// ‡–°‘Ï«
+			// ç¡çœ è€æ€§
 			if (getItem().get_regist_sleep() != 0) {
 				os.writeC(15);
 				os.writeH(getItem().get_regist_sleep());
 				os.writeC(33);
 				os.writeC(3);
 			}
-			// ˆÃˆÅ‘Ï«
+			// æš—é—‡è€æ€§
 			if (getItem().get_regist_blind() != 0) {
 				os.writeC(15);
 				os.writeH(getItem().get_regist_blind());
 				os.writeC(33);
 				os.writeC(4);
 			}
-			// ƒXƒ^ƒ“‘Ï«
+			// ã‚¹ã‚¿ãƒ³è€æ€§
 			if (getItem().get_regist_stun() != 0) {
 				os.writeC(15);
 				os.writeH(getItem().get_regist_stun());
 				os.writeC(33);
 				os.writeC(5);
 			}
-			// ƒz[ƒ‹ƒh‘Ï«
+			// ãƒ›ãƒ¼ãƒ«ãƒ‰è€æ€§
 			if (getItem().get_regist_sustain() != 0) {
 				os.writeC(15);
 				os.writeH(getItem().get_regist_sustain());
 				os.writeC(33);
 				os.writeC(6);
 			}
-			// K‰^
+			// å¹¸é‹
 // if (getItem.getLuck() != 0) {
 // os.writeC(20);
 // os.writeC(val);
 // }
-			// í—Ş
+			// ç¨®é¡
 // if (getItem.getDesc() != 0) {
 // os.writeC(25);
 // os.writeH(val); // desc.tbl ID
 // }
-			// ƒŒƒxƒ‹
+			// ãƒ¬ãƒ™ãƒ«
 // if (getItem.getLevel() != 0) {
 // os.writeC(26);
 // os.writeH(val);

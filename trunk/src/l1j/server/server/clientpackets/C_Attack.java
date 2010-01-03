@@ -65,23 +65,23 @@ public class C_Attack extends ClientBasePacket {
 
 		L1Object target = L1World.getInstance().findObject(targetId);
 
-		// UŒ‚ƒAƒNƒVƒ‡ƒ“‚ğ‚Æ‚ê‚éó‘Ô‚©Šm”F
-		if (pc.getInventory().getWeight240() >= 197) { // d—ÊƒI[ƒo[
-			pc.sendPackets(new S_ServerMessage(110)); // \f1ƒAƒCƒeƒ€‚ªd‚·‚¬‚Äí“¬‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+		// æ”»æ’ƒã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’ã¨ã‚Œã‚‹çŠ¶æ…‹ã‹ç¢ºèª
+		if (pc.getInventory().getWeight240() >= 197) { // é‡é‡ã‚ªãƒ¼ãƒãƒ¼
+			pc.sendPackets(new S_ServerMessage(110)); // \f1ã‚¢ã‚¤ãƒ†ãƒ ãŒé‡ã™ãã¦æˆ¦é—˜ã™ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 			return;
 		}
 
-		if (pc.isInvisble()) { // ƒCƒ“ƒrƒWƒrƒŠƒeƒBAƒuƒ‰ƒCƒ“ƒhƒnƒCƒfƒBƒ“ƒO’†
+		if (pc.isInvisble()) { // ã‚¤ãƒ³ãƒ“ã‚¸ãƒ“ãƒªãƒ†ã‚£ã€ãƒ–ãƒ©ã‚¤ãƒ³ãƒ‰ãƒã‚¤ãƒ‡ã‚£ãƒ³ã‚°ä¸­
 			return;
 		}
 
-		if (pc.isInvisDelay()) { // ƒCƒ“ƒrƒWƒrƒŠƒeƒBƒfƒBƒŒƒC’†
+		if (pc.isInvisDelay()) { // ã‚¤ãƒ³ãƒ“ã‚¸ãƒ“ãƒªãƒ†ã‚£ãƒ‡ã‚£ãƒ¬ã‚¤ä¸­
 			return;
 		}
 
 		if (target instanceof L1Character) {
 			if (target.getMapId() != pc.getMapId()
-					|| pc.getLocation().getLineDistance(target.getLocation()) > 20D) { // ƒ^[ƒQƒbƒg‚ªˆÙí‚ÈêŠ‚É‚¢‚½‚çI—¹
+					|| pc.getLocation().getLineDistance(target.getLocation()) > 20D) { // ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãŒç•°å¸¸ãªå ´æ‰€ã«ã„ãŸã‚‰çµ‚äº†
 				return;
 			}
 		}
@@ -89,12 +89,12 @@ public class C_Attack extends ClientBasePacket {
 		if (target instanceof L1NpcInstance) {
 			int hiddenStatus = ((L1NpcInstance) target).getHiddenStatus();
 			if (hiddenStatus == L1NpcInstance.HIDDEN_STATUS_SINK
-					|| hiddenStatus == L1NpcInstance.HIDDEN_STATUS_FLY) { // ’n’†‚Éö‚Á‚Ä‚¢‚é‚©A”ò‚ñ‚Å‚¢‚é
+					|| hiddenStatus == L1NpcInstance.HIDDEN_STATUS_FLY) { // åœ°ä¸­ã«æ½œã£ã¦ã„ã‚‹ã‹ã€é£›ã‚“ã§ã„ã‚‹
 				return;
 			}
 		}
 
-		// UŒ‚—v‹ŠÔŠu‚ğƒ`ƒFƒbƒN‚·‚é
+		// æ”»æ’ƒè¦æ±‚é–“éš”ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 		if (Config.CHECK_ATTACK_INTERVAL) {
 			int result;
 			result = pc.getAcceleratorChecker()
@@ -104,8 +104,8 @@ public class C_Attack extends ClientBasePacket {
 			}
 		}
 
-		// UŒ‚ƒAƒNƒVƒ‡ƒ“‚ª‚Æ‚ê‚éê‡‚Ìˆ—
-		if (pc.hasSkillEffect(ABSOLUTE_BARRIER)) { // ƒAƒuƒ\ƒ‹[ƒg ƒoƒŠƒA‚Ì‰ğœ
+		// æ”»æ’ƒã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒã¨ã‚Œã‚‹å ´åˆã®å‡¦ç†
+		if (pc.hasSkillEffect(ABSOLUTE_BARRIER)) { // ã‚¢ãƒ–ã‚½ãƒ«ãƒ¼ãƒˆ ãƒãƒªã‚¢ã®è§£é™¤
 			pc.killSkillEffectTimer(ABSOLUTE_BARRIER);
 			pc.startHpRegeneration();
 			pc.startMpRegeneration();
@@ -113,13 +113,13 @@ public class C_Attack extends ClientBasePacket {
 		}
 		pc.killSkillEffectTimer(MEDITATION);
 
-		pc.delInvis(); // “§–¾ó‘Ô‚Ì‰ğœ
+		pc.delInvis(); // é€æ˜çŠ¶æ…‹ã®è§£é™¤
 
 		pc.setRegenState(REGENSTATE_ATTACK);
 
 		if (target != null && !((L1Character) target).isDead()) {
 			target.onAction(pc);
-		} else { // ‹óUŒ‚
+		} else { // ç©ºæ”»æ’ƒ
 			L1ItemInstance weapon = pc.getWeapon();
 			int weaponId = 0;
 			int weaponType = 0;
@@ -137,21 +137,21 @@ public class C_Attack extends ClientBasePacket {
 			}
 			pc.setHeading(pc.targetDirection(x, y));
 			if (weaponType == 20 && (weaponId == 190 || arrow != null)) {
-				calcOrbit(pc.getX(), pc.getY(), pc.getHeading()); // ‹O“¹ŒvZ
-				if (arrow != null) { // –î‚ª‚ ‚éê‡
+				calcOrbit(pc.getX(), pc.getY(), pc.getHeading()); // è»Œé“è¨ˆç®—
+				if (arrow != null) { // çŸ¢ãŒã‚ã‚‹å ´åˆ
 					pc.sendPackets(new S_UseArrowSkill(pc, 0, 66, _targetX,
 							_targetY, true));
 					pc.broadcastPacket(new S_UseArrowSkill(pc, 0, 66, _targetX,
 							_targetY, true));
 					pc.getInventory().removeItem(arrow, 1);
-				} else if (weaponId == 190) { // ƒTƒCƒn‚Ì‹|
+				} else if (weaponId == 190) { // ã‚µã‚¤ãƒã®å¼“
 					pc.sendPackets(new S_UseArrowSkill(pc, 0, 2349, _targetX,
 							_targetY, true));
 					pc.broadcastPacket(new S_UseArrowSkill(pc, 0, 2349,
 							_targetX, _targetY, true));
 				}
 			} else if (weaponType == 62 && sting != null) {
-				calcOrbit(pc.getX(), pc.getY(), pc.getHeading()); // ‹O“¹ŒvZ
+				calcOrbit(pc.getX(), pc.getY(), pc.getHeading()); // è»Œé“è¨ˆç®—
 				pc.sendPackets(new S_UseArrowSkill(pc, 0, 2989, _targetX,
 						_targetY, true));
 				pc.broadcastPacket(new S_UseArrowSkill(pc, 0, 2989, _targetX,

@@ -55,7 +55,7 @@ public class DropTable {
 
 	private static DropTable _instance;
 
-	private final HashMap<Integer, ArrayList<L1Drop>> _droplists; // ƒ‚ƒ“ƒXƒ^[–ˆ‚ÌƒhƒƒbƒvƒŠƒXƒg
+	private final HashMap<Integer, ArrayList<L1Drop>> _droplists; // ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼æ¯ã®ãƒ‰ãƒ­ãƒƒãƒ—ãƒªã‚¹ãƒˆ
 
 	public static DropTable getInstance() {
 		if (_instance == null) {
@@ -104,16 +104,16 @@ public class DropTable {
 		return droplistMap;
 	}
 
-	// ƒCƒ“ƒxƒ“ƒgƒŠ‚Éƒhƒƒbƒv‚ğİ’è
+	// ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªã«ãƒ‰ãƒ­ãƒƒãƒ—ã‚’è¨­å®š
 	public void setDrop(L1NpcInstance npc, L1Inventory inventory) {
-		// ƒhƒƒbƒvƒŠƒXƒg‚Ìæ“¾
+		// ãƒ‰ãƒ­ãƒƒãƒ—ãƒªã‚¹ãƒˆã®å–å¾—
 		int mobId = npc.getNpcTemplate().get_npcId();
 		ArrayList<L1Drop> dropList = _droplists.get(mobId);
 		if (dropList == null) {
 			return;
 		}
 
-		// ƒŒ[ƒgæ“¾
+		// ãƒ¬ãƒ¼ãƒˆå–å¾—
 		double droprate = Config.RATE_DROP_ITEMS;
 		if (droprate <= 0) {
 			droprate = 0;
@@ -134,13 +134,13 @@ public class DropTable {
 		Random random = new Random();
 
 		for (L1Drop drop : dropList) {
-			// ƒhƒƒbƒvƒAƒCƒeƒ€‚Ìæ“¾
+			// ãƒ‰ãƒ­ãƒƒãƒ—ã‚¢ã‚¤ãƒ†ãƒ ã®å–å¾—
 			itemId = drop.getItemid();
 			if (adenarate == 0 && itemId == L1ItemId.ADENA) {
-				continue; // ƒAƒfƒiƒŒ[ƒg‚O‚Åƒhƒƒbƒv‚ªƒAƒfƒi‚Ìê‡‚ÍƒXƒ‹[
+				continue; // ã‚¢ãƒ‡ãƒŠãƒ¬ãƒ¼ãƒˆï¼ã§ãƒ‰ãƒ­ãƒƒãƒ—ãŒã‚¢ãƒ‡ãƒŠã®å ´åˆã¯ã‚¹ãƒ«ãƒ¼
 			}
 
-			// ƒhƒƒbƒvƒ`ƒƒƒ“ƒX”»’è
+			// ãƒ‰ãƒ­ãƒƒãƒ—ãƒãƒ£ãƒ³ã‚¹åˆ¤å®š
 			randomChance = random.nextInt(0xf4240) + 1;
 			double rateOfMapId = MapsTable.getInstance().getDropRate(
 					npc.getMapId());
@@ -150,7 +150,7 @@ public class DropTable {
 				continue;
 			}
 
-			// ƒhƒƒbƒvŒÂ”‚ğİ’è
+			// ãƒ‰ãƒ­ãƒƒãƒ—å€‹æ•°ã‚’è¨­å®š
 			double amount = DropItemTable.getInstance().getDropAmount(itemId);
 			int min = (int) (drop.getMin() * amount);
 			int max = (int) (drop.getMax() * amount);
@@ -160,7 +160,7 @@ public class DropTable {
 			if (addCount > 1) {
 				itemCount += random.nextInt(addCount);
 			}
-			if (itemId == L1ItemId.ADENA) { // ƒhƒƒbƒv‚ªƒAƒfƒi‚Ìê‡‚ÍƒAƒfƒiƒŒ[ƒg‚ğŠ|‚¯‚é
+			if (itemId == L1ItemId.ADENA) { // ãƒ‰ãƒ­ãƒƒãƒ—ãŒã‚¢ãƒ‡ãƒŠã®å ´åˆã¯ã‚¢ãƒ‡ãƒŠãƒ¬ãƒ¼ãƒˆã‚’æ›ã‘ã‚‹
 				itemCount *= adenarate;
 			}
 			if (itemCount < 0) {
@@ -170,16 +170,16 @@ public class DropTable {
 				itemCount = 2000000000;
 			}
 
-			// ƒAƒCƒeƒ€‚Ì¶¬
+			// ã‚¢ã‚¤ãƒ†ãƒ ã®ç”Ÿæˆ
 			item = ItemTable.getInstance().createItem(itemId);
 			item.setCount(itemCount);
 
-			// ƒAƒCƒeƒ€Ši”[
+			// ã‚¢ã‚¤ãƒ†ãƒ æ ¼ç´
 			inventory.storeItem(item);
 		}
 	}
 
-	// ƒhƒƒbƒv‚ğ•ª”z
+	// ãƒ‰ãƒ­ãƒƒãƒ—ã‚’åˆ†é…
 	public void dropShare(L1NpcInstance npc, ArrayList acquisitorList,
 			ArrayList hateList) {
 		L1Inventory inventory = npc.getInventory();
@@ -189,12 +189,12 @@ public class DropTable {
 		if (acquisitorList.size() != hateList.size()) {
 			return;
 		}
-		// ƒwƒCƒg‚Ì‡Œv‚ğæ“¾
+		// ãƒ˜ã‚¤ãƒˆã®åˆè¨ˆã‚’å–å¾—
 		int totalHate = 0;
 		L1Character acquisitor;
 		for (int i = hateList.size() - 1; i >= 0; i--) {
 			acquisitor = (L1Character) acquisitorList.get(i);
-			if ((Config.AUTO_LOOT == 2) // ƒI[ƒgƒ‹[ƒeƒBƒ“ƒO‚Q‚Ìê‡‚ÍƒTƒ‚ƒ“‹y‚Ñƒyƒbƒg‚ÍÈ‚­
+			if ((Config.AUTO_LOOT == 2) // ã‚ªãƒ¼ãƒˆãƒ«ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ï¼’ã®å ´åˆã¯ã‚µãƒ¢ãƒ³åŠã³ãƒšãƒƒãƒˆã¯çœã
 					&& (acquisitor instanceof L1SummonInstance || acquisitor instanceof L1PetInstance)) {
 				acquisitorList.remove(i);
 				hateList.remove(i);
@@ -203,13 +203,13 @@ public class DropTable {
 					&& acquisitor.getLocation().getTileLineDistance(
 							npc.getLocation()) <= Config.LOOTING_RANGE) {
 				totalHate += (Integer) hateList.get(i);
-			} else { // null‚¾‚Á‚½‚è€‚ñ‚Å‚½‚è‰“‚©‚Á‚½‚ç”rœ
+			} else { // nullã ã£ãŸã‚Šæ­»ã‚“ã§ãŸã‚Šé ã‹ã£ãŸã‚‰æ’é™¤
 				acquisitorList.remove(i);
 				hateList.remove(i);
 			}
 		}
 
-		// ƒhƒƒbƒv‚Ì•ª”z
+		// ãƒ‰ãƒ­ãƒƒãƒ—ã®åˆ†é…
 		L1ItemInstance item;
 		L1Inventory targetInventory = null;
 		L1PcInstance player;
@@ -222,12 +222,12 @@ public class DropTable {
 			item = inventory.getItems().get(0);
 			itemId = item.getItemId();
 			boolean isGround = false;
-			if (item.getItem().getType2() == 0 && item.getItem().getType() == 2) { // lightŒnƒAƒCƒeƒ€
+			if (item.getItem().getType2() == 0 && item.getItem().getType() == 2) { // lightç³»ã‚¢ã‚¤ãƒ†ãƒ 
 				item.setNowLighting(false);
 			}
 
 			if (((Config.AUTO_LOOT != 0) || itemId == L1ItemId.ADENA)
-					&& totalHate > 0) { // ƒI[ƒgƒ‹[ƒeƒBƒ“ƒO‚©ƒAƒfƒi‚Åæ“¾Ò‚ª‚¢‚éê‡
+					&& totalHate > 0) { // ã‚ªãƒ¼ãƒˆãƒ«ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã‹ã‚¢ãƒ‡ãƒŠã§å–å¾—è€…ãŒã„ã‚‹å ´åˆ
 				randomInt = random.nextInt(totalHate);
 				chanceHate = 0;
 				for (int j = hateList.size() - 1; j >= 0; j--) {
@@ -254,19 +254,19 @@ public class DropTable {
 								player = (L1PcInstance) acquisitor;
 								L1ItemInstance l1iteminstance = player
 										.getInventory().findItemId(
-												L1ItemId.ADENA); // ŠƒAƒfƒi‚ğƒ`ƒFƒbƒN
+												L1ItemId.ADENA); // æ‰€æŒã‚¢ãƒ‡ãƒŠã‚’ãƒã‚§ãƒƒã‚¯
 								if (l1iteminstance != null
 										&& l1iteminstance.getCount() > 2000000000) {
 									targetInventory = L1World.getInstance()
 											.getInventory(acquisitor.getX(),
 													acquisitor.getY(),
-													acquisitor.getMapId()); // ‚Ä‚È‚¢‚Ì‚Å‘«Œ³‚É—‚Æ‚·
+													acquisitor.getMapId()); // æŒã¦ãªã„ã®ã§è¶³å…ƒã«è½ã¨ã™
 									isGround = true;
 									player.sendPackets(new S_ServerMessage(166,
-											"Š‚µ‚Ä‚¢‚éƒAƒfƒi",
-											"2,000,000,000‚ğ’´‰ß‚µ‚Ä‚¢‚Ü‚·B")); // \f1%0‚ª%4%1%3%2
+											"æ‰€æŒã—ã¦ã„ã‚‹ã‚¢ãƒ‡ãƒŠ",
+											"2,000,000,000ã‚’è¶…éã—ã¦ã„ã¾ã™ã€‚")); // \f1%0ãŒ%4%1%3%2
 								} else {
-									if (player.isInParty()) { // ƒp[ƒeƒB‚Ìê‡
+									if (player.isInParty()) { // ãƒ‘ãƒ¼ãƒ†ã‚£ã®å ´åˆ
 										partyMember = player.getParty()
 												.getMembers();
 										for (int p = 0; p < partyMember.length; p++) {
@@ -277,10 +277,10 @@ public class DropTable {
 															player.getName()));
 										}
 									} else {
-										// ƒ\ƒ‚Ìê‡
+										// ã‚½ãƒ­ã®å ´åˆ
 										player.sendPackets(new S_ServerMessage(
 												143, npc.getName(), item
-														.getLogName())); // \f1%0‚ª%1‚ğ‚­‚ê‚Ü‚µ‚½B
+														.getLogName())); // \f1%0ãŒ%1ã‚’ãã‚Œã¾ã—ãŸã€‚
 									}
 								}
 							}
@@ -288,13 +288,13 @@ public class DropTable {
 							targetInventory = L1World.getInstance()
 									.getInventory(acquisitor.getX(),
 											acquisitor.getY(),
-											acquisitor.getMapId()); // ‚Ä‚È‚¢‚Ì‚Å‘«Œ³‚É—‚Æ‚·
+											acquisitor.getMapId()); // æŒã¦ãªã„ã®ã§è¶³å…ƒã«è½ã¨ã™
 							isGround = true;
 						}
 						break;
 					}
 				}
-			} else { // ƒmƒ“ƒI[ƒgƒ‹[ƒeƒBƒ“ƒO
+			} else { // ãƒãƒ³ã‚ªãƒ¼ãƒˆãƒ«ãƒ¼ãƒ†ã‚£ãƒ³ã‚°
 				List<Integer> dirList = new ArrayList<Integer>();
 				for (int j = 0; j < 8; j++) {
 					dirList.add(j);

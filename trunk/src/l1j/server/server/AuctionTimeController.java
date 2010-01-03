@@ -84,17 +84,17 @@ public class AuctionTimeController implements Runnable {
 		String bidder = board.getBidder();
 		int bidderId = board.getBidderId();
 
-		if (oldOwnerId != 0 && bidderId != 0) { // ˆÈ‘O‚ÌŠ—LÒ‚ ‚èE—DÒ‚ ‚è
+		if (oldOwnerId != 0 && bidderId != 0) { // ä»¥å‰ã®æ‰€æœ‰è€…ã‚ã‚Šãƒ»è½æœ­è€…ã‚ã‚Š
 			L1PcInstance oldOwnerPc = (L1PcInstance) L1World.getInstance()
 					.findObject(oldOwnerId);
 			int payPrice = (int) (price * 0.9);
-			if (oldOwnerPc != null) { // ˆÈ‘O‚ÌŠ—LÒ‚ªƒIƒ“ƒ‰ƒCƒ“’†
+			if (oldOwnerPc != null) { // ä»¥å‰ã®æ‰€æœ‰è€…ãŒã‚ªãƒ³ãƒ©ã‚¤ãƒ³ä¸­
 				oldOwnerPc.getInventory().storeItem(L1ItemId.ADENA, payPrice);
-				// ‚ ‚È‚½‚ªŠ—L‚µ‚Ä‚¢‚½‰Æ‚ªÅI‰¿Ši%1ƒAƒfƒi‚Å—D‚³‚ê‚Ü‚µ‚½B%n
-				// è”—¿10%%‚ğœ‚¢‚½c‚è‚Ì‹àŠz%0ƒAƒfƒi‚ğ·‚µã‚°‚Ü‚·B%n‚ ‚è‚ª‚Æ‚¤‚²‚´‚¢‚Ü‚µ‚½B%n%n
+				// ã‚ãªãŸãŒæ‰€æœ‰ã—ã¦ã„ãŸå®¶ãŒæœ€çµ‚ä¾¡æ ¼%1ã‚¢ãƒ‡ãƒŠã§è½æœ­ã•ã‚Œã¾ã—ãŸã€‚%n
+				// æ‰‹æ•°æ–™10%%ã‚’é™¤ã„ãŸæ®‹ã‚Šã®é‡‘é¡%0ã‚¢ãƒ‡ãƒŠã‚’å·®ã—ä¸Šã’ã¾ã™ã€‚%nã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã—ãŸã€‚%n%n
 				oldOwnerPc.sendPackets(new S_ServerMessage(527, String
 						.valueOf(payPrice)));
-			} else { // ˆÈ‘O‚ÌŠ—LÒ‚ªƒIƒtƒ‰ƒCƒ“’†
+			} else { // ä»¥å‰ã®æ‰€æœ‰è€…ãŒã‚ªãƒ•ãƒ©ã‚¤ãƒ³ä¸­
 				L1ItemInstance item = ItemTable.getInstance().createItem(
 						L1ItemId.ADENA);
 				item.setCount(payPrice);
@@ -109,40 +109,40 @@ public class AuctionTimeController implements Runnable {
 
 			L1PcInstance bidderPc = (L1PcInstance) L1World.getInstance()
 					.findObject(bidderId);
-			if (bidderPc != null) { // —DÒ‚ªƒIƒ“ƒ‰ƒCƒ“’†
-				// ‚¨‚ß‚Å‚Æ‚¤‚²‚´‚¢‚Ü‚·B%n‚ ‚È‚½‚ªQ‰Á‚³‚ê‚½‹£”„‚ÍÅI‰¿Ši%0ƒAƒfƒi‚Ì‰¿Ši‚Å—D‚³‚ê‚Ü‚µ‚½B%n
-				// —l‚ª‚²w“ü‚³‚ê‚½‰Æ‚Í‚·‚®‚É‚²—˜—p‚Å‚«‚Ü‚·B%n‚ ‚è‚ª‚Æ‚¤‚²‚´‚¢‚Ü‚µ‚½B%n%n
+			if (bidderPc != null) { // è½æœ­è€…ãŒã‚ªãƒ³ãƒ©ã‚¤ãƒ³ä¸­
+				// ãŠã‚ã§ã¨ã†ã”ã–ã„ã¾ã™ã€‚%nã‚ãªãŸãŒå‚åŠ ã•ã‚ŒãŸç«¶å£²ã¯æœ€çµ‚ä¾¡æ ¼%0ã‚¢ãƒ‡ãƒŠã®ä¾¡æ ¼ã§è½æœ­ã•ã‚Œã¾ã—ãŸã€‚%n
+				// æ§˜ãŒã”è³¼å…¥ã•ã‚ŒãŸå®¶ã¯ã™ãã«ã”åˆ©ç”¨ã§ãã¾ã™ã€‚%nã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã—ãŸã€‚%n%n
 				bidderPc.sendPackets(new S_ServerMessage(524, String
 						.valueOf(price), bidder));
 			}
 			deleteHouseInfo(houseId);
 			setHouseInfo(houseId, bidderId);
 			deleteNote(houseId);
-		} else if (oldOwnerId == 0 && bidderId != 0) { // ˆÈ‘O‚ÌŠ—LÒ‚È‚µE—DÒ‚ ‚è
+		} else if (oldOwnerId == 0 && bidderId != 0) { // ä»¥å‰ã®æ‰€æœ‰è€…ãªã—ãƒ»è½æœ­è€…ã‚ã‚Š
 			L1PcInstance bidderPc = (L1PcInstance) L1World.getInstance()
 					.findObject(bidderId);
-			if (bidderPc != null) { // —DÒ‚ªƒIƒ“ƒ‰ƒCƒ“’†
-				// ‚¨‚ß‚Å‚Æ‚¤‚²‚´‚¢‚Ü‚·B%n‚ ‚È‚½‚ªQ‰Á‚³‚ê‚½‹£”„‚ÍÅI‰¿Ši%0ƒAƒfƒi‚Ì‰¿Ši‚Å—D‚³‚ê‚Ü‚µ‚½B%n
-				// —l‚ª‚²w“ü‚³‚ê‚½‰Æ‚Í‚·‚®‚É‚²—˜—p‚Å‚«‚Ü‚·B%n‚ ‚è‚ª‚Æ‚¤‚²‚´‚¢‚Ü‚µ‚½B%n%n
+			if (bidderPc != null) { // è½æœ­è€…ãŒã‚ªãƒ³ãƒ©ã‚¤ãƒ³ä¸­
+				// ãŠã‚ã§ã¨ã†ã”ã–ã„ã¾ã™ã€‚%nã‚ãªãŸãŒå‚åŠ ã•ã‚ŒãŸç«¶å£²ã¯æœ€çµ‚ä¾¡æ ¼%0ã‚¢ãƒ‡ãƒŠã®ä¾¡æ ¼ã§è½æœ­ã•ã‚Œã¾ã—ãŸã€‚%n
+				// æ§˜ãŒã”è³¼å…¥ã•ã‚ŒãŸå®¶ã¯ã™ãã«ã”åˆ©ç”¨ã§ãã¾ã™ã€‚%nã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã—ãŸã€‚%n%n
 				bidderPc.sendPackets(new S_ServerMessage(524, String
 						.valueOf(price), bidder));
 			}
 			setHouseInfo(houseId, bidderId);
 			deleteNote(houseId);
-		} else if (oldOwnerId != 0 && bidderId == 0) { // ˆÈ‘O‚ÌŠ—LÒ‚ ‚èE—DÒ‚È‚µ
+		} else if (oldOwnerId != 0 && bidderId == 0) { // ä»¥å‰ã®æ‰€æœ‰è€…ã‚ã‚Šãƒ»è½æœ­è€…ãªã—
 			L1PcInstance oldOwnerPc = (L1PcInstance) L1World.getInstance()
 					.findObject(oldOwnerId);
-			if (oldOwnerPc != null) { // ˆÈ‘O‚ÌŠ—LÒ‚ªƒIƒ“ƒ‰ƒCƒ“’†
-				// ‚ ‚È‚½‚ª\¿‚È‚³‚Á‚½‹£”„‚ÍA‹£”„ŠúŠÔ“à‚É’ñ¦‚µ‚½‹àŠzˆÈã‚Å‚Ìx•¥‚¢‚ğ•\–¾‚µ‚½•û‚ªŒ»‚ê‚È‚©‚Á‚½‚½‚ßAŒ‹‹Çæ‚èÁ‚³‚ê‚Ü‚µ‚½B%n
-				// ]‚Á‚ÄAŠ—LŒ ‚ª‚ ‚È‚½‚É–ß‚³‚ê‚½‚±‚Æ‚ğ‚¨’m‚ç‚¹‚µ‚Ü‚·B%n‚ ‚è‚ª‚Æ‚¤‚²‚´‚¢‚Ü‚µ‚½B%n%n
+			if (oldOwnerPc != null) { // ä»¥å‰ã®æ‰€æœ‰è€…ãŒã‚ªãƒ³ãƒ©ã‚¤ãƒ³ä¸­
+				// ã‚ãªãŸãŒç”³è«‹ãªã•ã£ãŸç«¶å£²ã¯ã€ç«¶å£²æœŸé–“å†…ã«æç¤ºã—ãŸé‡‘é¡ä»¥ä¸Šã§ã®æ”¯æ‰•ã„ã‚’è¡¨æ˜ã—ãŸæ–¹ãŒç¾ã‚Œãªã‹ã£ãŸãŸã‚ã€çµå±€å–ã‚Šæ¶ˆã•ã‚Œã¾ã—ãŸã€‚%n
+				// å¾“ã£ã¦ã€æ‰€æœ‰æ¨©ãŒã‚ãªãŸã«æˆ»ã•ã‚ŒãŸã“ã¨ã‚’ãŠçŸ¥ã‚‰ã›ã—ã¾ã™ã€‚%nã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã—ãŸã€‚%n%n
 				oldOwnerPc.sendPackets(new S_ServerMessage(528));
 			}
 			deleteNote(houseId);
-		} else if (oldOwnerId == 0 && bidderId == 0) { // ˆÈ‘O‚ÌŠ—LÒ‚È‚µE—DÒ‚È‚µ
-			// ’÷‚ßØ‚è‚ğ5“úŒã‚Éİ’è‚µÄ“x‹£”„‚É‚©‚¯‚é
+		} else if (oldOwnerId == 0 && bidderId == 0) { // ä»¥å‰ã®æ‰€æœ‰è€…ãªã—ãƒ»è½æœ­è€…ãªã—
+			// ç· ã‚åˆ‡ã‚Šã‚’5æ—¥å¾Œã«è¨­å®šã—å†åº¦ç«¶å£²ã«ã‹ã‘ã‚‹
 			Calendar cal = getRealTime();
-			cal.add(Calendar.DATE, 5); // 5“úŒã
-			cal.set(Calendar.MINUTE, 0); // •ªA•b‚ÍØ‚èÌ‚Ä
+			cal.add(Calendar.DATE, 5); // 5æ—¥å¾Œ
+			cal.set(Calendar.MINUTE, 0); // åˆ†ã€ç§’ã¯åˆ‡ã‚Šæ¨ã¦
 			cal.set(Calendar.SECOND, 0);
 			board.setDeadline(cal);
 			AuctionBoardTable boardTable = new AuctionBoardTable();
@@ -151,7 +151,7 @@ public class AuctionTimeController implements Runnable {
 	}
 
 	/**
-	 * ˆÈ‘O‚ÌŠ—LÒ‚ÌƒAƒWƒg‚ğÁ‚·
+	 * ä»¥å‰ã®æ‰€æœ‰è€…ã®ã‚¢ã‚¸ãƒˆã‚’æ¶ˆã™
 	 * 
 	 * @param houseId
 	 * 
@@ -167,7 +167,7 @@ public class AuctionTimeController implements Runnable {
 	}
 
 	/**
-	 * —DÒ‚ÌƒAƒWƒg‚ğİ’è‚·‚é
+	 * è½æœ­è€…ã®ã‚¢ã‚¸ãƒˆã‚’è¨­å®šã™ã‚‹
 	 * 
 	 * @param houseId
 	 *            bidderId
@@ -185,24 +185,24 @@ public class AuctionTimeController implements Runnable {
 	}
 
 	/**
-	 * ƒAƒWƒg‚Ì‹£”„ó‘Ô‚ğOFF‚Éİ’è‚µA‹£”„Œf¦”Â‚©‚çÁ‚·
+	 * ã‚¢ã‚¸ãƒˆã®ç«¶å£²çŠ¶æ…‹ã‚’OFFã«è¨­å®šã—ã€ç«¶å£²æ²ç¤ºæ¿ã‹ã‚‰æ¶ˆã™
 	 * 
 	 * @param houseId
 	 * 
 	 * @return
 	 */
 	private void deleteNote(int houseId) {
-		// ƒAƒWƒg‚Ì‹£”„ó‘Ô‚ğOFF‚Éİ’è‚·‚é
+		// ã‚¢ã‚¸ãƒˆã®ç«¶å£²çŠ¶æ…‹ã‚’OFFã«è¨­å®šã™ã‚‹
 		L1House house = HouseTable.getInstance().getHouseTable(houseId);
 		house.setOnSale(false);
 		Calendar cal = getRealTime();
 		cal.add(Calendar.DATE, Config.HOUSE_TAX_INTERVAL);
-		cal.set(Calendar.MINUTE, 0); // •ªA•b‚ÍØ‚èÌ‚Ä
+		cal.set(Calendar.MINUTE, 0); // åˆ†ã€ç§’ã¯åˆ‡ã‚Šæ¨ã¦
 		cal.set(Calendar.SECOND, 0);
 		house.setTaxDeadline(cal);
 		HouseTable.getInstance().updateHouse(house);
 
-		// ‹£”„Œf¦”Â‚©‚çÁ‚·
+		// ç«¶å£²æ²ç¤ºæ¿ã‹ã‚‰æ¶ˆã™
 		AuctionBoardTable boardTable = new AuctionBoardTable();
 		boardTable.deleteAuctionBoard(houseId);
 	}

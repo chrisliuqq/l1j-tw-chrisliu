@@ -40,10 +40,10 @@ public class C_EnterPortal extends ClientBasePacket {
 		int locx = readH();
 		int locy = readH();
 		L1PcInstance pc = client.getActiveChar();
-		if (pc.isTeleport()) { // ƒeƒŒƒ|[ƒgˆ—’†
+		if (pc.isTeleport()) { // ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå‡¦ç†ä¸­
 			return;
 		}
-		// ƒ_ƒ“ƒWƒ‡ƒ“‚ÉƒeƒŒƒ|[ƒg
+		// ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆ
 		Dungeon.getInstance().dg(locx, locy, pc.getMap().getId(), pc);
 	}
 

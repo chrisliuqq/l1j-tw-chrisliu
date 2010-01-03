@@ -37,7 +37,7 @@ public class C_Exclude extends ClientBasePacket {
 	private static Logger _log = Logger.getLogger(C_Exclude.class.getName());
 
 	/**
-	 * C_1 /exclude コマンドを打った時に送られる
+	 * C_1 /exclude 繧ｳ繝槭Φ繝峨ｒ謇薙▲縺滓凾縺ｫ騾√ｉ繧後ｋ
 	 */
 	public C_Exclude(byte[] decrypt, ClientThread client) {
 		super(decrypt);
@@ -49,7 +49,7 @@ public class C_Exclude extends ClientBasePacket {
 		try {
 			L1ExcludingList exList = pc.getExcludingList();
 			if (exList.isFull()) {
-				pc.sendPackets(new S_ServerMessage(472)); // \f1遮断されたユーザーが多すぎます。
+				pc.sendPackets(new S_ServerMessage(472)); // \f1驕ｮ譁ｭ縺輔ｌ縺溘Θ繝ｼ繧ｶ繝ｼ縺悟､壹☆縺弱∪縺吶�
 				return;
 			}
 			if (exList.contains(name)) {

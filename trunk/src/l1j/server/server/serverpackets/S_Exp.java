@@ -30,7 +30,7 @@ public class S_Exp extends ServerBasePacket {
 	private static final String S_EXP = "[S] S_Exp";
 
 	/**
-	 * レベルと経験値データを送る。
+	 * 繝ｬ繝吶Ν縺ｨ邨碁ｨ灘､繝�繝ｼ繧ｿ繧帝√ｋ縲�
 	 * @param pc - PC
 	 */
 	public S_Exp(L1PcInstance pc) {

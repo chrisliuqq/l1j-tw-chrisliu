@@ -31,7 +31,7 @@ public class S_ItemColor extends ServerBasePacket {
 			.getName());
 
 	/**
-	 * ƒAƒCƒeƒ€‚ÌF‚ğ•ÏX‚·‚éBj•ŸEô‚¢ó‘Ô‚ª•Ï‰»‚µ‚½‚È‚Ç‚É‘—‚é
+	 * ã‚¢ã‚¤ãƒ†ãƒ ã®è‰²ã‚’å¤‰æ›´ã™ã‚‹ã€‚ç¥ç¦ãƒ»å‘ªã„çŠ¶æ…‹ãŒå¤‰åŒ–ã—ãŸæ™‚ãªã©ã«é€ã‚‹
 	 */
 	public S_ItemColor(L1ItemInstance item) {
 		if (item == null) {
@@ -43,8 +43,8 @@ public class S_ItemColor extends ServerBasePacket {
 	private void buildPacket(L1ItemInstance item) {
 		writeC(Opcodes.S_OPCODE_ITEMCOLOR);
 		writeD(item.getId());
-		// 0:j•Ÿ 1:’Êí 2:ô‚¢ 3:–¢ŠÓ’è
-		// 128:j•Ÿ&••ˆó 129:&••ˆó 130:ô‚¢&••ˆó 131:–¢ŠÓ’è&••ˆó
+		// 0:ç¥ç¦ 1:é€šå¸¸ 2:å‘ªã„ 3:æœªé‘‘å®š
+		// 128:ç¥ç¦&å°å° 129:&å°å° 130:å‘ªã„&å°å° 131:æœªé‘‘å®š&å°å°
 		writeC(item.getBless());
 	}
 

@@ -33,55 +33,55 @@ import l1j.server.L1DatabaseFactory;
 import l1j.server.server.utils.SQLUtil;
 
 /**
- * ƒƒOƒCƒ“‚Ìˆ×‚Ì—lX‚ÈƒCƒ“ƒ^[ƒtƒF[ƒX‚ğ’ñ‹Ÿ‚·‚é.
+ * ãƒ­ã‚°ã‚¤ãƒ³ã®ç‚ºã®æ§˜ã€…ãªã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’æä¾›ã™ã‚‹.
  */
 public class Account {
-	/** ƒAƒJƒEƒ“ƒg–¼. */
+	/** ã‚¢ã‚«ã‚¦ãƒ³ãƒˆå. */
 	private String _name;
 
-	/** Ú‘±æ‚ÌIPƒAƒhƒŒƒX. */
+	/** æ¥ç¶šå…ˆã®IPã‚¢ãƒ‰ãƒ¬ã‚¹. */
 	private String _ip;
 
-	/** ƒpƒXƒ[ƒh(ˆÃ†‰»‚³‚ê‚Ä‚¢‚é). */
+	/** ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰(æš—å·åŒ–ã•ã‚Œã¦ã„ã‚‹). */
 	private String _password;
 
-	/** ÅIƒAƒNƒeƒBƒu“ú. */
+	/** æœ€çµ‚ã‚¢ã‚¯ãƒ†ã‚£ãƒ–æ—¥. */
 	private Timestamp _lastActive;
 
-	/** ƒAƒNƒZƒXƒŒƒxƒ‹(GM‚©H). */
+	/** ã‚¢ã‚¯ã‚»ã‚¹ãƒ¬ãƒ™ãƒ«(GMã‹ï¼Ÿ). */
 	private int _accessLevel;
 
-	/** Ú‘±æ‚ÌƒzƒXƒg–¼. */
+	/** æ¥ç¶šå…ˆã®ãƒ›ã‚¹ãƒˆå. */
 	private String _host;
 
-	/** ƒAƒNƒZƒX‹Ö~‚Ì—L–³(True‚Å‹Ö~). */
+	/** ã‚¢ã‚¯ã‚»ã‚¹ç¦æ­¢ã®æœ‰ç„¡(Trueã§ç¦æ­¢). */
 	private boolean _banned;
 
-	/** ƒLƒƒƒ‰ƒNƒ^[‚Ì’Ç‰ÁƒXƒƒbƒg” */
+	/** ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®è¿½åŠ ã‚¹ãƒ­ãƒƒãƒˆæ•° */
 	private int _characterSlot;
 
-	/** ƒAƒJƒEƒ“ƒg‚ª—LŒø‚©”Û‚©(True‚Å—LŒø). */
+	/** ã‚¢ã‚«ã‚¦ãƒ³ãƒˆãŒæœ‰åŠ¹ã‹å¦ã‹(Trueã§æœ‰åŠ¹). */
 	private boolean _isValid = false;
 
-	/** ƒƒbƒZ[ƒWƒƒO—p. */
+	/** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ­ã‚°ç”¨. */
 	private static Logger _log = Logger.getLogger(Account.class.getName());
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^.
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿.
 	 */
 	private Account() {
 	}
 
 	/**
-	 * ƒpƒXƒ[ƒh‚ğˆÃ†‰»‚·‚é.
+	 * ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’æš—å·åŒ–ã™ã‚‹.
 	 * 
 	 * @param rawPassword
-	 *            •½•¶‚ÌƒpƒXƒ[ƒh
+	 *            å¹³æ–‡ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 	 * @return String
 	 * @throws NoSuchAlgorithmException
-	 *             ˆÃ†ƒAƒ‹ƒSƒŠƒYƒ€‚ªg—p‚Å‚«‚È‚¢ŠÂ‹«‚Ì
+	 *             æš—å·ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãŒä½¿ç”¨ã§ããªã„ç’°å¢ƒã®æ™‚
 	 * @throws UnsupportedEncodingException
-	 *             •¶š‚ÌƒGƒ“ƒR[ƒh‚ªƒTƒ|[ƒg‚³‚ê‚Ä‚¢‚È‚¢
+	 *             æ–‡å­—ã®ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ãŒã‚µãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ãªã„æ™‚
 	 */
 	private static String encodePassword(final String rawPassword)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -92,16 +92,16 @@ public class Account {
 	}
 
 	/**
-	 * ƒAƒJƒEƒ“ƒg‚ğV‹Kì¬‚·‚é.
+	 * ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’æ–°è¦ä½œæˆã™ã‚‹.
 	 * 
 	 * @param name
-	 *            ƒAƒJƒEƒ“ƒg–¼
+	 *            ã‚¢ã‚«ã‚¦ãƒ³ãƒˆå
 	 * @param rawPassword
-	 *            •½•¶ƒpƒXƒ[ƒh
+	 *            å¹³æ–‡ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 	 * @param ip
-	 *            Ú‘±æ‚ÌIPƒAƒhƒŒƒX
+	 *            æ¥ç¶šå…ˆã®IPã‚¢ãƒ‰ãƒ¬ã‚¹
 	 * @param host
-	 *            Ú‘±æ‚ÌƒzƒXƒg–¼
+	 *            æ¥ç¶šå…ˆã®ãƒ›ã‚¹ãƒˆå
 	 * @return Account
 	 */
 	public static Account create(final String name, final String rawPassword,
@@ -147,10 +147,10 @@ public class Account {
 	}
 
 	/**
-	 * ƒAƒJƒEƒ“ƒgî•ñ‚ğDB‚©‚ç’Šo‚·‚é.
+	 * ã‚¢ã‚«ã‚¦ãƒ³ãƒˆæƒ…å ±ã‚’DBã‹ã‚‰æŠ½å‡ºã™ã‚‹.
 	 * 
 	 * @param name
-	 *            ƒAƒJƒEƒ“ƒg–¼
+	 *            ã‚¢ã‚«ã‚¦ãƒ³ãƒˆå
 	 * @return Account
 	 */
 	public static Account load(final String name) {
@@ -191,10 +191,10 @@ public class Account {
 	}
 
 	/**
-	 * ÅIƒƒOƒCƒ““ú‚ğDB‚É”½‰f‚·‚é.
+	 * æœ€çµ‚ãƒ­ã‚°ã‚¤ãƒ³æ—¥ã‚’DBã«åæ˜ ã™ã‚‹.
 	 * 
 	 * @param account
-	 *            ƒAƒJƒEƒ“ƒg
+	 *            ã‚¢ã‚«ã‚¦ãƒ³ãƒˆ
 	 */
 	public static void updateLastActive(final Account account) {
 		Connection con = null;
@@ -219,10 +219,10 @@ public class Account {
 	}
 
 	/**
-	 * ƒXƒƒbƒg”‚ğDB‚É”½‰f‚·‚é.
+	 * ã‚¹ãƒ­ãƒƒãƒˆæ•°ã‚’DBã«åæ˜ ã™ã‚‹.
 	 * 
 	 * @param account
-	 *            ƒAƒJƒEƒ“ƒg
+	 *            ã‚¢ã‚«ã‚¦ãƒ³ãƒˆ
 	 */
 	public static void updateCharacterSlot(final Account account) {
 		Connection con = null;
@@ -246,7 +246,7 @@ public class Account {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[Š—L”‚ğƒJƒEƒ“ƒg‚·‚é.
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æ‰€æœ‰æ•°ã‚’ã‚«ã‚¦ãƒ³ãƒˆã™ã‚‹.
 	 * 
 	 * @return int
 	 */
@@ -275,10 +275,10 @@ public class Account {
 	}
 
 	/**
-	 * ƒAƒJƒEƒ“ƒg‚ğ–³Œø‚É‚·‚é.
+	 * ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’ç„¡åŠ¹ã«ã™ã‚‹.
 	 * 
 	 * @param login
-	 *            ƒAƒJƒEƒ“ƒg–¼
+	 *            ã‚¢ã‚«ã‚¦ãƒ³ãƒˆå
 	 */
 	public static void ban(final String login) {
 		Connection con = null;
@@ -298,21 +298,21 @@ public class Account {
 	}
 
 	/**
-	 * “ü—Í‚³‚ê‚½ƒpƒXƒ[ƒh‚ÆDBã‚ÌƒpƒXƒ[ƒh‚ğÆ‡‚·‚é.
+	 * å…¥åŠ›ã•ã‚ŒãŸãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¨DBä¸Šã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ç…§åˆã™ã‚‹.
 	 * 
 	 * @param rawPassword
-	 *            •½•¶ƒpƒXƒ[ƒh
+	 *            å¹³æ–‡ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 	 * @return boolean
 	 */
 	public boolean validatePassword(final String rawPassword) {
-		// ”FØ¬Œ÷Œã‚ÉÄ“x”FØ‚³‚ê‚½ê‡‚Í¸”s‚³‚¹‚éB
+		// èªè¨¼æˆåŠŸå¾Œã«å†åº¦èªè¨¼ã•ã‚ŒãŸå ´åˆã¯å¤±æ•—ã•ã›ã‚‹ã€‚
 		if (_isValid) {
 			return false;
 		}
 		try {
 			_isValid = _password.equals(encodePassword(rawPassword));
 			if (_isValid) {
-				_password = null; // ”FØ‚ª¬Œ÷‚µ‚½ê‡AƒpƒXƒ[ƒh‚ğ”jŠü‚·‚éB
+				_password = null; // èªè¨¼ãŒæˆåŠŸã—ãŸå ´åˆã€ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ç ´æ£„ã™ã‚‹ã€‚
 			}
 			return _isValid;
 		} catch (Exception e) {
@@ -322,7 +322,7 @@ public class Account {
 	}
 
 	/**
-	 * ƒAƒJƒEƒ“ƒg‚ª—LŒø‚©‚Ç‚¤‚©‚ğ•Ô‚·(True‚Å—LŒø).
+	 * ã‚¢ã‚«ã‚¦ãƒ³ãƒˆãŒæœ‰åŠ¹ã‹ã©ã†ã‹ã‚’è¿”ã™(Trueã§æœ‰åŠ¹).
 	 * 
 	 * @return boolean
 	 */
@@ -331,7 +331,7 @@ public class Account {
 	}
 
 	/**
-	 * ƒAƒJƒEƒ“ƒg‚ªƒQ[ƒ€ƒ}ƒXƒ^‚©‚Ç‚¤‚©•Ô‚·(True‚ÅƒQ[ƒ€ƒ}ƒXƒ^).
+	 * ã‚¢ã‚«ã‚¦ãƒ³ãƒˆãŒã‚²ãƒ¼ãƒ ãƒã‚¹ã‚¿ã‹ã©ã†ã‹è¿”ã™(Trueã§ã‚²ãƒ¼ãƒ ãƒã‚¹ã‚¿).
 	 * 
 	 * @return boolean
 	 */
@@ -340,7 +340,7 @@ public class Account {
 	}
 
 	/**
-	 * ƒAƒJƒEƒ“ƒg–¼‚ğæ“¾‚·‚é.
+	 * ã‚¢ã‚«ã‚¦ãƒ³ãƒˆåã‚’å–å¾—ã™ã‚‹.
 	 * 
 	 * @return String
 	 */
@@ -349,7 +349,7 @@ public class Account {
 	}
 
 	/**
-	 * Ú‘±æ‚ÌIPƒAƒhƒŒƒX‚ğæ“¾‚·‚é.
+	 * æ¥ç¶šå…ˆã®IPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹.
 	 * 
 	 * @return String
 	 */
@@ -358,14 +358,14 @@ public class Account {
 	}
 
 	/**
-	 * ÅIƒƒOƒCƒ““ú‚ğæ“¾‚·‚é.
+	 * æœ€çµ‚ãƒ­ã‚°ã‚¤ãƒ³æ—¥ã‚’å–å¾—ã™ã‚‹.
 	 */
 	public Timestamp getLastActive() {
 		return _lastActive;
 	}
 
 	/**
-	 * ƒAƒNƒZƒXƒŒƒxƒ‹‚ğæ“¾‚·‚é.
+	 * ã‚¢ã‚¯ã‚»ã‚¹ãƒ¬ãƒ™ãƒ«ã‚’å–å¾—ã™ã‚‹.
 	 * 
 	 * @return int
 	 */
@@ -374,7 +374,7 @@ public class Account {
 	}
 
 	/**
-	 * ƒzƒXƒg–¼‚ğæ“¾‚·‚é.
+	 * ãƒ›ã‚¹ãƒˆåã‚’å–å¾—ã™ã‚‹.
 	 * 
 	 * @return String
 	 */
@@ -383,7 +383,7 @@ public class Account {
 	}
 
 	/**
-	 * ƒAƒNƒZƒX‹Ö~î•ñ‚ğæ“¾‚·‚é.
+	 * ã‚¢ã‚¯ã‚»ã‚¹ç¦æ­¢æƒ…å ±ã‚’å–å¾—ã™ã‚‹.
 	 * 
 	 * @return boolean
 	 */
@@ -392,7 +392,7 @@ public class Account {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ì’Ç‰ÁƒXƒƒbƒg”‚ğæ“¾‚·‚é.
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®è¿½åŠ ã‚¹ãƒ­ãƒƒãƒˆæ•°ã‚’å–å¾—ã™ã‚‹.
 	 * 
 	 * @return int
 	 */

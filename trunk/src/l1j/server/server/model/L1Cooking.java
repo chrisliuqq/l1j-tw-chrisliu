@@ -45,20 +45,20 @@ public class L1Cooking {
 		int itemId = item.getItem().getItemId();
 		if (itemId == 41284 || itemId == 41292
 				|| itemId == 49056 || itemId == 49064
-				|| itemId == 49251 || itemId == 49259) { // ƒfƒU[ƒg
+				|| itemId == 49251 || itemId == 49259) { // ãƒ‡ã‚¶ãƒ¼ãƒˆ
 			if (pc.get_food() != 225) {
 				pc.sendPackets(new S_ServerMessage(74, item
-						.getNumberedName(1))); // \f1%0‚ÍŽg—p‚Å‚«‚Ü‚¹‚ñB
+						.getNumberedName(1))); // \f1%0ã¯ä½¿ç”¨ã§ãã¾ã›ã‚“ã€‚
 				return;
 			}
 		}
 
-		if (itemId >= 41277 && itemId <= 41283 // Lv1—¿—
-				|| itemId >= 41285 && itemId <= 41291 // Lv1Œ¶‘z‚Ì—¿—
-				|| itemId >= 49049 && itemId <= 49055 // Lv2—¿—
-				|| itemId >= 49057 && itemId <= 49063 // Lv2Œ¶‘z‚Ì—¿—
-				|| itemId >= 49244 && itemId <= 49250 // Lv3—¿—
-				|| itemId >= 49252 && itemId <= 49258) { // Lv3Œ¶‘z‚Ì—¿—
+		if (itemId >= 41277 && itemId <= 41283 // Lv1æ–™ç†
+				|| itemId >= 41285 && itemId <= 41291 // Lv1å¹»æƒ³ã®æ–™ç†
+				|| itemId >= 49049 && itemId <= 49055 // Lv2æ–™ç†
+				|| itemId >= 49057 && itemId <= 49063 // Lv2å¹»æƒ³ã®æ–™ç†
+				|| itemId >= 49244 && itemId <= 49250 // Lv3æ–™ç†
+				|| itemId >= 49252 && itemId <= 49258) { // Lv3å¹»æƒ³ã®æ–™ç†
 			int cookingId = pc.getCookingId();
 			if (cookingId != 0) {
 				pc.removeSkillEffect(cookingId);
@@ -67,7 +67,7 @@ public class L1Cooking {
 
 		if (itemId == 41284 || itemId == 41292
 				|| itemId == 49056 || itemId == 49064
-				|| itemId == 49251 || itemId == 49259) { // ƒfƒU[ƒg
+				|| itemId == 49251 || itemId == 49259) { // ãƒ‡ã‚¶ãƒ¼ãƒˆ
 			int dessertId = pc.getDessertId();
 			if (dessertId != 0) {
 				pc.removeSkillEffect(dessertId);
@@ -76,168 +76,168 @@ public class L1Cooking {
 
 		int cookingId;
 		int time = 900;
-		if (itemId == 41277 || itemId == 41285) { // ƒtƒ[ƒeƒBƒ“ƒOƒAƒCƒXƒe[ƒL
+		if (itemId == 41277 || itemId == 41285) { // ãƒ•ãƒ­ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã‚¢ã‚¤ã‚¹ãƒ†ãƒ¼ã‚­
 			if (itemId == 41277) {
 				cookingId = COOKING_1_0_N;
 			} else {
 				cookingId = COOKING_1_0_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 41278 || itemId == 41286) { // ƒxƒA[ƒXƒe[ƒL
+		} else if (itemId == 41278 || itemId == 41286) { // ãƒ™ã‚¢ãƒ¼ã‚¹ãƒ†ãƒ¼ã‚­
 			if (itemId == 41278) {
 				cookingId = COOKING_1_1_N;
 			} else {
 				cookingId = COOKING_1_1_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 41279 || itemId == 41287) { // ƒiƒbƒc–Ý
+		} else if (itemId == 41279 || itemId == 41287) { // ãƒŠãƒƒãƒ„é¤…
 			if (itemId == 41279) {
 				cookingId = COOKING_1_2_N;
 			} else {
 				cookingId = COOKING_1_2_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 41280 || itemId == 41288) { // ‹a‹r‚Ìƒ`[ƒYÄ‚«
+		} else if (itemId == 41280 || itemId == 41288) { // èŸ»è„šã®ãƒãƒ¼ã‚ºç„¼ã
 			if (itemId == 41280) {
 				cookingId = COOKING_1_3_N;
 			} else {
 				cookingId = COOKING_1_3_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 41281 || itemId == 41289) { // ƒtƒ‹[ƒcƒTƒ‰ƒ_
+		} else if (itemId == 41281 || itemId == 41289) { // ãƒ•ãƒ«ãƒ¼ãƒ„ã‚µãƒ©ãƒ€
 			if (itemId == 41281) {
 				cookingId = COOKING_1_4_N;
 			} else {
 				cookingId = COOKING_1_4_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 41282 || itemId == 41290) { // ƒtƒ‹[ƒcŠÃ|‚ ‚ñ‚©‚¯
+		} else if (itemId == 41282 || itemId == 41290) { // ãƒ•ãƒ«ãƒ¼ãƒ„ç”˜é…¢ã‚ã‚“ã‹ã‘
 			if (itemId == 41282) {
 				cookingId = COOKING_1_5_N;
 			} else {
 				cookingId = COOKING_1_5_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 41283 || itemId == 41291) { // ’–“÷‚Ì‹øÄ‚«
+		} else if (itemId == 41283 || itemId == 41291) { // çŒªè‚‰ã®ä¸²ç„¼ã
 			if (itemId == 41283) {
 				cookingId = COOKING_1_6_N;
 			} else {
 				cookingId = COOKING_1_6_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 41284 || itemId == 41292) { // ƒLƒmƒRƒX[ƒv
+		} else if (itemId == 41284 || itemId == 41292) { // ã‚­ãƒŽã‚³ã‚¹ãƒ¼ãƒ—
 			if (itemId == 41284) {
 				cookingId = COOKING_1_7_N;
 			} else {
 				cookingId = COOKING_1_7_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49049 || itemId == 49057) { // ƒLƒƒƒrƒAƒJƒiƒbƒy
+		} else if (itemId == 49049 || itemId == 49057) { // ã‚­ãƒ£ãƒ“ã‚¢ã‚«ãƒŠãƒƒãƒš
 			if (itemId == 49049) {
 				cookingId = COOKING_2_0_N;
 			} else {
 				cookingId = COOKING_2_0_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49050 || itemId == 49058) { // ƒAƒŠƒQ[ƒ^[ƒXƒe[ƒL
+		} else if (itemId == 49050 || itemId == 49058) { // ã‚¢ãƒªã‚²ãƒ¼ã‚¿ãƒ¼ã‚¹ãƒ†ãƒ¼ã‚­
 			if (itemId == 49050) {
 				cookingId = COOKING_2_1_N;
 			} else {
 				cookingId = COOKING_2_1_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49051 || itemId == 49059) { // ƒ^[ƒgƒ‹ƒhƒ‰ƒSƒ“‚Ì‰ÙŽq
+		} else if (itemId == 49051 || itemId == 49059) { // ã‚¿ãƒ¼ãƒˆãƒ«ãƒ‰ãƒ©ã‚´ãƒ³ã®è“å­
 			if (itemId == 49051) {
 				cookingId = COOKING_2_2_N;
 			} else {
 				cookingId = COOKING_2_2_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49052 || itemId == 49060) { // ƒLƒEƒBƒpƒƒbƒgÄ‚«
+		} else if (itemId == 49052 || itemId == 49060) { // ã‚­ã‚¦ã‚£ãƒ‘ãƒ­ãƒƒãƒˆç„¼ã
 			if (itemId == 49052) {
 				cookingId = COOKING_2_3_N;
 			} else {
 				cookingId = COOKING_2_3_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49053 || itemId == 49061) { // ƒXƒR[ƒsƒIƒ“Ä‚«
+		} else if (itemId == 49053 || itemId == 49061) { // ã‚¹ã‚³ãƒ¼ãƒ”ã‚ªãƒ³ç„¼ã
 			if (itemId == 49053) {
 				cookingId = COOKING_2_4_N;
 			} else {
 				cookingId = COOKING_2_4_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49054 || itemId == 49062) { // ƒCƒŒƒbƒJƒhƒ€ƒVƒ`ƒ…[
+		} else if (itemId == 49054 || itemId == 49062) { // ã‚¤ãƒ¬ãƒƒã‚«ãƒ‰ãƒ ã‚·ãƒãƒ¥ãƒ¼
 			if (itemId == 49054) {
 				cookingId = COOKING_2_5_N;
 			} else {
 				cookingId = COOKING_2_5_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49055 || itemId == 49063) { // ƒNƒ‚‹r‚Ì‹øÄ‚«
+		} else if (itemId == 49055 || itemId == 49063) { // ã‚¯ãƒ¢è„šã®ä¸²ç„¼ã
 			if (itemId == 49055) {
 				cookingId = COOKING_2_6_N;
 			} else {
 				cookingId = COOKING_2_6_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49056 || itemId == 49064) { // ƒNƒ‰ƒuƒX[ƒv
+		} else if (itemId == 49056 || itemId == 49064) { // ã‚¯ãƒ©ãƒ–ã‚¹ãƒ¼ãƒ—
 			if (itemId == 49056) {
 				cookingId = COOKING_2_7_N;
 			} else {
 				cookingId = COOKING_2_7_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49244 || itemId == 49252) { // ƒNƒ‰ƒXƒ^ƒVƒAƒ“‚ÌƒnƒTƒ~Ä‚«
+		} else if (itemId == 49244 || itemId == 49252) { // ã‚¯ãƒ©ã‚¹ã‚¿ã‚·ã‚¢ãƒ³ã®ãƒã‚µãƒŸç„¼ã
 			if (itemId == 49244) {
 				cookingId = COOKING_3_0_N;
 			} else {
 				cookingId = COOKING_3_0_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49245 || itemId == 49253) { // ƒOƒŠƒtƒHƒ“Ä‚«
+		} else if (itemId == 49245 || itemId == 49253) { // ã‚°ãƒªãƒ•ã‚©ãƒ³ç„¼ã
 			if (itemId == 49245) {
 				cookingId = COOKING_3_1_N;
 			} else {
 				cookingId = COOKING_3_1_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49246 || itemId == 49254) { // ƒRƒJƒgƒŠƒXƒXƒe[ƒL
+		} else if (itemId == 49246 || itemId == 49254) { // ã‚³ã‚«ãƒˆãƒªã‚¹ã‚¹ãƒ†ãƒ¼ã‚­
 			if (itemId == 49246) {
 				cookingId = COOKING_3_2_N;
 			} else {
 				cookingId = COOKING_3_2_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49247 || itemId == 49255) { // ƒ^[ƒgƒ‹ƒhƒ‰ƒSƒ“Ä‚«
+		} else if (itemId == 49247 || itemId == 49255) { // ã‚¿ãƒ¼ãƒˆãƒ«ãƒ‰ãƒ©ã‚´ãƒ³ç„¼ã
 			if (itemId == 49247) {
 				cookingId = COOKING_3_3_N;
 			} else {
 				cookingId = COOKING_3_3_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49248 || itemId == 49256) { // ƒŒƒbƒT[ƒhƒ‰ƒSƒ“‚ÌŽè‰Hæ
+		} else if (itemId == 49248 || itemId == 49256) { // ãƒ¬ãƒƒã‚µãƒ¼ãƒ‰ãƒ©ã‚´ãƒ³ã®æ‰‹ç¾½å…ˆ
 			if (itemId == 49248) {
 				cookingId = COOKING_3_4_N;
 			} else {
 				cookingId = COOKING_3_4_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49249 || itemId == 49257) { // ƒhƒŒƒCƒNÄ‚«
+		} else if (itemId == 49249 || itemId == 49257) { // ãƒ‰ãƒ¬ã‚¤ã‚¯ç„¼ã
 			if (itemId == 49249) {
 				cookingId = COOKING_3_5_N;
 			} else {
 				cookingId = COOKING_3_5_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49250 || itemId == 49258) { // [ŠC‹›‚ÌƒVƒ`ƒ…[
+		} else if (itemId == 49250 || itemId == 49258) { // æ·±æµ·é­šã®ã‚·ãƒãƒ¥ãƒ¼
 			if (itemId == 49250) {
 				cookingId = COOKING_3_6_N;
 			} else {
 				cookingId = COOKING_3_6_S;
 			}
 			eatCooking(pc, cookingId, time);
-		} else if (itemId == 49251 || itemId == 49259) { // ƒoƒVƒŠƒXƒN‚Ì—‘ƒX[ƒv
+		} else if (itemId == 49251 || itemId == 49259) { // ãƒã‚·ãƒªã‚¹ã‚¯ã®åµã‚¹ãƒ¼ãƒ—
 			if (itemId == 49251) {
 				cookingId = COOKING_3_7_N;
 			} else {
@@ -245,91 +245,91 @@ public class L1Cooking {
 			}
 			eatCooking(pc, cookingId, time);
 		}
-		pc.sendPackets(new S_ServerMessage(76, item.getNumberedName(1))); // \f1%0‚ðH‚×‚Ü‚µ‚½B
+		pc.sendPackets(new S_ServerMessage(76, item.getNumberedName(1))); // \f1%0ã‚’é£Ÿã¹ã¾ã—ãŸã€‚
 		pc.getInventory().removeItem(item , 1);
 	}
 
 	public static void eatCooking(L1PcInstance pc, int cookingId, int time) {
 		int cookingType = 0;
-		if (cookingId == COOKING_1_0_N || cookingId == COOKING_1_0_S) { // ƒtƒ[ƒeƒBƒ“ƒOƒAƒCƒXƒe[ƒL
+		if (cookingId == COOKING_1_0_N || cookingId == COOKING_1_0_S) { // ãƒ•ãƒ­ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã‚¢ã‚¤ã‚¹ãƒ†ãƒ¼ã‚­
 			cookingType = 0;
 			pc.addWind(10);
 			pc.addWater(10);
 			pc.addFire(10);
 			pc.addEarth(10);
 			pc.sendPackets(new S_OwnCharAttrDef(pc));
-		} else if (cookingId == COOKING_1_1_N || cookingId == COOKING_1_1_S) { // ƒxƒA[ƒXƒe[ƒL
+		} else if (cookingId == COOKING_1_1_N || cookingId == COOKING_1_1_S) { // ãƒ™ã‚¢ãƒ¼ã‚¹ãƒ†ãƒ¼ã‚­
 			cookingType = 1;
 			pc.addMaxHp(30);
 			pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
-			if (pc.isInParty()) { // ƒp[ƒeƒB[’†
+			if (pc.isInParty()) { // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä¸­
 				pc.getParty().updateMiniHP(pc);
 			}
-		} else if (cookingId == COOKING_1_2_N || cookingId == COOKING_1_2_S) { // ƒiƒbƒc–Ý
+		} else if (cookingId == COOKING_1_2_N || cookingId == COOKING_1_2_S) { // ãƒŠãƒƒãƒ„é¤…
 			cookingType = 2;
-		} else if (cookingId == COOKING_1_3_N || cookingId == COOKING_1_3_S) { // ‹a‹r‚Ìƒ`[ƒYÄ‚«
+		} else if (cookingId == COOKING_1_3_N || cookingId == COOKING_1_3_S) { // èŸ»è„šã®ãƒãƒ¼ã‚ºç„¼ã
 			cookingType = 3;
 			pc.addAc(-1);
 			pc.sendPackets(new S_OwnCharStatus(pc));
-		} else if (cookingId == COOKING_1_4_N || cookingId == COOKING_1_4_S) { // ƒtƒ‹[ƒcƒTƒ‰ƒ_
+		} else if (cookingId == COOKING_1_4_N || cookingId == COOKING_1_4_S) { // ãƒ•ãƒ«ãƒ¼ãƒ„ã‚µãƒ©ãƒ€
 			cookingType = 4;
 			pc.addMaxMp(20);
 			pc.sendPackets(new S_MPUpdate(pc.getCurrentMp(), pc.getMaxMp()));
-		} else if (cookingId == COOKING_1_5_N || cookingId == COOKING_1_5_S) { // ƒtƒ‹[ƒcŠÃ|‚ ‚ñ‚©‚¯
+		} else if (cookingId == COOKING_1_5_N || cookingId == COOKING_1_5_S) { // ãƒ•ãƒ«ãƒ¼ãƒ„ç”˜é…¢ã‚ã‚“ã‹ã‘
 			cookingType = 5;
-		} else if (cookingId == COOKING_1_6_N || cookingId == COOKING_1_6_S) { // ’–“÷‚Ì‹øÄ‚«
+		} else if (cookingId == COOKING_1_6_N || cookingId == COOKING_1_6_S) { // çŒªè‚‰ã®ä¸²ç„¼ã
 			cookingType = 6;
 			pc.addMr(5);
 			pc.sendPackets(new S_SPMR(pc));
-		} else if (cookingId == COOKING_1_7_N || cookingId == COOKING_1_7_S) { // ƒLƒmƒRƒX[ƒv
+		} else if (cookingId == COOKING_1_7_N || cookingId == COOKING_1_7_S) { // ã‚­ãƒŽã‚³ã‚¹ãƒ¼ãƒ—
 			cookingType = 7;
-		} else if (cookingId == COOKING_2_0_N || cookingId == COOKING_2_0_S) { // ƒLƒƒƒrƒAƒJƒiƒbƒy
+		} else if (cookingId == COOKING_2_0_N || cookingId == COOKING_2_0_S) { // ã‚­ãƒ£ãƒ“ã‚¢ã‚«ãƒŠãƒƒãƒš
 			cookingType = 8;
-		} else if (cookingId == COOKING_2_1_N || cookingId == COOKING_2_1_S) { // ƒAƒŠƒQ[ƒ^[ƒXƒe[ƒL
+		} else if (cookingId == COOKING_2_1_N || cookingId == COOKING_2_1_S) { // ã‚¢ãƒªã‚²ãƒ¼ã‚¿ãƒ¼ã‚¹ãƒ†ãƒ¼ã‚­
 			cookingType = 9;
 			pc.addMaxHp(30);
 			pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
-			if (pc.isInParty()) { // ƒp[ƒeƒB[’†
+			if (pc.isInParty()) { // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä¸­
 				pc.getParty().updateMiniHP(pc);
 			}
 			pc.addMaxMp(30);
 			pc.sendPackets(new S_MPUpdate(pc.getCurrentMp(), pc.getMaxMp()));
-		} else if (cookingId == COOKING_2_2_N || cookingId == COOKING_2_2_S) { // ƒ^[ƒgƒ‹ƒhƒ‰ƒSƒ“‚Ì‰ÙŽq
+		} else if (cookingId == COOKING_2_2_N || cookingId == COOKING_2_2_S) { // ã‚¿ãƒ¼ãƒˆãƒ«ãƒ‰ãƒ©ã‚´ãƒ³ã®è“å­
 			cookingType = 10;
 			pc.addAc(-2);
 			pc.sendPackets(new S_OwnCharStatus(pc));
-		} else if (cookingId == COOKING_2_3_N || cookingId == COOKING_2_3_S) { // ƒLƒEƒBƒpƒƒbƒgÄ‚«
+		} else if (cookingId == COOKING_2_3_N || cookingId == COOKING_2_3_S) { // ã‚­ã‚¦ã‚£ãƒ‘ãƒ­ãƒƒãƒˆç„¼ã
 			cookingType = 11;
-		} else if (cookingId == COOKING_2_4_N || cookingId == COOKING_2_4_S) { // ƒXƒR[ƒsƒIƒ“Ä‚«
+		} else if (cookingId == COOKING_2_4_N || cookingId == COOKING_2_4_S) { // ã‚¹ã‚³ãƒ¼ãƒ”ã‚ªãƒ³ç„¼ã
 			cookingType = 12;
-		} else if (cookingId == COOKING_2_5_N || cookingId == COOKING_2_5_S) { // ƒCƒŒƒbƒJƒhƒ€ƒVƒ`ƒ…[
+		} else if (cookingId == COOKING_2_5_N || cookingId == COOKING_2_5_S) { // ã‚¤ãƒ¬ãƒƒã‚«ãƒ‰ãƒ ã‚·ãƒãƒ¥ãƒ¼
 			cookingType = 13;
 			pc.addMr(10);
 			pc.sendPackets(new S_SPMR(pc));
-		} else if (cookingId == COOKING_2_6_N || cookingId == COOKING_2_6_S) { // ƒNƒ‚‹r‚Ì‹øÄ‚«
+		} else if (cookingId == COOKING_2_6_N || cookingId == COOKING_2_6_S) { // ã‚¯ãƒ¢è„šã®ä¸²ç„¼ã
 			cookingType = 14;
 			pc.addSp(1);
 			pc.sendPackets(new S_SPMR(pc));
-		} else if (cookingId == COOKING_2_7_N || cookingId == COOKING_2_7_S) { // ƒNƒ‰ƒuƒX[ƒv
+		} else if (cookingId == COOKING_2_7_N || cookingId == COOKING_2_7_S) { // ã‚¯ãƒ©ãƒ–ã‚¹ãƒ¼ãƒ—
 			cookingType = 15;
-		} else if (cookingId == COOKING_3_0_N || cookingId == COOKING_3_0_S) { // ƒNƒ‰ƒXƒ^ƒVƒAƒ“‚ÌƒnƒTƒ~Ä‚«
+		} else if (cookingId == COOKING_3_0_N || cookingId == COOKING_3_0_S) { // ã‚¯ãƒ©ã‚¹ã‚¿ã‚·ã‚¢ãƒ³ã®ãƒã‚µãƒŸç„¼ã
 			cookingType = 16;
-		} else if (cookingId == COOKING_3_1_N || cookingId == COOKING_3_1_S) { // ƒOƒŠƒtƒHƒ“Ä‚«
+		} else if (cookingId == COOKING_3_1_N || cookingId == COOKING_3_1_S) { // ã‚°ãƒªãƒ•ã‚©ãƒ³ç„¼ã
 			cookingType = 17;
 			pc.addMaxHp(50);
 			pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
-			if (pc.isInParty()) { // ƒp[ƒeƒB[’†
+			if (pc.isInParty()) { // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä¸­
 				pc.getParty().updateMiniHP(pc);
 			}
 			pc.addMaxMp(50);
 			pc.sendPackets(new S_MPUpdate(pc.getCurrentMp(), pc.getMaxMp()));
-		} else if (cookingId == COOKING_3_2_N || cookingId == COOKING_3_2_S) { // ƒRƒJƒgƒŠƒXƒXƒe[ƒL
+		} else if (cookingId == COOKING_3_2_N || cookingId == COOKING_3_2_S) { // ã‚³ã‚«ãƒˆãƒªã‚¹ã‚¹ãƒ†ãƒ¼ã‚­
 			cookingType = 18;
-		} else if (cookingId == COOKING_3_3_N || cookingId == COOKING_3_3_S) { // ƒ^[ƒgƒ‹ƒhƒ‰ƒSƒ“Ä‚«
+		} else if (cookingId == COOKING_3_3_N || cookingId == COOKING_3_3_S) { // ã‚¿ãƒ¼ãƒˆãƒ«ãƒ‰ãƒ©ã‚´ãƒ³ç„¼ã
 			cookingType = 19;
 			pc.addAc(-3);
 			pc.sendPackets(new S_OwnCharStatus(pc));
-		} else if (cookingId == COOKING_3_4_N || cookingId == COOKING_3_4_S) { // ƒŒƒbƒT[ƒhƒ‰ƒSƒ“‚ÌŽè‰Hæ
+		} else if (cookingId == COOKING_3_4_N || cookingId == COOKING_3_4_S) { // ãƒ¬ãƒƒã‚µãƒ¼ãƒ‰ãƒ©ã‚´ãƒ³ã®æ‰‹ç¾½å…ˆ
 			cookingType = 20;
 			pc.addMr(15);
 			pc.sendPackets(new S_SPMR(pc));
@@ -338,18 +338,18 @@ public class L1Cooking {
 			pc.addFire(10);
 			pc.addEarth(10);
 			pc.sendPackets(new S_OwnCharAttrDef(pc));
-		} else if (cookingId == COOKING_3_5_N || cookingId == COOKING_3_5_S) { // ƒhƒŒƒCƒNÄ‚«
+		} else if (cookingId == COOKING_3_5_N || cookingId == COOKING_3_5_S) { // ãƒ‰ãƒ¬ã‚¤ã‚¯ç„¼ã
 			cookingType = 21;
 			pc.addSp(2);
 			pc.sendPackets(new S_SPMR(pc));
-		} else if (cookingId == COOKING_3_6_N || cookingId == COOKING_3_6_S) { // [ŠC‹›‚ÌƒVƒ`ƒ…[
+		} else if (cookingId == COOKING_3_6_N || cookingId == COOKING_3_6_S) { // æ·±æµ·é­šã®ã‚·ãƒãƒ¥ãƒ¼
 			cookingType = 22;
 			pc.addMaxHp(30);
 			pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
-			if (pc.isInParty()) { // ƒp[ƒeƒB[’†
+			if (pc.isInParty()) { // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä¸­
 				pc.getParty().updateMiniHP(pc);
 			}
-		} else if (cookingId == COOKING_3_7_N || cookingId == COOKING_3_7_S) { // ƒoƒVƒŠƒXƒN‚Ì—‘ƒX[ƒv
+		} else if (cookingId == COOKING_3_7_N || cookingId == COOKING_3_7_S) { // ãƒã‚·ãƒªã‚¹ã‚¯ã®åµã‚¹ãƒ¼ãƒ—
 			cookingType = 23;
 		}
 		pc.sendPackets(new S_PacketBox(53, cookingType, time));
@@ -367,7 +367,7 @@ public class L1Cooking {
 			pc.setDessertId(cookingId);
 		}
 
-		// XXX ‹ó• ƒQ[ƒW‚ª17%‚É‚È‚é‚½‚ßÄ‘—MBS_PacketBox‚É‹ó• ƒQ[ƒWXV‚ÌƒR[ƒh‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éH
+		// XXX ç©ºè…¹ã‚²ãƒ¼ã‚¸ãŒ17%ã«ãªã‚‹ãŸã‚å†é€ä¿¡ã€‚S_PacketBoxã«ç©ºè…¹ã‚²ãƒ¼ã‚¸æ›´æ–°ã®ã‚³ãƒ¼ãƒ‰ãŒå«ã¾ã‚Œã¦ã„ã‚‹ï¼Ÿ
 		pc.sendPackets(new S_OwnCharStatus(pc));
 	}
 

@@ -34,7 +34,7 @@ public class S_PetMenuPacket extends ServerBasePacket {
 	private void buildpacket(L1NpcInstance npc, int exppercet) {
 		writeC(Opcodes.S_OPCODE_SHOWHTML);
 
-		if (npc instanceof L1PetInstance) { // ƒyƒbƒg
+		if (npc instanceof L1PetInstance) { // ãƒšãƒƒãƒˆ
 			L1PetInstance pet = (L1PetInstance) npc;
 			writeD(pet.getId());
 			writeS("anicom");
@@ -42,69 +42,69 @@ public class S_PetMenuPacket extends ServerBasePacket {
 			writeH(10);
 			switch (pet.getCurrentPetStatus()) {
 			case 1:
-				writeS("$469"); // UŒ‚‘Ô¨
+				writeS("$469"); // æ”»æ’ƒæ…‹å‹¢
 				break;
 			case 2:
-				writeS("$470"); // –hŒä‘Ô¨
+				writeS("$470"); // é˜²å¾¡æ…‹å‹¢
 				break;
 			case 3:
-				writeS("$471"); // ‹xŒe
+				writeS("$471"); // ä¼‘æ†©
 				break;
 			case 5:
-				writeS("$472"); // Œx‰ú
+				writeS("$472"); // è­¦æˆ’
 				break;
 			default:
-				writeS("$471"); // ‹xŒe
+				writeS("$471"); // ä¼‘æ†©
 				break;
 			}
-			writeS(Integer.toString(pet.getCurrentHp())); // Œ»İ‚Ì‚g‚o
-			writeS(Integer.toString(pet.getMaxHp())); // Å‘å‚g‚o
-			writeS(Integer.toString(pet.getCurrentMp())); // Œ»İ‚Ì‚l‚o
-			writeS(Integer.toString(pet.getMaxMp())); // Å‘å‚l‚o
-			writeS(Integer.toString(pet.getLevel())); // ƒŒƒxƒ‹
+			writeS(Integer.toString(pet.getCurrentHp())); // ç¾åœ¨ã®ï¼¨ï¼°
+			writeS(Integer.toString(pet.getMaxHp())); // æœ€å¤§ï¼¨ï¼°
+			writeS(Integer.toString(pet.getCurrentMp())); // ç¾åœ¨ã®ï¼­ï¼°
+			writeS(Integer.toString(pet.getMaxMp())); // æœ€å¤§ï¼­ï¼°
+			writeS(Integer.toString(pet.getLevel())); // ãƒ¬ãƒ™ãƒ«
 
-			// –¼‘O‚Ì•¶š”‚ª8‚ğ’´‚¦‚é‚Æ—‚¿‚é
-			// ‚È‚º‚©"ƒZƒ“ƒg ƒo[ƒi[ƒh","ƒuƒŒƒCƒu ƒ‰ƒrƒbƒg"‚ÍOK
+			// åå‰ã®æ–‡å­—æ•°ãŒ8ã‚’è¶…ãˆã‚‹ã¨è½ã¡ã‚‹
+			// ãªãœã‹"ã‚»ãƒ³ãƒˆ ãƒãƒ¼ãƒŠãƒ¼ãƒ‰","ãƒ–ãƒ¬ã‚¤ãƒ– ãƒ©ãƒ“ãƒƒãƒˆ"ã¯OK
 			// String pet_name = pet.get_name();
-			// if (pet_name.equalsIgnoreCase("ƒnƒC ƒh[ƒxƒ‹ƒ}ƒ“")) {
-			// pet_name = "ƒnƒC ƒh[ƒxƒ‹ƒ}";
+			// if (pet_name.equalsIgnoreCase("ãƒã‚¤ ãƒ‰ãƒ¼ãƒ™ãƒ«ãƒãƒ³")) {
+			// pet_name = "ãƒã‚¤ ãƒ‰ãƒ¼ãƒ™ãƒ«ãƒ";
 			// }
-			// else if (pet_name.equalsIgnoreCase("ƒnƒC ƒZƒ“ƒgƒo[ƒi[ƒh")) {
-			// pet_name = "ƒnƒC ƒZƒ“ƒgƒo[";
+			// else if (pet_name.equalsIgnoreCase("ãƒã‚¤ ã‚»ãƒ³ãƒˆãƒãƒ¼ãƒŠãƒ¼ãƒ‰")) {
+			// pet_name = "ãƒã‚¤ ã‚»ãƒ³ãƒˆãƒãƒ¼";
 			// }
 			// writeS(pet_name);
-			writeS(""); // ƒyƒbƒg‚Ì–¼‘O‚ğ•\¦‚³‚¹‚é‚Æ•sˆÀ’è‚É‚È‚é‚Ì‚ÅA”ñ•\¦‚É‚·‚é
-			writeS("$611"); // ‚¨• ‚¢‚Á‚Ï‚¢
-			writeS(Integer.toString(exppercet)); // ŒoŒ±’l
-			writeS(Integer.toString(pet.getLawful())); // ƒAƒ‰ƒCƒƒ“ƒg
-		} else if (npc instanceof L1SummonInstance) { // ƒTƒ‚ƒ“ƒ‚ƒ“ƒXƒ^[
+			writeS(""); // ãƒšãƒƒãƒˆã®åå‰ã‚’è¡¨ç¤ºã•ã›ã‚‹ã¨ä¸å®‰å®šã«ãªã‚‹ã®ã§ã€éè¡¨ç¤ºã«ã™ã‚‹
+			writeS("$611"); // ãŠè…¹ã„ã£ã±ã„
+			writeS(Integer.toString(exppercet)); // çµŒé¨“å€¤
+			writeS(Integer.toString(pet.getLawful())); // ã‚¢ãƒ©ã‚¤ãƒ¡ãƒ³ãƒˆ
+		} else if (npc instanceof L1SummonInstance) { // ã‚µãƒ¢ãƒ³ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼
 			L1SummonInstance summon = (L1SummonInstance) npc;
 			writeD(summon.getId());
 			writeS("moncom");
 			writeC(0x00);
-			writeH(6); // “n‚·ˆø”•¶š‚Ì”‚Ì–Í—l
+			writeH(6); // æ¸¡ã™å¼•æ•°æ–‡å­—ã®æ•°ã®æ¨¡æ§˜
 			switch (summon.get_currentPetStatus()) {
 			case 1:
-				writeS("$469"); // UŒ‚‘Ô¨
+				writeS("$469"); // æ”»æ’ƒæ…‹å‹¢
 				break;
 			case 2:
-				writeS("$470"); // –hŒä‘Ô¨
+				writeS("$470"); // é˜²å¾¡æ…‹å‹¢
 				break;
 			case 3:
-				writeS("$471"); // ‹xŒe
+				writeS("$471"); // ä¼‘æ†©
 				break;
 			case 5:
-				writeS("$472"); // Œx‰ú
+				writeS("$472"); // è­¦æˆ’
 				break;
 			default:
-				writeS("$471"); // ‹xŒe
+				writeS("$471"); // ä¼‘æ†©
 				break;
 			}
-			writeS(Integer.toString(summon.getCurrentHp())); // Œ»İ‚Ì‚g‚o
-			writeS(Integer.toString(summon.getMaxHp())); // Å‘å‚g‚o
-			writeS(Integer.toString(summon.getCurrentMp())); // Œ»İ‚Ì‚l‚o
-			writeS(Integer.toString(summon.getMaxMp())); // Å‘å‚l‚o
-			writeS(Integer.toString(summon.getLevel())); // ƒŒƒxƒ‹
+			writeS(Integer.toString(summon.getCurrentHp())); // ç¾åœ¨ã®ï¼¨ï¼°
+			writeS(Integer.toString(summon.getMaxHp())); // æœ€å¤§ï¼¨ï¼°
+			writeS(Integer.toString(summon.getCurrentMp())); // ç¾åœ¨ã®ï¼­ï¼°
+			writeS(Integer.toString(summon.getMaxMp())); // æœ€å¤§ï¼­ï¼°
+			writeS(Integer.toString(summon.getLevel())); // ãƒ¬ãƒ™ãƒ«
 			// writeS(summon.getNpcTemplate().get_nameid());
 			// writeS(Integer.toString(0));
 			// writeS(Integer.toString(790));

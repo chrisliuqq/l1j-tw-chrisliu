@@ -21,152 +21,152 @@ package l1j.server.server.model.item;
 
 public class L1ItemId {
 	/**
-	 * ƒŒƒbƒhƒ|[ƒVƒ‡ƒ“
+	 * ãƒ¬ãƒƒãƒ‰ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int POTION_OF_HEALING = 40010;
 
 	/**
-	 * j•Ÿ‚³‚ê‚½ƒŒƒbƒhƒ|[ƒVƒ‡ƒ“
+	 * ç¥ç¦ã•ã‚ŒãŸãƒ¬ãƒƒãƒ‰ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int B_POTION_OF_HEALING = 140010;
 
 	/**
-	 * Žô‚í‚ê‚½ƒŒƒbƒhƒ|[ƒVƒ‡ƒ“
+	 * å‘ªã‚ã‚ŒãŸãƒ¬ãƒƒãƒ‰ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int C_POTION_OF_HEALING = 240010;
 
 	/**
-	 * ƒIƒŒƒ“ƒWƒ|[ƒVƒ‡ƒ“
+	 * ã‚ªãƒ¬ãƒ³ã‚¸ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int POTION_OF_EXTRA_HEALING = 40011;
 
 	/**
-	 * j•Ÿ‚³‚ê‚½ƒIƒŒƒ“ƒWƒ|[ƒVƒ‡ƒ“
+	 * ç¥ç¦ã•ã‚ŒãŸã‚ªãƒ¬ãƒ³ã‚¸ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int B_POTION_OF_EXTRA_HEALING = 140011;
 
 	/**
-	 * ƒNƒŠƒA[ƒ|[ƒVƒ‡ƒ“
+	 * ã‚¯ãƒªã‚¢ãƒ¼ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int POTION_OF_GREATER_HEALING = 40012;
 
 	/**
-	 * j•Ÿ‚³‚ê‚½ƒNƒŠƒA[ƒ|[ƒVƒ‡ƒ“
+	 * ç¥ç¦ã•ã‚ŒãŸã‚¯ãƒªã‚¢ãƒ¼ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int B_POTION_OF_GREATER_HEALING = 140012;
 
 	/**
-	 * ƒwƒCƒXƒgƒ|[ƒVƒ‡ƒ“
+	 * ãƒ˜ã‚¤ã‚¹ãƒˆãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int POTION_OF_HASTE_SELF = 40013;
 
 	/**
-	 * j•Ÿ‚³‚ê‚½ƒwƒCƒXƒgƒ|[ƒVƒ‡ƒ“
+	 * ç¥ç¦ã•ã‚ŒãŸãƒ˜ã‚¤ã‚¹ãƒˆãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int B_POTION_OF_HASTE_SELF = 140013;
 
 	/**
-	 * ‹­‰»ƒwƒCƒXƒgƒ|[ƒVƒ‡ƒ“
+	 * å¼·åŒ–ãƒ˜ã‚¤ã‚¹ãƒˆãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int POTION_OF_GREATER_HASTE_SELF = 40018;
 
 	/**
-	 * j•Ÿ‚³‚ê‚½‹­‰»ƒwƒCƒXƒgƒ|[ƒVƒ‡ƒ“
+	 * ç¥ç¦ã•ã‚ŒãŸå¼·åŒ–ãƒ˜ã‚¤ã‚¹ãƒˆãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int B_POTION_OF_GREATER_HASTE_SELF = 140018;
 
 	/**
-	 * ƒuƒŒƒCƒuƒ|[ƒVƒ‡ƒ“
+	 * ãƒ–ãƒ¬ã‚¤ãƒ–ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int POTION_OF_EMOTION_BRAVERY = 40014;
 
 	/**
-	 * j•Ÿ‚³‚ê‚½ƒuƒŒƒCƒuƒ|[ƒVƒ‡ƒ“
+	 * ç¥ç¦ã•ã‚ŒãŸãƒ–ãƒ¬ã‚¤ãƒ–ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int B_POTION_OF_EMOTION_BRAVERY = 140014;
 
 	/**
-	 * –‚—Í‰ñ•œƒ|[ƒVƒ‡ƒ“
+	 * é­”åŠ›å›žå¾©ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int POTION_OF_MANA = 40015;
 
 	/**
-	 * j•Ÿ‚³‚ê‚½–‚—Í‰ñ•œƒ|[ƒVƒ‡ƒ“
+	 * ç¥ç¦ã•ã‚ŒãŸé­”åŠ›å›žå¾©ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int B_POTION_OF_MANA = 140015;
 
 	/**
-	 * ƒEƒBƒYƒ_ƒ€ƒ|[ƒVƒ‡ƒ“
+	 * ã‚¦ã‚£ã‚ºãƒ€ãƒ ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int POTION_OF_EMOTION_WISDOM = 40016;
 
 	/**
-	 * j•Ÿ‚³‚ê‚½ƒEƒBƒYƒ_ƒ€ƒ|[ƒVƒ‡ƒ“
+	 * ç¥ç¦ã•ã‚ŒãŸã‚¦ã‚£ã‚ºãƒ€ãƒ ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int B_POTION_OF_EMOTION_WISDOM = 140016;
 
 	/**
-	 * ƒVƒAƒ“ƒ|[ƒVƒ‡ƒ“
+	 * ã‚·ã‚¢ãƒ³ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int POTION_OF_CURE_POISON = 40017;
 
 	/**
-	 * ”Zk‘Ì—Í‰ñ•œÜ
+	 * æ¿ƒç¸®ä½“åŠ›å›žå¾©å‰¤
 	 */
 	public static final int CONDENSED_POTION_OF_HEALING = 40019;
 
 	/**
-	 * ”Zk‚‹‰‘Ì—Í‰ñ•œÜ
+	 * æ¿ƒç¸®é«˜ç´šä½“åŠ›å›žå¾©å‰¤
 	 */
 	public static final int CONDENSED_POTION_OF_EXTRA_HEALING = 40020;
 
 	/**
-	 * ”Zk‹­—Í‘Ì—Í‰ñ•œÜ
+	 * æ¿ƒç¸®å¼·åŠ›ä½“åŠ›å›žå¾©å‰¤
 	 */
 	public static final int CONDENSED_POTION_OF_GREATER_HEALING = 40021;
 
 	/**
-	 * ƒuƒ‰ƒCƒ“ƒhƒ|[ƒVƒ‡ƒ“
+	 * ãƒ–ãƒ©ã‚¤ãƒ³ãƒ‰ãƒãƒ¼ã‚·ãƒ§ãƒ³
 	 */
 	public static final int POTION_OF_BLINDNESS = 40025;
 
 	/**
-	 * –h‹ï‹­‰»ƒXƒNƒ[ƒ‹
+	 * é˜²å…·å¼·åŒ–ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
 	 */
 	public static final int SCROLL_OF_ENCHANT_ARMOR = 40074;
 
 	/**
-	 * j•Ÿ‚³‚ê‚½–h‹ï‹­‰»ƒXƒNƒ[ƒ‹
+	 * ç¥ç¦ã•ã‚ŒãŸé˜²å…·å¼·åŒ–ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
 	 */
 	public static final int B_SCROLL_OF_ENCHANT_ARMOR = 140074;
 
 	/**
-	 * Žô‚í‚ê‚½–h‹ï‹­‰»ƒXƒNƒ[ƒ‹
+	 * å‘ªã‚ã‚ŒãŸé˜²å…·å¼·åŒ–ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
 	 */
 	public static final int C_SCROLL_OF_ENCHANT_ARMOR = 240074;
 
 	/**
-	 * •Ší‹­‰»ƒXƒNƒ[ƒ‹
+	 * æ­¦å™¨å¼·åŒ–ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
 	 */
 	public static final int SCROLL_OF_ENCHANT_WEAPON = 40087;
 
 	/**
-	 * j•Ÿ‚³‚ê‚½•Ší‹­‰»ƒXƒNƒ[ƒ‹
+	 * ç¥ç¦ã•ã‚ŒãŸæ­¦å™¨å¼·åŒ–ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
 	 */
 	public static final int B_SCROLL_OF_ENCHANT_WEAPON = 140087;
 
 	/**
-	 * Žô‚í‚ê‚½•Ší‹­‰»ƒXƒNƒ[ƒ‹
+	 * å‘ªã‚ã‚ŒãŸæ­¦å™¨å¼·åŒ–ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
 	 */
 	public static final int C_SCROLL_OF_ENCHANT_WEAPON = 240087;
 
 	/**
-	 * ŽŽ—û‚ÌƒXƒNƒ[ƒ‹
+	 * è©¦ç·´ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
 	 */
 	public static final int SCROLL_OF_ENCHANT_QUEST_WEAPON = 40660;
 
 	/**
-	 * ƒAƒfƒi
+	 * ã‚¢ãƒ‡ãƒŠ
 	 */
 	public static final int ADENA = 40308;
 }

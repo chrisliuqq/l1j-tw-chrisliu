@@ -57,7 +57,7 @@ public class L1ShopSellOrderList {
 				.getItem(itemObjectId));
 		if (assessedItem == null) {
 			/*
-			 * ”ƒæƒŠƒXƒg‚É–³‚¢ƒAƒCƒeƒ€‚ªw’è‚³‚ê‚½B •s³ƒpƒP‚Ì‰Â”\«B
+			 * è²·å–ãƒªã‚¹ãƒˆã«ç„¡ã„ã‚¢ã‚¤ãƒ†ãƒ ãŒæŒ‡å®šã•ã‚ŒãŸã€‚ ä¸æ­£ãƒ‘ã‚±ã®å¯èƒ½æ€§ã€‚
 			 */
 			throw new IllegalArgumentException();
 		}

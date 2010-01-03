@@ -136,7 +136,7 @@ public class GMCommandsConfig {
 				}
 			}
 		} catch (Exception e) {
-			_log.log(Level.SEVERE, "GMCommands.xml�̓ǂݍ��݂Ɏ��s", e);
+			_log.log(Level.SEVERE, "GMCommands.xmlの読み込みに失敗", e);
 		}
 	}
 }

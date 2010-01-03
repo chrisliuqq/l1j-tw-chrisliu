@@ -63,7 +63,7 @@ public class HouseTaxTimeController implements Runnable {
 
 	private void checkTaxDeadline() {
 		for (L1House house : HouseTable.getInstance().getHouseTableList()) {
-			if (!house.isOnSale()) { // ‹£”„’†‚ÌƒAƒWƒg‚Íƒ`ƒFƒbƒN‚µ‚È‚¢
+			if (!house.isOnSale()) { // ç«¶å£²ä¸­ã®ã‚¢ã‚¸ãƒˆã¯ãƒã‚§ãƒƒã‚¯ã—ãªã„
 				if (house.getTaxDeadline().before(getRealTime())) {
 					sellHouse(house);
 				}
@@ -75,15 +75,15 @@ public class HouseTaxTimeController implements Runnable {
 		AuctionBoardTable boardTable = new AuctionBoardTable();
 		L1AuctionBoard board = new L1AuctionBoard();
 		if (board != null) {
-			// ‹£”„Œf¦”Â‚ÉV‹K‘‚«‚İ
+			// ç«¶å£²æ²ç¤ºæ¿ã«æ–°è¦æ›¸ãè¾¼ã¿
 			int houseId = house.getHouseId();
 			board.setHouseId(houseId);
 			board.setHouseName(house.getHouseName());
 			board.setHouseArea(house.getHouseArea());
 			TimeZone tz = TimeZone.getTimeZone(Config.TIME_ZONE);
 			Calendar cal = Calendar.getInstance(tz);
-			cal.add(Calendar.DATE, 5); // 5“úŒã
-			cal.set(Calendar.MINUTE, 0); // •ªA•b‚ÍØ‚èÌ‚Ä
+			cal.add(Calendar.DATE, 5); // 5æ—¥å¾Œ
+			cal.set(Calendar.MINUTE, 0); // åˆ†ã€ç§’ã¯åˆ‡ã‚Šæ¨ã¦
 			cal.set(Calendar.SECOND, 0);
 			board.setDeadline(cal);
 			board.setPrice(100000);
@@ -93,12 +93,12 @@ public class HouseTaxTimeController implements Runnable {
 			board.setBidder("");
 			board.setBidderId(0);
 			boardTable.insertAuctionBoard(board);
-			house.setOnSale(true); // ‹£”„’†‚Éİ’è
-			house.setPurchaseBasement(true); // ’n‰ºƒAƒWƒg–¢w“ü‚Éİ’è
+			house.setOnSale(true); // ç«¶å£²ä¸­ã«è¨­å®š
+			house.setPurchaseBasement(true); // åœ°ä¸‹ã‚¢ã‚¸ãƒˆæœªè³¼å…¥ã«è¨­å®š
 			cal.add(Calendar.DATE, Config.HOUSE_TAX_INTERVAL);
 			house.setTaxDeadline(cal);
-			HouseTable.getInstance().updateHouse(house); // DB‚É‘‚«‚İ
-			// ˆÈ‘O‚ÌŠ—LÒ‚ÌƒAƒWƒg‚ğÁ‚·
+			HouseTable.getInstance().updateHouse(house); // DBã«æ›¸ãè¾¼ã¿
+			// ä»¥å‰ã®æ‰€æœ‰è€…ã®ã‚¢ã‚¸ãƒˆã‚’æ¶ˆã™
 			for (L1Clan clan : L1World.getInstance().getAllClans()) {
 				if (clan.getHouseId() == houseId) {
 					clan.setHouseId(0);

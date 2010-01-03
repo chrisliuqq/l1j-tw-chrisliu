@@ -89,7 +89,7 @@ public class L1NpcMakeItemAction extends L1NpcXmlAction {
 						material.getObject());
 				pc.sendPackets(new S_ServerMessage(337, temp.getName() + "("
 						+ ((material.getAmount() * amount) - pc.getInventory()
-						.countItems(temp.getItemId())) + ")")); // \f1%0‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·B
+						.countItems(temp.getItemId())) + ")")); // \f1%0ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚
 				isEnoughMaterials = false;
 			}
 		}
@@ -97,8 +97,8 @@ public class L1NpcMakeItemAction extends L1NpcXmlAction {
 			return false;
 		}
 
-		// —e—Ê‚Æd—Ê‚ÌŒvZ
-		int countToCreate = 0; // ƒAƒCƒeƒ€‚ÌŒÂ”i“Z‚Ü‚é•¨‚Í1ŒÂj
+		// å®¹é‡ã¨é‡é‡ã®è¨ˆç®—
+		int countToCreate = 0; // ã‚¢ã‚¤ãƒ†ãƒ ã®å€‹æ•°ï¼ˆçºã¾ã‚‹ç‰©ã¯1å€‹ï¼‰
 		int weight = 0;
 
 		for (L1ObjectAmount<Integer> makingItem : _items) {
@@ -114,19 +114,19 @@ public class L1NpcMakeItemAction extends L1NpcXmlAction {
 			weight += temp.getWeight() * (makingItem.getAmount() * amount)
 					/ 1000;
 		}
-		// —e—ÊŠm”F
+		// å®¹é‡ç¢ºèª
 		if (pc.getInventory().getSize() + countToCreate > 180) {
-			pc.sendPackets(new S_ServerMessage(263)); // \f1ˆêl‚ÌƒLƒƒƒ‰ƒNƒ^[‚ª‚Á‚Ä•à‚¯‚éƒAƒCƒeƒ€‚ÍÅ‘å180ŒÂ‚Ü‚Å‚Å‚·B
+			pc.sendPackets(new S_ServerMessage(263)); // \f1ä¸€äººã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒæŒã£ã¦æ­©ã‘ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã¯æœ€å¤§180å€‹ã¾ã§ã§ã™ã€‚
 			return false;
 		}
-		// d—ÊŠm”F
+		// é‡é‡ç¢ºèª
 		if (pc.getMaxWeight() < pc.getInventory().getWeight() + weight) {
-			pc.sendPackets(new S_ServerMessage(82)); // ƒAƒCƒeƒ€‚ªd‚·‚¬‚ÄA‚±‚êˆÈã‚Ä‚Ü‚¹‚ñB
+			pc.sendPackets(new S_ServerMessage(82)); // ã‚¢ã‚¤ãƒ†ãƒ ãŒé‡ã™ãã¦ã€ã“ã‚Œä»¥ä¸ŠæŒã¦ã¾ã›ã‚“ã€‚
 			return false;
 		}
 
 		for (L1ObjectAmount<Integer> material : _materials) {
-			// Ş—¿Á”ï
+			// ææ–™æ¶ˆè²»
 			pc.getInventory().consumeItem(material.getObject(),
 					material.getAmount() * amount);
 		}
@@ -141,14 +141,14 @@ public class L1NpcMakeItemAction extends L1NpcXmlAction {
 					itemName = itemName + " (" + makingItem.getAmount()
 							* amount + ")";
 				}
-				pc.sendPackets(new S_ServerMessage(143, npcName, itemName)); // \f1%0‚ª%1‚ğ‚­‚ê‚Ü‚µ‚½B
+				pc.sendPackets(new S_ServerMessage(143, npcName, itemName)); // \f1%0ãŒ%1ã‚’ãã‚Œã¾ã—ãŸã€‚
 			}
 		}
 		return true;
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒxƒ“ƒgƒŠ“à‚ÉA‘fŞ‚ª‰½ƒZƒbƒg‚ ‚é‚©”‚¦‚é
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªå†…ã«ã€ç´ æãŒä½•ã‚»ãƒƒãƒˆã‚ã‚‹ã‹æ•°ãˆã‚‹
 	 */
 	private int countNumOfMaterials(L1PcInventory inv) {
 		int count = Integer.MAX_VALUE;

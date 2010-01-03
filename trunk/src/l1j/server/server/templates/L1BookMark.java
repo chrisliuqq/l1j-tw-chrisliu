@@ -64,7 +64,7 @@ public class L1BookMark {
 				pstm.execute();
 				player.removeBookMark(book);
 			} catch (SQLException e) {
-				_log.log(Level.SEVERE, "ƒuƒbƒNƒ}[ƒN‚Ìíœ‚ÅƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½B", e);
+				_log.log(Level.SEVERE, "ãƒ–ãƒƒã‚¯ãƒãƒ¼ã‚¯ã®å‰Šé™¤ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚", e);
 			} finally {
 				SQLUtil.close(pstm);
 				SQLUtil.close(con);
@@ -73,14 +73,14 @@ public class L1BookMark {
 	}
 
 	public static void addBookmark(L1PcInstance pc, String s) {
-		// ƒNƒ‰ƒCƒAƒ“ƒg‘¤‚Åƒ`ƒFƒbƒN‚³‚ê‚é‚½‚ß•s—v
+		// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆå´ã§ãƒã‚§ãƒƒã‚¯ã•ã‚Œã‚‹ãŸã‚ä¸è¦
 //		if (s.length() > 12) {
 //			pc.sendPackets(new S_ServerMessage(204));
 //			return;
 //		}
 
 		if (!pc.getMap().isMarkable()) {
-			pc.sendPackets(new S_ServerMessage(214)); // \f1‚±‚±‚ğ‹L‰¯‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+			pc.sendPackets(new S_ServerMessage(214)); // \f1ã“ã“ã‚’è¨˜æ†¶ã™ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 			return;
 		}
 
@@ -113,7 +113,7 @@ public class L1BookMark {
 				pstm.setInt(6, bookmark.getMapId());
 				pstm.execute();
 			} catch (SQLException e) {
-				_log.log(Level.SEVERE, "ƒuƒbƒNƒ}[ƒN‚Ì’Ç‰Á‚ÅƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½B", e);
+				_log.log(Level.SEVERE, "ãƒ–ãƒƒã‚¯ãƒãƒ¼ã‚¯ã®è¿½åŠ ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚", e);
 			} finally {
 				SQLUtil.close(pstm);
 				SQLUtil.close(con);
@@ -123,7 +123,7 @@ public class L1BookMark {
 			pc.sendPackets(new S_Bookmarks(s, bookmark.getMapId(),
 					bookmark.getId()));
 		} else {
-			pc.sendPackets(new S_ServerMessage(327)); // “¯‚¶–¼‘O‚ª‚·‚Å‚É‘¶İ‚µ‚Ä‚¢‚Ü‚·B
+			pc.sendPackets(new S_ServerMessage(327)); // åŒã˜åå‰ãŒã™ã§ã«å­˜åœ¨ã—ã¦ã„ã¾ã™ã€‚
 		}
 	}
 

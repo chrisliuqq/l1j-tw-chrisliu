@@ -41,20 +41,20 @@ public class L1Awake {
 	}
 
 	public static void start(L1PcInstance pc, int skillId) {
-		if (skillId == pc.getAwakeSkillId()) { // Ä‰r¥‚È‚ç‰ðœ
+		if (skillId == pc.getAwakeSkillId()) { // å†è© å”±ãªã‚‰è§£é™¤
 			stop(pc);
-		} else if (pc.getAwakeSkillId() != 0) { // ‘¼‚ÌŠoÁƒXƒLƒ‹‚Ìê‡‚ÍƒŠƒ^[ƒ“
+		} else if (pc.getAwakeSkillId() != 0) { // ä»–ã®è¦šé†’ã‚¹ã‚­ãƒ«ã®å ´åˆã¯ãƒªã‚¿ãƒ¼ãƒ³
 			return;
 		} else {
-			if (skillId == AWAKEN_ANTHARAS) { // ŠoÁFƒAƒ“ƒ^ƒ‰ƒX
+			if (skillId == AWAKEN_ANTHARAS) { // è¦šé†’ï¼šã‚¢ãƒ³ã‚¿ãƒ©ã‚¹
 				pc.addMaxHp(127);
 				pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(),
 						pc.getMaxHp()));
-				if (pc.isInParty()) { // ƒp[ƒeƒB[’†
+				if (pc.isInParty()) { // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä¸­
 					pc.getParty().updateMiniHP(pc);
 				}
 				pc.addAc(-12);
-			} else if (skillId == AWAKEN_FAFURION) { // ŠoÁFƒpƒvƒŠƒIƒ“
+			} else if (skillId == AWAKEN_FAFURION) { // è¦šé†’ï¼šãƒ‘ãƒ—ãƒªã‚ªãƒ³
 				pc.addMr(30);
 				pc.sendPackets(new S_SPMR(pc));
 				pc.addWind(30);
@@ -62,7 +62,7 @@ public class L1Awake {
 				pc.addFire(30);
 				pc.addEarth(30);
 				pc.sendPackets(new S_OwnCharAttrDef(pc));
-			} else if (skillId == AWAKEN_VALAKAS) { // ŠoÁFƒ”ƒ@ƒ‰ƒJƒX
+			} else if (skillId == AWAKEN_VALAKAS) { // è¦šé†’ï¼šãƒ´ã‚¡ãƒ©ã‚«ã‚¹
 				pc.addStr(5);
 				pc.addCon(5);
 				pc.addDex(5);
@@ -79,15 +79,15 @@ public class L1Awake {
 
 	public static void stop(L1PcInstance pc) {
 		int skillId = pc.getAwakeSkillId();
-		if (skillId == AWAKEN_ANTHARAS) { // ŠoÁFƒAƒ“ƒ^ƒ‰ƒX
+		if (skillId == AWAKEN_ANTHARAS) { // è¦šé†’ï¼šã‚¢ãƒ³ã‚¿ãƒ©ã‚¹
 			pc.addMaxHp(-127);
 			pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(),
 					pc.getMaxHp()));
-			if (pc.isInParty()) { // ƒp[ƒeƒB[’†
+			if (pc.isInParty()) { // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä¸­
 				pc.getParty().updateMiniHP(pc);
 			}
 			pc.addAc(12);
-		} else if (skillId == AWAKEN_FAFURION) { // ŠoÁFƒpƒvƒŠƒIƒ“
+		} else if (skillId == AWAKEN_FAFURION) { // è¦šé†’ï¼šãƒ‘ãƒ—ãƒªã‚ªãƒ³
 			pc.addMr(-30);
 			pc.sendPackets(new S_SPMR(pc));
 			pc.addWind(-30);
@@ -95,7 +95,7 @@ public class L1Awake {
 			pc.addFire(-30);
 			pc.addEarth(-30);
 			pc.sendPackets(new S_OwnCharAttrDef(pc));
-		} else if (skillId == AWAKEN_VALAKAS) { // ŠoÁFƒ”ƒ@ƒ‰ƒJƒX
+		} else if (skillId == AWAKEN_VALAKAS) { // è¦šé†’ï¼šãƒ´ã‚¡ãƒ©ã‚«ã‚¹
 			pc.addStr(-5);
 			pc.addCon(-5);
 			pc.addDex(-5);

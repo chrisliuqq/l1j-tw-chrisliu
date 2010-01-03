@@ -49,7 +49,7 @@ public class L1Summon implements L1CommandExecutor {
 				npcid = NpcTable.getInstance().findNpcIdByNameWithoutSpace(
 						nameid);
 				if (npcid == 0) {
-					pc.sendPackets(new S_SystemMessage("ŠY“–NPC‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB"));
+					pc.sendPackets(new S_SystemMessage("è©²å½“NPCãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚"));
 					return;
 				}
 			}
@@ -64,10 +64,10 @@ public class L1Summon implements L1CommandExecutor {
 			}
 			nameid = NpcTable.getInstance().getTemplate(npcid).get_name();
 			pc.sendPackets(new S_SystemMessage(nameid + "(ID:" + npcid + ") ("
-					+ count + ") ‚ğ¢ŠÒ‚µ‚Ü‚µ‚½B"));
+					+ count + ") ã‚’å¬é‚„ã—ã¾ã—ãŸã€‚"));
 		} catch (Exception e) {
 			pc.sendPackets(new S_SystemMessage(cmdName
-					+ " npcid|name [”] ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+					+ " npcid|name [æ•°] ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

@@ -34,20 +34,20 @@ public class S_RetrievePledgeList extends ServerBasePacket {
 		}
 
 		if (clan.getWarehouseUsingChar() != 0
-				&& clan.getWarehouseUsingChar() != pc.getId()) // ©ƒLƒƒƒ‰ˆÈŠO‚ªƒNƒ‰ƒ“‘qŒÉg—p’†
+				&& clan.getWarehouseUsingChar() != pc.getId()) // è‡ªã‚­ãƒ£ãƒ©ä»¥å¤–ãŒã‚¯ãƒ©ãƒ³å€‰åº«ä½¿ç”¨ä¸­
 		{
-			pc.sendPackets(new S_ServerMessage(209)); // \f1‘¼‚ÌŒŒ–¿ˆõ‚ª‘qŒÉ‚ğg—p’†‚Å‚·B‚µ‚Î‚ç‚­Œo‚Á‚Ä‚©‚ç—˜—p‚µ‚Ä‚­‚¾‚³‚¢B
+			pc.sendPackets(new S_ServerMessage(209)); // \f1ä»–ã®è¡€ç›Ÿå“¡ãŒå€‰åº«ã‚’ä½¿ç”¨ä¸­ã§ã™ã€‚ã—ã°ã‚‰ãçµŒã£ã¦ã‹ã‚‰åˆ©ç”¨ã—ã¦ãã ã•ã„ã€‚
 			return;
 		}
 
 		if (pc.getInventory().getSize() < 180) {
 			int size = clan.getDwarfForClanInventory().getSize();
 			if (size > 0) {
-				clan.setWarehouseUsingChar(pc.getId()); // ƒNƒ‰ƒ“‘qŒÉ‚ğƒƒbƒN
+				clan.setWarehouseUsingChar(pc.getId()); // ã‚¯ãƒ©ãƒ³å€‰åº«ã‚’ãƒ­ãƒƒã‚¯
 				writeC(Opcodes.S_OPCODE_SHOWRETRIEVELIST);
 				writeD(objid);
 				writeH(size);
-				writeC(5); // ŒŒ–¿‘qŒÉ
+				writeC(5); // è¡€ç›Ÿå€‰åº«
 				for (Object itemObject : clan.getDwarfForClanInventory()
 						.getItems()) {
 					L1ItemInstance item = (L1ItemInstance) itemObject;
@@ -61,7 +61,7 @@ public class S_RetrievePledgeList extends ServerBasePacket {
 				}
 			}
 		} else {
-			pc.sendPackets(new S_ServerMessage(263)); // \f1ˆêl‚ÌƒLƒƒƒ‰ƒNƒ^[‚ª‚Á‚Ä•à‚¯‚éƒAƒCƒeƒ€‚ÍÅ‘å180ŒÂ‚Ü‚Å‚Å‚·B
+			pc.sendPackets(new S_ServerMessage(263)); // \f1ä¸€äººã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒæŒã£ã¦æ­©ã‘ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã¯æœ€å¤§180å€‹ã¾ã§ã§ã™ã€‚
 		}
 	}
 

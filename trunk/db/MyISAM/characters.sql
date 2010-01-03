@@ -59,7 +59,7 @@ CREATE TABLE `characters` (
   `OriginalWis` int(3) NOT NULL default '0',
   PRIMARY KEY  (`objid`),
   KEY `key_id` (`account_name`,`char_name`)
-) ENGINE=MyISAM DEFAULT CHARSET=sjis;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 #----------------------------
 # No Records for table characters
 #----------------------------

@@ -34,8 +34,8 @@ public class L1GroundInventory extends L1Inventory {
 		public void run() {
 			try {
 				synchronized (L1GroundInventory.this) {
-					if (!_items.contains(_item)) {// �E��ꂽ�^�C�~���O�ɂ���Ă͂��̏����𖞂�������
-						return; // ���ɏE���Ă���
+					if (!_items.contains(_item)) {// 拾われたタイミングによってはこの条件を満たし得る
+						return; // 既に拾われている
 					}
 					removeItem(_item);
 				}
@@ -49,7 +49,7 @@ public class L1GroundInventory extends L1Inventory {
 		if (!Config.ALT_ITEM_DELETION_TYPE.equalsIgnoreCase("std")) {
 			return;
 		}
-		if (item.getItemId() == 40515) { // ����̐�
+		if (item.getItemId() == 40515) { // 精霊の石
 			return;
 		}
 
@@ -78,12 +78,12 @@ public class L1GroundInventory extends L1Inventory {
 		for (L1ItemInstance item : getItems()) {
 			if (!perceivedFrom.knownsObject(item)) {
 				perceivedFrom.addKnownObject(item);
-				perceivedFrom.sendPackets(new S_DropItem(item)); // �v���C���[��DROPITEM����ʒm
+				perceivedFrom.sendPackets(new S_DropItem(item)); // プレイヤーへDROPITEM情報を通知
 			}
 		}
 	}
 
-	// �F���͈͓��ɂ���v���C���[�փI�u�W�F�N�g���M
+	// 認識範囲内にいるプレイヤーへオブジェクト送信
 	@Override
 	public void insertItem(L1ItemInstance item) {
 		setTimer(item);
@@ -94,7 +94,7 @@ public class L1GroundInventory extends L1Inventory {
 		}
 	}
 
-	// ������͈͓��ɂ���v���C���[�̃I�u�W�F�N�g�X�V
+	// 見える範囲内にいるプレイヤーのオブジェクト更新
 	@Override
 	public void updateItem(L1ItemInstance item) {
 		for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(item)) {
@@ -102,7 +102,7 @@ public class L1GroundInventory extends L1Inventory {
 		}
 	}
 
-	// ��C���x���g���j���y�ь�����͈͓��ɂ���v���C���[�̃I�u�W�F�N�g�폜
+	// 空インベントリ破棄及び見える範囲内にいるプレイヤーのオブジェクト削除
 	@Override
 	public void deleteItem(L1ItemInstance item) {
 		cancelTimer(item);

@@ -52,7 +52,7 @@ public class C_Who extends ClientBasePacket {
 				S_WhoAmount s_whoamount = new S_WhoAmount(amount);
 				pc.sendPackets(s_whoamount);
 			}
-			// ‘ÎÛ‚ª‹‚È‚¢ê‡‚ÍƒƒbƒZ[ƒW•\¦‚·‚éH‚í‚©‚é•ûC³‚¨Šè‚¢‚µ‚Ü‚·B
+			// å¯¾è±¡ãŒå±…ãªã„å ´åˆã¯ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸è¡¨ç¤ºã™ã‚‹ï¼Ÿã‚ã‹ã‚‹æ–¹ä¿®æ­£ãŠé¡˜ã„ã—ã¾ã™ã€‚
 		}
 	}
 

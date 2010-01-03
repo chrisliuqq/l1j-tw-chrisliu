@@ -47,7 +47,7 @@ public class C_Party extends ClientBasePacket {
 					.getId(), party.getLeader().getName(), party
 					.getMembersNameList()));
 		} else {
-			pc.sendPackets(new S_ServerMessage(425)); // ƒp[ƒeƒB[‚É‰Á“ü‚µ‚Ä‚¢‚Ü‚¹‚ñB
+			pc.sendPackets(new S_ServerMessage(425)); // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã«åŠ å…¥ã—ã¦ã„ã¾ã›ã‚“ã€‚
 // pc.sendPackets(new S_Party("party", pc
 // .getId()));
 		}

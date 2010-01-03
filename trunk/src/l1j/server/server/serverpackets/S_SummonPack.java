@@ -63,13 +63,13 @@ public class S_SummonPack extends ServerBasePacket {
 		writeC(pet.getStatus()); // Modes in List.spr
 		writeC(pet.getHeading());
 		writeC(pet.getChaLightSize()); // (Bright) - 0~15
-		writeC(pet.getMoveSpeed()); // ƒXƒs[ƒh - 0:normal, 1:fast, 2:slow
+		writeC(pet.getMoveSpeed()); // ã‚¹ãƒ”ãƒ¼ãƒ‰ - 0:normal, 1:fast, 2:slow
 		writeD(0);
 		writeH(0);
 		writeS(pet.getNameId());
 		writeS(pet.getTitle());
 		int status = 0;
-		if (pet.getPoison() != null) { // “Åó‘Ô
+		if (pet.getPoison() != null) { // æ¯’çŠ¶æ…‹
 			if (pet.getPoison().getEffectId() == 1) {
 				status |= STATUS_POISON;
 			}
@@ -83,7 +83,7 @@ public class S_SummonPack extends ServerBasePacket {
 			writeS("");
 		}
 		writeC(0); // ??
-		// HP‚Ìƒp[ƒZƒ“ƒg
+		// HPã®ãƒ‘ãƒ¼ã‚»ãƒ³ãƒˆ
 		if (pet.getMaster() != null
 				&& pet.getMaster().getId() == pc.getId()) {
 			int percent = pet.getMaxHp() != 0 ? 100 * pet.getCurrentHp()

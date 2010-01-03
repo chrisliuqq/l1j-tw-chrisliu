@@ -67,10 +67,10 @@ public class L1MobGroupInfo {
 			throw new NullPointerException();
 		}
 
-		// Å‰‚Ìƒƒ“ƒo[‚Å‚ ‚ê‚ÎƒŠ[ƒ_[‚É‚·‚é
+		// æœ€åˆã®ãƒ¡ãƒ³ãƒãƒ¼ã§ã‚ã‚Œã°ãƒªãƒ¼ãƒ€ãƒ¼ã«ã™ã‚‹
 		if (_membersList.isEmpty()) {
 			setLeader(npc);
-			// ƒŠ[ƒ_[‚ÌÄƒ|ƒbƒvî•ñ‚ğ•Û‘¶‚·‚é
+			// ãƒªãƒ¼ãƒ€ãƒ¼ã®å†ãƒãƒƒãƒ—æƒ…å ±ã‚’ä¿å­˜ã™ã‚‹
 			if (npc.isReSpawn()) {
 				setSpawn(npc.getSpawn());
 			}
@@ -93,9 +93,9 @@ public class L1MobGroupInfo {
 		}
 		npc.setMobGroupInfo(null);
 
-		// ƒŠ[ƒ_[‚Å‘¼‚Ìƒƒ“ƒo[‚ª‚¢‚éê‡‚ÍAVƒŠ[ƒ_[‚É‚·‚é
+		// ãƒªãƒ¼ãƒ€ãƒ¼ã§ä»–ã®ãƒ¡ãƒ³ãƒãƒ¼ãŒã„ã‚‹å ´åˆã¯ã€æ–°ãƒªãƒ¼ãƒ€ãƒ¼ã«ã™ã‚‹
 		if (isLeader(npc)) {
-			if (isRemoveGroup() && _membersList.size() != 0) { // ƒŠ[ƒ_[‚ª€–S‚µ‚½‚çƒOƒ‹[ƒv‰ğœ‚·‚éê‡
+			if (isRemoveGroup() && _membersList.size() != 0) { // ãƒªãƒ¼ãƒ€ãƒ¼ãŒæ­»äº¡ã—ãŸã‚‰ã‚°ãƒ«ãƒ¼ãƒ—è§£é™¤ã™ã‚‹å ´åˆ
 				for (L1NpcInstance minion : _membersList) {
 					minion.setMobGroupInfo(null);
 					minion.setSpawn(null);
@@ -108,7 +108,7 @@ public class L1MobGroupInfo {
 			}
 		}
 
-		// c‚è‚Ìƒƒ“ƒo[”‚ğ•Ô‚·
+		// æ®‹ã‚Šã®ãƒ¡ãƒ³ãƒãƒ¼æ•°ã‚’è¿”ã™
 		return _membersList.size();
 	}
 

@@ -65,72 +65,72 @@ public class L1TeleporterInstance extends L1NpcInstance {
 		String htmlid = null;
 
 		if (talking != null) {
-			if (npcid == 50014) { // ƒfƒBƒƒ“
-				if (player.isWizard()) { // ƒEƒBƒU[ƒh
+			if (npcid == 50014) { // ãƒ‡ã‚£ãƒ­ãƒ³
+				if (player.isWizard()) { // ã‚¦ã‚£ã‚¶ãƒ¼ãƒ‰
 					if (quest.get_step(L1Quest.QUEST_LEVEL30) == 1
-							&& !player.getInventory().checkItem(40579)) { // ƒAƒ“ƒfƒbƒh‚Ìœ
+							&& !player.getInventory().checkItem(40579)) { // ã‚¢ãƒ³ãƒ‡ãƒƒãƒ‰ã®éª¨
 						htmlid = "dilong1";
 					} else {
 						htmlid = "dilong3";
 					}
 				}
-			} else if (npcid == 70779) { // ƒQ[ƒgƒAƒ“ƒg
-				if (player.getTempCharGfx() == 1037) { // ƒWƒƒƒCƒAƒ“ƒgƒAƒ“ƒg•Ïg
+			} else if (npcid == 70779) { // ã‚²ãƒ¼ãƒˆã‚¢ãƒ³ãƒˆ
+				if (player.getTempCharGfx() == 1037) { // ã‚¸ãƒ£ã‚¤ã‚¢ãƒ³ãƒˆã‚¢ãƒ³ãƒˆå¤‰èº«
 					htmlid = "ants3";
-				} else if (player.getTempCharGfx() == 1039) {// ƒWƒƒƒCƒAƒ“ƒgƒAƒ“ƒgƒ\ƒ‹ƒWƒƒ[•Ïg
-					if (player.isCrown()) { // ŒNå
+				} else if (player.getTempCharGfx() == 1039) {// ã‚¸ãƒ£ã‚¤ã‚¢ãƒ³ãƒˆã‚¢ãƒ³ãƒˆã‚½ãƒ«ã‚¸ãƒ£ãƒ¼å¤‰èº«
+					if (player.isCrown()) { // å›ä¸»
 						if (quest.get_step(L1Quest.QUEST_LEVEL30) == 1) {
-							if (player.getInventory().checkItem(40547)) { // Z–¯‚½‚¿‚Ìˆâ•i
+							if (player.getInventory().checkItem(40547)) { // ä½æ°‘ãŸã¡ã®éºå“
 								htmlid = "antsn";
 							} else {
 								htmlid = "ants1";
 							}
-						} else { // Step1ˆÈŠO
+						} else { // Step1ä»¥å¤–
 							htmlid = "antsn";
 						}
-					} else { // ŒNåˆÈŠO
+					} else { // å›ä¸»ä»¥å¤–
 						htmlid = "antsn";
 					}
 				}
-			} else if (npcid == 70853) { // ƒtƒFƒAƒŠ[ƒvƒŠƒ“ƒZƒX
-				if (player.isElf()) { // ƒGƒ‹ƒt
+			} else if (npcid == 70853) { // ãƒ•ã‚§ã‚¢ãƒªãƒ¼ãƒ—ãƒªãƒ³ã‚»ã‚¹
+				if (player.isElf()) { // ã‚¨ãƒ«ãƒ•
 					if (quest.get_step(L1Quest.QUEST_LEVEL30) == 1) {
-						if (!player.getInventory().checkItem(40592)) { // ô‚í‚ê‚½¸—ì‘
+						if (!player.getInventory().checkItem(40592)) { // å‘ªã‚ã‚ŒãŸç²¾éœŠæ›¸
 							Random random = new Random();
-							if (random.nextInt(100) < 50) { // 50%‚Åƒ_[ƒNƒ}[ƒ‹ƒ_ƒ“ƒWƒ‡ƒ“
+							if (random.nextInt(100) < 50) { // 50%ã§ãƒ€ãƒ¼ã‚¯ãƒãƒ¼ãƒ«ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³
 								htmlid = "fairyp2";
-							} else { // ƒ_[ƒNƒGƒ‹ƒtƒ_ƒ“ƒWƒ‡ƒ“
+							} else { // ãƒ€ãƒ¼ã‚¯ã‚¨ãƒ«ãƒ•ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³
 								htmlid = "fairyp1";
 							}
 						}
 					}
 				}
-			} else if (npcid == 50031) { // ƒZƒsƒA
-				if (player.isElf()) { // ƒGƒ‹ƒt
+			} else if (npcid == 50031) { // ã‚»ãƒ”ã‚¢
+				if (player.isElf()) { // ã‚¨ãƒ«ãƒ•
 					if (quest.get_step(L1Quest.QUEST_LEVEL45) == 2) {
-						if (!player.getInventory().checkItem(40602)) { // ƒuƒ‹[ƒtƒ‹[ƒg
+						if (!player.getInventory().checkItem(40602)) { // ãƒ–ãƒ«ãƒ¼ãƒ•ãƒ«ãƒ¼ãƒˆ
 							htmlid = "sepia1";
 						}
 					}
 				}
-			} else if (npcid == 50043) { // ƒ‰ƒ€ƒ_
+			} else if (npcid == 50043) { // ãƒ©ãƒ ãƒ€
 				if (quest.get_step(L1Quest.QUEST_LEVEL50) == L1Quest.QUEST_END) {
 					htmlid = "ramuda2";
-				} else if (quest.get_step(L1Quest.QUEST_LEVEL50) == 1) { // ƒfƒBƒKƒ‹ƒfƒBƒ““¯ˆÓÏ‚İ
-					if (player.isCrown()) { // ŒNå
-						if (_isNowDely) { // ƒeƒŒƒ|[ƒgƒfƒBƒŒƒC’†
+				} else if (quest.get_step(L1Quest.QUEST_LEVEL50) == 1) { // ãƒ‡ã‚£ã‚¬ãƒ«ãƒ‡ã‚£ãƒ³åŒæ„æ¸ˆã¿
+					if (player.isCrown()) { // å›ä¸»
+						if (_isNowDely) { // ãƒ†ãƒ¬ãƒãƒ¼ãƒˆãƒ‡ã‚£ãƒ¬ã‚¤ä¸­
 							htmlid = "ramuda4";
 						} else {
 							htmlid = "ramudap1";
 						}
-					} else { // ŒNåˆÈŠO
+					} else { // å›ä¸»ä»¥å¤–
 						htmlid = "ramuda1";
 					}
 				} else {
 					htmlid = "ramuda3";
 				}
 			}
-			// ‰Ì‚¤“‡‚ÌƒeƒŒƒ|[ƒ^[
+			// æ­Œã†å³¶ã®ãƒ†ãƒ¬ãƒãƒ¼ã‚¿ãƒ¼
 			else if (npcid == 50082) {
 				if (player.getLevel() < 13) {
 					htmlid = "en0221";
@@ -144,7 +144,7 @@ public class L1TeleporterInstance extends L1NpcInstance {
 					}
 				}
 			}
-			// ƒoƒ‹ƒjƒA
+			// ãƒãƒ«ãƒ‹ã‚¢
 			else if (npcid == 50001) {
 				if (player.isElf()) {
 					htmlid = "barnia3";
@@ -155,11 +155,11 @@ public class L1TeleporterInstance extends L1NpcInstance {
 				}
 			}
 
-			// html•\¦
-			if (htmlid != null) { // htmlid‚ªw’è‚³‚ê‚Ä‚¢‚éê‡
+			// htmlè¡¨ç¤º
+			if (htmlid != null) { // htmlidãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆ
 				player.sendPackets(new S_NPCTalkReturn(objid, htmlid));
 			} else {
-				if (player.getLawful() < -1000) { // ƒvƒŒƒCƒ„[‚ªƒJƒIƒeƒBƒbƒN
+				if (player.getLawful() < -1000) { // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã‚«ã‚ªãƒ†ã‚£ãƒƒã‚¯
 					player.sendPackets(new S_NPCTalkReturn(talking, objid, 2));
 				} else {
 					player.sendPackets(new S_NPCTalkReturn(talking, objid, 1));
@@ -198,26 +198,26 @@ public class L1TeleporterInstance extends L1NpcInstance {
 		String htmlid = null;
 		boolean isTeleport = true;
 
-		if (npcid == 50014) { // ƒfƒBƒƒ“
-			if (!player.getInventory().checkItem(40581)) { // ƒAƒ“ƒfƒbƒh‚ÌƒL[
+		if (npcid == 50014) { // ãƒ‡ã‚£ãƒ­ãƒ³
+			if (!player.getInventory().checkItem(40581)) { // ã‚¢ãƒ³ãƒ‡ãƒƒãƒ‰ã®ã‚­ãƒ¼
 				isTeleport = false;
 				htmlid = "dilongn";
 			}
-		} else if (npcid == 50043) { // ƒ‰ƒ€ƒ_
-			if (_isNowDely) { // ƒeƒŒƒ|[ƒgƒfƒBƒŒƒC’†
+		} else if (npcid == 50043) { // ãƒ©ãƒ ãƒ€
+			if (_isNowDely) { // ãƒ†ãƒ¬ãƒãƒ¼ãƒˆãƒ‡ã‚£ãƒ¬ã‚¤ä¸­
 				isTeleport = false;
 			}
-		} else if (npcid == 50625) { // ŒÃ‘ãliLv50ƒNƒGƒXƒgŒÃ‘ã‚Ì‹óŠÔ2Fj
-			if (_isNowDely) { // ƒeƒŒƒ|[ƒgƒfƒBƒŒƒC’†
+		} else if (npcid == 50625) { // å¤ä»£äººï¼ˆLv50ã‚¯ã‚¨ã‚¹ãƒˆå¤ä»£ã®ç©ºé–“2Fï¼‰
+			if (_isNowDely) { // ãƒ†ãƒ¬ãƒãƒ¼ãƒˆãƒ‡ã‚£ãƒ¬ã‚¤ä¸­
 				isTeleport = false;
 			}
 		}
 
-		if (isTeleport) { // ƒeƒŒƒ|[ƒgÀs
+		if (isTeleport) { // ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå®Ÿè¡Œ
 			try {
-				// ƒ~ƒ…[ƒ^ƒ“ƒgƒAƒ“ƒgƒ_ƒ“ƒWƒ‡ƒ“(ŒNåLv30ƒNƒGƒXƒg)
+				// ãƒŸãƒ¥ãƒ¼ã‚¿ãƒ³ãƒˆã‚¢ãƒ³ãƒˆãƒ€ãƒ³ã‚¸ãƒ§ãƒ³(å›ä¸»Lv30ã‚¯ã‚¨ã‚¹ãƒˆ)
 				if (action.equalsIgnoreCase("teleport mutant-dungen")) {
-					// 3ƒ}ƒXˆÈ“à‚ÌPc
+					// 3ãƒã‚¹ä»¥å†…ã®Pc
 					for (L1PcInstance otherPc : L1World.getInstance()
 							.getVisiblePlayer(player, 3)) {
 						if (otherPc.getClanid() == player.getClanid()
@@ -229,36 +229,36 @@ public class L1TeleporterInstance extends L1NpcInstance {
 					L1Teleport.teleport(player, 32740, 32800, (short) 217, 5,
 							true);
 				}
-				// —û‚Ìƒ_ƒ“ƒWƒ‡ƒ“iƒEƒBƒU[ƒhLv30ƒNƒGƒXƒgj
+				// è©¦ç·´ã®ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ï¼ˆã‚¦ã‚£ã‚¶ãƒ¼ãƒ‰Lv30ã‚¯ã‚¨ã‚¹ãƒˆï¼‰
 				else if (action.equalsIgnoreCase("teleport mage-quest-dungen")) {
 					L1Teleport.teleport(player, 32791, 32788, (short) 201, 5,
 							true);
-				} else if (action.equalsIgnoreCase("teleport 29")) { // ƒ‰ƒ€ƒ_
+				} else if (action.equalsIgnoreCase("teleport 29")) { // ãƒ©ãƒ ãƒ€
 					L1PcInstance kni = null;
 					L1PcInstance elf = null;
 					L1PcInstance wiz = null;
-					// 3ƒ}ƒXˆÈ“à‚ÌPc
+					// 3ãƒã‚¹ä»¥å†…ã®Pc
 					for (L1PcInstance otherPc : L1World.getInstance()
 							.getVisiblePlayer(player, 3)) {
 						L1Quest quest = otherPc.getQuest();
-						if (otherPc.isKnight() // ƒiƒCƒg
-								&& quest.get_step(L1Quest.QUEST_LEVEL50) == 1) { // ƒfƒBƒKƒ‹ƒfƒBƒ““¯ˆÓÏ‚İ
+						if (otherPc.isKnight() // ãƒŠã‚¤ãƒˆ
+								&& quest.get_step(L1Quest.QUEST_LEVEL50) == 1) { // ãƒ‡ã‚£ã‚¬ãƒ«ãƒ‡ã‚£ãƒ³åŒæ„æ¸ˆã¿
 							if (kni == null) {
 								kni = otherPc;
 							}
-						} else if (otherPc.isElf() // ƒGƒ‹ƒt
-								&& quest.get_step(L1Quest.QUEST_LEVEL50) == 1) { // ƒfƒBƒKƒ‹ƒfƒBƒ““¯ˆÓÏ‚İ
+						} else if (otherPc.isElf() // ã‚¨ãƒ«ãƒ•
+								&& quest.get_step(L1Quest.QUEST_LEVEL50) == 1) { // ãƒ‡ã‚£ã‚¬ãƒ«ãƒ‡ã‚£ãƒ³åŒæ„æ¸ˆã¿
 							if (elf == null) {
 								elf = otherPc;
 							}
-						} else if (otherPc.isWizard() // ƒEƒBƒU[ƒh
-								&& quest.get_step(L1Quest.QUEST_LEVEL50) == 1) { // ƒfƒBƒKƒ‹ƒfƒBƒ““¯ˆÓÏ‚İ
+						} else if (otherPc.isWizard() // ã‚¦ã‚£ã‚¶ãƒ¼ãƒ‰
+								&& quest.get_step(L1Quest.QUEST_LEVEL50) == 1) { // ãƒ‡ã‚£ã‚¬ãƒ«ãƒ‡ã‚£ãƒ³åŒæ„æ¸ˆã¿
 							if (wiz == null) {
 								wiz = otherPc;
 							}
 						}
 					}
-					if (kni != null && elf != null && wiz != null) { // ‘SƒNƒ‰ƒX‘µ‚Á‚Ä‚¢‚é
+					if (kni != null && elf != null && wiz != null) { // å…¨ã‚¯ãƒ©ã‚¹æƒã£ã¦ã„ã‚‹
 						L1Teleport.teleport(player, 32723, 32850, (short) 2000,
 								2, true);
 						L1Teleport.teleport(kni, 32750, 32851, (short) 2000, 6,
@@ -270,7 +270,7 @@ public class L1TeleporterInstance extends L1NpcInstance {
 						TeleportDelyTimer timer = new TeleportDelyTimer();
 						GeneralThreadPool.getInstance().execute(timer);
 					}
-				} else if (action.equalsIgnoreCase("teleport barlog")) { // ŒÃ‘ãliLv50ƒNƒGƒXƒgŒÃ‘ã‚Ì‹óŠÔ2Fj
+				} else if (action.equalsIgnoreCase("teleport barlog")) { // å¤ä»£äººï¼ˆLv50ã‚¯ã‚¨ã‚¹ãƒˆå¤ä»£ã®ç©ºé–“2Fï¼‰
 					L1Teleport.teleport(player, 32755, 32844, (short) 2002, 5,
 							true);
 					TeleportDelyTimer timer = new TeleportDelyTimer();
@@ -279,7 +279,7 @@ public class L1TeleporterInstance extends L1NpcInstance {
 			} catch (Exception e) {
 			}
 		}
-		if (htmlid != null) { // •\¦‚·‚éhtml‚ª‚ ‚éê‡
+		if (htmlid != null) { // è¡¨ç¤ºã™ã‚‹htmlãŒã‚ã‚‹å ´åˆ
 			player.sendPackets(new S_NPCTalkReturn(objid, htmlid));
 		}
 	}
@@ -292,7 +292,7 @@ public class L1TeleporterInstance extends L1NpcInstance {
 		public void run() {
 			try {
 				_isNowDely = true;
-				Thread.sleep(900000); // 15•ª
+				Thread.sleep(900000); // 15åˆ†
 			} catch (Exception e) {
 				_isNowDely = false;
 			}

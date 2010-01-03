@@ -43,13 +43,13 @@ public class C_DeleteInventoryItem extends ClientBasePacket {
 		L1PcInstance pc = client.getActiveChar();
 		L1ItemInstance item = pc.getInventory().getItem(itemObjectId);
 
-		// íœ‚µ‚æ‚¤‚Æ‚µ‚½ƒAƒCƒeƒ€‚ªƒT[ƒo[ã‚É–³‚¢ê‡
+		// å‰Šé™¤ã—ã‚ˆã†ã¨ã—ãŸã‚¢ã‚¤ãƒ†ãƒ ãŒã‚µãƒ¼ãƒãƒ¼ä¸Šã«ç„¡ã„å ´åˆ
 		if (item == null) {
 			return;
 		}
 
 		if (item.getItem().isCantDelete()) {
-			// \f1íœ‚Å‚«‚È‚¢ƒAƒCƒeƒ€‚â‘•”õ‚µ‚Ä‚¢‚éƒAƒCƒeƒ€‚ÍÌ‚Ä‚ç‚ê‚Ü‚¹‚ñB
+			// \f1å‰Šé™¤ã§ããªã„ã‚¢ã‚¤ãƒ†ãƒ ã‚„è£…å‚™ã—ã¦ã„ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã¯æ¨ã¦ã‚‰ã‚Œã¾ã›ã‚“ã€‚
 			pc.sendPackets(new S_ServerMessage(125));
 			return;
 		}
@@ -59,7 +59,7 @@ public class C_DeleteInventoryItem extends ClientBasePacket {
 			if (petObject instanceof L1PetInstance) {
 				L1PetInstance pet = (L1PetInstance) petObject;
 				if (item.getId() == pet.getItemObjId()) {
-					// \f1%0‚ÍÌ‚Ä‚½‚è‚Ü‚½‚Í‘¼l‚Éæ¨‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+					// \f1%0ã¯æ¨ã¦ãŸã‚Šã¾ãŸã¯ä»–äººã«è®“ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 					pc.sendPackets(new S_ServerMessage(210, item.getItem()
 							.getName()));
 					return;
@@ -68,12 +68,12 @@ public class C_DeleteInventoryItem extends ClientBasePacket {
 		}
 
 		if (item.isEquipped()) {
-			// \f1íœ‚Å‚«‚È‚¢ƒAƒCƒeƒ€‚â‘•”õ‚µ‚Ä‚¢‚éƒAƒCƒeƒ€‚ÍÌ‚Ä‚ç‚ê‚Ü‚¹‚ñB
+			// \f1å‰Šé™¤ã§ããªã„ã‚¢ã‚¤ãƒ†ãƒ ã‚„è£…å‚™ã—ã¦ã„ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã¯æ¨ã¦ã‚‰ã‚Œã¾ã›ã‚“ã€‚
 			pc.sendPackets(new S_ServerMessage(125));
 			return;
 		}
-		if (item.getBless() >= 128) { // ••ˆó‚³‚ê‚½‘•”õ
-			// \f1%0‚ÍÌ‚Ä‚½‚è‚Ü‚½‚Í‘¼l‚Éæ¨‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+		if (item.getBless() >= 128) { // å°å°ã•ã‚ŒãŸè£…å‚™
+			// \f1%0ã¯æ¨ã¦ãŸã‚Šã¾ãŸã¯ä»–äººã«è®“ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 			pc.sendPackets(new S_ServerMessage(210, item.getItem().getName()));
 			return;
 		}

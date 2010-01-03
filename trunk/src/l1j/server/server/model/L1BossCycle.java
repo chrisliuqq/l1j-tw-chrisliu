@@ -93,13 +93,13 @@ public class L1BossCycle {
 
 	private static final Random _rnd = new Random();
 	private Calendar _baseDate;
-	private int _period; // •ªŠ·Z
+	private int _period; // åˆ†æ›ç®—
 	private int _periodDay;
 	private int _periodHour;
 	private int _periodMinute;
 
-	private int _startTime; // •ªŠ·Z
-	private int _endTime; // •ªŠ·Z
+	private int _startTime; // åˆ†æ›ç®—
+	private int _endTime; // åˆ†æ›ç®—
 	private static SimpleDateFormat _sdfYmd = new SimpleDateFormat("yyyy/MM/dd");
 	private static SimpleDateFormat _sdfTime = new SimpleDateFormat("HH:mm");
 	private static SimpleDateFormat _sdf = new SimpleDateFormat(
@@ -109,9 +109,9 @@ public class L1BossCycle {
 	private static final Calendar START_UP = Calendar.getInstance();
 
 	public void init() throws Exception {
-		// Šî€“ú‚Ìİ’è
+		// åŸºæº–æ—¥æ™‚ã®è¨­å®š
 		Base base = getBase();
-		// Šî€‚ª‚È‚¯‚ê‚ÎAŒ»İ“ú•t‚Ì0:00Šî€
+		// åŸºæº–ãŒãªã‘ã‚Œã°ã€ç¾åœ¨æ—¥ä»˜ã®0:00åŸºæº–
 		if (base == null) {
 			setBase(new Base());
 			getBase().setDate(_sdfYmd.format(_initDate));
@@ -129,14 +129,14 @@ public class L1BossCycle {
 				base.setTime(_initTime);
 			}
 		}
-		// Šî€“ú‚ğŒˆ’è
+		// åŸºæº–æ—¥æ™‚ã‚’æ±ºå®š
 		Calendar baseCal = Calendar.getInstance();
 		baseCal.setTime(_sdf.parse(base.getDate() + " " + base.getTime()));
 
-		// oŒ»üŠú‚Ì‰Šú‰»,ƒ`ƒFƒbƒN
+		// å‡ºç¾å‘¨æœŸã®åˆæœŸåŒ–,ãƒã‚§ãƒƒã‚¯
 		Cycle spawn = getCycle();
 		if (spawn == null || spawn.getPeriod() == null) {
-			throw new Exception("Cycle‚ÌPeriod‚Í•K{");
+			throw new Exception("Cycleã®Periodã¯å¿…é ˆ");
 		}
 
 		String period = spawn.getPeriod();
@@ -153,26 +153,26 @@ public class L1BossCycle {
 		int eHour = getTimeParse(end, "h");
 		int eMinute = getTimeParse(end, "m");
 
-		// •ªŠ·Z
+		// åˆ†æ›ç®—
 		_period = (_periodDay * 24 * 60) + (_periodHour * 60) + _periodMinute;
 		_startTime = (sDay * 24 * 60) + (sHour * 60) + sMinute;
 		_endTime = (eDay * 24 * 60) + (eHour * 60) + eMinute;
 		if (_period <= 0) {
 			throw new Exception("must be Period > 0");
 		}
-		// start•â³
-		if (_startTime < 0 || _period < _startTime) { // •â³
+		// startè£œæ­£
+		if (_startTime < 0 || _period < _startTime) { // è£œæ­£
 			_startTime = 0;
 		}
-		// end•â³
-		if (_endTime < 0 || _period < _endTime || end == null) { // •â³
+		// endè£œæ­£
+		if (_endTime < 0 || _period < _endTime || end == null) { // è£œæ­£
 			_endTime = _period;
 		}
 		if (_startTime > _endTime) {
 			_startTime = _endTime;
 		}
-		// start,end‚Ì‘ŠŠÖ•â³(Å’á‚Å‚à1•ª‚ÌŠÔ‚ğ‚ ‚¯‚é)
-		// start==end‚Æ‚¢‚¤w’è‚Å‚àAoŒ»ŠÔ‚ªŸ‚ÌüŠú‚É”í‚ç‚È‚¢‚æ‚¤‚É‚·‚é‚½‚ß
+		// start,endã®ç›¸é–¢è£œæ­£(æœ€ä½ã§ã‚‚1åˆ†ã®é–“ã‚’ã‚ã‘ã‚‹)
+		// start==endã¨ã„ã†æŒ‡å®šã§ã‚‚ã€å‡ºç¾æ™‚é–“ãŒæ¬¡ã®å‘¨æœŸã«è¢«ã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹ãŸã‚
 		if (_startTime == _endTime) {
 			if (_endTime == _period) {
 				_startTime--;
@@ -181,7 +181,7 @@ public class L1BossCycle {
 			}
 		}
 
-		// Å‹ß‚ÌüŠú‚Ü‚Å•â³(ÄŒvZ‚·‚é‚Æ‚«‚ÉŒµ–§‚ÉZo‚·‚é‚Ì‚ÅA‚±‚±‚Å‚Í‹ß‚­‚Ü‚Å“K“–‚É•â³‚·‚é‚¾‚¯)
+		// æœ€è¿‘ã®å‘¨æœŸã¾ã§è£œæ­£(å†è¨ˆç®—ã™ã‚‹ã¨ãã«å³å¯†ã«ç®—å‡ºã™ã‚‹ã®ã§ã€ã“ã“ã§ã¯è¿‘ãã¾ã§é©å½“ã«è£œæ­£ã™ã‚‹ã ã‘)
 		while (!(baseCal.after(START_UP))) {
 			baseCal.add(Calendar.DAY_OF_MONTH, _periodDay);
 			baseCal.add(Calendar.HOUR_OF_DAY, _periodHour);
@@ -191,9 +191,9 @@ public class L1BossCycle {
 	}
 
 	/*
-	 * w’è“ú‚ğŠÜ‚ŞüŠú(‚ÌŠJnŠÔ)‚ğ•Ô‚·
-	 * ex.üŠú‚ª2ŠÔ‚Ìê‡
-	 *  target base –ß‚è’l
+	 * æŒ‡å®šæ—¥æ™‚ã‚’å«ã‚€å‘¨æœŸ(ã®é–‹å§‹æ™‚é–“)ã‚’è¿”ã™
+	 * ex.å‘¨æœŸãŒ2æ™‚é–“ã®å ´åˆ
+	 *  target base æˆ»ã‚Šå€¤
 	 *   4:59  7:00 3:00
 	 *   5:00  7:00 5:00
 	 *   5:01  7:00 5:00
@@ -205,10 +205,10 @@ public class L1BossCycle {
 	 *   9:01  7:00 9:00
 	 */
 	private Calendar getBaseCycleOnTarget(Calendar target) {
-		// Šî€“úæ“¾
+		// åŸºæº–æ—¥æ™‚å–å¾—
 		Calendar base = (Calendar) _baseDate.clone();
 		if (target.after(base)) {
-			// target <= base‚Æ‚È‚é‚Ü‚ÅŒJ‚è•Ô‚·
+			// target <= baseã¨ãªã‚‹ã¾ã§ç¹°ã‚Šè¿”ã™
 			while (target.after(base)) {
 				base.add(Calendar.DAY_OF_MONTH, _periodDay);
 				base.add(Calendar.HOUR_OF_DAY, _periodHour);
@@ -222,7 +222,7 @@ public class L1BossCycle {
 				base.add(Calendar.MINUTE, -_periodMinute);
 			}
 		}
-		// I—¹ŠÔ‚ğZo‚µ‚Ä‚İ‚ÄA‰ß‹‚Ì‚È‚çƒ{ƒXŠÔ‚ª‰ß‚¬‚Ä‚¢‚é¨Ÿ‚ÌüŠú‚ğ•Ô‚·B
+		// çµ‚äº†æ™‚é–“ã‚’ç®—å‡ºã—ã¦ã¿ã¦ã€éå»ã®æ™‚åˆ»ãªã‚‰ãƒœã‚¹æ™‚é–“ãŒéãã¦ã„ã‚‹â†’æ¬¡ã®å‘¨æœŸã‚’è¿”ã™ã€‚
 		Calendar end = (Calendar) base.clone();
 		end.add(Calendar.MINUTE, _endTime);
 		if (end.before(target)) {
@@ -234,15 +234,15 @@ public class L1BossCycle {
 	}
 
 	/**
-	 * w’è“ú‚ğŠÜ‚ŞüŠú‚É‘Î‚µ‚ÄAoŒ»ƒ^ƒCƒ~ƒ“ƒO‚ğZo‚·‚éB
-	 * @return oŒ»‚·‚éŠÔ
+	 * æŒ‡å®šæ—¥æ™‚ã‚’å«ã‚€å‘¨æœŸã«å¯¾ã—ã¦ã€å‡ºç¾ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã‚’ç®—å‡ºã™ã‚‹ã€‚
+	 * @return å‡ºç¾ã™ã‚‹æ™‚é–“
 	 */
 	public Calendar calcSpawnTime(Calendar now) {
-		// Šî€“úæ“¾
+		// åŸºæº–æ—¥æ™‚å–å¾—
 		Calendar base = getBaseCycleOnTarget(now);
-		// oŒ»ŠúŠÔ‚ÌŒvZ
+		// å‡ºç¾æœŸé–“ã®è¨ˆç®—
 		base.add(Calendar.MINUTE, _startTime);
-		// oŒ»ŠÔ‚ÌŒˆ’è start`end–˜‚ÌŠÔ‚Åƒ‰ƒ“ƒ_ƒ€‚Ì•b
+		// å‡ºç¾æ™‚é–“ã®æ±ºå®š startï½endè¿„ã®é–“ã§ãƒ©ãƒ³ãƒ€ãƒ ã®ç§’
 		int diff = (_endTime - _startTime) * 60;
 		int random = diff > 0 ? _rnd.nextInt(diff) : 0;
 		base.add(Calendar.SECOND, random);
@@ -250,35 +250,35 @@ public class L1BossCycle {
 	}
 
 	/**
-	 * w’è“ú‚ğŠÜ‚ŞüŠú‚É‘Î‚µ‚ÄAoŒ»ŠJnŠÔ‚ğZo‚·‚éB
-	 * @return üŠú‚ÌoŒ»ŠJnŠÔ
+	 * æŒ‡å®šæ—¥æ™‚ã‚’å«ã‚€å‘¨æœŸã«å¯¾ã—ã¦ã€å‡ºç¾é–‹å§‹æ™‚é–“ã‚’ç®—å‡ºã™ã‚‹ã€‚
+	 * @return å‘¨æœŸã®å‡ºç¾é–‹å§‹æ™‚é–“
 	 */
 	public Calendar getSpawnStartTime(Calendar now) {
-		// Šî€“úæ“¾
+		// åŸºæº–æ—¥æ™‚å–å¾—
 		Calendar startDate = getBaseCycleOnTarget(now);
-		// oŒ»ŠúŠÔ‚ÌŒvZ
+		// å‡ºç¾æœŸé–“ã®è¨ˆç®—
 		startDate.add(Calendar.MINUTE, _startTime);
 		return startDate;
 	}
 
 	/**
-	 * w’è“ú‚ğŠÜ‚ŞüŠú‚É‘Î‚µ‚ÄAoŒ»I—¹ŠÔ‚ğZo‚·‚éB
-	 * @return üŠú‚ÌoŒ»I—¹ŠÔ
+	 * æŒ‡å®šæ—¥æ™‚ã‚’å«ã‚€å‘¨æœŸã«å¯¾ã—ã¦ã€å‡ºç¾çµ‚äº†æ™‚é–“ã‚’ç®—å‡ºã™ã‚‹ã€‚
+	 * @return å‘¨æœŸã®å‡ºç¾çµ‚äº†æ™‚é–“
 	 */
 	public Calendar getSpawnEndTime(Calendar now) {
-		// Šî€“úæ“¾
+		// åŸºæº–æ—¥æ™‚å–å¾—
 		Calendar endDate = getBaseCycleOnTarget(now);
-		// oŒ»ŠúŠÔ‚ÌŒvZ
+		// å‡ºç¾æœŸé–“ã®è¨ˆç®—
 		endDate.add(Calendar.MINUTE, _endTime);
 		return endDate;
 	}
 
 	/**
-	 * w’è“ú‚ğŠÜ‚ŞüŠú‚É‘Î‚µ‚ÄAŸ‚ÌüŠú‚ÌoŒ»ƒ^ƒCƒ~ƒ“ƒO‚ğZo‚·‚éB
-	 * @return Ÿ‚ÌüŠú‚ÌoŒ»‚·‚éŠÔ
+	 * æŒ‡å®šæ—¥æ™‚ã‚’å«ã‚€å‘¨æœŸã«å¯¾ã—ã¦ã€æ¬¡ã®å‘¨æœŸã®å‡ºç¾ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã‚’ç®—å‡ºã™ã‚‹ã€‚
+	 * @return æ¬¡ã®å‘¨æœŸã®å‡ºç¾ã™ã‚‹æ™‚é–“
 	 */
 	public Calendar nextSpawnTime(Calendar now) {
-		// Šî€“úæ“¾
+		// åŸºæº–æ—¥æ™‚å–å¾—
 		Calendar next = (Calendar) now.clone();
 		next.add(Calendar.DAY_OF_MONTH, _periodDay);
 		next.add(Calendar.HOUR_OF_DAY, _periodHour);
@@ -287,15 +287,15 @@ public class L1BossCycle {
 	}
 
 	/**
-	 * w’è“ú‚É‘Î‚µ‚ÄAÅ‹ß‚ÌoŒ»ŠJnŠÔ‚ğ•Ô‹p‚·‚éB
-	 * @return Å‹ß‚ÌoŒ»ŠJnŠÔ
+	 * æŒ‡å®šæ—¥æ™‚ã«å¯¾ã—ã¦ã€æœ€è¿‘ã®å‡ºç¾é–‹å§‹æ™‚é–“ã‚’è¿”å´ã™ã‚‹ã€‚
+	 * @return æœ€è¿‘ã®å‡ºç¾é–‹å§‹æ™‚é–“
 	 */
 	public Calendar getLatestStartTime(Calendar now) {
-		// Šî€“úæ“¾
+		// åŸºæº–æ—¥æ™‚å–å¾—
 		Calendar latestStart = getSpawnStartTime(now);
 		if (!now.before(latestStart)) { // now >= latestStart
 		} else {
-			// now < latestStart‚È‚ç1ŒÂ‘O‚ªÅ‹ß‚ÌüŠú
+			// now < latestStartãªã‚‰1å€‹å‰ãŒæœ€è¿‘ã®å‘¨æœŸ
 			latestStart.add(Calendar.DAY_OF_MONTH, -_periodDay);
 			latestStart.add(Calendar.HOUR_OF_DAY, -_periodHour);
 			latestStart.add(Calendar.MINUTE, -_periodMinute);
@@ -336,14 +336,14 @@ public class L1BossCycle {
 		PerformanceTimer timer = new PerformanceTimer();
 		System.out.print("loading boss cycle...");
 		try {
-			// BookOrder ƒNƒ‰ƒX‚ğƒoƒCƒ“ƒfƒBƒ“ƒO‚·‚éƒRƒ“ƒeƒLƒXƒg‚ğ¶¬
+			// BookOrder ã‚¯ãƒ©ã‚¹ã‚’ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ç”Ÿæˆ
 			JAXBContext context = JAXBContext
 					.newInstance(L1BossCycle.L1BossCycleList.class);
 
-			// XML -> POJO •ÏŠ·‚ğs‚¤ƒAƒ“ƒ}[ƒVƒƒƒ‰‚ğ¶¬
+			// XML -> POJO å¤‰æ›ã‚’è¡Œã†ã‚¢ãƒ³ãƒãƒ¼ã‚·ãƒ£ãƒ©ã‚’ç”Ÿæˆ
 			Unmarshaller um = context.createUnmarshaller();
 
-			// XML -> POJO •ÏŠ·
+			// XML -> POJO å¤‰æ›
 			File file = new File("./data/xml/Cycle/BossCycle.xml");
 			L1BossCycleList bossList = (L1BossCycleList) um.unmarshal(file);
 
@@ -352,7 +352,7 @@ public class L1BossCycle {
 				_cycleMap.put(cycle.getName(), cycle);
 			}
 
-			// userƒf[ƒ^‚ª‚ ‚ê‚Îã‘‚«
+			// userãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Œã°ä¸Šæ›¸ã
 			File userFile = new File("./data/xml/Cycle/users/BossCycle.xml");
 			if (userFile.exists()) {
 				bossList = (L1BossCycleList) um.unmarshal(userFile);
@@ -362,22 +362,22 @@ public class L1BossCycle {
 					_cycleMap.put(cycle.getName(), cycle);
 				}
 			}
-			// spawnlist_boss‚©‚ç“Ç‚İ‚ñ‚Å”z’u
+			// spawnlist_bossã‹ã‚‰èª­ã¿è¾¼ã‚“ã§é…ç½®
 			BossSpawnTable.fillSpawnTable();
 		} catch (Exception e) {
-			_log.log(Level.SEVERE, "BossCycle‚ğ“Ç‚İ‚ß‚Ü‚¹‚ñ‚Å‚µ‚½", e);
+			_log.log(Level.SEVERE, "BossCycleã‚’èª­ã¿è¾¼ã‚ã¾ã›ã‚“ã§ã—ãŸ", e);
 			System.exit(0);
 		}
 		System.out.println("OK! " + timer.get() + "ms");
 	}
 
 	/**
-	 * üŠú–¼‚Æw’è“ú‚É‘Î‚·‚éoŒ»ŠúŠÔAoŒ»ŠÔ‚ğƒRƒ“ƒ\[ƒ‹o—Í
-	 * @param now üŠú‚ğo—Í‚·‚é“ú
+	 * å‘¨æœŸåã¨æŒ‡å®šæ—¥æ™‚ã«å¯¾ã™ã‚‹å‡ºç¾æœŸé–“ã€å‡ºç¾æ™‚é–“ã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«å‡ºåŠ›
+	 * @param now å‘¨æœŸã‚’å‡ºåŠ›ã™ã‚‹æ—¥æ™‚
 	 */
 	public void showData(Calendar now) {
 		System.out.println("[Type]" + getName());
-		System.out.print("  [oŒ»ŠúŠÔ]");
+		System.out.print("  [å‡ºç¾æœŸé–“]");
 		System.out.print(_sdf.format(getSpawnStartTime(now).getTime()) + " - ");
 		System.out.println(_sdf.format(getSpawnEndTime(now).getTime()));
 	}

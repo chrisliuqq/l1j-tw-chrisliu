@@ -92,7 +92,7 @@ public class LeakCheckedConnection {
 	}
 
 	/**
-	 * ƒtƒ@ƒCƒiƒ‰ƒCƒU—p–³–¼ƒNƒ‰ƒX _guardian‚É–¢g—p•Ï”‚ÌŒx‚ªo‚Ü‚·‚ªAíœ‚µ‚È‚¢‚Å‚­‚¾‚³‚¢B
+	 * ãƒ•ã‚¡ã‚¤ãƒŠãƒ©ã‚¤ã‚¶ç”¨ç„¡åã‚¯ãƒ©ã‚¹ _guardianã«æœªä½¿ç”¨å¤‰æ•°ã®è­¦å‘ŠãŒå‡ºã¾ã™ãŒã€å‰Šé™¤ã—ãªã„ã§ãã ã•ã„ã€‚
 	 */
 	private final Object _guardian = new Object() {
 		@Override

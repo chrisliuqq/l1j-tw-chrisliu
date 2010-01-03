@@ -57,7 +57,7 @@ public class SprTable {
 	}
 
 	/**
-	 * spr_actionƒe[ƒuƒ‹‚ğƒ[ƒh‚·‚éB
+	 * spr_actionãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚
 	 */
 	public void loadSprAction() {
 		Connection con = null;
@@ -125,24 +125,24 @@ public class SprTable {
 			SQLUtil.close(pstm);
 			SQLUtil.close(con);
 		}
-		_log.config("SPRƒf[ƒ^ " + _dataMap.size() + "Œƒ[ƒh");
+		_log.config("SPRãƒ‡ãƒ¼ã‚¿ " + _dataMap.size() + "ä»¶ãƒ­ãƒ¼ãƒ‰");
 	}
 	
 	/**
-	 * ƒtƒŒ[ƒ€”‚ÆƒtƒŒ[ƒ€ƒŒ[ƒg‚©‚çƒAƒNƒVƒ‡ƒ“‚Ì‡ŒvŠÔ(ms)‚ğŒvZ‚µ‚Ä•Ô‚·B
+	 * ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã¨ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆã‹ã‚‰ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®åˆè¨ˆæ™‚é–“(ms)ã‚’è¨ˆç®—ã—ã¦è¿”ã™ã€‚
 	 */
 	private int calcActionSpeed(int frameCount, int frameRate) {
 		return (int) (frameCount * 40 * (24D / frameRate));
 	}
 
 	/**
-	 * w’è‚³‚ê‚½spr‚ÌUŒ‚‘¬“x‚ğ•Ô‚·B‚à‚µspr‚Éw’è‚³‚ê‚½weapon_type‚Ìƒf[ƒ^‚ª İ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA1.attack‚Ìƒf[ƒ^‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸsprã®æ”»æ’ƒé€Ÿåº¦ã‚’è¿”ã™ã€‚ã‚‚ã—sprã«æŒ‡å®šã•ã‚ŒãŸweapon_typeã®ãƒ‡ãƒ¼ã‚¿ãŒ è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€1.attackã®ãƒ‡ãƒ¼ã‚¿ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param sprid -
-	 *            ’²‚×‚éspr‚ÌID
+	 *            èª¿ã¹ã‚‹sprã®ID
 	 * @param actid -
-	 *            •Ší‚Ìí—Ş‚ğ•\‚·’lBL1Item.getType1()‚Ì•Ô‚è’l + 1 ‚Æˆê’v‚·‚é
-	 * @return w’è‚³‚ê‚½spr‚ÌUŒ‚‘¬“x(ms)
+	 *            æ­¦å™¨ã®ç¨®é¡ã‚’è¡¨ã™å€¤ã€‚L1Item.getType1()ã®è¿”ã‚Šå€¤ + 1 ã¨ä¸€è‡´ã™ã‚‹
+	 * @return æŒ‡å®šã•ã‚ŒãŸsprã®æ”»æ’ƒé€Ÿåº¦(ms)
 	 */
 	public int getAttackSpeed(int sprid, int actid) {
 		if (_dataMap.containsKey(sprid)) {

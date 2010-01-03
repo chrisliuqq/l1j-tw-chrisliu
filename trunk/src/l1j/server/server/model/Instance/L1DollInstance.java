@@ -50,7 +50,7 @@ public class L1DollInstance extends L1NpcInstance {
 	private int _dollType;
 	private int _itemObjId;
 
-	// ƒ^[ƒQƒbƒg‚ª‚¢‚È‚¢ê‡‚Ìˆ—
+	// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãŒã„ãªã„å ´åˆã®å‡¦ç†
 	@Override
 	public boolean noTarget() {
 		if (_master.isDead()) {
@@ -76,11 +76,11 @@ public class L1DollInstance extends L1NpcInstance {
 		return false;
 	}
 
-	// ŠÔŒv‘ª—p
+	// æ™‚é–“è¨ˆæ¸¬ç”¨
 	class DollTimer implements Runnable {
 		@Override
 		public void run() {
-			if (_destroyed) { // Šù‚É”jŠü‚³‚ê‚Ä‚¢‚È‚¢‚©ƒ`ƒFƒbƒN
+			if (_destroyed) { // æ—¢ã«ç ´æ£„ã•ã‚Œã¦ã„ãªã„ã‹ãƒã‚§ãƒƒã‚¯
 				return;
 			}
 			deleteDoll();
@@ -135,7 +135,7 @@ public class L1DollInstance extends L1NpcInstance {
 	@Override
 	public void onItemUse() {
 		if (!isActived()) {
-			// ‚P‚O‚O“‚ÌŠm—¦‚ÅƒwƒCƒXƒgƒ|[ƒVƒ‡ƒ“g—p
+			// ï¼‘ï¼ï¼ï¼…ã®ç¢ºç‡ã§ãƒ˜ã‚¤ã‚¹ãƒˆãƒãƒ¼ã‚·ãƒ§ãƒ³ä½¿ç”¨
 			useItem(USEITEM_HASTE, 100);
 		}
 	}

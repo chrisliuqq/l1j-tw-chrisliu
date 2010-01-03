@@ -73,8 +73,8 @@ public class L1TowerInstance extends L1NpcInstance {
 	}
 
 	@Override
-	public void receiveDamage(L1Character attacker, int damage) { // UŒ‚‚Å‚g‚o‚ğŒ¸‚ç‚·‚Æ‚«‚Í‚±‚±‚ğg—p
-		if (_castle_id == 0) { // ‰Šúİ’è‚Å—Ç‚¢‚ª‚¢‚¢êŠ‚ª‚È‚¢
+	public void receiveDamage(L1Character attacker, int damage) { // æ”»æ’ƒã§ï¼¨ï¼°ã‚’æ¸›ã‚‰ã™ã¨ãã¯ã“ã“ã‚’ä½¿ç”¨
+		if (_castle_id == 0) { // åˆæœŸè¨­å®šã§è‰¯ã„ãŒã„ã„å ´æ‰€ãŒãªã„
 			if (isSubTower()) {
 				_castle_id = L1CastleLocation.ADEN_CASTLE_ID;
 			} else {
@@ -84,9 +84,9 @@ public class L1TowerInstance extends L1NpcInstance {
 		}
 
 		if (_castle_id > 0
-				&& WarTimeController.getInstance().isNowWar(_castle_id)) { // í‘ˆŠÔ“à
+				&& WarTimeController.getInstance().isNowWar(_castle_id)) { // æˆ¦äº‰æ™‚é–“å†…
 
-			// ƒAƒfƒ“é‚ÌƒƒCƒ“ƒ^ƒ[‚ÍƒTƒuƒ^ƒ[‚ª3‚ÂˆÈã”j‰ó‚³‚ê‚Ä‚¢‚éê‡‚Ì‚İUŒ‚‰Â”\
+			// ã‚¢ãƒ‡ãƒ³åŸã®ãƒ¡ã‚¤ãƒ³ã‚¿ãƒ¯ãƒ¼ã¯ã‚µãƒ–ã‚¿ãƒ¯ãƒ¼ãŒ3ã¤ä»¥ä¸Šç ´å£Šã•ã‚Œã¦ã„ã‚‹å ´åˆã®ã¿æ”»æ’ƒå¯èƒ½
 			if (_castle_id == L1CastleLocation.ADEN_CASTLE_ID
 					&& !isSubTower()) {
 				int subTowerDeadCount = 0;
@@ -118,7 +118,7 @@ public class L1TowerInstance extends L1NpcInstance {
 				return;
 			}
 
-			// •z‚µ‚Ä‚¢‚é‚©ƒ`ƒFƒbƒNB’A‚µAéå‚ª‹‚È‚¢ê‡‚Í•z•s—v
+			// å¸ƒå‘Šã—ã¦ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã€‚ä½†ã—ã€åŸä¸»ãŒå±…ãªã„å ´åˆã¯å¸ƒå‘Šä¸è¦
 			boolean existDefenseClan = false;
 			for (L1Clan clan : L1World.getInstance().getAllClans()) {
 				int clanCastleId = clan.getCastleId();
@@ -128,14 +128,14 @@ public class L1TowerInstance extends L1NpcInstance {
 				}
 			}
 			boolean isProclamation = false;
-			// ‘Sí‘ˆƒŠƒXƒg‚ğæ“¾
+			// å…¨æˆ¦äº‰ãƒªã‚¹ãƒˆã‚’å–å¾—
 			for (L1War war : L1World.getInstance().getWarList()) {
-				if (_castle_id == war.GetCastleId()) { // ¡‹‚éé‚Ìí‘ˆ
+				if (_castle_id == war.GetCastleId()) { // ä»Šå±…ã‚‹åŸã®æˆ¦äº‰
 					isProclamation = war.CheckClanInWar(pc.getClanname());
 					break;
 				}
 			}
-			if (existDefenseClan == true && isProclamation == false) { // éå‚ª‹‚ÄA•z‚µ‚Ä‚¢‚È‚¢ê‡
+			if (existDefenseClan == true && isProclamation == false) { // åŸä¸»ãŒå±…ã¦ã€å¸ƒå‘Šã—ã¦ã„ãªã„å ´åˆ
 				return;
 			}
 
@@ -176,7 +176,7 @@ public class L1TowerInstance extends L1NpcInstance {
 						}
 					}
 				}
-			} else if (!isDead()) { // ”O‚Ì‚½‚ß
+			} else if (!isDead()) { // å¿µã®ãŸã‚
 				setDead(true);
 				setStatus(ActionCodes.ACTION_TowerDie);
 				_lastattacker = attacker;
@@ -213,7 +213,7 @@ public class L1TowerInstance extends L1NpcInstance {
 			npc.broadcastPacket(new S_DoActionGFX(targetobjid,
 					ActionCodes.ACTION_TowerDie));
 
-			// ƒNƒ‰ƒEƒ“‚ğspawn‚·‚é
+			// ã‚¯ãƒ©ã‚¦ãƒ³ã‚’spawnã™ã‚‹
 			if (!isSubTower()) {
 				L1WarSpawn warspawn = new L1WarSpawn();
 				warspawn.SpawnCrown(_castle_id);

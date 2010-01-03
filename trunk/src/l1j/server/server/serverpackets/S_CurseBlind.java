@@ -34,7 +34,7 @@ public class S_CurseBlind extends ServerBasePacket {
 	private byte[] _byte = null;
 
 	public S_CurseBlind(int type) {
-		// type 0:OFF 1:©•ªˆÈŠOŒ©‚¦‚È‚¢ 2:ü‚è‚ÌƒLƒƒƒ‰ƒNƒ^[‚ªŒ©‚¦‚é
+		// type 0:OFF 1:è‡ªåˆ†ä»¥å¤–è¦‹ãˆãªã„ 2:å‘¨ã‚Šã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒè¦‹ãˆã‚‹
 		buildPacket(type);
 	}
 

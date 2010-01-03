@@ -63,7 +63,7 @@ public class CalcExp {
 		L1Object l1object = L1World.getInstance().findObject(targetid);
 		L1NpcInstance npc = (L1NpcInstance) l1object;
 
-		// ƒwƒCƒg‚Ì‡Œv‚ğæ“¾
+		// ãƒ˜ã‚¤ãƒˆã®åˆè¨ˆã‚’å–å¾—
 		L1Character acquisitor;
 		int hate = 0;
 		int acquire_exp = 0;
@@ -87,12 +87,12 @@ public class CalcExp {
 				if (acquisitor instanceof L1PcInstance) {
 					totalHateLawful += hate;
 				}
-			} else { // null‚¾‚Á‚½‚è€‚ñ‚Å‚¢‚½‚ç”rœ
+			} else { // nullã ã£ãŸã‚Šæ­»ã‚“ã§ã„ãŸã‚‰æ’é™¤
 				acquisitorList.remove(i);
 				hateList.remove(i);
 			}
 		}
-		if (totalHateExp == 0) { // æ“¾Ò‚ª‚¢‚È‚¢ê‡
+		if (totalHateExp == 0) { // å–å¾—è€…ãŒã„ãªã„å ´åˆ
 			return;
 		}
 
@@ -106,9 +106,9 @@ public class CalcExp {
 			}
 			int lawful = npc.getLawful();
 
-			if (l1pcinstance.isInParty()) { // ƒp[ƒeƒB[’†
-				// ƒp[ƒeƒB[‚ÌƒwƒCƒg‚Ì‡Œv‚ğZo
-				// ƒp[ƒeƒB[ƒƒ“ƒo[ˆÈŠO‚É‚Í‚»‚Ì‚Ü‚Ü”z•ª
+			if (l1pcinstance.isInParty()) { // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä¸­
+				// ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã®ãƒ˜ã‚¤ãƒˆã®åˆè¨ˆã‚’ç®—å‡º
+				// ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ¡ãƒ³ãƒãƒ¼ä»¥å¤–ã«ã¯ãã®ã¾ã¾é…åˆ†
 				partyHateExp = 0;
 				partyHateLawful = 0;
 				for (i = hateList.size() - 1; i >= 0; i--) {
@@ -162,9 +162,9 @@ public class CalcExp {
 					party_lawful = (lawful * partyHateLawful / totalHateLawful);
 				}
 
-				// EXPAƒƒEƒtƒ‹”z•ª
+				// EXPã€ãƒ­ã‚¦ãƒ•ãƒ«é…åˆ†
 
-				// ƒvƒŠƒ{[ƒiƒX
+				// ãƒ—ãƒªãƒœãƒ¼ãƒŠã‚¹
 				double pri_bonus = 0;
 				L1PcInstance leader = l1pcinstance.getParty().getLeader();
 				if (leader.isCrown()
@@ -173,7 +173,7 @@ public class CalcExp {
 					pri_bonus = 0.059;
 				}
 
-				// PTŒoŒ±’l‚ÌŒvZ
+				// PTçµŒé¨“å€¤ã®è¨ˆç®—
 				L1PcInstance[] ptMembers = l1pcinstance.getParty().getMembers();
 				double pt_bonus = 0;
 				for (L1PcInstance each : ptMembers) {
@@ -188,7 +188,7 @@ public class CalcExp {
 
 				party_exp = (int) (party_exp * (1 + pt_bonus + pri_bonus));
 
-				// ©ƒLƒƒƒ‰ƒNƒ^[‚Æ‚»‚ÌƒyƒbƒgEƒTƒ‚ƒ“‚ÌƒwƒCƒg‚Ì‡Œv‚ğZo
+				// è‡ªã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¨ãã®ãƒšãƒƒãƒˆãƒ»ã‚µãƒ¢ãƒ³ã®ãƒ˜ã‚¤ãƒˆã®åˆè¨ˆã‚’ç®—å‡º
 				if (party_level > 0) {
 					dist = ((l1pcinstance.getLevel() * l1pcinstance.getLevel()) / party_level);
 				}
@@ -218,8 +218,8 @@ public class CalcExp {
 						}
 					}
 				}
-				// ©ƒLƒƒƒ‰ƒNƒ^[‚Æ‚»‚ÌƒyƒbƒgEƒTƒ‚ƒ“‚É•ª”z
-				if (ownHateExp != 0) { // UŒ‚‚ÉQ‰Á‚µ‚Ä‚¢‚½
+				// è‡ªã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¨ãã®ãƒšãƒƒãƒˆãƒ»ã‚µãƒ¢ãƒ³ã«åˆ†é…
+				if (ownHateExp != 0) { // æ”»æ’ƒã«å‚åŠ ã—ã¦ã„ãŸ
 					for (i = hateList.size() - 1; i >= 0; i--) {
 						acquisitor = (L1Character) acquisitorList.get(i);
 						hate = (Integer) hateList.get(i);
@@ -244,12 +244,12 @@ public class CalcExp {
 						} else if (acquisitor instanceof L1SummonInstance) {
 						}
 					}
-				} else { // UŒ‚‚ÉQ‰Á‚µ‚Ä‚¢‚È‚©‚Á‚½
-					// ©ƒLƒƒƒ‰ƒNƒ^[‚Ì‚İ‚É•ª”z
+				} else { // æ”»æ’ƒã«å‚åŠ ã—ã¦ã„ãªã‹ã£ãŸ
+					// è‡ªã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ã¿ã«åˆ†é…
 					AddExp(l1pcinstance, member_exp, member_lawful);
 				}
 
-				// ƒp[ƒeƒB[ƒƒ“ƒo[‚Æ‚»‚ÌƒyƒbƒgEƒTƒ‚ƒ“‚ÌƒwƒCƒg‚Ì‡Œv‚ğZo
+				// ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ¡ãƒ³ãƒãƒ¼ã¨ãã®ãƒšãƒƒãƒˆãƒ»ã‚µãƒ¢ãƒ³ã®ãƒ˜ã‚¤ãƒˆã®åˆè¨ˆã‚’ç®—å‡º
 				for (int cnt = 0; cnt < ptMembers.length; cnt++) {
 					if (l1pcinstance.knownsObject(ptMembers[cnt])) {
 						if (party_level > 0) {
@@ -284,8 +284,8 @@ public class CalcExp {
 								}
 							}
 						}
-						// ƒp[ƒeƒB[ƒƒ“ƒo[‚Æ‚»‚ÌƒyƒbƒgEƒTƒ‚ƒ“‚É•ª”z
-						if (ownHateExp != 0) { // UŒ‚‚ÉQ‰Á‚µ‚Ä‚¢‚½
+						// ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ¡ãƒ³ãƒãƒ¼ã¨ãã®ãƒšãƒƒãƒˆãƒ»ã‚µãƒ¢ãƒ³ã«åˆ†é…
+						if (ownHateExp != 0) { // æ”»æ’ƒã«å‚åŠ ã—ã¦ã„ãŸ
 							for (i = hateList.size() - 1; i >= 0; i--) {
 								acquisitor = (L1Character) acquisitorList
 										.get(i);
@@ -311,14 +311,14 @@ public class CalcExp {
 								} else if (acquisitor instanceof L1SummonInstance) {
 								}
 							}
-						} else { // UŒ‚‚ÉQ‰Á‚µ‚Ä‚¢‚È‚©‚Á‚½
-							// ƒp[ƒeƒB[ƒƒ“ƒo[‚Ì‚İ‚É•ª”z
+						} else { // æ”»æ’ƒã«å‚åŠ ã—ã¦ã„ãªã‹ã£ãŸ
+							// ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ¡ãƒ³ãƒãƒ¼ã®ã¿ã«åˆ†é…
 							AddExp(ptMembers[cnt], member_exp, member_lawful);
 						}
 					}
 				}
-			} else { // ƒp[ƒeƒB[‚ğ‘g‚ñ‚Å‚¢‚È‚¢
-				// EXPAƒƒEƒtƒ‹‚Ì•ª”z
+			} else { // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã‚’çµ„ã‚“ã§ã„ãªã„
+				// EXPã€ãƒ­ã‚¦ãƒ•ãƒ«ã®åˆ†é…
 				for (i = hateList.size() - 1; i >= 0; i--) {
 					acquisitor = (L1Character) acquisitorList.get(i);
 					hate = (Integer) hateList.get(i);
@@ -393,10 +393,10 @@ public class CalcExp {
 		pet.setExpPercent(expPercentage);
 		pc.sendPackets(new S_PetPack(pet, pc));
 
-		if (gap != 0) { // ƒŒƒxƒ‹ƒAƒbƒv‚µ‚½‚çDB‚É‘‚«‚Ş
+		if (gap != 0) { // ãƒ¬ãƒ™ãƒ«ã‚¢ãƒƒãƒ—ã—ãŸã‚‰DBã«æ›¸ãè¾¼ã‚€
 			L1Pet petTemplate = PetTable.getInstance()
 					.getTemplate(petItemObjId);
-			if (petTemplate == null) { // PetTable‚É‚È‚¢
+			if (petTemplate == null) { // PetTableã«ãªã„
 				_log.warning("L1Pet == null");
 				return;
 			}
@@ -404,8 +404,8 @@ public class CalcExp {
 			petTemplate.set_level(pet.getLevel());
 			petTemplate.set_hp(pet.getMaxHp());
 			petTemplate.set_mp(pet.getMaxMp());
-			PetTable.getInstance().storePet(petTemplate); // DB‚É‘‚«‚İ
-			pc.sendPackets(new S_ServerMessage(320, pet.getName())); // \f1%0‚ÌƒŒƒxƒ‹‚ªã‚ª‚è‚Ü‚µ‚½B
+			PetTable.getInstance().storePet(petTemplate); // DBã«æ›¸ãè¾¼ã¿
+			pc.sendPackets(new S_ServerMessage(320, pet.getName())); // \f1%0ã®ãƒ¬ãƒ™ãƒ«ãŒä¸ŠãŒã‚Šã¾ã—ãŸã€‚
 		}
 	}
 }

@@ -49,7 +49,7 @@ public class C_AddBuddy extends ClientBasePacket {
 			return;
 		} else if (buddyList.containsName(charName)) {
 			pc.sendPackets(new S_ServerMessage(1052, charName)); // %s
-																	// ‚ÍŠù‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·B
+																	// ã¯æ—¢ã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã™ã€‚
 			return;
 		}
 
@@ -62,7 +62,7 @@ public class C_AddBuddy extends ClientBasePacket {
 				return;
 			}
 		}
-		pc.sendPackets(new S_ServerMessage(109, charName)); // %0‚Æ‚¢‚¤–¼‘O‚Ìl‚Í‚¢‚Ü‚¹‚ñB
+		pc.sendPackets(new S_ServerMessage(109, charName)); // %0ã¨ã„ã†åå‰ã®äººã¯ã„ã¾ã›ã‚“ã€‚
 	}
 
 	@Override

@@ -51,7 +51,7 @@ public class C_AuthLogin extends ClientBasePacket {
 			for (ClientThread tempClient : LoginController.getInstance()
 					.getAllAccounts()) {
 				if (ip.equalsIgnoreCase(tempClient.getIp())) {
-					_log.info("2PC‚ÌƒƒOƒCƒ“‚ğ‹‘”Û‚µ‚Ü‚µ‚½Baccount="
+					_log.info("2PCã®ãƒ­ã‚°ã‚¤ãƒ³ã‚’æ‹’å¦ã—ã¾ã—ãŸã€‚account="
 							+ accountName + " host=" + host);
 					client.sendPacket(new S_LoginResult(
 							S_LoginResult.REASON_USER_OR_PASS_WRONG));
@@ -73,8 +73,8 @@ public class C_AuthLogin extends ClientBasePacket {
 					S_LoginResult.REASON_USER_OR_PASS_WRONG));
 			return;
 		}
-		if (account.isBanned()) { // BANƒAƒJƒEƒ“ƒg
-			_log.info("BANƒAƒJƒEƒ“ƒg‚ÌƒƒOƒCƒ“‚ğ‹‘”Û‚µ‚Ü‚µ‚½Baccount=" + accountName + " host="
+		if (account.isBanned()) { // BANã‚¢ã‚«ã‚¦ãƒ³ãƒˆ
+			_log.info("BANã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®ãƒ­ã‚°ã‚¤ãƒ³ã‚’æ‹’å¦ã—ã¾ã—ãŸã€‚account=" + accountName + " host="
 					+ host);
 			client.sendPacket(new S_LoginResult(
 					S_LoginResult.REASON_USER_OR_PASS_WRONG));
@@ -83,19 +83,19 @@ public class C_AuthLogin extends ClientBasePacket {
 
 		try {
 			LoginController.getInstance().login(client, account);
-			Account.updateLastActive(account); // ÅIƒƒOƒCƒ““ú‚ğXV‚·‚é
+			Account.updateLastActive(account); // æœ€çµ‚ãƒ­ã‚°ã‚¤ãƒ³æ—¥ã‚’æ›´æ–°ã™ã‚‹
 			client.setAccount(account);
 			client.sendPacket(new S_LoginResult(S_LoginResult.REASON_LOGIN_OK));
 			client.sendPacket(new S_CommonNews());
 		} catch (GameServerFullException e) {
 			client.kick();
-			_log.info("Ú‘±l”ãŒÀ‚É’B‚µ‚Ä‚¢‚éˆ×(" + client.getHostname()
-					+ ")‚ÌƒƒOƒCƒ“‚ğ‹‘”Û‚µAØ’f‚µ‚Ü‚µ‚½B");
+			_log.info("æ¥ç¶šäººæ•°ä¸Šé™ã«é”ã—ã¦ã„ã‚‹ç‚º(" + client.getHostname()
+					+ ")ã®ãƒ­ã‚°ã‚¤ãƒ³ã‚’æ‹’å¦ã—ã€åˆ‡æ–­ã—ã¾ã—ãŸã€‚");
 			return;
 		} catch (AccountAlreadyLoginException e) {
 			client.kick();
-			_log.info("“¯ˆêID‚Å‚Ìd•¡Ú‘±‚Ìˆ×(" + client.getHostname()
-					+ ")‚Æ‚ÌÚ‘±‚ğ‹­§Ø’f‚µ‚Ü‚µ‚½B");
+			_log.info("åŒä¸€IDã§ã®é‡è¤‡æ¥ç¶šã®ç‚º(" + client.getHostname()
+					+ ")ã¨ã®æ¥ç¶šã‚’å¼·åˆ¶åˆ‡æ–­ã—ã¾ã—ãŸã€‚");
 			return;
 		}
 	}

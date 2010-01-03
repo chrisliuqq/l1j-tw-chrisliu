@@ -44,34 +44,34 @@ public class C_ChatWhisper extends ClientBasePacket {
 		String targetName = readS();
 		String text = readS();
 		L1PcInstance whisperFrom = client.getActiveChar();
-		// ƒ`ƒƒƒbƒg‹Ö~’†‚Ìê‡
+		// ãƒãƒ£ãƒƒãƒˆç¦æ­¢ä¸­ã®å ´åˆ
 		if (whisperFrom.hasSkillEffect(1005)) {
-			whisperFrom.sendPackets(new S_ServerMessage(242)); // Œ»İƒ`ƒƒƒbƒg‹Ö~’†‚Å‚·B
+			whisperFrom.sendPackets(new S_ServerMessage(242)); // ç¾åœ¨ãƒãƒ£ãƒƒãƒˆç¦æ­¢ä¸­ã§ã™ã€‚
 			return;
 		}
-		// ƒEƒBƒXƒp[‰Â”\‚ÈLv–¢–‚Ìê‡
+		// ã‚¦ã‚£ã‚¹ãƒ‘ãƒ¼å¯èƒ½ãªLvæœªæº€ã®å ´åˆ
 		if (whisperFrom.getLevel() < Config.WHISPER_CHAT_LEVEL) {
 			whisperFrom.sendPackets(new S_ServerMessage(404, String
-					.valueOf(Config.WHISPER_CHAT_LEVEL))); // %0ƒŒƒxƒ‹ˆÈ‰º‚Å‚ÍƒEƒBƒXƒp[Aƒp[ƒeƒB[ƒ`ƒƒƒbƒg‚Íg—p‚Å‚«‚Ü‚¹‚ñB
+					.valueOf(Config.WHISPER_CHAT_LEVEL))); // %0ãƒ¬ãƒ™ãƒ«ä»¥ä¸‹ã§ã¯ã‚¦ã‚£ã‚¹ãƒ‘ãƒ¼ã€ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒãƒ£ãƒƒãƒˆã¯ä½¿ç”¨ã§ãã¾ã›ã‚“ã€‚
 			return;
 		}
 		L1PcInstance whisperTo = L1World.getInstance().getPlayer(targetName);
-		// ƒ[ƒ‹ƒh‚É‚¢‚È‚¢ê‡
+		// ãƒ¯ãƒ¼ãƒ«ãƒ‰ã«ã„ãªã„å ´åˆ
 		if (whisperTo == null) {
-			whisperFrom.sendPackets(new S_ServerMessage(73, targetName)); // \f1%0‚ÍƒQ[ƒ€‚ğ‚µ‚Ä‚¢‚Ü‚¹‚ñB
+			whisperFrom.sendPackets(new S_ServerMessage(73, targetName)); // \f1%0ã¯ã‚²ãƒ¼ãƒ ã‚’ã—ã¦ã„ã¾ã›ã‚“ã€‚
 			return;
 		}
-		// ©•ª©g‚É‘Î‚·‚éwis‚Ìê‡
+		// è‡ªåˆ†è‡ªèº«ã«å¯¾ã™ã‚‹wisã®å ´åˆ
 		if (whisperTo.equals(whisperFrom)) {
 			return;
 		}
-		// Õ’f‚³‚ê‚Ä‚¢‚éê‡
+		// é®æ–­ã•ã‚Œã¦ã„ã‚‹å ´åˆ
 		if (whisperTo.getExcludingList().contains(whisperFrom.getName())) {
 			whisperFrom.sendPackets(new S_ServerMessage(117, whisperTo
-					.getName())); // %0‚ª‚ ‚È‚½‚ğÕ’f‚µ‚Ü‚µ‚½B
+					.getName())); // %0ãŒã‚ãªãŸã‚’é®æ–­ã—ã¾ã—ãŸã€‚
 			return;
 		}
-		// ƒQ[ƒ€ƒIƒvƒVƒ‡ƒ“‚ÅOFF‚É‚µ‚Ä‚¢‚éê‡
+		// ã‚²ãƒ¼ãƒ ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã§OFFã«ã—ã¦ã„ã‚‹å ´åˆ
 		if (!whisperTo.isCanWhisper()) {
 			whisperFrom.sendPackets(new S_ServerMessage(205, whisperTo
 					.getName()));

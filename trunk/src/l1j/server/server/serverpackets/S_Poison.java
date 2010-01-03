@@ -27,28 +27,28 @@ import l1j.server.server.Opcodes;
 public class S_Poison extends ServerBasePacket {
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÌŠOŒ©‚ğ“Åó‘Ô‚Ö•ÏX‚·‚éÛ‚É‘—M‚·‚éƒpƒPƒbƒg‚ğ\’z‚·‚é
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®å¤–è¦‹ã‚’æ¯’çŠ¶æ…‹ã¸å¤‰æ›´ã™ã‚‹éš›ã«é€ä¿¡ã™ã‚‹ãƒ‘ã‚±ãƒƒãƒˆã‚’æ§‹ç¯‰ã™ã‚‹
 	 * 
 	 * @param objId
-	 *            ŠOŒ©‚ğ•Ï‚¦‚éƒLƒƒƒ‰ƒNƒ^[‚ÌID
+	 *            å¤–è¦‹ã‚’å¤‰ãˆã‚‹ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ID
 	 * @param type
-	 *            ŠOŒ©‚Ìƒ^ƒCƒv 0 = ’ÊíF, 1 = —ÎF, 2 = ŠDF
+	 *            å¤–è¦‹ã®ã‚¿ã‚¤ãƒ— 0 = é€šå¸¸è‰², 1 = ç·‘è‰², 2 = ç°è‰²
 	 */
 	public S_Poison(int objId, int type) {
 		writeC(Opcodes.S_OPCODE_POISON);
 		writeD(objId);
 
-		if (type == 0) { // ’Êí
+		if (type == 0) { // é€šå¸¸
 			writeC(0);
 			writeC(0);
-		} else if (type == 1) { // —ÎF
+		} else if (type == 1) { // ç·‘è‰²
 			writeC(1);
 			writeC(0);
-		} else if (type == 2) { // ŠDF
+		} else if (type == 2) { // ç°è‰²
 			writeC(0);
 			writeC(1);
 		} else {
-			throw new IllegalArgumentException("•s³‚Èˆø”‚Å‚·Btype = " + type);
+			throw new IllegalArgumentException("ä¸æ­£ãªå¼•æ•°ã§ã™ã€‚type = " + type);
 		}
 	}
 

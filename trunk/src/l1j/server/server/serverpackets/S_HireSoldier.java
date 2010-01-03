@@ -36,16 +36,16 @@ public class S_HireSoldier extends ServerBasePacket {
 
 	private byte[] _byte = null;
 
-	// HTML���J���Ă���Ƃ��ɂ��̃p�P�b�g�𑗂��npcdeloy-j.html���\�������
-	// OK�{�^����������C_127�����
+	// HTMLを開いているときにこのパケットを送るとnpcdeloy-j.htmlが表示される
+	// OKボタンを押すとC_127が飛ぶ
 	public S_HireSoldier(L1PcInstance pc) {
 		writeC(Opcodes.S_OPCODE_HIRESOLDIER);
-		writeH(0); // ? �N���C�A���g���Ԃ��p�P�b�g�Ɋ܂܂��
-		writeH(0); // ? �N���C�A���g���Ԃ��p�P�b�g�Ɋ܂܂��
-		writeH(0); // �ٗp���ꂽ�b���̑���
+		writeH(0); // ? クライアントが返すパケットに含まれる
+		writeH(0); // ? クライアントが返すパケットに含まれる
+		writeH(0); // 雇用された傭兵の総数
 		writeS(pc.getName());
-		writeD(0); // ? �N���C�A���g���Ԃ��p�P�b�g�Ɋ܂܂��
-		writeH(0); // �z�u�\�ȗb����
+		writeD(0); // ? クライアントが返すパケットに含まれる
+		writeH(0); // 配置可能な傭兵数
 	}
 
 	@Override

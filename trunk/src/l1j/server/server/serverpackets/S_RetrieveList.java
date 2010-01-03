@@ -32,7 +32,7 @@ public class S_RetrieveList extends ServerBasePacket {
 				writeC(Opcodes.S_OPCODE_SHOWRETRIEVELIST);
 				writeD(objid);
 				writeH(size);
-				writeC(3); // ŒÂl‘qŒÉ
+				writeC(3); // å€‹äººå€‰åº«
 				for (Object itemObject : pc.getDwarfInventory().getItems()) {
 					L1ItemInstance item = (L1ItemInstance) itemObject;
 					writeD(item.getId());
@@ -44,13 +44,13 @@ public class S_RetrieveList extends ServerBasePacket {
 					writeS(item.getViewName());
 				}
 			}
-			// ƒNƒ‰ƒCƒAƒ“ƒg‚É“K“–‚ÈƒƒbƒZ[ƒWŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚Ì‚Å”ñ•\¦
+			// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã«é©å½“ãªãƒ¡ãƒƒã‚»ãƒ¼ã‚¸è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸã®ã§éè¡¨ç¤º
 			/*
 			 * else { l1pcinstance.sendPackets(new
-			 * S_SystemMessage("‰½‚à‚¨—a‚©‚è‚µ‚Ä‚¢‚Ü‚¹‚ñB")); }
+			 * S_SystemMessage("ä½•ã‚‚ãŠé ã‹ã‚Šã—ã¦ã„ã¾ã›ã‚“ã€‚")); }
 			 */
 		} else {
-			pc.sendPackets(new S_ServerMessage(263)); // \f1ˆêl‚ÌƒLƒƒƒ‰ƒNƒ^[‚ª‚Á‚Ä•à‚¯‚éƒAƒCƒeƒ€‚ÍÅ‘å180ŒÂ‚Ü‚Å‚Å‚·B
+			pc.sendPackets(new S_ServerMessage(263)); // \f1ä¸€äººã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒæŒã£ã¦æ­©ã‘ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã¯æœ€å¤§180å€‹ã¾ã§ã§ã™ã€‚
 		}
 	}
 

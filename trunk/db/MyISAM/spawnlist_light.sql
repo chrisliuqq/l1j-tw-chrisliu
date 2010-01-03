@@ -8,7 +8,7 @@ CREATE TABLE `spawnlist_light` (
   `locy` int(10) unsigned NOT NULL default '0',
   `mapid` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=sjis;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
 #----------------------------

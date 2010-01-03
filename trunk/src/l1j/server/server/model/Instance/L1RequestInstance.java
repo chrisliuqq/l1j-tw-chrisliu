@@ -45,7 +45,7 @@ public class L1RequestInstance extends L1NpcInstance {
 				getNpcTemplate().get_npcId());
 
 		if (talking != null) {
-			if (player.getLawful() < -1000) { // プレイヤーがカオティック
+			if (player.getLawful() < -1000) { // 繝励Ξ繧､繝､繝ｼ縺後き繧ｪ繝�繧｣繝�繧ｯ
 				player.sendPackets(new S_NPCTalkReturn(talking, objid, 2));
 			} else {
 				player.sendPackets(new S_NPCTalkReturn(talking, objid, 1));

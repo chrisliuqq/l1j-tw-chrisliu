@@ -54,16 +54,16 @@ public class L1PartyRecall implements L1CommandExecutor {
 						L1Teleport.teleport(pc2, x, y, map, 5, true);
 						pc2
 								.sendPackets(new S_SystemMessage(
-										"ƒQ[ƒ€ƒ}ƒXƒ^[‚É¢ŠÒ‚³‚ê‚Ü‚µ‚½B"));
+										"ã‚²ãƒ¼ãƒ ãƒã‚¹ã‚¿ãƒ¼ã«å¬é‚„ã•ã‚Œã¾ã—ãŸã€‚"));
 					} catch (Exception e) {
 						_log.log(Level.SEVERE, "", e);
 					}
 				}
 			} else {
-				pc.sendPackets(new S_SystemMessage("ƒp[ƒeƒBƒƒ“ƒo[‚Å‚Í‚ ‚è‚Ü‚¹‚ñB"));
+				pc.sendPackets(new S_SystemMessage("ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¡ãƒ³ãƒãƒ¼ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚"));
 			}
 		} else {
-			pc.sendPackets(new S_SystemMessage("‚»‚Ì‚æ‚¤‚ÈƒLƒƒƒ‰ƒNƒ^[‚Í‚¢‚Ü‚¹‚ñB"));
+			pc.sendPackets(new S_SystemMessage("ãã®ã‚ˆã†ãªã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¯ã„ã¾ã›ã‚“ã€‚"));
 		}
 	}
 }

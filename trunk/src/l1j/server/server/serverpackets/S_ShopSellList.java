@@ -38,7 +38,7 @@ public class S_ShopSellList extends ServerBasePacket {
 
 
 	/**
-	 * “X‚Ì•i•¨ƒŠƒXƒg‚ğ•\¦‚·‚éBƒLƒƒƒ‰ƒNƒ^[‚ªBUYƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚É‘—‚éB
+	 * åº—ã®å“ç‰©ãƒªã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ã€‚ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒBUYãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸæ™‚ã«é€ã‚‹ã€‚
 	 */
 	public S_ShopSellList(int objId) {
 		writeC(Opcodes.S_OPCODE_SHOWSHOPBUYLIST);
@@ -57,7 +57,7 @@ public class S_ShopSellList extends ServerBasePacket {
 
 		writeH(shopItems.size());
 
-		// L1ItemInstance‚ÌgetStatusBytes‚ğ—˜—p‚·‚é‚½‚ß
+		// L1ItemInstanceã®getStatusBytesã‚’åˆ©ç”¨ã™ã‚‹ãŸã‚
 		L1ItemInstance dummy = new L1ItemInstance();
 
 		for (int i = 0; i < shopItems.size(); i++) {

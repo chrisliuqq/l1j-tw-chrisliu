@@ -43,7 +43,7 @@ public class L1EtcItem extends L1Item {
 
 	private int _maxChargeCount;
 
-	private boolean _isCanSeal; // œ ••ˆóƒXƒNƒ[ƒ‹‚Å••ˆó‰Â”\
+	private boolean _isCanSeal; // â— å°å°ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã§å°å°å¯èƒ½
 
 	@Override
 	public boolean isStackable() {

@@ -115,7 +115,7 @@ public class SkillsTable {
 
 			_skills.put(new Integer(skill_id), l1skills);
 		}
-		_log.config("ƒXƒLƒ‹ " + _skills.size() + "Œƒ[ƒh");
+		_log.config("ã‚¹ã‚­ãƒ« " + _skills.size() + "ä»¶ãƒ­ãƒ¼ãƒ‰");
 	}
 
 	public void spellMastery(int playerobjid, int skillid, String skillname,

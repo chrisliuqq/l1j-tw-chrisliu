@@ -87,12 +87,12 @@ public class GameServer extends Thread {
 
 	@Override
 	public void run() {
-		System.out.println("—˜—pƒƒ‚ƒŠ: " + SystemUtil.getUsedMemoryMB() + "MB");
-		System.out.println("ƒNƒ‰ƒCƒAƒ“ƒgÚ‘±‘Ò‹@’†...");
+		System.out.println("åˆ©ç”¨ãƒ¡ãƒ¢ãƒª: " + SystemUtil.getUsedMemoryMB() + "MB");
+		System.out.println("ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆæ¥ç¶šå¾…æ©Ÿä¸­...");
 		while (true) {
 			try {
 				Socket socket = _serverSocket.accept();
-				System.out.println("Ú‘±s’†IP " + socket.getInetAddress());
+				System.out.println("æ¥ç¶šè©¦è¡Œä¸­IP " + socket.getInetAddress());
 				String host = socket.getInetAddress().getHostAddress();
 				if (IpTable.getInstance().isBannedIp(host)) {
 					_log.info("banned IP(" + host + ")");
@@ -132,20 +132,20 @@ public class GameServer extends Thread {
 			InetAddress inetaddress = InetAddress.getByName(s);
 			inetaddress.getHostAddress();
 			_serverSocket = new ServerSocket(_port, 50, inetaddress);
-			System.out.println("ƒT[ƒo[ƒZƒbƒeƒBƒ“ƒO: ƒT[ƒo[ƒ\ƒPƒbƒg¶¬");
+			System.out.println("ã‚µãƒ¼ãƒãƒ¼ã‚»ãƒƒãƒ†ã‚£ãƒ³ã‚°: ã‚µãƒ¼ãƒãƒ¼ã‚½ã‚±ãƒƒãƒˆç”Ÿæˆ");
 		} else {
 			_serverSocket = new ServerSocket(_port);
-			System.out.println("ƒT[ƒo[ƒZƒbƒeƒBƒ“ƒO: ƒT[ƒo[ƒ\ƒPƒbƒg¶¬");
+			System.out.println("ã‚µãƒ¼ãƒãƒ¼ã‚»ãƒƒãƒ†ã‚£ãƒ³ã‚°: ã‚µãƒ¼ãƒãƒ¼ã‚½ã‚±ãƒƒãƒˆç”Ÿæˆ");
 		}
 
-		System.out.println("EXP:" + (rateXp) + "”{  Lawful:" + (LA) + "”{  ƒJƒ‹ƒ}:"
-				+ (rateKarma) + "”{  ƒhƒƒbƒv—¦:" + (rateDropItems) + "”{  æ“¾ƒAƒfƒi:"
-				+ (rateDropAdena) + "”{");
-		System.out.println("‘S‘Ìƒ`ƒƒƒbƒg‰Â”\Lv " + (chatlvl));
-		if (Config.ALT_NONPVP) { // Non-PvPİ’è
-			System.out.println("Non-PvPİ’è: –³ŒøiPvP‰Â”\j");
+		System.out.println("EXP:" + (rateXp) + "å€  Lawful:" + (LA) + "å€  ã‚«ãƒ«ãƒ:"
+				+ (rateKarma) + "å€  ãƒ‰ãƒ­ãƒƒãƒ—ç‡:" + (rateDropItems) + "å€  å–å¾—ã‚¢ãƒ‡ãƒŠ:"
+				+ (rateDropAdena) + "å€");
+		System.out.println("å…¨ä½“ãƒãƒ£ãƒƒãƒˆå¯èƒ½Lv " + (chatlvl));
+		if (Config.ALT_NONPVP) { // Non-PvPè¨­å®š
+			System.out.println("Non-PvPè¨­å®š: ç„¡åŠ¹ï¼ˆPvPå¯èƒ½ï¼‰");
 		} else {
-			System.out.println("Non-PvPİ’è: —LŒøiPvP•s‰Âj");
+			System.out.println("Non-PvPè¨­å®š: æœ‰åŠ¹ï¼ˆPvPä¸å¯ï¼‰");
 		}
 
 		System.out.println("=================================================");
@@ -153,60 +153,60 @@ public class GameServer extends Thread {
 		System.out.println("=================================================");
 
 		int maxOnlineUsers = Config.MAX_ONLINE_USERS;
-		System.out.println("Ú‘±l”§ŒÀF Å‘å" + (maxOnlineUsers) + "l");
+		System.out.println("æ¥ç¶šäººæ•°åˆ¶é™ï¼š æœ€å¤§" + (maxOnlineUsers) + "äºº");
 		IdFactory.getInstance();
 		L1WorldMap.getInstance();
 		_loginController = LoginController.getInstance();
 		_loginController.setMaxAllowedOnlinePlayers(maxOnlineUsers);
 
-		// ‘SƒLƒƒƒ‰ƒNƒ^[ƒl[ƒ€ƒ[ƒh
+		// å…¨ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãƒãƒ¼ãƒ ãƒ­ãƒ¼ãƒ‰
 		CharacterTable.getInstance().loadAllCharName();
 
-		// ƒIƒ“ƒ‰ƒCƒ“ó‘ÔƒŠƒZƒbƒg
+		// ã‚ªãƒ³ãƒ©ã‚¤ãƒ³çŠ¶æ…‹ãƒªã‚»ãƒƒãƒˆ
 		CharacterTable.clearOnlineStatus();
 
-		// ƒQ[ƒ€ŠÔŒv
+		// ã‚²ãƒ¼ãƒ æ™‚é–“æ™‚è¨ˆ
 		L1GameTimeClock.init();
 
-		// UBƒ^ƒCƒ€ƒRƒ“ƒgƒ[ƒ‰[
+		// UBã‚¿ã‚¤ãƒ ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
 		UbTimeController ubTimeContoroller = UbTimeController.getInstance();
 		GeneralThreadPool.getInstance().execute(ubTimeContoroller);
 
-		// í‘ˆƒ^ƒCƒ€ƒRƒ“ƒgƒ[ƒ‰[
+		// æˆ¦äº‰ã‚¿ã‚¤ãƒ ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
 		WarTimeController warTimeController = WarTimeController.getInstance();
 		GeneralThreadPool.getInstance().execute(warTimeController);
 
-		// ¸—ì‚ÌÎ¶¬
+		// ç²¾éœŠã®çŸ³ç”Ÿæˆ
 		if (Config.ELEMENTAL_STONE_AMOUNT > 0) {
 			ElementalStoneGenerator elementalStoneGenerator
 					= ElementalStoneGenerator.getInstance();
 			GeneralThreadPool.getInstance().execute(elementalStoneGenerator);
 		}
 
-		// ƒz[ƒ€ƒ^ƒEƒ“
+		// ãƒ›ãƒ¼ãƒ ã‚¿ã‚¦ãƒ³
 		HomeTownTimeController.getInstance();
 
-		// ƒAƒWƒg‹£”„ƒ^ƒCƒ€ƒRƒ“ƒgƒ[ƒ‰[
+		// ã‚¢ã‚¸ãƒˆç«¶å£²ã‚¿ã‚¤ãƒ ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
 		AuctionTimeController auctionTimeController = AuctionTimeController
 				.getInstance();
 		GeneralThreadPool.getInstance().execute(auctionTimeController);
 
-		// ƒAƒWƒgÅ‹àƒ^ƒCƒ€ƒRƒ“ƒgƒ[ƒ‰[
+		// ã‚¢ã‚¸ãƒˆç¨é‡‘ã‚¿ã‚¤ãƒ ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
 		HouseTaxTimeController houseTaxTimeController = HouseTaxTimeController
 				.getInstance();
 		GeneralThreadPool.getInstance().execute(houseTaxTimeController);
 
-		// ’Ş‚èƒ^ƒCƒ€ƒRƒ“ƒgƒ[ƒ‰[
+		// é‡£ã‚Šã‚¿ã‚¤ãƒ ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
 		FishingTimeController fishingTimeController = FishingTimeController
 				.getInstance();
 		GeneralThreadPool.getInstance().execute(fishingTimeController);
 
-		// NPCƒ`ƒƒƒbƒgƒ^ƒCƒ€ƒRƒ“ƒgƒ[ƒ‰[
+		// NPCãƒãƒ£ãƒƒãƒˆã‚¿ã‚¤ãƒ ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
 		NpcChatTimeController npcChatTimeController = NpcChatTimeController
 				.getInstance();
 		GeneralThreadPool.getInstance().execute(npcChatTimeController);
 
-		// ƒ‰ƒCƒgƒ^ƒCƒ€ƒRƒ“ƒgƒ[ƒ‰[
+		// ãƒ©ã‚¤ãƒˆã‚¿ã‚¤ãƒ ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
 		LightTimeController lightTimeController = LightTimeController
 				.getInstance();
 		GeneralThreadPool.getInstance().execute(lightTimeController);
@@ -238,7 +238,7 @@ public class GameServer extends Thread {
 		PetTable.getInstance();
 		ClanTable.getInstance();
 		CastleTable.getInstance();
-		L1CastleLocation.setCastleTaxRate(); // ‚±‚ê‚ÍCastleTable‰Šú‰»Œã‚Å‚È‚¯‚ê‚Î‚¢‚¯‚È‚¢
+		L1CastleLocation.setCastleTaxRate(); // ã“ã‚Œã¯CastleTableåˆæœŸåŒ–å¾Œã§ãªã‘ã‚Œã°ã„ã‘ãªã„
 		GetBackRestartTable.getInstance();
 		DoorSpawnTable.getInstance();
 		GeneralThreadPool.getInstance();
@@ -257,14 +257,14 @@ public class GameServer extends Thread {
 		NpcChatTable.getInstance();
 		MailTable.getInstance();
 
-		System.out.println("ƒ[ƒfƒBƒ“ƒOŠ®—¹");
+		System.out.println("ãƒ­ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°å®Œäº†");
 		Runtime.getRuntime().addShutdownHook(Shutdown.getInstance());
 
 		this.start();
 	}
 
 	/**
-	 * ƒIƒ“ƒ‰ƒCƒ“’†‚ÌƒvƒŒƒCƒ„[‘S‚Ä‚É‘Î‚µ‚ÄkickAƒLƒƒƒ‰ƒNƒ^[î•ñ‚Ì•Û‘¶‚ğ‚·‚éB
+	 * ã‚ªãƒ³ãƒ©ã‚¤ãƒ³ä¸­ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å…¨ã¦ã«å¯¾ã—ã¦kickã€ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æƒ…å ±ã®ä¿å­˜ã‚’ã™ã‚‹ã€‚
 	 */
 	public void disconnectAllCharacters() {
 		Collection<L1PcInstance> players = L1World.getInstance()
@@ -273,7 +273,7 @@ public class GameServer extends Thread {
 			pc.getNetConnection().setActiveChar(null);
 			pc.getNetConnection().kick();
 		}
-		// ‘SˆõKick‚µ‚½Œã‚É•Û‘¶ˆ—‚ğ‚·‚é
+		// å…¨å“¡Kickã—ãŸå¾Œã«ä¿å­˜å‡¦ç†ã‚’ã™ã‚‹
 		for (L1PcInstance pc : players) {
 			ClientThread.quitGame(pc);
 			L1World.getInstance().removeObject(pc);
@@ -292,16 +292,16 @@ public class GameServer extends Thread {
 			L1World world = L1World.getInstance();
 			try {
 				int secondsCount = _secondsCount;
-				world.broadcastServerMessage("‚½‚¾‚¢‚Ü‚æ‚èAƒT[ƒo[‚ğƒVƒƒƒbƒgƒ_ƒEƒ“‚µ‚Ü‚·B");
-				world.broadcastServerMessage("ˆÀ‘S‚ÈêŠ‚ÅƒƒOƒAƒEƒg‚µ‚Ä‚­‚¾‚³‚¢");
+				world.broadcastServerMessage("ãŸã ã„ã¾ã‚ˆã‚Šã€ã‚µãƒ¼ãƒãƒ¼ã‚’ã‚·ãƒ£ãƒƒãƒˆãƒ€ã‚¦ãƒ³ã—ã¾ã™ã€‚");
+				world.broadcastServerMessage("å®‰å…¨ãªå ´æ‰€ã§ãƒ­ã‚°ã‚¢ã‚¦ãƒˆã—ã¦ãã ã•ã„");
 				while (0 < secondsCount) {
 					if (secondsCount <= 30) {
-						world.broadcastServerMessage("ƒQ[ƒ€‚ª" + secondsCount
-								+ "•bŒã‚ÉƒVƒƒƒbƒgƒ_ƒEƒ“‚µ‚Ü‚·BƒQ[ƒ€‚ğ’†’f‚µ‚Ä‚­‚¾‚³‚¢B");
+						world.broadcastServerMessage("ã‚²ãƒ¼ãƒ ãŒ" + secondsCount
+								+ "ç§’å¾Œã«ã‚·ãƒ£ãƒƒãƒˆãƒ€ã‚¦ãƒ³ã—ã¾ã™ã€‚ã‚²ãƒ¼ãƒ ã‚’ä¸­æ–­ã—ã¦ãã ã•ã„ã€‚");
 					} else {
 						if (secondsCount % 60 == 0) {
-							world.broadcastServerMessage("ƒQ[ƒ€‚ª" + secondsCount
-									/ 60 + "•ªŒã‚ÉƒVƒƒƒbƒgƒ_ƒEƒ“‚µ‚Ü‚·B");
+							world.broadcastServerMessage("ã‚²ãƒ¼ãƒ ãŒ" + secondsCount
+									/ 60 + "åˆ†å¾Œã«ã‚·ãƒ£ãƒƒãƒˆãƒ€ã‚¦ãƒ³ã—ã¾ã™ã€‚");
 						}
 					}
 					Thread.sleep(1000);
@@ -309,7 +309,7 @@ public class GameServer extends Thread {
 				}
 				shutdown();
 			} catch (InterruptedException e) {
-				world.broadcastServerMessage("ƒVƒƒƒbƒgƒ_ƒEƒ“‚ª’†’f‚³‚ê‚Ü‚µ‚½BƒT[ƒo[‚Í’Êí‰Ò“®’†‚Å‚·B");
+				world.broadcastServerMessage("ã‚·ãƒ£ãƒƒãƒˆãƒ€ã‚¦ãƒ³ãŒä¸­æ–­ã•ã‚Œã¾ã—ãŸã€‚ã‚µãƒ¼ãƒãƒ¼ã¯é€šå¸¸ç¨¼å‹•ä¸­ã§ã™ã€‚");
 				return;
 			}
 		}
@@ -319,8 +319,8 @@ public class GameServer extends Thread {
 
 	public synchronized void shutdownWithCountdown(int secondsCount) {
 		if (_shutdownThread != null) {
-			// Šù‚ÉƒVƒƒƒbƒgƒ_ƒEƒ“—v‹‚ªs‚í‚ê‚Ä‚¢‚é
-			// TODO ƒGƒ‰[’Ê’m‚ª•K—v‚©‚à‚µ‚ê‚È‚¢
+			// æ—¢ã«ã‚·ãƒ£ãƒƒãƒˆãƒ€ã‚¦ãƒ³è¦æ±‚ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹
+			// TODO ã‚¨ãƒ©ãƒ¼é€šçŸ¥ãŒå¿…è¦ã‹ã‚‚ã—ã‚Œãªã„
 			return;
 		}
 		_shutdownThread = new ServerShutdownThread(secondsCount);
@@ -334,8 +334,8 @@ public class GameServer extends Thread {
 
 	public synchronized void abortShutdown() {
 		if (_shutdownThread == null) {
-			// ƒVƒƒƒbƒgƒ_ƒEƒ“—v‹‚ªs‚í‚ê‚Ä‚¢‚È‚¢
-			// TODO ƒGƒ‰[’Ê’m‚ª•K—v‚©‚à‚µ‚ê‚È‚¢
+			// ã‚·ãƒ£ãƒƒãƒˆãƒ€ã‚¦ãƒ³è¦æ±‚ãŒè¡Œã‚ã‚Œã¦ã„ãªã„
+			// TODO ã‚¨ãƒ©ãƒ¼é€šçŸ¥ãŒå¿…è¦ã‹ã‚‚ã—ã‚Œãªã„
 			return;
 		}
 

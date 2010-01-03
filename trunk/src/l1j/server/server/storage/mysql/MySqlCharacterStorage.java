@@ -50,7 +50,7 @@ public class MySqlCharacterStorage implements CharacterStorage {
 			rs = pstm.executeQuery();
 			if (!rs.next()) {
 				/*
-				 * SELECT‚ªŒ‹‰Ê‚ğ•Ô‚³‚È‚©‚Á‚½B
+				 * SELECTãŒçµæœã‚’è¿”ã•ãªã‹ã£ãŸã€‚
 				 */
 				return null;
 			}
@@ -94,9 +94,9 @@ public class MySqlCharacterStorage implements CharacterStorage {
 			 * resultset.getInt("locY"); short map =
 			 * resultset.getShort("MapID"); if (locX < 30000 || locX > 40000 ||
 			 * locY < 30000 || locY > 40000) { locX = 32564; locY = 32955; } if
-			 * (map == 70) { locX = 32828; locY = 32848; } // ‹­§ˆÚ“® short
+			 * (map == 70) { locX = 32828; locY = 32848; } // å¼·åˆ¶ç§»å‹• short
 			 * moveflag = Config.RANGE_RACE_RECOGNIT; if (moveflag != 1) {
-			 * Random random = new Random(); // ‹­§ˆÚ“® int rndmap = 1 +
+			 * Random random = new Random(); // å¼·åˆ¶ç§»å‹• int rndmap = 1 +
 			 * random.nextInt(5); switch (rndmap) { case 1: // skt locX = 33080;
 			 * locY = 33392; map = 4; break;
 			 * 
@@ -260,8 +260,8 @@ public class MySqlCharacterStorage implements CharacterStorage {
 			rs = pstm.executeQuery();
 			if (!rs.next()) {
 				/*
-				 * SELECT‚ª’l‚ğ•Ô‚µ‚Ä‚¢‚È‚¢
-				 * ‘¶İ‚µ‚È‚¢‚©A‚ ‚é‚¢‚Í•Ê‚ÌƒAƒJƒEƒ“ƒg‚ªŠ—L‚µ‚Ä‚¢‚éƒLƒƒƒ‰ƒNƒ^[–¼‚ªw’è‚³‚ê‚½‚Æ‚¢‚¤‚±‚Æ‚É‚È‚éB
+				 * SELECTãŒå€¤ã‚’è¿”ã—ã¦ã„ãªã„
+				 * å­˜åœ¨ã—ãªã„ã‹ã€ã‚ã‚‹ã„ã¯åˆ¥ã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆãŒæ‰€æœ‰ã—ã¦ã„ã‚‹ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼åãŒæŒ‡å®šã•ã‚ŒãŸã¨ã„ã†ã“ã¨ã«ãªã‚‹ã€‚
 				 */
 				_log.warning("invalid delete char request: account="
 						+ accountName + " char=" + charName);

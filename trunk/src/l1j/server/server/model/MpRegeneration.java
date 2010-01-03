@@ -59,16 +59,16 @@ public class MpRegeneration extends TimerTask {
 			baseMpr = 3;
 		}
 
-		if (_pc.hasSkillEffect(STATUS_BLUE_POTION)) { // ƒuƒ‹[ƒ|[ƒVƒ‡ƒ“g—p’†
-			if (wis < 11) { // WIS11–¢–‚Å‚àMPR+1
+		if (_pc.hasSkillEffect(STATUS_BLUE_POTION)) { // ãƒ–ãƒ«ãƒ¼ãƒãƒ¼ã‚·ãƒ§ãƒ³ä½¿ç”¨ä¸­
+			if (wis < 11) { // WIS11æœªæº€ã§ã‚‚MPR+1
 				wis = 11;
 			}
 			baseMpr += wis - 10;
 		}
-		if (_pc.hasSkillEffect(MEDITATION)) { // ƒƒfƒBƒe[ƒVƒ‡ƒ“’†
+		if (_pc.hasSkillEffect(MEDITATION)) { // ãƒ¡ãƒ‡ã‚£ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ä¸­
 			baseMpr += 5;
 		}
-		if (_pc.hasSkillEffect(CONCENTRATION)) { // ƒRƒ“ƒZƒ“ƒgƒŒ[ƒVƒ‡ƒ“’†
+		if (_pc.hasSkillEffect(CONCENTRATION)) { // ã‚³ãƒ³ã‚»ãƒ³ãƒˆãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ä¸­
 			baseMpr += 2;
 		}
 		if (L1HouseLocation.isInHouse(_pc.getX(), _pc.getY(), _pc.getMapId())) {
@@ -82,7 +82,7 @@ public class MpRegeneration extends TimerTask {
 				|| _pc.getMapId() == 21504 || _pc.getMapId() == 22016
 				|| _pc.getMapId() == 22528 || _pc.getMapId() == 23040
 				|| _pc.getMapId() == 23552 || _pc.getMapId() == 24064
-				|| _pc.getMapId() == 24576 || _pc.getMapId() == 25088) { // h‰®
+				|| _pc.getMapId() == 24576 || _pc.getMapId() == 25088) { // å®¿å±‹
 			baseMpr += 3;
 		}
 		if ((_pc.getLocation().isInScreen(new Point(33055,32336))
@@ -99,7 +99,7 @@ public class MpRegeneration extends TimerTask {
 				|| _pc.hasSkillEffect(COOKING_3_5_S)) {
 			baseMpr += 2;
 		}
- 		if (_pc.getOriginalMpr() > 0) { // ƒIƒŠƒWƒiƒ‹WIS MPR•â³
+ 		if (_pc.getOriginalMpr() > 0) { // ã‚ªãƒªã‚¸ãƒŠãƒ«WIS MPRè£œæ­£
  			baseMpr += _pc.getOriginalMpr();
  		}
 
@@ -121,8 +121,8 @@ public class MpRegeneration extends TimerTask {
 	}
 
 	private boolean isOverWeight(L1PcInstance pc) {
-		// ƒGƒLƒ]ƒ`ƒbƒNƒoƒCƒ^ƒ‰ƒCƒYó‘ÔAƒAƒfƒBƒVƒ‡ƒiƒ‹ƒtƒ@ƒCƒA[ó‘Ô‚Å‚ ‚ê‚ÎA
-		// d—ÊƒI[ƒo[‚Å‚Í–³‚¢‚Æ‚İ‚È‚·B
+		// ã‚¨ã‚­ã‚¾ãƒãƒƒã‚¯ãƒã‚¤ã‚¿ãƒ©ã‚¤ã‚ºçŠ¶æ…‹ã€ã‚¢ãƒ‡ã‚£ã‚·ãƒ§ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ã‚¢ãƒ¼çŠ¶æ…‹ã§ã‚ã‚Œã°ã€
+		// é‡é‡ã‚ªãƒ¼ãƒãƒ¼ã§ã¯ç„¡ã„ã¨ã¿ãªã™ã€‚
 		if (pc.hasSkillEffect(EXOTIC_VITALIZE)
 				|| pc.hasSkillEffect(ADDITIONAL_FIRE)) {
 			return false;

@@ -54,7 +54,7 @@ public class Getback {
 	private int _getbackTownId;
 	private int _getbackTownIdForElf;
 	private int _getbackTownIdForDarkelf;
-	private boolean _escapable; // –¢g—p(mapids‚É‚Á‚Ä‚¢‚é‚µA‚±‚±‚É—ˆ‚é‘O‚Éƒ`ƒFƒbƒN‚³‚ê‚Ä‚¢‚é)
+	private boolean _escapable; // æœªä½¿ç”¨(mapidsã«æŒã£ã¦ã„ã‚‹ã—ã€ã“ã“ã«æ¥ã‚‹å‰ã«ãƒã‚§ãƒƒã‚¯ã•ã‚Œã¦ã„ã‚‹)
 
 	private Getback() {
 	}
@@ -70,7 +70,7 @@ public class Getback {
 		ResultSet rs = null;
 		try {
 			con = L1DatabaseFactory.getInstance().getConnection();
-			// “¯ƒ}ƒbƒv‚ÅƒGƒŠƒAw’è‚Æ–³w’è‚ª¬İ‚µ‚Ä‚¢‚½‚çAƒGƒŠƒAw’è‚ğæ‚É“Ç‚İ‚Şˆ×‚Éarea_x1 DESC
+			// åŒãƒãƒƒãƒ—ã§ã‚¨ãƒªã‚¢æŒ‡å®šã¨ç„¡æŒ‡å®šãŒæ··åœ¨ã—ã¦ã„ãŸã‚‰ã€ã‚¨ãƒªã‚¢æŒ‡å®šã‚’å…ˆã«èª­ã¿è¾¼ã‚€ç‚ºã«area_x1 DESC
 			String sSQL = "SELECT * FROM getback ORDER BY area_mapid,area_x1 DESC ";
 			pstm = con.prepareStatement(sSQL);
 			rs = pstm.executeQuery();
@@ -111,11 +111,11 @@ public class Getback {
 	}
 
 	/**
-	 * pc‚ÌŒ»İ’n‚©‚ç‹AŠÒƒ|ƒCƒ“ƒg‚ğæ“¾‚·‚éB
+	 * pcã®ç¾åœ¨åœ°ã‹ã‚‰å¸°é‚„ãƒã‚¤ãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚
 	 * 
 	 * @param pc
-	 * @param bScroll_Escape(–¢g—p)
-	 * @return locx,locy,mapid‚Ì‡‚ÉŠi”[‚³‚ê‚Ä‚¢‚é”z—ñ
+	 * @param bScroll_Escape(æœªä½¿ç”¨)
+	 * @return locx,locy,mapidã®é †ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹é…åˆ—
 	 */
 	public static int[] GetBack_Location(L1PcInstance pc, boolean bScroll_Escape) {
 
@@ -145,7 +145,7 @@ public class Getback {
 
 			loc = ReadGetbackInfo(getback, nPosition);
 
-			// town_id‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚Í‚»‚±‚Ö‹AŠÒ‚³‚¹‚é
+			// town_idãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ãã“ã¸å¸°é‚„ã•ã›ã‚‹
 			if (pc.isElf() && getback._getbackTownIdForElf > 0) {
 				loc = L1TownLocation
 						.getGetBackLoc(getback._getbackTownIdForElf);
@@ -156,7 +156,7 @@ public class Getback {
 				loc = L1TownLocation.getGetBackLoc(getback._getbackTownId);
 			}
 		}
-		// getbackƒe[ƒuƒ‹‚Éƒf[ƒ^‚ª‚È‚¢ê‡ASKT‚É‹AŠÒ
+		// getbackãƒ†ãƒ¼ãƒ–ãƒ«ã«ãƒ‡ãƒ¼ã‚¿ãŒãªã„å ´åˆã€SKTã«å¸°é‚„
 		else {
 			loc[0] = 33089;
 			loc[1] = 33397;

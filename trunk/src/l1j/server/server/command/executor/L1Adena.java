@@ -46,11 +46,11 @@ public class L1Adena implements L1CommandExecutor {
 					count);
 			if (adena != null) {
 				pc.sendPackets(new S_SystemMessage((new StringBuilder())
-						.append(count).append("ƒAƒfƒi‚ğ¶¬‚µ‚Ü‚µ‚½B").toString()));
+						.append(count).append("ã‚¢ãƒ‡ãƒŠã‚’ç”Ÿæˆã—ã¾ã—ãŸã€‚").toString()));
 			}
 		} catch (Exception e) {
 			pc.sendPackets(new S_SystemMessage((new StringBuilder()).append(
-					".adena ƒAƒfƒi” ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B").toString()));
+					".adena ã‚¢ãƒ‡ãƒŠæ•° ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚").toString()));
 		}
 	}
 }

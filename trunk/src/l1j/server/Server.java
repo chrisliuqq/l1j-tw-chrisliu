@@ -51,20 +51,20 @@ import l1j.server.server.GameServer;
 import l1j.server.telnet.TelnetServer;
 
 /**
- * l1j-jp‚ÌƒT[ƒo‚ğ‹N“®‚·‚é.
+ * l1j-jpã®ã‚µãƒ¼ãƒã‚’èµ·å‹•ã™ã‚‹.
  */
 public class Server {
-	/** ƒƒbƒZ[ƒWƒƒO—p. */
+	/** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ­ã‚°ç”¨. */
 	private static Logger _log = Logger.getLogger(Server.class.getName());
 
-	/** ƒƒOİ’èƒtƒ@ƒCƒ‹‚ÌƒtƒHƒ‹ƒ_[. */
+	/** ãƒ­ã‚°è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼. */
 	private static final String LOG_PROP = "./config/log.properties";
 
 	/**
-	 * ƒT[ƒoƒƒCƒ“.
+	 * ã‚µãƒ¼ãƒãƒ¡ã‚¤ãƒ³.
 	 * 
 	 * @param args
-	 *            ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”
+	 *            ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°
 	 * @throws Exception
 	 */
 	public static void main(final String[] args) throws Exception {
@@ -87,7 +87,7 @@ public class Server {
 			System.exit(0);
 		}
 
-		// L1DatabaseFactory‰Šúİ’è
+		// L1DatabaseFactoryåˆæœŸè¨­å®š
 		L1DatabaseFactory.setDatabaseSettings(Config.DB_DRIVER, Config.DB_URL,
 				Config.DB_LOGIN, Config.DB_PASSWORD);
 		L1DatabaseFactory.getInstance();

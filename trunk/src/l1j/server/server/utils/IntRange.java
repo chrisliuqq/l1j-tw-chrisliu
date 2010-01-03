@@ -22,11 +22,11 @@ import java.util.Random;
 
 /**
  * <p>
- * �Œ�llow�ƍő�lhigh�ɂ���Ĉ͂܂ꂽ�A���l�͈̔͂��w�肷��N���X�B
+ * 最低値lowと最大値highによって囲まれた、数値の範囲を指定するクラス。
  * </p>
  * <p>
- * <b>���̃N���X�͓���������Ȃ��B</b> �����̃X���b�h�������ɂ��̃N���X�̃C���X�^���X�ɃA�N�Z�X���A
- * 1�ȏ�̃X���b�h���͈͂�ύX����ꍇ�A�O���I�ȓ��������K�v�ł���B
+ * <b>このクラスは同期化されない。</b> 複数のスレッドが同時にこのクラスのインスタンスにアクセスし、
+ * 1つ以上のスレッドが範囲を変更する場合、外部的な同期化が必要である。
  * </p>
  */
 public class IntRange {
@@ -44,11 +44,11 @@ public class IntRange {
 	}
 
 	/**
-	 * ���li���A�͈͓��ɂ��邩��Ԃ��B
+	 * 数値iが、範囲内にあるかを返す。
 	 * 
 	 * @param i
-	 *            ���l
-	 * @return �͈͓��ł����true
+	 *            数値
+	 * @return 範囲内であればtrue
 	 */
 	public boolean includes(int i) {
 		return (_low <= i) && (i <= _high);
@@ -59,11 +59,11 @@ public class IntRange {
 	}
 
 	/**
-	 * ���li���A���͈͓̔��Ɋۂ߂�B
+	 * 数値iを、この範囲内に丸める。
 	 * 
 	 * @param i
-	 *            ���l
-	 * @return �ۂ߂�ꂽ�l
+	 *            数値
+	 * @return 丸められた値
 	 */
 	public int ensure(int i) {
 		int r = i;
@@ -80,9 +80,9 @@ public class IntRange {
 	}
 
 	/**
-	 * ���͈͓̔����烉���_���Ȓl�𐶐�����B
+	 * この範囲内からランダムな値を生成する。
 	 * 
-	 * @return �͈͓��̃����_���Ȓl
+	 * @return 範囲内のランダムな値
 	 */
 	public int randomValue() {
 		return _rnd.nextInt(getWidth() + 1) + _low;

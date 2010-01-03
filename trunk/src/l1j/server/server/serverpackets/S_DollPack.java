@@ -47,12 +47,12 @@ public class S_DollPack extends ServerBasePacket {
 		writeC(pet.getStatus()); // Modes in List.spr
 		writeC(pet.getHeading());
 		writeC(0); // (Bright) - 0~15
-		writeC(pet.getMoveSpeed()); // ¥¹¥Ô¡¼¥É - 0:normal,1:fast,2:slow
+		writeC(pet.getMoveSpeed()); // ãƒ»ã‚±ãƒ»ãƒ¤ã€‚ã‚·ãƒ»ãƒŽ - 0:normal,1:fast,2:slow
 		writeD(0);
 		writeH(0);
 		writeS(pet.getNameId());
 		writeS(pet.getTitle());
-		writeC(0); // ½Ã½Ã´ÏÅ× - 0:mob, item(atk pointer) , 1:poisoned() ,
+		writeC(0); // ã‚¹ãƒ†ã‚¹ãƒ†ã‚¨ãƒžãƒŠãƒ© - 0:mob, item(atk pointer) , 1:poisoned() ,
 		// 2:invisable() , 4:pc, 8:cursed() , 16:brave() ,
 		// 32:??, 64:??(??) , 128:invisable but name
 		writeD(0); // ??

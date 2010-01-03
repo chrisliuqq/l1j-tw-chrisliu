@@ -49,7 +49,7 @@ public class C_Deposit extends ClientBasePacket {
 			L1Clan clan = L1World.getInstance().getClan(player.getClanname());
 			if (clan != null) {
 				int castle_id = clan.getCastleId();
-				if (castle_id != 0) { // éåƒNƒ‰ƒ“
+				if (castle_id != 0) { // åŸä¸»ã‚¯ãƒ©ãƒ³
 					L1Castle l1castle = CastleTable.getInstance()
 							.getCastleTable(castle_id);
 					synchronized (l1castle) {

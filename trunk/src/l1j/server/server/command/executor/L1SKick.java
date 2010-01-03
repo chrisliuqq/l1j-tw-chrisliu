@@ -42,23 +42,23 @@ public class L1SKick implements L1CommandExecutor {
 			L1PcInstance target = L1World.getInstance().getPlayer(arg);
 			if (target != null) {
 				pc.sendPackets(new S_SystemMessage((new StringBuilder())
-						.append(target.getName()).append("‚³‚ñ‚ğƒLƒbƒN‚µ‚Ü‚µ‚½B")
+						.append(target.getName()).append("ã•ã‚“ã‚’ã‚­ãƒƒã‚¯ã—ã¾ã—ãŸã€‚")
 						.toString()));
-				// SKT‚ÖˆÚ“®‚³‚¹‚é
+				// SKTã¸ç§»å‹•ã•ã›ã‚‹
 				target.setX(33080);
 				target.setY(33392);
 				target.setMap((short) 4);
 				target.sendPackets(new S_Disconnect());
 				ClientThread targetClient = target.getNetConnection();
 				targetClient.kick();
-				_log.warning("GM‚ÌskickƒRƒ}ƒ“ƒh‚É‚æ‚è(" + targetClient.getAccountName()
-						+ ":" + targetClient.getHostname() + ")‚Æ‚ÌÚ‘±‚ğ‹­§Ø’f‚µ‚Ü‚µ‚½B");
+				_log.warning("GMã®skickã‚³ãƒãƒ³ãƒ‰ã«ã‚ˆã‚Š(" + targetClient.getAccountName()
+						+ ":" + targetClient.getHostname() + ")ã¨ã®æ¥ç¶šã‚’å¼·åˆ¶åˆ‡æ–­ã—ã¾ã—ãŸã€‚");
 			} else {
 				pc.sendPackets(new S_SystemMessage(
-						"‚»‚Ì‚æ‚¤‚È–¼‘O‚ÌƒLƒƒƒ‰ƒNƒ^[‚Íƒ[ƒ‹ƒh“à‚É‚Í‘¶İ‚µ‚Ü‚¹‚ñB"));
+						"ãã®ã‚ˆã†ãªåå‰ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¯ãƒ¯ãƒ¼ãƒ«ãƒ‰å†…ã«ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚"));
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(cmdName + " ƒLƒƒƒ‰ƒNƒ^[–¼ ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+			pc.sendPackets(new S_SystemMessage(cmdName + " ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

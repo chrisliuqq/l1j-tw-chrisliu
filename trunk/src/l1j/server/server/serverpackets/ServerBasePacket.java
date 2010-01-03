@@ -113,7 +113,7 @@ public abstract class ServerBasePacket {
 	public abstract byte[] getContent() throws IOException;
 
 	/**
-	 * ƒT[ƒo[ƒpƒPƒbƒg‚Ìí—Ş‚ğ•\‚·•¶š—ñ‚ğ•Ô‚·B("[S] S_WhoAmount" “™)
+	 * ã‚µãƒ¼ãƒãƒ¼ãƒ‘ã‚±ãƒƒãƒˆã®ç¨®é¡ã‚’è¡¨ã™æ–‡å­—åˆ—ã‚’è¿”ã™ã€‚("[S] S_WhoAmount" ç­‰)
 	 */
 	public String getType() {
 		return "[S] " + this.getClass().getSimpleName();

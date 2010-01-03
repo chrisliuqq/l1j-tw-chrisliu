@@ -55,19 +55,19 @@ public class L1EffectSpawn {
 	}
 
 	/**
-	 * ƒGƒtƒFƒNƒgƒIƒuƒWƒFƒNƒg‚ğ¶¬‚µİ’u‚·‚é
+	 * ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã—è¨­ç½®ã™ã‚‹
 	 * 
 	 * @param npcId
-	 *            ƒGƒtƒFƒNƒgNPC‚Ìƒeƒ“ƒvƒŒ[ƒgID
+	 *            ã‚¨ãƒ•ã‚§ã‚¯ãƒˆNPCã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆID
 	 * @param time
-	 *            ‘¶İŠÔ(ms)
+	 *            å­˜åœ¨æ™‚é–“(ms)
 	 * @param locX
-	 *            İ’u‚·‚éÀ•WX
+	 *            è¨­ç½®ã™ã‚‹åº§æ¨™X
 	 * @param locY
-	 *            İ’u‚·‚éÀ•WY
+	 *            è¨­ç½®ã™ã‚‹åº§æ¨™Y
 	 * @param mapId
-	 *            İ’u‚·‚éƒ}ƒbƒv‚ÌID
-	 * @return ¶¬‚³‚ê‚½ƒGƒtƒFƒNƒgƒIƒuƒWƒFƒNƒg
+	 *            è¨­ç½®ã™ã‚‹ãƒãƒƒãƒ—ã®ID
+	 * @return ç”Ÿæˆã•ã‚ŒãŸã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public L1EffectInstance spawnEffect(int npcId, int time, int locX,
 			int locY, short mapId) {
@@ -122,7 +122,7 @@ public class L1EffectSpawn {
 	}
 
 	public void doSpawnFireWall(L1Character cha, int targetX, int targetY) {
-		L1Npc firewall = NpcTable.getInstance().getTemplate(81157); // ƒtƒ@ƒCƒA[ƒEƒH[ƒ‹
+		L1Npc firewall = NpcTable.getInstance().getTemplate(81157); // ãƒ•ã‚¡ã‚¤ã‚¢ãƒ¼ã‚¦ã‚©ãƒ¼ãƒ«
 		int duration = SkillsTable.getInstance().getTemplate(
 				FIRE_WALL).getBuffDuration();
 

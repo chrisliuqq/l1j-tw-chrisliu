@@ -38,13 +38,13 @@ public class S_SPMR extends ServerBasePacket {
 
 	private void buildPacket(L1PcInstance pc) {
 		writeC(Opcodes.S_OPCODE_SPMR);
-		// ƒEƒBƒYƒ_ƒ€ƒ|[ƒVƒ‡ƒ“‚ÌSP‚ÍS_SkillBrave‘—MŽž‚ÉXV‚³‚ê‚é‚½‚ß·‚µˆø‚¢‚Ä‚¨‚­
+		// ã‚¦ã‚£ã‚ºãƒ€ãƒ ãƒãƒ¼ã‚·ãƒ§ãƒ³ã®SPã¯S_SkillBraveé€ä¿¡æ™‚ã«æ›´æ–°ã•ã‚Œã‚‹ãŸã‚å·®ã—å¼•ã„ã¦ãŠã
 		if (pc.hasSkillEffect(STATUS_WISDOM_POTION)) {
-			writeC(pc.getSp() - pc.getTrueSp() - 2); // ‘•”õ‘‰Á‚µ‚½SP
+			writeC(pc.getSp() - pc.getTrueSp() - 2); // è£…å‚™å¢—åŠ ã—ãŸSP
 		} else {
-			writeC(pc.getSp() - pc.getTrueSp()); // ‘•”õ‘‰Á‚µ‚½SP
+			writeC(pc.getSp() - pc.getTrueSp()); // è£…å‚™å¢—åŠ ã—ãŸSP
 		}
-		writeC(pc.getTrueMr() - pc.getBaseMr()); // ‘•”õ‚â–‚–@‚Å‘‰Á‚µ‚½MR
+		writeC(pc.getTrueMr() - pc.getBaseMr()); // è£…å‚™ã‚„é­”æ³•ã§å¢—åŠ ã—ãŸMR
 	}
 
 	@Override

@@ -46,7 +46,7 @@ public class S_Door extends ServerBasePacket {
 		writeC(Opcodes.S_OPCODE_ATTRIBUTE);
 		writeH(x);
 		writeH(y);
-		writeC(direction); // ƒhƒA‚Ì•ûŒü 0: ^ 1: _
+		writeC(direction); // ãƒ‰ã‚¢ã®æ–¹å‘ 0: ï¼ 1: ï¼¼
 		writeC(passable);
 	}
 

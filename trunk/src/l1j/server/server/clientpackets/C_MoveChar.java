@@ -46,13 +46,13 @@ public class C_MoveChar extends ClientBasePacket {
 
 	private static final int CLIENT_LANGUAGE = Config.CLIENT_LANGUAGE;
 
-	// ƒ}ƒbƒvƒ^ƒCƒ‹’²¸—p
+	// ãƒãƒƒãƒ—ã‚¿ã‚¤ãƒ«èª¿æŸ»ç”¨
 	private void sendMapTileLog(L1PcInstance pc) {
 		pc.sendPackets(new S_SystemMessage(pc.getMap().toString(
 				pc.getLocation())));
 	}
 
-	// ˆÚ“®
+	// ç§»å‹•
 	public C_MoveChar(byte decrypt[], ClientThread client)
 			throws Exception {
 		super(decrypt);
@@ -62,11 +62,11 @@ public class C_MoveChar extends ClientBasePacket {
 
 		L1PcInstance pc = client.getActiveChar();
 
-		if (pc.isTeleport()) { // ƒeƒŒƒ|[ƒgˆ—’†
+		if (pc.isTeleport()) { // ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå‡¦ç†ä¸­
 			return;
 		}
 
-		// ˆÚ“®—v‹ŠÔŠu‚ğƒ`ƒFƒbƒN‚·‚é
+		// ç§»å‹•è¦æ±‚é–“éš”ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 		if (Config.CHECK_MOVE_INTERVAL) {
 			int result;
 			result = pc.getAcceleratorChecker()
@@ -77,9 +77,9 @@ public class C_MoveChar extends ClientBasePacket {
 		}
 
 		pc.killSkillEffectTimer(MEDITATION);
-		pc.setCallClanId(0); // ƒR[ƒ‹ƒNƒ‰ƒ“‚ğ¥‚¦‚½Œã‚ÉˆÚ“®‚·‚é‚Æ¢Š«–³Œø
+		pc.setCallClanId(0); // ã‚³ãƒ¼ãƒ«ã‚¯ãƒ©ãƒ³ã‚’å”±ãˆãŸå¾Œã«ç§»å‹•ã™ã‚‹ã¨å¬å–šç„¡åŠ¹
 
-		if (!pc.hasSkillEffect(ABSOLUTE_BARRIER)) { // ƒAƒuƒ\ƒ‹[ƒgƒoƒŠƒA’†‚Å‚Í‚È‚¢
+		if (!pc.hasSkillEffect(ABSOLUTE_BARRIER)) { // ã‚¢ãƒ–ã‚½ãƒ«ãƒ¼ãƒˆãƒãƒªã‚¢ä¸­ã§ã¯ãªã„
 			pc.setRegenState(REGENSTATE_MOVE);
 		}
 		pc.getMap().setPassable(pc.getLocation(), true);
@@ -93,11 +93,11 @@ public class C_MoveChar extends ClientBasePacket {
 		locx += HEADING_TABLE_X[heading];
 		locy += HEADING_TABLE_Y[heading];
 
-		if (Dungeon.getInstance().dg(locx, locy, pc.getMap().getId(), pc)) { // ƒ_ƒ“ƒWƒ‡ƒ“‚ÉƒeƒŒƒ|[ƒg‚µ‚½ê‡
+		if (Dungeon.getInstance().dg(locx, locy, pc.getMap().getId(), pc)) { // ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ãŸå ´åˆ
 			return;
 		}
 		if (DungeonRandom.getInstance().dg(locx, locy, pc.getMap().getId(),
-				pc)) { // ƒeƒŒƒ|[ƒgæ‚ªƒ‰ƒ“ƒ_ƒ€‚ÈƒeƒŒƒ|[ƒg’n“_
+				pc)) { // ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå…ˆãŒãƒ©ãƒ³ãƒ€ãƒ ãªãƒ†ãƒ¬ãƒãƒ¼ãƒˆåœ°ç‚¹
 			return;
 		}
 
@@ -110,11 +110,11 @@ public class C_MoveChar extends ClientBasePacket {
 			pc.broadcastPacket(new S_MoveCharPacket(pc));
 		}
 
-		// sendMapTileLog(pc); // ˆÚ“®æƒ^ƒCƒ‹‚Ìî•ñ‚ğ‘—‚é(ƒ}ƒbƒv’²¸—p)
+		// sendMapTileLog(pc); // ç§»å‹•å…ˆã‚¿ã‚¤ãƒ«ã®æƒ…å ±ã‚’é€ã‚‹(ãƒãƒƒãƒ—èª¿æŸ»ç”¨)
 
 		L1WorldTraps.getInstance().onPlayerMoved(pc);
 
 		pc.getMap().setPassable(pc.getLocation(), false);
-		// user.UpdateObject(); // ‰Â‹”ÍˆÍ“à‚Ì‘SƒIƒuƒWƒFƒNƒgXV
+		// user.UpdateObject(); // å¯è¦–ç¯„å›²å†…ã®å…¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæ›´æ–°
 	}
 }

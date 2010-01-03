@@ -55,7 +55,7 @@ public class C_NPCTalk extends ClientBasePacket {
 			}
 			obj.onTalkAction(pc);
 		} else {
-			_log.severe("オブジェクトが見つかりません objid=" + objid);
+			_log.severe("繧ｪ繝悶ず繧ｧ繧ｯ繝医′隕九▽縺九ｊ縺ｾ縺帙ｓ objid=" + objid);
 		}
 	}
 

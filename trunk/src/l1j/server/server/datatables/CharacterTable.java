@@ -81,7 +81,7 @@ public class CharacterTable {
 
 	public void deleteCharacter(String accountName, String charName)
 			throws Exception {
-		// ‘½•ªA“¯Šú‚Í•K—v‚È‚¢
+		// å¤šåˆ†ã€åŒæœŸã¯å¿…è¦ãªã„
 		_charStorage.deleteCharacter(accountName, charName);
 		if (_charNameList.containsKey(charName)) {
 			_charNameList.remove(charName);
@@ -99,7 +99,7 @@ public class CharacterTable {
 		try {
 			pc = restoreCharacter(charName);
 
-			// ƒ}ƒbƒv‚Ì”ÍˆÍŠO‚È‚çSKT‚ÉˆÚ“®‚³‚¹‚é
+			// ãƒãƒƒãƒ—ã®ç¯„å›²å¤–ãªã‚‰SKTã«ç§»å‹•ã•ã›ã‚‹
 			L1Map map = L1WorldMap.getInstance().getMap(pc.getMapId());
 
 			if (!map.isInMap(pc.getX(), pc.getY())) {

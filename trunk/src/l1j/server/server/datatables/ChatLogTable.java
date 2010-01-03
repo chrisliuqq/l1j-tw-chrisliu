@@ -34,8 +34,8 @@ public class ChatLogTable {
 	private static Logger _log = Logger.getLogger(ChatLogTable.class.getName());
 
 	/*
-	 * �R�[�h�I�ɂ�HashMap�𗘗p���ׂ������A�p�t�H�[�}���X��̖�肪���邩������Ȃ��ׁA�z��őË��B
-	 * HashMap�ւ̕ύX����������ꍇ�́A�p�t�H�[�}���X���肪�������\�����ӂ��邱�ƁB
+	 * コード的にはHashMapを利用すべきだが、パフォーマンス上の問題があるかもしれない為、配列で妥協。
+	 * HashMapへの変更を検討する場合は、パフォーマンス上問題が無いか十分注意すること。
 	 */
 	private final boolean[] loggingConfig = new boolean[15];
 
@@ -74,14 +74,14 @@ public class ChatLogTable {
 		}
 
 		// type
-		// 0:�ʏ�`���b�g
+		// 0:通常チャット
 		// 1:Whisper
-		// 2:����
-		// 3:�S�̃`���b�g
-		// 4:�����`���b�g
-		// 11:�p�[�e�B�`���b�g
-		// 13:�A���`���b�g
-		// 14:�`���b�g�p�[�e�B
+		// 2:叫び
+		// 3:全体チャット
+		// 4:血盟チャット
+		// 11:パーティチャット
+		// 13:連合チャット
+		// 14:チャットパーティ
 		Connection con = null;
 		PreparedStatement pstm = null;
 		try {

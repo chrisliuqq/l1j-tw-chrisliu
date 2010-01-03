@@ -45,7 +45,7 @@ public class C_Board extends ClientBasePacket {
 		int objectId = readD();
 		L1Object obj = L1World.getInstance().findObject(objectId);
 		if (!isBoardInstance(obj)) {
-			return; // 不正クライアントでなければあり得ないが・・・
+			return; // 荳肴ｭ｣繧ｯ繝ｩ繧､繧｢繝ｳ繝医〒縺ｪ縺代ｌ縺ｰ縺ゅｊ蠕励↑縺�縺後�ｻ繝ｻ繝ｻ
 		}
 		obj.onAction(client.getActiveChar());
 	}

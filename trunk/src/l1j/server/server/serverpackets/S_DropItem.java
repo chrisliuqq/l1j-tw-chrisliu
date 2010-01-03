@@ -64,12 +64,12 @@ public class S_DropItem extends ServerBasePacket {
 		} else {
 			int itemId = item.getItem().getItemId();
 			int isId = item.isIdentified() ? 1 : 0;
-			if (itemId == 20383 && isId == 1) { // ‹R”n—pƒwƒ‹ƒ€
+			if (itemId == 20383 && isId == 1) { // é¨é¦¬ç”¨ãƒ˜ãƒ«ãƒ 
 				writeS(item.getItem().getName() + " [" + item
 						.getChargeCount() + "]");
 			} else if ((itemId == 40006 || itemId == 40007
 					|| itemId == 40008 || itemId == 40009
-					|| itemId == 140006 || itemId == 140008) && isId == 1) { // ƒƒ“ƒh—Ş
+					|| itemId == 140006 || itemId == 140008) && isId == 1) { // ãƒ¯ãƒ³ãƒ‰é¡
 				writeS(item.getItem().getName() + " (" + item
 						.getChargeCount() + ")");
 			} else if (item.getItem().getLightRange() != 0 && item

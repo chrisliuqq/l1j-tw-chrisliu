@@ -69,10 +69,10 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ğ•œŠˆ‚³‚¹‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‚’å¾©æ´»ã•ã›ã‚‹ã€‚
 	 * 
 	 * @param hp
-	 *            •œŠˆŒã‚ÌHP
+	 *            å¾©æ´»å¾Œã®HP
 	 */
 	public void resurrect(int hp) {
 		if (!isDead()) {
@@ -95,21 +95,21 @@ public class L1Character extends L1Object {
 	private int _currentHp;
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÌŒ»İ‚ÌHP‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ç¾åœ¨ã®HPã‚’è¿”ã™ã€‚
 	 * 
-	 * @return Œ»İ‚ÌHP
+	 * @return ç¾åœ¨ã®HP
 	 */
 	public int getCurrentHp() {
 		return _currentHp;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÌHP‚ğİ’è‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®HPã‚’è¨­å®šã™ã‚‹ã€‚
 	 * 
 	 * @param i
-	 *            ƒLƒƒƒ‰ƒNƒ^[‚ÌV‚µ‚¢HP
+	 *            ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®æ–°ã—ã„HP
 	 */
-	// “Áê‚Èˆ—‚ª‚ ‚éê‡‚Í‚±‚Á‚¿‚ğƒI[ƒoƒ‰ƒCƒhiƒpƒPƒbƒg‘—M“™j
+	// ç‰¹æ®Šãªå‡¦ç†ãŒã‚ã‚‹å ´åˆã¯ã“ã£ã¡ã‚’ã‚ªãƒ¼ãƒãƒ©ã‚¤ãƒ‰ï¼ˆãƒ‘ã‚±ãƒƒãƒˆé€ä¿¡ç­‰ï¼‰
 	public void setCurrentHp(int i) {
 		_currentHp = i;
 		if (_currentHp >= getMaxHp()) {
@@ -118,10 +118,10 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÌHP‚ğİ’è‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®HPã‚’è¨­å®šã™ã‚‹ã€‚
 	 * 
 	 * @param i
-	 *            ƒLƒƒƒ‰ƒNƒ^[‚ÌV‚µ‚¢HP
+	 *            ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®æ–°ã—ã„HP
 	 */
 	public void setCurrentHpDirect(int i) {
 		_currentHp = i;
@@ -130,21 +130,21 @@ public class L1Character extends L1Object {
 	private int _currentMp;
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÌŒ»İ‚ÌMP‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ç¾åœ¨ã®MPã‚’è¿”ã™ã€‚
 	 * 
-	 * @return Œ»İ‚ÌMP
+	 * @return ç¾åœ¨ã®MP
 	 */
 	public int getCurrentMp() {
 		return _currentMp;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÌMP‚ğİ’è‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®MPã‚’è¨­å®šã™ã‚‹ã€‚
 	 * 
 	 * @param i
-	 *            ƒLƒƒƒ‰ƒNƒ^[‚ÌV‚µ‚¢MP
+	 *            ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®æ–°ã—ã„MP
 	 */
-	// “Áê‚Èˆ—‚ª‚ ‚éê‡‚Í‚±‚Á‚¿‚ğƒI[ƒoƒ‰ƒCƒhiƒpƒPƒbƒg‘—M“™j
+	// ç‰¹æ®Šãªå‡¦ç†ãŒã‚ã‚‹å ´åˆã¯ã“ã£ã¡ã‚’ã‚ªãƒ¼ãƒãƒ©ã‚¤ãƒ‰ï¼ˆãƒ‘ã‚±ãƒƒãƒˆé€ä¿¡ç­‰ï¼‰
 	public void setCurrentMp(int i) {
 		_currentMp = i;
 		if (_currentMp >= getMaxMp()) {
@@ -153,48 +153,48 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÌMP‚ğİ’è‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®MPã‚’è¨­å®šã™ã‚‹ã€‚
 	 * 
 	 * @param i
-	 *            ƒLƒƒƒ‰ƒNƒ^[‚ÌV‚µ‚¢MP
+	 *            ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®æ–°ã—ã„MP
 	 */
 	public void setCurrentMpDirect(int i) {
 		_currentMp = i;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ì–°‚èó‘Ô‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®çœ ã‚ŠçŠ¶æ…‹ã‚’è¿”ã™ã€‚
 	 * 
-	 * @return –°‚èó‘Ô‚ğ•\‚·’lB–°‚èó‘Ô‚Å‚ ‚ê‚ÎtrueB
+	 * @return çœ ã‚ŠçŠ¶æ…‹ã‚’è¡¨ã™å€¤ã€‚çœ ã‚ŠçŠ¶æ…‹ã§ã‚ã‚Œã°trueã€‚
 	 */
 	public boolean isSleeped() {
 		return _sleeped;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ì–°‚èó‘Ô‚ğİ’è‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®çœ ã‚ŠçŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹ã€‚
 	 * 
 	 * @param sleeped
-	 *            –°‚èó‘Ô‚ğ•\‚·’lB–°‚èó‘Ô‚Å‚ ‚ê‚ÎtrueB
+	 *            çœ ã‚ŠçŠ¶æ…‹ã‚’è¡¨ã™å€¤ã€‚çœ ã‚ŠçŠ¶æ…‹ã§ã‚ã‚Œã°trueã€‚
 	 */
 	public void setSleeped(boolean sleeped) {
 		_sleeped = sleeped;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ì–ƒáƒó‘Ô‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®éº»ç—ºçŠ¶æ…‹ã‚’è¿”ã™ã€‚
 	 * 
-	 * @return –ƒáƒó‘Ô‚ğ•\‚·’lB–ƒáƒó‘Ô‚Å‚ ‚ê‚ÎtrueB
+	 * @return éº»ç—ºçŠ¶æ…‹ã‚’è¡¨ã™å€¤ã€‚éº»ç—ºçŠ¶æ…‹ã§ã‚ã‚Œã°trueã€‚
 	 */
 	public boolean isParalyzed() {
 		return _paralyzed;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ì–ƒáƒó‘Ô‚ğİ’è‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®éº»ç—ºçŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹ã€‚
 	 * 
 	 * @param i
-	 *            –ƒáƒó‘Ô‚ğ•\‚·’lB–ƒáƒó‘Ô‚Å‚ ‚ê‚ÎtrueB
+	 *            éº»ç—ºçŠ¶æ…‹ã‚’è¡¨ã™å€¤ã€‚éº»ç—ºçŠ¶æ…‹ã§ã‚ã‚Œã°trueã€‚
 	 */
 	public void setParalyzed(boolean paralyzed) {
 		_paralyzed = paralyzed;
@@ -217,10 +217,10 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ì‰Â‹”ÍˆÍ‚É‹‚éƒvƒŒƒCƒ„[‚ÖAƒpƒPƒbƒg‚ğ‘—M‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®å¯è¦–ç¯„å›²ã«å±…ã‚‹ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¸ã€ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã™ã‚‹ã€‚
 	 * 
 	 * @param packet
-	 *            ‘—M‚·‚éƒpƒPƒbƒg‚ğ•\‚·ServerBasePacketƒIƒuƒWƒFƒNƒgB
+	 *            é€ä¿¡ã™ã‚‹ãƒ‘ã‚±ãƒƒãƒˆã‚’è¡¨ã™ServerBasePacketã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public void broadcastPacket(ServerBasePacket packet) {
 		for (L1PcInstance pc : L1World.getInstance().getVisiblePlayer(this)) {
@@ -229,10 +229,10 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ì‰Â‹”ÍˆÍ‚É‹‚éƒvƒŒƒCƒ„[‚ÖAƒpƒPƒbƒg‚ğ‘—M‚·‚éB ‚½‚¾‚µƒ^[ƒQƒbƒg‚Ì‰æ–Ê“à‚É‚Í‘—M‚µ‚È‚¢B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®å¯è¦–ç¯„å›²ã«å±…ã‚‹ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¸ã€ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã™ã‚‹ã€‚ ãŸã ã—ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã®ç”»é¢å†…ã«ã¯é€ä¿¡ã—ãªã„ã€‚
 	 * 
 	 * @param packet
-	 *            ‘—M‚·‚éƒpƒPƒbƒg‚ğ•\‚·ServerBasePacketƒIƒuƒWƒFƒNƒgB
+	 *            é€ä¿¡ã™ã‚‹ãƒ‘ã‚±ãƒƒãƒˆã‚’è¡¨ã™ServerBasePacketã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public void broadcastPacketExceptTargetSight(ServerBasePacket packet,
 			L1Character target) {
@@ -243,12 +243,12 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ì‰Â‹”ÍˆÍ‚ÅƒCƒ“ƒrƒW‚ğŒ©”j‚ê‚éorŒ©”j‚ê‚È‚¢ƒvƒŒƒCƒ„[‚ğ‹æ•Ê‚µ‚ÄAƒpƒPƒbƒg‚ğ‘—M‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®å¯è¦–ç¯„å›²ã§ã‚¤ãƒ³ãƒ“ã‚¸ã‚’è¦‹ç ´ã‚Œã‚‹orè¦‹ç ´ã‚Œãªã„ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’åŒºåˆ¥ã—ã¦ã€ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã™ã‚‹ã€‚
 	 * 
 	 * @param packet
-	 *            ‘—M‚·‚éƒpƒPƒbƒg‚ğ•\‚·ServerBasePacketƒIƒuƒWƒFƒNƒgB
+	 *            é€ä¿¡ã™ã‚‹ãƒ‘ã‚±ãƒƒãƒˆã‚’è¡¨ã™ServerBasePacketã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 * @param isFindInvis
-	 *            true : Œ©”j‚ê‚éƒvƒŒƒCƒ„[‚É‚¾‚¯ƒpƒPƒbƒg‚ğ‘—M‚·‚éB false : Œ©”j‚ê‚È‚¢ƒvƒŒƒCƒ„[‚É‚¾‚¯ƒpƒPƒbƒg‚ğ‘—M‚·‚éB
+	 *            true : è¦‹ç ´ã‚Œã‚‹ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã«ã ã‘ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã™ã‚‹ã€‚ false : è¦‹ç ´ã‚Œãªã„ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã«ã ã‘ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã™ã‚‹ã€‚
 	 */
 	public void broadcastPacketForFindInvis(ServerBasePacket packet,
 			boolean isFindInvis) {
@@ -266,10 +266,10 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ì50ƒ}ƒXˆÈ“à‚É‹‚éƒvƒŒƒCƒ„[‚ÖAƒpƒPƒbƒg‚ğ‘—M‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®50ãƒã‚¹ä»¥å†…ã«å±…ã‚‹ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¸ã€ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã™ã‚‹ã€‚
 	 * 
 	 * @param packet
-	 *            ‘—M‚·‚éƒpƒPƒbƒg‚ğ•\‚·ServerBasePacketƒIƒuƒWƒFƒNƒgB
+	 *            é€ä¿¡ã™ã‚‹ãƒ‘ã‚±ãƒƒãƒˆã‚’è¡¨ã™ServerBasePacketã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public void wideBroadcastPacket(ServerBasePacket packet) {
 		for (L1PcInstance pc : L1World.getInstance().getVisiblePlayer(this,
@@ -279,9 +279,9 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ì³–Ê‚ÌÀ•W‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®æ­£é¢ã®åº§æ¨™ã‚’è¿”ã™ã€‚
 	 * 
-	 * @return ³–Ê‚ÌÀ•W
+	 * @return æ­£é¢ã®åº§æ¨™
 	 */
 	public int[] getFrontLoc() {
 		int[] loc = new int[2];
@@ -315,23 +315,23 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * w’è‚³‚ê‚½À•W‚É‘Î‚·‚é•ûŒü‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸåº§æ¨™ã«å¯¾ã™ã‚‹æ–¹å‘ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param tx
-	 *            À•W‚ÌX’l
+	 *            åº§æ¨™ã®Xå€¤
 	 * @param ty
-	 *            À•W‚ÌY’l
-	 * @return w’è‚³‚ê‚½À•W‚É‘Î‚·‚é•ûŒü
+	 *            åº§æ¨™ã®Yå€¤
+	 * @return æŒ‡å®šã•ã‚ŒãŸåº§æ¨™ã«å¯¾ã™ã‚‹æ–¹å‘
 	 */
 	public int targetDirection(int tx, int ty) {
-		float dis_x = Math.abs(getX() - tx); // ‚w•ûŒü‚Ìƒ^[ƒQƒbƒg‚Ü‚Å‚Ì‹——£
-		float dis_y = Math.abs(getY() - ty); // ‚x•ûŒü‚Ìƒ^[ƒQƒbƒg‚Ü‚Å‚Ì‹——£
-		float dis = Math.max(dis_x, dis_y); // ƒ^[ƒQƒbƒg‚Ü‚Å‚Ì‹——£
+		float dis_x = Math.abs(getX() - tx); // ï¼¸æ–¹å‘ã®ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã¾ã§ã®è·é›¢
+		float dis_y = Math.abs(getY() - ty); // ï¼¹æ–¹å‘ã®ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã¾ã§ã®è·é›¢
+		float dis = Math.max(dis_x, dis_y); // ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã¾ã§ã®è·é›¢
 		if (dis == 0) {
-			return getHeading(); // “¯‚¶ˆÊ’u‚È‚ç‚¢‚ÜŒü‚¢‚Ä‚é•ûŒü‚ğ•Ô‚µ‚Æ‚­
+			return getHeading(); // åŒã˜ä½ç½®ãªã‚‰ã„ã¾å‘ã„ã¦ã‚‹æ–¹å‘ã‚’è¿”ã—ã¨ã
 		}
-		int avg_x = (int) Math.floor((dis_x / dis) + 0.59f); // ã‰º¶‰E‚ª‚¿‚å‚Á‚Æ—Dæ‚ÈŠÛ‚ß
-		int avg_y = (int) Math.floor((dis_y / dis) + 0.59f); // ã‰º¶‰E‚ª‚¿‚å‚Á‚Æ—Dæ‚ÈŠÛ‚ß
+		int avg_x = (int) Math.floor((dis_x / dis) + 0.59f); // ä¸Šä¸‹å·¦å³ãŒã¡ã‚‡ã£ã¨å„ªå…ˆãªä¸¸ã‚
+		int avg_y = (int) Math.floor((dis_y / dis) + 0.59f); // ä¸Šä¸‹å·¦å³ãŒã¡ã‚‡ã£ã¨å„ªå…ˆãªä¸¸ã‚
 
 		int dir_x = 0;
 		int dir_y = 0;
@@ -356,40 +356,40 @@ public class L1Character extends L1Object {
 		}
 
 		if (dir_x == 1 && dir_y == -1) {
-			return 1; // ã
+			return 1; // ä¸Š
 		}
 		if (dir_x == 1 && dir_y == 0) {
-			return 2; // ‰Eã
+			return 2; // å³ä¸Š
 		}
 		if (dir_x == 1 && dir_y == 1) {
-			return 3; // ‰E
+			return 3; // å³
 		}
 		if (dir_x == 0 && dir_y == 1) {
-			return 4; // ‰E‰º
+			return 4; // å³ä¸‹
 		}
 		if (dir_x == -1 && dir_y == 1) {
-			return 5; // ‰º
+			return 5; // ä¸‹
 		}
 		if (dir_x == -1 && dir_y == 0) {
-			return 6; // ¶‰º
+			return 6; // å·¦ä¸‹
 		}
 		if (dir_x == -1 && dir_y == -1) {
-			return 7; // ¶
+			return 7; // å·¦
 		}
 		if (dir_x == 0 && dir_y == -1) {
-			return 0; // ¶ã
+			return 0; // å·¦ä¸Š
 		}
-		return getHeading(); // ‚±‚±‚É‚Í‚±‚È‚¢B‚Í‚¸
+		return getHeading(); // ã“ã“ã«ã¯ã“ãªã„ã€‚ã¯ãš
 	}
 
 	/**
-	 * w’è‚³‚ê‚½À•W‚Ü‚Å‚Ì’¼üã‚ÉAáŠQ•¨‚ª‘¶İ*‚µ‚È‚¢‚©*‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸåº§æ¨™ã¾ã§ã®ç›´ç·šä¸Šã«ã€éšœå®³ç‰©ãŒå­˜åœ¨*ã—ãªã„ã‹*ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param tx
-	 *            À•W‚ÌX’l
+	 *            åº§æ¨™ã®Xå€¤
 	 * @param ty
-	 *            À•W‚ÌY’l
-	 * @return áŠQ•¨‚ª–³‚¯‚ê‚ÎtrueA‚ ‚ê‚Îfalse‚ğ•Ô‚·B
+	 *            åº§æ¨™ã®Yå€¤
+	 * @return éšœå®³ç‰©ãŒç„¡ã‘ã‚Œã°trueã€ã‚ã‚Œã°falseã‚’è¿”ã™ã€‚
 	 */
 	public boolean glanceCheck(int tx, int ty) {
 		L1Map map = getMap();
@@ -469,23 +469,23 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * w’è‚³‚ê‚½À•W‚ÖUŒ‚‰Â”\‚Å‚ ‚é‚©‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸåº§æ¨™ã¸æ”»æ’ƒå¯èƒ½ã§ã‚ã‚‹ã‹ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param x
-	 *            À•W‚ÌX’lB
+	 *            åº§æ¨™ã®Xå€¤ã€‚
 	 * @param y
-	 *            À•W‚ÌY’lB
+	 *            åº§æ¨™ã®Yå€¤ã€‚
 	 * @param range
-	 *            UŒ‚‰Â”\‚È”ÍˆÍ(ƒ^ƒCƒ‹”)
-	 * @return UŒ‚‰Â”\‚Å‚ ‚ê‚Îtrue,•s‰Â”\‚Å‚ ‚ê‚Îfalse
+	 *            æ”»æ’ƒå¯èƒ½ãªç¯„å›²(ã‚¿ã‚¤ãƒ«æ•°)
+	 * @return æ”»æ’ƒå¯èƒ½ã§ã‚ã‚Œã°true,ä¸å¯èƒ½ã§ã‚ã‚Œã°false
 	 */
 	public boolean isAttackPosition(int x, int y, int range) {
-		if (range >= 7) // ‰“Šu•Šíi‚VˆÈã‚Ìê‡Î‚ß‚ğl—¶‚·‚é‚Æ‰æ–ÊŠO‚Éo‚é)
+		if (range >= 7) // é éš”æ­¦å™¨ï¼ˆï¼—ä»¥ä¸Šã®å ´åˆæ–œã‚ã‚’è€ƒæ…®ã™ã‚‹ã¨ç”»é¢å¤–ã«å‡ºã‚‹)
 		{
 			if (getLocation().getTileDistance(new Point(x, y)) > range) {
 				return false;
 			}
-		} else // ‹ßÚ•Ší
+		} else // è¿‘æ¥æ­¦å™¨
 		{
 			if (getLocation().getTileLineDistance(new Point(x, y)) > range) {
 				return false;
@@ -495,21 +495,21 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÌƒCƒ“ƒxƒ“ƒgƒŠ‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªã‚’è¿”ã™ã€‚
 	 * 
-	 * @return ƒLƒƒƒ‰ƒNƒ^[‚ÌƒCƒ“ƒxƒ“ƒgƒŠ‚ğ•\‚·AL1InventoryƒIƒuƒWƒFƒNƒgB
+	 * @return ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªã‚’è¡¨ã™ã€L1Inventoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public L1Inventory getInventory() {
 		return null;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÖAV‚½‚ÉƒXƒLƒ‹Œø‰Ê‚ğ’Ç‰Á‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¸ã€æ–°ãŸã«ã‚¹ã‚­ãƒ«åŠ¹æœã‚’è¿½åŠ ã™ã‚‹ã€‚
 	 * 
 	 * @param skillId
-	 *            ’Ç‰Á‚·‚éŒø‰Ê‚ÌƒXƒLƒ‹IDB
+	 *            è¿½åŠ ã™ã‚‹åŠ¹æœã®ã‚¹ã‚­ãƒ«IDã€‚
 	 * @param timeMillis
-	 *            ’Ç‰Á‚·‚éŒø‰Ê‚Ì‘±ŠÔB–³ŒÀ‚Ìê‡‚Í0B
+	 *            è¿½åŠ ã™ã‚‹åŠ¹æœã®æŒç¶šæ™‚é–“ã€‚ç„¡é™ã®å ´åˆã¯0ã€‚
 	 */
 	private void addSkillEffect(int skillId, int timeMillis) {
 		L1SkillTimer timer = null;
@@ -521,20 +521,20 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÖAƒXƒLƒ‹Œø‰Ê‚ğİ’è‚·‚éB<br>
-	 * d•¡‚·‚éƒXƒLƒ‹‚ª‚È‚¢ê‡‚ÍAV‚½‚ÉƒXƒLƒ‹Œø‰Ê‚ğ’Ç‰Á‚·‚éB<br>
-	 * d•¡‚·‚éƒXƒLƒ‹‚ª‚ ‚éê‡‚ÍAc‚èŒø‰ÊŠÔ‚Æƒpƒ‰ƒ[ƒ^‚ÌŒø‰ÊŠÔ‚Ì’·‚¢•û‚ğ—Dæ‚µ‚Äİ’è‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¸ã€ã‚¹ã‚­ãƒ«åŠ¹æœã‚’è¨­å®šã™ã‚‹ã€‚<br>
+	 * é‡è¤‡ã™ã‚‹ã‚¹ã‚­ãƒ«ãŒãªã„å ´åˆã¯ã€æ–°ãŸã«ã‚¹ã‚­ãƒ«åŠ¹æœã‚’è¿½åŠ ã™ã‚‹ã€‚<br>
+	 * é‡è¤‡ã™ã‚‹ã‚¹ã‚­ãƒ«ãŒã‚ã‚‹å ´åˆã¯ã€æ®‹ã‚ŠåŠ¹æœæ™‚é–“ã¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®åŠ¹æœæ™‚é–“ã®é•·ã„æ–¹ã‚’å„ªå…ˆã—ã¦è¨­å®šã™ã‚‹ã€‚
 	 * 
 	 * @param skillId
-	 *            İ’è‚·‚éŒø‰Ê‚ÌƒXƒLƒ‹IDB
+	 *            è¨­å®šã™ã‚‹åŠ¹æœã®ã‚¹ã‚­ãƒ«IDã€‚
 	 * @param timeMillis
-	 *            İ’è‚·‚éŒø‰Ê‚Ì‘±ŠÔB–³ŒÀ‚Ìê‡‚Í0B
+	 *            è¨­å®šã™ã‚‹åŠ¹æœã®æŒç¶šæ™‚é–“ã€‚ç„¡é™ã®å ´åˆã¯0ã€‚
 	 */
 	public void setSkillEffect(int skillId, int timeMillis) {
 		if (hasSkillEffect(skillId)) {
 			int remainingTimeMills = getSkillEffectTimeSec(skillId) * 1000;
 
-			// c‚èŠÔ‚ª—LŒÀ‚ÅAƒpƒ‰ƒ[ƒ^‚ÌŒø‰ÊŠÔ‚Ì•û‚ª’·‚¢‚©–³ŒÀ‚Ìê‡‚Íã‘‚«‚·‚éB
+			// æ®‹ã‚Šæ™‚é–“ãŒæœ‰é™ã§ã€ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®åŠ¹æœæ™‚é–“ã®æ–¹ãŒé•·ã„ã‹ç„¡é™ã®å ´åˆã¯ä¸Šæ›¸ãã™ã‚‹ã€‚
 			if (remainingTimeMills >= 0
 					&& (remainingTimeMills < timeMillis || timeMillis == 0)) {
 				killSkillEffectTimer(skillId);
@@ -546,10 +546,10 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚©‚çAƒXƒLƒ‹Œø‰Ê‚ğíœ‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‹ã‚‰ã€ã‚¹ã‚­ãƒ«åŠ¹æœã‚’å‰Šé™¤ã™ã‚‹ã€‚
 	 * 
 	 * @param skillId
-	 *            íœ‚·‚éŒø‰Ê‚ÌƒXƒLƒ‹ID
+	 *            å‰Šé™¤ã™ã‚‹åŠ¹æœã®ã‚¹ã‚­ãƒ«ID
 	 */
 	public void removeSkillEffect(int skillId) {
 		L1SkillTimer timer = _skillEffect.remove(skillId);
@@ -559,10 +559,10 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚©‚çAƒXƒLƒ‹Œø‰Ê‚Ìƒ^ƒCƒ}[‚ğíœ‚·‚éB ƒXƒLƒ‹Œø‰Ê‚Ííœ‚³‚ê‚È‚¢B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‹ã‚‰ã€ã‚¹ã‚­ãƒ«åŠ¹æœã®ã‚¿ã‚¤ãƒãƒ¼ã‚’å‰Šé™¤ã™ã‚‹ã€‚ ã‚¹ã‚­ãƒ«åŠ¹æœã¯å‰Šé™¤ã•ã‚Œãªã„ã€‚
 	 * 
 	 * @param skillId
-	 *            íœ‚·‚éƒ^ƒCƒ}[‚ÌƒXƒLƒ‹‚h‚c
+	 *            å‰Šé™¤ã™ã‚‹ã‚¿ã‚¤ãƒãƒ¼ã®ã‚¹ã‚­ãƒ«ï¼©ï¼¤
 	 */
 	public void killSkillEffectTimer(int skillId) {
 		L1SkillTimer timer = _skillEffect.remove(skillId);
@@ -572,7 +572,7 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚©‚çA‘S‚Ä‚ÌƒXƒLƒ‹Œø‰Êƒ^ƒCƒ}[‚ğíœ‚·‚éBƒXƒLƒ‹Œø‰Ê‚Ííœ‚³‚ê‚È‚¢B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‹ã‚‰ã€å…¨ã¦ã®ã‚¹ã‚­ãƒ«åŠ¹æœã‚¿ã‚¤ãƒãƒ¼ã‚’å‰Šé™¤ã™ã‚‹ã€‚ã‚¹ã‚­ãƒ«åŠ¹æœã¯å‰Šé™¤ã•ã‚Œãªã„ã€‚
 	 */
 	public void clearSkillEffectTimer() {
 		for (L1SkillTimer timer : _skillEffect.values()) {
@@ -584,22 +584,22 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÉAƒXƒLƒ‹Œø‰Ê‚ªŠ|‚©‚Á‚Ä‚¢‚é‚©‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã«ã€ã‚¹ã‚­ãƒ«åŠ¹æœãŒæ›ã‹ã£ã¦ã„ã‚‹ã‹ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param skillId
-	 *            ’²‚×‚éŒø‰Ê‚ÌƒXƒLƒ‹IDB
-	 * @return –‚–@Œø‰Ê‚ª‚ ‚ê‚ÎtrueA‚È‚¯‚ê‚ÎfalseB
+	 *            èª¿ã¹ã‚‹åŠ¹æœã®ã‚¹ã‚­ãƒ«IDã€‚
+	 * @return é­”æ³•åŠ¹æœãŒã‚ã‚Œã°trueã€ãªã‘ã‚Œã°falseã€‚
 	 */
 	public boolean hasSkillEffect(int skillId) {
 		return _skillEffect.containsKey(skillId);
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÌƒXƒLƒ‹Œø‰Ê‚Ì‘±ŠÔ‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ã‚¹ã‚­ãƒ«åŠ¹æœã®æŒç¶šæ™‚é–“ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param skillId
-	 *            ’²‚×‚éŒø‰Ê‚ÌƒXƒLƒ‹ID
-	 * @return ƒXƒLƒ‹Œø‰Ê‚Ìc‚èŠÔ(•b)BƒXƒLƒ‹‚ª‚©‚©‚Á‚Ä‚¢‚È‚¢‚©Œø‰ÊŠÔ‚ª–³ŒÀ‚Ìê‡A-1B
+	 *            èª¿ã¹ã‚‹åŠ¹æœã®ã‚¹ã‚­ãƒ«ID
+	 * @return ã‚¹ã‚­ãƒ«åŠ¹æœã®æ®‹ã‚Šæ™‚é–“(ç§’)ã€‚ã‚¹ã‚­ãƒ«ãŒã‹ã‹ã£ã¦ã„ãªã„ã‹åŠ¹æœæ™‚é–“ãŒç„¡é™ã®å ´åˆã€-1ã€‚
 	 */
 	public int getSkillEffectTimeSec(int skillId) {
 		L1SkillTimer timer = _skillEffect.get(skillId);
@@ -612,7 +612,7 @@ public class L1Character extends L1Object {
 	private boolean _isSkillDelay = false;
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÖAƒXƒLƒ‹ƒfƒBƒŒƒC‚ğ’Ç‰Á‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¸ã€ã‚¹ã‚­ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¤ã‚’è¿½åŠ ã™ã‚‹ã€‚
 	 * 
 	 * @param flag
 	 */
@@ -621,142 +621,142 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ì“Åó‘Ô‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®æ¯’çŠ¶æ…‹ã‚’è¿”ã™ã€‚
 	 * 
-	 * @return ƒXƒLƒ‹ƒfƒBƒŒƒC’†‚©B
+	 * @return ã‚¹ã‚­ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¤ä¸­ã‹ã€‚
 	 */
 	public boolean isSkillDelay() {
 		return _isSkillDelay;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÖAƒAƒCƒeƒ€ƒfƒBƒŒƒC‚ğ’Ç‰Á‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¸ã€ã‚¢ã‚¤ãƒ†ãƒ ãƒ‡ã‚£ãƒ¬ã‚¤ã‚’è¿½åŠ ã™ã‚‹ã€‚
 	 * 
 	 * @param delayId
-	 *            ƒAƒCƒeƒ€ƒfƒBƒŒƒCIDB ’Êí‚ÌƒAƒCƒeƒ€‚Å‚ ‚ê‚Î0AƒCƒ“ƒrƒWƒrƒŠƒeƒB ƒNƒ[ƒNAƒoƒ‹ƒƒO ƒuƒ‰ƒbƒfƒB ƒNƒ[ƒN‚Å‚ ‚ê‚Î1B
+	 *            ã‚¢ã‚¤ãƒ†ãƒ ãƒ‡ã‚£ãƒ¬ã‚¤IDã€‚ é€šå¸¸ã®ã‚¢ã‚¤ãƒ†ãƒ ã§ã‚ã‚Œã°0ã€ã‚¤ãƒ³ãƒ“ã‚¸ãƒ“ãƒªãƒ†ã‚£ ã‚¯ãƒ­ãƒ¼ã‚¯ã€ãƒãƒ«ãƒ­ã‚° ãƒ–ãƒ©ãƒƒãƒ‡ã‚£ ã‚¯ãƒ­ãƒ¼ã‚¯ã§ã‚ã‚Œã°1ã€‚
 	 * @param timer
-	 *            ƒfƒBƒŒƒCŠÔ‚ğ•\‚·AL1ItemDelay.ItemDelayTimerƒIƒuƒWƒFƒNƒgB
+	 *            ãƒ‡ã‚£ãƒ¬ã‚¤æ™‚é–“ã‚’è¡¨ã™ã€L1ItemDelay.ItemDelayTimerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public void addItemDelay(int delayId, L1ItemDelay.ItemDelayTimer timer) {
 		_itemdelay.put(delayId, timer);
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚©‚çAƒAƒCƒeƒ€ƒfƒBƒŒƒC‚ğíœ‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‹ã‚‰ã€ã‚¢ã‚¤ãƒ†ãƒ ãƒ‡ã‚£ãƒ¬ã‚¤ã‚’å‰Šé™¤ã™ã‚‹ã€‚
 	 * 
 	 * @param delayId
-	 *            ƒAƒCƒeƒ€ƒfƒBƒŒƒCIDB ’Êí‚ÌƒAƒCƒeƒ€‚Å‚ ‚ê‚Î0AƒCƒ“ƒrƒWƒrƒŠƒeƒB ƒNƒ[ƒNAƒoƒ‹ƒƒO ƒuƒ‰ƒbƒfƒB ƒNƒ[ƒN‚Å‚ ‚ê‚Î1B
+	 *            ã‚¢ã‚¤ãƒ†ãƒ ãƒ‡ã‚£ãƒ¬ã‚¤IDã€‚ é€šå¸¸ã®ã‚¢ã‚¤ãƒ†ãƒ ã§ã‚ã‚Œã°0ã€ã‚¤ãƒ³ãƒ“ã‚¸ãƒ“ãƒªãƒ†ã‚£ ã‚¯ãƒ­ãƒ¼ã‚¯ã€ãƒãƒ«ãƒ­ã‚° ãƒ–ãƒ©ãƒƒãƒ‡ã‚£ ã‚¯ãƒ­ãƒ¼ã‚¯ã§ã‚ã‚Œã°1ã€‚
 	 */
 	public void removeItemDelay(int delayId) {
 		_itemdelay.remove(delayId);
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÉAƒAƒCƒeƒ€ƒfƒBƒŒƒC‚ª‚ ‚é‚©‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã«ã€ã‚¢ã‚¤ãƒ†ãƒ ãƒ‡ã‚£ãƒ¬ã‚¤ãŒã‚ã‚‹ã‹ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param delayId
-	 *            ’²‚×‚éƒAƒCƒeƒ€ƒfƒBƒŒƒCIDB ’Êí‚ÌƒAƒCƒeƒ€‚Å‚ ‚ê‚Î0AƒCƒ“ƒrƒWƒrƒŠƒeƒB ƒNƒ[ƒNAƒoƒ‹ƒƒO ƒuƒ‰ƒbƒfƒB
-	 *            ƒNƒ[ƒN‚Å‚ ‚ê‚Î1B
-	 * @return ƒAƒCƒeƒ€ƒfƒBƒŒƒC‚ª‚ ‚ê‚ÎtrueA‚È‚¯‚ê‚ÎfalseB
+	 *            èª¿ã¹ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ãƒ‡ã‚£ãƒ¬ã‚¤IDã€‚ é€šå¸¸ã®ã‚¢ã‚¤ãƒ†ãƒ ã§ã‚ã‚Œã°0ã€ã‚¤ãƒ³ãƒ“ã‚¸ãƒ“ãƒªãƒ†ã‚£ ã‚¯ãƒ­ãƒ¼ã‚¯ã€ãƒãƒ«ãƒ­ã‚° ãƒ–ãƒ©ãƒƒãƒ‡ã‚£
+	 *            ã‚¯ãƒ­ãƒ¼ã‚¯ã§ã‚ã‚Œã°1ã€‚
+	 * @return ã‚¢ã‚¤ãƒ†ãƒ ãƒ‡ã‚£ãƒ¬ã‚¤ãŒã‚ã‚Œã°trueã€ãªã‘ã‚Œã°falseã€‚
 	 */
 	public boolean hasItemDelay(int delayId) {
 		return _itemdelay.containsKey(delayId);
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÌƒAƒCƒeƒ€ƒfƒBƒŒƒCŠÔ‚ğ•\‚·AL1ItemDelay.ItemDelayTimer‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ã‚¢ã‚¤ãƒ†ãƒ ãƒ‡ã‚£ãƒ¬ã‚¤æ™‚é–“ã‚’è¡¨ã™ã€L1ItemDelay.ItemDelayTimerã‚’è¿”ã™ã€‚
 	 * 
 	 * @param delayId
-	 *            ’²‚×‚éƒAƒCƒeƒ€ƒfƒBƒŒƒCIDB ’Êí‚ÌƒAƒCƒeƒ€‚Å‚ ‚ê‚Î0AƒCƒ“ƒrƒWƒrƒŠƒeƒB ƒNƒ[ƒNAƒoƒ‹ƒƒO ƒuƒ‰ƒbƒfƒB
-	 *            ƒNƒ[ƒN‚Å‚ ‚ê‚Î1B
-	 * @return ƒAƒCƒeƒ€ƒfƒBƒŒƒCŠÔ‚ğ•\‚·AL1ItemDelay.ItemDelayTimerB
+	 *            èª¿ã¹ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ãƒ‡ã‚£ãƒ¬ã‚¤IDã€‚ é€šå¸¸ã®ã‚¢ã‚¤ãƒ†ãƒ ã§ã‚ã‚Œã°0ã€ã‚¤ãƒ³ãƒ“ã‚¸ãƒ“ãƒªãƒ†ã‚£ ã‚¯ãƒ­ãƒ¼ã‚¯ã€ãƒãƒ«ãƒ­ã‚° ãƒ–ãƒ©ãƒƒãƒ‡ã‚£
+	 *            ã‚¯ãƒ­ãƒ¼ã‚¯ã§ã‚ã‚Œã°1ã€‚
+	 * @return ã‚¢ã‚¤ãƒ†ãƒ ãƒ‡ã‚£ãƒ¬ã‚¤æ™‚é–“ã‚’è¡¨ã™ã€L1ItemDelay.ItemDelayTimerã€‚
 	 */
 	public L1ItemDelay.ItemDelayTimer getItemDelayTimer(int delayId) {
 		return _itemdelay.get(delayId);
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÖAV‚½‚ÉƒyƒbƒgAƒTƒ‚ƒ“ƒ‚ƒ“ƒXƒ^[AƒeƒCƒ~ƒ“ƒOƒ‚ƒ“ƒXƒ^[A‚ ‚é‚¢‚ÍƒNƒŠƒGƒCƒgƒ]ƒ“ƒr‚ğ’Ç‰Á‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¸ã€æ–°ãŸã«ãƒšãƒƒãƒˆã€ã‚µãƒ¢ãƒ³ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã€ãƒ†ã‚¤ãƒŸãƒ³ã‚°ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã€ã‚ã‚‹ã„ã¯ã‚¯ãƒªã‚¨ã‚¤ãƒˆã‚¾ãƒ³ãƒ“ã‚’è¿½åŠ ã™ã‚‹ã€‚
 	 * 
 	 * @param npc
-	 *            ’Ç‰Á‚·‚éNpc‚ğ•\‚·AL1NpcInstanceƒIƒuƒWƒFƒNƒgB
+	 *            è¿½åŠ ã™ã‚‹Npcã‚’è¡¨ã™ã€L1NpcInstanceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public void addPet(L1NpcInstance npc) {
 		_petlist.put(npc.getId(), npc);
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚©‚çAƒyƒbƒgAƒTƒ‚ƒ“ƒ‚ƒ“ƒXƒ^[AƒeƒCƒ~ƒ“ƒOƒ‚ƒ“ƒXƒ^[A‚ ‚é‚¢‚ÍƒNƒŠƒGƒCƒgƒ]ƒ“ƒr‚ğíœ‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‹ã‚‰ã€ãƒšãƒƒãƒˆã€ã‚µãƒ¢ãƒ³ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã€ãƒ†ã‚¤ãƒŸãƒ³ã‚°ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã€ã‚ã‚‹ã„ã¯ã‚¯ãƒªã‚¨ã‚¤ãƒˆã‚¾ãƒ³ãƒ“ã‚’å‰Šé™¤ã™ã‚‹ã€‚
 	 * 
 	 * @param npc
-	 *            íœ‚·‚éNpc‚ğ•\‚·AL1NpcInstanceƒIƒuƒWƒFƒNƒgB
+	 *            å‰Šé™¤ã™ã‚‹Npcã‚’è¡¨ã™ã€L1NpcInstanceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public void removePet(L1NpcInstance npc) {
 		_petlist.remove(npc.getId());
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÌƒyƒbƒgƒŠƒXƒg‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ãƒšãƒƒãƒˆãƒªã‚¹ãƒˆã‚’è¿”ã™ã€‚
 	 * 
-	 * @return ƒLƒƒƒ‰ƒNƒ^[‚ÌƒyƒbƒgƒŠƒXƒg‚ğ•\‚·AHashMapƒIƒuƒWƒFƒNƒgB‚±‚ÌƒIƒuƒWƒFƒNƒg‚ÌKey‚ÍƒIƒuƒWƒFƒNƒgIDAValue‚ÍL1NpcInstanceB
+	 * @return ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ãƒšãƒƒãƒˆãƒªã‚¹ãƒˆã‚’è¡¨ã™ã€HashMapã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®Keyã¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆIDã€Valueã¯L1NpcInstanceã€‚
 	 */
 	public Map<Integer, L1NpcInstance> getPetList() {
 		return _petlist;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Öƒ}ƒWƒbƒNƒh[ƒ‹‚ğ’Ç‰Á‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¸ãƒã‚¸ãƒƒã‚¯ãƒ‰ãƒ¼ãƒ«ã‚’è¿½åŠ ã™ã‚‹ã€‚
 	 * 
 	 * @param doll
-	 *            ’Ç‰Á‚·‚édoll‚ğ•\‚·AL1DollInstanceƒIƒuƒWƒFƒNƒgB
+	 *            è¿½åŠ ã™ã‚‹dollã‚’è¡¨ã™ã€L1DollInstanceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public void addDoll(L1DollInstance doll) {
 		_dolllist.put(doll.getId(), doll);
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚©‚çƒ}ƒWƒbƒNƒh[ƒ‹‚ğíœ‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‹ã‚‰ãƒã‚¸ãƒƒã‚¯ãƒ‰ãƒ¼ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã€‚
 	 * 
 	 * @param doll
-	 *            íœ‚·‚édoll‚ğ•\‚·AL1DollInstanceƒIƒuƒWƒFƒNƒgB
+	 *            å‰Šé™¤ã™ã‚‹dollã‚’è¡¨ã™ã€L1DollInstanceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public void removeDoll(L1DollInstance doll) {
 		_dolllist.remove(doll.getId());
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ìƒ}ƒWƒbƒNƒh[ƒ‹ƒŠƒXƒg‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ãƒã‚¸ãƒƒã‚¯ãƒ‰ãƒ¼ãƒ«ãƒªã‚¹ãƒˆã‚’è¿”ã™ã€‚
 	 * 
-	 * @return ƒLƒƒƒ‰ƒNƒ^[‚Ì–‚–@lŒ`ƒŠƒXƒg‚ğ•\‚·AHashMapƒIƒuƒWƒFƒNƒgB‚±‚ÌƒIƒuƒWƒFƒNƒg‚ÌKey‚ÍƒIƒuƒWƒFƒNƒgIDAValue‚ÍL1DollInstanceB
+	 * @return ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®é­”æ³•äººå½¢ãƒªã‚¹ãƒˆã‚’è¡¨ã™ã€HashMapã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®Keyã¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆIDã€Valueã¯L1DollInstanceã€‚
 	 */
 	public Map<Integer, L1DollInstance> getDollList() {
 		return _dolllist;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ö]Ò‚ğ’Ç‰Á‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¸å¾“è€…ã‚’è¿½åŠ ã™ã‚‹ã€‚
 	 * 
 	 * @param follower
-	 *            ’Ç‰Á‚·‚éfollower‚ğ•\‚·AL1FollowerInstanceƒIƒuƒWƒFƒNƒgB
+	 *            è¿½åŠ ã™ã‚‹followerã‚’è¡¨ã™ã€L1FollowerInstanceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public void addFollower(L1FollowerInstance follower) {
 		_followerlist.put(follower.getId(), follower);
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚©‚ç]Ò‚ğíœ‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‹ã‚‰å¾“è€…ã‚’å‰Šé™¤ã™ã‚‹ã€‚
 	 * 
 	 * @param follower
-	 *            íœ‚·‚éfollower‚ğ•\‚·AL1FollowerInstanceƒIƒuƒWƒFƒNƒgB
+	 *            å‰Šé™¤ã™ã‚‹followerã‚’è¡¨ã™ã€L1FollowerInstanceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public void removeFollower(L1FollowerInstance follower) {
 		_followerlist.remove(follower.getId());
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ì]ÒƒŠƒXƒg‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®å¾“è€…ãƒªã‚¹ãƒˆã‚’è¿”ã™ã€‚
 	 * 
-	 * @return ƒLƒƒƒ‰ƒNƒ^[‚Ì]ÒƒŠƒXƒg‚ğ•\‚·AHashMapƒIƒuƒWƒFƒNƒgB‚±‚ÌƒIƒuƒWƒFƒNƒg‚ÌKey‚ÍƒIƒuƒWƒFƒNƒgIDAValue‚ÍL1FollowerInstanceB
+	 * @return ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®å¾“è€…ãƒªã‚¹ãƒˆã‚’è¡¨ã™ã€HashMapã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®Keyã¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆIDã€Valueã¯L1FollowerInstanceã€‚
 	 */
 	public Map<Integer, L1FollowerInstance> getFollowerList() {
 		return _followerlist;
@@ -767,17 +767,17 @@ public class L1Character extends L1Object {
 
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÖA“Å‚ğ’Ç‰Á‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¸ã€æ¯’ã‚’è¿½åŠ ã™ã‚‹ã€‚
 	 * 
 	 * @param poison
-	 *            “Å‚ğ•\‚·AL1PoisonƒIƒuƒWƒFƒNƒgB
+	 *            æ¯’ã‚’è¡¨ã™ã€L1Poisonã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public void setPoison(L1Poison poison) {
 		_poison = poison;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ì“Å‚ğ¡—Ã‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®æ¯’ã‚’æ²»ç™‚ã™ã‚‹ã€‚
 	 */
 	public void curePoison() {
 		if (_poison == null) {
@@ -787,16 +787,16 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ì“Åó‘Ô‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®æ¯’çŠ¶æ…‹ã‚’è¿”ã™ã€‚
 	 * 
-	 * @return ƒLƒƒƒ‰ƒNƒ^[‚Ì“Å‚ğ•\‚·AL1PoisonƒIƒuƒWƒFƒNƒgB
+	 * @return ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®æ¯’ã‚’è¡¨ã™ã€L1Poisonã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public L1Poison getPoison() {
 		return _poison;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚Ö“Å‚ÌƒGƒtƒFƒNƒg‚ğ•t‰Á‚·‚é
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¸æ¯’ã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ä»˜åŠ ã™ã‚‹
 	 * 
 	 * @param effectId
 	 * @see S_Poison#S_Poison(int, int)
@@ -806,79 +806,79 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ª‘¶İ‚·‚éÀ•W‚ªA‚Ç‚Ìƒ][ƒ“‚É‘®‚µ‚Ä‚¢‚é‚©‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒå­˜åœ¨ã™ã‚‹åº§æ¨™ãŒã€ã©ã®ã‚¾ãƒ¼ãƒ³ã«å±ã—ã¦ã„ã‚‹ã‹ã‚’è¿”ã™ã€‚
 	 * 
-	 * @return À•W‚Ìƒ][ƒ“‚ğ•\‚·’lBƒZ[ƒtƒeƒB[ƒ][ƒ“‚Å‚ ‚ê‚Î1AƒRƒ“ƒoƒbƒgƒ][ƒ“‚Å‚ ‚ê‚Î-1Aƒm[ƒ}ƒ‹ƒ][ƒ“‚Å‚ ‚ê‚Î0B
+	 * @return åº§æ¨™ã®ã‚¾ãƒ¼ãƒ³ã‚’è¡¨ã™å€¤ã€‚ã‚»ãƒ¼ãƒ•ãƒ†ã‚£ãƒ¼ã‚¾ãƒ¼ãƒ³ã§ã‚ã‚Œã°1ã€ã‚³ãƒ³ãƒãƒƒãƒˆã‚¾ãƒ¼ãƒ³ã§ã‚ã‚Œã°-1ã€ãƒãƒ¼ãƒãƒ«ã‚¾ãƒ¼ãƒ³ã§ã‚ã‚Œã°0ã€‚
 	 */
 	public int getZoneType() {
 		if (getMap().isSafetyZone(getLocation())) {
 			return 1;
 		} else if (getMap().isCombatZone(getLocation())) {
 			return -1;
-		} else { // ƒm[ƒ}ƒ‹ƒ][ƒ“
+		} else { // ãƒãƒ¼ãƒãƒ«ã‚¾ãƒ¼ãƒ³
 			return 0;
 		}
 	}
 
-	private int _exp; // œ ŒoŒ±’l
+	private int _exp; // â— çµŒé¨“å€¤
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ª•Û‚µ‚Ä‚¢‚éŒoŒ±’l‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒä¿æŒã—ã¦ã„ã‚‹çµŒé¨“å€¤ã‚’è¿”ã™ã€‚
 	 * 
-	 * @return ŒoŒ±’lB
+	 * @return çµŒé¨“å€¤ã€‚
 	 */
 	public int getExp() {
 		return _exp;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ª•Û‚·‚éŒoŒ±’l‚ğİ’è‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒä¿æŒã™ã‚‹çµŒé¨“å€¤ã‚’è¨­å®šã™ã‚‹ã€‚
 	 * 
 	 * @param exp
-	 *            ŒoŒ±’lB
+	 *            çµŒé¨“å€¤ã€‚
 	 */
 	public void setExp(int exp) {
 		_exp = exp;
 	}
 
-	// ¡¡¡¡¡¡¡¡¡¡ L1PcInstance‚ÖˆÚ“®‚·‚éƒvƒƒpƒeƒB ¡¡¡¡¡¡¡¡¡¡
+	// â– â– â– â– â– â– â– â– â– â–  L1PcInstanceã¸ç§»å‹•ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ â– â– â– â– â– â– â– â– â– â– 
 	private final List<L1Object> _knownObjects = new CopyOnWriteArrayList<L1Object>();
 	private final List<L1PcInstance> _knownPlayer = new CopyOnWriteArrayList<L1PcInstance>();
 
 	/**
-	 * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğAƒLƒƒƒ‰ƒNƒ^[‚ª”F¯‚µ‚Ä‚¢‚é‚©‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã€ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒèªè­˜ã—ã¦ã„ã‚‹ã‹ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param obj
-	 *            ’²‚×‚éƒIƒuƒWƒFƒNƒgB
-	 * @return ƒIƒuƒWƒFƒNƒg‚ğƒLƒƒƒ‰ƒNƒ^[‚ª”F¯‚µ‚Ä‚¢‚ê‚ÎtrueA‚µ‚Ä‚¢‚È‚¯‚ê‚ÎfalseB ©•ª©g‚É‘Î‚µ‚Ä‚Ífalse‚ğ•Ô‚·B
+	 *            èª¿ã¹ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
+	 * @return ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒèªè­˜ã—ã¦ã„ã‚Œã°trueã€ã—ã¦ã„ãªã‘ã‚Œã°falseã€‚ è‡ªåˆ†è‡ªèº«ã«å¯¾ã—ã¦ã¯falseã‚’è¿”ã™ã€‚
 	 */
 	public boolean knownsObject(L1Object obj) {
 		return _knownObjects.contains(obj);
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ª”F¯‚µ‚Ä‚¢‚é‘S‚Ä‚ÌƒIƒuƒWƒFƒNƒg‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒèªè­˜ã—ã¦ã„ã‚‹å…¨ã¦ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™ã€‚
 	 * 
-	 * @return ƒLƒƒƒ‰ƒNƒ^[‚ª”F¯‚µ‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚ğ•\‚·L1Object‚ªŠi”[‚³‚ê‚½ArrayListB
+	 * @return ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒèªè­˜ã—ã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ã™L1ObjectãŒæ ¼ç´ã•ã‚ŒãŸArrayListã€‚
 	 */
 	public List<L1Object> getKnownObjects() {
 		return _knownObjects;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ª”F¯‚µ‚Ä‚¢‚é‘S‚Ä‚ÌƒvƒŒƒCƒ„[‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒèªè­˜ã—ã¦ã„ã‚‹å…¨ã¦ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’è¿”ã™ã€‚
 	 * 
-	 * @return ƒLƒƒƒ‰ƒNƒ^[‚ª”F¯‚µ‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚ğ•\‚·L1PcInstance‚ªŠi”[‚³‚ê‚½ArrayListB
+	 * @return ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒèªè­˜ã—ã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ã™L1PcInstanceãŒæ ¼ç´ã•ã‚ŒãŸArrayListã€‚
 	 */
 	public List<L1PcInstance> getKnownPlayers() {
 		return _knownPlayer;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ÉAV‚½‚É”F¯‚·‚éƒIƒuƒWƒFƒNƒg‚ğ’Ç‰Á‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã«ã€æ–°ãŸã«èªè­˜ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿½åŠ ã™ã‚‹ã€‚
 	 * 
 	 * @param obj
-	 *            V‚½‚É”F¯‚·‚éƒIƒuƒWƒFƒNƒgB
+	 *            æ–°ãŸã«èªè­˜ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public void addKnownObject(L1Object obj) {
 		if (!_knownObjects.contains(obj)) {
@@ -890,10 +890,10 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚©‚çA”F¯‚µ‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚ğíœ‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‹ã‚‰ã€èªè­˜ã—ã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤ã™ã‚‹ã€‚
 	 * 
 	 * @param obj
-	 *            íœ‚·‚éƒIƒuƒWƒFƒNƒgB
+	 *            å‰Šé™¤ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
 	 */
 	public void removeKnownObject(L1Object obj) {
 		_knownObjects.remove(obj);
@@ -903,16 +903,16 @@ public class L1Character extends L1Object {
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚©‚çA‘S‚Ä‚Ì”F¯‚µ‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚ğíœ‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‹ã‚‰ã€å…¨ã¦ã®èªè­˜ã—ã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤ã™ã‚‹ã€‚
 	 */
 	public void removeAllKnownObjects() {
 		_knownObjects.clear();
 		_knownPlayer.clear();
 	}
 
-	// ¡¡¡¡¡¡¡¡¡¡ ƒvƒƒpƒeƒB ¡¡¡¡¡¡¡¡¡¡
+	// â– â– â– â– â– â– â– â– â– â–  ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ â– â– â– â– â– â– â– â– â– â– 
 
-	private String _name; // œ –¼‘O
+	private String _name; // â— åå‰
 
 	public String getName() {
 		return _name;
@@ -922,7 +922,7 @@ public class L1Character extends L1Object {
 		_name = s;
 	}
 
-	private int _level; // œ ƒŒƒxƒ‹
+	private int _level; // â— ãƒ¬ãƒ™ãƒ«
 
 	public synchronized int getLevel() {
 		return _level;
@@ -932,8 +932,8 @@ public class L1Character extends L1Object {
 		_level = (int) level;
 	}
 
-	private short _maxHp = 0; // œ ‚l‚`‚w‚g‚oi1`32767j
-	private int _trueMaxHp = 0; // œ –{“–‚Ì‚l‚`‚w‚g‚o
+	private short _maxHp = 0; // â— ï¼­ï¼¡ï¼¸ï¼¨ï¼°ï¼ˆ1ï½32767ï¼‰
+	private int _trueMaxHp = 0; // â— æœ¬å½“ã®ï¼­ï¼¡ï¼¸ï¼¨ï¼°
 
 	public short getMaxHp() {
 		return _maxHp;
@@ -949,8 +949,8 @@ public class L1Character extends L1Object {
 		setMaxHp(_trueMaxHp + i);
 	}
 
-	private short _maxMp = 0; // œ ‚l‚`‚w‚l‚oi0`32767j
-	private int _trueMaxMp = 0; // œ –{“–‚Ì‚l‚`‚w‚l‚o
+	private short _maxMp = 0; // â— ï¼­ï¼¡ï¼¸ï¼­ï¼°ï¼ˆ0ï½32767ï¼‰
+	private int _trueMaxMp = 0; // â— æœ¬å½“ã®ï¼­ï¼¡ï¼¸ï¼­ï¼°
 
 	public short getMaxMp() {
 		return _maxMp;
@@ -966,8 +966,8 @@ public class L1Character extends L1Object {
 		setMaxMp(_trueMaxMp + i);
 	}
 
-	private int _ac = 0; // œ ‚`‚bi-128`127j
-	private int _trueAc = 0; // œ –{“–‚Ì‚`‚b
+	private int _ac = 0; // â— ï¼¡ï¼£ï¼ˆ-128ï½127ï¼‰
+	private int _trueAc = 0; // â— æœ¬å½“ã®ï¼¡ï¼£
 
 	public int getAc() {
 		return _ac;
@@ -982,8 +982,8 @@ public class L1Character extends L1Object {
 		setAc(_trueAc + i);
 	}
 
-	private byte _str = 0; // œ ‚r‚s‚qi1`127j
-	private short _trueStr = 0; // œ –{“–‚Ì‚r‚s‚q
+	private byte _str = 0; // â— ï¼³ï¼´ï¼²ï¼ˆ1ï½127ï¼‰
+	private short _trueStr = 0; // â— æœ¬å½“ã®ï¼³ï¼´ï¼²
 
 	public byte getStr() {
 		return _str;
@@ -998,8 +998,8 @@ public class L1Character extends L1Object {
 		setStr(_trueStr + i);
 	}
 
-	private byte _con = 0; // œ ‚b‚n‚mi1`127j
-	private short _trueCon = 0; // œ –{“–‚Ì‚b‚n‚m
+	private byte _con = 0; // â— ï¼£ï¼¯ï¼®ï¼ˆ1ï½127ï¼‰
+	private short _trueCon = 0; // â— æœ¬å½“ã®ï¼£ï¼¯ï¼®
 
 	public byte getCon() {
 		return _con;
@@ -1014,8 +1014,8 @@ public class L1Character extends L1Object {
 		setCon(_trueCon + i);
 	}
 
-	private byte _dex = 0; // œ ‚c‚d‚wi1`127j
-	private short _trueDex = 0; // œ –{“–‚Ì‚c‚d‚w
+	private byte _dex = 0; // â— ï¼¤ï¼¥ï¼¸ï¼ˆ1ï½127ï¼‰
+	private short _trueDex = 0; // â— æœ¬å½“ã®ï¼¤ï¼¥ï¼¸
 
 	public byte getDex() {
 		return _dex;
@@ -1030,8 +1030,8 @@ public class L1Character extends L1Object {
 		setDex(_trueDex + i);
 	}
 
-	private byte _cha = 0; // œ ‚b‚g‚`i1`127j
-	private short _trueCha = 0; // œ –{“–‚Ì‚b‚g‚`
+	private byte _cha = 0; // â— ï¼£ï¼¨ï¼¡ï¼ˆ1ï½127ï¼‰
+	private short _trueCha = 0; // â— æœ¬å½“ã®ï¼£ï¼¨ï¼¡
 
 	public byte getCha() {
 		return _cha;
@@ -1046,8 +1046,8 @@ public class L1Character extends L1Object {
 		setCha(_trueCha + i);
 	}
 
-	private byte _int = 0; // œ ‚h‚m‚si1`127j
-	private short _trueInt = 0; // œ –{“–‚Ì‚h‚m‚s
+	private byte _int = 0; // â— ï¼©ï¼®ï¼´ï¼ˆ1ï½127ï¼‰
+	private short _trueInt = 0; // â— æœ¬å½“ã®ï¼©ï¼®ï¼´
 
 	public byte getInt() {
 		return _int;
@@ -1062,8 +1062,8 @@ public class L1Character extends L1Object {
 		setInt(_trueInt + i);
 	}
 
-	private byte _wis = 0; // œ ‚v‚h‚ri1`127j
-	private short _trueWis = 0; // œ –{“–‚Ì‚v‚h‚r
+	private byte _wis = 0; // â— ï¼·ï¼©ï¼³ï¼ˆ1ï½127ï¼‰
+	private short _trueWis = 0; // â— æœ¬å½“ã®ï¼·ï¼©ï¼³
 
 	public byte getWis() {
 		return _wis;
@@ -1078,12 +1078,12 @@ public class L1Character extends L1Object {
 		setWis(_trueWis + i);
 	}
 
-	private int _wind = 0; // œ •—–hŒäi-128`127j
-	private int _trueWind = 0; // œ –{“–‚Ì•—–hŒä
+	private int _wind = 0; // â— é¢¨é˜²å¾¡ï¼ˆ-128ï½127ï¼‰
+	private int _trueWind = 0; // â— æœ¬å½“ã®é¢¨é˜²å¾¡
 
 	public int getWind() {
 		return _wind;
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public void addWind(int i) {
 		_trueWind += i;
@@ -1096,12 +1096,12 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	private int _water = 0; // œ …–hŒäi-128`127j
-	private int _trueWater = 0; // œ –{“–‚Ì…–hŒä
+	private int _water = 0; // â— æ°´é˜²å¾¡ï¼ˆ-128ï½127ï¼‰
+	private int _trueWater = 0; // â— æœ¬å½“ã®æ°´é˜²å¾¡
 
 	public int getWater() {
 		return _water;
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public void addWater(int i) {
 		_trueWater += i;
@@ -1114,12 +1114,12 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	private int _fire = 0; // œ ‰Î–hŒäi-128`127j
-	private int _trueFire = 0; // œ –{“–‚Ì‰Î–hŒä
+	private int _fire = 0; // â— ç«é˜²å¾¡ï¼ˆ-128ï½127ï¼‰
+	private int _trueFire = 0; // â— æœ¬å½“ã®ç«é˜²å¾¡
 
 	public int getFire() {
 		return _fire;
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public void addFire(int i) {
 		_trueFire += i;
@@ -1132,12 +1132,12 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	private int _earth = 0; // œ ’n–hŒäi-128`127j
-	private int _trueEarth = 0; // œ –{“–‚Ì’n–hŒä
+	private int _earth = 0; // â— åœ°é˜²å¾¡ï¼ˆ-128ï½127ï¼‰
+	private int _trueEarth = 0; // â— æœ¬å½“ã®åœ°é˜²å¾¡
 
 	public int getEarth() {
 		return _earth;
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public void addEarth(int i) {
 		_trueEarth += i;
@@ -1150,7 +1150,7 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	private int _addAttrKind; // ƒGƒŒƒƒ“ƒ^ƒ‹ƒtƒH[ƒ‹ƒ_ƒEƒ“‚ÅŒ¸­‚µ‚½‘®«‚Ìí—Ş
+	private int _addAttrKind; // ã‚¨ãƒ¬ãƒ¡ãƒ³ã‚¿ãƒ«ãƒ•ã‚©ãƒ¼ãƒ«ãƒ€ã‚¦ãƒ³ã§æ¸›å°‘ã—ãŸå±æ€§ã®ç¨®é¡
 
 	public int getAddAttrKind() {
 		return _addAttrKind;
@@ -1160,13 +1160,13 @@ public class L1Character extends L1Object {
 		_addAttrKind = i;
 	}
 
-	// ƒXƒ^ƒ“‘Ï«
+	// ã‚¹ã‚¿ãƒ³è€æ€§
 	private int _registStun = 0;
 	private int _trueRegistStun = 0;
 
 	public int getRegistStun() {
 		return _registStun;
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public void addRegistStun(int i) {
 		_trueRegistStun += i;
@@ -1179,13 +1179,13 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	// Î‰»‘Ï«
+	// çŸ³åŒ–è€æ€§
 	private int _registStone = 0;
 	private int _trueRegistStone = 0;
 
 	public int getRegistStone() {
 		return _registStone;
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public void addRegistStone(int i) {
 		_trueRegistStone += i;
@@ -1198,13 +1198,13 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	// ‡–°‘Ï«
+	// ç¡çœ è€æ€§
 	private int _registSleep = 0;
 	private int _trueRegistSleep = 0;
 
 	public int getRegistSleep() {
 		return _registSleep;
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public void addRegistSleep(int i) {
 		_trueRegistSleep += i;
@@ -1217,13 +1217,13 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	// “€Œ‹‘Ï«
+	// å‡çµè€æ€§
 	private int _registFreeze = 0;
 	private int _trueRegistFreeze = 0;
 
 	public int getRegistFreeze() {
 		return _registFreeze;
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public void add_regist_freeze(int i) {
 		_trueRegistFreeze += i;
@@ -1236,13 +1236,13 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	// ƒz[ƒ‹ƒh‘Ï«
+	// ãƒ›ãƒ¼ãƒ«ãƒ‰è€æ€§
 	private int _registSustain = 0;
 	private int _trueRegistSustain = 0;
 
 	public int getRegistSustain() {
 		return _registSustain;
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public void addRegistSustain(int i) {
 		_trueRegistSustain += i;
@@ -1255,13 +1255,13 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	// ˆÃˆÅ‘Ï«
+	// æš—é—‡è€æ€§
 	private int _registBlind = 0;
 	private int _trueRegistBlind = 0;
 
 	public int getRegistBlind() {
 		return _registBlind;
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public void addRegistBlind(int i) {
 		_trueRegistBlind += i;
@@ -1274,12 +1274,12 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	private int _dmgup = 0; // œ ƒ_ƒ[ƒW•â³i-128`127j
-	private int _trueDmgup = 0; // œ –{“–‚Ìƒ_ƒ[ƒW•â³
+	private int _dmgup = 0; // â— ãƒ€ãƒ¡ãƒ¼ã‚¸è£œæ­£ï¼ˆ-128ï½127ï¼‰
+	private int _trueDmgup = 0; // â— æœ¬å½“ã®ãƒ€ãƒ¡ãƒ¼ã‚¸è£œæ­£
 
 	public int getDmgup() {
 		return _dmgup;
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public void addDmgup(int i) {
 		_trueDmgup += i;
@@ -1292,12 +1292,12 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	private int _bowDmgup = 0; // œ ‹|ƒ_ƒ[ƒW•â³i-128`127j
-	private int _trueBowDmgup = 0; // œ –{“–‚Ì‹|ƒ_ƒ[ƒW•â³
+	private int _bowDmgup = 0; // â— å¼“ãƒ€ãƒ¡ãƒ¼ã‚¸è£œæ­£ï¼ˆ-128ï½127ï¼‰
+	private int _trueBowDmgup = 0; // â— æœ¬å½“ã®å¼“ãƒ€ãƒ¡ãƒ¼ã‚¸è£œæ­£
 
 	public int getBowDmgup() {
 		return _bowDmgup;
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public void addBowDmgup(int i) {
 		_trueBowDmgup += i;
@@ -1310,12 +1310,12 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	private int _hitup = 0; // œ –½’†•â³i-128`127j
-	private int _trueHitup = 0; // œ –{“–‚Ì–½’†•â³
+	private int _hitup = 0; // â— å‘½ä¸­è£œæ­£ï¼ˆ-128ï½127ï¼‰
+	private int _trueHitup = 0; // â— æœ¬å½“ã®å‘½ä¸­è£œæ­£
 
 	public int getHitup() {
 		return _hitup;
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public void addHitup(int i) {
 		_trueHitup += i;
@@ -1328,12 +1328,12 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	private int _bowHitup = 0; // œ ‹|–½’†•â³i-128`127j
-	private int _trueBowHitup = 0; // œ –{“–‚Ì‹|–½’†•â³
+	private int _bowHitup = 0; // â— å¼“å‘½ä¸­è£œæ­£ï¼ˆ-128ï½127ï¼‰
+	private int _trueBowHitup = 0; // â— æœ¬å½“ã®å¼“å‘½ä¸­è£œæ­£
 
 	public int getBowHitup() {
 		return _bowHitup;
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public void addBowHitup(int i) {
 		_trueBowHitup += i;
@@ -1346,8 +1346,8 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	private int _mr = 0; // œ –‚–@–hŒäi0`j
-	private int _trueMr = 0; // œ –{“–‚Ì–‚–@–hŒä
+	private int _mr = 0; // â— é­”æ³•é˜²å¾¡ï¼ˆ0ï½ï¼‰
+	private int _trueMr = 0; // â— æœ¬å½“ã®é­”æ³•é˜²å¾¡
 
 	public int getMr() {
 		if (hasSkillEffect(153) == true) {
@@ -1355,11 +1355,11 @@ public class L1Character extends L1Object {
 		} else {
 			return _mr;
 		}
-	} // g—p‚·‚é‚Æ‚«
+	} // ä½¿ç”¨ã™ã‚‹ã¨ã
 
 	public int getTrueMr() {
 		return _trueMr;
-	} // ƒZƒbƒg‚·‚é‚Æ‚«
+	} // ã‚»ãƒƒãƒˆã™ã‚‹ã¨ã
 
 	public void addMr(int i) {
 		_trueMr += i;
@@ -1370,7 +1370,7 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	private int _sp = 0; // œ ‘‰Á‚µ‚½‚r‚o
+	private int _sp = 0; // â— å¢—åŠ ã—ãŸï¼³ï¼°
 
 	public int getSp() {
 		return getTrueSp() + _sp;
@@ -1384,7 +1384,7 @@ public class L1Character extends L1Object {
 		_sp += i;
 	}
 
-	private boolean _isDead; // œ €–Só‘Ô
+	private boolean _isDead; // â— æ­»äº¡çŠ¶æ…‹
 
 	public boolean isDead() {
 		return _isDead;
@@ -1394,7 +1394,7 @@ public class L1Character extends L1Object {
 		_isDead = flag;
 	}
 
-	private int _status; // œ ó‘ÔH
+	private int _status; // â— çŠ¶æ…‹ï¼Ÿ
 
 	public int getStatus() {
 		return _status;
@@ -1404,7 +1404,7 @@ public class L1Character extends L1Object {
 		_status = i;
 	}
 
-	private String _title; // œ ƒ^ƒCƒgƒ‹
+	private String _title; // â— ã‚¿ã‚¤ãƒˆãƒ«
 
 	public String getTitle() {
 		return _title;
@@ -1414,7 +1414,7 @@ public class L1Character extends L1Object {
 		_title = s;
 	}
 
-	private int _lawful; // œ ƒAƒ‰ƒCƒƒ“ƒg
+	private int _lawful; // â— ã‚¢ãƒ©ã‚¤ãƒ¡ãƒ³ãƒˆ
 
 	public int getLawful() {
 		return _lawful;
@@ -1433,7 +1433,7 @@ public class L1Character extends L1Object {
 		}
 	}
 
-	private int _heading; // œ Œü‚« 0.¶ã 1.ã 2.‰Eã 3.‰E 4.‰E‰º 5.‰º 6.¶‰º 7.¶
+	private int _heading; // â— å‘ã 0.å·¦ä¸Š 1.ä¸Š 2.å³ä¸Š 3.å³ 4.å³ä¸‹ 5.ä¸‹ 6.å·¦ä¸‹ 7.å·¦
 
 	public int getHeading() {
 		return _heading;
@@ -1443,7 +1443,7 @@ public class L1Character extends L1Object {
 		_heading = i;
 	}
 
-	private int _moveSpeed; // œ ƒXƒs[ƒh 0.’Êí 1.ƒwƒCƒXƒg 2.ƒXƒ[
+	private int _moveSpeed; // â— ã‚¹ãƒ”ãƒ¼ãƒ‰ 0.é€šå¸¸ 1.ãƒ˜ã‚¤ã‚¹ãƒˆ 2.ã‚¹ãƒ­ãƒ¼
 
 	public int getMoveSpeed() {
 		return _moveSpeed;
@@ -1453,7 +1453,7 @@ public class L1Character extends L1Object {
 		_moveSpeed = i;
 	}
 
-	private int _braveSpeed; // œ ƒuƒŒƒCƒuó‘Ô 0.’Êí 1.ƒuƒŒƒCƒu
+	private int _braveSpeed; // â— ãƒ–ãƒ¬ã‚¤ãƒ–çŠ¶æ…‹ 0.é€šå¸¸ 1.ãƒ–ãƒ¬ã‚¤ãƒ–
 
 	public int getBraveSpeed() {
 		return _braveSpeed;
@@ -1463,7 +1463,7 @@ public class L1Character extends L1Object {
 		_braveSpeed = i;
 	}
 
-	private int _tempCharGfx; // œ ƒx[ƒXƒOƒ‰ƒtƒBƒbƒN‚h‚c
+	private int _tempCharGfx; // â— ãƒ™ãƒ¼ã‚¹ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ï¼©ï¼¤
 
 	public int getTempCharGfx() {
 		return _tempCharGfx;
@@ -1473,7 +1473,7 @@ public class L1Character extends L1Object {
 		_tempCharGfx = i;
 	}
 
-	private int _gfxid; // œ ƒOƒ‰ƒtƒBƒbƒN‚h‚c
+	private int _gfxid; // â— ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ï¼©ï¼¤
 
 	public int getGfxId() {
 		return _gfxid;
@@ -1526,19 +1526,19 @@ public class L1Character extends L1Object {
 	private int _karma;
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ª•Û‚µ‚Ä‚¢‚éƒJƒ‹ƒ}‚ğ•Ô‚·B
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒä¿æŒã—ã¦ã„ã‚‹ã‚«ãƒ«ãƒã‚’è¿”ã™ã€‚
 	 * 
-	 * @return ƒJƒ‹ƒ}B
+	 * @return ã‚«ãƒ«ãƒã€‚
 	 */
 	public int getKarma() {
 		return _karma;
 	}
 
 	/**
-	 * ƒLƒƒƒ‰ƒNƒ^[‚ª•Û‚·‚éƒJƒ‹ƒ}‚ğİ’è‚·‚éB
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒä¿æŒã™ã‚‹ã‚«ãƒ«ãƒã‚’è¨­å®šã™ã‚‹ã€‚
 	 * 
 	 * @param karma
-	 *            ƒJƒ‹ƒ}B
+	 *            ã‚«ãƒ«ãƒã€‚
 	 */
 	public void setKarma(int karma) {
 		_karma = karma;
@@ -1557,7 +1557,7 @@ public class L1Character extends L1Object {
 		int lightSize = 0;
 		if (this instanceof L1NpcInstance) {
 			L1NpcInstance npc = (L1NpcInstance) this;
-			lightSize = npc.getLightSize(); // npc.sql‚Ìƒ‰ƒCƒgƒTƒCƒY
+			lightSize = npc.getLightSize(); // npc.sqlã®ãƒ©ã‚¤ãƒˆã‚µã‚¤ã‚º
 		}
 		if (hasSkillEffect(LIGHT)) {
 			lightSize = 14;
@@ -1565,7 +1565,7 @@ public class L1Character extends L1Object {
 
 		for (L1ItemInstance item : getInventory().getItems()) {
 			if (item.getItem().getType2() == 0 && item.getItem()
-					.getType() == 2) { // lightŒnƒAƒCƒeƒ€
+					.getType() == 2) { // lightç³»ã‚¢ã‚¤ãƒ†ãƒ 
 				int itemlightSize = item.getItem().getLightRange();
 				if (itemlightSize != 0 && item.isNowLighting()) {
 					if (itemlightSize > lightSize) {
@@ -1583,11 +1583,11 @@ public class L1Character extends L1Object {
 			broadcastPacket(new S_Light(getId(), lightSize));
 		}
 
-		setOwnLightSize(lightSize); // S_OwnCharPack‚Ìƒ‰ƒCƒg”ÍˆÍ
-		setChaLightSize(lightSize); // S_OtherCharPack, S_NPCPack‚È‚Ç‚Ìƒ‰ƒCƒg”ÍˆÍ
+		setOwnLightSize(lightSize); // S_OwnCharPackã®ãƒ©ã‚¤ãƒˆç¯„å›²
+		setChaLightSize(lightSize); // S_OtherCharPack, S_NPCPackãªã©ã®ãƒ©ã‚¤ãƒˆç¯„å›²
 	}
 
-	private int _chaLightSize; // œ ƒ‰ƒCƒg‚Ì”ÍˆÍ
+	private int _chaLightSize; // â— ãƒ©ã‚¤ãƒˆã®ç¯„å›²
 
 	public int getChaLightSize() {
 		if (isInvisble()) {
@@ -1600,7 +1600,7 @@ public class L1Character extends L1Object {
 		_chaLightSize = i;
 	}
 
-	private int _ownLightSize; // œ ƒ‰ƒCƒg‚Ì”ÍˆÍ(S_OwnCharPack—p)
+	private int _ownLightSize; // â— ãƒ©ã‚¤ãƒˆã®ç¯„å›²(S_OwnCharPackç”¨)
 
 	public int getOwnLightSize() {
 		return _ownLightSize;

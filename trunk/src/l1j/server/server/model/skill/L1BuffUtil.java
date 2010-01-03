@@ -41,36 +41,36 @@ public class L1BuffUtil {
 	}
 
 	public static void brave(L1PcInstance pc, int timeMillis) {
-		if (pc.hasSkillEffect(STATUS_ELFBRAVE)) { // ƒGƒ‹ƒ”ƒ“ƒƒbƒtƒ‹‚Æ‚Íd•¡‚µ‚È‚¢
+		if (pc.hasSkillEffect(STATUS_ELFBRAVE)) { // ã‚¨ãƒ«ãƒ´ãƒ³ãƒ¯ãƒƒãƒ•ãƒ«ã¨ã¯é‡è¤‡ã—ãªã„
 			pc.killSkillEffectTimer(STATUS_ELFBRAVE);
 			pc.sendPackets(new S_SkillBrave(pc.getId(), 0, 0));
 			pc.broadcastPacket(new S_SkillBrave(pc.getId(), 0, 0));
 			pc.setBraveSpeed(0);
 		}
-		if (pc.hasSkillEffect(HOLY_WALK)) { // ƒz[ƒŠ[ƒEƒH[ƒN‚Æ‚Íd•¡‚µ‚È‚¢
+		if (pc.hasSkillEffect(HOLY_WALK)) { // ãƒ›ãƒ¼ãƒªãƒ¼ã‚¦ã‚©ãƒ¼ã‚¯ã¨ã¯é‡è¤‡ã—ãªã„
 			pc.killSkillEffectTimer(HOLY_WALK);
 			pc.sendPackets(new S_SkillBrave(pc.getId(), 0, 0));
 			pc.broadcastPacket(new S_SkillBrave(pc.getId(), 0, 0));
 			pc.setBraveSpeed(0);
 		}
-		if (pc.hasSkillEffect(MOVING_ACCELERATION)) { // ƒ€[ƒrƒ“ƒOƒAƒNƒZƒŒ[ƒVƒ‡ƒ“‚Æ‚Íd•¡‚µ‚È‚¢
+		if (pc.hasSkillEffect(MOVING_ACCELERATION)) { // ãƒ ãƒ¼ãƒ“ãƒ³ã‚°ã‚¢ã‚¯ã‚»ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã¨ã¯é‡è¤‡ã—ãªã„
 			pc.killSkillEffectTimer(MOVING_ACCELERATION);
 			pc.sendPackets(new S_SkillBrave(pc.getId(), 0, 0));
 			pc.broadcastPacket(new S_SkillBrave(pc.getId(), 0, 0));
 			pc.setBraveSpeed(0);
 		}
-		if (pc.hasSkillEffect(WIND_WALK)) { // ƒEƒBƒ“ƒhƒEƒH[ƒN‚Æ‚Íd•¡‚µ‚È‚¢
+		if (pc.hasSkillEffect(WIND_WALK)) { // ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚©ãƒ¼ã‚¯ã¨ã¯é‡è¤‡ã—ãªã„
 			pc.killSkillEffectTimer(WIND_WALK);
 			pc.sendPackets(new S_SkillBrave(pc.getId(), 0, 0));
 			pc.broadcastPacket(new S_SkillBrave(pc.getId(), 0, 0));
 			pc.setBraveSpeed(0);
 		}
-		if (pc.hasSkillEffect(STATUS_RIBRAVE)) { // ƒ†ƒOƒhƒ‰‚ÌÀ‚Æ‚Íd•¡‚µ‚È‚¢
+		if (pc.hasSkillEffect(STATUS_RIBRAVE)) { // ãƒ¦ã‚°ãƒ‰ãƒ©ã®å®Ÿã¨ã¯é‡è¤‡ã—ãªã„
 			pc.killSkillEffectTimer(STATUS_RIBRAVE);
-			// XXX ƒ†ƒOƒhƒ‰‚ÌÀ‚ÌƒAƒCƒRƒ“‚ğÁ‚·•û–@‚ª•s–¾
+			// XXX ãƒ¦ã‚°ãƒ‰ãƒ©ã®å®Ÿã®ã‚¢ã‚¤ã‚³ãƒ³ã‚’æ¶ˆã™æ–¹æ³•ãŒä¸æ˜
 			pc.setBraveSpeed(0);
 		}
-		if (pc.hasSkillEffect(BLOODLUST)) { // ƒuƒ‰ƒbƒhƒ‰ƒXƒg‚Æ‚Íd•¡‚µ‚È‚¢
+		if (pc.hasSkillEffect(BLOODLUST)) { // ãƒ–ãƒ©ãƒƒãƒ‰ãƒ©ã‚¹ãƒˆã¨ã¯é‡è¤‡ã—ãªã„
 			pc.killSkillEffectTimer(BLOODLUST);
 			pc.sendPackets(new S_SkillBrave(pc.getId(), 0, 0));
 			pc.broadcastPacket(new S_SkillBrave(pc.getId(), 0, 0));

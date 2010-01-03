@@ -642,9 +642,9 @@ public class L1Npc extends L1Object implements Cloneable {
 	private boolean _amountFixed;
 	
 	/**
-	 * mapidsƒe[ƒuƒ‹‚Åİ’è‚³‚ê‚½ƒ‚ƒ“ƒXƒ^[—Ê”{—¦‚Ì‰e‹¿‚ğó‚¯‚é‚©‚Ç‚¤‚©‚ğ•Ô‚·B
+	 * mapidsãƒ†ãƒ¼ãƒ–ãƒ«ã§è¨­å®šã•ã‚ŒãŸãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼é‡å€ç‡ã®å½±éŸ¿ã‚’å—ã‘ã‚‹ã‹ã©ã†ã‹ã‚’è¿”ã™ã€‚
 	 * 
-	 * @return ‰e‹¿‚ğó‚¯‚È‚¢‚æ‚¤‚Éİ’è‚³‚ê‚Ä‚¢‚éê‡‚Ítrue‚ğ•Ô‚·B
+	 * @return å½±éŸ¿ã‚’å—ã‘ãªã„ã‚ˆã†ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯trueã‚’è¿”ã™ã€‚
 	 */
 	public boolean isAmountFixed() {
 		return _amountFixed;

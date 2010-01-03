@@ -96,11 +96,11 @@ public class C_FishClick extends ClientBasePacket {
 			} else if (chance < 171) {
 				successFishing(pc, 41252, "$5248"); // 1.0%
 			} else {
-				pc.sendPackets(new S_ServerMessage(1136, "")); // ’Þ‚è‚ÉŽ¸”s‚µ‚Ü‚µ‚½B
+				pc.sendPackets(new S_ServerMessage(1136, "")); // é‡£ã‚Šã«å¤±æ•—ã—ã¾ã—ãŸã€‚
 			}
 		} else {
 			finishFishing(pc);
-			pc.sendPackets(new S_ServerMessage(1136, "")); // ’Þ‚è‚ÉŽ¸”s‚µ‚Ü‚µ‚½B
+			pc.sendPackets(new S_ServerMessage(1136, "")); // é‡£ã‚Šã«å¤±æ•—ã—ã¾ã—ãŸã€‚
 		}
 	}
 
@@ -130,7 +130,7 @@ public class C_FishClick extends ClientBasePacket {
 			L1World.getInstance().getInventory(loc[0], loc[1],
 					pc.getMapId()).storeItem(item);
 		}
-		pc.sendPackets(new S_ServerMessage(1185, message)); // ’Þ‚è‚É¬Œ÷‚µ‚Ä%0%o‚ð’Þ‚è‚Ü‚µ‚½B
+		pc.sendPackets(new S_ServerMessage(1185, message)); // é‡£ã‚Šã«æˆåŠŸã—ã¦%0%oã‚’é‡£ã‚Šã¾ã—ãŸã€‚
 	}
 
 	@Override

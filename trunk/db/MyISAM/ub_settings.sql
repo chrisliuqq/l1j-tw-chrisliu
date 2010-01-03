@@ -5,7 +5,7 @@ CREATE TABLE `ub_settings` (
   `ub_id` int(10) unsigned NOT NULL default '0',
   `ub_name` varchar(45) NOT NULL default '',
   `ub_mapid` int(10) unsigned NOT NULL default '0',
-  `ub_area_x1` int(10) unsigned NOT NULL default '0', -- モンスターの出現範囲など
+  `ub_area_x1` int(10) unsigned NOT NULL default '0', -- 繝｢繝ｳ繧ｹ繧ｿ繝ｼ縺ｮ蜃ｺ迴ｾ遽�蝗ｲ縺ｪ縺ｩ
   `ub_area_y1` int(10) unsigned NOT NULL default '0',
   `ub_area_x2` int(10) unsigned NOT NULL default '0',
   `ub_area_y2` int(10) unsigned NOT NULL default '0',
@@ -25,14 +25,14 @@ CREATE TABLE `ub_settings` (
   `hpr_bonus` int(10) NOT NULL default '0',
   `mpr_bonus` int(10) NOT NULL default '0',
   PRIMARY KEY  (`ub_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=sjis;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 #----------------------------
 # Records for table ub_settings
 #----------------------------
 insert  into ub_settings values 
-(1, 'ギランUB', 88, 33494, 32724, 33516, 32746, 52, 99, 20, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0),
-(2, 'ウェルダンUB', 98, 32682, 32878, 32717, 32913, 45, 60, 20, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0),
-(3, 'グルーディンUB', 92, 32682, 32878, 32717, 32913, 31, 51, 20, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0),
+(1, '繧ｮ繝ｩ繝ｳUB', 88, 33494, 32724, 33516, 32746, 52, 99, 20, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0),
+(2, '繧ｦ繧ｧ繝ｫ繝繝ｳUB', 98, 32682, 32878, 32717, 32913, 45, 60, 20, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0),
+(3, '繧ｰ繝ｫ繝ｼ繝�繧｣繝ｳUB', 92, 32682, 32878, 32717, 32913, 31, 51, 20, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0),
 (4, 'TIUB', 91, 32682, 32878, 32717, 32913, 25, 44, 20, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0),
 (5, 'SKTUB', 95, 32682, 32878, 32717, 32913, 1, 30, 20, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0);

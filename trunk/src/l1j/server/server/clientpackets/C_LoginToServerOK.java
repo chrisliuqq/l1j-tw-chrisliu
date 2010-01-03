@@ -41,7 +41,7 @@ public class C_LoginToServerOK extends ClientBasePacket {
 
 		L1PcInstance pc = client.getActiveChar();
 
-		if (type == 255) { // ‘S‘Ìƒ`ƒƒƒbƒg && Whisper
+		if (type == 255) { // å…¨ä½“ãƒãƒ£ãƒƒãƒˆ && Whisper
 			if (button == 95 || button == 127) {
 				pc.setShowWorldChat(true); // open
 				pc.setCanWhisper(true); // open
@@ -55,7 +55,7 @@ public class C_LoginToServerOK extends ClientBasePacket {
 				pc.setShowWorldChat(false); // close
 				pc.setCanWhisper(false); // close
 			}
-		} else if (type == 0) { // ‘S‘Ìƒ`ƒƒƒbƒg
+		} else if (type == 0) { // å…¨ä½“ãƒãƒ£ãƒƒãƒˆ
 			if (button == 0) { // close
 				pc.setShowWorldChat(false);
 			} else if (button == 1) { // open
@@ -67,7 +67,7 @@ public class C_LoginToServerOK extends ClientBasePacket {
 			} else if (button == 1) { // open
 				pc.setCanWhisper(true);
 			}
-		} else if (type == 6) { // ¤”„ƒ`ƒƒƒbƒg
+		} else if (type == 6) { // å•†å£²ãƒãƒ£ãƒƒãƒˆ
 			if (button == 0) { // close
 				pc.setShowTradeChat(false);
 			} else if (button == 1) { // open

@@ -51,7 +51,7 @@ public class C_Pledge extends ClientBasePacket {
 						clan.getClanName(), clan.getOnlineMembersFP()));
 			}
 		} else {
-			pc.sendPackets(new S_ServerMessage(1064)); // ŒŒ–¿‚É‘®‚µ‚Ä‚¢‚Ü‚¹‚ñB
+			pc.sendPackets(new S_ServerMessage(1064)); // è¡€ç›Ÿã«å±ã—ã¦ã„ã¾ã›ã‚“ã€‚
 // pc.sendPackets(new S_Pledge("pledge", pc.getId()));
 		}
 	}

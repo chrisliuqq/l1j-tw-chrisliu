@@ -35,7 +35,7 @@ public class S_Sound extends ServerBasePacket {
 	private byte[] _byte = null;
 
 	/**
-	 * Œø‰Ê‰¹‚ğ–Â‚ç‚·(soundƒtƒHƒ‹ƒ_‚Ìwavƒtƒ@ƒCƒ‹)B
+	 * åŠ¹æœéŸ³ã‚’é³´ã‚‰ã™(soundãƒ•ã‚©ãƒ«ãƒ€ã®wavãƒ•ã‚¡ã‚¤ãƒ«)ã€‚
 	 * @param sound
 	 */
 	public S_Sound(int sound) {

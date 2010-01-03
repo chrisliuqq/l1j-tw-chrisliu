@@ -19,7 +19,7 @@
 package l1j.server.server.types;
 
 /**
- * À•W¶ã‚Ì“_(left, top)A‹y‚Ñ‰E‰º‚Ì“_(right, bottom)‚É‚æ‚Á‚ÄˆÍ‚Ü‚ê‚éÀ•W‚Ì—Ìˆæ‚ğw’è‚·‚éƒNƒ‰ƒXB
+ * åº§æ¨™å·¦ä¸Šã®ç‚¹(left, top)ã€åŠã³å³ä¸‹ã®ç‚¹(right, bottom)ã«ã‚ˆã£ã¦å›²ã¾ã‚Œã‚‹åº§æ¨™ã®é ˜åŸŸã‚’æŒ‡å®šã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚
  */
 public class Rectangle {
 	private int _left;
@@ -75,24 +75,24 @@ public class Rectangle {
 	}
 
 	/**
-	 * w’è‚³‚ê‚½“_(x, y)‚ªA‚±‚ÌRectangle‚Ì”ÍˆÍ“à‚É‚ ‚é‚©‚ğ”»’è‚·‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸç‚¹(x, y)ãŒã€ã“ã®Rectangleã®ç¯„å›²å†…ã«ã‚ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
 	 * 
 	 * @param x
-	 *            ”»’è‚·‚é“_‚ÌXÀ•W
+	 *            åˆ¤å®šã™ã‚‹ç‚¹ã®Xåº§æ¨™
 	 * @param y
-	 *            ”»’è‚·‚é“_‚ÌYÀ•W
-	 * @return “_(x, y)‚ª‚±‚ÌRectangle‚Ì”ÍˆÍ“à‚É‚ ‚éê‡AtrueB
+	 *            åˆ¤å®šã™ã‚‹ç‚¹ã®Yåº§æ¨™
+	 * @return ç‚¹(x, y)ãŒã“ã®Rectangleã®ç¯„å›²å†…ã«ã‚ã‚‹å ´åˆã€trueã€‚
 	 */
 	public boolean contains(int x, int y) {
 		return (_left <= x && x <= _right) && (_top <= y && y <= _bottom);
 	}
 
 	/**
-	 * w’è‚³‚ê‚½Point‚ªA‚±‚ÌRectangle‚Ì”ÍˆÍ“à‚É‚ ‚é‚©‚ğ”»’è‚·‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸPointãŒã€ã“ã®Rectangleã®ç¯„å›²å†…ã«ã‚ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
 	 * 
 	 * @param pt
-	 *            ”»’è‚·‚éPoint
-	 * @return pt‚ª‚±‚ÌRectangle‚Ì”ÍˆÍ“à‚É‚ ‚éê‡AtrueB
+	 *            åˆ¤å®šã™ã‚‹Point
+	 * @return ptãŒã“ã®Rectangleã®ç¯„å›²å†…ã«ã‚ã‚‹å ´åˆã€trueã€‚
 	 */
 	public boolean contains(Point pt) {
 		return contains(pt.getX(), pt.getY());

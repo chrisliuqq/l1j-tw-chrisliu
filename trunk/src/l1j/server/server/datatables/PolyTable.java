@@ -87,7 +87,7 @@ public class PolyTable {
 			_polyIdIndex.put(polyId, poly);
 		}
 
-		_log.config("•ÏgƒŠƒXƒg " + _polymorphs.size() + "Œƒ[ƒh");
+		_log.config("å¤‰èº«ãƒªã‚¹ãƒˆ " + _polymorphs.size() + "ä»¶ãƒ­ãƒ¼ãƒ‰");
 	}
 
 	public L1PolyMorph getTemplate(String name) {

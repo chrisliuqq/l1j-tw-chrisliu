@@ -76,7 +76,7 @@ public class L1TrapInstance extends L1Object {
 
 		for (int i = 0; i < 50; i++) {
 			int rndX = _random.nextInt(_rndPt.getX() + 1)
-					* (_random.nextInt(2) == 1 ? 1 : -1); // 1/2�̊m���Ń}�C�i�X�ɂ���
+					* (_random.nextInt(2) == 1 ? 1 : -1); // 1/2の確率でマイナスにする
 			int rndY = _random.nextInt(_rndPt.getY() + 1)
 					* (_random.nextInt(2) == 1 ? 1 : -1);
 
@@ -89,7 +89,7 @@ public class L1TrapInstance extends L1Object {
 				break;
 			}
 		}
-		// ���[�v���ňʒu���m�肵�Ȃ��ꍇ�A�O��Ɠ����ʒu�ɂȂ�B
+		// ループ内で位置が確定しない場合、前回と同じ位置になる。
 	}
 
 	public void enableTrap() {

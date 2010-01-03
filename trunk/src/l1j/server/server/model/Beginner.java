@@ -70,12 +70,12 @@ public class Beginner {
 				pstm1.setString(2, "W");
 			} else if (pc.isDarkelf()) {
 				pstm1.setString(2, "D");
-			} else if (pc.isDragonKnight()) { // ƒhƒ‰ƒSƒ“ƒiƒCƒg
+			} else if (pc.isDragonKnight()) { // ãƒ‰ãƒ©ã‚´ãƒ³ãƒŠã‚¤ãƒˆ
 				pstm1.setString(2, "R");
-			} else if (pc.isIllusionist()) { // ƒCƒŠƒ…[ƒWƒ‡ƒjƒXƒg
+			} else if (pc.isIllusionist()) { // ã‚¤ãƒªãƒ¥ãƒ¼ã‚¸ãƒ§ãƒ‹ã‚¹ãƒˆ
 				pstm1.setString(2, "I");
 			} else {
-				pstm1.setString(2, "A");// –œ‚ªˆê‚Ç‚ê‚Å‚à‚È‚©‚Á‚½ê‡‚ÌƒGƒ‰[‰ñ”ğ—p
+				pstm1.setString(2, "A");// ä¸‡ãŒä¸€ã©ã‚Œã§ã‚‚ãªã‹ã£ãŸå ´åˆã®ã‚¨ãƒ©ãƒ¼å›é¿ç”¨
 			}
 			rs = pstm1.executeQuery();
 

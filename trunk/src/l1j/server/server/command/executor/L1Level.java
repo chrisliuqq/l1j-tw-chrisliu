@@ -45,12 +45,12 @@ public class L1Level implements L1CommandExecutor {
 				return;
 			}
 			if (!IntRange.includes(level, 1, 99)) {
-				pc.sendPackets(new S_SystemMessage("1-99‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢"));
+				pc.sendPackets(new S_SystemMessage("1-99ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„"));
 				return;
 			}
 			pc.setExp(ExpTable.getExpByLevel(level));
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(cmdName + "lv ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢"));
+			pc.sendPackets(new S_SystemMessage(cmdName + "lv ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„"));
 		}
 	}
 }

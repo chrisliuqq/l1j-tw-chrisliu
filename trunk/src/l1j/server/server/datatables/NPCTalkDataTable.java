@@ -65,7 +65,7 @@ public class NPCTalkDataTable {
 				_datatable.put(new Integer(l1npctalkdata.getNpcID()),
 						l1npctalkdata);
 			}
-			_log.config("NPCƒAƒNƒVƒ‡ƒ“ƒŠƒXƒg " + _datatable.size() + "Œƒ[ƒh");
+			_log.config("NPCã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒªã‚¹ãƒˆ " + _datatable.size() + "ä»¶ãƒ­ãƒ¼ãƒ‰");
 		} catch (SQLException e) {
 			_log.warning("error while creating npc action table " + e);
 		} finally {

@@ -41,9 +41,9 @@ public class S_SellHouse extends ServerBasePacket {
 		writeC(Opcodes.S_OPCODE_INPUTAMOUNT);
 		writeD(objectId);
 		writeD(0); // ?
-		writeD(100000); // スピンコントロールの初期価格
-		writeD(100000); // 価格の下限
-		writeD(2000000000); // 価格の上限
+		writeD(100000); // 繧ｹ繝斐Φ繧ｳ繝ｳ繝医Ο繝ｼ繝ｫ縺ｮ蛻晄悄萓｡譬ｼ
+		writeD(100000); // 萓｡譬ｼ縺ｮ荳矩剞
+		writeD(2000000000); // 萓｡譬ｼ縺ｮ荳企剞
 		writeH(0); // ?
 		writeS("agsell");
 		writeS("agsell " + houseNumber);

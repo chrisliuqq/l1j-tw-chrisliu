@@ -28,43 +28,43 @@ import l1j.server.server.utils.LeakCheckedConnection;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 /**
- * DB‚Ö‚ÌƒAƒNƒZƒX‚·‚é‚½‚ß‚ÌŠeíƒCƒ“ƒ^[ƒtƒF[ƒX‚ğ’ñ‹Ÿ‚·‚é.
+ * DBã¸ã®ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®å„ç¨®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’æä¾›ã™ã‚‹.
  */
 public class L1DatabaseFactory {
-	/** ƒCƒ“ƒXƒ^ƒ“ƒX. */
+	/** ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹. */
 	private static L1DatabaseFactory _instance;
 
-	/** DBÚ‘±î•ñ‚ğ‚Ü‚Æ‚ß‚½‚à‚ÌH. */
+	/** DBæ¥ç¶šæƒ…å ±ã‚’ã¾ã¨ã‚ãŸã‚‚ã®ï¼Ÿ. */
 	private ComboPooledDataSource _source;
 
-	/** ƒƒbƒZ[ƒWƒƒO—p. */
+	/** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ­ã‚°ç”¨. */
 	private static Logger _log = Logger.getLogger(L1DatabaseFactory.class
 			.getName());
 
-	/* DB‚Ö‚ÌƒAƒNƒZƒX‚É•K—v‚ÈŠeî•ñ */
-	/** DBÚ‘±ƒhƒ‰ƒCƒo[. */
+	/* DBã¸ã®ã‚¢ã‚¯ã‚»ã‚¹ã«å¿…è¦ãªå„æƒ…å ± */
+	/** DBæ¥ç¶šãƒ‰ãƒ©ã‚¤ãƒãƒ¼. */
 	private static String _driver;
 
-	/** DBƒT[ƒo‚ÌURL. */
+	/** DBã‚µãƒ¼ãƒã®URL. */
 	private static String _url;
 
-	/** DBƒT[ƒo‚ÉÚ‘±‚·‚éƒ†[ƒU–¼. */
+	/** DBã‚µãƒ¼ãƒã«æ¥ç¶šã™ã‚‹ãƒ¦ãƒ¼ã‚¶å. */
 	private static String _user;
 
-	/** DBƒT[ƒo‚ÉÚ‘±‚·‚éƒpƒXƒ[ƒh. */
+	/** DBã‚µãƒ¼ãƒã«æ¥ç¶šã™ã‚‹ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰. */
 	private static String _password;
 
 	/**
-	 * DB‚Ö‚ÌƒAƒNƒZƒX‚É•K—v‚ÈŠeî•ñ‚Ì•Û‘¶.
+	 * DBã¸ã®ã‚¢ã‚¯ã‚»ã‚¹ã«å¿…è¦ãªå„æƒ…å ±ã®ä¿å­˜.
 	 * 
 	 * @param driver
-	 *            DBÚ‘±ƒhƒ‰ƒCƒo[
+	 *            DBæ¥ç¶šãƒ‰ãƒ©ã‚¤ãƒãƒ¼
 	 * @param url
-	 *            DBƒT[ƒo‚ÌURL
+	 *            DBã‚µãƒ¼ãƒã®URL
 	 * @param user
-	 *            DBƒT[ƒo‚ÉÚ‘±‚·‚éƒ†[ƒU–¼
+	 *            DBã‚µãƒ¼ãƒã«æ¥ç¶šã™ã‚‹ãƒ¦ãƒ¼ã‚¶å
 	 * @param password
-	 *            DBƒT[ƒo‚ÉÚ‘±‚·‚éƒpƒXƒ[ƒh
+	 *            DBã‚µãƒ¼ãƒã«æ¥ç¶šã™ã‚‹ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 	 */
 	public static void setDatabaseSettings(final String driver,
 			final String url, final String user, final String password) {
@@ -75,13 +75,13 @@ public class L1DatabaseFactory {
 	}
 
 	/**
-	 * DBÚ‘±‚Ìî•ñ‚Ìİ’è‚ÆƒeƒXƒgÚ‘±‚ğ‚·‚é.
+	 * DBæ¥ç¶šã®æƒ…å ±ã®è¨­å®šã¨ãƒ†ã‚¹ãƒˆæ¥ç¶šã‚’ã™ã‚‹.
 	 * 
 	 * @throws SQLException
 	 */
 	public L1DatabaseFactory() throws SQLException {
 		try {
-			// DatabaseFactory‚ğL2J‚©‚çˆê•”‚ğœ‚¢‚Ä”qØ
+			// DatabaseFactoryã‚’L2Jã‹ã‚‰ä¸€éƒ¨ã‚’é™¤ã„ã¦æ‹å€Ÿ
 			_source = new ComboPooledDataSource();
 			_source.setDriverClass(_driver);
 			_source.setJdbcUrl(_url);
@@ -101,7 +101,7 @@ public class L1DatabaseFactory {
 	}
 
 	/**
-	 * ƒT[ƒoƒVƒƒƒbƒgƒ_ƒEƒ“‚ÉDBƒRƒlƒNƒVƒ‡ƒ“‚ğØ’f‚·‚é.
+	 * ã‚µãƒ¼ãƒã‚·ãƒ£ãƒƒãƒˆãƒ€ã‚¦ãƒ³æ™‚ã«DBã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’åˆ‡æ–­ã™ã‚‹.
 	 */
 	public void shutdown() {
 		try {
@@ -117,7 +117,7 @@ public class L1DatabaseFactory {
 	}
 
 	/**
-	 * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Ô‚·inull‚È‚çì¬‚·‚é).
+	 * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¿”ã™ï¼ˆnullãªã‚‰ä½œæˆã™ã‚‹).
 	 * 
 	 * @return L1DatabaseFactory
 	 * @throws SQLException
@@ -130,9 +130,9 @@ public class L1DatabaseFactory {
 	}
 
 	/**
-	 * DBÚ‘±‚ğ‚µAƒRƒlƒNƒVƒ‡ƒ“ƒIƒuƒWƒFƒNƒg‚ğ•Ô‚·.
+	 * DBæ¥ç¶šã‚’ã—ã€ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™.
 	 * 
-	 * @return Connection ƒRƒlƒNƒVƒ‡ƒ“ƒIƒuƒWƒFƒNƒg
+	 * @return Connection ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 * @throws SQLException
 	 */
 	public Connection getConnection() {

@@ -85,7 +85,7 @@ class GlobalChatCommand implements TelnetCommand {
 		String text = args.substring(name.length() + 1);
 		L1PcInstance pc = new MySqlCharacterStorage().loadCharacter(name);
 		if (pc == null) {
-			return new TelnetCommandResult(CMD_INTERNAL_ERROR, "ƒLƒƒƒ‰ƒNƒ^[‚ª‘¶İ‚µ‚Ü‚¹‚ñB");
+			return new TelnetCommandResult(CMD_INTERNAL_ERROR, "ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
 		}
 		pc.getLocation().set(-1, -1, 0);
 		ChatLogTable.getInstance().storeChat(pc, null, text, 3);

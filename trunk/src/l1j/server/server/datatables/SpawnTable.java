@@ -56,7 +56,7 @@ public class SpawnTable {
 		PerformanceTimer timer = new PerformanceTimer();
 		System.out.print("spawning mob...");
 		fillSpawnTable();
-		_log.config("ƒ‚ƒ“ƒXƒ^[”z’uƒŠƒXƒg " + _spawntable.size() + "Œƒ[ƒh");
+		_log.config("ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼é…ç½®ãƒªã‚¹ãƒˆ " + _spawntable.size() + "ä»¶ãƒ­ãƒ¼ãƒ‰");
 		System.out.println("OK! " + timer.get() + " ms");
 	}
 
@@ -128,8 +128,8 @@ public class SpawnTable {
 					spawnDat.setName(template1.get_name());
 
 					if (count > 1 && spawnDat.getLocX1() == 0) {
-						// •¡”‚©‚ÂŒÅ’èspawn‚Ìê‡‚ÍAŒÂ‘Ì” * 6 ‚Ì”ÍˆÍspawn‚É•Ï‚¦‚éB
-						// ‚½‚¾‚µ”ÍˆÍ‚ª30‚ğ’´‚¦‚È‚¢‚æ‚¤‚É‚·‚é
+						// è¤‡æ•°ã‹ã¤å›ºå®šspawnã®å ´åˆã¯ã€å€‹ä½“æ•° * 6 ã®ç¯„å›²spawnã«å¤‰ãˆã‚‹ã€‚
+						// ãŸã ã—ç¯„å›²ãŒ30ã‚’è¶…ãˆãªã„ã‚ˆã†ã«ã™ã‚‹
 						int range = Math.min(count * 6, 30);
 						spawnDat.setLocX1(spawnDat.getLocX() - range);
 						spawnDat.setLocY1(spawnDat.getLocY() - range);
@@ -155,7 +155,7 @@ public class SpawnTable {
 			SQLUtil.close(pstm);
 			SQLUtil.close(con);
 		}
-		_log.fine("‘ƒ‚ƒ“ƒXƒ^[” " + spawnCount + "•C");
+		_log.fine("ç·ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼æ•° " + spawnCount + "åŒ¹");
 	}
 
 	public L1Spawn getTemplate(int Id) {

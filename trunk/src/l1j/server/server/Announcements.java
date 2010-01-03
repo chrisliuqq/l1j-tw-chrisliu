@@ -87,9 +87,9 @@ public class Announcements {
 				}
 			}
 
-			_log.config("’m–€ " + i + "Œƒ[ƒh");
+			_log.config("å‘ŠçŸ¥äº‹é … " + i + "ä»¶ãƒ­ãƒ¼ãƒ‰");
 		} catch (FileNotFoundException e) {
-			// ƒtƒ@ƒCƒ‹‚ª‚È‚¢ê‡‚ÍA’m–€‚È‚µ
+			// ãƒ•ã‚¡ã‚¤ãƒ«ãŒãªã„å ´åˆã¯ã€å‘ŠçŸ¥äº‹é …ãªã—
 		} catch (IOException e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		} finally {

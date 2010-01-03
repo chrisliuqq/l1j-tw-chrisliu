@@ -32,7 +32,7 @@ public class S_RetrieveElfList extends ServerBasePacket {
 				writeC(Opcodes.S_OPCODE_SHOWRETRIEVELIST);
 				writeD(objid);
 				writeH(size);
-				writeC(9); // エルフ倉庫
+				writeC(9); // 繧ｨ繝ｫ繝募牙ｺｫ
 				for (Object itemObject : pc.getDwarfForElfInventory()
 						.getItems()) {
 					L1ItemInstance item = (L1ItemInstance) itemObject;
@@ -46,7 +46,7 @@ public class S_RetrieveElfList extends ServerBasePacket {
 				}
 			}
 		} else {
-			pc.sendPackets(new S_ServerMessage(263)); // \f1一人のキャラクターが持って歩けるアイテムは最大180個までです。
+			pc.sendPackets(new S_ServerMessage(263)); // \f1荳莠ｺ縺ｮ繧ｭ繝｣繝ｩ繧ｯ繧ｿ繝ｼ縺梧戟縺｣縺ｦ豁ｩ縺代ｋ繧｢繧､繝�繝縺ｯ譛螟ｧ180蛟九∪縺ｧ縺ｧ縺吶�
 		}
 	}
 

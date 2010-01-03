@@ -46,14 +46,14 @@ public class L1Ress implements L1CommandExecutor {
 			pc.setCurrentMp(pc.getMaxMp());
 			for (L1PcInstance tg : L1World.getInstance().getVisiblePlayer(pc)) {
 				if (tg.getCurrentHp() == 0 && tg.isDead()) {
-					tg.sendPackets(new S_SystemMessage("GM‚É‘h¶‚ğ–á‚¢‚Ü‚µ‚½B"));
+					tg.sendPackets(new S_SystemMessage("GMã«è˜‡ç”Ÿã‚’è²°ã„ã¾ã—ãŸã€‚"));
 					tg.broadcastPacket(new S_SkillSound(tg.getId(), 3944));
 					tg.sendPackets(new S_SkillSound(tg.getId(), 3944));
-					// j•Ÿ‚³‚ê‚½ •œŠˆƒXƒNƒ[ƒ‹‚Æ“¯‚¶Œø‰Ê
+					// ç¥ç¦ã•ã‚ŒãŸ å¾©æ´»ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã¨åŒã˜åŠ¹æœ
 					tg.setTempID(objid);
-					tg.sendPackets(new S_Message_YN(322, "")); // ‚Ü‚½•œŠˆ‚µ‚½‚¢‚Å‚·‚©HiY/Nj
+					tg.sendPackets(new S_Message_YN(322, "")); // ã¾ãŸå¾©æ´»ã—ãŸã„ã§ã™ã‹ï¼Ÿï¼ˆY/Nï¼‰
 				} else {
-					tg.sendPackets(new S_SystemMessage("GM‚ª–ü‚µ‚Ä‚­‚ê‚Ü‚µ‚½B"));
+					tg.sendPackets(new S_SystemMessage("GMãŒç™’ã—ã¦ãã‚Œã¾ã—ãŸã€‚"));
 					tg.broadcastPacket(new S_SkillSound(tg.getId(), 832));
 					tg.sendPackets(new S_SkillSound(tg.getId(), 832));
 					tg.setCurrentHp(tg.getMaxHp());
@@ -61,7 +61,7 @@ public class L1Ress implements L1CommandExecutor {
 				}
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(cmdName + " ƒRƒ}ƒ“ƒhƒGƒ‰["));
+			pc.sendPackets(new S_SystemMessage(cmdName + " ã‚³ãƒãƒ³ãƒ‰ã‚¨ãƒ©ãƒ¼"));
 		}
 	}
 }

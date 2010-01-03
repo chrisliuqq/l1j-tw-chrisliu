@@ -56,22 +56,22 @@ public class S_AuctionBoardRead extends ServerBasePacket {
 				writeC(Opcodes.S_OPCODE_SHOWHTML);
 				writeD(objectId);
 				writeS("agsel");
-				writeS(house_number); // �A�W�g�̔ԍ�
-				writeH(9); // �ȉ��̕�����̌�
-				writeS(rs.getString(2)); // �A�W�g�̖��O
-				writeS(rs.getString(6)); // �A�W�g�̈ʒu
-				writeS(String.valueOf(rs.getString(3))); // �A�W�g�̍L��
-				writeS(rs.getString(7)); // �ȑO�̏��L��
-				writeS(rs.getString(9)); // ���݂̓��D��
-				writeS(String.valueOf(rs.getInt(5))); // ���݂̓��D���i
+				writeS(house_number); // アジトの番号
+				writeH(9); // 以下の文字列の個数
+				writeS(rs.getString(2)); // アジトの名前
+				writeS(rs.getString(6)); // アジトの位置
+				writeS(String.valueOf(rs.getString(3))); // アジトの広さ
+				writeS(rs.getString(7)); // 以前の所有者
+				writeS(rs.getString(9)); // 現在の入札者
+				writeS(String.valueOf(rs.getInt(5))); // 現在の入札価格
 				Calendar cal = timestampToCalendar((Timestamp) rs.
 						getObject(4));
 				int month = cal.get(Calendar.MONTH) + 1;
 				int day = cal.get(Calendar.DATE);
 				int hour = cal.get(Calendar.HOUR_OF_DAY);
-				writeS(String.valueOf(month)); // ���،�
-				writeS(String.valueOf(day)); // ���ؓ�
-				writeS(String.valueOf(hour)); // ���؎�
+				writeS(String.valueOf(month)); // 締切月
+				writeS(String.valueOf(day)); // 締切日
+				writeS(String.valueOf(hour)); // 締切時
 			}
 		} catch (SQLException e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);

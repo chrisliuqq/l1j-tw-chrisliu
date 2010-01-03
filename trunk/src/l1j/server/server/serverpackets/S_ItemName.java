@@ -34,14 +34,14 @@ public class S_ItemName extends ServerBasePacket {
 			.getName());
 
 	/**
-	 * ƒAƒCƒeƒ€‚Ì–¼‘O‚ð•ÏX‚·‚éB‘•”õ‚â‹­‰»ó‘Ô‚ª•Ï‚í‚Á‚½‚Æ‚«‚É‘—‚éB
+	 * ã‚¢ã‚¤ãƒ†ãƒ ã®åå‰ã‚’å¤‰æ›´ã™ã‚‹ã€‚è£…å‚™ã‚„å¼·åŒ–çŠ¶æ…‹ãŒå¤‰ã‚ã£ãŸã¨ãã«é€ã‚‹ã€‚
 	 */
 	public S_ItemName(L1ItemInstance item) {
 		if (item == null) {
 			return;
 		}
-		// jump‚ðŒ©‚éŒÀ‚èA‚±‚ÌOpcode‚ÍƒAƒCƒeƒ€–¼‚ðXV‚³‚¹‚é–Ú“I‚¾‚¯‚ÉŽg—p‚³‚ê‚é–Í—li‘•”õŒã‚âOEŒãê—pHj
-		// Œã‚É‰½‚©ƒf[ƒ^‚ð‘±‚¯‚Ä‘—‚Á‚Ä‚à‘S‚Ä–³Ž‹‚³‚ê‚Ä‚µ‚Ü‚¤
+		// jumpã‚’è¦‹ã‚‹é™ã‚Šã€ã“ã®Opcodeã¯ã‚¢ã‚¤ãƒ†ãƒ åã‚’æ›´æ–°ã•ã›ã‚‹ç›®çš„ã ã‘ã«ä½¿ç”¨ã•ã‚Œã‚‹æ¨¡æ§˜ï¼ˆè£…å‚™å¾Œã‚„OEå¾Œå°‚ç”¨ï¼Ÿï¼‰
+		// å¾Œã«ä½•ã‹ãƒ‡ãƒ¼ã‚¿ã‚’ç¶šã‘ã¦é€ã£ã¦ã‚‚å…¨ã¦ç„¡è¦–ã•ã‚Œã¦ã—ã¾ã†
 		writeC(Opcodes.S_OPCODE_ITEMNAME);
 		writeD(item.getId());
 		writeS(item.getViewName());

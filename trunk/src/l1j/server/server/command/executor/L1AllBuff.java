@@ -58,7 +58,7 @@ public class L1AllBuff implements L1CommandExecutor {
 			String name = st.nextToken();
 			L1PcInstance target = L1World.getInstance().getPlayer(name);
 			if (target == null) {
-				pc.sendPackets(new S_ServerMessage(73, name)); // \f1%0‚ÍƒQ[ƒ€‚ğ‚µ‚Ä‚¢‚Ü‚¹‚ñB
+				pc.sendPackets(new S_ServerMessage(73, name)); // \f1%0ã¯ã‚²ãƒ¼ãƒ ã‚’ã—ã¦ã„ã¾ã›ã‚“ã€‚
 				return;
 			}
 
@@ -73,7 +73,7 @@ public class L1AllBuff implements L1CommandExecutor {
 						.getBuffDuration() * 1000, L1SkillUse.TYPE_GMBUFF);
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(".allBuff ƒLƒƒƒ‰ƒNƒ^[–¼ ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+			pc.sendPackets(new S_SystemMessage(".allBuff ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

@@ -29,32 +29,32 @@ import l1j.server.server.model.map.L1WorldMap;
 // L1PcInstance, L1Character
 
 /**
- * ƒ[ƒ‹ƒhã‚É‘¶İ‚·‚é‘S‚Ä‚ÌƒIƒuƒWƒFƒNƒg‚Ìƒx[ƒXƒNƒ‰ƒX
+ * ãƒ¯ãƒ¼ãƒ«ãƒ‰ä¸Šã«å­˜åœ¨ã™ã‚‹å…¨ã¦ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ™ãƒ¼ã‚¹ã‚¯ãƒ©ã‚¹
  */
 public class L1Object implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * ƒIƒuƒWƒFƒNƒg‚ª‘¶İ‚·‚éƒ}ƒbƒv‚Ìƒ}ƒbƒvID‚ğ•Ô‚·
+	 * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå­˜åœ¨ã™ã‚‹ãƒãƒƒãƒ—ã®ãƒãƒƒãƒ—IDã‚’è¿”ã™
 	 * 
-	 * @return ƒ}ƒbƒvID
+	 * @return ãƒãƒƒãƒ—ID
 	 */
 	public short getMapId() {
 		return (short) _loc.getMap().getId();
 	}
 
 	/**
-	 * ƒIƒuƒWƒFƒNƒg‚ª‘¶İ‚·‚éƒ}ƒbƒv‚Ìƒ}ƒbƒvID‚ğİ’è‚·‚é
+	 * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå­˜åœ¨ã™ã‚‹ãƒãƒƒãƒ—ã®ãƒãƒƒãƒ—IDã‚’è¨­å®šã™ã‚‹
 	 * 
 	 * @param mapId
-	 *            ƒ}ƒbƒvID
+	 *            ãƒãƒƒãƒ—ID
 	 */
 	public void setMap(short mapId) {
 		_loc.setMap(L1WorldMap.getInstance().getMap(mapId));
 	}
 
 	/**
-	 * ƒIƒuƒWƒFƒNƒg‚ª‘¶İ‚·‚éƒ}ƒbƒv‚ğ•Û‚·‚éL1MapƒIƒuƒWƒFƒNƒg‚ğ•Ô‚·
+	 * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå­˜åœ¨ã™ã‚‹ãƒãƒƒãƒ—ã‚’ä¿æŒã™ã‚‹L1Mapã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™
 	 * 
 	 */
 	public L1Map getMap() {
@@ -62,10 +62,10 @@ public class L1Object implements Serializable {
 	}
 
 	/**
-	 * ƒIƒuƒWƒFƒNƒg‚ª‘¶İ‚·‚éƒ}ƒbƒv‚ğİ’è‚·‚é
+	 * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå­˜åœ¨ã™ã‚‹ãƒãƒƒãƒ—ã‚’è¨­å®šã™ã‚‹
 	 * 
 	 * @param map
-	 *            ƒIƒuƒWƒFƒNƒg‚ª‘¶İ‚·‚éƒ}ƒbƒv‚ğ•Û‚·‚éL1MapƒIƒuƒWƒFƒNƒg
+	 *            ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå­˜åœ¨ã™ã‚‹ãƒãƒƒãƒ—ã‚’ä¿æŒã™ã‚‹L1Mapã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public void setMap(L1Map map) {
 		if (map == null) {
@@ -75,57 +75,57 @@ public class L1Object implements Serializable {
 	}
 
 	/**
-	 * ƒIƒuƒWƒFƒNƒg‚ğˆêˆÓ‚É¯•Ê‚·‚éID‚ğ•Ô‚·
+	 * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¸€æ„ã«è­˜åˆ¥ã™ã‚‹IDã‚’è¿”ã™
 	 * 
-	 * @return ƒIƒuƒWƒFƒNƒgID
+	 * @return ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆID
 	 */
 	public int getId() {
 		return _id;
 	}
 
 	/**
-	 * ƒIƒuƒWƒFƒNƒg‚ğˆêˆÓ‚É¯•Ê‚·‚éID‚ğİ’è‚·‚é
+	 * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¸€æ„ã«è­˜åˆ¥ã™ã‚‹IDã‚’è¨­å®šã™ã‚‹
 	 * 
 	 * @param id
-	 *            ƒIƒuƒWƒFƒNƒgID
+	 *            ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆID
 	 */
 	public void setId(int id) {
 		_id = id;
 	}
 
 	/**
-	 * ƒIƒuƒWƒFƒNƒg‚ª‘¶İ‚·‚éÀ•W‚ÌX’l‚ğ•Ô‚·
+	 * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå­˜åœ¨ã™ã‚‹åº§æ¨™ã®Xå€¤ã‚’è¿”ã™
 	 * 
-	 * @return À•W‚ÌX’l
+	 * @return åº§æ¨™ã®Xå€¤
 	 */
 	public int getX() {
 		return _loc.getX();
 	}
 
 	/**
-	 * ƒIƒuƒWƒFƒNƒg‚ª‘¶İ‚·‚éÀ•W‚ÌX’l‚ğİ’è‚·‚é
+	 * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå­˜åœ¨ã™ã‚‹åº§æ¨™ã®Xå€¤ã‚’è¨­å®šã™ã‚‹
 	 * 
 	 * @param x
-	 *            À•W‚ÌX’l
+	 *            åº§æ¨™ã®Xå€¤
 	 */
 	public void setX(int x) {
 		_loc.setX(x);
 	}
 
 	/**
-	 * ƒIƒuƒWƒFƒNƒg‚ª‘¶İ‚·‚éÀ•W‚ÌY’l‚ğ•Ô‚·
+	 * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå­˜åœ¨ã™ã‚‹åº§æ¨™ã®Yå€¤ã‚’è¿”ã™
 	 * 
-	 * @return À•W‚ÌY’l
+	 * @return åº§æ¨™ã®Yå€¤
 	 */
 	public int getY() {
 		return _loc.getY();
 	}
 
 	/**
-	 * ƒIƒuƒWƒFƒNƒg‚ª‘¶İ‚·‚éÀ•W‚ÌY’l‚ğİ’è‚·‚é
+	 * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå­˜åœ¨ã™ã‚‹åº§æ¨™ã®Yå€¤ã‚’è¨­å®šã™ã‚‹
 	 * 
 	 * @param y
-	 *            À•W‚ÌY’l
+	 *            åº§æ¨™ã®Yå€¤
 	 */
 	public void setY(int y) {
 		_loc.setY(y);
@@ -134,9 +134,9 @@ public class L1Object implements Serializable {
 	private L1Location _loc = new L1Location();
 
 	/**
-	 * ƒIƒuƒWƒFƒNƒg‚ª‘¶İ‚·‚éˆÊ’u‚ğ•Û‚·‚éAL1LocationƒIƒuƒWƒFƒNƒg‚Ö‚ÌQÆ‚ğ•Ô‚·B
+	 * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå­˜åœ¨ã™ã‚‹ä½ç½®ã‚’ä¿æŒã™ã‚‹ã€L1Locationã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸ã®å‚ç…§ã‚’è¿”ã™ã€‚
 	 * 
-	 * @return À•W‚ğ•Û‚·‚éAL1LocationƒIƒuƒWƒFƒNƒg‚Ö‚ÌQÆ
+	 * @return åº§æ¨™ã‚’ä¿æŒã™ã‚‹ã€L1Locationã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸ã®å‚ç…§
 	 */
 	public L1Location getLocation() {
 		return _loc;
@@ -155,49 +155,49 @@ public class L1Object implements Serializable {
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Ü‚Å‚Ì’¼ü‹——£‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¾ã§ã®ç›´ç·šè·é›¢ã‚’è¿”ã™ã€‚
 	 */
 	public double getLineDistance(L1Object obj) {
 		return this.getLocation().getLineDistance(obj.getLocation());
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Ü‚Å‚Ì’¼üƒ^ƒCƒ‹”‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¾ã§ã®ç›´ç·šã‚¿ã‚¤ãƒ«æ•°ã‚’è¿”ã™ã€‚
 	 */
 	public int getTileLineDistance(L1Object obj) {
 		return this.getLocation().getTileLineDistance(obj.getLocation());
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Ü‚Å‚Ìƒ^ƒCƒ‹”‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¾ã§ã®ã‚¿ã‚¤ãƒ«æ•°ã‚’è¿”ã™ã€‚
 	 */
 	public int getTileDistance(L1Object obj) {
 		return this.getLocation().getTileDistance(obj.getLocation());
 	}
 
 	/**
-	 * ƒIƒuƒWƒFƒNƒg‚ªƒvƒŒƒCƒ„[‚Ì‰æ–Ê“à‚É“ü‚Á‚½(”F¯‚³‚ê‚½)Û‚ÉŒÄ‚Ño‚³‚ê‚éB
+	 * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç”»é¢å†…ã«å…¥ã£ãŸ(èªè­˜ã•ã‚ŒãŸ)éš›ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚
 	 * 
 	 * @param perceivedFrom
-	 *            ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ğ”F¯‚µ‚½PC
+	 *            ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’èªè­˜ã—ãŸPC
 	 */
 	public void onPerceive(L1PcInstance perceivedFrom) {
 	}
 
 	/**
-	 * ƒIƒuƒWƒFƒNƒg‚Ö‚ÌƒAƒNƒVƒ‡ƒ“‚ª”­¶‚µ‚½Û‚ÉŒÄ‚Ño‚³‚ê‚é
+	 * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒç™ºç”Ÿã—ãŸéš›ã«å‘¼ã³å‡ºã•ã‚Œã‚‹
 	 * 
 	 * @param actionFrom
-	 *            ƒAƒNƒVƒ‡ƒ“‚ğ‹N‚±‚µ‚½PC
+	 *            ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’èµ·ã“ã—ãŸPC
 	 */
 	public void onAction(L1PcInstance actionFrom) {
 	}
 
 	/**
-	 * ƒIƒuƒWƒFƒNƒg‚ª˜b‚µ‚©‚¯‚ç‚ê‚½‚Æ‚«ŒÄ‚Ño‚³‚ê‚é
+	 * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒè©±ã—ã‹ã‘ã‚‰ã‚ŒãŸã¨ãå‘¼ã³å‡ºã•ã‚Œã‚‹
 	 * 
 	 * @param talkFrom
-	 *            ˜b‚µ‚©‚¯‚½PC
+	 *            è©±ã—ã‹ã‘ãŸPC
 	 */
 	public void onTalkAction(L1PcInstance talkFrom) {
 	}

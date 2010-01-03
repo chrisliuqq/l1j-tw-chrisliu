@@ -40,7 +40,7 @@ public class S_OwnCharStatus extends ServerBasePacket {
 		int time = L1GameTimeClock.getInstance().currentTime().getSeconds();
 		time = time - (time % 300);
 		// _log.warning((new
-		// StringBuilder()).append("‘—MŠÔ:").append(i).toString());
+		// StringBuilder()).append("é€ä¿¡æ™‚é–“:").append(i).toString());
 		writeC(Opcodes.S_OPCODE_OWNCHARSTATUS);
 		writeD(pc.getId());
 

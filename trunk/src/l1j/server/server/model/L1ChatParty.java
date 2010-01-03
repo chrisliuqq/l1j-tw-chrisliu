@@ -48,7 +48,7 @@ public class L1ChatParty {
 		}
 
 		if (_membersList.isEmpty()) {
-			// Å‰‚ÌPTƒƒ“ƒo[‚Å‚ ‚ê‚ÎƒŠ[ƒ_[‚É‚·‚é
+			// æœ€åˆã®PTãƒ¡ãƒ³ãƒãƒ¼ã§ã‚ã‚Œã°ãƒªãƒ¼ãƒ€ãƒ¼ã«ã™ã‚‹
 			setLeader(pc);
 		}
 
@@ -102,19 +102,19 @@ public class L1ChatParty {
 
 		for (L1PcInstance member : members) {
 			removeMember(member);
-			member.sendPackets(new S_ServerMessage(418)); // ƒp[ƒeƒB[‚ğ‰ğU‚µ‚Ü‚µ‚½B
+			member.sendPackets(new S_ServerMessage(418)); // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã‚’è§£æ•£ã—ã¾ã—ãŸã€‚
 		}
 	}
 
 	public void leaveMember(L1PcInstance pc) {
 		L1PcInstance[] members = getMembers();
 		if (isLeader(pc)) {
-			// ƒp[ƒeƒB[ƒŠ[ƒ_[‚Ìê‡
+			// ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒªãƒ¼ãƒ€ãƒ¼ã®å ´åˆ
 			breakup();
 		} else {
-			// ƒp[ƒeƒB[ƒŠ[ƒ_[‚Å‚È‚¢ê‡
+			// ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒªãƒ¼ãƒ€ãƒ¼ã§ãªã„å ´åˆ
 			if (getNumOfMembers() == 2) {
-				// ƒp[ƒeƒB[ƒƒ“ƒo[‚ª©•ª‚ÆƒŠ[ƒ_[‚Ì‚İ
+				// ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ¡ãƒ³ãƒãƒ¼ãŒè‡ªåˆ†ã¨ãƒªãƒ¼ãƒ€ãƒ¼ã®ã¿
 				removeMember(pc);
 				L1PcInstance leader = getLeader();
 				removeMember(leader);
@@ -122,7 +122,7 @@ public class L1ChatParty {
 				sendLeftMessage(pc, pc);
 				sendLeftMessage(leader, pc);
 			} else {
-				// c‚è‚Ìƒp[ƒeƒB[ƒƒ“ƒo[‚ª‚QlˆÈã‚¢‚é
+				// æ®‹ã‚Šã®ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ¡ãƒ³ãƒãƒ¼ãŒï¼’äººä»¥ä¸Šã„ã‚‹
 				removeMember(pc);
 				for (L1PcInstance member : members) {
 					sendLeftMessage(member, pc);
@@ -134,15 +134,15 @@ public class L1ChatParty {
 
 	public void kickMember(L1PcInstance pc) {
 		if (getNumOfMembers() == 2) {
-			// ƒp[ƒeƒB[ƒƒ“ƒo[‚ª©•ª‚ÆƒŠ[ƒ_[‚Ì‚İ
+			// ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ¡ãƒ³ãƒãƒ¼ãŒè‡ªåˆ†ã¨ãƒªãƒ¼ãƒ€ãƒ¼ã®ã¿
 			removeMember(pc);
 			L1PcInstance leader = getLeader();
 			removeMember(leader);
 		} else {
-			// c‚è‚Ìƒp[ƒeƒB[ƒƒ“ƒo[‚ª‚QlˆÈã‚¢‚é
+			// æ®‹ã‚Šã®ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ¡ãƒ³ãƒãƒ¼ãŒï¼’äººä»¥ä¸Šã„ã‚‹
 			removeMember(pc);
 		}
-		pc.sendPackets(new S_ServerMessage(419)); // ƒp[ƒeƒB[‚©‚ç’Ç•ú‚³‚ê‚Ü‚µ‚½B
+		pc.sendPackets(new S_ServerMessage(419)); // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã‹ã‚‰è¿½æ”¾ã•ã‚Œã¾ã—ãŸã€‚
 	}
 
 	public L1PcInstance[] getMembers() {
@@ -154,7 +154,7 @@ public class L1ChatParty {
 	}
 
 	private void sendLeftMessage(L1PcInstance sendTo, L1PcInstance left) {
-		// %0‚ªƒp[ƒeƒB[‚©‚ç‹‚è‚Ü‚µ‚½B
+		// %0ãŒãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã‹ã‚‰å»ã‚Šã¾ã—ãŸã€‚
 		sendTo.sendPackets(new S_ServerMessage(420, left.getName()));
 	}
 

@@ -63,18 +63,18 @@ public class L1DamagePoison extends L1Poison {
 				if (_target instanceof L1PcInstance) {
 					L1PcInstance player = (L1PcInstance) _target;
 					player.receiveDamage(_attacker, _damage, false);
-					if (player.isDead()) { // €–S‚µ‚½‚ç‰ğ“Åˆ—
+					if (player.isDead()) { // æ­»äº¡ã—ãŸã‚‰è§£æ¯’å‡¦ç†
 						break;
 					}
 				} else if (_target instanceof L1MonsterInstance) {
 					L1MonsterInstance mob = (L1MonsterInstance) _target;
 					mob.receiveDamage(_attacker, _damage);
-					if (mob.isDead()) { // €–S‚µ‚Ä‚à‰ğ“Å‚µ‚È‚¢
+					if (mob.isDead()) { // æ­»äº¡ã—ã¦ã‚‚è§£æ¯’ã—ãªã„
 						return;
 					}
 				}
 			}
-			cure(); // ‰ğ“Åˆ—
+			cure(); // è§£æ¯’å‡¦ç†
 		}
 	}
 
@@ -89,7 +89,7 @@ public class L1DamagePoison extends L1Poison {
 
 		if (isDamageTarget(_target)) {
 			_timer = new NormalPoisonTimer();
-			GeneralThreadPool.getInstance().execute(_timer); // ’Êí“Åƒ^ƒCƒ}[ŠJn
+			GeneralThreadPool.getInstance().execute(_timer); // é€šå¸¸æ¯’ã‚¿ã‚¤ãƒãƒ¼é–‹å§‹
 		}
 	}
 
@@ -111,7 +111,7 @@ public class L1DamagePoison extends L1Poison {
 	@Override
 	public void cure() {
 		if (_timer != null) {
-			_timer.interrupt(); // “Åƒ^ƒCƒ}[‰ğœ
+			_timer.interrupt(); // æ¯’ã‚¿ã‚¤ãƒãƒ¼è§£é™¤
 		}
 
 		_target.setPoisonEffect(0);

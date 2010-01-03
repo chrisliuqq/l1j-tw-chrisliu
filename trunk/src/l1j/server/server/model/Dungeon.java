@@ -80,24 +80,24 @@ public class Dungeon {
 				int heading = rs.getInt("new_heading");
 				DungeonType dungeonType = DungeonType.NONE;
 				if ((srcX == 33423 || srcX == 33424 || srcX == 33425
-						|| srcX == 33426) && srcY == 33502 && srcMapId == 4 // ƒnƒCƒl‘D’…ê->FIs‚«‚Ì‘D
+						|| srcX == 33426) && srcY == 33502 && srcMapId == 4 // ãƒã‚¤ãƒèˆ¹ç€å ´->FIè¡Œãã®èˆ¹
 						|| (srcX == 32733 || srcX == 32734 || srcX == 32735
-						|| srcX == 32736) && srcY == 32794 && srcMapId == 83) { // FIs‚«‚Ì‘D->ƒnƒCƒl‘D’…ê
+						|| srcX == 32736) && srcY == 32794 && srcMapId == 83) { // FIè¡Œãã®èˆ¹->ãƒã‚¤ãƒèˆ¹ç€å ´
 					dungeonType = DungeonType.SHIP_FOR_FI;
 				} else if ((srcX == 32935 || srcX == 32936 || srcX == 32937)
-						&& srcY == 33058 && srcMapId == 70 // FI‘D’…ê->ƒnƒCƒls‚«‚Ì‘D
+						&& srcY == 33058 && srcMapId == 70 // FIèˆ¹ç€å ´->ãƒã‚¤ãƒè¡Œãã®èˆ¹
 						|| (srcX == 32732 || srcX == 32733 || srcX == 32734
-						|| srcX == 32735) && srcY == 32796 && srcMapId == 84) { // ƒnƒCƒls‚«‚Ì‘D->FI‘D’…ê
+						|| srcX == 32735) && srcY == 32796 && srcMapId == 84) { // ãƒã‚¤ãƒè¡Œãã®èˆ¹->FIèˆ¹ç€å ´
 					dungeonType = DungeonType.SHIP_FOR_HEINE;
 				} else if ((srcX == 32750 || srcX == 32751 || srcX == 32752)
-						&& srcY == 32874 && srcMapId == 445 // ‰B‚³‚ê‚½‘D’…ê->ŠC‘¯“‡s‚«‚Ì‘D
+						&& srcY == 32874 && srcMapId == 445 // éš ã•ã‚ŒãŸèˆ¹ç€å ´->æµ·è³Šå³¶è¡Œãã®èˆ¹
 						|| (srcX == 32731 || srcX == 32732 || srcX == 32733)
-						&& srcY == 32796 && srcMapId == 447) { // ŠC‘¯“‡s‚«‚Ì‘D->‰B‚³‚ê‚½‘D’…ê
+						&& srcY == 32796 && srcMapId == 447) { // æµ·è³Šå³¶è¡Œãã®èˆ¹->éš ã•ã‚ŒãŸèˆ¹ç€å ´
 					dungeonType = DungeonType.SHIP_FOR_PI;
 				} else if ((srcX == 32296 || srcX == 32297 || srcX == 32298)
-						&& srcY == 33087 && srcMapId == 440 // ŠC‘¯“‡‘D’…ê->‰B‚³‚ê‚½‘D’…ês‚«‚Ì‘D
+						&& srcY == 33087 && srcMapId == 440 // æµ·è³Šå³¶èˆ¹ç€å ´->éš ã•ã‚ŒãŸèˆ¹ç€å ´è¡Œãã®èˆ¹
 						|| (srcX == 32735 ||  srcX == 32736 ||  srcX == 32737)
-						&& srcY == 32794 && srcMapId == 446) { // ‰B‚³‚ê‚½‘D’…ês‚«‚Ì‘D->ŠC‘¯“‡‘D’…ê
+						&& srcY == 32794 && srcMapId == 446) { // éš ã•ã‚ŒãŸèˆ¹ç€å ´è¡Œãã®èˆ¹->æµ·è³Šå³¶èˆ¹ç€å ´
 					dungeonType = DungeonType.SHIP_FOR_HIDDENDOCK;
 				} else if ((srcX == 32630 || srcX == 32631 || srcX == 32632)
 						&& srcY == 32983 && srcMapId == 0 // TalkingIsland->TalkingIslandShiptoAdenMainland
@@ -115,7 +115,7 @@ public class Dungeon {
 						(short) newMapId, heading, dungeonType);
 				if (_dungeonMap.containsKey(key)) {
 					_log.log(Level.WARNING,
-							"“¯‚¶ƒL[‚Ìdungeonƒf[ƒ^‚ª‚ ‚è‚Ü‚·Bkey=" + key);
+							"åŒã˜ã‚­ãƒ¼ã®dungeonãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã™ã€‚key=" + key);
 				}
 				_dungeonMap.put(key, newDungeon);
 			}
@@ -200,7 +200,7 @@ public class Dungeon {
 			}
 
 			if (teleportable) {
-				// 2•bŠÔ‚Í–³“GiƒAƒuƒ\ƒ‹[ƒgƒoƒŠƒAó‘Ôj‚É‚·‚éB
+				// 2ç§’é–“ã¯ç„¡æ•µï¼ˆã‚¢ãƒ–ã‚½ãƒ«ãƒ¼ãƒˆãƒãƒªã‚¢çŠ¶æ…‹ï¼‰ã«ã™ã‚‹ã€‚
 				pc.setSkillEffect(ABSOLUTE_BARRIER, 2000);
 				pc.stopHpRegeneration();
 				pc.stopMpRegeneration();

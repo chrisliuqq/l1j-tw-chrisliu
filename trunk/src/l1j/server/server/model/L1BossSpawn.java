@@ -50,29 +50,29 @@ public class L1BossSpawn extends L1Spawn {
 	}
 
 	/**
-	 * SpawnTask‚ğ‹N“®‚·‚éB
+	 * SpawnTaskã‚’èµ·å‹•ã™ã‚‹ã€‚
 	 * 
 	 * @param spawnNumber
-	 *            L1Spawn‚ÅŠÇ—‚³‚ê‚Ä‚¢‚é”Ô†Bƒz[ƒ€ƒ|ƒCƒ“ƒg‚ª–³‚¯‚ê‚Î‰½‚ğw’è‚µ‚Ä‚à—Ç‚¢B
+	 *            L1Spawnã§ç®¡ç†ã•ã‚Œã¦ã„ã‚‹ç•ªå·ã€‚ãƒ›ãƒ¼ãƒ ãƒã‚¤ãƒ³ãƒˆãŒç„¡ã‘ã‚Œã°ä½•ã‚’æŒ‡å®šã—ã¦ã‚‚è‰¯ã„ã€‚
 	 */
 	@Override
 	public void executeSpawnTask(int spawnNumber, int objectId) {
-		// count‚ğƒfƒNƒŠƒƒ“ƒg‚µ‚Ä‘S•”€‚ñ‚¾‚©ƒ`ƒFƒbƒN
+		// countã‚’ãƒ‡ã‚¯ãƒªãƒ¡ãƒ³ãƒˆã—ã¦å…¨éƒ¨æ­»ã‚“ã ã‹ãƒã‚§ãƒƒã‚¯
 		if (subAndGetCount() != 0) {
-			return; // ‘S•”€‚ñ‚Å‚¢‚È‚¢
+			return; // å…¨éƒ¨æ­»ã‚“ã§ã„ãªã„
 		}
-		// ‘O‰ñoŒ»ŠÔ‚É‘Î‚µ‚ÄAŸ‚ÌoŒ»ŠÔ‚ğZo
+		// å‰å›å‡ºç¾æ™‚é–“ã«å¯¾ã—ã¦ã€æ¬¡ã®å‡ºç¾æ™‚é–“ã‚’ç®—å‡º
 		Calendar spawnTime;
-		Calendar now = Calendar.getInstance(); // Œ»
-		Calendar latestStart = _cycle.getLatestStartTime(now); // Œ»‚É‘Î‚·‚éÅ‹ß‚ÌüŠú‚ÌŠJnŠÔ
+		Calendar now = Calendar.getInstance(); // ç¾æ™‚åˆ»
+		Calendar latestStart = _cycle.getLatestStartTime(now); // ç¾æ™‚åˆ»ã«å¯¾ã™ã‚‹æœ€è¿‘ã®å‘¨æœŸã®é–‹å§‹æ™‚é–“
 
-		Calendar activeStart = _cycle.getSpawnStartTime(_activeSpawnTime); // ƒAƒNƒeƒBƒu‚¾‚Á‚½üŠú‚ÌŠJnŠÔ
-		// ƒAƒNƒeƒBƒu‚¾‚Á‚½üŠú‚ÌŠJnŠÔ >= Å‹ß‚ÌüŠúŠJnŠÔ‚Ìê‡AŸ‚ÌoŒ»
+		Calendar activeStart = _cycle.getSpawnStartTime(_activeSpawnTime); // ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã ã£ãŸå‘¨æœŸã®é–‹å§‹æ™‚é–“
+		// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã ã£ãŸå‘¨æœŸã®é–‹å§‹æ™‚é–“ >= æœ€è¿‘ã®å‘¨æœŸé–‹å§‹æ™‚é–“ã®å ´åˆã€æ¬¡ã®å‡ºç¾
 		if (!activeStart.before(latestStart)) {
 			spawnTime = calcNextSpawnTime(activeStart);
 		} else {
-			// ƒAƒNƒeƒBƒu‚¾‚Á‚½üŠú‚ÌŠJnŠÔ < Å‹ß‚ÌüŠúŠJnŠÔ‚Ìê‡‚ÍAÅ‹ß‚ÌüŠú‚ÅoŒ»
-			// ‚í‚©‚è‚Ã‚ç‚¢‚ªŠm—¦ŒvZ‚·‚éˆ×‚ÉA–³—‚â‚ècalcNextSpawnTime‚ğ’Ê‚µ‚Ä‚¢‚éB
+			// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã ã£ãŸå‘¨æœŸã®é–‹å§‹æ™‚é–“ < æœ€è¿‘ã®å‘¨æœŸé–‹å§‹æ™‚é–“ã®å ´åˆã¯ã€æœ€è¿‘ã®å‘¨æœŸã§å‡ºç¾
+			// ã‚ã‹ã‚Šã¥ã‚‰ã„ãŒç¢ºç‡è¨ˆç®—ã™ã‚‹ç‚ºã«ã€ç„¡ç†ã‚„ã‚ŠcalcNextSpawnTimeã‚’é€šã—ã¦ã„ã‚‹ã€‚
 			latestStart.add(Calendar.SECOND, -1);
 			spawnTime = calcNextSpawnTime(_cycle
 					.getLatestStartTime(latestStart));
@@ -114,7 +114,7 @@ public class L1BossSpawn extends L1Spawn {
 			throw new RuntimeException(_cycleType + " not found");
 		}
 		Calendar now = Calendar.getInstance();
-		// oŒ»ŠÔ
+		// å‡ºç¾æ™‚é–“
 		Calendar spawnTime;
 		if (Config.INIT_BOSS_SPAWN && _percentage > _rnd.nextInt(100)) {
 			spawnTime = _cycle.calcSpawnTime(now);
@@ -125,7 +125,7 @@ public class L1BossSpawn extends L1Spawn {
 		spawnBoss(spawnTime, 0);
 	}
 
-	// Šm—¦ŒvZ‚µ‚ÄŸ‚ÌoŒ»ŠÔ‚ğZo
+	// ç¢ºç‡è¨ˆç®—ã—ã¦æ¬¡ã®å‡ºç¾æ™‚é–“ã‚’ç®—å‡º
 	private Calendar calcNextSpawnTime(Calendar cal) {
 		do {
 			cal = _cycle.nextSpawnTime(cal);
@@ -133,9 +133,9 @@ public class L1BossSpawn extends L1Spawn {
 		return cal;
 	}
 
-	// w’è‚³‚ê‚½ŠÔ‚Åƒ{ƒXoŒ»‚ğƒXƒPƒWƒ…[ƒ‹
+	// æŒ‡å®šã•ã‚ŒãŸæ™‚é–“ã§ãƒœã‚¹å‡ºç¾ã‚’ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
 	private void spawnBoss(Calendar spawnTime, int objectId) {
-		// ¡‰ñ‚ÌoŒ»ŠÔ‚ğ•Û‘¶‚µ‚Ä‚¨‚­BÄoŒ»‚Ég—pB
+		// ä»Šå›ã®å‡ºç¾æ™‚é–“ã‚’ä¿å­˜ã—ã¦ãŠãã€‚å†å‡ºç¾æ™‚ã«ä½¿ç”¨ã€‚
 		_activeSpawnTime = spawnTime;
 		long delay = spawnTime.getTimeInMillis() - System.currentTimeMillis();
 
@@ -150,7 +150,7 @@ public class L1BossSpawn extends L1Spawn {
 	}
 
 	/**
-	 * Œ»İƒAƒNƒeƒBƒu‚Èƒ{ƒX‚É‘Î‚·‚éüŠú‚ÆoŒ»ŠÔ‚ğ•\‚·B
+	 * ç¾åœ¨ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªãƒœã‚¹ã«å¯¾ã™ã‚‹å‘¨æœŸã¨å‡ºç¾æ™‚é–“ã‚’è¡¨ã™ã€‚
 	 */
 	@Override
 	public String toString() {
@@ -158,11 +158,11 @@ public class L1BossSpawn extends L1Spawn {
 		builder.append("[MOB]npcid:" + getNpcId());
 		builder.append(" name:" + getName());
 		builder.append("[Type]" + _cycle.getName());
-		builder.append("[Œ»İ‚ÌüŠú]");
+		builder.append("[ç¾åœ¨ã®å‘¨æœŸ]");
 		builder.append(_cycle.getSpawnStartTime(_activeSpawnTime).getTime());
 		builder.append(" - ");
 		builder.append(_cycle.getSpawnEndTime(_activeSpawnTime).getTime());
-		builder.append("[oŒ»ŠÔ]");
+		builder.append("[å‡ºç¾æ™‚é–“]");
 		builder.append(_activeSpawnTime.getTime());
 		return builder.toString();
 	}

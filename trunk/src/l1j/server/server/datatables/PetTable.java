@@ -88,7 +88,7 @@ public class PetTable {
 	}
 
 	public void storeNewPet(L1NpcInstance pet, int objid, int itemobjid) {
-		// XXX ŒÄ‚Î‚ê‚é‘O‚Æˆ—‚Ìd•¡
+		// XXX å‘¼ã°ã‚Œã‚‹å‰ã¨å‡¦ç†ã®é‡è¤‡
 		L1Pet l1pet = new L1Pet();
 		l1pet.set_itemobjid(itemobjid);
 		l1pet.set_objid(objid);
@@ -97,7 +97,7 @@ public class PetTable {
 		l1pet.set_level(pet.getNpcTemplate().get_level());
 		l1pet.set_hp(pet.getMaxHp());
 		l1pet.set_mp(pet.getMaxMp());
-		l1pet.set_exp(750); // Lv.5‚ÌEXP
+		l1pet.set_exp(750); // Lv.5ã®EXP
 		l1pet.set_lawful(0);
 		_pets.put(new Integer(itemobjid), l1pet);
 
@@ -171,11 +171,11 @@ public class PetTable {
 	}
 
 	/**
-	 * Petsƒe[ƒuƒ‹‚ÉŠù‚É–¼‘O‚ª‘¶İ‚·‚é‚©‚ğ•Ô‚·B
+	 * Petsãƒ†ãƒ¼ãƒ–ãƒ«ã«æ—¢ã«åå‰ãŒå­˜åœ¨ã™ã‚‹ã‹ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param nameCaseInsensitive
-	 *            ’²‚×‚éƒyƒbƒg‚Ì–¼‘OB‘å•¶š¬•¶š‚Ì·ˆÙ‚Í–³‹‚³‚ê‚éB
-	 * @return Šù‚É–¼‘O‚ª‘¶İ‚·‚ê‚Îtrue
+	 *            èª¿ã¹ã‚‹ãƒšãƒƒãƒˆã®åå‰ã€‚å¤§æ–‡å­—å°æ–‡å­—ã®å·®ç•°ã¯ç„¡è¦–ã•ã‚Œã‚‹ã€‚
+	 * @return æ—¢ã«åå‰ãŒå­˜åœ¨ã™ã‚Œã°true
 	 */
 	public static boolean isNameExists(String nameCaseInsensitive) {
 		String nameLower = nameCaseInsensitive.toLowerCase();
@@ -185,17 +185,17 @@ public class PetTable {
 		try {
 			con = L1DatabaseFactory.getInstance().getConnection();
 			/*
-			 * “¯‚¶–¼‘O‚ğ’T‚·BMySQL‚ÍƒfƒtƒHƒ‹ƒg‚Åcase insensitive‚È‚½‚ß
-			 * –{—ˆLOWER‚Í•K—v‚È‚¢‚ªAbinary‚É•ÏX‚³‚ê‚½ê‡‚É”õ‚¦‚ÄB
+			 * åŒã˜åå‰ã‚’æ¢ã™ã€‚MySQLã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§case insensitiveãªãŸã‚
+			 * æœ¬æ¥LOWERã¯å¿…è¦ãªã„ãŒã€binaryã«å¤‰æ›´ã•ã‚ŒãŸå ´åˆã«å‚™ãˆã¦ã€‚
 			 */
 			pstm = con
 					.prepareStatement("SELECT item_obj_id FROM pets WHERE LOWER(name)=?");
 			pstm.setString(1, nameLower);
 			rs = pstm.executeQuery();
-			if (!rs.next()) { // “¯‚¶–¼‘O‚ª–³‚©‚Á‚½
+			if (!rs.next()) { // åŒã˜åå‰ãŒç„¡ã‹ã£ãŸ
 				return false;
 			}
-			if (PetTypeTable.getInstance().isNameDefault(nameLower)) { // ƒfƒtƒHƒ‹ƒg‚Ì–¼‘O‚È‚çd•¡‚µ‚Ä‚¢‚È‚¢‚Æ‚İ‚È‚·
+			if (PetTypeTable.getInstance().isNameDefault(nameLower)) { // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®åå‰ãªã‚‰é‡è¤‡ã—ã¦ã„ãªã„ã¨ã¿ãªã™
 				return false;
 			}
 		} catch (SQLException e) {

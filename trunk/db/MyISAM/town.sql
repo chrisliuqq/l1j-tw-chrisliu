@@ -13,18 +13,18 @@ CREATE TABLE `town` (
   `town_tax` int(10) unsigned NOT NULL default '0',
   `town_fix_tax` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`town_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=sjis;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 #----------------------------
 # Records 
 #----------------------------
-INSERT INTO `town` VALUES ('1', '˜b‚¹‚é“‡‚Ì‘º', '0', null, '0', '0', '0', '0', '0', '0');
-INSERT INTO `town` VALUES ('2', 'ƒVƒ‹ƒo[ƒiƒCƒgƒ^ƒEƒ“', '0', null, '0', '0', '0', '0', '0', '0');
-INSERT INTO `town` VALUES ('3', 'ƒOƒ‹[ƒfƒBƒ“‘º', '0', null, '0', '0', '0', '0', '0', '0');
-INSERT INTO `town` VALUES ('4', '‰Î“c–¯‘º', '0', null, '0', '0', '0', '0', '0', '0');
-INSERT INTO `town` VALUES ('5', 'ƒEƒbƒhƒxƒbƒN‘º', '0', null, '0', '0', '0', '0', '0', '0');
-INSERT INTO `town` VALUES ('6', 'ƒPƒ“ƒg‘º', '0', null, '0', '0', '0', '0', '0', '0');
-INSERT INTO `town` VALUES ('7', 'ƒMƒ‰ƒ““sŽs', '0', null, '0', '0', '0', '0', '0', '0');
-INSERT INTO `town` VALUES ('8', 'ƒnƒCƒl“sŽs', '0', null, '0', '0', '0', '0', '0', '0');
-INSERT INTO `town` VALUES ('9', 'ƒEƒFƒ‹ƒ_ƒ“‘º', '0', null, '0', '0', '0', '0', '0', '0');
-INSERT INTO `town` VALUES ('10', 'Û‰å‚Ì“ƒ‚Ì‘º', '0', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `town` VALUES ('1', 'è©±ã›ã‚‹å³¶ã®æ‘', '0', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `town` VALUES ('2', 'ã‚·ãƒ«ãƒãƒ¼ãƒŠã‚¤ãƒˆã‚¿ã‚¦ãƒ³', '0', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `town` VALUES ('3', 'ã‚°ãƒ«ãƒ¼ãƒ‡ã‚£ãƒ³æ‘', '0', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `town` VALUES ('4', 'ç«ç”°æ°‘æ‘', '0', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `town` VALUES ('5', 'ã‚¦ãƒƒãƒ‰ãƒ™ãƒƒã‚¯æ‘', '0', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `town` VALUES ('6', 'ã‚±ãƒ³ãƒˆæ‘', '0', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `town` VALUES ('7', 'ã‚®ãƒ©ãƒ³éƒ½å¸‚', '0', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `town` VALUES ('8', 'ãƒã‚¤ãƒéƒ½å¸‚', '0', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `town` VALUES ('9', 'ã‚¦ã‚§ãƒ«ãƒ€ãƒ³æ‘', '0', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `town` VALUES ('10', 'è±¡ç‰™ã®å¡”ã®æ‘', '0', null, '0', '0', '0', '0', '0', '0');

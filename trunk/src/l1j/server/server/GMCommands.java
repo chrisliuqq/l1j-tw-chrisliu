@@ -53,12 +53,12 @@ public class GMCommands {
 	}
 
 	private String complementClassName(String className) {
-		// .‚ªŠÜ‚Ü‚ê‚Ä‚¢‚ê‚Îƒtƒ‹ƒpƒX‚ÆŒ©‚È‚µ‚Ä‚»‚Ì‚Ü‚Ü•Ô‚·
+		// .ãŒå«ã¾ã‚Œã¦ã„ã‚Œã°ãƒ•ãƒ«ãƒ‘ã‚¹ã¨è¦‹ãªã—ã¦ãã®ã¾ã¾è¿”ã™
 		if (className.contains(".")) {
 			return className;
 		}
 
-		// ƒfƒtƒHƒ‹ƒgƒpƒbƒP[ƒW–¼‚ğ•âŠ®
+		// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸åã‚’è£œå®Œ
 		return "l1j.server.server.command.executor." + className;
 	}
 
@@ -70,7 +70,7 @@ public class GMCommands {
 				return false;
 			}
 			if (pc.getAccessLevel() < command.getLevel()) {
-				pc.sendPackets(new S_ServerMessage(74, "ƒRƒ}ƒ“ƒh" + name)); // \f1%0‚Íg—p‚Å‚«‚Ü‚¹‚ñB
+				pc.sendPackets(new S_ServerMessage(74, "ã‚³ãƒãƒ³ãƒ‰" + name)); // \f1%0ã¯ä½¿ç”¨ã§ãã¾ã›ã‚“ã€‚
 				return true;
 			}
 
@@ -79,7 +79,7 @@ public class GMCommands {
 			L1CommandExecutor exe = (L1CommandExecutor) cls.getMethod(
 					"getInstance").invoke(null);
 			exe.execute(pc, name, arg);
-			_log.info(pc.getName() + "‚ª." + name + " " + arg + "ƒRƒ}ƒ“ƒh‚ğg—p‚µ‚Ü‚µ‚½B");
+			_log.info(pc.getName() + "ãŒ." + name + " " + arg + "ã‚³ãƒãƒ³ãƒ‰ã‚’ä½¿ç”¨ã—ã¾ã—ãŸã€‚");
 			return true;
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, "error gm command", e);
@@ -89,7 +89,7 @@ public class GMCommands {
 
 	public void handleCommands(L1PcInstance gm, String cmdLine) {
 		StringTokenizer token = new StringTokenizer(cmdLine);
-		// Å‰‚Ì‹ó”’‚Ü‚Å‚ªƒRƒ}ƒ“ƒhA‚»‚êˆÈ~‚Í‹ó”’‚ğ‹æØ‚è‚Æ‚µ‚½ƒpƒ‰ƒ[ƒ^‚Æ‚µ‚Äˆµ‚¤
+		// æœ€åˆã®ç©ºç™½ã¾ã§ãŒã‚³ãƒãƒ³ãƒ‰ã€ãã‚Œä»¥é™ã¯ç©ºç™½ã‚’åŒºåˆ‡ã‚Šã¨ã—ãŸãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã—ã¦æ‰±ã†
 		String cmd = token.nextToken();
 		String param = "";
 		while (token.hasMoreTokens()) {
@@ -98,7 +98,7 @@ public class GMCommands {
 		}
 		param = param.trim();
 
-		// ƒf[ƒ^ƒx[ƒX‰»‚³‚ê‚½ƒRƒ}ƒ“ƒh
+		// ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹åŒ–ã•ã‚ŒãŸã‚³ãƒãƒ³ãƒ‰
 		if (executeDatabaseCommand(gm, cmd, param)) {
 			if (!cmd.equalsIgnoreCase("r")) {
 				_lastCommands.put(gm.getId(), cmdLine);
@@ -107,13 +107,13 @@ public class GMCommands {
 		}
 		if (cmd.equalsIgnoreCase("r")) {
 			if (!_lastCommands.containsKey(gm.getId())) {
-				gm.sendPackets(new S_ServerMessage(74, "ƒRƒ}ƒ“ƒh" + cmd)); // \f1%0‚Íg—p‚Å‚«‚Ü‚¹‚ñB
+				gm.sendPackets(new S_ServerMessage(74, "ã‚³ãƒãƒ³ãƒ‰" + cmd)); // \f1%0ã¯ä½¿ç”¨ã§ãã¾ã›ã‚“ã€‚
 				return;
 			}
 			redo(gm, param);
 			return;
 		}
-		gm.sendPackets(new S_SystemMessage("ƒRƒ}ƒ“ƒh " + cmd + " ‚Í‘¶İ‚µ‚Ü‚¹‚ñB"));
+		gm.sendPackets(new S_SystemMessage("ã‚³ãƒãƒ³ãƒ‰ " + cmd + " ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚"));
 	}
 
 	private static Map<Integer, String> _lastCommands = new HashMap<Integer, String>();
@@ -122,19 +122,19 @@ public class GMCommands {
 		try {
 			String lastCmd = _lastCommands.get(pc.getId());
 			if (arg.isEmpty()) {
-				pc.sendPackets(new S_SystemMessage("ƒRƒ}ƒ“ƒh " + lastCmd
-						+ " ‚ğÄÀs‚µ‚Ü‚·"));
+				pc.sendPackets(new S_SystemMessage("ã‚³ãƒãƒ³ãƒ‰ " + lastCmd
+						+ " ã‚’å†å®Ÿè¡Œã—ã¾ã™"));
 				handleCommands(pc, lastCmd);
 			} else {
-				// ˆø”‚ğ•Ï‚¦‚ÄÀs
+				// å¼•æ•°ã‚’å¤‰ãˆã¦å®Ÿè¡Œ
 				StringTokenizer token = new StringTokenizer(lastCmd);
 				String cmd = token.nextToken() + " " + arg;
-				pc.sendPackets(new S_SystemMessage("ƒRƒ}ƒ“ƒh " + cmd + " ‚ğÀs‚µ‚Ü‚·B"));
+				pc.sendPackets(new S_SystemMessage("ã‚³ãƒãƒ³ãƒ‰ " + cmd + " ã‚’å®Ÿè¡Œã—ã¾ã™ã€‚"));
 				handleCommands(pc, cmd);
 			}
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
-			pc.sendPackets(new S_SystemMessage(".r ƒRƒ}ƒ“ƒhƒGƒ‰["));
+			pc.sendPackets(new S_SystemMessage(".r ã‚³ãƒãƒ³ãƒ‰ã‚¨ãƒ©ãƒ¼"));
 		}
 	}
 }

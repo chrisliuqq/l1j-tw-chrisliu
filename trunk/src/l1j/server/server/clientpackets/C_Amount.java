@@ -76,12 +76,12 @@ public class C_Amount extends ClientBasePacket {
 			s1 = "";
 			s2 = "";
 		}
-		if (s1.equalsIgnoreCase("agapply")) { // ‹£”„‚É“üD‚µ‚½ê‡
+		if (s1.equalsIgnoreCase("agapply")) { // ç«¶å£²ã«å…¥æœ­ã—ãŸå ´åˆ
 			String pcName = pc.getName();
 			AuctionBoardTable boardTable = new AuctionBoardTable();
 			for (L1AuctionBoard board : boardTable.getAuctionBoardTableList()) {
 				if (pcName.equalsIgnoreCase(board.getBidder())) {
-					pc.sendPackets(new S_ServerMessage(523)); // ‚·‚Å‚É‘¼‚Ì‰Æ‚Ì‹£”„‚ÉQ‰Á‚µ‚Ä‚¢‚Ü‚·B
+					pc.sendPackets(new S_ServerMessage(523)); // ã™ã§ã«ä»–ã®å®¶ã®ç«¶å£²ã«å‚åŠ ã—ã¦ã„ã¾ã™ã€‚
 					return;
 				}
 			}
@@ -91,23 +91,23 @@ public class C_Amount extends ClientBasePacket {
 				int nowPrice = board.getPrice();
 				int nowBidderId = board.getBidderId();
 				if (pc.getInventory().consumeItem(L1ItemId.ADENA, amount)) {
-					// ‹£”„Œf¦”Â‚ğXV
+					// ç«¶å£²æ²ç¤ºæ¿ã‚’æ›´æ–°
 					board.setPrice(amount);
 					board.setBidder(pcName);
 					board.setBidderId(pc.getId());
 					boardTable.updateAuctionBoard(board);
 					if (nowBidderId != 0) {
-						// “üDÒ‚ÉƒAƒfƒi‚ğ•Ô‹à
+						// å…¥æœ­è€…ã«ã‚¢ãƒ‡ãƒŠã‚’è¿”é‡‘
 						L1PcInstance bidPc = (L1PcInstance) L1World
 								.getInstance().findObject(nowBidderId);
-						if (bidPc != null) { // ƒIƒ“ƒ‰ƒCƒ“’†
+						if (bidPc != null) { // ã‚ªãƒ³ãƒ©ã‚¤ãƒ³ä¸­
 							bidPc.getInventory().storeItem(L1ItemId.ADENA,
 									nowPrice);
-							// ‚ ‚È‚½‚ª’ñ¦‚³‚ê‚½‹àŠz‚æ‚è‚à‚à‚Á‚Æ‚‚¢‹àŠz‚ğ’ñ¦‚µ‚½•û‚ªŒ»‚ê‚½‚½‚ßAc”O‚È‚ª‚ç“üD‚É¸”s‚µ‚Ü‚µ‚½B%n
-							// ‚ ‚È‚½‚ª‹£”„‚É—a‚¯‚½%0ƒAƒfƒi‚ğ‚¨•Ô‚µ‚µ‚Ü‚·B%n‚ ‚è‚ª‚Æ‚¤‚²‚´‚¢‚Ü‚µ‚½B%n%n
+							// ã‚ãªãŸãŒæç¤ºã•ã‚ŒãŸé‡‘é¡ã‚ˆã‚Šã‚‚ã‚‚ã£ã¨é«˜ã„é‡‘é¡ã‚’æç¤ºã—ãŸæ–¹ãŒç¾ã‚ŒãŸãŸã‚ã€æ®‹å¿µãªãŒã‚‰å…¥æœ­ã«å¤±æ•—ã—ã¾ã—ãŸã€‚%n
+							// ã‚ãªãŸãŒç«¶å£²ã«é ã‘ãŸ%0ã‚¢ãƒ‡ãƒŠã‚’ãŠè¿”ã—ã—ã¾ã™ã€‚%nã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã—ãŸã€‚%n%n
 							bidPc.sendPackets(new S_ServerMessage(525, String
 									.valueOf(nowPrice)));
-						} else { // ƒIƒtƒ‰ƒCƒ“’†
+						} else { // ã‚ªãƒ•ãƒ©ã‚¤ãƒ³ä¸­
 							L1ItemInstance item = ItemTable.getInstance()
 									.createItem(L1ItemId.ADENA);
 							item.setCount(nowPrice);
@@ -117,23 +117,23 @@ public class C_Amount extends ClientBasePacket {
 						}
 					}
 				} else {
-					pc.sendPackets(new S_ServerMessage(189)); // \f1ƒAƒfƒi‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·B
+					pc.sendPackets(new S_ServerMessage(189)); // \f1ã‚¢ãƒ‡ãƒŠãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚
 				}
 			}
-		} else if (s1.equalsIgnoreCase("agsell")) { // ‰Æ‚ğ”„‚Á‚½ê‡
+		} else if (s1.equalsIgnoreCase("agsell")) { // å®¶ã‚’å£²ã£ãŸå ´åˆ
 			int houseId = Integer.valueOf(s2);
 			AuctionBoardTable boardTable = new AuctionBoardTable();
 			L1AuctionBoard board = new L1AuctionBoard();
 			if (board != null) {
-				// ‹£”„Œf¦”Â‚ÉV‹K‘‚«‚İ
+				// ç«¶å£²æ²ç¤ºæ¿ã«æ–°è¦æ›¸ãè¾¼ã¿
 				board.setHouseId(houseId);
 				L1House house = HouseTable.getInstance().getHouseTable(houseId);
 				board.setHouseName(house.getHouseName());
 				board.setHouseArea(house.getHouseArea());
 				TimeZone tz = TimeZone.getTimeZone(Config.TIME_ZONE);
 				Calendar cal = Calendar.getInstance(tz);
-				cal.add(Calendar.DATE, 5); // 5“úŒã
-				cal.set(Calendar.MINUTE, 0); // •ªA•b‚ÍØ‚èÌ‚Ä
+				cal.add(Calendar.DATE, 5); // 5æ—¥å¾Œ
+				cal.set(Calendar.MINUTE, 0); // åˆ†ã€ç§’ã¯åˆ‡ã‚Šæ¨ã¦
 				cal.set(Calendar.SECOND, 0);
 				board.setDeadline(cal);
 				board.setPrice(amount);
@@ -144,9 +144,9 @@ public class C_Amount extends ClientBasePacket {
 				board.setBidderId(0);
 				boardTable.insertAuctionBoard(board);
 
-				house.setOnSale(true); // ‹£”„’†‚Éİ’è
-				house.setPurchaseBasement(true); // ’n‰ºƒAƒWƒg–¢w“ü‚Éİ’è
-				HouseTable.getInstance().updateHouse(house); // DB‚É‘‚«‚İ
+				house.setOnSale(true); // ç«¶å£²ä¸­ã«è¨­å®š
+				house.setPurchaseBasement(true); // åœ°ä¸‹ã‚¢ã‚¸ãƒˆæœªè³¼å…¥ã«è¨­å®š
+				HouseTable.getInstance().updateHouse(house); // DBã«æ›¸ãè¾¼ã¿
 			}
 		} else {
 			L1NpcAction action = NpcActionTable.getInstance().get(s, pc, npc);

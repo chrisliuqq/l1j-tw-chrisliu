@@ -74,7 +74,7 @@ public class L1GfxId implements L1CommandExecutor {
 		} catch (Exception exception) {
 			pc
 					.sendPackets(new S_SystemMessage(cmdName
-							+ " id oŒ»‚³‚¹‚é” ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+							+ " id å‡ºç¾ã•ã›ã‚‹æ•° ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

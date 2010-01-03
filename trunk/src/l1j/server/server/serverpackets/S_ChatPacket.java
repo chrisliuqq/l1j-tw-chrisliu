@@ -33,7 +33,7 @@ public class S_ChatPacket extends ServerBasePacket {
 
 	public S_ChatPacket(L1PcInstance pc, String chat, int opcode, int type) {
 
-		if (type == 0) { // ’Êíƒ`ƒƒƒbƒg
+		if (type == 0) { // é€šå¸¸ãƒãƒ£ãƒƒãƒˆ
 			writeC(opcode);
 			writeC(type);
 			if (pc.isInvisble()) {
@@ -42,7 +42,7 @@ public class S_ChatPacket extends ServerBasePacket {
 				writeD(pc.getId());
 			}
 			writeS(pc.getName() + ": " + chat);
-		} else if (type == 2) { // ‹©‚Ñ
+		} else if (type == 2) { // å«ã³
 			writeC(opcode);
 			writeC(type);
 			if (pc.isInvisble()) {
@@ -53,7 +53,7 @@ public class S_ChatPacket extends ServerBasePacket {
 			writeS("<" + pc.getName() + "> " + chat);
 			writeH(pc.getX());
 			writeH(pc.getY());
-		} else if (type == 3) { // ‘S‘Ìƒ`ƒƒƒbƒg
+		} else if (type == 3) { // å…¨ä½“ãƒãƒ£ãƒƒãƒˆ
 			writeC(opcode);
 			writeC(type);
 			if (pc.isGm() == true) {
@@ -61,27 +61,27 @@ public class S_ChatPacket extends ServerBasePacket {
 			} else {
 				writeS("[" + pc.getName() + "] " + chat);
 			}
-		} else if (type == 4) { // ŒŒ–¿ƒ`ƒƒƒbƒg
+		} else if (type == 4) { // è¡€ç›Ÿãƒãƒ£ãƒƒãƒˆ
 			writeC(opcode);
 			writeC(type);
 			writeS("{" + pc.getName() + "} " + chat);
-		} else if (type == 9) { // ƒEƒBƒXƒp[
+		} else if (type == 9) { // ã‚¦ã‚£ã‚¹ãƒ‘ãƒ¼
 			writeC(opcode);
 			writeC(type);
 			writeS("-> (" + pc.getName() + ") " + chat);
-		} else if (type == 11) { // ƒp[ƒeƒB[ƒ`ƒƒƒbƒg
+		} else if (type == 11) { // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒãƒ£ãƒƒãƒˆ
 			writeC(opcode);
 			writeC(type);
 			writeS("(" + pc.getName() + ") " + chat);
-		} else if (type == 12) { // ƒgƒŒ[ƒhƒ`ƒƒƒbƒg
+		} else if (type == 12) { // ãƒˆãƒ¬ãƒ¼ãƒ‰ãƒãƒ£ãƒƒãƒˆ
 			writeC(opcode);
 			writeC(type);
 			writeS("[" + pc.getName() + "] " + chat);
-		} else if (type == 13) { // ˜A‡ƒ`ƒƒƒbƒg
+		} else if (type == 13) { // é€£åˆãƒãƒ£ãƒƒãƒˆ
 			writeC(opcode);
 			writeC(type);
 			writeS("{{" + pc.getName() + "}} " + chat);
-		} else if (type == 14) { // ƒ`ƒƒƒbƒgƒp[ƒeƒB[
+		} else if (type == 14) { // ãƒãƒ£ãƒƒãƒˆãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼
 			writeC(opcode);
 			writeC(type);
 			if (pc.isInvisble()) {
@@ -90,7 +90,7 @@ public class S_ChatPacket extends ServerBasePacket {
 				writeD(pc.getId());
 			}
 			writeS("(" + pc.getName() + ") " + chat);
-		} else if (type == 16) { // ƒEƒBƒXƒp[
+		} else if (type == 16) { // ã‚¦ã‚£ã‚¹ãƒ‘ãƒ¼
 			writeC(opcode);
 			writeS(pc.getName());
 			writeS(chat);

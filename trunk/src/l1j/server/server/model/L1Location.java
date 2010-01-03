@@ -121,53 +121,53 @@ public class L1Location extends Point {
 	}
 
 	/**
-	 * ����Location�ɑ΂���A�ړ��\�ȃ����_���͈͂�Location��Ԃ��B
-	 * �����_���e���|�[�g�̏ꍇ�́A��G���A�A�A�W�g����Location�͕ԋp����Ȃ��B
+	 * このLocationに対する、移動可能なランダム範囲のLocationを返す。
+	 * ランダムテレポートの場合は、城エリア、アジト内のLocationは返却されない。
 	 * 
 	 * @param max
-	 *            �����_���͈͂̍ő�l
+	 *            ランダム範囲の最大値
 	 * @param isRandomTeleport
-	 *            �����_���e���|�[�g��
-	 * @return �V����Location
+	 *            ランダムテレポートか
+	 * @return 新しいLocation
 	 */
 	public L1Location randomLocation(int max, boolean isRandomTeleport) {
 		return randomLocation(0, max, isRandomTeleport);
 	}
 
 	/**
-	 * ����Location�ɑ΂���A�ړ��\�ȃ����_���͈͂�Location��Ԃ��B
-	 * �����_���e���|�[�g�̏ꍇ�́A��G���A�A�A�W�g����Location�͕ԋp����Ȃ��B
+	 * このLocationに対する、移動可能なランダム範囲のLocationを返す。
+	 * ランダムテレポートの場合は、城エリア、アジト内のLocationは返却されない。
 	 * 
 	 * @param min
-	 *            �����_���͈͂̍ŏ��l(0�Ŏ��g�̍��W���܂�)
+	 *            ランダム範囲の最小値(0で自身の座標を含む)
 	 * @param max
-	 *            �����_���͈͂̍ő�l
+	 *            ランダム範囲の最大値
 	 * @param isRandomTeleport
-	 *            �����_���e���|�[�g��
-	 * @return �V����Location
+	 *            ランダムテレポートか
+	 * @return 新しいLocation
 	 */
 	public L1Location randomLocation(int min, int max, boolean isRandomTeleport) {
 		return L1Location.randomLocation(this, min, max, isRandomTeleport);
 	}
 
 	/**
-	 * ������Location�ɑ΂��āA�ړ��\�ȃ����_���͈͂�Location��Ԃ��B
-	 * �����_���e���|�[�g�̏ꍇ�́A��G���A�A�A�W�g����Location�͕ԋp����Ȃ��B
+	 * 引数のLocationに対して、移動可能なランダム範囲のLocationを返す。
+	 * ランダムテレポートの場合は、城エリア、アジト内のLocationは返却されない。
 	 * 
 	 * @param baseLocation
-	 *            �����_���͈͂̌��ɂȂ�Location
+	 *            ランダム範囲の元になるLocation
 	 * @param min
-	 *            �����_���͈͂̍ŏ��l(0�Ŏ��g�̍��W���܂�)
+	 *            ランダム範囲の最小値(0で自身の座標を含む)
 	 * @param max
-	 *            �����_���͈͂̍ő�l
+	 *            ランダム範囲の最大値
 	 * @param isRandomTeleport
-	 *            �����_���e���|�[�g��
-	 * @return �V����Location
+	 *            ランダムテレポートか
+	 * @return 新しいLocation
 	 */
 	public static L1Location randomLocation(L1Location baseLocation, int min,
 			int max, boolean isRandomTeleport) {
 		if (min > max) {
-			throw new IllegalArgumentException("min > max�ƂȂ�����͖���");
+			throw new IllegalArgumentException("min > maxとなる引数は無効");
 		}
 		if (max <= 0) {
 			return new L1Location(baseLocation);
@@ -191,13 +191,13 @@ public class L1Location extends Point {
 		int locY1 = locY - max;
 		int locY2 = locY + max;
 
-		// map�͈�
+		// map範囲
 		int mapX1 = map.getX();
 		int mapX2 = mapX1 + map.getWidth();
 		int mapY1 = map.getY();
 		int mapY2 = mapY1 + map.getHeight();
 
-		// �ő�ł��}�b�v�͈͓̔��܂łɕ␳
+		// 最大でもマップの範囲内までに補正
 		if (locX1 < mapX1) {
 			locX1 = mapX1;
 		}
@@ -211,11 +211,11 @@ public class L1Location extends Point {
 			locY2 = mapY2;
 		}
 
-		int diffX = locX2 - locX1; // x����
-		int diffY = locY2 - locY1; // y����
+		int diffX = locX2 - locX1; // x方向
+		int diffY = locY2 - locY1; // y方向
 
 		int trial = 0;
-		// ���s�񐔂�͈͍ŏ��l�ɂ���Ă�����ׂ̌v�Z
+		// 試行回数を範囲最小値によってあげる為の計算
 		int amax = (int) Math.pow(1 + (max * 2), 2);
 		int amin = (min == 0) ? 0 : (int) Math.pow(1 + ((min - 1) * 2), 2);
 		int trialLimit = 40 * amax / (amax - amin);
@@ -236,12 +236,12 @@ public class L1Location extends Point {
 				continue;
 
 			}
-			if (isRandomTeleport) { // �����_���e���|�[�g�̏ꍇ
-				if (L1CastleLocation.checkInAllWarArea(newX, newY, mapId)) { // �����ꂩ�̏�G���A
+			if (isRandomTeleport) { // ランダムテレポートの場合
+				if (L1CastleLocation.checkInAllWarArea(newX, newY, mapId)) { // いずれかの城エリア
 					continue;
 				}
 
-				// �����ꂩ�̃A�W�g��
+				// いずれかのアジト内
 				if (L1HouseLocation.isInHouse(newX, newY, mapId)) {
 					continue;
 				}

@@ -35,7 +35,7 @@ public class L1PrivateShopSellList {
 		return _itemObjectId;
 	}
 
-	private int _sellTotalCount; // ”„‚é—\’è‚ÌŒÂ”
+	private int _sellTotalCount; // å£²ã‚‹äºˆå®šã®å€‹æ•°
 
 	public void setSellTotalCount(int i) {
 		_sellTotalCount = i;
@@ -55,7 +55,7 @@ public class L1PrivateShopSellList {
 		return _sellPrice;
 	}
 
-	private int _sellCount; // ”„‚Á‚½—İŒv
+	private int _sellCount; // å£²ã£ãŸç´¯è¨ˆ
 
 	public void setSellCount(int i) {
 		_sellCount = i;

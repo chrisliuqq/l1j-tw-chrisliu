@@ -52,7 +52,7 @@ public class L1ShowTrap implements L1CommandExecutor {
 				}
 			}
 		} else {
-			pc.sendPackets(new S_SystemMessage(cmdName + " on|off ‚Æ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B"));
+			pc.sendPackets(new S_SystemMessage(cmdName + " on|off ã¨å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚"));
 		}
 	}
 }

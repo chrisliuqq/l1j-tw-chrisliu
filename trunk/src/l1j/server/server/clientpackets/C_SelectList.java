@@ -47,19 +47,19 @@ public class C_SelectList extends ClientBasePacket {
 
 	public C_SelectList(byte abyte0[], ClientThread clientthread) {
 		super(abyte0);
-		// ƒAƒCƒeƒ€–ˆ‚ÉƒŠƒNƒGƒXƒg‚ª—ˆ‚éB
+		// ã‚¢ã‚¤ãƒ†ãƒ æ¯ã«ãƒªã‚¯ã‚¨ã‚¹ãƒˆãŒæ¥ã‚‹ã€‚
 		int itemObjectId = readD();
 		int npcObjectId = readD();
 		L1PcInstance pc = clientthread.getActiveChar();
 
-		if (npcObjectId != 0) { // •Ší‚ÌC—
+		if (npcObjectId != 0) { // æ­¦å™¨ã®ä¿®ç†
 			L1Object obj = L1World.getInstance().findObject(npcObjectId);
 			if (obj != null) {
 				if (obj instanceof L1NpcInstance) {
 					L1NpcInstance npc = (L1NpcInstance) obj;
 					int difflocx = Math.abs(pc.getX() - npc.getX());
 					int difflocy = Math.abs(pc.getY() - npc.getY());
-					// 3ƒ}ƒXˆÈã—£‚ê‚½ê‡ƒAƒNƒVƒ‡ƒ“–³Œø
+					// 3ãƒã‚¹ä»¥ä¸Šé›¢ã‚ŒãŸå ´åˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ç„¡åŠ¹
 					if (difflocx > 3 || difflocy > 3) {
 						return;
 					}
@@ -74,7 +74,7 @@ public class C_SelectList extends ClientBasePacket {
 			}
 			item.set_durability(0);
 			pcInventory.updateItem(item, L1PcInventory.COL_DURABILITY);
-		} else { // ƒyƒbƒg‚Ìˆø‚«o‚µ
+		} else { // ãƒšãƒƒãƒˆã®å¼•ãå‡ºã—
 			int petCost = 0;
 			int petCount = 0;
 			int divisor = 6;
@@ -83,17 +83,17 @@ public class C_SelectList extends ClientBasePacket {
 				petCost += ((L1NpcInstance) pet).getPetcost();
 			}
 			int charisma = pc.getCha();
-			if (pc.isCrown()) { // ŒNå
+			if (pc.isCrown()) { // å›ä¸»
 				charisma += 6;
-			} else if (pc.isElf()) { // ƒGƒ‹ƒt
+			} else if (pc.isElf()) { // ã‚¨ãƒ«ãƒ•
 				charisma += 12;
 			} else if (pc.isWizard()) { // WIZ
 				charisma += 6;
 			} else if (pc.isDarkelf()) { // DE
 				charisma += 6;
-			} else if (pc.isDragonKnight()) { // ƒhƒ‰ƒSƒ“ƒiƒCƒg
+			} else if (pc.isDragonKnight()) { // ãƒ‰ãƒ©ã‚´ãƒ³ãƒŠã‚¤ãƒˆ
 				charisma += 6;
-			} else if (pc.isIllusionist()) { // ƒCƒŠƒ…[ƒWƒ‡ƒjƒXƒg
+			} else if (pc.isIllusionist()) { // ã‚¤ãƒªãƒ¥ãƒ¼ã‚¸ãƒ§ãƒ‹ã‚¹ãƒˆ
 				charisma += 6;
 			}
 
@@ -101,15 +101,15 @@ public class C_SelectList extends ClientBasePacket {
 			if (l1pet != null) {
 				int npcId = l1pet.get_npcid();
 				charisma -= petCost;
-				if (npcId == 45313 || npcId == 45710 // ƒ^ƒCƒK[Aƒoƒgƒ‹ƒ^ƒCƒK[
-						|| npcId == 45711 || npcId == 45712) { // ‹IBŒ¢‚ÌqŒ¢A‹IBŒ¢
+				if (npcId == 45313 || npcId == 45710 // ã‚¿ã‚¤ã‚¬ãƒ¼ã€ãƒãƒˆãƒ«ã‚¿ã‚¤ã‚¬ãƒ¼
+						|| npcId == 45711 || npcId == 45712) { // ç´€å·çŠ¬ã®å­çŠ¬ã€ç´€å·çŠ¬
 					divisor = 12;
 				} else {
 					divisor = 6;
 				}
 				petCount = charisma / divisor;
 				if (petCount <= 0) {
-					pc.sendPackets(new S_ServerMessage(489)); // ˆø‚«æ‚ë‚¤‚Æ‚·‚éƒyƒbƒg‚ª‘½‚·‚¬‚Ü‚·B
+					pc.sendPackets(new S_ServerMessage(489)); // å¼•ãå–ã‚ã†ã¨ã™ã‚‹ãƒšãƒƒãƒˆãŒå¤šã™ãã¾ã™ã€‚
 					return;
 				}
 				L1Npc npcTemp = NpcTable.getInstance().getTemplate(npcId);

@@ -40,7 +40,7 @@ public class UbTimeController implements Runnable {
 	public void run() {
 		try {
 			while (true) {
-				checkUbTime(); // UBŠJnŠÔ‚ğƒ`ƒFƒbƒN
+				checkUbTime(); // UBé–‹å§‹æ™‚é–“ã‚’ãƒã‚§ãƒƒã‚¯
 				Thread.sleep(15000);
 			}
 		} catch (Exception e1) {
@@ -51,7 +51,7 @@ public class UbTimeController implements Runnable {
 	private void checkUbTime() {
 		for (L1UltimateBattle ub : UBTable.getInstance().getAllUb()) {
 			if (ub.checkUbTime() && !ub.isActive()) {
-				ub.start(); // UBŠJn
+				ub.start(); // UBé–‹å§‹
 			}
 		}
 	}

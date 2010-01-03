@@ -40,10 +40,10 @@ public class L1BanIp implements L1CommandExecutor {
 	public void execute(L1PcInstance pc, String cmdName, String arg) {
 		try {
 			StringTokenizer stringtokenizer = new StringTokenizer(arg);
-			// IP‚ğw’è
+			// IPã‚’æŒ‡å®š
 			String s1 = stringtokenizer.nextToken();
 
-			// add/del‚ğw’è(‚µ‚È‚­‚Ä‚àOK)
+			// add/delã‚’æŒ‡å®š(ã—ãªãã¦ã‚‚OK)
 			String s2 = null;
 			try {
 				s2 = stringtokenizer.nextToken();
@@ -56,38 +56,38 @@ public class L1BanIp implements L1CommandExecutor {
 			for (L1PcInstance tg : L1World.getInstance().getAllPlayers()) {
 				if (s1.equals(tg.getNetConnection().getIp())) {
 					String msg = new StringBuilder().append("IP:").append(s1)
-							.append(" ‚ÅÚ‘±’†‚ÌƒvƒŒƒCƒ„[:").append(tg.getName())
+							.append(" ã§æ¥ç¶šä¸­ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼:").append(tg.getName())
 							.toString();
 					pc.sendPackets(new S_SystemMessage(msg));
 				}
 			}
 
 			if ("add".equals(s2) && !isBanned) {
-				iptable.banIp(s1); // BANƒŠƒXƒg‚ÖIP‚ğ‰Á‚¦‚é
+				iptable.banIp(s1); // BANãƒªã‚¹ãƒˆã¸IPã‚’åŠ ãˆã‚‹
 				String msg = new StringBuilder().append("IP:").append(s1)
-						.append(" ‚ğBAN IP‚É“o˜^‚µ‚Ü‚µ‚½B").toString();
+						.append(" ã‚’BAN IPã«ç™»éŒ²ã—ã¾ã—ãŸã€‚").toString();
 				pc.sendPackets(new S_SystemMessage(msg));
 			} else if ("del".equals(s2) && isBanned) {
-				if (iptable.liftBanIp(s1)) { // BANƒŠƒXƒg‚©‚çIP‚ğíœ‚·‚é
+				if (iptable.liftBanIp(s1)) { // BANãƒªã‚¹ãƒˆã‹ã‚‰IPã‚’å‰Šé™¤ã™ã‚‹
 					String msg = new StringBuilder().append("IP:").append(s1)
-							.append(" ‚ğBAN IP‚©‚çíœ‚µ‚Ü‚µ‚½B").toString();
+							.append(" ã‚’BAN IPã‹ã‚‰å‰Šé™¤ã—ã¾ã—ãŸã€‚").toString();
 					pc.sendPackets(new S_SystemMessage(msg));
 				}
 			} else {
-				// BAN‚ÌŠm”F
+				// BANã®ç¢ºèª
 				if (isBanned) {
 					String msg = new StringBuilder().append("IP:").append(s1)
-							.append(" ‚ÍBAN IP‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·B").toString();
+							.append(" ã¯BAN IPã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã™ã€‚").toString();
 					pc.sendPackets(new S_SystemMessage(msg));
 				} else {
 					String msg = new StringBuilder().append("IP:").append(s1)
-							.append(" ‚ÍBAN IP‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB").toString();
+							.append(" ã¯BAN IPã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚").toString();
 					pc.sendPackets(new S_SystemMessage(msg));
 				}
 			}
 		} catch (Exception e) {
 			pc.sendPackets(new S_SystemMessage(cmdName
-					+ " IP [ add | del ]‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+					+ " IP [ add | del ]ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

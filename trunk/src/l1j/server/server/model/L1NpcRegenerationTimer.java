@@ -21,7 +21,7 @@ package l1j.server.server.model;
 import java.util.Timer;
 
 /**
- * NPCの自然回復TimerTaskをスケジュールするためのTimerクラス
+ * NPC縺ｮ閾ｪ辟ｶ蝗槫ｾｩTimerTask繧偵せ繧ｱ繧ｸ繝･繝ｼ繝ｫ縺吶ｋ縺溘ａ縺ｮTimer繧ｯ繝ｩ繧ｹ
  * 
  */
 public class L1NpcRegenerationTimer extends Timer {

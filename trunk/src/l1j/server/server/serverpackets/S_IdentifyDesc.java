@@ -30,7 +30,7 @@ public class S_IdentifyDesc extends ServerBasePacket {
 	private byte[] _byte = null;
 
 	/**
-	 * Šm”FƒXƒNƒ[ƒ‹g—p‚ÌƒƒbƒZ[ƒW‚ğ•\¦‚·‚é
+	 * ç¢ºèªã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½¿ç”¨æ™‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹
 	 */
 	public S_IdentifyDesc(L1ItemInstance item) {
 		buildPacket(item);
@@ -43,15 +43,15 @@ public class S_IdentifyDesc extends ServerBasePacket {
 		StringBuilder name = new StringBuilder();
 
 		if (item.getItem().getBless() == 0) {
-			name.append("$227 "); // j•Ÿ‚³‚ê‚½
+			name.append("$227 "); // ç¥ç¦ã•ã‚ŒãŸ
 		} else if (item.getItem().getBless() == 2) {
-			name.append("$228 "); // ô‚í‚ê‚½
+			name.append("$228 "); // å‘ªã‚ã‚ŒãŸ
 		}
 
 		name.append(item.getItem().getIdentifiedNameId());
 
 		if (item.getItem().getType2() == 1) { // weapon
-			writeH(134); // \f1%0F¬‚³‚Èƒ‚ƒ“ƒXƒ^[‘ÅŒ‚%1 ‘å‚«‚Èƒ‚ƒ“ƒXƒ^[‘ÅŒ‚%2
+			writeH(134); // \f1%0ï¼šå°ã•ãªãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼æ‰“æ’ƒ%1 å¤§ããªãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼æ‰“æ’ƒ%2
 			writeC(3);
 			writeS(name.toString());
 			writeS(item.getItem().getDmgSmall()
@@ -60,13 +60,13 @@ public class S_IdentifyDesc extends ServerBasePacket {
 					+ "+" + item.getEnchantLevel());
 
 		} else if (item.getItem().getType2() == 2) { // armor
-			if (item.getItem().getItemId() == 20383) { // ‹R”n—pƒwƒ‹ƒ€
-				writeH(137); // \f1%0Fg—p‰Â”\‰ñ”%1md‚³%2n
+			if (item.getItem().getItemId() == 20383) { // é¨é¦¬ç”¨ãƒ˜ãƒ«ãƒ 
+				writeH(137); // \f1%0ï¼šä½¿ç”¨å¯èƒ½å›æ•°%1ï¼»é‡ã•%2ï¼½
 				writeC(3);
 				writeS(name.toString());
 				writeS(String.valueOf(item.getChargeCount()));
 			} else {
-				writeH(135); // \f1%0F–hŒä—Í%1 –hŒä‹ï
+				writeH(135); // \f1%0ï¼šé˜²å¾¡åŠ›%1 é˜²å¾¡å…·
 				writeC(2);
 				writeS(name.toString());
 				writeS(Math.abs(item.getItem().get_ac())
@@ -75,23 +75,23 @@ public class S_IdentifyDesc extends ServerBasePacket {
 
 		} else if (item.getItem().getType2() == 0) { // etcitem
 			if (item.getItem().getType() == 1) { // wand
-				writeH(137); // \f1%0Fg—p‰Â”\‰ñ”%1md‚³%2n
+				writeH(137); // \f1%0ï¼šä½¿ç”¨å¯èƒ½å›æ•°%1ï¼»é‡ã•%2ï¼½
 				writeC(3);
 				writeS(name.toString());
 				writeS(String.valueOf(item.getChargeCount()));
-			} else if (item.getItem().getType() == 2) { // lightŒnƒAƒCƒeƒ€
+			} else if (item.getItem().getType() == 2) { // lightç³»ã‚¢ã‚¤ãƒ†ãƒ 
 				writeH(138);
 				writeC(2);
-				name.append(": $231 "); // c‚è‚Ì”R—¿
+				name.append(": $231 "); // æ®‹ã‚Šã®ç‡ƒæ–™
 				name.append(String.valueOf(item.getRemainingTime()));
 				writeS(name.toString());
 			} else if (item.getItem().getType() == 7) { // food
-				writeH(136); // \f1%0F–• “x%1md‚³%2n
+				writeH(136); // \f1%0ï¼šæº€è…¹åº¦%1ï¼»é‡ã•%2ï¼½
 				writeC(3);
 				writeS(name.toString());
 				writeS(String.valueOf(item.getItem().getFoodVolume()));
 			} else {
-				writeH(138); // \f1%0Fmd‚³%1n
+				writeH(138); // \f1%0ï¼šï¼»é‡ã•%1ï¼½
 				writeC(2);
 				writeS(name.toString());
 			}

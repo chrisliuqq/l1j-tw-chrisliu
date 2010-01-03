@@ -51,12 +51,12 @@ public class S_Letter extends ServerBasePacket {
  * .prepareStatement("SELECT * FROM letter WHERE item_object_id=?");
  * pstm.setInt(1, item.getId()); rs = pstm.executeQuery(); while (rs.next()) {
  * writeC(Opcodes.S_OPCODE_LETTER); writeD(item.getId()); if (item.get_gfxid() ==
- * 465) { // ŠJ‚­‘O writeH(466); // ŠJ‚¢‚½Œã } else if (item.get_gfxid() == 606) {
+ * 465) { // é–‹ãå‰ writeH(466); // é–‹ã„ãŸå¾Œ } else if (item.get_gfxid() == 606) {
  * writeH(605); } else if (item.get_gfxid() == 616) { writeH(615); } else {
  * writeH(item.get_gfxid()); } writeH(rs.getInt(2)); writeS(rs.getString(3));
  * writeS(rs.getString(4)); writeByte(rs.getBytes(7));
- * writeByte(rs.getBytes(8)); writeC(rs.getInt(6)); // ƒeƒ“ƒvƒŒ
- * writeS(rs.getString(5)); // “ú•t } } catch (SQLException e) {
+ * writeByte(rs.getBytes(8)); writeC(rs.getInt(6)); // ãƒ†ãƒ³ãƒ—ãƒ¬
+ * writeS(rs.getString(5)); // æ—¥ä»˜ } } catch (SQLException e) {
  * _log.log(Level.SEVERE, e.getLocalizedMessage(), e); } finally {
  * SQLUtil.close(rs); SQLUtil.close(pstm); SQLUtil.close(con); }
  */

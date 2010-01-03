@@ -50,8 +50,8 @@ public class L1EffectInstance extends L1NpcInstance {
 
 	private ScheduledFuture<?> _effectFuture;
 	private static final int FW_DAMAGE_INTERVAL = 1000;
-	private static final int CUBE_INTERVAL = 500; // ƒLƒ…[ƒu”ÍˆÍ“à‚É‹‚éƒLƒƒƒ‰ƒNƒ^[‚ğƒ`ƒFƒbƒN‚·‚éŠÔŠu
-	private static final int CUBE_TIME = 8000; // Œø‰ÊŠÔ8•b?
+	private static final int CUBE_INTERVAL = 500; // ã‚­ãƒ¥ãƒ¼ãƒ–ç¯„å›²å†…ã«å±…ã‚‹ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹é–“éš”
+	private static final int CUBE_TIME = 8000; // åŠ¹æœæ™‚é–“8ç§’?
 
 	public L1EffectInstance(L1Npc template) {
 		super(template);
@@ -60,10 +60,10 @@ public class L1EffectInstance extends L1NpcInstance {
 		if (npcId == 81157) { // FW
 			_effectFuture = GeneralThreadPool.getInstance().schedule(
 					new FwDamageTimer(this), 0);
-		} else if (npcId == 80149 // ƒLƒ…[ƒu[ƒCƒOƒjƒVƒ‡ƒ“]
-				|| npcId == 80150 // ƒLƒ…[ƒu[ƒNƒGƒCƒN]
-				|| npcId == 80151 // ƒLƒ…[ƒu[ƒVƒ‡ƒbƒN]
-				|| npcId == 80152) { // ƒLƒ…[ƒu[ƒoƒ‰ƒ“ƒX]
+		} else if (npcId == 80149 // ã‚­ãƒ¥ãƒ¼ãƒ–[ã‚¤ã‚°ãƒ‹ã‚·ãƒ§ãƒ³]
+				|| npcId == 80150 // ã‚­ãƒ¥ãƒ¼ãƒ–[ã‚¯ã‚¨ã‚¤ã‚¯]
+				|| npcId == 80151 // ã‚­ãƒ¥ãƒ¼ãƒ–[ã‚·ãƒ§ãƒƒã‚¯]
+				|| npcId == 80152) { // ã‚­ãƒ¥ãƒ¼ãƒ–[ãƒãƒ©ãƒ³ã‚¹]
 			_effectFuture = GeneralThreadPool.getInstance().schedule(
 					new CubeTimer(this), 0);
 		}
@@ -171,7 +171,7 @@ public class L1EffectInstance extends L1NpcInstance {
 							if (pc.isDead()) {
 								continue;
 							}
-							L1PcInstance user = getUser(); // Cubeg—pÒ
+							L1PcInstance user = getUser(); // Cubeä½¿ç”¨è€…
 							if (pc.getId() == user.getId()) {
 								cubeToAlly(pc, _effect);
 								continue;
@@ -186,7 +186,7 @@ public class L1EffectInstance extends L1NpcInstance {
 								cubeToAlly(pc, _effect);
 								continue;
 							}
-							if (pc.getZoneType() == 1) { // ƒZ[ƒtƒeƒB[ƒ][ƒ“‚Å‚Íí‘ˆ’†‚ğœ‚«“G‚É‚Í–³Œø
+							if (pc.getZoneType() == 1) { // ã‚»ãƒ¼ãƒ•ãƒ†ã‚£ãƒ¼ã‚¾ãƒ¼ãƒ³ã§ã¯æˆ¦äº‰ä¸­ã‚’é™¤ãæ•µã«ã¯ç„¡åŠ¹
 								boolean isNowWar = false;
 								int castleId = L1CastleLocation
 										.getCastleIdByArea(pc);
@@ -223,7 +223,7 @@ public class L1EffectInstance extends L1NpcInstance {
 				.getCastGfx();
 		L1PcInstance pc = null;
 
-		if (npcId == 80149) { // ƒLƒ…[ƒu[ƒCƒOƒjƒVƒ‡ƒ“]
+		if (npcId == 80149) { // ã‚­ãƒ¥ãƒ¼ãƒ–[ã‚¤ã‚°ãƒ‹ã‚·ãƒ§ãƒ³]
 			if (!cha.hasSkillEffect(STATUS_CUBE_IGNITION_TO_ALLY)) {
 				cha.addFire(30);
 				if (cha instanceof L1PcInstance) {
@@ -234,7 +234,7 @@ public class L1EffectInstance extends L1NpcInstance {
 				cha.broadcastPacket(new S_SkillSound(cha.getId(), castGfx));
 				cha.setSkillEffect(STATUS_CUBE_IGNITION_TO_ALLY, CUBE_TIME);
 			}
-		} else if (npcId == 80150) { // ƒLƒ…[ƒu[ƒNƒGƒCƒN]
+		} else if (npcId == 80150) { // ã‚­ãƒ¥ãƒ¼ãƒ–[ã‚¯ã‚¨ã‚¤ã‚¯]
 			if (!cha.hasSkillEffect(STATUS_CUBE_QUAKE_TO_ALLY)) {
 				cha.addEarth(30);
 				if (cha instanceof L1PcInstance) {
@@ -245,7 +245,7 @@ public class L1EffectInstance extends L1NpcInstance {
 				cha.broadcastPacket(new S_SkillSound(cha.getId(), castGfx));
 				cha.setSkillEffect(STATUS_CUBE_QUAKE_TO_ALLY, CUBE_TIME);
 			}
-		} else if (npcId == 80151) { // ƒLƒ…[ƒu[ƒVƒ‡ƒbƒN]
+		} else if (npcId == 80151) { // ã‚­ãƒ¥ãƒ¼ãƒ–[ã‚·ãƒ§ãƒƒã‚¯]
 			if (!cha.hasSkillEffect(STATUS_CUBE_SHOCK_TO_ALLY)) {
 				cha.addWind(30);
 				if (cha instanceof L1PcInstance) {
@@ -256,7 +256,7 @@ public class L1EffectInstance extends L1NpcInstance {
 				cha.broadcastPacket(new S_SkillSound(cha.getId(), castGfx));
 				cha.setSkillEffect(STATUS_CUBE_SHOCK_TO_ALLY, CUBE_TIME);
 			}
-		} else if (npcId == 80152) { // ƒLƒ…[ƒu[ƒoƒ‰ƒ“ƒX]
+		} else if (npcId == 80152) { // ã‚­ãƒ¥ãƒ¼ãƒ–[ãƒãƒ©ãƒ³ã‚¹]
 			if (!cha.hasSkillEffect(STATUS_CUBE_BALANCE)) {
 				if (cha instanceof L1PcInstance) {
 					pc = (L1PcInstance) cha;
@@ -275,7 +275,7 @@ public class L1EffectInstance extends L1NpcInstance {
 		int castGfx2 = SkillsTable.getInstance().getTemplate(getSkillId())
 				.getCastGfx2();
 		L1PcInstance pc = null;
-		if (npcId == 80149) { // ƒLƒ…[ƒu[ƒCƒOƒjƒVƒ‡ƒ“]
+		if (npcId == 80149) { // ã‚­ãƒ¥ãƒ¼ãƒ–[ã‚¤ã‚°ãƒ‹ã‚·ãƒ§ãƒ³]
 			if (!cha.hasSkillEffect(STATUS_CUBE_IGNITION_TO_ENEMY)) {
 				if (cha instanceof L1PcInstance) {
 					pc = (L1PcInstance) cha;
@@ -287,7 +287,7 @@ public class L1EffectInstance extends L1NpcInstance {
 						STATUS_CUBE_IGNITION_TO_ENEMY);
 				cube.begin();
 			}
-		} else if (npcId == 80150) { // ƒLƒ…[ƒu[ƒNƒGƒCƒN]
+		} else if (npcId == 80150) { // ã‚­ãƒ¥ãƒ¼ãƒ–[ã‚¯ã‚¨ã‚¤ã‚¯]
 			if (!cha.hasSkillEffect(STATUS_CUBE_QUAKE_TO_ENEMY)) {
 				if (cha instanceof L1PcInstance) {
 					pc = (L1PcInstance) cha;
@@ -299,7 +299,7 @@ public class L1EffectInstance extends L1NpcInstance {
 						STATUS_CUBE_QUAKE_TO_ENEMY);
 				cube.begin();
 			}
-		} else if (npcId == 80151) { // ƒLƒ…[ƒu[ƒVƒ‡ƒbƒN]
+		} else if (npcId == 80151) { // ã‚­ãƒ¥ãƒ¼ãƒ–[ã‚·ãƒ§ãƒƒã‚¯]
 			if (!cha.hasSkillEffect(STATUS_CUBE_SHOCK_TO_ENEMY)) {
 				if (cha instanceof L1PcInstance) {
 					pc = (L1PcInstance) cha;
@@ -311,7 +311,7 @@ public class L1EffectInstance extends L1NpcInstance {
 						STATUS_CUBE_SHOCK_TO_ENEMY);
 				cube.begin();
 			}
-		} else if (npcId == 80152) { // ƒLƒ…[ƒu[ƒoƒ‰ƒ“ƒX]
+		} else if (npcId == 80152) { // ã‚­ãƒ¥ãƒ¼ãƒ–[ãƒãƒ©ãƒ³ã‚¹]
 			if (!cha.hasSkillEffect(STATUS_CUBE_BALANCE)) {
 				if (cha instanceof L1PcInstance) {
 					pc = (L1PcInstance) cha;

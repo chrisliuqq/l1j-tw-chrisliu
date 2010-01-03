@@ -29,7 +29,7 @@ public abstract class L1ArmorSet {
 	private static ArrayList<L1ArmorSet> _allSet = new ArrayList<L1ArmorSet>();
 
 	/*
-	 * ‚±‚±‚Å‰Šú‰»‚µ‚Ä‚µ‚Ü‚¤‚Ì‚Í‚¢‚©‚ª‚È‚à‚Ì‚©EEE”ü‚µ‚­‚È‚¢‹C‚ª‚·‚é
+	 * ã“ã“ã§åˆæœŸåŒ–ã—ã¦ã—ã¾ã†ã®ã¯ã„ã‹ãŒãªã‚‚ã®ã‹ãƒ»ãƒ»ãƒ»ç¾ã—ããªã„æ°—ãŒã™ã‚‹
 	 */
 	static {
 		L1ArmorSetImpl impl;
@@ -132,7 +132,7 @@ class L1ArmorSetImpl extends L1ArmorSet {
 		L1ItemInstance armor = null;
 		boolean isSetContainRing = false;
 
-		// ƒZƒbƒg‘•”õ‚ÉƒŠƒ“ƒO‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é‚©’²‚×‚é
+		// ã‚»ãƒƒãƒˆè£…å‚™ã«ãƒªãƒ³ã‚°ãŒå«ã¾ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹
 		for (int id : _ids) {
 			armor = pcInventory.findItemId(id);
 			if (armor.getItem().getType2() == 2
@@ -142,7 +142,7 @@ class L1ArmorSetImpl extends L1ArmorSet {
 			}
 		}
 
-		// ƒŠƒ“ƒO‚ğ2‚Â‘•”õ‚µ‚Ä‚¢‚ÄA‚»‚ê‚ª—¼•ûƒZƒbƒg‘•”õ‚©’²‚×‚é
+		// ãƒªãƒ³ã‚°ã‚’2ã¤è£…å‚™ã—ã¦ã„ã¦ã€ãã‚ŒãŒä¸¡æ–¹ã‚»ãƒƒãƒˆè£…å‚™ã‹èª¿ã¹ã‚‹
 		if (armor != null && isSetContainRing) {
 			int itemId = armor.getItem().getItemId();
 			if (pcInventory.getTypeEquipped(2, 9) == 2) {
@@ -280,7 +280,7 @@ class PolymorphEffect implements L1ArmorSetEffect {
 		if (awakeSkillId == AWAKEN_ANTHARAS
 				|| awakeSkillId == AWAKEN_FAFURION
 				|| awakeSkillId == AWAKEN_VALAKAS) {
-			pc.sendPackets(new S_ServerMessage(1384)); // Œ»İ‚Ìó‘Ô‚Å‚Í•Ïg‚Å‚«‚Ü‚¹‚ñB
+			pc.sendPackets(new S_ServerMessage(1384)); // ç¾åœ¨ã®çŠ¶æ…‹ã§ã¯å¤‰èº«ã§ãã¾ã›ã‚“ã€‚
 			return;
 		}
 		if (_gfxId == 6080 || _gfxId == 6094) {
@@ -289,7 +289,7 @@ class PolymorphEffect implements L1ArmorSetEffect {
 			} else {
 				_gfxId = 6080;
 			}
-			if (!isRemainderOfCharge(pc)) { // cƒ`ƒƒ[ƒW”‚È‚µ
+			if (!isRemainderOfCharge(pc)) { // æ®‹ãƒãƒ£ãƒ¼ã‚¸æ•°ãªã—
 				return;
 			}
 		}
@@ -302,7 +302,7 @@ class PolymorphEffect implements L1ArmorSetEffect {
 		if (awakeSkillId == AWAKEN_ANTHARAS
 				|| awakeSkillId == AWAKEN_FAFURION
 				|| awakeSkillId == AWAKEN_VALAKAS) {
-			pc.sendPackets(new S_ServerMessage(1384)); // Œ»İ‚Ìó‘Ô‚Å‚Í•Ïg‚Å‚«‚Ü‚¹‚ñB
+			pc.sendPackets(new S_ServerMessage(1384)); // ç¾åœ¨ã®çŠ¶æ…‹ã§ã¯å¤‰èº«ã§ãã¾ã›ã‚“ã€‚
 			return;
 		}
 		if (_gfxId == 6080) {

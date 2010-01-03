@@ -403,12 +403,12 @@ public final class Config {
 
 	public static final String CHAR_SETTINGS_CONFIG_FILE = "./config/charsettings.properties";
 
-	/** ‚»‚Ì‘¼‚Ìİ’è */
+	/** ãã®ä»–ã®è¨­å®š */
 
-	// NPC‚©‚ç‹z‚¦‚éMPŒÀŠE
+	// NPCã‹ã‚‰å¸ãˆã‚‹MPé™ç•Œ
 	public static final int MANA_DRAIN_LIMIT_PER_NPC = 40;
 
-	// ˆê‰ñ‚ÌUŒ‚‚Å‹z‚¦‚éMPŒÀŠE(SOMA|“SSOMj
+	// ä¸€å›ã®æ”»æ’ƒã§å¸ãˆã‚‹MPé™ç•Œ(SOMã€é‹¼é‰„SOMï¼‰
 	public static final int MANA_DRAIN_LIMIT_PER_SOM_ATTACK = 9;
 
 	public static void load() {
@@ -607,9 +607,9 @@ public final class Config {
 			ALT_GMSHOP = Boolean.parseBoolean(altSettings.getProperty("GMshop",
 					"false"));
 			ALT_GMSHOP_MIN_ID = Integer.parseInt(altSettings.getProperty(
-					"GMshopMinID", "0xffffffff")); // æ“¾¸”s‚Í–³Œø
+					"GMshopMinID", "0xffffffff")); // å–å¾—å¤±æ•—æ™‚ã¯ç„¡åŠ¹
 			ALT_GMSHOP_MAX_ID = Integer.parseInt(altSettings.getProperty(
-					"GMshopMaxID", "0xffffffff")); // æ“¾¸”s‚Í–³Œø
+					"GMshopMaxID", "0xffffffff")); // å–å¾—å¤±æ•—æ™‚ã¯ç„¡åŠ¹
 			ALT_HALLOWEENIVENT = Boolean.parseBoolean(altSettings.getProperty(
 					"HalloweenIvent", "true"));
 			ALT_JPPRIVILEGED = Boolean.parseBoolean(altSettings.getProperty(
@@ -826,11 +826,11 @@ public final class Config {
 
 	private static void validate() {
 		if (!IntRange.includes(Config.ALT_ITEM_DELETION_RANGE, 0, 5)) {
-			throw new IllegalStateException("ItemDeletionRange‚Ì’l‚ªİ’è‰Â”\”ÍˆÍŠO‚Å‚·B");
+			throw new IllegalStateException("ItemDeletionRangeã®å€¤ãŒè¨­å®šå¯èƒ½ç¯„å›²å¤–ã§ã™ã€‚");
 		}
 
 		if (!IntRange.includes(Config.ALT_ITEM_DELETION_TIME, 1, 35791)) {
-			throw new IllegalStateException("ItemDeletionTime‚Ì’l‚ªİ’è‰Â”\”ÍˆÍŠO‚Å‚·B");
+			throw new IllegalStateException("ItemDeletionTimeã®å€¤ãŒè¨­å®šå¯èƒ½ç¯„å›²å¤–ã§ã™ã€‚");
 		}
 	}
 

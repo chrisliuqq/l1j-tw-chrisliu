@@ -73,22 +73,22 @@ public class S_UseAttackSkill extends ServerBasePacket {
 	private void buildPacket(L1Character cha, int targetobj, int spellgfx,
 			int x, int y, int actionId, int isHit, boolean withCastMotion) {
 		if (cha instanceof L1PcInstance) {
-			// ƒVƒƒƒhƒEŒn•Ïg’†‚ÉUŒ‚–‚–@‚ğg—p‚·‚é‚ÆƒNƒ‰ƒCƒAƒ“ƒg‚ª—‚¿‚é‚½‚ßb’è‘Î‰
+			// ã‚·ãƒ£ãƒ‰ã‚¦ç³»å¤‰èº«ä¸­ã«æ”»æ’ƒé­”æ³•ã‚’ä½¿ç”¨ã™ã‚‹ã¨ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒè½ã¡ã‚‹ãŸã‚æš«å®šå¯¾å¿œ
 			if (cha.hasSkillEffect(SHAPE_CHANGE)
 					&& actionId == ActionCodes.ACTION_SkillAttack) {
 				int tempchargfx = cha.getTempCharGfx();
 				if (tempchargfx == 5727 || tempchargfx == 5730) {
 					actionId = ActionCodes.ACTION_SkillBuff;
 				} else if (tempchargfx == 5733 || tempchargfx == 5736) {
-					// •â•–‚–@ƒ‚[ƒVƒ‡ƒ“‚É‚·‚é‚ÆUŒ‚–‚–@‚ÌƒOƒ‰ƒtƒBƒbƒN‚Æ
-					// ‘ÎÛ‚Ö‚Ìƒ_ƒ[ƒWƒ‚[ƒVƒ‡ƒ“‚ª”­¶‚µ‚È‚­‚È‚é‚½‚ß
-					// UŒ‚ƒ‚[ƒVƒ‡ƒ“‚Å‘ã—p
+					// è£œåŠ©é­”æ³•ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã«ã™ã‚‹ã¨æ”»æ’ƒé­”æ³•ã®ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã¨
+					// å¯¾è±¡ã¸ã®ãƒ€ãƒ¡ãƒ¼ã‚¸ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãŒç™ºç”Ÿã—ãªããªã‚‹ãŸã‚
+					// æ”»æ’ƒãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã§ä»£ç”¨
 					actionId = ActionCodes.ACTION_Attack;
 				}
 			}
 		}
-		// ‰Î‚Ì¸‚Ìå‚ªƒfƒtƒHƒ‹ƒg‚¾‚ÆUŒ‚–‚–@‚ÌƒOƒ‰ƒtƒBƒbƒN‚ª”­¶‚µ‚È‚¢‚Ì‚Å‹­§’u‚«Š·‚¦
-		// ‚Ç‚±‚©•Ê‚ÅŠÇ—‚µ‚½•û‚ª—Ç‚¢H
+		// ç«ã®ç²¾ã®ä¸»ãŒãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã ã¨æ”»æ’ƒé­”æ³•ã®ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ãŒç™ºç”Ÿã—ãªã„ã®ã§å¼·åˆ¶ç½®ãæ›ãˆ
+		// ã©ã“ã‹åˆ¥ã§ç®¡ç†ã—ãŸæ–¹ãŒè‰¯ã„ï¼Ÿ
 		if (cha.getTempCharGfx() == 4013) {
 			actionId = ActionCodes.ACTION_Attack;
 		}
@@ -101,9 +101,9 @@ public class S_UseAttackSkill extends ServerBasePacket {
 		writeD(targetobj);
 		writeC(isHit);
 		writeC(newheading);
-		writeD(_sequentialNumber.incrementAndGet()); // ”Ô†‚ªƒ_ƒu‚ç‚È‚¢‚æ‚¤‚É‘—‚éB
+		writeD(_sequentialNumber.incrementAndGet()); // ç•ªå·ãŒãƒ€ãƒ–ã‚‰ãªã„ã‚ˆã†ã«é€ã‚‹ã€‚
 		writeH(spellgfx);
-		writeC(6); // ƒ^ƒPƒbƒWƒ]ƒ“ƒO:6,”ÍˆÍ&ƒ^ƒPƒbƒWƒ]ƒ“ƒO:8,”ÍˆÍ:0
+		writeC(6); // ã‚¿ã‚±ãƒƒã‚¸ã‚¾ãƒ³ã‚°:6,ç¯„å›²&ã‚¿ã‚±ãƒƒã‚¸ã‚¾ãƒ³ã‚°:8,ç¯„å›²:0
 		writeH(cha.getX());
 		writeH(cha.getY());
 		writeH(x);

@@ -28,45 +28,45 @@ public class S_Paralysis extends ServerBasePacket {
 
 	public S_Paralysis(int type, boolean flag) {
 		writeC(Opcodes.S_OPCODE_PARALYSIS);
-		if (type == TYPE_PARALYSIS) // ‘Ì‚ªŠ®‘S‚É–ƒáƒ‚µ‚Ü‚µ‚½B
+		if (type == TYPE_PARALYSIS) // ä½“ãŒå®Œå…¨ã«éº»ç—ºã—ã¾ã—ãŸã€‚
 		{
 			if (flag == true) {
 				writeC(2);
 			} else {
 				writeC(3);
 			}
-		} else if (type == TYPE_PARALYSIS2) // ‘Ì‚ªŠ®‘S‚É–ƒáƒ‚µ‚Ü‚µ‚½B
+		} else if (type == TYPE_PARALYSIS2) // ä½“ãŒå®Œå…¨ã«éº»ç—ºã—ã¾ã—ãŸã€‚
 		{
 			if (flag == true) {
 				writeC(4);
 			} else {
 				writeC(5);
 			}
-		} else if (type == TYPE_TELEPORT_UNLOCK) // ƒeƒŒƒ|[ƒg‘Ò‚¿ó‘Ô‚Ì‰ğœ
+		} else if (type == TYPE_TELEPORT_UNLOCK) // ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå¾…ã¡çŠ¶æ…‹ã®è§£é™¤
 		{
 			writeC(7);
-		} else if (type == TYPE_SLEEP) // ‹­—Í‚È‡–‚‚ªP‚Á‚Ä‚«‚ÄAQ‚Ä‚µ‚Ü‚¢‚Ü‚µ‚½B
+		} else if (type == TYPE_SLEEP) // å¼·åŠ›ãªç¡é­”ãŒè¥²ã£ã¦ãã¦ã€å¯ã¦ã—ã¾ã„ã¾ã—ãŸã€‚
 		{
 			if (flag == true) {
 				writeC(10);
 			} else {
 				writeC(11);
 			}
-		} else if (type == TYPE_FREEZE) // ‘Ì‚ª“€‚è‚Ü‚µ‚½B
+		} else if (type == TYPE_FREEZE) // ä½“ãŒå‡ã‚Šã¾ã—ãŸã€‚
 		{
 			if (flag == true) {
 				writeC(12);
 			} else {
 				writeC(13);
 			}
-		} else if (type == TYPE_STUN) // ƒXƒ^ƒ“ó‘Ô‚Å‚·B
+		} else if (type == TYPE_STUN) // ã‚¹ã‚¿ãƒ³çŠ¶æ…‹ã§ã™ã€‚
 		{
 			if (flag == true) {
 				writeC(22);
 			} else {
 				writeC(23);
 			}
-		} else if (type == TYPE_BIND) // ‘«‚ª”›‚ç‚ê‚½‚æ‚¤‚É“®‚¯‚Ü‚¹‚ñB
+		} else if (type == TYPE_BIND) // è¶³ãŒç¸›ã‚‰ã‚ŒãŸã‚ˆã†ã«å‹•ã‘ã¾ã›ã‚“ã€‚
 		{
 			if (flag == true) {
 				writeC(24);

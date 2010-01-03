@@ -164,7 +164,7 @@ public class MailTable {
 		TimeZone tz = TimeZone.getTimeZone(Config.TIME_ZONE);
 		String date = sdf.format(Calendar.getInstance(tz).getTime());
 
-		// subject‚Æcontent‚Ì‹æØ‚è(0x00 0x00)ˆÊ’u‚ğŒ©‚Â‚¯‚é
+		// subjectã¨contentã®åŒºåˆ‡ã‚Š(0x00 0x00)ä½ç½®ã‚’è¦‹ã¤ã‘ã‚‹
 		int spacePosition1 = 0;
 		int spacePosition2 = 0;
 		for (int i = 0; i < text.length; i += 2) {
@@ -178,7 +178,7 @@ public class MailTable {
 			}
 		}
 
-		// mailƒe[ƒuƒ‹‚É‘‚«‚Ş
+		// mailãƒ†ãƒ¼ãƒ–ãƒ«ã«æ›¸ãè¾¼ã‚€
 		int subjectLength = spacePosition1 + 2;
 		int contentLength = spacePosition2 - spacePosition1;
 		if (contentLength <= 0) {

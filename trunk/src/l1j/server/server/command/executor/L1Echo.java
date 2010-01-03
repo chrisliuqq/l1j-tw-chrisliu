@@ -22,7 +22,7 @@ import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_SystemMessage;
 
 /**
- * “ü—Í‚³‚ê‚½ˆø”‚ğ‚»‚Ì‚Ü‚Ü•Ô‚·ƒRƒ}ƒ“ƒhB ƒeƒXƒgAƒfƒoƒbƒO‹y‚ÑƒRƒ}ƒ“ƒhÀ‘•ƒTƒ“ƒvƒ‹—pB
+ * å…¥åŠ›ã•ã‚ŒãŸå¼•æ•°ã‚’ãã®ã¾ã¾è¿”ã™ã‚³ãƒãƒ³ãƒ‰ã€‚ ãƒ†ã‚¹ãƒˆã€ãƒ‡ãƒãƒƒã‚°åŠã³ã‚³ãƒãƒ³ãƒ‰å®Ÿè£…ã‚µãƒ³ãƒ—ãƒ«ç”¨ã€‚
  */
 public class L1Echo implements L1CommandExecutor {
 	private L1Echo() {

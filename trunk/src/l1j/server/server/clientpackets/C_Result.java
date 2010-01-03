@@ -65,7 +65,7 @@ public class C_Result extends ClientBasePacket {
 		if (findObject != null) {
 			int diffLocX = Math.abs(pc.getX() - findObject.getX());
 			int diffLocY = Math.abs(pc.getY() - findObject.getY());
-			// 3ƒ}ƒXˆÈã—£‚ê‚½ê‡ƒAƒNƒVƒ‡ƒ“–³Œø
+			// 3ãƒã‚¹ä»¥ä¸Šé›¢ã‚ŒãŸå ´åˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ç„¡åŠ¹
 			if (diffLocX > 3 || diffLocY > 3) {
 				return;
 			}
@@ -79,7 +79,7 @@ public class C_Result extends ClientBasePacket {
 		}
 
 		if (resultType == 0 && size != 0
-				&& npcImpl.equalsIgnoreCase("L1Merchant")) { // ƒAƒCƒeƒ€w“ü
+				&& npcImpl.equalsIgnoreCase("L1Merchant")) { // ã‚¢ã‚¤ãƒ†ãƒ è³¼å…¥
 			L1Shop shop = ShopTable.getInstance().get(npcId);
 			L1ShopBuyOrderList orderList = shop.newBuyOrderList();
 			for (int i = 0; i < size; i++) {
@@ -87,7 +87,7 @@ public class C_Result extends ClientBasePacket {
 			}
 			shop.sellItems(pc, orderList);
 		} else if (resultType == 1 && size != 0
-				&& npcImpl.equalsIgnoreCase("L1Merchant")) { // ƒAƒCƒeƒ€”„‹p
+				&& npcImpl.equalsIgnoreCase("L1Merchant")) { // ã‚¢ã‚¤ãƒ†ãƒ å£²å´
 			L1Shop shop = ShopTable.getInstance().get(npcId);
 			L1ShopSellOrderList orderList = shop.newSellOrderList(pc);
 			for (int i = 0; i < size; i++) {
@@ -95,7 +95,7 @@ public class C_Result extends ClientBasePacket {
 			}
 			shop.buyItems(orderList);
 		} else if (resultType == 2 && size != 0
-				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // ©•ª‚Ì‘qŒÉ‚ÉŠi”[
+				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // è‡ªåˆ†ã®å€‰åº«ã«æ ¼ç´
 			int objectId, count;
 			for (int i = 0; i < size; i++) {
 				tradable = true;
@@ -106,7 +106,7 @@ public class C_Result extends ClientBasePacket {
 				if (!item.getItem().isTradable()) {
 					tradable = false;
 					pc.sendPackets(new S_ServerMessage(210, item.getItem()
-							.getName())); // \f1%0‚ÍÌ‚Ä‚½‚è‚Ü‚½‚Í‘¼l‚Éæ¨‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+							.getName())); // \f1%0ã¯æ¨ã¦ãŸã‚Šã¾ãŸã¯ä»–äººã«è®“ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 				}
 				Object[] petlist = pc.getPetList().values().toArray();
 				for (Object petObject : petlist) {
@@ -114,7 +114,7 @@ public class C_Result extends ClientBasePacket {
 						L1PetInstance pet = (L1PetInstance) petObject;
 						if (item.getId() == pet.getItemObjId()) {
 							tradable = false;
-							// \f1%0‚ÍÌ‚Ä‚½‚è‚Ü‚½‚Í‘¼l‚Éæ¨‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+							// \f1%0ã¯æ¨ã¦ãŸã‚Šã¾ãŸã¯ä»–äººã«è®“ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 							pc.sendPackets(new S_ServerMessage(210, item
 									.getItem().getName()));
 							break;
@@ -127,7 +127,7 @@ public class C_Result extends ClientBasePacket {
 						L1DollInstance doll = (L1DollInstance) dollObject;
 						if (item.getId() == doll.getItemObjId()) {
 							tradable = false;
-							pc.sendPackets(new S_ServerMessage(1181)); // ŠY“–‚Ìƒ}ƒWƒbƒNƒh[ƒ‹‚ÍŒ»İg—p’†‚Å‚·B
+							pc.sendPackets(new S_ServerMessage(1181)); // è©²å½“ã®ãƒã‚¸ãƒƒã‚¯ãƒ‰ãƒ¼ãƒ«ã¯ç¾åœ¨ä½¿ç”¨ä¸­ã§ã™ã€‚
 							break;
 						}
 					}
@@ -135,7 +135,7 @@ public class C_Result extends ClientBasePacket {
 				if (pc.getDwarfInventory().checkAddItemToWarehouse(item, count,
 						L1Inventory.WAREHOUSE_TYPE_PERSONAL) == L1Inventory
 								.SIZE_OVER) {
-					pc.sendPackets(new S_ServerMessage(75)); // \f1‚±‚êˆÈã‚à‚Ì‚ğ’u‚­êŠ‚ª‚ ‚è‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(75)); // \f1ã“ã‚Œä»¥ä¸Šã‚‚ã®ã‚’ç½®ãå ´æ‰€ãŒã‚ã‚Šã¾ã›ã‚“ã€‚
 					break;
 				}
 				if (tradable) {
@@ -145,31 +145,31 @@ public class C_Result extends ClientBasePacket {
 				}
 			}
 		} else if (resultType == 3 && size != 0
-				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // ©•ª‚Ì‘qŒÉ‚©‚çæ‚èo‚µ
+				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // è‡ªåˆ†ã®å€‰åº«ã‹ã‚‰å–ã‚Šå‡ºã—
 			int objectId, count;
 			L1ItemInstance item;
 			for (int i = 0; i < size; i++) {
 				objectId = readD();
 				count = readD();
 				item = pc.getDwarfInventory().getItem(objectId);
-				if (pc.getInventory().checkAddItem(item, count) == L1Inventory.OK) // —e—Êd—ÊŠm”F‹y‚ÑƒƒbƒZ[ƒW‘—M
+				if (pc.getInventory().checkAddItem(item, count) == L1Inventory.OK) // å®¹é‡é‡é‡ç¢ºèªåŠã³ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡
 				{
 					if (pc.getInventory().consumeItem(L1ItemId.ADENA, 30)) {
 						pc.getDwarfInventory().tradeItem(item, count,
 								pc.getInventory());
 					} else {
-						pc.sendPackets(new S_ServerMessage(189)); // \f1ƒAƒfƒi‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·B
+						pc.sendPackets(new S_ServerMessage(189)); // \f1ã‚¢ãƒ‡ãƒŠãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚
 						break;
 					}
 				} else {
-					pc.sendPackets(new S_ServerMessage(270)); // \f1‚Á‚Ä‚¢‚é‚à‚Ì‚ªd‚­‚Äæˆø‚Å‚«‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(270)); // \f1æŒã£ã¦ã„ã‚‹ã‚‚ã®ãŒé‡ãã¦å–å¼•ã§ãã¾ã›ã‚“ã€‚
 					break;
 				}
 			}
 		} else if (resultType == 4 && size != 0
-				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // ƒNƒ‰ƒ“‘qŒÉ‚ÉŠi”[
+				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // ã‚¯ãƒ©ãƒ³å€‰åº«ã«æ ¼ç´
 			int objectId, count;
-			if (pc.getClanid() != 0) { // ƒNƒ‰ƒ“Š‘®
+			if (pc.getClanid() != 0) { // ã‚¯ãƒ©ãƒ³æ‰€å±
 				for (int i = 0; i < size; i++) {
 					tradable = true;
 					objectId = readD();
@@ -182,12 +182,12 @@ public class C_Result extends ClientBasePacket {
 						if (!item.getItem().isTradable()) {
 							tradable = false;
 							pc.sendPackets(new S_ServerMessage(210, item
-									.getItem().getName())); // \f1%0‚ÍÌ‚Ä‚½‚è‚Ü‚½‚Í‘¼l‚Éæ¨‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+									.getItem().getName())); // \f1%0ã¯æ¨ã¦ãŸã‚Šã¾ãŸã¯ä»–äººã«è®“ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 						}
-						if (item.getBless() >= 128) { // ••ˆó‚³‚ê‚½‘•”õ
+						if (item.getBless() >= 128) { // å°å°ã•ã‚ŒãŸè£…å‚™
 							tradable = false;
 							pc.sendPackets(new S_ServerMessage(210, item
-									.getItem().getName())); // \f1%0‚ÍÌ‚Ä‚½‚è‚Ü‚½‚Í‘¼l‚Éæ¨‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+									.getItem().getName())); // \f1%0ã¯æ¨ã¦ãŸã‚Šã¾ãŸã¯ä»–äººã«è®“ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 						}
 						Object[] petlist = pc.getPetList().values().toArray();
 						for (Object petObject : petlist) {
@@ -195,7 +195,7 @@ public class C_Result extends ClientBasePacket {
 								L1PetInstance pet = (L1PetInstance) petObject;
 								if (item.getId() == pet.getItemObjId()) {
 									tradable = false;
-									// \f1%0‚ÍÌ‚Ä‚½‚è‚Ü‚½‚Í‘¼l‚Éæ¨‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+									// \f1%0ã¯æ¨ã¦ãŸã‚Šã¾ãŸã¯ä»–äººã«è®“ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 									pc.sendPackets(new S_ServerMessage(210,
 											item.getItem().getName()));
 									break;
@@ -208,7 +208,7 @@ public class C_Result extends ClientBasePacket {
 								L1DollInstance doll = (L1DollInstance) dollObject;
 								if (item.getId() == doll.getItemObjId()) {
 									tradable = false;
-									pc.sendPackets(new S_ServerMessage(1181)); // ŠY“–‚Ìƒ}ƒWƒbƒNƒh[ƒ‹‚ÍŒ»İg—p’†‚Å‚·B
+									pc.sendPackets(new S_ServerMessage(1181)); // è©²å½“ã®ãƒã‚¸ãƒƒã‚¯ãƒ‰ãƒ¼ãƒ«ã¯ç¾åœ¨ä½¿ç”¨ä¸­ã§ã™ã€‚
 									break;
 								}
 							}
@@ -217,7 +217,7 @@ public class C_Result extends ClientBasePacket {
 								.checkAddItemToWarehouse(item, count,
 										L1Inventory.WAREHOUSE_TYPE_CLAN)
 												== L1Inventory.SIZE_OVER) {
-							pc.sendPackets(new S_ServerMessage(75)); // \f1‚±‚êˆÈã‚à‚Ì‚ğ’u‚­êŠ‚ª‚ ‚è‚Ü‚¹‚ñB
+							pc.sendPackets(new S_ServerMessage(75)); // \f1ã“ã‚Œä»¥ä¸Šã‚‚ã®ã‚’ç½®ãå ´æ‰€ãŒã‚ã‚Šã¾ã›ã‚“ã€‚
 							break;
 						}
 						if (tradable) {
@@ -228,10 +228,10 @@ public class C_Result extends ClientBasePacket {
 					}
 				}
 			} else {
-				pc.sendPackets(new S_ServerMessage(208)); // \f1ŒŒ–¿‘qŒÉ‚ğg—p‚·‚é‚É‚ÍŒŒ–¿‚É‰Á“ü‚µ‚Ä‚¢‚È‚­‚Ä‚Í‚È‚è‚Ü‚¹‚ñB
+				pc.sendPackets(new S_ServerMessage(208)); // \f1è¡€ç›Ÿå€‰åº«ã‚’ä½¿ç”¨ã™ã‚‹ã«ã¯è¡€ç›Ÿã«åŠ å…¥ã—ã¦ã„ãªãã¦ã¯ãªã‚Šã¾ã›ã‚“ã€‚
 			}
 		} else if (resultType == 5 && size != 0
-				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // ƒNƒ‰ƒ“‘qŒÉ‚©‚çæ‚èo‚µ
+				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // ã‚¯ãƒ©ãƒ³å€‰åº«ã‹ã‚‰å–ã‚Šå‡ºã—
 			int objectId, count;
 			L1ItemInstance item;
 
@@ -241,30 +241,30 @@ public class C_Result extends ClientBasePacket {
 					objectId = readD();
 					count = readD();
 					item = clan.getDwarfForClanInventory().getItem(objectId);
-					if (pc.getInventory().checkAddItem(item, count) == L1Inventory.OK) { // —e—Êd—ÊŠm”F‹y‚ÑƒƒbƒZ[ƒW‘—M
+					if (pc.getInventory().checkAddItem(item, count) == L1Inventory.OK) { // å®¹é‡é‡é‡ç¢ºèªåŠã³ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡
 						if (pc.getInventory().consumeItem(L1ItemId.ADENA, 30)) {
 							clan.getDwarfForClanInventory().tradeItem(item,
 									count, pc.getInventory());
 						} else {
-							pc.sendPackets(new S_ServerMessage(189)); // \f1ƒAƒfƒi‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·B
+							pc.sendPackets(new S_ServerMessage(189)); // \f1ã‚¢ãƒ‡ãƒŠãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚
 							break;
 						}
 					} else {
-						pc.sendPackets(new S_ServerMessage(270)); // \f1‚Á‚Ä‚¢‚é‚à‚Ì‚ªd‚­‚Äæˆø‚Å‚«‚Ü‚¹‚ñB
+						pc.sendPackets(new S_ServerMessage(270)); // \f1æŒã£ã¦ã„ã‚‹ã‚‚ã®ãŒé‡ãã¦å–å¼•ã§ãã¾ã›ã‚“ã€‚
 						break;
 					}
 				}
-				clan.setWarehouseUsingChar(0); // ƒNƒ‰ƒ“‘qŒÉ‚ÌƒƒbƒN‚ğ‰ğœ
+				clan.setWarehouseUsingChar(0); // ã‚¯ãƒ©ãƒ³å€‰åº«ã®ãƒ­ãƒƒã‚¯ã‚’è§£é™¤
 			}
 		} else if (resultType == 5 && size == 0
-				&& npcImpl.equalsIgnoreCase("L1Dwarf")) { // ƒNƒ‰ƒ“‘qŒÉ‚©‚çæ‚èo‚µ’†‚ÉCancelA‚Ü‚½‚ÍAESCƒL[
+				&& npcImpl.equalsIgnoreCase("L1Dwarf")) { // ã‚¯ãƒ©ãƒ³å€‰åº«ã‹ã‚‰å–ã‚Šå‡ºã—ä¸­ã«Cancelã€ã¾ãŸã¯ã€ESCã‚­ãƒ¼
 			L1Clan clan = L1World.getInstance().getClan(pc.getClanname());
 			if (clan != null) {
-				clan.setWarehouseUsingChar(0); // ƒNƒ‰ƒ“‘qŒÉ‚ÌƒƒbƒN‚ğ‰ğœ
+				clan.setWarehouseUsingChar(0); // ã‚¯ãƒ©ãƒ³å€‰åº«ã®ãƒ­ãƒƒã‚¯ã‚’è§£é™¤
 			}
 		} else if (resultType == 8 && size != 0
 				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5 && pc
-						.isElf()) { // ©•ª‚ÌƒGƒ‹ƒt‘qŒÉ‚ÉŠi”[
+						.isElf()) { // è‡ªåˆ†ã®ã‚¨ãƒ«ãƒ•å€‰åº«ã«æ ¼ç´
 			int objectId, count;
 			for (int i = 0; i < size; i++) {
 				tradable = true;
@@ -275,7 +275,7 @@ public class C_Result extends ClientBasePacket {
 				if (!item.getItem().isTradable()) {
 					tradable = false;
 					pc.sendPackets(new S_ServerMessage(210, item.getItem()
-							.getName())); // \f1%0‚ÍÌ‚Ä‚½‚è‚Ü‚½‚Í‘¼l‚Éæ¨‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+							.getName())); // \f1%0ã¯æ¨ã¦ãŸã‚Šã¾ãŸã¯ä»–äººã«è®“ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 				}
 				Object[] petlist = pc.getPetList().values().toArray();
 				for (Object petObject : petlist) {
@@ -283,7 +283,7 @@ public class C_Result extends ClientBasePacket {
 						L1PetInstance pet = (L1PetInstance) petObject;
 						if (item.getId() == pet.getItemObjId()) {
 							tradable = false;
-							// \f1%0‚ÍÌ‚Ä‚½‚è‚Ü‚½‚Í‘¼l‚Éæ¨‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB
+							// \f1%0ã¯æ¨ã¦ãŸã‚Šã¾ãŸã¯ä»–äººã«è®“ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚
 							pc.sendPackets(new S_ServerMessage(210, item
 									.getItem().getName()));
 							break;
@@ -296,7 +296,7 @@ public class C_Result extends ClientBasePacket {
 						L1DollInstance doll = (L1DollInstance) dollObject;
 						if (item.getId() == doll.getItemObjId()) {
 							tradable = false;
-							pc.sendPackets(new S_ServerMessage(1181)); // ŠY“–‚Ìƒ}ƒWƒbƒNƒh[ƒ‹‚ÍŒ»İg—p’†‚Å‚·B
+							pc.sendPackets(new S_ServerMessage(1181)); // è©²å½“ã®ãƒã‚¸ãƒƒã‚¯ãƒ‰ãƒ¼ãƒ«ã¯ç¾åœ¨ä½¿ç”¨ä¸­ã§ã™ã€‚
 							break;
 						}
 					}
@@ -304,7 +304,7 @@ public class C_Result extends ClientBasePacket {
 				if (pc.getDwarfForElfInventory().checkAddItemToWarehouse(item,
 						count, L1Inventory.WAREHOUSE_TYPE_PERSONAL) ==
 								L1Inventory.SIZE_OVER) {
-					pc.sendPackets(new S_ServerMessage(75)); // \f1‚±‚êˆÈã‚à‚Ì‚ğ’u‚­êŠ‚ª‚ ‚è‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(75)); // \f1ã“ã‚Œä»¥ä¸Šã‚‚ã®ã‚’ç½®ãå ´æ‰€ãŒã‚ã‚Šã¾ã›ã‚“ã€‚
 					break;
 				}
 				if (tradable) {
@@ -315,7 +315,7 @@ public class C_Result extends ClientBasePacket {
 			}
 		} else if (resultType == 9 && size != 0
 				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5 && pc
-						.isElf()) { // ©•ª‚ÌƒGƒ‹ƒt‘qŒÉ‚©‚çæ‚èo‚µ
+						.isElf()) { // è‡ªåˆ†ã®ã‚¨ãƒ«ãƒ•å€‰åº«ã‹ã‚‰å–ã‚Šå‡ºã—
 			int objectId, count;
 			L1ItemInstance item;
 			for (int i = 0; i < size; i++) {
@@ -323,20 +323,20 @@ public class C_Result extends ClientBasePacket {
 				count = readD();
 				item = pc.getDwarfForElfInventory().getItem(objectId);
 				if (pc.getInventory().checkAddItem(item, count) == L1Inventory
-						.OK) { // —e—Êd—ÊŠm”F‹y‚ÑƒƒbƒZ[ƒW‘—M
-					if (pc.getInventory().consumeItem(40494, 2)) { // ƒ~ƒXƒŠƒ‹
+						.OK) { // å®¹é‡é‡é‡ç¢ºèªåŠã³ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡
+					if (pc.getInventory().consumeItem(40494, 2)) { // ãƒŸã‚¹ãƒªãƒ«
 						pc.getDwarfForElfInventory().tradeItem(item, count,
 								pc.getInventory());
 					} else {
-						pc.sendPackets(new S_ServerMessage(337,"$767")); // \f1%0‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·B
+						pc.sendPackets(new S_ServerMessage(337,"$767")); // \f1%0ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚
 						break;
 					}
 				} else {
-					pc.sendPackets(new S_ServerMessage(270)); // \f1‚Á‚Ä‚¢‚é‚à‚Ì‚ªd‚­‚Äæˆø‚Å‚«‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(270)); // \f1æŒã£ã¦ã„ã‚‹ã‚‚ã®ãŒé‡ãã¦å–å¼•ã§ãã¾ã›ã‚“ã€‚
 					break;
 				}
 			}
-		} else if (resultType == 0 && size != 0 && isPrivateShop) { // ŒÂl¤“X‚©‚çƒAƒCƒeƒ€w“ü
+		} else if (resultType == 0 && size != 0 && isPrivateShop) { // å€‹äººå•†åº—ã‹ã‚‰ã‚¢ã‚¤ãƒ†ãƒ è³¼å…¥
 			int order;
 			int count;
 			int price;
@@ -361,20 +361,20 @@ public class C_Result extends ClientBasePacket {
 			}
 			sellList = targetPc.getSellList();
 			synchronized (sellList) {
-				// ”„‚èØ‚ê‚ª”­¶‚µA‰{——’†‚ÌƒAƒCƒeƒ€”‚ÆƒŠƒXƒg”‚ªˆÙ‚È‚é
+				// å£²ã‚Šåˆ‡ã‚ŒãŒç™ºç”Ÿã—ã€é–²è¦§ä¸­ã®ã‚¢ã‚¤ãƒ†ãƒ æ•°ã¨ãƒªã‚¹ãƒˆæ•°ãŒç•°ãªã‚‹
 				if (pc.getPartnersPrivateShopItemCount() != sellList.size()) {
 					return;
 				}
 				targetPc.setTradingInPrivateShop(true);
 
-				for (int i = 0; i < size; i++) { // w“ü—\’è‚Ì¤•i
+				for (int i = 0; i < size; i++) { // è³¼å…¥äºˆå®šã®å•†å“
 					order = readD();
 					count = readD();
 					pssl = (L1PrivateShopSellList) sellList.get(order);
 					itemObjectId = pssl.getItemObjectId();
 					sellPrice = pssl.getSellPrice();
-					sellTotalCount = pssl.getSellTotalCount(); // ”„‚é—\’è‚ÌŒÂ”
-					sellCount = pssl.getSellCount(); // ”„‚Á‚½—İŒv
+					sellTotalCount = pssl.getSellTotalCount(); // å£²ã‚‹äºˆå®šã®å€‹æ•°
+					sellCount = pssl.getSellCount(); // å£²ã£ãŸç´¯è¨ˆ
 					item = targetPc.getInventory().getItem(itemObjectId);
 					if (item == null) {
 						continue;
@@ -386,10 +386,10 @@ public class C_Result extends ClientBasePacket {
 						continue;
 					}
 
-					if (pc.getInventory().checkAddItem(item, count) == L1Inventory.OK) { // —e—Êd—ÊŠm”F‹y‚ÑƒƒbƒZ[ƒW‘—M
-						for (int j = 0; j < count; j++) { // ƒI[ƒo[ƒtƒ[‚ğƒ`ƒFƒbƒN
+					if (pc.getInventory().checkAddItem(item, count) == L1Inventory.OK) { // å®¹é‡é‡é‡ç¢ºèªåŠã³ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡
+						for (int j = 0; j < count; j++) { // ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ã‚’ãƒã‚§ãƒƒã‚¯
 							if (sellPrice * j > 2000000000) {
-								pc.sendPackets(new S_ServerMessage(904, // ‘”Ì”„‰¿Ši‚Í%dƒAƒfƒi‚ğ’´‰ß‚Å‚«‚Ü‚¹‚ñB
+								pc.sendPackets(new S_ServerMessage(904, // ç·è²©å£²ä¾¡æ ¼ã¯%dã‚¢ãƒ‡ãƒŠã‚’è¶…éã§ãã¾ã›ã‚“ã€‚
 										"2000000000"));
 								targetPc.setTradingInPrivateShop(false);
 								return;
@@ -410,25 +410,25 @@ public class C_Result extends ClientBasePacket {
 								String message = item.getItem().getName()
 										+ " (" + String.valueOf(count) + ")";
 								targetPc.sendPackets(new S_ServerMessage(877, // %1%o
-										// %0‚É”Ì”„‚µ‚Ü‚µ‚½B
+										// %0ã«è²©å£²ã—ã¾ã—ãŸã€‚
 										pc.getName(), message));
 								pssl.setSellCount(count + sellCount);
 								sellList.set(order, pssl);
 								if (pssl.getSellCount() == pssl
-										.getSellTotalCount()) { // ”„‚é—\’è‚ÌŒÂ”‚ğ”„‚Á‚½
+										.getSellTotalCount()) { // å£²ã‚‹äºˆå®šã®å€‹æ•°ã‚’å£²ã£ãŸ
 									isRemoveFromList[order] = true;
 								}
 							}
 						} else {
-							pc.sendPackets(new S_ServerMessage(189)); // \f1ƒAƒfƒi‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·B
+							pc.sendPackets(new S_ServerMessage(189)); // \f1ã‚¢ãƒ‡ãƒŠãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚
 							break;
 						}
 					} else {
-						pc.sendPackets(new S_ServerMessage(270)); // \f1‚Á‚Ä‚¢‚é‚à‚Ì‚ªd‚­‚Äæˆø‚Å‚«‚Ü‚¹‚ñB
+						pc.sendPackets(new S_ServerMessage(270)); // \f1æŒã£ã¦ã„ã‚‹ã‚‚ã®ãŒé‡ãã¦å–å¼•ã§ãã¾ã›ã‚“ã€‚
 						break;
 					}
 				}
-				// ”„‚èØ‚ê‚½ƒAƒCƒeƒ€‚ğƒŠƒXƒg‚Ì––”ö‚©‚çíœ
+				// å£²ã‚Šåˆ‡ã‚ŒãŸã‚¢ã‚¤ãƒ†ãƒ ã‚’ãƒªã‚¹ãƒˆã®æœ«å°¾ã‹ã‚‰å‰Šé™¤
 				for (int i = 7; i >= 0; i--) {
 					if (isRemoveFromList[i]) {
 						sellList.remove(i);
@@ -436,7 +436,7 @@ public class C_Result extends ClientBasePacket {
 				}
 				targetPc.setTradingInPrivateShop(false);
 			}
-		} else if (resultType == 1 && size != 0 && isPrivateShop) { // ŒÂl¤“X‚ÉƒAƒCƒeƒ€”„‹p
+		} else if (resultType == 1 && size != 0 && isPrivateShop) { // å€‹äººå•†åº—ã«ã‚¢ã‚¤ãƒ†ãƒ å£²å´
 			int count;
 			int order;
 			ArrayList buyList;
@@ -472,20 +472,20 @@ public class C_Result extends ClientBasePacket {
 				}
 				psbl = (L1PrivateShopBuyList) buyList.get(order);
 				buyPrice = psbl.getBuyPrice();
-				buyTotalCount = psbl.getBuyTotalCount(); // ”ƒ‚¤—\’è‚ÌŒÂ”
-				buyCount = psbl.getBuyCount(); // ”ƒ‚Á‚½—İŒv
+				buyTotalCount = psbl.getBuyTotalCount(); // è²·ã†äºˆå®šã®å€‹æ•°
+				buyCount = psbl.getBuyCount(); // è²·ã£ãŸç´¯è¨ˆ
 				if (count > buyTotalCount - buyCount) {
 					count = buyTotalCount - buyCount;
 				}
 				if (item.isEquipped()) {
-					pc.sendPackets(new S_ServerMessage(905)); // ‘•”õ‚µ‚Ä‚¢‚éƒAƒCƒeƒ€‚Í”Ì”„‚Å‚«‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(905)); // è£…å‚™ã—ã¦ã„ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã¯è²©å£²ã§ãã¾ã›ã‚“ã€‚
 					continue;
 				}
 
-				if (targetPc.getInventory().checkAddItem(item, count) == L1Inventory.OK) { // —e—Êd—ÊŠm”F‹y‚ÑƒƒbƒZ[ƒW‘—M
-					for (int j = 0; j < count; j++) { // ƒI[ƒo[ƒtƒ[‚ğƒ`ƒFƒbƒN
+				if (targetPc.getInventory().checkAddItem(item, count) == L1Inventory.OK) { // å®¹é‡é‡é‡ç¢ºèªåŠã³ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡
+					for (int j = 0; j < count; j++) { // ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ã‚’ãƒã‚§ãƒƒã‚¯
 						if (buyPrice * j > 2000000000) {
-							targetPc.sendPackets(new S_ServerMessage(904, // ‘”Ì”„‰¿Ši‚Í%dƒAƒfƒi‚ğ’´‰ß‚Å‚«‚Ü‚¹‚ñB
+							targetPc.sendPackets(new S_ServerMessage(904, // ç·è²©å£²ä¾¡æ ¼ã¯%dã‚¢ãƒ‡ãƒŠã‚’è¶…éã§ãã¾ã›ã‚“ã€‚
 									"2000000000"));
 							return;
 						}
@@ -501,20 +501,20 @@ public class C_Result extends ClientBasePacket {
 									targetPc.getInventory());
 							psbl.setBuyCount(count + buyCount);
 							buyList.set(order, psbl);
-							if (psbl.getBuyCount() == psbl.getBuyTotalCount()) { // ”ƒ‚¤—\’è‚ÌŒÂ”‚ğ”ƒ‚Á‚½
+							if (psbl.getBuyCount() == psbl.getBuyTotalCount()) { // è²·ã†äºˆå®šã®å€‹æ•°ã‚’è²·ã£ãŸ
 								isRemoveFromList[order] = true;
 							}
 						}
 					} else {
-						targetPc.sendPackets(new S_ServerMessage(189)); // \f1ƒAƒfƒi‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·B
+						targetPc.sendPackets(new S_ServerMessage(189)); // \f1ã‚¢ãƒ‡ãƒŠãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚
 						break;
 					}
 				} else {
-					pc.sendPackets(new S_ServerMessage(271)); // \f1‘Šè‚ª•¨‚ğ‚¿‚·‚¬‚Ä‚¢‚Äæˆø‚Å‚«‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(271)); // \f1ç›¸æ‰‹ãŒç‰©ã‚’æŒã¡ã™ãã¦ã„ã¦å–å¼•ã§ãã¾ã›ã‚“ã€‚
 					break;
 				}
 			}
-			// ”ƒ‚¢Ø‚Á‚½ƒAƒCƒeƒ€‚ğƒŠƒXƒg‚Ì––”ö‚©‚çíœ
+			// è²·ã„åˆ‡ã£ãŸã‚¢ã‚¤ãƒ†ãƒ ã‚’ãƒªã‚¹ãƒˆã®æœ«å°¾ã‹ã‚‰å‰Šé™¤
 			for (int i = 7; i >= 0; i--) {
 				if (isRemoveFromList[i]) {
 					buyList.remove(i);

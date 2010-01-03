@@ -42,31 +42,31 @@ public class C_Mail extends ClientBasePacket {
 
 	private static Logger _log = Logger.getLogger(C_Mail.class.getName());
 
-	private static int TYPE_NORMAL_MAIL = 0; // ˆê”Ê
-	private static int TYPE_CLAN_MAIL = 1; // ŒŒ–¿
-	private static int TYPE_MAIL_BOX = 2; // •ÛŠÇ” 
+	private static int TYPE_NORMAL_MAIL = 0; // ä¸€èˆ¬
+	private static int TYPE_CLAN_MAIL = 1; // è¡€ç›Ÿ
+	private static int TYPE_MAIL_BOX = 2; // ä¿ç®¡ç®±
 
 	public C_Mail(byte abyte0[], ClientThread client) {
 		super(abyte0);
 		int type = readC();
 		L1PcInstance pc = client.getActiveChar();
 
-		if (type == 0x00 || type == 0x01 || type == 0x02) { // ŠJ‚­
+		if (type == 0x00 || type == 0x01 || type == 0x02) { // é–‹ã
 			pc.sendPackets(new S_Mail(pc.getName(), type));
-		} else if (type == 0x10 || type == 0x11 || type == 0x12) { // “Ç‚Ş
+		} else if (type == 0x10 || type == 0x11 || type == 0x12) { // èª­ã‚€
 			int mailId = readD();
 			L1Mail mail = MailTable.getInstance().getMail(mailId);
 			if (mail.getReadStatus() == 0) {
 				MailTable.getInstance().setReadStatus(mailId);
 			}
 			pc.sendPackets(new S_Mail(mailId, type));
-		} else if (type == 0x20) { // ˆê”Êƒ[ƒ‹‚ğ‘‚­
+		} else if (type == 0x20) { // ä¸€èˆ¬ãƒ¡ãƒ¼ãƒ«ã‚’æ›¸ã
 			int unknow = readH();
 			String receiverName = readS();
 			byte[] text = readByte();
 			L1PcInstance receiver = L1World.getInstance().
 					getPlayer(receiverName);
-			if (receiver != null) { // ƒIƒ“ƒ‰ƒCƒ“’†
+			if (receiver != null) { // ã‚ªãƒ³ãƒ©ã‚¤ãƒ³ä¸­
 				if (getMailSizeByReceiver(receiverName,
 						TYPE_NORMAL_MAIL) >= 20) {
 					pc.sendPackets(new S_Mail(type));
@@ -78,7 +78,7 @@ public class C_Mail extends ClientBasePacket {
 					receiver.sendPackets(new S_Mail(receiverName,
 							TYPE_NORMAL_MAIL));
 				}
-			} else { // ƒIƒtƒ‰ƒCƒ“’†
+			} else { // ã‚ªãƒ•ãƒ©ã‚¤ãƒ³ä¸­
 				try {
 					L1PcInstance restorePc = CharacterTable.getInstance()
 							.restoreCharacter(receiverName);
@@ -91,13 +91,13 @@ public class C_Mail extends ClientBasePacket {
 						MailTable.getInstance().writeMail(TYPE_NORMAL_MAIL,
 								receiverName, pc, text);
 					} else {
-						pc.sendPackets(new S_ServerMessage(109, receiverName)); // %0‚Æ‚¢‚¤–¼‘O‚Ìl‚Í‚¢‚Ü‚¹‚ñB
+						pc.sendPackets(new S_ServerMessage(109, receiverName)); // %0ã¨ã„ã†åå‰ã®äººã¯ã„ã¾ã›ã‚“ã€‚
 					}
 				} catch (Exception e) {
 					_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 				}
 			}
-		} else if (type == 0x21) { // ŒŒ–¿ƒ[ƒ‹‚ğ‘‚­
+		} else if (type == 0x21) { // è¡€ç›Ÿãƒ¡ãƒ¼ãƒ«ã‚’æ›¸ã
 			int unknow = readH();
 			String clanName = readS();
 			byte[] text = readByte();
@@ -112,17 +112,17 @@ public class C_Mail extends ClientBasePacket {
 							pc, text);
 					L1PcInstance clanPc = L1World.getInstance().
 							getPlayer(name);
-					if (clanPc != null) { // ƒIƒ“ƒ‰ƒCƒ“’†
+					if (clanPc != null) { // ã‚ªãƒ³ãƒ©ã‚¤ãƒ³ä¸­
 						clanPc.sendPackets(new S_Mail(name,
 								TYPE_CLAN_MAIL));
 					}
 				}
 			}
-		} else if (type == 0x30 || type == 0x31 || type == 0x32) { // íœ
+		} else if (type == 0x30 || type == 0x31 || type == 0x32) { // å‰Šé™¤
 			int mailId = readD();
 			MailTable.getInstance().deleteMail(mailId);
 			pc.sendPackets(new S_Mail(mailId, type));
-		} else if(type == 0x40) { // •ÛŠÇ” ‚É•Û‘¶
+		} else if(type == 0x40) { // ä¿ç®¡ç®±ã«ä¿å­˜
 			int mailId = readD();
 			MailTable.getInstance().setMailType(mailId, TYPE_MAIL_BOX);
 			pc.sendPackets(new S_Mail(mailId, type));

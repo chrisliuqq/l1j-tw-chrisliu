@@ -48,11 +48,11 @@ public class L1Move implements L1CommandExecutor {
 				mapid = pc.getMapId();
 			}
 			L1Teleport.teleport(pc, locx, locy, mapid, 5, false);
-			pc.sendPackets(new S_SystemMessage("À•W " + locx + ", " + locy
-					+ ", " + mapid + "‚ÉˆÚ“®‚µ‚Ü‚µ‚½B"));
+			pc.sendPackets(new S_SystemMessage("åº§æ¨™ " + locx + ", " + locy
+					+ ", " + mapid + "ã«ç§»å‹•ã—ã¾ã—ãŸã€‚"));
 		} catch (Exception e) {
 			pc.sendPackets(new S_SystemMessage(cmdName
-					+ " XÀ•W YÀ•W [ƒ}ƒbƒvID] ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+					+ " Xåº§æ¨™ Yåº§æ¨™ [ãƒãƒƒãƒ—ID] ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

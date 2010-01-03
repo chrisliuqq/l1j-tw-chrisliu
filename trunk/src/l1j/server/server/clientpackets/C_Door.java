@@ -54,13 +54,13 @@ public class C_Door extends ClientBasePacket {
 			return;
 		}
 
-		if ((door.getDoorId() >= 5001 && door.getDoorId() <= 5010)) { // …»‚Ì“´ŒA
+		if ((door.getDoorId() >= 5001 && door.getDoorId() <= 5010)) { // æ°´æ™¶ã®æ´žçªŸ
 			return;
 		} else if (door.getDoorId() == 6006) { // TIC2F
 			if (door.getOpenStatus() == ActionCodes.ACTION_Open) {
 				return;
 			}
-			if (pc.getInventory().consumeItem(40163,1)) { // ƒS[ƒ‹ƒfƒ“ƒL[
+			if (pc.getInventory().consumeItem(40163,1)) { // ã‚´ãƒ¼ãƒ«ãƒ‡ãƒ³ã‚­ãƒ¼
 				door.open();
 				CloseTimer closetimer = new CloseTimer(door);
 				closetimer.begin();
@@ -69,7 +69,7 @@ public class C_Door extends ClientBasePacket {
 			if (door.getOpenStatus() == ActionCodes.ACTION_Open) {
 				return;
 			}
-			if (pc.getInventory().consumeItem(40313,1)) { // ƒp[ƒ‹ƒVƒ‹ƒo[ƒL[
+			if (pc.getInventory().consumeItem(40313,1)) { // ãƒ‘ãƒ¼ãƒ«ã‚·ãƒ«ãƒãƒ¼ã‚­ãƒ¼
 				door.open();
 				CloseTimer closetimer = new CloseTimer(door);
 				closetimer.begin();

@@ -20,10 +20,10 @@ package l1j.server.server.utils;
 
 public class SystemUtil {
 	/**
-	 * ƒVƒXƒeƒ€‚ª—˜—p’†‚Ìƒq[ƒvƒTƒCƒY‚ğƒƒKƒoƒCƒg’PˆÊ‚Å•Ô‚·B<br>
-	 * ‚±‚Ì’l‚ÉƒXƒ^ƒbƒN‚ÌƒTƒCƒY‚ÍŠÜ‚Ü‚ê‚È‚¢B
+	 * ã‚·ã‚¹ãƒ†ãƒ ãŒåˆ©ç”¨ä¸­ã®ãƒ’ãƒ¼ãƒ—ã‚µã‚¤ã‚ºã‚’ãƒ¡ã‚¬ãƒã‚¤ãƒˆå˜ä½ã§è¿”ã™ã€‚<br>
+	 * ã“ã®å€¤ã«ã‚¹ã‚¿ãƒƒã‚¯ã®ã‚µã‚¤ã‚ºã¯å«ã¾ã‚Œãªã„ã€‚
 	 * 
-	 * @return —˜—p’†‚Ìƒq[ƒvƒTƒCƒY
+	 * @return åˆ©ç”¨ä¸­ã®ãƒ’ãƒ¼ãƒ—ã‚µã‚¤ã‚º
 	 */
 	public static long getUsedMemoryMB() {
 		return (Runtime.getRuntime().totalMemory() - Runtime.getRuntime()

@@ -35,16 +35,16 @@ public class CharBuffTable {
 	private static Logger _log = Logger
 			.getLogger(CharBuffTable.class.getName());
 
-	private static final int[] buffSkill = { 2, 67, // ƒ‰ƒCƒgAƒVƒFƒCƒvƒ`ƒFƒ“ƒW
-			3, 99, 151, 159, 168, // ƒV[ƒ‹ƒhAƒVƒƒƒhƒEƒA[ƒ}[AƒA[ƒXƒXƒLƒ“AƒA[ƒXƒuƒŒƒXAƒAƒCƒAƒ“ƒXƒLƒ“
-			43, 54, 1000, 1001, STATUS_ELFBRAVE, // ƒwƒCƒXƒgAƒOƒŒ[ƒ^[ƒwƒCƒXƒgAƒuƒŒƒCƒuƒ|[ƒVƒ‡ƒ“AƒOƒŠ[ƒ“ƒ|[ƒVƒ‡ƒ“AƒGƒ‹ƒ”ƒ“ƒƒbƒtƒ‹
-			52, 101, 150, // ƒz[ƒŠ[ƒEƒH[ƒNAƒ€[ƒrƒ“ƒOƒAƒNƒZƒŒ[ƒVƒ‡ƒ“AƒEƒBƒ“ƒhƒEƒH[ƒN
-			26, 42, 109, 110, // PE:DEXAPE:STRAƒhƒŒƒXƒ}ƒCƒeƒB[AƒhƒŒƒXƒfƒNƒXƒ^ƒŠƒeƒB[
-			114, 115, 117, // ƒOƒ[ƒEƒBƒ“ƒOƒI[ƒ‰AƒVƒƒƒCƒjƒ“ƒOƒI[ƒ‰AƒuƒŒƒCƒuƒI[ƒ‰
-			148, 155, 163, // ƒtƒ@ƒCƒA[ƒEƒFƒ|ƒ“Aƒtƒ@ƒCƒA[ƒuƒŒƒXAƒo[ƒjƒ“ƒOƒEƒFƒ|ƒ“
-			149, 156, 166, // ƒEƒBƒ“ƒhƒVƒ‡ƒbƒgAƒXƒg[ƒ€ƒAƒCAƒXƒg[ƒ€ƒVƒ‡ƒbƒg
-			1002, 1005, // ƒuƒ‹[ƒ|[ƒVƒ‡ƒ“Aƒ`ƒƒƒbƒg‹ÖŽ~
-			COOKING_1_0_N, COOKING_1_0_S, COOKING_1_1_N, COOKING_1_1_S, // —¿—(ƒfƒU[ƒg‚Íœ‚­)
+	private static final int[] buffSkill = { 2, 67, // ãƒ©ã‚¤ãƒˆã€ã‚·ã‚§ã‚¤ãƒ—ãƒã‚§ãƒ³ã‚¸
+			3, 99, 151, 159, 168, // ã‚·ãƒ¼ãƒ«ãƒ‰ã€ã‚·ãƒ£ãƒ‰ã‚¦ã‚¢ãƒ¼ãƒžãƒ¼ã€ã‚¢ãƒ¼ã‚¹ã‚¹ã‚­ãƒ³ã€ã‚¢ãƒ¼ã‚¹ãƒ–ãƒ¬ã‚¹ã€ã‚¢ã‚¤ã‚¢ãƒ³ã‚¹ã‚­ãƒ³
+			43, 54, 1000, 1001, STATUS_ELFBRAVE, // ãƒ˜ã‚¤ã‚¹ãƒˆã€ã‚°ãƒ¬ãƒ¼ã‚¿ãƒ¼ãƒ˜ã‚¤ã‚¹ãƒˆã€ãƒ–ãƒ¬ã‚¤ãƒ–ãƒãƒ¼ã‚·ãƒ§ãƒ³ã€ã‚°ãƒªãƒ¼ãƒ³ãƒãƒ¼ã‚·ãƒ§ãƒ³ã€ã‚¨ãƒ«ãƒ´ãƒ³ãƒ¯ãƒƒãƒ•ãƒ«
+			52, 101, 150, // ãƒ›ãƒ¼ãƒªãƒ¼ã‚¦ã‚©ãƒ¼ã‚¯ã€ãƒ ãƒ¼ãƒ“ãƒ³ã‚°ã‚¢ã‚¯ã‚»ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã€ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚©ãƒ¼ã‚¯
+			26, 42, 109, 110, // PE:DEXã€PE:STRã€ãƒ‰ãƒ¬ã‚¹ãƒžã‚¤ãƒ†ã‚£ãƒ¼ã€ãƒ‰ãƒ¬ã‚¹ãƒ‡ã‚¯ã‚¹ã‚¿ãƒªãƒ†ã‚£ãƒ¼
+			114, 115, 117, // ã‚°ãƒ­ãƒ¼ã‚¦ã‚£ãƒ³ã‚°ã‚ªãƒ¼ãƒ©ã€ã‚·ãƒ£ã‚¤ãƒ‹ãƒ³ã‚°ã‚ªãƒ¼ãƒ©ã€ãƒ–ãƒ¬ã‚¤ãƒ–ã‚ªãƒ¼ãƒ©
+			148, 155, 163, // ãƒ•ã‚¡ã‚¤ã‚¢ãƒ¼ã‚¦ã‚§ãƒãƒ³ã€ãƒ•ã‚¡ã‚¤ã‚¢ãƒ¼ãƒ–ãƒ¬ã‚¹ã€ãƒãƒ¼ãƒ‹ãƒ³ã‚°ã‚¦ã‚§ãƒãƒ³
+			149, 156, 166, // ã‚¦ã‚£ãƒ³ãƒ‰ã‚·ãƒ§ãƒƒãƒˆã€ã‚¹ãƒˆãƒ¼ãƒ ã‚¢ã‚¤ã€ã‚¹ãƒˆãƒ¼ãƒ ã‚·ãƒ§ãƒƒãƒˆ
+			1002, 1005, // ãƒ–ãƒ«ãƒ¼ãƒãƒ¼ã‚·ãƒ§ãƒ³ã€ãƒãƒ£ãƒƒãƒˆç¦æ­¢
+			COOKING_1_0_N, COOKING_1_0_S, COOKING_1_1_N, COOKING_1_1_S, // æ–™ç†(ãƒ‡ã‚¶ãƒ¼ãƒˆã¯é™¤ã)
 			COOKING_1_2_N, COOKING_1_2_S, COOKING_1_3_N, COOKING_1_3_S,
 			COOKING_1_4_N, COOKING_1_4_S, COOKING_1_5_N, COOKING_1_5_S,
 			COOKING_1_6_N, COOKING_1_6_S, COOKING_2_0_N, COOKING_2_0_S,

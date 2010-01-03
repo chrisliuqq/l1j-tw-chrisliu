@@ -1,113 +1,113 @@
-�y���e�zGM�R�}���h���g���悤�ɂ���
-�y�ύX�ӏ��zcharacters�e�[�u����AccessLevel
-�y�l�z200
-�y���l�z�`���b�g���Ɂu.help�v�Ɠ��͂��w���v���\�������ΐ����B
-�@�@�@�@accounts�e�[�u����AccessLevel�͌���(rev948)�̂Ƃ��냍�O�C�����ɐl�������ɂЂ������邩�ǂ����ɂ����e�����Ȃ��B
-�@�@�@�@0���傫������ΐl�������ɂЂ�������Ȃ��Ȃ�B
+【内容】GMコマンドを使うようにする
+【変更箇所】charactersテーブル→AccessLevel
+【値】200
+【備考】チャット欄に「.help」と入力しヘルプが表示されれば成功。
+　　　　accountsテーブルのAccessLevelは現在(rev948)のところログイン時に人数制限にひっかかるかどうかにしか影響しない。
+　　　　0より大きくすれば人数制限にひっかからなくなる。
 
-�y���e�zPvP�^NonPvP�ݒ��؂�ւ���
-�y�ύX�ӏ��zconfig/altsettings.properties�t�@�C����NonPvP
-�y�l�zTrue:NonPvP�����iPvP�\�j�@False:NonPvP�L���iPvP�s�j
-�y���l�z�T�[�o�[�N�����ɃE�B���h�E�ɐݒ肪�\�������B
+【内容】PvP／NonPvP設定を切り替える
+【変更箇所】config/altsettings.propertiesファイル→NonPvP
+【値】True:NonPvP無効（PvP可能）　False:NonPvP有効（PvP不可）
+【備考】サーバー起動時にウィンドウに設定が表示される。
 
-�y���e�z�G���t�̑����𖳌��ɂ��A�S�G���t���@���K���ł���悤�ɂ���
-�y�ύX�ӏ��zcharacters�e�[�u����ElfAttr
-�y�l�z0,1,2,4,8�ȊO�̒l
-�y���l�z
+【内容】エルフの属性を無効にし、全エルフ魔法を習得できるようにする
+【変更箇所】charactersテーブル→ElfAttr
+【値】0,1,2,4,8以外の値
+【備考】
 
-�y���e�z���Ă�A�C�e���̏d�ʂ�ύX����
-�y�ύX�ӏ��zconfig/rates.properties�t�@�C����Weightrate
-�y�l�z0:��ɏd�ʃQ�[�W0%�@1:�d�ʃQ�[�W�f�t�H���g�@2:�d�ʃQ�[�W��1/2�ɂȂ�@3�`:�d�ʃQ�[�W��1/3�`�ɂȂ�
-�y���l�z
+【内容】もてるアイテムの重量を変更する
+【変更箇所】config/rates.propertiesファイル→Weightrate
+【値】0:常に重量ゲージ0%　1:重量ゲージデフォルト　2:重量ゲージが1/2になる　3～:重量ゲージが1/3～になる
+【備考】
 
-�y���e�z�����X�^�[�̒ǉ�
-�y�ύX�ӏ��znpc�e�[�u���Aspawnlist�e�[�u��
-�y�l�z�Enpc�e�[�u��
-�@�@�@type��L1Monster
-�@�@�@ranged��1�Ȃ�ʏ�U���A2~�Ȃ�2�Z���ȏ�̍U���A10�Ȃ�|�ɂ��U��
-�@�@�@agro�Eagrososc�Eagrocoi��1�Ȃ�ʏ�E�ϐg�E������ԂōU���I
-�@�@�@passispeed�Eatkspeed�����s�E�U�����x�i�l���������������j
-�@�@�@gfxid��sprite.pak�Ɋi�[����Ă���O���t�B�b�N
-�@�@�@�Espawnlist�e�[�u��
-�@�@�@count����
-�@�@�@heading������
-�@�@�@respawn_dilay���ďo���܂ł̎���
+【内容】モンスターの追加
+【変更箇所】npcテーブル、spawnlistテーブル
+【値】・npcテーブル
+　　　type→L1Monster
+　　　ranged→1なら通常攻撃、2~なら2セル以上の攻撃、10なら弓による攻撃
+　　　agro・agrososc・agrocoi→1なら通常・変身・透明状態で攻撃的
+　　　passispeed・atkspeed→歩行・攻撃速度（値が小さい程速い）
+　　　gfxid→sprite.pakに格納されているグラフィック
+　　　・spawnlistテーブル
+　　　count→数
+　　　heading→向き
+　　　respawn_dilay→再出現までの時間
 
-�y���e�zNPC�V���b�v�̒ǉ�
-�y�ύX�ӏ��znpc�e�[�u���Aspawnlist_npc�e�[�u���Anpcaction�e�[�u���Ashop_buylist�e�[�u��
-�y�l�z�Enpc�e�[�u��
-�@�@�@type��L1Merchant
-�@�@�@�Espawnlist_npc�e�[�u��
-�@�@�@spawnlist�Ɠ��l
-�@�@�@�Enpcaction�e�[�u��
-�@�@�@action1��text.pak�Ɋi�[����Ă���Z���t�i�p���h���Ȃ�pandora�j
-�@�@�@�Eshop_buylist�e�[�u��
-�@�@�@order�����i�̕��я��i�擪��0�j
+【内容】NPCショップの追加
+【変更箇所】npcテーブル、spawnlist_npcテーブル、npcactionテーブル、shop_buylistテーブル
+【値】・npcテーブル
+　　　type→L1Merchant
+　　　・spawnlist_npcテーブル
+　　　spawnlistと同様
+　　　・npcactionテーブル
+　　　action1→text.pakに格納されているセリフ（パンドラならpandora）
+　　　・shop_buylistテーブル
+　　　order→商品の並び順（先頭は0）
 
-�y���e�zUB�ɏo�����郂���X�^�[��ǉ��E�ύX����
-�y�ύX�ӏ��zspawnlist_ub�e�[�u��
-�y�l�z
-�@�@�@id
-�@�@�@�@�A�ԂɂȂ�悤�ɐݒ肷��B
+【内容】UBに出現するモンスターを追加・変更する
+【変更箇所】spawnlist_ubテーブル
+【値】
+　　　id
+　　　　連番になるように設定する。
 
-�@�@�@ub_id
-�@�@�@�@UB�̏ꏊ�B
-�@�@�@�@�M����UB:1�@�E�F���_��UB:2�@�O���[�f�B��UB:3�@SKTUB:4�@TIUB:5
-�@�@�@�@����A�M����UB:1�̂ݗL���B
+　　　ub_id
+　　　　UBの場所。
+　　　　ギランUB:1　ウェルダンUB:2　グルーディンUB:3　SKTUB:4　TIUB:5
+　　　　現状、ギランUB:1のみ有効。
 
-�@�@�@pattern
-�@�@�@�@�o������G�̃p�^�[���B
-�@�@�@�@�{�T�[�o�[�Ɠ������A�����_���ɑI�������B
-�@�@�@�@����DB�ł�1�`6�܂Őݒ肳��Ă��邪�A7�ȍ~���ݒ�ł���B
+　　　pattern
+　　　　出現する敵のパターン。
+　　　　本サーバーと同じく、ランダムに選択される。
+　　　　初期DBでは1～6まで設定されているが、7以降も設定できる。
 
-�@�@�@group
-�@�@�@�@�����X�^�[�̃O���[�v
-�@�@�@�@�{�T�[�o�[�Ɠ���1�`3,BOSS(4)�̃O���[�v�����B
-�@�@�@�@pattern���ɂ͕K���A1�`4�̃O���[�v���ݒ肳��Ă��Ȃ��Ƃ����Ȃ��B
-�@�@�@�@�O���[�v4��BOSS�����A�O���[�v4�ɕ����̃����X�^�[��ݒ肷�邱�Ƃ��o����B
+　　　group
+　　　　モンスターのグループ
+　　　　本サーバーと同じ1～3,BOSS(4)のグループ分け。
+　　　　pattern内には必ず、1～4のグループが設定されていないといけない。
+　　　　グループ4はBOSSだが、グループ4に複数のモンスターを設定することも出来る。
 
-�@�@�@location
-�@�@�@�@�����X�^�[���B
+　　　location
+　　　　モンスター名。
 
-�@�@�@npc_templateid
-�@�@�@�@npc�e�[�u����npcid�Ɠ����l��ݒ肷��B
-�@�@�@�@�������Atyep��L1Monster�ȊO�̂��̂�ݒ肵�Ă͂����Ȃ��B
+　　　npc_templateid
+　　　　npcテーブルのnpcidと同じ値を設定する。
+　　　　ただし、tyepがL1Monster以外のものを設定してはいけない。
 
-�@�@�@count
-�@�@�@�@�����X�^�[�̏o�����B
+　　　count
+　　　　モンスターの出現数。
 
-�@�@�@spawn_delay
-�@�@�@�@���̃����X�^�[���o������܂ł̎��ԁi�b�j
+　　　spawn_delay
+　　　　次のモンスターが出現するまでの時間（秒）
 
-�y���l�z�����X�^�[�̐ݒ萔�𑝂₵�����āA����UB���ԂɂȂ��Ă��I�����Ȃ��ꍇ
-�@�@�@�@���������������Ȃ�\��������̂Œ��ӂ��K�v�B
+【備考】モンスターの設定数を増やしすぎて、次のUB時間になっても終了しない場合
+　　　　挙動がおかしくなる可能性があるので注意が必要。
 
-�y���e�z�A�C�e���f�B���C��ǉ��E�ύX����
-�y�ύX�ӏ��zetcitem�e�[�u��
-�y�l�zdelay_id
-�@�@�@�@�����l�̃A�C�e���̓f�B���C����������B
-�@�@�@�@�f�t�H���g��delay_id�͈ȉ��̒ʂ肾���A����ȊO�̒l���ݒ�\�B
-�@�@�@�@1�F�C���r�W�r���e�B �N���[�N�A�o�����O �u���b�f�B �N���[�N�iDB�ł̕ύX�s�j
-�@�@�@�@2�FHP�񕜌n�|�[�V����
-�@�@�@�@3�F���@��
-�@�@�@�@4�F�e���|�[�g �X�N���[��
-�@�@�@delay_time
-�@�@�@�@�P�ʂ�ms�B
+【内容】アイテムディレイを追加・変更する
+【変更箇所】etcitemテーブル
+【値】delay_id
+　　　　同じ値のアイテムはディレイが発生する。
+　　　　デフォルトのdelay_idは以下の通りだが、それ以外の値も設定可能。
+　　　　1：インビジビリティ クローク、バルログ ブラッディ クローク（DBでの変更不可）
+　　　　2：HP回復系ポーション
+　　　　3：魔法書
+　　　　4：テレポート スクロール
+　　　delay_time
+　　　　単位はms。
 
-�y���e�z����A�Ў蕐��̐ݒ�
-�y�ύX�ӏ��zweapon�e�[�u��
-�y�l�zweapon��type��singlebow�Asinglespear�Atohandblunt�Atohandstaff�ɕύX����
-�y���l�z�Ў蕐��͏��������ɂ������A���蕐��͏��������ɑ����s�B
-�@�@�@�@����|=bow�@���@�Ў�|=singlebow�@
-�@�@�@�@����X�s�A�[=spear�@���@�Ў�X�s�A�[=singlespear
-�@�@�@�@���蕀=tohandblunt�@���@�Ў蕀=blunt�@�@
-�@�@�@�@����X�^�b�t=tohandstaff�@���@�Ў�X�^�b�t=staff
+【内容】両手、片手武器の設定
+【変更箇所】weaponテーブル
+【値】weaponのtypeをsinglebow、singlespear、tohandblunt、tohandstaffに変更する
+【備考】片手武器は盾装備時にも装備可、両手武器は盾装備時に装備不可。
+　　　　両手弓=bow　→　片手弓=singlebow　
+　　　　両手スピアー=spear　→　片手スピアー=singlespear
+　　　　両手斧=tohandblunt　→　片手斧=blunt　　
+　　　　両手スタッフ=tohandstaff　→　片手スタッフ=staff
 
-�y���e�z�A�C�e���̃g���[�h�s�ݒ�
-�y�ύX�ӏ��zarmor�e�[�u���Aetcitem�e�[�u���Aweapon�e�[�u��
-�y�l�ztrade��0�ȊO�ɕύX����
+【内容】アイテムのトレード不可設定
+【変更箇所】armorテーブル、etcitemテーブル、weaponテーブル
+【値】tradeを0以外に変更する
 
 
-�y���e�zMOB�X�L���̐ݒ�
-�y�ύX�ӏ��zmobskill�e�[�u��
-�@MobSkill�e�[�u���̎g����.txt���Q�Ƃ��ĉ������B
+【内容】MOBスキルの設定
+【変更箇所】mobskillテーブル
+　MobSkillテーブルの使い方.txtを参照して下さい。

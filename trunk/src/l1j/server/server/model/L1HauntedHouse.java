@@ -196,7 +196,7 @@ public class L1HauntedHouseReadyTimer extends TimerTask {
 
 	public void begin() {
 		Timer timer = new Timer();
-		timer.schedule(this, 90000); // 90•b‚­‚ç‚¢H
+		timer.schedule(this, 90000); // 90ç§’ãã‚‰ã„ï¼Ÿ
 	}
 
 }
@@ -214,7 +214,7 @@ public class L1HauntedHouseTimer extends TimerTask {
 
 	public void begin() {
 		Timer timer = new Timer();
-		timer.schedule(this, 300000); // 5•ª
+		timer.schedule(this, 300000); // 5åˆ†
 	}
 
 }

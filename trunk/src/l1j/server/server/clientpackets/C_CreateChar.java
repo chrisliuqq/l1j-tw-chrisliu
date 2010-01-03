@@ -76,7 +76,7 @@ public class C_CreateChar extends ClientBasePacket {
 		int maxAmount = Config.DEFAULT_CHARACTER_SLOT + characterSlot;
 
 		name = name.replaceAll("\\s", "");
-		name = name.replaceAll("@", "");
+		name = name.replaceAll("ã€€", "");
 		if (name.length() == 0) {
 			S_CharCreateStatus s_charcreatestatus = new S_CharCreateStatus(
 					S_CharCreateStatus.REASON_INVALID_NAME);
@@ -102,7 +102,7 @@ public class C_CreateChar extends ClientBasePacket {
 		
 		if (client.getAccount().countCharacters() >= maxAmount) {
 			_log.fine("account: " + client.getAccountName()
-					+ " " + maxAmount + "‚ğ’´‚¦‚éƒLƒƒƒ‰ƒNƒ^[ì¬—v‹B");
+					+ " " + maxAmount + "ã‚’è¶…ãˆã‚‹ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ä½œæˆè¦æ±‚ã€‚");
 			S_CharCreateStatus s_charcreatestatus1 = new S_CharCreateStatus(
 					S_CharCreateStatus.REASON_WRONG_AMOUNT);
 			client.sendPacket(s_charcreatestatus1);
@@ -230,7 +230,7 @@ public class C_CreateChar extends ClientBasePacket {
 			String skill_name = l1skills.getName();
 			int skill_id = l1skills.getSkillId();
 			SkillsTable.getInstance().spellMastery(object_id, skill_id,
-					skill_name, 0, 0); // DB‚É“o˜^
+					skill_name, 0, 0); // DBã«ç™»éŒ²
 		}
 		Beginner.getInstance().GiveItem(pc);
 		pc.setAccountName(client.getAccountName());
@@ -271,8 +271,8 @@ public class C_CreateChar extends ClientBasePacket {
 			return false;
 		}
 
-		// XXX - –{I‚Ìd—l‚Æ“¯“™‚©–¢Šm”F
-		// ‘SŠp•¶š‚ª5•¶š‚ğ’´‚¦‚é‚©A‘S‘Ì‚Å12ƒoƒCƒg‚ğ’´‚¦‚½‚ç–³Œø‚È–¼‘O‚Æ‚·‚é
+		// XXX - æœ¬é¯–ã®ä»•æ§˜ã¨åŒç­‰ã‹æœªç¢ºèª
+		// å…¨è§’æ–‡å­—ãŒ5æ–‡å­—ã‚’è¶…ãˆã‚‹ã‹ã€å…¨ä½“ã§12ãƒã‚¤ãƒˆã‚’è¶…ãˆãŸã‚‰ç„¡åŠ¹ãªåå‰ã¨ã™ã‚‹
 		if (5 < (numOfNameBytes - name.length()) || 12 < numOfNameBytes) {
 			return false;
 		}

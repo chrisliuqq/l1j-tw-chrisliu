@@ -86,14 +86,14 @@ public class ItemTable {
 		_etcItemTypes.put("sting", new Integer(15));
 		_etcItemTypes.put("treasure_box", new Integer(16));
 
-		_useTypes.put("none", new Integer(-1)); // g—p•s‰Â”\
+		_useTypes.put("none", new Integer(-1)); // ä½¿ç”¨ä¸å¯èƒ½
 		_useTypes.put("normal", new Integer(0));
 		_useTypes.put("weapon", new Integer(1));
 		_useTypes.put("armor", new Integer(2));
 // _useTypes.put("wand1", new Integer(3));
 // _useTypes.put("wand", new Integer(4));
-		// ƒƒ“ƒh‚ğU‚éƒAƒNƒVƒ‡ƒ“‚ğ‚Æ‚é(C_RequestExtraCommand‚ª‘—‚ç‚ê‚é)
-		_useTypes.put("spell_long", new Integer(5)); // ’n–Ê / ƒIƒuƒWƒFƒNƒg‘I‘ğ(‰“‹——£)
+		// ãƒ¯ãƒ³ãƒ‰ã‚’æŒ¯ã‚‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’ã¨ã‚‹(C_RequestExtraCommandãŒé€ã‚‰ã‚Œã‚‹)
+		_useTypes.put("spell_long", new Integer(5)); // åœ°é¢ / ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆé¸æŠ(é è·é›¢)
 		_useTypes.put("ntele", new Integer(6));
 		_useTypes.put("identify", new Integer(7));
 		_useTypes.put("res", new Integer(8));
@@ -102,7 +102,7 @@ public class ItemTable {
 		_useTypes.put("choice", new Integer(14));
 		_useTypes.put("instrument", new Integer(15));
 		_useTypes.put("sosc", new Integer(16));
-		_useTypes.put("spell_short", new Integer(17)); // ’n–Ê / ƒIƒuƒWƒFƒNƒg‘I‘ğ(‹ß‹——£)
+		_useTypes.put("spell_short", new Integer(17)); // åœ°é¢ / ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆé¸æŠ(è¿‘è·é›¢)
 		_useTypes.put("T", new Integer(18));
 		_useTypes.put("cloak", new Integer(19));
 		_useTypes.put("glove", new Integer(20));
@@ -116,8 +116,8 @@ public class ItemTable {
 		_useTypes.put("zel", new Integer(27));
 		_useTypes.put("blank", new Integer(28));
 		_useTypes.put("btele", new Integer(29));
-		_useTypes.put("spell_buff", new Integer(30)); // ƒIƒuƒWƒFƒNƒg‘I‘ğ(‰“‹——£)
-														// Ctrl‚ğ‰Ÿ‚³‚È‚¢‚ÆƒpƒPƒbƒg‚ª”ò‚Î‚È‚¢H
+		_useTypes.put("spell_buff", new Integer(30)); // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆé¸æŠ(é è·é›¢)
+														// Ctrlã‚’æŠ¼ã•ãªã„ã¨ãƒ‘ã‚±ãƒƒãƒˆãŒé£›ã°ãªã„ï¼Ÿ
 		_useTypes.put("ccard", new Integer(31));
 		_useTypes.put("ccard_w", new Integer(32));
 		_useTypes.put("vcard", new Integer(33));
@@ -125,8 +125,8 @@ public class ItemTable {
 		_useTypes.put("wcard", new Integer(35));
 		_useTypes.put("wcard_w", new Integer(36));
 		_useTypes.put("belt", new Integer(37));
-		// _useTypes.put("spell_long2", new Integer(39)); // ’n–Ê / ƒIƒuƒWƒFƒNƒg‘I‘ğ(‰“‹——£)
-		// 5‚Æ“¯‚¶H
+		// _useTypes.put("spell_long2", new Integer(39)); // åœ°é¢ / ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆé¸æŠ(é è·é›¢)
+		// 5ã¨åŒã˜ï¼Ÿ
 		_useTypes.put("earring", new Integer(40));
 		_useTypes.put("fishing_rod", new Integer(42));
 		_useTypes.put("del", new Integer(46));
@@ -246,7 +246,7 @@ public class ItemTable {
 						.get(rs.getString("item_type"))).intValue());
 				item.setUseType(_useTypes
 						.get(rs.getString("use_type")).intValue());
-// item.setType1(0); // g‚í‚È‚¢
+// item.setType1(0); // ä½¿ã‚ãªã„
 				item.setType2(0);
 				item.setMaterial((_materialTypes
 						.get(rs.getString("material"))).intValue());
@@ -282,7 +282,7 @@ public class ItemTable {
 			_log.log(Level.SEVERE, new StringBuilder()
 					.append(item.getName())
 					.append("(" + item.getItemId() + ")")
-					.append("‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½B").toString());
+					.append("ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚").toString());
 		} catch (SQLException e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		} finally {
@@ -372,7 +372,7 @@ public class ItemTable {
 			_log.log(Level.SEVERE, new StringBuilder()
 					.append(weapon.getName())
 					.append("(" + weapon.getItemId() + ")")
-					.append("‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½B").toString());
+					.append("ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚").toString());
 		} catch (SQLException e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 
@@ -406,7 +406,7 @@ public class ItemTable {
 				armor.setType((_armorTypes
 						.get(rs.getString("type"))).intValue());
 // armor.setType1((_armorId
-// .get(rs.getString("armor_type"))).intValue()); // g‚í‚È‚¢
+// .get(rs.getString("armor_type"))).intValue()); // ä½¿ã‚ãªã„
 				armor.setType2(2);
 				armor.setUseType((_useTypes
 						.get(rs.getString("type"))).intValue());
@@ -471,7 +471,7 @@ public class ItemTable {
 			_log.log(Level.SEVERE, new StringBuilder()
 					.append(armor.getName())
 					.append("(" + armor.getItemId() + ")")
-					.append("‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½B").toString());
+					.append("ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚").toString());
 		} catch (SQLException e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		} finally {

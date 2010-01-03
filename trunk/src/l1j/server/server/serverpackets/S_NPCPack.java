@@ -56,8 +56,8 @@ public class S_NPCPack extends ServerBasePacket {
 		} else {
 			writeH(npc.getTempCharGfx());
 		}
-		if (npc.getNpcTemplate().is_doppel() && npc.getGfxId() != 31) { // ƒXƒ‰ƒCƒ€‚Ìp‚ğ‚µ‚Ä‚¢‚È‚¯‚ê‚Îƒhƒbƒyƒ‹
-			writeC(4); // ’·Œ•
+		if (npc.getNpcTemplate().is_doppel() && npc.getGfxId() != 31) { // ã‚¹ãƒ©ã‚¤ãƒ ã®å§¿ã‚’ã—ã¦ã„ãªã‘ã‚Œã°ãƒ‰ãƒƒãƒšãƒ«
+			writeC(4); // é•·å‰£
 		} else {
 			writeC(npc.getStatus());
 		}
@@ -67,11 +67,11 @@ public class S_NPCPack extends ServerBasePacket {
 		writeD(npc.getExp());
 		writeH(npc.getTempLawful());
 		writeS(npc.getNameId());
-		if (npc instanceof L1FieldObjectInstance) { // SIC‚Ì•ÇšAŠÅ”Â‚È‚Ç
+		if (npc instanceof L1FieldObjectInstance) { // SICã®å£å­—ã€çœ‹æ¿ãªã©
 			L1NpcTalkData talkdata = NPCTalkDataTable.getInstance()
 					.getTemplate(npc.getNpcTemplate().get_npcId());
 			if (talkdata != null) {
-				writeS(talkdata.getNormalAction()); // ƒ^ƒCƒgƒ‹‚ªHTML–¼‚Æ‚µ‚Ä‰ğß‚³‚ê‚é
+				writeS(talkdata.getNormalAction()); // ã‚¿ã‚¤ãƒˆãƒ«ãŒHTMLåã¨ã—ã¦è§£é‡ˆã•ã‚Œã‚‹
 			} else {
 				writeS(null);
 			}
@@ -80,26 +80,26 @@ public class S_NPCPack extends ServerBasePacket {
 		}
 
 		/**
-		 * ¼¼ÆÃ - 0:mob,item(atk pointer), 1:poisoned(), 2:invisable(), 4:pc,
+		 * ã‚·ã‚·ãƒ‹ãƒ† - 0:mob,item(atk pointer), 1:poisoned(), 2:invisable(), 4:pc,
 		 * 8:cursed(), 16:brave(), 32:??, 64:??(??), 128:invisable but name
 		 */
 		int status = 0;
-		if (npc.getPoison() != null) { // “Åó‘Ô
+		if (npc.getPoison() != null) { // æ¯’çŠ¶æ…‹
 			if (npc.getPoison().getEffectId() == 1) {
 				status |= STATUS_POISON;
 			}
 		}
 		if (npc.getNpcTemplate().is_doppel()) {
-			// PC‘®«‚¾‚ÆƒGƒ”ƒ@‚Ìj•Ÿ‚ğ“n‚¹‚È‚¢‚½‚ßWIZƒNƒGƒXƒg‚Ìƒhƒbƒyƒ‹‚Í—áŠO
+			// PCå±æ€§ã ã¨ã‚¨ãƒ´ã‚¡ã®ç¥ç¦ã‚’æ¸¡ã›ãªã„ãŸã‚WIZã‚¯ã‚¨ã‚¹ãƒˆã®ãƒ‰ãƒƒãƒšãƒ«ã¯ä¾‹å¤–
 			if (npc.getNpcTemplate().get_npcId() != 81069) {
 				status |= STATUS_PC;
 			}
 		}
 		writeC(status);
 
-		writeD(0); // 0ˆÈŠO‚É‚·‚é‚ÆC_27‚ª”ò‚Ô
+		writeD(0); // 0ä»¥å¤–ã«ã™ã‚‹ã¨C_27ãŒé£›ã¶
 		writeS(null);
-		writeS(null); // ƒ}ƒXƒ^[–¼H
+		writeS(null); // ãƒã‚¹ã‚¿ãƒ¼åï¼Ÿ
 		writeC(0);
 		writeC(0xFF); // HP
 		writeC(0);

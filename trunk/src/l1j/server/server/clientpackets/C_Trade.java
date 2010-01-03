@@ -45,9 +45,9 @@ public class C_Trade extends ClientBasePacket {
 		L1PcInstance target = FaceToFace.faceToFace(player);
 		if (target != null) {
 			if (!target.isParalyzed()) {
-				player.setTradeID(target.getId()); // ‘Šè‚ÌƒIƒuƒWƒFƒNƒgID‚ğ•Û‘¶‚µ‚Ä‚¨‚­
+				player.setTradeID(target.getId()); // ç›¸æ‰‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆIDã‚’ä¿å­˜ã—ã¦ãŠã
 				target.setTradeID(player.getId());
-				target.sendPackets(new S_Message_YN(252, player.getName())); // %0%s‚ª‚ ‚È‚½‚ÆƒAƒCƒeƒ€‚Ìæˆø‚ğ–]‚ñ‚Å‚¢‚Ü‚·Bæˆø‚µ‚Ü‚·‚©HiY/Nj
+				target.sendPackets(new S_Message_YN(252, player.getName())); // %0%sãŒã‚ãªãŸã¨ã‚¢ã‚¤ãƒ†ãƒ ã®å–å¼•ã‚’æœ›ã‚“ã§ã„ã¾ã™ã€‚å–å¼•ã—ã¾ã™ã‹ï¼Ÿï¼ˆY/Nï¼‰
 			}
 		}
 	}

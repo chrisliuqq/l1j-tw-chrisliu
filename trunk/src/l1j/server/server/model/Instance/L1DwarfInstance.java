@@ -64,13 +64,13 @@ public class L1DwarfInstance extends L1NpcInstance {
 		String htmlid = null;
 
 		if (talking != null) {
-			if (npcId == 60028) { // ƒGƒ‹
+			if (npcId == 60028) { // ã‚¨ãƒ«
 				if (!pc.isElf()) {
 					htmlid = "elCE1";
 				}
 			}
 
-			if (htmlid != null) { // htmlid‚ªw’è‚³‚ê‚Ä‚¢‚éê‡
+			if (htmlid != null) { // htmlidãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆ
 				pc.sendPackets(new S_NPCTalkReturn(objid, htmlid));
 			} else {
 				if (pc.getLevel() < 5) {

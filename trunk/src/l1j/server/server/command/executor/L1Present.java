@@ -48,17 +48,17 @@ public class L1Present implements L1CommandExecutor {
 
 			L1Item temp = ItemTable.getInstance().getTemplate(itemid);
 			if (temp == null) {
-				pc.sendPackets(new S_SystemMessage("‘¶İ‚µ‚È‚¢ƒAƒCƒeƒ€ID‚Å‚·B"));
+				pc.sendPackets(new S_SystemMessage("å­˜åœ¨ã—ãªã„ã‚¢ã‚¤ãƒ†ãƒ IDã§ã™ã€‚"));
 				return;
 			}
 
 			L1DwarfInventory.present(account, itemid, enchant, count);
 			pc.sendPackets(new S_SystemMessage(temp.getIdentifiedNameId()
-					+ "‚ğ" + count + "ŒÂƒvƒŒƒ[ƒ“ƒg‚µ‚Ü‚µ‚½B", true));
+					+ "ã‚’" + count + "å€‹ãƒ—ãƒ¬ã‚¼ãƒ³ãƒˆã—ã¾ã—ãŸã€‚", true));
 		} catch (Exception e) {
 			pc
 					.sendPackets(new S_SystemMessage(
-							".present ƒAƒJƒEƒ“ƒg–¼ ƒAƒCƒeƒ€ID ƒGƒ“ƒ`ƒƒƒ“ƒg” ƒAƒCƒeƒ€” ‚Æ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢BiƒAƒJƒEƒ“ƒg–¼=*‚Å‘S‚Äj"));
+							".present ã‚¢ã‚«ã‚¦ãƒ³ãƒˆå ã‚¢ã‚¤ãƒ†ãƒ ID ã‚¨ãƒ³ãƒãƒ£ãƒ³ãƒˆæ•° ã‚¢ã‚¤ãƒ†ãƒ æ•° ã¨å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚ï¼ˆã‚¢ã‚«ã‚¦ãƒ³ãƒˆå=*ã§å…¨ã¦ï¼‰"));
 		}
 	}
 }

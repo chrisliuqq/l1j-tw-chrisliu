@@ -34,7 +34,7 @@ public class S_CharReset extends ServerBasePacket {
 	private byte[] _byte = null;
 
 	/**
-	 * d’u¡‹‰”\—ÍXV [Server] opcode = 43 0000: 2b /02/ 01 2d/ 0f 00/ 04 00/ 0a 00
+	 * é‡ç½®å‡ç´šèƒ½åŠ›æ›´æ–° [Server] opcode = 43 0000: 2b /02/ 01 2d/ 0f 00/ 04 00/ 0a 00
 	 * /0c 0c 0c 0c 12 09 +..-............
 	 */
 	public S_CharReset(L1PcInstance pc, int lv, int hp,int mp, int ac, int str,
@@ -61,7 +61,7 @@ public class S_CharReset extends ServerBasePacket {
 	}
 
 	/**
-	 * 45‹y˜¸i“ü’u [Server] opcode = 43 0000: 2b 01 0f 00 04 00 0a 2d 56–@i“ü’u
+	 * 45åŠè…°ç²¾é€²å…¥å´‡å¿— [Server] opcode = 43 0000: 2b 01 0f 00 04 00 0a 2d 56æ³•é€²å…¥å´‡å¿—
 	 * [Server] opcode = 43 0000: 2b 01 0c 00 06 00 0a 38
 	 */
 	public S_CharReset(L1PcInstance pc) {
@@ -92,7 +92,7 @@ public class S_CharReset extends ServerBasePacket {
 		writeC(0x0a); // AC
 		writeC(pc.getTempMaxLevel()); // Lv
 		/**
-		 * 0000: 2b 04 60 04 06 01 07 1e •s’m“¹Š²–ƒ—p“I
+		 * 0000: 2b 04 60 04 06 01 07 1e ä¸çŸ¥é“å¹¹éº»ç”¨çš„
 		 */
 		// }else if(type == 4){
 		// writeC(Opcodes.S_OPCODE_CHARRESET);

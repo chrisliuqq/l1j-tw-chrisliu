@@ -43,7 +43,7 @@ public class L1EquipmentSlot {
 	private L1PcInstance _owner;
 
 	/**
-	 * Œø‰Ê’†‚ÌƒZƒbƒgƒAƒCƒeƒ€
+	 * åŠ¹æœä¸­ã®ã‚»ãƒƒãƒˆã‚¢ã‚¤ãƒ†ãƒ 
 	 */
 	private ArrayList<L1ArmorSet> _currentArmorSet;
 
@@ -121,7 +121,7 @@ public class L1EquipmentSlot {
 		if (itemId == 20288) { // ROTC
 			_owner.sendPackets(new S_Ability(1, true));
 		}
-		if (itemId == 20383) { // ‹R”n—pƒwƒ‹ƒ€
+		if (itemId == 20383) { // é¨é¦¬ç”¨ãƒ˜ãƒ«ãƒ 
 			if (armor.getChargeCount() != 0) {
 				armor.setChargeCount(armor.getChargeCount() - 1);
 				_owner.getInventory().updateItem(armor, L1PcInventory
@@ -179,7 +179,7 @@ public class L1EquipmentSlot {
 		}
 
 		if (itemId == 20077 || itemId == 20062 || itemId == 120077) {
-			_owner.delInvis(); // ƒCƒ“ƒrƒWƒrƒŠƒeƒBó‘Ô‰ğœ
+			_owner.delInvis(); // ã‚¤ãƒ³ãƒ“ã‚¸ãƒ“ãƒªãƒ†ã‚£çŠ¶æ…‹è§£é™¤
 		}
 		if (itemId == 20288) { // ROTC
 			_owner.sendPackets(new S_Ability(1, false));
@@ -233,7 +233,7 @@ public class L1EquipmentSlot {
 				_owner.broadcastPacket(new S_SkillHaste(_owner.getId(), 1, 0));
 			}
 		}
-		if (item.getItemId() == 20383) { // ‹R”n—pƒwƒ‹ƒ€
+		if (item.getItemId() == 20383) { // é¨é¦¬ç”¨ãƒ˜ãƒ«ãƒ 
 			if (_owner.hasSkillEffect(STATUS_BRAVE)) {
 				_owner.killSkillEffectTimer(STATUS_BRAVE);
 				_owner.sendPackets(new S_SkillBrave(_owner.getId(), 0, 0));
@@ -339,7 +339,7 @@ public class L1EquipmentSlot {
 
 	public void removeMagicHelm(int objectId, L1ItemInstance item) {
 		switch (item.getItemId()) {
-		case 20013: // –‚–@‚Ìƒwƒ‹ƒ€Fv‘¬
+		case 20013: // é­”æ³•ã®ãƒ˜ãƒ«ãƒ ï¼šè¿…é€Ÿ
 			if (!SkillsTable.getInstance().spellCheck(objectId,
 					PHYSICAL_ENCHANT_DEX)) {
 				_owner.removeSkillMastery(PHYSICAL_ENCHANT_DEX);
@@ -352,7 +352,7 @@ public class L1EquipmentSlot {
 						0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
 			}
 			break;
-		case 20014: // –‚–@‚Ìƒwƒ‹ƒ€F¡–ü
+		case 20014: // é­”æ³•ã®ãƒ˜ãƒ«ãƒ ï¼šæ²»ç™’
 			if (!SkillsTable.getInstance().spellCheck(objectId, HEAL)) {
 				_owner.removeSkillMastery(HEAL);
 				_owner.sendPackets(new S_DelSkill(1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -364,7 +364,7 @@ public class L1EquipmentSlot {
 						0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
 			}
 			break;
-		case 20015: // –‚–@‚Ìƒwƒ‹ƒ€F—Í
+		case 20015: // é­”æ³•ã®ãƒ˜ãƒ«ãƒ ï¼šåŠ›
 			if (!SkillsTable.getInstance().spellCheck(objectId,
 					ENCHANT_WEAPON)) {
 				_owner.removeSkillMastery(ENCHANT_WEAPON);
@@ -384,14 +384,14 @@ public class L1EquipmentSlot {
 						0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
 			}
 			break;
-		case 20008: // ƒ}ƒCƒi[ƒEƒBƒ“ƒhƒwƒ‹ƒ€
+		case 20008: // ãƒã‚¤ãƒŠãƒ¼ã‚¦ã‚£ãƒ³ãƒ‰ãƒ˜ãƒ«ãƒ 
 			if (!SkillsTable.getInstance().spellCheck(objectId, HASTE)) {
 				_owner.removeSkillMastery(HASTE);
 				_owner.sendPackets(new S_DelSkill(0, 0, 0, 0, 0, 4, 0, 0, 0, 0,
 						0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
 			}
 			break;
-		case 20023: // ƒEƒBƒ“ƒhƒwƒ‹ƒ€
+		case 20023: // ã‚¦ã‚£ãƒ³ãƒ‰ãƒ˜ãƒ«ãƒ 
 			if (!SkillsTable.getInstance().spellCheck(objectId,
 					GREATER_HASTE)) {
 				_owner.removeSkillMastery(GREATER_HASTE);

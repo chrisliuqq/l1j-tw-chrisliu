@@ -34,7 +34,7 @@ public class L1MobGroup {
 			boolean isRemoveGroupIfLeaderDie) {
 		_id = id;
 		_leaderId = leaderId;
-		_minions.addAll(minions); // QÆƒRƒs[‚Ì•û‚ª‘¬‚¢‚ªA•s•Ï«‚ª•ÛØ‚Å‚«‚È‚¢
+		_minions.addAll(minions); // å‚ç…§ã‚³ãƒ”ãƒ¼ã®æ–¹ãŒé€Ÿã„ãŒã€ä¸å¤‰æ€§ãŒä¿è¨¼ã§ããªã„
 		_isRemoveGroupIfLeaderDie = isRemoveGroupIfLeaderDie;
 	}
 

@@ -44,10 +44,10 @@ public class L1Chat implements L1CommandExecutor {
 				String msg;
 				if (flag.compareToIgnoreCase("on") == 0) {
 					L1World.getInstance().set_worldChatElabled(true);
-					msg = "ƒ[ƒ‹ƒhƒ`ƒƒƒbƒg‚ğ—LŒø‚É‚µ‚Ü‚µ‚½B";
+					msg = "ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒãƒ£ãƒƒãƒˆã‚’æœ‰åŠ¹ã«ã—ã¾ã—ãŸã€‚";
 				} else if (flag.compareToIgnoreCase("off") == 0) {
 					L1World.getInstance().set_worldChatElabled(false);
-					msg = "ƒ[ƒ‹ƒhƒ`ƒƒƒbƒg‚ğ’â~‚µ‚Ü‚µ‚½B";
+					msg = "ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒãƒ£ãƒƒãƒˆã‚’åœæ­¢ã—ã¾ã—ãŸã€‚";
 				} else {
 					throw new Exception();
 				}
@@ -55,9 +55,9 @@ public class L1Chat implements L1CommandExecutor {
 			} else {
 				String msg;
 				if (L1World.getInstance().isWorldChatElabled()) {
-					msg = "Œ»İƒ[ƒ‹ƒhƒ`ƒƒƒbƒg‚Í—LŒø‚Å‚·B.chat off ‚Å’â~‚Å‚«‚Ü‚·B";
+					msg = "ç¾åœ¨ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒãƒ£ãƒƒãƒˆã¯æœ‰åŠ¹ã§ã™ã€‚.chat off ã§åœæ­¢ã§ãã¾ã™ã€‚";
 				} else {
-					msg = "Œ»İƒ[ƒ‹ƒhƒ`ƒƒƒbƒg‚Í’â~‚µ‚Ä‚¢‚Ü‚·B.chat on ‚Å—LŒø‚É‚Å‚«‚Ü‚·B";
+					msg = "ç¾åœ¨ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒãƒ£ãƒƒãƒˆã¯åœæ­¢ã—ã¦ã„ã¾ã™ã€‚.chat on ã§æœ‰åŠ¹ã«ã§ãã¾ã™ã€‚";
 				}
 				pc.sendPackets(new S_SystemMessage(msg));
 			}

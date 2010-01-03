@@ -150,8 +150,8 @@ public class NpcSpawnTable {
 			SQLUtil.close(con);
 		}
 
-		_log.config("NPC”z’uƒŠƒXƒg " + _spawntable.size() + "Œƒ[ƒh");
-		_log.fine("‘NPC” " + spawnCount + "Œ");
+		_log.config("NPCé…ç½®ãƒªã‚¹ãƒˆ " + _spawntable.size() + "ä»¶ãƒ­ãƒ¼ãƒ‰");
+		_log.fine("ç·NPCæ•° " + spawnCount + "ä»¶");
 	}
 
 	public void storeSpawn(L1PcInstance pc, L1Npc npc) {

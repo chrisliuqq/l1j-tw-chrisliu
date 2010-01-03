@@ -19,7 +19,7 @@ CREATE TABLE `character_items` (
   `attr_enchant_level` int(11) default NULL,
  PRIMARY KEY  (`id`),
   KEY `key_id` (`char_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=sjis;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 #----------------------------
 # No records for table character_items
 #----------------------------

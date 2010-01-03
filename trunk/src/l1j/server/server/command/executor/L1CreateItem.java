@@ -64,7 +64,7 @@ public class L1CreateItem implements L1CommandExecutor {
 				itemid = ItemTable.getInstance().findItemIdByNameWithoutSpace(
 						nameid);
 				if (itemid == 0) {
-					pc.sendPackets(new S_SystemMessage("ŠY“–ƒAƒCƒeƒ€‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB"));
+					pc.sendPackets(new S_SystemMessage("è©²å½“ã‚¢ã‚¤ãƒ†ãƒ ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚"));
 					return;
 				}
 			}
@@ -80,7 +80,7 @@ public class L1CreateItem implements L1CommandExecutor {
 					}
 					if (pc.getInventory().checkAddItem(item, count) == L1Inventory.OK) {
 						pc.getInventory().storeItem(item);
-						pc.sendPackets(new S_ServerMessage(403, // %0‚ğè‚É“ü‚ê‚Ü‚µ‚½B
+						pc.sendPackets(new S_ServerMessage(403, // %0ã‚’æ‰‹ã«å…¥ã‚Œã¾ã—ãŸã€‚
 								item.getLogName() + "(ID:" + itemid + ")"));
 					}
 				} else {
@@ -99,17 +99,17 @@ public class L1CreateItem implements L1CommandExecutor {
 						}
 					}
 					if (createCount > 0) {
-						pc.sendPackets(new S_ServerMessage(403, // %0‚ğè‚É“ü‚ê‚Ü‚µ‚½B
+						pc.sendPackets(new S_ServerMessage(403, // %0ã‚’æ‰‹ã«å…¥ã‚Œã¾ã—ãŸã€‚
 								item.getLogName() + "(ID:" + itemid + ")"));
 					}
 				}
 			} else {
-				pc.sendPackets(new S_SystemMessage("w’èID‚ÌƒAƒCƒeƒ€‚Í‘¶İ‚µ‚Ü‚¹‚ñ"));
+				pc.sendPackets(new S_SystemMessage("æŒ‡å®šIDã®ã‚¢ã‚¤ãƒ†ãƒ ã¯å­˜åœ¨ã—ã¾ã›ã‚“"));
 			}
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 			pc.sendPackets(new S_SystemMessage(
-					".item itemid|name [ŒÂ”] [ƒGƒ“ƒ`ƒƒƒ“ƒg”] [ŠÓ’èó‘Ô] ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+					".item itemid|name [å€‹æ•°] [ã‚¨ãƒ³ãƒãƒ£ãƒ³ãƒˆæ•°] [é‘‘å®šçŠ¶æ…‹] ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

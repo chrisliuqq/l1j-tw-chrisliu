@@ -62,14 +62,14 @@ public class S_PetPack extends ServerBasePacket {
 		writeC(pet.getStatus()); // Modes in List.spr
 		writeC(pet.getHeading());
 		writeC(pet.getChaLightSize()); // (Bright) - 0~15
-		writeC(pet.getMoveSpeed()); // ƒXƒs[ƒh - 0:normal, 1:fast,
+		writeC(pet.getMoveSpeed()); // ã‚¹ãƒ”ãƒ¼ãƒ‰ - 0:normal, 1:fast,
 		// 2:slow
 		writeD(pet.getExp());
 		writeH(pet.getTempLawful());
 		writeS(pet.getName());
 		writeS(pet.getTitle());
 		int status = 0;
-		if (pet.getPoison() != null) { // “Åó‘Ô
+		if (pet.getPoison() != null) { // æ¯’çŠ¶æ…‹
 			if (pet.getPoison().getEffectId() == 1) {
 				status |= STATUS_POISON;
 			}
@@ -79,7 +79,7 @@ public class S_PetPack extends ServerBasePacket {
 		writeS(null); // ??
 		writeS(pet.getMaster() != null ? pet.getMaster().getName() : "");
 		writeC(0); // ??
-		// HP‚Ìƒp[ƒZƒ“ƒg
+		// HPã®ãƒ‘ãƒ¼ã‚»ãƒ³ãƒˆ
 		if (pet.getMaster() != null && pet.getMaster().getId() == pc.getId()) {
 			writeC(100 * pet.getCurrentHp() / pet.getMaxHp());
 		} else {

@@ -67,11 +67,11 @@ public class L1War {
 				} catch (Exception exception) {
 					break;
 				}
-				if (_isWarTimerDelete) { // í‘ˆ‚ªIŒ‹‚µ‚Ä‚¢‚½‚çƒ^ƒCƒ}[I—¹
+				if (_isWarTimerDelete) { // æˆ¦äº‰ãŒçµ‚çµã—ã¦ã„ãŸã‚‰ã‚¿ã‚¤ãƒãƒ¼çµ‚äº†
 					return;
 				}
 			}
-			CeaseCastleWar(); // UéíIŒ‹ˆ—
+			CeaseCastleWar(); // æ”»åŸæˆ¦çµ‚çµå‡¦ç†
 			delete();
 		}
 	}
@@ -82,26 +82,26 @@ public class L1War {
 
 		@Override
 		public void run() {
-			for (int loop = 0; loop < 240; loop++) { // 240•ª
+			for (int loop = 0; loop < 240; loop++) { // 240åˆ†
 				try {
 					Thread.sleep(60000);
 				} catch (Exception exception) {
 					break;
 				}
-				if (_isWarTimerDelete) { // í‘ˆ‚ªIŒ‹‚µ‚Ä‚¢‚½‚çƒ^ƒCƒ}[I—¹
+				if (_isWarTimerDelete) { // æˆ¦äº‰ãŒçµ‚çµã—ã¦ã„ãŸã‚‰ã‚¿ã‚¤ãƒãƒ¼çµ‚äº†
 					return;
 				}
 			}
-			CeaseWar(_param1, _param2); // IŒ‹
+			CeaseWar(_param1, _param2); // çµ‚çµ
 			delete();
 		}
 	}
 
 	public void handleCommands(int war_type, String attack_clan_name,
 			String defence_clan_name) {
-		// war_type - 1:Uéí 2:–Í‹[í
-		// attack_clan_name - •z‚µ‚½ƒNƒ‰ƒ“–¼
-		// defence_clan_name - •z‚³‚ê‚½ƒNƒ‰ƒ“–¼iUéí‚ÍAéåƒNƒ‰ƒ“j
+		// war_type - 1:æ”»åŸæˆ¦ 2:æ¨¡æ“¬æˆ¦
+		// attack_clan_name - å¸ƒå‘Šã—ãŸã‚¯ãƒ©ãƒ³å
+		// defence_clan_name - å¸ƒå‘Šã•ã‚ŒãŸã‚¯ãƒ©ãƒ³åï¼ˆæ”»åŸæˆ¦æ™‚ã¯ã€åŸä¸»ã‚¯ãƒ©ãƒ³ï¼‰
 
 		SetWarType(war_type);
 
@@ -113,7 +113,7 @@ public class L1War {
 		AddAttackClan(attack_clan_name);
 		SetDefenceClanName(defence_clan_name);
 
-		if (war_type == 1) { // Uéí
+		if (war_type == 1) { // æ”»åŸæˆ¦
 			_castleId = GetCastleId();
 			_castle = GetCastle();
 			if (_castle != null) {
@@ -123,12 +123,12 @@ public class L1War {
 			}
 
 			CastleWarTimer castle_war_timer = new CastleWarTimer();
-			GeneralThreadPool.getInstance().execute(castle_war_timer); // ƒ^ƒCƒ}[ŠJn
-		} else if (war_type == 2) { // –Í‹[í
+			GeneralThreadPool.getInstance().execute(castle_war_timer); // ã‚¿ã‚¤ãƒãƒ¼é–‹å§‹
+		} else if (war_type == 2) { // æ¨¡æ“¬æˆ¦
 			SimWarTimer sim_war_timer = new SimWarTimer();
-			GeneralThreadPool.getInstance().execute(sim_war_timer); // ƒ^ƒCƒ}[ŠJn
+			GeneralThreadPool.getInstance().execute(sim_war_timer); // ã‚¿ã‚¤ãƒãƒ¼é–‹å§‹
 		}
-		L1World.getInstance().addWar(this); // í‘ˆƒŠƒXƒg‚É’Ç‰Á
+		L1World.getInstance().addWar(this); // æˆ¦äº‰ãƒªã‚¹ãƒˆã«è¿½åŠ 
 	}
 
 	private void RequestCastleWar(int type, String clan1_name, String clan2_name) {
@@ -147,33 +147,33 @@ public class L1War {
 
 		int attack_clan_num = GetAttackClanListSize();
 
-		if (type == 1 || type == 2 || type == 3) { // éí•zA~•šAIŒ‹
+		if (type == 1 || type == 2 || type == 3) { // å®£æˆ¦å¸ƒå‘Šã€é™ä¼ã€çµ‚çµ
 			L1Clan clan2 = L1World.getInstance().getClan(clan2_name);
 			if (clan2 != null) {
 				L1PcInstance clan2_member[] = clan2.getOnlineClanMember();
 				for (int cnt = 0; cnt < clan2_member.length; cnt++) {
-					if (type == 1) { // éí•z
+					if (type == 1) { // å®£æˆ¦å¸ƒå‘Š
 						clan2_member[cnt].sendPackets(new S_War(type,
 								clan1_name, clan2_name));
-					} else if (type == 2) { // ~•š
+					} else if (type == 2) { // é™ä¼
 						clan2_member[cnt].sendPackets(new S_War(type,
 								clan1_name, clan2_name));
-						if (attack_clan_num == 1) { // UŒ‚‘¤ƒNƒ‰ƒ“‚ªˆê‚Â
+						if (attack_clan_num == 1) { // æ”»æ’ƒå´ã‚¯ãƒ©ãƒ³ãŒä¸€ã¤
 							clan2_member[cnt].sendPackets(new S_War(4,
 									clan2_name, clan1_name));
 						} else {
-							clan2_member[cnt].sendPackets(new S_ServerMessage( // %0ŒŒ–¿‚ª%1ŒŒ–¿‚É~•š‚µ‚Ü‚µ‚½B
+							clan2_member[cnt].sendPackets(new S_ServerMessage( // %0è¡€ç›ŸãŒ%1è¡€ç›Ÿã«é™ä¼ã—ã¾ã—ãŸã€‚
 									228, clan1_name, clan2_name));
 							RemoveAttackClan(clan1_name);
 						}
-					} else if (type == 3) { // IŒ‹
+					} else if (type == 3) { // çµ‚çµ
 						clan2_member[cnt].sendPackets(new S_War(type,
 								clan1_name, clan2_name));
-						if (attack_clan_num == 1) { // UŒ‚‘¤ƒNƒ‰ƒ“‚ªˆê‚Â
+						if (attack_clan_num == 1) { // æ”»æ’ƒå´ã‚¯ãƒ©ãƒ³ãŒä¸€ã¤
 							clan2_member[cnt].sendPackets(new S_War(4,
 									clan2_name, clan1_name));
 						} else {
-							clan2_member[cnt].sendPackets(new S_ServerMessage( // %0ŒŒ–¿‚Æ%1ŒŒ–¿ŠÔ‚Ìí‘ˆ‚ªIŒ‹‚µ‚Ü‚µ‚½B
+							clan2_member[cnt].sendPackets(new S_ServerMessage( // %0è¡€ç›Ÿã¨%1è¡€ç›Ÿé–“ã®æˆ¦äº‰ãŒçµ‚çµã—ã¾ã—ãŸã€‚
 									227, clan1_name, clan2_name));
 							RemoveAttackClan(clan1_name);
 						}
@@ -182,7 +182,7 @@ public class L1War {
 			}
 		}
 
-		if ((type == 2 || type == 3) && attack_clan_num == 1) { // ~•šAIŒ‹‚ÅUŒ‚‘¤ƒNƒ‰ƒ“‚ªˆê‚Â
+		if ((type == 2 || type == 3) && attack_clan_num == 1) { // é™ä¼ã€çµ‚çµã§æ”»æ’ƒå´ã‚¯ãƒ©ãƒ³ãŒä¸€ã¤
 			_isWarTimerDelete = true;
 			delete();
 		}
@@ -202,15 +202,15 @@ public class L1War {
 			}
 		}
 
-		if (type == 1 || type == 2 || type == 3) { // éí•zA~•šAIŒ‹
+		if (type == 1 || type == 2 || type == 3) { // å®£æˆ¦å¸ƒå‘Šã€é™ä¼ã€çµ‚çµ
 			L1Clan clan2 = L1World.getInstance().getClan(clan2_name);
 			if (clan2 != null) {
 				L1PcInstance clan2_member[] = clan2.getOnlineClanMember();
 				for (int cnt = 0; cnt < clan2_member.length; cnt++) {
-					if (type == 1) { // éí•z
+					if (type == 1) { // å®£æˆ¦å¸ƒå‘Š
 						clan2_member[cnt].sendPackets(new S_War(type,
 								clan1_name, clan2_name));
-					} else if (type == 2 || type == 3) { // ~•šAIŒ‹
+					} else if (type == 2 || type == 3) { // é™ä¼ã€çµ‚çµ
 						clan2_member[cnt].sendPackets(new S_War(type,
 								clan1_name, clan2_name));
 						clan2_member[cnt].sendPackets(new S_War(4, clan2_name,
@@ -220,15 +220,15 @@ public class L1War {
 			}
 		}
 
-		if (type == 2 || type == 3) { // ~•šAIŒ‹
+		if (type == 2 || type == 3) { // é™ä¼ã€çµ‚çµ
 			_isWarTimerDelete = true;
 			delete();
 		}
 	}
 
-	public void WinCastleWar(String clan_name) { // ƒNƒ‰ƒEƒ“‚ğ’Dæ‚µ‚ÄAUŒ‚‘¤ƒNƒ‰ƒ“‚ªŸ—˜
+	public void WinCastleWar(String clan_name) { // ã‚¯ãƒ©ã‚¦ãƒ³ã‚’å¥ªå–ã—ã¦ã€æ”»æ’ƒå´ã‚¯ãƒ©ãƒ³ãŒå‹åˆ©
 		String defence_clan_name = GetDefenceClanName();
-		L1World.getInstance().broadcastPacketToAll(new S_ServerMessage( // %0ŒŒ–¿‚ª%1ŒŒ–¿‚Æ‚Ìí‘ˆ‚ÅŸ—˜‚µ‚Ü‚µ‚½B
+		L1World.getInstance().broadcastPacketToAll(new S_ServerMessage( // %0è¡€ç›ŸãŒ%1è¡€ç›Ÿã¨ã®æˆ¦äº‰ã§å‹åˆ©ã—ã¾ã—ãŸã€‚
 				231, clan_name, defence_clan_name));
 
 		L1Clan defence_clan = L1World.getInstance().getClan(defence_clan_name);
@@ -246,7 +246,7 @@ public class L1War {
 		String clanList[] = GetAttackClanList();
 		for (int j = 0; j < clanList.length; j++) {
 			if (clanList[j] != null) {
-				L1World.getInstance().broadcastPacketToAll(new S_ServerMessage( // %0ŒŒ–¿‚Æ%1ŒŒ–¿ŠÔ‚Ìí‘ˆ‚ªIŒ‹‚µ‚Ü‚µ‚½B
+				L1World.getInstance().broadcastPacketToAll(new S_ServerMessage( // %0è¡€ç›Ÿã¨%1è¡€ç›Ÿé–“ã®æˆ¦äº‰ãŒçµ‚çµã—ã¾ã—ãŸã€‚
 						227, defence_clan_name, clanList[j]));
 				L1Clan clan = L1World.getInstance().getClan(clanList[j]);
 				if (clan != null) {
@@ -263,11 +263,11 @@ public class L1War {
 		delete();
 	}
 
-	public void CeaseCastleWar() { // í‘ˆŠÔ–—¹‚µA–h‰q‘¤ƒNƒ‰ƒ“‚ªŸ—˜
+	public void CeaseCastleWar() { // æˆ¦äº‰æ™‚é–“æº€äº†ã—ã€é˜²è¡›å´ã‚¯ãƒ©ãƒ³ãŒå‹åˆ©
 		String defence_clan_name = GetDefenceClanName();
 		String clanList[] = GetAttackClanList();
 		if (defence_clan_name != null) {
-			L1World.getInstance().broadcastPacketToAll(new S_ServerMessage( // %0ŒŒ–¿‚ª%1ŒŒ–¿‚Æ‚Ìí‘ˆ‚ÅŸ—˜‚µ‚Ü‚µ‚½B
+			L1World.getInstance().broadcastPacketToAll(new S_ServerMessage( // %0è¡€ç›ŸãŒ%1è¡€ç›Ÿã¨ã®æˆ¦äº‰ã§å‹åˆ©ã—ã¾ã—ãŸã€‚
 					231, defence_clan_name, clanList[0]));
 		}
 
@@ -283,7 +283,7 @@ public class L1War {
 
 		for (int j = 0; j < clanList.length; j++) {
 			if (clanList[j] != null) {
-				L1World.getInstance().broadcastPacketToAll(new S_ServerMessage( // %0ŒŒ–¿‚Æ%1ŒŒ–¿ŠÔ‚Ìí‘ˆ‚ªIŒ‹‚µ‚Ü‚µ‚½B
+				L1World.getInstance().broadcastPacketToAll(new S_ServerMessage( // %0è¡€ç›Ÿã¨%1è¡€ç›Ÿé–“ã®æˆ¦äº‰ãŒçµ‚çµã—ã¾ã—ãŸã€‚
 						227, defence_clan_name, clanList[j]));
 				L1Clan clan = L1World.getInstance().getClan(clanList[j]);
 				if (clan != null) {
@@ -300,15 +300,15 @@ public class L1War {
 		delete();
 	}
 
-	public void DeclareWar(String clan1_name, String clan2_name) { // _ŒŒ–¿‚ª_ŒŒ–¿‚Ééí•z‚µ‚Ü‚µ‚½B
-		if (GetWarType() == 1) { // Uéí
+	public void DeclareWar(String clan1_name, String clan2_name) { // _è¡€ç›ŸãŒ_è¡€ç›Ÿã«å®£æˆ¦å¸ƒå‘Šã—ã¾ã—ãŸã€‚
+		if (GetWarType() == 1) { // æ”»åŸæˆ¦
 			RequestCastleWar(1, clan1_name, clan2_name);
-		} else { // –Í‹[í
+		} else { // æ¨¡æ“¬æˆ¦
 			RequestSimWar(1, clan1_name, clan2_name);
 		}
 	}
 
-	public void SurrenderWar(String clan1_name, String clan2_name) { // _ŒŒ–¿‚ª_ŒŒ–¿‚É~•š‚µ‚Ü‚µ‚½B
+	public void SurrenderWar(String clan1_name, String clan2_name) { // _è¡€ç›ŸãŒ_è¡€ç›Ÿã«é™ä¼ã—ã¾ã—ãŸã€‚
 		if (GetWarType() == 1) {
 			RequestCastleWar(2, clan1_name, clan2_name);
 		} else {
@@ -316,7 +316,7 @@ public class L1War {
 		}
 	}
 
-	public void CeaseWar(String clan1_name, String clan2_name) { // _ŒŒ–¿‚Æ_ŒŒ–¿‚Æ‚Ìí‘ˆ‚ªIŒ‹‚µ‚Ü‚µ‚½B
+	public void CeaseWar(String clan1_name, String clan2_name) { // _è¡€ç›Ÿã¨_è¡€ç›Ÿã¨ã®æˆ¦äº‰ãŒçµ‚çµã—ã¾ã—ãŸã€‚
 		if (GetWarType() == 1) {
 			RequestCastleWar(3, clan1_name, clan2_name);
 		} else {
@@ -324,7 +324,7 @@ public class L1War {
 		}
 	}
 
-	public void WinWar(String clan1_name, String clan2_name) { // _ŒŒ–¿‚ª_ŒŒ–¿‚Æ‚Ìí‘ˆ‚ÅŸ—˜‚µ‚Ü‚µ‚½B
+	public void WinWar(String clan1_name, String clan2_name) { // _è¡€ç›ŸãŒ_è¡€ç›Ÿã¨ã®æˆ¦äº‰ã§å‹åˆ©ã—ã¾ã—ãŸã€‚
 		if (GetWarType() == 1) {
 			RequestCastleWar(4, clan1_name, clan2_name);
 		} else {
@@ -332,33 +332,33 @@ public class L1War {
 		}
 	}
 
-	public boolean CheckClanInWar(String clan_name) { // ƒNƒ‰ƒ“‚ªí‘ˆ‚ÉQ‰Á‚µ‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN‚·‚é
+	public boolean CheckClanInWar(String clan_name) { // ã‚¯ãƒ©ãƒ³ãŒæˆ¦äº‰ã«å‚åŠ ã—ã¦ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 		boolean ret;
-		if (GetDefenceClanName().toLowerCase().equals(clan_name.toLowerCase())) { // –h‰q‘¤ƒNƒ‰ƒ“‚ğƒ`ƒFƒbƒN
+		if (GetDefenceClanName().toLowerCase().equals(clan_name.toLowerCase())) { // é˜²è¡›å´ã‚¯ãƒ©ãƒ³ã‚’ãƒã‚§ãƒƒã‚¯
 			ret = true;
 		} else {
-			ret = CheckAttackClan(clan_name); // UŒ‚‘¤ƒNƒ‰ƒ“‚ğƒ`ƒFƒbƒN
+			ret = CheckAttackClan(clan_name); // æ”»æ’ƒå´ã‚¯ãƒ©ãƒ³ã‚’ãƒã‚§ãƒƒã‚¯
 		}
 		return ret;
 	}
 
 	public boolean CheckClanInSameWar(String player_clan_name,
-			String target_clan_name) { // ©ƒNƒ‰ƒ“‚Æ‘ŠèƒNƒ‰ƒ“‚ª“¯‚¶í‘ˆ‚ÉQ‰Á‚µ‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN‚·‚éi“¯‚¶ƒNƒ‰ƒ“‚Ìê‡‚àŠÜ‚Şj
+			String target_clan_name) { // è‡ªã‚¯ãƒ©ãƒ³ã¨ç›¸æ‰‹ã‚¯ãƒ©ãƒ³ãŒåŒã˜æˆ¦äº‰ã«å‚åŠ ã—ã¦ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹ï¼ˆåŒã˜ã‚¯ãƒ©ãƒ³ã®å ´åˆã‚‚å«ã‚€ï¼‰
 		boolean player_clan_flag;
 		boolean target_clan_flag;
 
 		if (GetDefenceClanName().toLowerCase().equals(
-				player_clan_name.toLowerCase())) { // ©ƒNƒ‰ƒ“‚É‘Î‚µ‚Ä–h‰q‘¤ƒNƒ‰ƒ“‚ğƒ`ƒFƒbƒN
+				player_clan_name.toLowerCase())) { // è‡ªã‚¯ãƒ©ãƒ³ã«å¯¾ã—ã¦é˜²è¡›å´ã‚¯ãƒ©ãƒ³ã‚’ãƒã‚§ãƒƒã‚¯
 			player_clan_flag = true;
 		} else {
-			player_clan_flag = CheckAttackClan(player_clan_name); // ©ƒNƒ‰ƒ“‚É‘Î‚µ‚ÄUŒ‚‘¤ƒNƒ‰ƒ“‚ğƒ`ƒFƒbƒN
+			player_clan_flag = CheckAttackClan(player_clan_name); // è‡ªã‚¯ãƒ©ãƒ³ã«å¯¾ã—ã¦æ”»æ’ƒå´ã‚¯ãƒ©ãƒ³ã‚’ãƒã‚§ãƒƒã‚¯
 		}
 
 		if (GetDefenceClanName().toLowerCase().equals(
-				target_clan_name.toLowerCase())) { // ‘ŠèƒNƒ‰ƒ“‚É‘Î‚µ‚Ä–h‰q‘¤ƒNƒ‰ƒ“‚ğƒ`ƒFƒbƒN
+				target_clan_name.toLowerCase())) { // ç›¸æ‰‹ã‚¯ãƒ©ãƒ³ã«å¯¾ã—ã¦é˜²è¡›å´ã‚¯ãƒ©ãƒ³ã‚’ãƒã‚§ãƒƒã‚¯
 			target_clan_flag = true;
 		} else {
-			target_clan_flag = CheckAttackClan(target_clan_name); // ‘ŠèƒNƒ‰ƒ“‚É‘Î‚µ‚ÄUŒ‚‘¤ƒNƒ‰ƒ“‚ğƒ`ƒFƒbƒN
+			target_clan_flag = CheckAttackClan(target_clan_name); // ç›¸æ‰‹ã‚¯ãƒ©ãƒ³ã«å¯¾ã—ã¦æ”»æ’ƒå´ã‚¯ãƒ©ãƒ³ã‚’ãƒã‚§ãƒƒã‚¯
 		}
 
 		if (player_clan_flag == true && target_clan_flag == true) {
@@ -368,18 +368,18 @@ public class L1War {
 		}
 	}
 
-	public String GetEnemyClanName(String player_clan_name) { // ‘Šè‚ÌƒNƒ‰ƒ“–¼‚ğæ“¾‚·‚é
+	public String GetEnemyClanName(String player_clan_name) { // ç›¸æ‰‹ã®ã‚¯ãƒ©ãƒ³åã‚’å–å¾—ã™ã‚‹
 		String enemy_clan_name = null;
 		if (GetDefenceClanName().toLowerCase().equals(
-				player_clan_name.toLowerCase())) { // ©ƒNƒ‰ƒ“‚ª–h‰q‘¤
+				player_clan_name.toLowerCase())) { // è‡ªã‚¯ãƒ©ãƒ³ãŒé˜²è¡›å´
 			String clanList[] = GetAttackClanList();
 			for (int cnt = 0; cnt < clanList.length; cnt++) {
 				if (clanList[cnt] != null) {
 					enemy_clan_name = clanList[cnt];
-					return enemy_clan_name; // ƒŠƒXƒg‚Ìæ“ª‚ÌƒNƒ‰ƒ“–¼‚ğ•Ô‚·
+					return enemy_clan_name; // ãƒªã‚¹ãƒˆã®å…ˆé ­ã®ã‚¯ãƒ©ãƒ³åã‚’è¿”ã™
 				}
 			}
-		} else { // ©ƒNƒ‰ƒ“‚ªUŒ‚‘¤
+		} else { // è‡ªã‚¯ãƒ©ãƒ³ãŒæ”»æ’ƒå´
 			enemy_clan_name = GetDefenceClanName();
 			return enemy_clan_name;
 		}
@@ -387,7 +387,7 @@ public class L1War {
 	}
 
 	public void delete() {
-		L1World.getInstance().removeWar(this); // í‘ˆƒŠƒXƒg‚©‚çíœ
+		L1World.getInstance().removeWar(this); // æˆ¦äº‰ãƒªã‚¹ãƒˆã‹ã‚‰å‰Šé™¤
 	}
 
 	public int GetWarType() {
@@ -439,7 +439,7 @@ public class L1War {
 
 	public int GetCastleId() {
 		int castle_id = 0;
-		if (GetWarType() == 1) { // Uéí
+		if (GetWarType() == 1) { // æ”»åŸæˆ¦
 			L1Clan clan = L1World.getInstance().getClan(GetDefenceClanName());
 			if (clan != null) {
 				castle_id = clan.getCastleId();
@@ -450,7 +450,7 @@ public class L1War {
 
 	public L1Castle GetCastle() {
 		L1Castle l1castle = null;
-		if (GetWarType() == 1) { // Uéí
+		if (GetWarType() == 1) { // æ”»åŸæˆ¦
 			L1Clan clan = L1World.getInstance().getClan(GetDefenceClanName());
 			if (clan != null) {
 				int castle_id = clan.getCastleId();

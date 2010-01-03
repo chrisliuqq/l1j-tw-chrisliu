@@ -67,7 +67,7 @@ public class Teleportation {
 		short mapId = pc.getTeleportMapId();
 		int head = pc.getTeleportHeading();
 
-		// ƒeƒŒƒ|[ƒgæ‚ª•s³‚Å‚ ‚ê‚ÎŒ³‚ÌÀ•W‚Ö(GM‚Íœ‚­)
+		// ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå…ˆãŒä¸æ­£ã§ã‚ã‚Œã°å…ƒã®åº§æ¨™ã¸(GMã¯é™¤ã)
 		L1Map map = L1WorldMap.getInstance().getMap(mapId);
 
 		if (!map.isInMap(x, y) && !pc.isGm()) {
@@ -80,8 +80,8 @@ public class Teleportation {
 
 		L1Clan clan = L1World.getInstance().getClan(pc.getClanname());
 		if (clan != null) {
-			if (clan.getWarehouseUsingChar() == pc.getId()) { // ©ƒLƒƒƒ‰‚ªƒNƒ‰ƒ“‘qŒÉg—p’†
-				clan.setWarehouseUsingChar(0); // ƒNƒ‰ƒ“‘qŒÉ‚ÌƒƒbƒN‚ğ‰ğœ
+			if (clan.getWarehouseUsingChar() == pc.getId()) { // è‡ªã‚­ãƒ£ãƒ©ãŒã‚¯ãƒ©ãƒ³å€‰åº«ä½¿ç”¨ä¸­
+				clan.setWarehouseUsingChar(0); // ã‚¯ãƒ©ãƒ³å€‰åº«ã®ãƒ­ãƒƒã‚¯ã‚’è§£é™¤
 			}
 		}
 
@@ -90,7 +90,7 @@ public class Teleportation {
 		pc.setHeading(head);
 		pc.sendPackets(new S_MapID(pc.getMapId(), pc.getMap().isUnderwater()));
 
-		if (pc.isReserveGhost()) { // ƒS[ƒXƒgó‘Ô‰ğœ
+		if (pc.isReserveGhost()) { // ã‚´ãƒ¼ã‚¹ãƒˆçŠ¶æ…‹è§£é™¤
 			pc.endGhost();
 		}
 		if (pc.isGhost() || pc.isGmInvis()) {
@@ -103,57 +103,57 @@ public class Teleportation {
 		pc.sendPackets(new S_OwnCharPack(pc));
 
 		pc.removeAllKnownObjects();
-		pc.sendVisualEffectAtTeleport(); // ƒNƒ‰ƒEƒ“A“ÅA…’†“™‚Ì‹ŠoŒø‰Ê‚ğ•\¦
+		pc.sendVisualEffectAtTeleport(); // ã‚¯ãƒ©ã‚¦ãƒ³ã€æ¯’ã€æ°´ä¸­ç­‰ã®è¦–è¦šåŠ¹æœã‚’è¡¨ç¤º
 		pc.updateObject();
-		// spr”Ô†6310, 5641‚Ì•Ïg’†‚ÉƒeƒŒƒ|[ƒg‚·‚é‚ÆƒeƒŒƒ|[ƒgŒã‚ÉˆÚ“®‚Å‚«‚È‚­‚È‚é
-		// •Ší‚ğ’…’E‚·‚é‚ÆˆÚ“®‚Å‚«‚é‚æ‚¤‚É‚È‚é‚½‚ßAS_CharVisualUpdate‚ğ‘—M‚·‚é
+		// sprç•ªå·6310, 5641ã®å¤‰èº«ä¸­ã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã™ã‚‹ã¨ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå¾Œã«ç§»å‹•ã§ããªããªã‚‹
+		// æ­¦å™¨ã‚’ç€è„±ã™ã‚‹ã¨ç§»å‹•ã§ãã‚‹ã‚ˆã†ã«ãªã‚‹ãŸã‚ã€S_CharVisualUpdateã‚’é€ä¿¡ã™ã‚‹
 		pc.sendPackets(new S_CharVisualUpdate(pc));
 
 		pc.killSkillEffectTimer(MEDITATION);
-		pc.setCallClanId(0); // ƒR[ƒ‹ƒNƒ‰ƒ“‚ğ¥‚¦‚½Œã‚ÉˆÚ“®‚·‚é‚Æ¢Š«–³Œø
+		pc.setCallClanId(0); // ã‚³ãƒ¼ãƒ«ã‚¯ãƒ©ãƒ³ã‚’å”±ãˆãŸå¾Œã«ç§»å‹•ã™ã‚‹ã¨å¬å–šç„¡åŠ¹
 
 		/*
-		 * subjects ƒyƒbƒg‚ÆƒTƒ‚ƒ“‚ÌƒeƒŒƒ|[ƒgæ‰æ–Ê“à‚Ö‹‚½ƒvƒŒƒCƒ„[B
-		 * Šeƒyƒbƒg–ˆ‚ÉUpdateObject‚ğs‚¤•û‚ªƒR[ƒhã‚Å‚ÍƒXƒ}[ƒg‚¾‚ªA
-		 * ƒlƒbƒgƒ[ƒN•‰‰×‚ª‘å‚«‚­‚È‚éˆ×Aˆê’USet‚ÖŠi”[‚µ‚ÄÅŒã‚É‚Ü‚Æ‚ß‚ÄUpdateObject‚·‚éB
+		 * subjects ãƒšãƒƒãƒˆã¨ã‚µãƒ¢ãƒ³ã®ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå…ˆç”»é¢å†…ã¸å±…ãŸãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã€‚
+		 * å„ãƒšãƒƒãƒˆæ¯ã«UpdateObjectã‚’è¡Œã†æ–¹ãŒã‚³ãƒ¼ãƒ‰ä¸Šã§ã¯ã‚¹ãƒãƒ¼ãƒˆã ãŒã€
+		 * ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯è² è·ãŒå¤§ãããªã‚‹ç‚ºã€ä¸€æ—¦Setã¸æ ¼ç´ã—ã¦æœ€å¾Œã«ã¾ã¨ã‚ã¦UpdateObjectã™ã‚‹ã€‚
 		 */
 		HashSet<L1PcInstance> subjects = new HashSet<L1PcInstance>();
 		subjects.add(pc);
 
 		if (!pc.isGhost()) {
 			if (pc.getMap().isTakePets()) {
-				// ƒyƒbƒg‚ÆƒTƒ‚ƒ“‚àˆê‚ÉˆÚ“®‚³‚¹‚éB
+				// ãƒšãƒƒãƒˆã¨ã‚µãƒ¢ãƒ³ã‚‚ä¸€ç·’ã«ç§»å‹•ã•ã›ã‚‹ã€‚
 				for (L1NpcInstance petNpc : pc.getPetList().values()) {
-					// ƒeƒŒƒ|[ƒgæ‚Ìİ’è
+					// ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå…ˆã®è¨­å®š
 					L1Location loc = pc.getLocation().randomLocation(3, false);
 					int nx = loc.getX();
 					int ny = loc.getY();
 					if (pc.getMapId() == 5125 || pc.getMapId() == 5131
 							|| pc.getMapId() == 5132 || pc.getMapId() == 5133
-							|| pc.getMapId() == 5134) { // ƒyƒbƒgƒ}ƒbƒ`‰ïê
+							|| pc.getMapId() == 5134) { // ãƒšãƒƒãƒˆãƒãƒƒãƒä¼šå ´
 						nx = 32799 + _random.nextInt(5) - 3;
 						ny = 32864 + _random.nextInt(5) - 3;
 					}
 					teleport(petNpc, nx, ny, mapId, head);
-					if (petNpc instanceof L1SummonInstance) { // ƒTƒ‚ƒ“ƒ‚ƒ“ƒXƒ^[
+					if (petNpc instanceof L1SummonInstance) { // ã‚µãƒ¢ãƒ³ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼
 						L1SummonInstance summon = (L1SummonInstance) petNpc;
 						pc.sendPackets(new S_SummonPack(summon, pc));
-					} else if (petNpc instanceof L1PetInstance) { // ƒyƒbƒg
+					} else if (petNpc instanceof L1PetInstance) { // ãƒšãƒƒãƒˆ
 						L1PetInstance pet = (L1PetInstance) petNpc;
 						pc.sendPackets(new S_PetPack(pet, pc));
 					}
 
 					for (L1PcInstance visiblePc : L1World.getInstance()
 							.getVisiblePlayer(petNpc)) {
-						// ƒeƒŒƒ|[ƒgŒ³‚Ææ‚É“¯‚¶PC‚ª‹‚½ê‡A³‚µ‚­XV‚³‚ê‚È‚¢ˆ×Aˆê“xremove‚·‚éB
+						// ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå…ƒã¨å…ˆã«åŒã˜PCãŒå±…ãŸå ´åˆã€æ­£ã—ãæ›´æ–°ã•ã‚Œãªã„ç‚ºã€ä¸€åº¦removeã™ã‚‹ã€‚
 						visiblePc.removeKnownObject(petNpc);
 						subjects.add(visiblePc);
 					}
 				}
 
-				// ƒ}ƒWƒbƒNƒh[ƒ‹‚àˆê‚ÉˆÚ“®‚³‚¹‚éB
+				// ãƒã‚¸ãƒƒã‚¯ãƒ‰ãƒ¼ãƒ«ã‚‚ä¸€ç·’ã«ç§»å‹•ã•ã›ã‚‹ã€‚
 				for (L1DollInstance doll : pc.getDollList().values()) {
-					// ƒeƒŒƒ|[ƒgæ‚Ìİ’è
+					// ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå…ˆã®è¨­å®š
 					L1Location loc = pc.getLocation().randomLocation(3, false);
 					int nx = loc.getX();
 					int ny = loc.getY();
@@ -163,14 +163,14 @@ public class Teleportation {
 
 					for (L1PcInstance visiblePc : L1World.getInstance()
 							.getVisiblePlayer(doll)) {
-						// ƒeƒŒƒ|[ƒgŒ³‚Ææ‚É“¯‚¶PC‚ª‹‚½ê‡A³‚µ‚­XV‚³‚ê‚È‚¢ˆ×Aˆê“xremove‚·‚éB
+						// ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå…ƒã¨å…ˆã«åŒã˜PCãŒå±…ãŸå ´åˆã€æ­£ã—ãæ›´æ–°ã•ã‚Œãªã„ç‚ºã€ä¸€åº¦removeã™ã‚‹ã€‚
 						visiblePc.removeKnownObject(doll);
 						subjects.add(visiblePc);
 					}
 				}
 			} else {
 				for (L1DollInstance doll : pc.getDollList().values()) {
-					// ƒeƒŒƒ|[ƒgæ‚Ìİ’è
+					// ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå…ˆã®è¨­å®š
 					L1Location loc = pc.getLocation().randomLocation(3, false);
 					int nx = loc.getX();
 					int ny = loc.getY();
@@ -180,7 +180,7 @@ public class Teleportation {
 
 					for (L1PcInstance visiblePc : L1World.getInstance()
 							.getVisiblePlayer(doll)) {
-						// ƒeƒŒƒ|[ƒgŒ³‚Ææ‚É“¯‚¶PC‚ª‹‚½ê‡A³‚µ‚­XV‚³‚ê‚È‚¢ˆ×Aˆê“xremove‚·‚éB
+						// ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå…ƒã¨å…ˆã«åŒã˜PCãŒå±…ãŸå ´åˆã€æ­£ã—ãæ›´æ–°ã•ã‚Œãªã„ç‚ºã€ä¸€åº¦removeã™ã‚‹ã€‚
 						visiblePc.removeKnownObject(doll);
 						subjects.add(visiblePc);
 					}

@@ -19,7 +19,7 @@
 package l1j.server.server.model;
 
 /*
- * �����I�ɂ́A������Ή����܂Ƃ߂Ĉ�����΂����ȁ[�Ǝv���A��b�N���X����B SkillTimer�Ƃ̊֌W�œ����������Ȃ��B
+ * 将来的には、凍結や石化もまとめて扱えればいいなーと思い、基礎クラス制定。 SkillTimerとの関係で難しいかもしれない。
  */
 public abstract class L1Paralysis {
 	public abstract int getEffectId();

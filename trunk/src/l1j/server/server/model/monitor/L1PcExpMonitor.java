@@ -35,8 +35,8 @@ public class L1PcExpMonitor extends L1PcMonitor {
 	@Override
 	public void execTask(L1PcInstance pc) {
 
-		// ƒƒEƒtƒ‹‚ª•Ï‚í‚Á‚½ê‡‚ÍS_Lawful‚ğ‘—M
-// // ‚½‚¾‚µF‚ª•Ï‚í‚ç‚È‚¢ê‡‚Í‘—M‚µ‚È‚¢
+		// ãƒ­ã‚¦ãƒ•ãƒ«ãŒå¤‰ã‚ã£ãŸå ´åˆã¯S_Lawfulã‚’é€ä¿¡
+// // ãŸã ã—è‰²ãŒå¤‰ã‚ã‚‰ãªã„å ´åˆã¯é€ä¿¡ã—ãªã„
 // if (_old_lawful != pc.getLawful()
 // && !((IntRange.includes(_old_lawful, 9000, 32767) && IntRange
 // .includes(pc.getLawful(), 9000, 32767)) || (IntRange

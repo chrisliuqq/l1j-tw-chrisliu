@@ -58,7 +58,7 @@ public class L1GMRoom implements L1CommandExecutor {
 			} else {
 				L1Location loc = GMCommandsConfig.ROOMS.get(arg.toLowerCase());
 				if (loc == null) {
-					pc.sendPackets(new S_SystemMessage(arg + " –¢’è‹`‚ÌRoom‚Å‚·"));
+					pc.sendPackets(new S_SystemMessage(arg + " æœªå®šç¾©ã®Roomã§ã™"));
 					return;
 				}
 				L1Teleport.teleport(pc, loc.getX(), loc.getY(), (short) loc
@@ -66,7 +66,7 @@ public class L1GMRoom implements L1CommandExecutor {
 			}
 		} catch (Exception exception) {
 			pc.sendPackets(new S_SystemMessage(
-					".gmroom1`.gmroom5 or .gmroom name ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+					".gmroom1ï½.gmroom5 or .gmroom name ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

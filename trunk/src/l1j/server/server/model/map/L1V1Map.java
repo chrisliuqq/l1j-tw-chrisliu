@@ -64,10 +64,10 @@ public class L1V1Map extends L1Map {
 	private boolean _isUsableSkill;
 
 	/*
-	 * ƒ}ƒbƒvî•ñ‚ğ1–Ê‚Å•Û‚·‚é‚½‚ß‚Éd•û‚È‚­ƒrƒbƒgƒtƒ‰ƒOB ‰Â“Ç«‚ª‘å‚«‚­‰º‚ª‚é‚Ì‚Å—Ç‚¢q‚Í^—‚µ‚È‚¢B
+	 * ãƒãƒƒãƒ—æƒ…å ±ã‚’1é¢ã§ä¿æŒã™ã‚‹ãŸã‚ã«ä»•æ–¹ãªããƒ“ãƒƒãƒˆãƒ•ãƒ©ã‚°ã€‚ å¯èª­æ€§ãŒå¤§ããä¸‹ãŒã‚‹ã®ã§è‰¯ã„å­ã¯çœŸä¼¼ã—ãªã„ã€‚
 	 */
 	/**
-	 * Mob‚È‚Ç‚Ì’Ês•s‰Â”\‚É‚È‚éƒIƒuƒWƒFƒNƒg‚ªƒ^ƒCƒ‹ã‚É‘¶İ‚·‚é‚©‚ğ¦‚·ƒrƒbƒgƒtƒ‰ƒO
+	 * Mobãªã©ã®é€šè¡Œä¸å¯èƒ½ã«ãªã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã‚¿ã‚¤ãƒ«ä¸Šã«å­˜åœ¨ã™ã‚‹ã‹ã‚’ç¤ºã™ãƒ“ãƒƒãƒˆãƒ•ãƒ©ã‚°
 	 */
 	private static final byte BITFLAG_IS_IMPASSABLE = (byte) 128; // 1000 0000
 
@@ -104,7 +104,7 @@ public class L1V1Map extends L1Map {
 	public L1V1Map(L1V1Map map) {
 		_mapId = map._mapId;
 
-		// _map‚ğƒRƒs[
+		// _mapã‚’ã‚³ãƒ”ãƒ¼
 		_map = new byte[map._map.length][];
 		for (int i = 0; i < map._map.length; i++) {
 			_map[i] = map._map[i].clone();
@@ -118,7 +118,7 @@ public class L1V1Map extends L1Map {
 	}
 
 	private int accessTile(int x, int y) {
-		if (!isInMap(x, y)) { // XXX ‚Æ‚è‚ ‚¦‚¸ƒ`ƒFƒbƒN‚·‚éB‚±‚ê‚Í—Ç‚­‚È‚¢B
+		if (!isInMap(x, y)) { // XXX ã¨ã‚Šã‚ãˆãšãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚ã“ã‚Œã¯è‰¯ããªã„ã€‚
 			return 0;
 		}
 
@@ -130,14 +130,14 @@ public class L1V1Map extends L1Map {
 	}
 
 	private void setTile(int x, int y, int tile) {
-		if (!isInMap(x, y)) { // XXX ‚Æ‚è‚ ‚¦‚¸ƒ`ƒFƒbƒN‚·‚éB‚±‚ê‚Í—Ç‚­‚È‚¢B
+		if (!isInMap(x, y)) { // XXX ã¨ã‚Šã‚ãˆãšãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚ã“ã‚Œã¯è‰¯ããªã„ã€‚
 			return;
 		}
 		_map[x - _worldTopLeftX][y - _worldTopLeftY] = (byte) tile;
 	}
 
 	/*
-	 * ‚à‚Ì‚·‚²‚­—Ç‚­‚È‚¢‹C‚ª‚·‚é
+	 * ã‚‚ã®ã™ã”ãè‰¯ããªã„æ°—ãŒã™ã‚‹
 	 */
 	public byte[][] getRawTiles() {
 		return _map;
@@ -190,7 +190,7 @@ public class L1V1Map extends L1Map {
 
 	@Override
 	public boolean isInMap(int x, int y) {
-		// ƒtƒB[ƒ‹ƒh‚Ì’ƒFƒGƒŠƒA‚Ì”»’è
+		// ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®èŒ¶è‰²ã‚¨ãƒªã‚¢ã®åˆ¤å®š
 		if (_mapId == 4
 				&& (x < 32520 || y < 32070 || (y < 32190 && x < 33950))) {
 			return false;
@@ -217,9 +217,9 @@ public class L1V1Map extends L1Map {
 
 	@Override
 	public boolean isPassable(int x, int y, int heading) {
-		// Œ»İ‚Ìƒ^ƒCƒ‹
+		// ç¾åœ¨ã®ã‚¿ã‚¤ãƒ«
 		int tile1 = accessTile(x, y);
-		// ˆÚ“®—\’è‚Ìƒ^ƒCƒ‹
+		// ç§»å‹•äºˆå®šã®ã‚¿ã‚¤ãƒ«
 		int tile2;
 
 		if (heading == 0) {
@@ -337,11 +337,11 @@ public class L1V1Map extends L1Map {
 
 	@Override
 	public boolean isArrowPassable(int x, int y, int heading) {
-		// Œ»İ‚Ìƒ^ƒCƒ‹
+		// ç¾åœ¨ã®ã‚¿ã‚¤ãƒ«
 		int tile1 = accessTile(x, y);
-		// ˆÚ“®—\’è‚Ìƒ^ƒCƒ‹
+		// ç§»å‹•äºˆå®šã®ã‚¿ã‚¤ãƒ«
 		int tile2;
-		// ˆÚ“®—\’è‚ÌÀ•W
+		// ç§»å‹•äºˆå®šã®åº§æ¨™
 		int newX;
 		int newY;
 
@@ -386,8 +386,8 @@ public class L1V1Map extends L1Map {
 		}
 
 // if (Config.ARROW_PASS_FLOWER_BED) {
-// if (tile2 == 0x00 || (tile2 & 0x10) == 0x10) { // ‰Ô’d
-// if (tile2 == 0x00) { // ‰Ô’d
+// if (tile2 == 0x00 || (tile2 & 0x10) == 0x10) { // èŠ±å£‡
+// if (tile2 == 0x00) { // èŠ±å£‡
 // return true;
 // }
 // }
@@ -492,19 +492,19 @@ public class L1V1Map extends L1Map {
 			int leftEdgeLocation = door.getLeftEdgeLocation();
 			int rightEdgeLocation = door.getRightEdgeLocation();
 			int size = rightEdgeLocation - leftEdgeLocation;
-			if (size == 0) { // 1ƒ}ƒX•ª‚Ì•‚ÌƒhƒA
+			if (size == 0) { // 1ãƒã‚¹åˆ†ã®å¹…ã®ãƒ‰ã‚¢
 				if (x == door.getX() && y == door.getY()) {
 					return true;
 				}
-			} else { // 2ƒ}ƒX•ªˆÈã‚Ì•‚ª‚ ‚éƒhƒA
-				if (door.getDirection() == 0) { // ^Œü‚«
+			} else { // 2ãƒã‚¹åˆ†ä»¥ä¸Šã®å¹…ãŒã‚ã‚‹ãƒ‰ã‚¢
+				if (door.getDirection() == 0) { // ï¼å‘ã
 					for (int doorX = leftEdgeLocation;
 							doorX <= rightEdgeLocation; doorX++) {
 						if (x == doorX && y == door.getY()) {
 							return true;
 						}
 					}
-				} else { // _Œü‚«
+				} else { // ï¼¼å‘ã
 					for (int doorY = leftEdgeLocation;
 							doorY <= rightEdgeLocation; doorY++) {
 						if (x == door.getX() && y == doorY) {

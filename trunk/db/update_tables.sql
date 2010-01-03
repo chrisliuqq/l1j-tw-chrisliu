@@ -1,7 +1,7 @@
-# �e�[�u���̂����ÓI�ȃe�[�u���݂̂��X�V����
+# テーブルのうち静的なテーブルのみを更新する
 
 use l1jdb;
-charset sjis;
+charset utf8;
 
 #DROP TABLE IF EXISTS `accounts`;
 DROP TABLE IF EXISTS `area`;

@@ -45,9 +45,9 @@ public class L1Who implements L1CommandExecutor {
 			S_WhoAmount s_whoamount = new S_WhoAmount(amount);
 			pc.sendPackets(s_whoamount);
 
-			// オンラインのプレイヤーリストを表示
+			// 繧ｪ繝ｳ繝ｩ繧､繝ｳ縺ｮ繝励Ξ繧､繝､繝ｼ繝ｪ繧ｹ繝医ｒ陦ｨ遉ｺ
 			if (arg.equalsIgnoreCase("all")) {
-				pc.sendPackets(new S_SystemMessage("-- オンラインのプレイヤー --"));
+				pc.sendPackets(new S_SystemMessage("-- 繧ｪ繝ｳ繝ｩ繧､繝ｳ縺ｮ繝励Ξ繧､繝､繝ｼ --"));
 				StringBuffer buf = new StringBuffer();
 				for (L1PcInstance each : players) {
 					buf.append(each.getName());
@@ -62,7 +62,7 @@ public class L1Who implements L1CommandExecutor {
 				}
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(".who [all] と入力して下さい。"));
+			pc.sendPackets(new S_SystemMessage(".who [all] 縺ｨ蜈･蜉帙＠縺ｦ荳九＆縺�縲�"));
 		}
 	}
 }

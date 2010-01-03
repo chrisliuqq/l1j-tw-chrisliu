@@ -27,31 +27,31 @@ public class S_EffectLocation extends ServerBasePacket {
 	private byte[] _byte = null;
 
 	/**
-	 * Žw’è‚³‚ê‚½ˆÊ’u‚ÖƒGƒtƒFƒNƒg‚ð•\Ž¦‚·‚éƒpƒPƒbƒg‚ð\’z‚·‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸä½ç½®ã¸ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ãƒ‘ã‚±ãƒƒãƒˆã‚’æ§‹ç¯‰ã™ã‚‹ã€‚
 	 * 
-	 * @param pt - ƒGƒtƒFƒNƒg‚ð•\Ž¦‚·‚éˆÊ’u‚ðŠi”[‚µ‚½PointƒIƒuƒWƒFƒNƒg
-	 * @param gfxId - •\Ž¦‚·‚éƒGƒtƒFƒNƒg‚ÌID
+	 * @param pt - ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ä½ç½®ã‚’æ ¼ç´ã—ãŸPointã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @param gfxId - è¡¨ç¤ºã™ã‚‹ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®ID
 	 */
 	public S_EffectLocation(Point pt, int gfxId) {
 		this(pt.getX(), pt.getY(), gfxId);
 	}
 
 	/**
-	 * Žw’è‚³‚ê‚½ˆÊ’u‚ÖƒGƒtƒFƒNƒg‚ð•\Ž¦‚·‚éƒpƒPƒbƒg‚ð\’z‚·‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸä½ç½®ã¸ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ãƒ‘ã‚±ãƒƒãƒˆã‚’æ§‹ç¯‰ã™ã‚‹ã€‚
 	 * 
-	 * @param loc - ƒGƒtƒFƒNƒg‚ð•\Ž¦‚·‚éˆÊ’u‚ðŠi”[‚µ‚½L1LocationƒIƒuƒWƒFƒNƒg
-	 * @param gfxId - •\Ž¦‚·‚éƒGƒtƒFƒNƒg‚ÌID
+	 * @param loc - ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ä½ç½®ã‚’æ ¼ç´ã—ãŸL1Locationã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @param gfxId - è¡¨ç¤ºã™ã‚‹ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®ID
 	 */
 	public S_EffectLocation(L1Location loc, int gfxId) {
 		this(loc.getX(), loc.getY(), gfxId);
 	}
 
 	/**
-	 * Žw’è‚³‚ê‚½ˆÊ’u‚ÖƒGƒtƒFƒNƒg‚ð•\Ž¦‚·‚éƒpƒPƒbƒg‚ð\’z‚·‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸä½ç½®ã¸ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ãƒ‘ã‚±ãƒƒãƒˆã‚’æ§‹ç¯‰ã™ã‚‹ã€‚
 	 * 
-	 * @param x - ƒGƒtƒFƒNƒg‚ð•\Ž¦‚·‚éˆÊ’u‚ÌXÀ•W
-	 * @param y - ƒGƒtƒFƒNƒg‚ð•\Ž¦‚·‚éˆÊ’u‚ÌYÀ•W
-	 * @param gfxId - •\Ž¦‚·‚éƒGƒtƒFƒNƒg‚ÌID
+	 * @param x - ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ä½ç½®ã®Xåº§æ¨™
+	 * @param y - ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ä½ç½®ã®Yåº§æ¨™
+	 * @param gfxId - è¡¨ç¤ºã™ã‚‹ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®ID
 	 */
 	public S_EffectLocation(int x, int y, int gfxId) {
 		writeC(Opcodes.S_OPCODE_EFFECTLOCATION);

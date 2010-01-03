@@ -21,23 +21,23 @@ package l1j.server.server.command.executor;
 import l1j.server.server.model.Instance.L1PcInstance;
 
 /**
- * ƒRƒ}ƒ“ƒhŽÀsˆ—ƒCƒ“ƒ^[ƒtƒF[ƒX
+ * ã‚³ãƒžãƒ³ãƒ‰å®Ÿè¡Œå‡¦ç†ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
  * 
- * ƒRƒ}ƒ“ƒhˆ—ƒNƒ‰ƒX‚ÍA‚±‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXƒƒ\ƒbƒhˆÈŠO‚É<br>
+ * ã‚³ãƒžãƒ³ãƒ‰å‡¦ç†ã‚¯ãƒ©ã‚¹ã¯ã€ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ä»¥å¤–ã«<br>
  * public static L1CommandExecutor getInstance()<br>
- * ‚ðŽÀ‘•‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B
- * ’ÊíAŽ©ƒNƒ‰ƒX‚ðƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚Ä•Ô‚·‚ªA•K—v‚É‰ž‚¶‚ÄƒLƒƒƒbƒVƒ…‚³‚ê‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ð•Ô‚µ‚½‚èA‘¼‚ÌƒNƒ‰ƒX‚ðƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚Ä•Ô‚·‚±‚Æ‚ª‚Å‚«‚éB
+ * ã‚’å®Ÿè£…ã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚
+ * é€šå¸¸ã€è‡ªã‚¯ãƒ©ã‚¹ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ã¦è¿”ã™ãŒã€å¿…è¦ã«å¿œã˜ã¦ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚ŒãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¿”ã—ãŸã‚Šã€ä»–ã®ã‚¯ãƒ©ã‚¹ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ã¦è¿”ã™ã“ã¨ãŒã§ãã‚‹ã€‚
  */
 public interface L1CommandExecutor {
 	/**
-	 * ‚±‚ÌƒRƒ}ƒ“ƒh‚ðŽÀs‚·‚éB
+	 * ã“ã®ã‚³ãƒžãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
 	 * 
 	 * @param pc
-	 *            ŽÀsŽÒ
+	 *            å®Ÿè¡Œè€…
 	 * @param cmdName
-	 *            ŽÀs‚³‚ê‚½ƒRƒ}ƒ“ƒh–¼
+	 *            å®Ÿè¡Œã•ã‚ŒãŸã‚³ãƒžãƒ³ãƒ‰å
 	 * @param arg
-	 *            ˆø”
+	 *            å¼•æ•°
 	 */
 	public void execute(L1PcInstance pc, String cmdName, String arg);
 }

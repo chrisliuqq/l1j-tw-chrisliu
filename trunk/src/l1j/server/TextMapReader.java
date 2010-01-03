@@ -35,41 +35,41 @@ import l1j.server.server.model.map.L1Map;
 import l1j.server.server.model.map.L1V1Map;
 
 /**
- * ƒeƒLƒXƒgƒ}ƒbƒv(maps/\d*.txt)‚ğ“Ç‚İ‚Ş.
+ * ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ—(maps/\d*.txt)ã‚’èª­ã¿è¾¼ã‚€.
  */
 public class TextMapReader extends MapReader {
 
-	/** ƒƒbƒZ[ƒWƒƒO—p. */
+	/** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ­ã‚°ç”¨. */
 	private static Logger _log = Logger
 			.getLogger(TextMapReader.class.getName());
 
-	/** ƒ}ƒbƒvƒzƒ‹ƒ_[. */
+	/** ãƒãƒƒãƒ—ãƒ›ãƒ«ãƒ€ãƒ¼. */
 	private static final String MAP_DIR = "./maps/";
 
-	/** MAP_INFO—p ƒ}ƒbƒv”Ô†ˆÊ’u. */
+	/** MAP_INFOç”¨ ãƒãƒƒãƒ—ç•ªå·ä½ç½®. */
 	public static final int MAPINFO_MAP_NO = 0;
 
-	/** MAP_INFO—p ŠJnXÀ•W‚ÌˆÊ’u. */
+	/** MAP_INFOç”¨ é–‹å§‹Xåº§æ¨™ã®ä½ç½®. */
 	public static final int MAPINFO_START_X = 1;
 
-	/** MAP_INFO—p ÅIXÀ•W‚ÌˆÊ’u. */
+	/** MAP_INFOç”¨ æœ€çµ‚Xåº§æ¨™ã®ä½ç½®. */
 	public static final int MAPINFO_END_X = 2;
 
-	/** MAP_INFO—p ŠJnYÀ•W‚ÌˆÊ’u. */
+	/** MAP_INFOç”¨ é–‹å§‹Yåº§æ¨™ã®ä½ç½®. */
 	public static final int MAPINFO_START_Y = 3;
 
-	/** MAP_INFO—p ŠJnYÀ•W‚ÌˆÊ’u. */
+	/** MAP_INFOç”¨ é–‹å§‹Yåº§æ¨™ã®ä½ç½®. */
 	public static final int MAPINFO_END_Y = 4;
 
 	/**
-	 * w’è‚Ìƒ}ƒbƒv”Ô†‚ÌƒeƒLƒXƒgƒ}ƒbƒv‚ğ“Ç‚İ‚Ş.
+	 * æŒ‡å®šã®ãƒãƒƒãƒ—ç•ªå·ã®ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ—ã‚’èª­ã¿è¾¼ã‚€.
 	 * 
 	 * @param mapId
-	 *            ƒ}ƒbƒv”Ô†
+	 *            ãƒãƒƒãƒ—ç•ªå·
 	 * @param xSize
-	 *            XÀ•W‚ÌƒTƒCƒY
+	 *            Xåº§æ¨™ã®ã‚µã‚¤ã‚º
 	 * @param ySize
-	 *            YÀ•W‚ÌƒTƒCƒY
+	 *            Yåº§æ¨™ã®ã‚µã‚¤ã‚º
 	 * @return byte[][]
 	 * @throws IOException
 	 */
@@ -83,7 +83,7 @@ public class TextMapReader extends MapReader {
 		String line;
 		while ((line = in.readLine()) != null) {
 			if (line.trim().length() == 0 || line.startsWith("#")) {
-				continue; // ‹ós‚ÆƒRƒƒ“ƒg‚ğƒXƒLƒbƒv
+				continue; // ç©ºè¡Œã¨ã‚³ãƒ¡ãƒ³ãƒˆã‚’ã‚¹ã‚­ãƒƒãƒ—
 			}
 
 			int x = 0;
@@ -101,10 +101,10 @@ public class TextMapReader extends MapReader {
 	}
 
 	/**
-	 * w’è‚Ìƒ}ƒbƒv”Ô†‚ÌƒeƒLƒXƒgƒ}ƒbƒv‚ğ“Ç‚İ‚Ş.
+	 * æŒ‡å®šã®ãƒãƒƒãƒ—ç•ªå·ã®ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ—ã‚’èª­ã¿è¾¼ã‚€.
 	 * 
 	 * @param id
-	 *            ƒ}ƒbƒv”Ô†
+	 *            ãƒãƒƒãƒ—ç•ªå·
 	 * @return L1Map
 	 * @throws IOException
 	 */
@@ -137,7 +137,7 @@ public class TextMapReader extends MapReader {
 	}
 
 	/**
-	 * ‘S‚Ä‚ÌƒeƒLƒXƒgƒ}ƒbƒv‚ğ“Ç‚İ‚Ş.
+	 * å…¨ã¦ã®ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ—ã‚’èª­ã¿è¾¼ã‚€.
 	 * 
 	 * @return Map
 	 * @throws IOException
@@ -177,8 +177,8 @@ public class TextMapReader extends MapReader {
 	}
 
 	/**
-	 * mapInfoFƒ}ƒbƒvNoAƒ}ƒbƒvƒTƒCƒY‚ğ•Û‚µ‚Ä‚¢‚é.
-	 * 1ƒŒƒR[ƒh‚ª{mapNo,StartX,EndX,StartY,EndY}‚Å\¬‚³‚ê‚Ä‚¢‚é.
+	 * mapInfoï¼šãƒãƒƒãƒ—Noã€ãƒãƒƒãƒ—ã‚µã‚¤ã‚ºã‚’ä¿æŒã—ã¦ã„ã‚‹.
+	 * 1ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒ{mapNo,StartX,EndX,StartY,EndY}ã§æ§‹æˆã•ã‚Œã¦ã„ã‚‹.
 	 */
 	private static final int[][] MAP_INFO = { 
 			{ 0, 32256, 32767, 32768, 33279 },

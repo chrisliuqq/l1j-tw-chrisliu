@@ -44,7 +44,7 @@ public class L1V2Map extends L1Map {
 
 
 	/**
-	 * Mob‚È‚Ç‚Ì’Ês•s‰Â”\‚É‚È‚éƒIƒuƒWƒFƒNƒg‚ªƒ^ƒCƒ‹ã‚É‘¶İ‚·‚é‚©‚ğ¦‚·ƒrƒbƒgƒtƒ‰ƒO
+	 * Mobãªã©ã®é€šè¡Œä¸å¯èƒ½ã«ãªã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã‚¿ã‚¤ãƒ«ä¸Šã«å­˜åœ¨ã™ã‚‹ã‹ã‚’ç¤ºã™ãƒ“ãƒƒãƒˆãƒ•ãƒ©ã‚°
 	 */
 	private static final byte BITFLAG_IS_IMPASSABLE = (byte) 128; // 1000 0000
 
@@ -136,7 +136,7 @@ public class L1V2Map extends L1Map {
 	@Override
 	public boolean isArrowPassable(int x, int y, int heading) {
 		int tile;
-		// ˆÚ“®—\’è‚ÌÀ•W
+		// ç§»å‹•äºˆå®šã®åº§æ¨™
 		int newX;
 		int newY;
 
@@ -364,19 +364,19 @@ public class L1V2Map extends L1Map {
 			int leftEdgeLocation = door.getLeftEdgeLocation();
 			int rightEdgeLocation = door.getRightEdgeLocation();
 			int size = rightEdgeLocation - leftEdgeLocation;
-			if (size == 0) { // 1ƒ}ƒX•ª‚Ì•‚ÌƒhƒA
+			if (size == 0) { // 1ãƒã‚¹åˆ†ã®å¹…ã®ãƒ‰ã‚¢
 				if (x == door.getX() && y == door.getY()) {
 					return true;
 				}
-			} else { // 2ƒ}ƒX•ªˆÈã‚Ì•‚ª‚ ‚éƒhƒA
-				if (door.getDirection() == 0) { // ^Œü‚«
+			} else { // 2ãƒã‚¹åˆ†ä»¥ä¸Šã®å¹…ãŒã‚ã‚‹ãƒ‰ã‚¢
+				if (door.getDirection() == 0) { // ï¼å‘ã
 					for (int doorX = leftEdgeLocation;
 							doorX <= rightEdgeLocation; doorX++) {
 						if (x == doorX && y == door.getY()) {
 							return true;
 						}
 					}
-				} else { // _Œü‚«
+				} else { // ï¼¼å‘ã
 					for (int doorY = leftEdgeLocation;
 							doorY <= rightEdgeLocation; doorY++) {
 						if (x == door.getX() && y == doorY) {

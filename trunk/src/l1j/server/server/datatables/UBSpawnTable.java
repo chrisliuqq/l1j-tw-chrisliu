@@ -88,7 +88,7 @@ public class UBSpawnTable {
 			SQLUtil.close(pstm);
 			SQLUtil.close(con);
 		}
-		_log.config("UBƒ‚ƒ“ƒXƒ^[”z’uƒŠƒXƒg " + _spawnTable.size() + "Œƒ[ƒh");
+		_log.config("UBãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼é…ç½®ãƒªã‚¹ãƒˆ " + _spawnTable.size() + "ä»¶ãƒ­ãƒ¼ãƒ‰");
 	}
 
 	public L1UbSpawn getSpawn(int spawnId) {
@@ -96,11 +96,11 @@ public class UBSpawnTable {
 	}
 
 	/**
-	 * w’è‚³‚ê‚½UBID‚É‘Î‚·‚éƒpƒ^[ƒ“‚ÌÅ‘å”‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸUBIDã«å¯¾ã™ã‚‹ãƒ‘ã‚¿ãƒ¼ãƒ³ã®æœ€å¤§æ•°ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param ubId
-	 *            ’²‚×‚éUBIDB
-	 * @return ƒpƒ^[ƒ“‚ÌÅ‘å”B
+	 *            èª¿ã¹ã‚‹UBIDã€‚
+	 * @return ãƒ‘ã‚¿ãƒ¼ãƒ³ã®æœ€å¤§æ•°ã€‚
 	 */
 	public int getMaxPattern(int ubId) {
 		int n = 0;

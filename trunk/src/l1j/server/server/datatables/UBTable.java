@@ -126,7 +126,7 @@ public class UBTable {
 		} finally {
 			SQLUtil.close(rs, pstm, con);
 		}
-		_log.config("UBƒŠƒXƒg " + _ub.size() + "Œƒ[ƒh");
+		_log.config("UBãƒªã‚¹ãƒˆ " + _ub.size() + "ä»¶ãƒ­ãƒ¼ãƒ‰");
 	}
 
 	public L1UltimateBattle getUb(int ubId) {
@@ -147,11 +147,11 @@ public class UBTable {
 	}
 
 	/**
-	 * w’è‚³‚ê‚½UBID‚É‘Î‚·‚éƒpƒ^[ƒ“‚ÌÅ‘å”‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸUBIDã«å¯¾ã™ã‚‹ãƒ‘ã‚¿ãƒ¼ãƒ³ã®æœ€å¤§æ•°ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param ubId
-	 *            ’²‚×‚éUBIDB
-	 * @return ƒpƒ^[ƒ“‚ÌÅ‘å”B
+	 *            èª¿ã¹ã‚‹UBIDã€‚
+	 * @return ãƒ‘ã‚¿ãƒ¼ãƒ³ã®æœ€å¤§æ•°ã€‚
 	 */
 	public int getMaxPattern(int ubId) {
 		int n = 0;

@@ -50,11 +50,11 @@ public class L1PcInventory extends L1Inventory {
 
 	private static final int MAX_SIZE = 180;
 
-	private final L1PcInstance _owner; // Š—LÒƒvƒŒƒCƒ„[
+	private final L1PcInstance _owner; // æ‰€æœ‰è€…ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 
-	private int _arrowId; // —Dæ‚µ‚Äg—p‚³‚ê‚éƒAƒ[‚ÌItemID
+	private int _arrowId; // å„ªå…ˆã—ã¦ä½¿ç”¨ã•ã‚Œã‚‹ã‚¢ãƒ­ãƒ¼ã®ItemID
 
-	private int _stingId; // —Dæ‚µ‚Äg—p‚³‚ê‚éƒXƒeƒBƒ“ƒO‚ÌItemID
+	private int _stingId; // å„ªå…ˆã—ã¦ä½¿ç”¨ã•ã‚Œã‚‹ã‚¹ãƒ†ã‚£ãƒ³ã‚°ã®ItemID
 
 	public L1PcInventory(L1PcInstance owner) {
 		_owner = owner;
@@ -66,12 +66,12 @@ public class L1PcInventory extends L1Inventory {
 		return _owner;
 	}
 	
-	// 240’iŠK‚ÌƒEƒFƒCƒg‚ğ•Ô‚·
+	// 240æ®µéšã®ã‚¦ã‚§ã‚¤ãƒˆã‚’è¿”ã™
 	public int getWeight240() {
 		return calcWeight240(getWeight());
 	}
 
-	// 240’iŠK‚ÌƒEƒFƒCƒg‚ğZo‚·‚é
+	// 240æ®µéšã®ã‚¦ã‚§ã‚¤ãƒˆã‚’ç®—å‡ºã™ã‚‹
 	public int calcWeight240(int weight) {
 		int weight240 = 0;
 		if (Config.RATE_WEIGHT_LIMIT != 0) {
@@ -85,7 +85,7 @@ public class L1PcInventory extends L1Inventory {
 				wpTemp = Math.round(wpTemp);
 				weight240 = (int) (wpTemp);
 			}
-		} else { // ƒEƒFƒCƒgƒŒ[ƒg‚ª‚O‚È‚çd—Êí‚É‚O
+		} else { // ã‚¦ã‚§ã‚¤ãƒˆãƒ¬ãƒ¼ãƒˆãŒï¼ãªã‚‰é‡é‡å¸¸ã«ï¼
 			weight240 = 0;
 		}
 		return weight240;
@@ -102,9 +102,9 @@ public class L1PcInventory extends L1Inventory {
 		}
 		if (getSize() > MAX_SIZE
 				|| (getSize() == MAX_SIZE && (!item.isStackable() || !checkItem(item
-						.getItem().getItemId())))) { // —e—ÊŠm”F
+						.getItem().getItemId())))) { // å®¹é‡ç¢ºèª
 			if (message) {
-				sendOverMessage(263); // \f1ˆêl‚ÌƒLƒƒƒ‰ƒNƒ^[‚ª‚Á‚Ä•à‚¯‚éƒAƒCƒeƒ€‚ÍÅ‘å180ŒÂ‚Ü‚Å‚Å‚·B
+				sendOverMessage(263); // \f1ä¸€äººã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒæŒã£ã¦æ­©ã‘ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã¯æœ€å¤§180å€‹ã¾ã§ã§ã™ã€‚
 			}
 			return SIZE_OVER;
 		}
@@ -112,13 +112,13 @@ public class L1PcInventory extends L1Inventory {
 		int weight = getWeight() + item.getItem().getWeight() * count / 1000 + 1;
 		if (weight < 0 || (item.getItem().getWeight() * count / 1000) < 0) {
 			if (message) {
-				sendOverMessage(82); // ƒAƒCƒeƒ€‚ªd‚·‚¬‚ÄA‚±‚êˆÈã‚Ä‚Ü‚¹‚ñB
+				sendOverMessage(82); // ã‚¢ã‚¤ãƒ†ãƒ ãŒé‡ã™ãã¦ã€ã“ã‚Œä»¥ä¸ŠæŒã¦ã¾ã›ã‚“ã€‚
 			}
 			return WEIGHT_OVER;
 		}
 		if (calcWeight240(weight) >= 240) {
 			if (message) {
-				sendOverMessage(82); // ƒAƒCƒeƒ€‚ªd‚·‚¬‚ÄA‚±‚êˆÈã‚Ä‚Ü‚¹‚ñB
+				sendOverMessage(82); // ã‚¢ã‚¤ãƒ†ãƒ ãŒé‡ã™ãã¦ã€ã“ã‚Œä»¥ä¸ŠæŒã¦ã¾ã›ã‚“ã€‚
 			}
 			return WEIGHT_OVER;
 		}
@@ -127,8 +127,8 @@ public class L1PcInventory extends L1Inventory {
 		if (itemExist != null && (itemExist.getCount() + count) > MAX_AMOUNT) {
 			if (message) {
 				getOwner().sendPackets(new S_ServerMessage(166,
-						"Š‚µ‚Ä‚¢‚éƒAƒfƒi",
-						"2,000,000,000‚ğ’´‰ß‚µ‚Ä‚¢‚Ü‚·B")); // \f1%0‚ª%4%1%3%2
+						"æ‰€æŒã—ã¦ã„ã‚‹ã‚¢ãƒ‡ãƒŠ",
+						"2,000,000,000ã‚’è¶…éã—ã¦ã„ã¾ã™ã€‚")); // \f1%0ãŒ%4%1%3%2
 			}
 			return AMOUNT_OVER;
 		}
@@ -140,7 +140,7 @@ public class L1PcInventory extends L1Inventory {
 		_owner.sendPackets(new S_ServerMessage(message_id));
 	}
 
-	// ‚c‚a‚Ìcharacter_items‚Ì“Ç
+	// ï¼¤ï¼¢ã®character_itemsã®èª­è¾¼
 	@Override
 	public void loadItems() {
 		try {
@@ -154,7 +154,7 @@ public class L1PcInventory extends L1Inventory {
 					setEquipped(item, true, true, false);
 				}
 				if (item.getItem().getType2() == 0 && item.getItem()
-						.getType() == 2) { // lightŒnƒAƒCƒeƒ€
+						.getType() == 2) { // lightç³»ã‚¢ã‚¤ãƒ†ãƒ 
 					item.setRemainingTime(item.getItem().getLightFuel());
 				}
 				L1World.getInstance().storeObject(item);
@@ -164,7 +164,7 @@ public class L1PcInventory extends L1Inventory {
 		}
 	}
 
-	// ‚c‚a‚Ìcharacter_items‚Ö“o˜^
+	// ï¼¤ï¼¢ã®character_itemsã¸ç™»éŒ²
 	@Override
 	public void insertItem(L1ItemInstance item) {
 		_owner.sendPackets(new S_AddItem(item));
@@ -213,46 +213,46 @@ public class L1PcInventory extends L1Inventory {
 	}
 
 	/**
-	 * ƒCƒ“ƒxƒ“ƒgƒŠ“à‚ÌƒAƒCƒeƒ€‚Ìó‘Ô‚ğXV‚·‚éB
+	 * ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªå†…ã®ã‚¢ã‚¤ãƒ†ãƒ ã®çŠ¶æ…‹ã‚’æ›´æ–°ã™ã‚‹ã€‚
 	 * 
 	 * @param item -
-	 *            XV‘ÎÛ‚ÌƒAƒCƒeƒ€
+	 *            æ›´æ–°å¯¾è±¡ã®ã‚¢ã‚¤ãƒ†ãƒ 
 	 * @param column -
-	 *            XV‚·‚éƒXƒe[ƒ^ƒX‚Ìí—Ş
+	 *            æ›´æ–°ã™ã‚‹ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®ç¨®é¡
 	 */
 	@Override
 	public void updateItem(L1ItemInstance item, int column) {
-		if (column >= COL_ATTR_ENCHANT_LEVEL) { // ‘®«‹­‰»”
+		if (column >= COL_ATTR_ENCHANT_LEVEL) { // å±æ€§å¼·åŒ–æ•°
 			_owner.sendPackets(new S_ItemStatus(item));
 			column -= COL_ATTR_ENCHANT_LEVEL;
 		}
-		if (column >= COL_ATTR_ENCHANT_KIND) { // ‘®«‹­‰»‚Ìí—Ş
+		if (column >= COL_ATTR_ENCHANT_KIND) { // å±æ€§å¼·åŒ–ã®ç¨®é¡
 			_owner.sendPackets(new S_ItemStatus(item));
 			column -= COL_ATTR_ENCHANT_KIND;
 		}
-		if (column >= COL_BLESS) { // j•ŸE••ˆó
+		if (column >= COL_BLESS) { // ç¥ç¦ãƒ»å°å°
 			_owner.sendPackets(new S_ItemColor(item));
 			column -= COL_BLESS;
 		}
-		if (column >= COL_REMAINING_TIME) { // g—p‰Â”\‚Èc‚èŠÔ
+		if (column >= COL_REMAINING_TIME) { // ä½¿ç”¨å¯èƒ½ãªæ®‹ã‚Šæ™‚é–“
 			_owner.sendPackets(new S_ItemName(item));
 			column -= COL_REMAINING_TIME;
 		}
-		if (column >= COL_CHARGE_COUNT) { // ƒ`ƒƒ[ƒW”
+		if (column >= COL_CHARGE_COUNT) { // ãƒãƒ£ãƒ¼ã‚¸æ•°
 			_owner.sendPackets(new S_ItemName(item));
 			column -= COL_CHARGE_COUNT;
 		}
-		if (column >= COL_ITEMID) { // •Ê‚ÌƒAƒCƒeƒ€‚É‚È‚éê‡(•Öâ³‚ğŠJ••‚µ‚½‚Æ‚«‚È‚Ç)
+		if (column >= COL_ITEMID) { // åˆ¥ã®ã‚¢ã‚¤ãƒ†ãƒ ã«ãªã‚‹å ´åˆ(ä¾¿ç®‹ã‚’é–‹å°ã—ãŸã¨ããªã©)
 			_owner.sendPackets(new S_ItemStatus(item));
 			_owner.sendPackets(new S_ItemColor(item));
 			_owner.sendPackets(new S_PacketBox(
 					S_PacketBox.WEIGHT, getWeight240()));
 			column -= COL_ITEMID;
 		}
-		if (column >= COL_DELAY_EFFECT) { // Œø‰ÊƒfƒBƒŒƒC
+		if (column >= COL_DELAY_EFFECT) { // åŠ¹æœãƒ‡ã‚£ãƒ¬ã‚¤
 			column -= COL_DELAY_EFFECT;
 		}
-		if (column >= COL_COUNT) { // ƒJƒEƒ“ƒg
+		if (column >= COL_COUNT) { // ã‚«ã‚¦ãƒ³ãƒˆ
 			_owner.sendPackets(new S_ItemAmount(item));
 
 			int weight = item.getWeight();
@@ -263,38 +263,38 @@ public class L1PcInventory extends L1Inventory {
 				_owner.sendPackets(new S_ItemName(item));
 			}
 			if (item.getItem().getWeight() != 0) {
-				// XXX 240’iŠK‚ÌƒEƒFƒCƒg‚ª•Ï‰»‚µ‚È‚¢ê‡‚Í‘—‚ç‚È‚­‚Ä‚æ‚¢
+				// XXX 240æ®µéšã®ã‚¦ã‚§ã‚¤ãƒˆãŒå¤‰åŒ–ã—ãªã„å ´åˆã¯é€ã‚‰ãªãã¦ã‚ˆã„
 				_owner.sendPackets(new S_PacketBox(
 						S_PacketBox.WEIGHT, getWeight240()));
 			}
 			column -= COL_COUNT;
 		}
-		if (column >= COL_EQUIPPED) { // ‘•”õó‘Ô
+		if (column >= COL_EQUIPPED) { // è£…å‚™çŠ¶æ…‹
 			_owner.sendPackets(new S_ItemName(item));
 			column -= COL_EQUIPPED;
 		}
-		if (column >= COL_ENCHANTLVL) { // ƒGƒ“ƒ`ƒƒƒ“ƒg
+		if (column >= COL_ENCHANTLVL) { // ã‚¨ãƒ³ãƒãƒ£ãƒ³ãƒˆ
 			_owner.sendPackets(new S_ItemStatus(item));
 			column -= COL_ENCHANTLVL;
 		}
-		if (column >= COL_IS_ID) { // Šm”Fó‘Ô
+		if (column >= COL_IS_ID) { // ç¢ºèªçŠ¶æ…‹
 			_owner.sendPackets(new S_ItemStatus(item));
 			_owner.sendPackets(new S_ItemColor(item));
 			column -= COL_IS_ID;
 		}
-		if (column >= COL_DURABILITY) { // ‘Ï‹v«
+		if (column >= COL_DURABILITY) { // è€ä¹…æ€§
 			_owner.sendPackets(new S_ItemStatus(item));
 			column -= COL_DURABILITY;
 		}
 	}
 
 	/**
-	 * ƒCƒ“ƒxƒ“ƒgƒŠ“à‚ÌƒAƒCƒeƒ€‚Ìó‘Ô‚ğDB‚É•Û‘¶‚·‚éB
+	 * ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªå†…ã®ã‚¢ã‚¤ãƒ†ãƒ ã®çŠ¶æ…‹ã‚’DBã«ä¿å­˜ã™ã‚‹ã€‚
 	 * 
 	 * @param item -
-	 *            XV‘ÎÛ‚ÌƒAƒCƒeƒ€
+	 *            æ›´æ–°å¯¾è±¡ã®ã‚¢ã‚¤ãƒ†ãƒ 
 	 * @param column -
-	 *            XV‚·‚éƒXƒe[ƒ^ƒX‚Ìí—Ş
+	 *            æ›´æ–°ã™ã‚‹ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®ç¨®é¡
 	 */
 	public void saveItem(L1ItemInstance item, int column) {
 		if (column == 0) {
@@ -303,51 +303,51 @@ public class L1PcInventory extends L1Inventory {
 
 		try {
 			CharactersItemStorage storage = CharactersItemStorage.create();
-			if (column >= COL_ATTR_ENCHANT_LEVEL) { // ‘®«‹­‰»”
+			if (column >= COL_ATTR_ENCHANT_LEVEL) { // å±æ€§å¼·åŒ–æ•°
 				storage.updateItemAttrEnchantLevel(item);
 				column -= COL_ATTR_ENCHANT_LEVEL;
 			}
-			if (column >= COL_ATTR_ENCHANT_KIND) { // ‘®«‹­‰»‚Ìí—Ş
+			if (column >= COL_ATTR_ENCHANT_KIND) { // å±æ€§å¼·åŒ–ã®ç¨®é¡
 				storage.updateItemAttrEnchantKind(item);
 				column -= COL_ATTR_ENCHANT_KIND;
 			}
-			if (column >= COL_BLESS) { // j•ŸE••ˆó
+			if (column >= COL_BLESS) { // ç¥ç¦ãƒ»å°å°
 				storage.updateItemBless(item);
 				column -= COL_BLESS;
 			}
-			if (column >= COL_REMAINING_TIME) { // g—p‰Â”\‚Èc‚èŠÔ
+			if (column >= COL_REMAINING_TIME) { // ä½¿ç”¨å¯èƒ½ãªæ®‹ã‚Šæ™‚é–“
 				storage.updateItemRemainingTime(item);
 				column -= COL_REMAINING_TIME;
 			}
-			if (column >= COL_CHARGE_COUNT) { // ƒ`ƒƒ[ƒW”
+			if (column >= COL_CHARGE_COUNT) { // ãƒãƒ£ãƒ¼ã‚¸æ•°
 				storage.updateItemChargeCount(item);
 				column -= COL_CHARGE_COUNT;
 			}
-			if (column >= COL_ITEMID) { // •Ê‚ÌƒAƒCƒeƒ€‚É‚È‚éê‡(•Öâ³‚ğŠJ••‚µ‚½‚Æ‚«‚È‚Ç)
+			if (column >= COL_ITEMID) { // åˆ¥ã®ã‚¢ã‚¤ãƒ†ãƒ ã«ãªã‚‹å ´åˆ(ä¾¿ç®‹ã‚’é–‹å°ã—ãŸã¨ããªã©)
 				storage.updateItemId(item);
 				column -= COL_ITEMID;
 			}
-			if (column >= COL_DELAY_EFFECT) { // Œø‰ÊƒfƒBƒŒƒC
+			if (column >= COL_DELAY_EFFECT) { // åŠ¹æœãƒ‡ã‚£ãƒ¬ã‚¤
 				storage.updateItemDelayEffect(item);
 				column -= COL_DELAY_EFFECT;
 			}
-			if (column >= COL_COUNT) { // ƒJƒEƒ“ƒg
+			if (column >= COL_COUNT) { // ã‚«ã‚¦ãƒ³ãƒˆ
 				storage.updateItemCount(item);
 				column -= COL_COUNT;
 			}
-			if (column >= COL_EQUIPPED) { // ‘•”õó‘Ô
+			if (column >= COL_EQUIPPED) { // è£…å‚™çŠ¶æ…‹
 				storage.updateItemEquipped(item);
 				column -= COL_EQUIPPED;
 			}
-			if (column >= COL_ENCHANTLVL) { // ƒGƒ“ƒ`ƒƒƒ“ƒg
+			if (column >= COL_ENCHANTLVL) { // ã‚¨ãƒ³ãƒãƒ£ãƒ³ãƒˆ
 				storage.updateItemEnchantLevel(item);
 				column -= COL_ENCHANTLVL;
 			}
-			if (column >= COL_IS_ID) { // Šm”Fó‘Ô
+			if (column >= COL_IS_ID) { // ç¢ºèªçŠ¶æ…‹
 				storage.updateItemIdentified(item);
 				column -= COL_IS_ID;
 			}
-			if (column >= COL_DURABILITY) { // ‘Ï‹v«
+			if (column >= COL_DURABILITY) { // è€ä¹…æ€§
 				storage.updateItemDurability(item);
 				column -= COL_DURABILITY;
 			}
@@ -356,7 +356,7 @@ public class L1PcInventory extends L1Inventory {
 		}
 	}
 
-	// ‚c‚a‚Ìcharacter_items‚©‚çíœ
+	// ï¼¤ï¼¢ã®character_itemsã‹ã‚‰å‰Šé™¤
 	@Override
 	public void deleteItem(L1ItemInstance item) {
 		try {
@@ -377,21 +377,21 @@ public class L1PcInventory extends L1Inventory {
 		}
 	}
 
-	// ƒAƒCƒeƒ€‚ğ‘•’…’E’…‚³‚¹‚éiL1ItemInstance‚Ì•ÏXA•â³’l‚Ìİ’èAcharacter_items‚ÌXVAƒpƒPƒbƒg‘—M‚Ü‚ÅŠÇ—j
+	// ã‚¢ã‚¤ãƒ†ãƒ ã‚’è£…ç€è„±ç€ã•ã›ã‚‹ï¼ˆL1ItemInstanceã®å¤‰æ›´ã€è£œæ­£å€¤ã®è¨­å®šã€character_itemsã®æ›´æ–°ã€ãƒ‘ã‚±ãƒƒãƒˆé€ä¿¡ã¾ã§ç®¡ç†ï¼‰
 	public void setEquipped(L1ItemInstance item, boolean equipped) {
 		setEquipped(item, equipped, false, false);
 	}
 
 	public void setEquipped(L1ItemInstance item, boolean equipped,
 			boolean loaded, boolean changeWeapon) {
-		if (item.isEquipped() != equipped) { // İ’è’l‚Æˆá‚¤ê‡‚¾‚¯ˆ—
+		if (item.isEquipped() != equipped) { // è¨­å®šå€¤ã¨é•ã†å ´åˆã ã‘å‡¦ç†
 			L1Item temp = item.getItem();
-			if (equipped) { // ‘•’…
+			if (equipped) { // è£…ç€
 				item.setEquipped(true);
 				_owner.getEquipSlot().set(item);
-			} else { // ’E’…
+			} else { // è„±ç€
 				if (!loaded) {
-					// ƒCƒ“ƒrƒWƒrƒŠƒeƒBƒNƒ[ƒN ƒoƒ‹ƒƒOƒuƒ‰ƒbƒfƒBƒNƒ[ƒN‘•”õ’†‚ÅƒCƒ“ƒrƒWó‘Ô‚Ìê‡‚ÍƒCƒ“ƒrƒWó‘Ô‚Ì‰ğœ
+					// ã‚¤ãƒ³ãƒ“ã‚¸ãƒ“ãƒªãƒ†ã‚£ã‚¯ãƒ­ãƒ¼ã‚¯ ãƒãƒ«ãƒ­ã‚°ãƒ–ãƒ©ãƒƒãƒ‡ã‚£ã‚¯ãƒ­ãƒ¼ã‚¯è£…å‚™ä¸­ã§ã‚¤ãƒ³ãƒ“ã‚¸çŠ¶æ…‹ã®å ´åˆã¯ã‚¤ãƒ³ãƒ“ã‚¸çŠ¶æ…‹ã®è§£é™¤
 					if (temp.getItemId() == 20077 || temp.getItemId() == 20062
 							|| temp.getItemId() == 120077) {
 						if (_owner.isInvisble()) {
@@ -403,23 +403,23 @@ public class L1PcInventory extends L1Inventory {
 				item.setEquipped(false);
 				_owner.getEquipSlot().remove(item);
 			}
-			if (!loaded) { // Å‰‚Ì“Ç‚Í‚c‚aƒpƒPƒbƒgŠÖ˜A‚Ìˆ—‚Í‚µ‚È‚¢
-				// XXX:ˆÓ–¡‚Ì‚È‚¢ƒZƒbƒ^[
+			if (!loaded) { // æœ€åˆã®èª­è¾¼æ™‚ã¯ï¼¤ï¼¢ãƒ‘ã‚±ãƒƒãƒˆé–¢é€£ã®å‡¦ç†ã¯ã—ãªã„
+				// XXX:æ„å‘³ã®ãªã„ã‚»ãƒƒã‚¿ãƒ¼
 				_owner.setCurrentHp(_owner.getCurrentHp());
 				_owner.setCurrentMp(_owner.getCurrentMp());
 				updateItem(item, COL_EQUIPPED);
 				_owner.sendPackets(new S_OwnCharStatus(_owner));
-				if (temp.getType2() == 1 && changeWeapon == false) { // •Ší‚Ìê‡‚ÍƒrƒWƒ…ƒAƒ‹XVB‚½‚¾‚µA•Ší‚Ì‚¿‘Ö‚¦‚Å•Ší‚ğ’E’…‚·‚é‚ÍXV‚µ‚È‚¢
+				if (temp.getType2() == 1 && changeWeapon == false) { // æ­¦å™¨ã®å ´åˆã¯ãƒ“ã‚¸ãƒ¥ã‚¢ãƒ«æ›´æ–°ã€‚ãŸã ã—ã€æ­¦å™¨ã®æŒã¡æ›¿ãˆã§æ­¦å™¨ã‚’è„±ç€ã™ã‚‹æ™‚ã¯æ›´æ–°ã—ãªã„
 					_owner.sendPackets(new S_CharVisualUpdate(_owner));
 					_owner.broadcastPacket(new S_CharVisualUpdate(_owner));
 				}
 				// _owner.getNetConnection().saveCharToDisk(_owner); //
-				// DB‚ÉƒLƒƒƒ‰ƒNƒ^[î•ñ‚ğ‘‚«‚Ş
+				// DBã«ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æƒ…å ±ã‚’æ›¸ãè¾¼ã‚€
 			}
 		}
 	}
 
-	// “Á’è‚ÌƒAƒCƒeƒ€‚ğ‘•”õ‚µ‚Ä‚¢‚é‚©Šm”F
+	// ç‰¹å®šã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’è£…å‚™ã—ã¦ã„ã‚‹ã‹ç¢ºèª
 	public boolean checkEquipped(int id) {
 		for (Object itemObject : _items) {
 			L1ItemInstance item = (L1ItemInstance) itemObject;
@@ -430,7 +430,7 @@ public class L1PcInventory extends L1Inventory {
 		return false;
 	}
 
-	// “Á’è‚ÌƒAƒCƒeƒ€‚ğ‘S‚Ä‘•”õ‚µ‚Ä‚¢‚é‚©Šm”FiƒZƒbƒgƒ{[ƒiƒX‚ª‚ ‚é‚â‚Â‚ÌŠm”F—pj
+	// ç‰¹å®šã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’å…¨ã¦è£…å‚™ã—ã¦ã„ã‚‹ã‹ç¢ºèªï¼ˆã‚»ãƒƒãƒˆãƒœãƒ¼ãƒŠã‚¹ãŒã‚ã‚‹ã‚„ã¤ã®ç¢ºèªç”¨ï¼‰
 	public boolean checkEquipped(int[] ids) {
 		for (int id : ids) {
 			if (!checkEquipped(id)) {
@@ -440,7 +440,7 @@ public class L1PcInventory extends L1Inventory {
 		return true;
 	}
 
-	// “Á’è‚Ìƒ^ƒCƒv‚ÌƒAƒCƒeƒ€‚ğ‘•”õ‚µ‚Ä‚¢‚é”
+	// ç‰¹å®šã®ã‚¿ã‚¤ãƒ—ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’è£…å‚™ã—ã¦ã„ã‚‹æ•°
 	public int getTypeEquipped(int type2, int type) {
 		int equipeCount = 0;
 		for (Object itemObject : _items) {
@@ -453,7 +453,7 @@ public class L1PcInventory extends L1Inventory {
 		return equipeCount;
 	}
 
-	// ‘•”õ‚µ‚Ä‚¢‚é“Á’è‚Ìƒ^ƒCƒv‚ÌƒAƒCƒeƒ€
+	// è£…å‚™ã—ã¦ã„ã‚‹ç‰¹å®šã®ã‚¿ã‚¤ãƒ—ã®ã‚¢ã‚¤ãƒ†ãƒ 
 	public L1ItemInstance getItemEquipped(int type2, int type) {
 		L1ItemInstance equipeitem = null;
 		for (Object itemObject : _items) {
@@ -467,7 +467,7 @@ public class L1PcInventory extends L1Inventory {
 		return equipeitem;
 	}
 
-	// ‘•”õ‚µ‚Ä‚¢‚éƒŠƒ“ƒO
+	// è£…å‚™ã—ã¦ã„ã‚‹ãƒªãƒ³ã‚°
 	public L1ItemInstance[] getRingEquipped() {
 		L1ItemInstance equipeItem[] = new L1ItemInstance[2];
 		int equipeCount = 0;
@@ -485,21 +485,21 @@ public class L1PcInventory extends L1Inventory {
 		return equipeItem;
 	}
 
-	// •Ïg‚É‘•”õ‚Å‚«‚È‚¢‘•”õ‚ğŠO‚·
+	// å¤‰èº«æ™‚ã«è£…å‚™ã§ããªã„è£…å‚™ã‚’å¤–ã™
 	public void takeoffEquip(int polyid) {
 		takeoffWeapon(polyid);
 		takeoffArmor(polyid);
 	}
 
-	// •Ïg‚É‘•”õ‚Å‚«‚È‚¢•Ší‚ğŠO‚·
+	// å¤‰èº«æ™‚ã«è£…å‚™ã§ããªã„æ­¦å™¨ã‚’å¤–ã™
 	private void takeoffWeapon(int polyid) {
-		if (_owner.getWeapon() == null) { // ‘fè
+		if (_owner.getWeapon() == null) { // ç´ æ‰‹
 			return;
 		}
 
 		boolean takeoff = false;
 		int weapon_type = _owner.getWeapon().getItem().getType();
-		// ‘•”õo—ˆ‚È‚¢•Ší‚ğ‘•”õ‚µ‚Ä‚é‚©H
+		// è£…å‚™å‡ºæ¥ãªã„æ­¦å™¨ã‚’è£…å‚™ã—ã¦ã‚‹ã‹ï¼Ÿ
 		takeoff = !L1PolyMorph.isEquipableWeapon(polyid, weapon_type);
 
 		if (takeoff) {
@@ -507,16 +507,16 @@ public class L1PcInventory extends L1Inventory {
 		}
 	}
 
-	// •Ïg‚É‘•”õ‚Å‚«‚È‚¢–h‹ï‚ğŠO‚·
+	// å¤‰èº«æ™‚ã«è£…å‚™ã§ããªã„é˜²å…·ã‚’å¤–ã™
 	private void takeoffArmor(int polyid) {
 		L1ItemInstance armor = null;
 
-		// ƒwƒ‹ƒ€‚©‚çƒK[ƒ_[‚Ü‚Åƒ`ƒFƒbƒN‚·‚é
+		// ãƒ˜ãƒ«ãƒ ã‹ã‚‰ã‚¬ãƒ¼ãƒ€ãƒ¼ã¾ã§ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 		for (int type = 0; type <= 13; type++) {
-			// ‘•”õ‚µ‚Ä‚¢‚ÄA‘•”õ•s‰Â‚Ìê‡‚ÍŠO‚·
+			// è£…å‚™ã—ã¦ã„ã¦ã€è£…å‚™ä¸å¯ã®å ´åˆã¯å¤–ã™
 			if (getTypeEquipped(2, type) != 0
 					&& !L1PolyMorph.isEquipableArmor(polyid, type)) {
-				if (type == 9) { // ƒŠƒ“ƒO‚Ìê‡‚ÍA—¼è•ªŠO‚·
+				if (type == 9) { // ãƒªãƒ³ã‚°ã®å ´åˆã¯ã€ä¸¡æ‰‹åˆ†å¤–ã™
 					armor = getItemEquipped(2, type);
 					if (armor != null) {
 						setEquipped(armor, false, false, false);
@@ -535,12 +535,12 @@ public class L1PcInventory extends L1Inventory {
 		}
 	}
 
-	// g—p‚·‚éƒAƒ[‚Ìæ“¾
+	// ä½¿ç”¨ã™ã‚‹ã‚¢ãƒ­ãƒ¼ã®å–å¾—
 	public L1ItemInstance getArrow() {
 		return getBullet(0);
 	}
 
-	// g—p‚·‚éƒXƒeƒBƒ“ƒO‚Ìæ“¾
+	// ä½¿ç”¨ã™ã‚‹ã‚¹ãƒ†ã‚£ãƒ³ã‚°ã®å–å¾—
 	public L1ItemInstance getSting() {
 		return getBullet(15);
 	}
@@ -549,17 +549,17 @@ public class L1PcInventory extends L1Inventory {
 		L1ItemInstance bullet;
 		int priorityId = 0;
 		if (type == 0) {
-			priorityId = _arrowId; // ƒAƒ[
+			priorityId = _arrowId; // ã‚¢ãƒ­ãƒ¼
 		}
 		if (type == 15) {
-			priorityId = _stingId; // ƒXƒeƒBƒ“ƒO
+			priorityId = _stingId; // ã‚¹ãƒ†ã‚£ãƒ³ã‚°
 		}
-		if (priorityId > 0) // —Dæ‚·‚é’e‚ª‚ ‚é‚©
+		if (priorityId > 0) // å„ªå…ˆã™ã‚‹å¼¾ãŒã‚ã‚‹ã‹
 		{
 			bullet = findItemId(priorityId);
 			if (bullet != null) {
 				return bullet;
-			} else // ‚È‚­‚È‚Á‚Ä‚¢‚½ê‡‚Í—Dæ‚ğÁ‚·
+			} else // ãªããªã£ã¦ã„ãŸå ´åˆã¯å„ªå…ˆã‚’æ¶ˆã™
 			{
 				if (type == 0) {
 					_arrowId = 0;
@@ -570,15 +570,15 @@ public class L1PcInventory extends L1Inventory {
 			}
 		}
 
-		for (Object itemObject : _items) // ’e‚ğ’T‚·
+		for (Object itemObject : _items) // å¼¾ã‚’æ¢ã™
 		{
 			bullet = (L1ItemInstance) itemObject;
 			if (bullet.getItem().getType() == type) {
 				if (type == 0) {
-					_arrowId = bullet.getItem().getItemId(); // —Dæ‚É‚µ‚Ä‚¨‚­
+					_arrowId = bullet.getItem().getItemId(); // å„ªå…ˆã«ã—ã¦ãŠã
 				}
 				if (type == 15) {
-					_stingId = bullet.getItem().getItemId(); // —Dæ‚É‚µ‚Ä‚¨‚­
+					_stingId = bullet.getItem().getItemId(); // å„ªå…ˆã«ã—ã¦ãŠã
 				}
 				return bullet;
 			}
@@ -586,17 +586,17 @@ public class L1PcInventory extends L1Inventory {
 		return null;
 	}
 
-	// —Dæ‚·‚éƒAƒ[‚Ìİ’è
+	// å„ªå…ˆã™ã‚‹ã‚¢ãƒ­ãƒ¼ã®è¨­å®š
 	public void setArrow(int id) {
 		_arrowId = id;
 	}
 
-	// —Dæ‚·‚éƒXƒeƒBƒ“ƒO‚Ìİ’è
+	// å„ªå…ˆã™ã‚‹ã‚¹ãƒ†ã‚£ãƒ³ã‚°ã®è¨­å®š
 	public void setSting(int id) {
 		_stingId = id;
 	}
 
-	// ‘•”õ‚É‚æ‚é‚g‚o©‘R‰ñ•œ•â³
+	// è£…å‚™ã«ã‚ˆã‚‹ï¼¨ï¼°è‡ªç„¶å›å¾©è£œæ­£
 	public int hpRegenPerTick() {
 		int hpr = 0;
 		for (Object itemObject : _items) {
@@ -608,7 +608,7 @@ public class L1PcInventory extends L1Inventory {
 		return hpr;
 	}
 
-	// ‘•”õ‚É‚æ‚é‚l‚o©‘R‰ñ•œ•â³
+	// è£…å‚™ã«ã‚ˆã‚‹ï¼­ï¼°è‡ªç„¶å›å¾©è£œæ­£
 	public int mpRegenPerTick() {
 		int mpr = 0;
 		for (Object itemObject : _items) {
@@ -624,7 +624,7 @@ public class L1PcInventory extends L1Inventory {
 		Random random = new Random();
 		int rnd = random.nextInt(_items.size());
 		L1ItemInstance penaltyItem = _items.get(rnd);
-		if (penaltyItem.getItem().getItemId() == L1ItemId.ADENA // ƒAƒfƒiAƒgƒŒ[ƒh•s‰Â‚ÌƒAƒCƒeƒ€‚Í—‚Æ‚³‚È‚¢
+		if (penaltyItem.getItem().getItemId() == L1ItemId.ADENA // ã‚¢ãƒ‡ãƒŠã€ãƒˆãƒ¬ãƒ¼ãƒ‰ä¸å¯ã®ã‚¢ã‚¤ãƒ†ãƒ ã¯è½ã¨ã•ãªã„
 				|| !penaltyItem.getItem().isTradable()) {
 			return null;
 		}

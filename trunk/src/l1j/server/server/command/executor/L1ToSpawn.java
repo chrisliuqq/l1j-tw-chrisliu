@@ -65,10 +65,10 @@ public class L1ToSpawn implements L1CommandExecutor {
 						.getMapId(), 5, false);
 				pc
 						.sendPackets(new S_SystemMessage("spawnid(" + id
-								+ ")‚ÌŒ³‚Ö”ò‚Ñ‚Ü‚·"));
+								+ ")ã®å…ƒã¸é£›ã³ã¾ã™"));
 			} else {
 				pc.sendPackets(new S_SystemMessage("spawnid(" + id
-						+ ")‚ÍŒ©‚Â‚©‚è‚Ü‚¹‚ñ"));
+						+ ")ã¯è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“"));
 			}
 			_spawnId.put(pc.getId(), id);
 		} catch (Exception exception) {

@@ -22,7 +22,7 @@ package l1j.server.server.datatables;
 import l1j.server.Config;
 
 /**
- * ŒoŒ±’lƒe[ƒuƒ‹‚ğ’ñ‹Ÿ‚·‚éƒNƒ‰ƒX
+ * çµŒé¨“å€¤ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’æä¾›ã™ã‚‹ã‚¯ãƒ©ã‚¹
  */
 public final class ExpTable {
 	private ExpTable() {
@@ -33,39 +33,39 @@ public final class ExpTable {
 	public static final int MAX_EXP = 0x6ecf16da;
 
 	/**
-	 * w’è‚³‚ê‚½ƒŒƒxƒ‹‚É‚È‚é‚Ì‚É•K—v‚È—İÏŒoŒ±’l‚ğ‹‚ß‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸãƒ¬ãƒ™ãƒ«ã«ãªã‚‹ã®ã«å¿…è¦ãªç´¯ç©çµŒé¨“å€¤ã‚’æ±‚ã‚ã‚‹ã€‚
 	 * 
 	 * @param level
-	 *            ƒŒƒxƒ‹
-	 * @return •K—v‚È—İÏŒoŒ±’l
+	 *            ãƒ¬ãƒ™ãƒ«
+	 * @return å¿…è¦ãªç´¯ç©çµŒé¨“å€¤
 	 */
 	public static int getExpByLevel(int level) {
 		return _expTable[level - 1];
 	}
 
 	/**
-	 * Ÿ‚ÌƒŒƒxƒ‹‚É‚È‚é‚Ì‚É•K—v‚ÈŒoŒ±’l‚ğ‹‚ß‚éB
+	 * æ¬¡ã®ãƒ¬ãƒ™ãƒ«ã«ãªã‚‹ã®ã«å¿…è¦ãªçµŒé¨“å€¤ã‚’æ±‚ã‚ã‚‹ã€‚
 	 * 
 	 * @param level
-	 *            Œ»İ‚ÌƒŒƒxƒ‹
-	 * @return •K—v‚ÈŒoŒ±’l
+	 *            ç¾åœ¨ã®ãƒ¬ãƒ™ãƒ«
+	 * @return å¿…è¦ãªçµŒé¨“å€¤
 	 */
 	public static int getNeedExpNextLevel(int level) {
 		return getExpByLevel(level + 1) - getExpByLevel(level);
 	}
 
 	/**
-	 * —İÏŒoŒ±’l‚©‚çƒŒƒxƒ‹‚ğ‹‚ß‚éB
+	 * ç´¯ç©çµŒé¨“å€¤ã‹ã‚‰ãƒ¬ãƒ™ãƒ«ã‚’æ±‚ã‚ã‚‹ã€‚
 	 * 
 	 * @param exp
-	 *            —İÏŒoŒ±’l
-	 * @return ‹‚ß‚ç‚ê‚½ƒŒƒxƒ‹
+	 *            ç´¯ç©çµŒé¨“å€¤
+	 * @return æ±‚ã‚ã‚‰ã‚ŒãŸãƒ¬ãƒ™ãƒ«
 	 */
 	public static int getLevelByExp(int exp) {
 
 		int level;
 		for (level = 1; level < _expTable.length; level++) {
-			// ƒgƒŠƒbƒL[‚©‚à‚µ‚ê‚È‚¢EEE
+			// ãƒˆãƒªãƒƒã‚­ãƒ¼ã‹ã‚‚ã—ã‚Œãªã„ãƒ»ãƒ»ãƒ»
 			if (exp < _expTable[level]) {
 				break;
 			}
@@ -78,11 +78,11 @@ public final class ExpTable {
 	}
 
 	/**
-	 * Œ»İ‚ÌƒŒƒxƒ‹‚©‚çAŒoŒ±’l‚Ìƒyƒiƒ‹ƒeƒB[ƒŒ[ƒg‚ğ‹‚ß‚é
+	 * ç¾åœ¨ã®ãƒ¬ãƒ™ãƒ«ã‹ã‚‰ã€çµŒé¨“å€¤ã®ãƒšãƒŠãƒ«ãƒ†ã‚£ãƒ¼ãƒ¬ãƒ¼ãƒˆã‚’æ±‚ã‚ã‚‹
 	 * 
 	 * @param level
-	 *            Œ»İ‚ÌƒŒƒxƒ‹
-	 * @return ‹‚ß‚ç‚ê‚½ŒoŒ±’l‚Ìƒyƒiƒ‹ƒeƒB[ƒŒ[ƒg
+	 *            ç¾åœ¨ã®ãƒ¬ãƒ™ãƒ«
+	 * @return æ±‚ã‚ã‚‰ã‚ŒãŸçµŒé¨“å€¤ã®ãƒšãƒŠãƒ«ãƒ†ã‚£ãƒ¼ãƒ¬ãƒ¼ãƒˆ
 	 */
 	public static double getPenaltyRate(int level) {
 		if (level < 50) {
@@ -95,7 +95,7 @@ public final class ExpTable {
 	}
 
 	/**
-	 * ŒoŒ±’lƒe[ƒuƒ‹(—İÏ’l) Lv0-100
+	 * çµŒé¨“å€¤ãƒ†ãƒ¼ãƒ–ãƒ«(ç´¯ç©å€¤) Lv0-100
 	 */
 	private static final int _expTable[] = { 0, 125, 300, 500, 750, 1296, 2401,
 			4096, 6581, 10000, 14661, 20756, 28581, 38436, 50645, 0x10014,
@@ -117,7 +117,7 @@ public final class ExpTable {
 			0x6ecf16da, };
 
 	/**
-	 * €–SŒoŒ±’lƒyƒiƒ‹ƒeƒBƒe[ƒuƒ‹
+	 * æ­»äº¡æ™‚çµŒé¨“å€¤ãƒšãƒŠãƒ«ãƒ†ã‚£ãƒ†ãƒ¼ãƒ–ãƒ«
 	 */
 	private static final int _expPenalty[] = { Config.LV50_EXP,
 			Config.LV51_EXP, Config.LV52_EXP, Config.LV53_EXP, Config.LV54_EXP,

@@ -54,7 +54,7 @@ public class IdFactory {
 	}
 
 	private void loadState() {
-		// DB‚©‚çMAXID‚ğ‹‚ß‚é
+		// DBã‹ã‚‰MAXIDã‚’æ±‚ã‚ã‚‹
 		Connection con = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -73,7 +73,7 @@ public class IdFactory {
 				id = FIRST_ID;
 			}
 			_curId = id;
-			_log.info("Œ»İ‚ÌƒIƒuƒWƒFƒNƒgID: " + _curId);
+			_log.info("ç¾åœ¨ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆID: " + _curId);
 		} catch (SQLException e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		} finally {

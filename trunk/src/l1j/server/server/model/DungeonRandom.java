@@ -93,7 +93,7 @@ public class DungeonRandom {
 				NewDungeonRandom newDungeonRandom = new NewDungeonRandom(newX, newY,
 						newMapId, heading);
 				if (_dungeonMap.containsKey(key)) {
-					_log.log(Level.WARNING, "“¯‚¶ƒL[‚Ìdungeonƒf[ƒ^‚ª‚ ‚è‚Ü‚·Bkey=" + key);
+					_log.log(Level.WARNING, "åŒã˜ã‚­ãƒ¼ã®dungeonãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã™ã€‚key=" + key);
 				}
 				_dungeonMap.put(key, newDungeonRandom);
 			}
@@ -134,7 +134,7 @@ public class DungeonRandom {
 			int newY = newDungeonRandom._newY[rnd];
 			int heading = newDungeonRandom._heading;
 
-			// 2•bŠÔ‚Í–³“GiƒAƒuƒ\ƒ‹[ƒgƒoƒŠƒAó‘Ôj‚É‚·‚éB
+			// 2ç§’é–“ã¯ç„¡æ•µï¼ˆã‚¢ãƒ–ã‚½ãƒ«ãƒ¼ãƒˆãƒãƒªã‚¢çŠ¶æ…‹ï¼‰ã«ã™ã‚‹ã€‚
 			pc.setSkillEffect(ABSOLUTE_BARRIER, 2000);
 			pc.stopHpRegeneration();
 			pc.stopMpRegeneration();

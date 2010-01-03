@@ -54,8 +54,8 @@ public class L1DeleteItemOnGround {
 					break;
 				}
 				L1World.getInstance().broadcastPacketToAll(
-						new S_ServerMessage(166, "ƒ[ƒ‹ƒhƒ}ƒbƒvã‚ÌƒAƒCƒeƒ€",
-								"10•bŒã‚Éíœ‚³‚ê‚Ü‚·B")); // \f1%0‚ª%4%1%3 %2
+						new S_ServerMessage(166, "ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒãƒƒãƒ—ä¸Šã®ã‚¢ã‚¤ãƒ†ãƒ ",
+								"10ç§’å¾Œã«å‰Šé™¤ã•ã‚Œã¾ã™ã€‚")); // \f1%0ãŒ%4%1%3 %2
 				try {
 					Thread.sleep(10000);
 				} catch (Exception exception) {
@@ -64,7 +64,7 @@ public class L1DeleteItemOnGround {
 				}
 				deleteItem();
 				L1World.getInstance().broadcastPacketToAll(
-						new S_ServerMessage(166, "ƒ[ƒ‹ƒhƒ}ƒbƒvã‚ÌƒAƒCƒeƒ€", "íœ‚³‚ê‚Ü‚µ‚½B")); // \f1%0‚ª%4%1%3
+						new S_ServerMessage(166, "ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒãƒƒãƒ—ä¸Šã®ã‚¢ã‚¤ãƒ†ãƒ ", "å‰Šé™¤ã•ã‚Œã¾ã—ãŸã€‚")); // \f1%0ãŒ%4%1%3
 				// %2
 			}
 		}
@@ -76,7 +76,7 @@ public class L1DeleteItemOnGround {
 		}
 
 		_deleteTimer = new DeleteTimer();
-		GeneralThreadPool.getInstance().execute(_deleteTimer); // ƒ^ƒCƒ}[ŠJn
+		GeneralThreadPool.getInstance().execute(_deleteTimer); // ã‚¿ã‚¤ãƒãƒ¼é–‹å§‹
 	}
 
 	private void deleteItem() {
@@ -87,20 +87,20 @@ public class L1DeleteItemOnGround {
 			}
 
 			L1ItemInstance item = (L1ItemInstance) obj;
-			if (item.getX() == 0 && item.getY() == 0) { // ’n–Êã‚ÌƒAƒCƒeƒ€‚Å‚Í‚È‚­A’N‚©‚ÌŠ—L•¨
+			if (item.getX() == 0 && item.getY() == 0) { // åœ°é¢ä¸Šã®ã‚¢ã‚¤ãƒ†ãƒ ã§ã¯ãªãã€èª°ã‹ã®æ‰€æœ‰ç‰©
 				continue;
 			}
-			if (item.getItem().getItemId() == 40515) { // ¸—ì‚ÌÎ
+			if (item.getItem().getItemId() == 40515) { // ç²¾éœŠã®çŸ³
 				continue;
 			}
 			if (L1HouseLocation.isInHouse(item.getX(), item.getY(), item
-					.getMapId())) { // ƒAƒWƒg“à
+					.getMapId())) { // ã‚¢ã‚¸ãƒˆå†…
 				continue;
 			}
 
 			List<L1PcInstance> players = L1World.getInstance()
 					.getVisiblePlayer(item, Config.ALT_ITEM_DELETION_RANGE);
-			if (players.isEmpty()) { // w’è”ÍˆÍ“à‚ÉƒvƒŒƒCƒ„[‚ª‹‚È‚¯‚ê‚Îíœ
+			if (players.isEmpty()) { // æŒ‡å®šç¯„å›²å†…ã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒå±…ãªã‘ã‚Œã°å‰Šé™¤
 				L1Inventory groundInventory = L1World
 						.getInstance()
 						.getInventory(item.getX(), item.getY(), item.getMapId());
@@ -108,6 +108,6 @@ public class L1DeleteItemOnGround {
 				numOfDeleted++;
 			}
 		}
-		_log.fine("ƒ[ƒ‹ƒhƒ}ƒbƒvã‚ÌƒAƒCƒeƒ€‚ğ©“®íœBíœ”: " + numOfDeleted);
+		_log.fine("ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒãƒƒãƒ—ä¸Šã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’è‡ªå‹•å‰Šé™¤ã€‚å‰Šé™¤æ•°: " + numOfDeleted);
 	}
 }

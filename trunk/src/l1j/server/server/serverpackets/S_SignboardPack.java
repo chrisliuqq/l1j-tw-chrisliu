@@ -59,7 +59,7 @@ public class S_SignboardPack extends ServerBasePacket {
 		writeS(null);
 		writeS(signboard.getName());
 		int status = 0;
-		if (signboard.getPoison() != null) { // “Åó‘Ô
+		if (signboard.getPoison() != null) { // æ¯’çŠ¶æ…‹
 			if (signboard.getPoison().getEffectId() == 1) {
 				status |= STATUS_POISON;
 			}

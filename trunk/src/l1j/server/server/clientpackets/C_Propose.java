@@ -40,22 +40,22 @@ public class C_Propose extends ClientBasePacket {
 		int c = readC();
 
 		L1PcInstance pc = clientthread.getActiveChar();
-		if (c == 0) { // /proposei/ƒvƒƒ|[ƒYj
+		if (c == 0) { // /proposeï¼ˆ/ãƒ—ãƒ­ãƒãƒ¼ã‚ºï¼‰
 			if (pc.isGhost()) {
 				return;
 			}
 			L1PcInstance target = FaceToFace.faceToFace(pc);
 			if (target != null) {
 				if (pc.getPartnerId() != 0) {
-					pc.sendPackets(new S_ServerMessage(657)); // \f1‚ ‚È‚½‚Í‚·‚Å‚ÉŒ‹¥‚µ‚Ä‚¢‚Ü‚·B
+					pc.sendPackets(new S_ServerMessage(657)); // \f1ã‚ãªãŸã¯ã™ã§ã«çµå©šã—ã¦ã„ã¾ã™ã€‚
 					return;
 				}
 				if (target.getPartnerId() != 0) {
-					pc.sendPackets(new S_ServerMessage(658)); // \f1‚»‚Ì‘Šè‚Í‚·‚Å‚ÉŒ‹¥‚µ‚Ä‚¢‚Ü‚·B
+					pc.sendPackets(new S_ServerMessage(658)); // \f1ãã®ç›¸æ‰‹ã¯ã™ã§ã«çµå©šã—ã¦ã„ã¾ã™ã€‚
 					return;
 				}
 				if (pc.get_sex() == target.get_sex()) {
-					pc.sendPackets(new S_ServerMessage(661)); // \f1Œ‹¥‘Šè‚ÍˆÙ«‚Å‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB
+					pc.sendPackets(new S_ServerMessage(661)); // \f1çµå©šç›¸æ‰‹ã¯ç•°æ€§ã§ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚
 					return;
 				}
 				if (pc.getX() >= 33974 && pc.getX() <= 33976
@@ -63,16 +63,16 @@ public class C_Propose extends ClientBasePacket {
 						&& pc.getMapId() == 4 && target.getX() >= 33974
 						&& target.getX() <= 33976 && target.getY() >= 33362
 						&& target.getY() <= 33365 && target.getMapId() == 4) {
-					target.setTempID(pc.getId()); // ‘Šè‚ÌƒIƒuƒWƒFƒNƒgID‚ğ•Û‘¶‚µ‚Ä‚¨‚­
-					target.sendPackets(new S_Message_YN(654, pc.getName())); // %0%s‚ ‚È‚½‚ÆŒ‹¥‚µ‚½‚ª‚Á‚Ä‚¢‚Ü‚·B%0‚ÆŒ‹¥‚µ‚Ü‚·‚©HiY/Nj
+					target.setTempID(pc.getId()); // ç›¸æ‰‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆIDã‚’ä¿å­˜ã—ã¦ãŠã
+					target.sendPackets(new S_Message_YN(654, pc.getName())); // %0%sã‚ãªãŸã¨çµå©šã—ãŸãŒã£ã¦ã„ã¾ã™ã€‚%0ã¨çµå©šã—ã¾ã™ã‹ï¼Ÿï¼ˆY/Nï¼‰
 				}
 			}
-		} else if (c == 1) { // /divorcei/—£¥j
+		} else if (c == 1) { // /divorceï¼ˆ/é›¢å©šï¼‰
 			if (pc.getPartnerId() == 0) {
-				pc.sendPackets(new S_ServerMessage(662)); // \f1‚ ‚È‚½‚ÍŒ‹¥‚µ‚Ä‚¢‚Ü‚¹‚ñB
+				pc.sendPackets(new S_ServerMessage(662)); // \f1ã‚ãªãŸã¯çµå©šã—ã¦ã„ã¾ã›ã‚“ã€‚
 				return;
 			}
-			pc.sendPackets(new S_Message_YN(653, "")); // —£¥‚ğ‚·‚é‚ÆƒŠƒ“ƒO‚ÍÁ‚¦‚Ä‚µ‚Ü‚¢‚Ü‚·B—£¥‚ğ–]‚İ‚Ü‚·‚©HiY/Nj
+			pc.sendPackets(new S_Message_YN(653, "")); // é›¢å©šã‚’ã™ã‚‹ã¨ãƒªãƒ³ã‚°ã¯æ¶ˆãˆã¦ã—ã¾ã„ã¾ã™ã€‚é›¢å©šã‚’æœ›ã¿ã¾ã™ã‹ï¼Ÿï¼ˆY/Nï¼‰
 		}
 	}
 

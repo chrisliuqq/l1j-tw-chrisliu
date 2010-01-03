@@ -47,7 +47,7 @@ public class L1ChangeWeather implements L1CommandExecutor {
 		} catch (Exception e) {
 			pc
 					.sendPackets(new S_SystemMessage(cmdName
-							+ " 0`3A16`19 ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+							+ " 0ï½3ã€16ï½19 ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

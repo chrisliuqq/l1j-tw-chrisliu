@@ -37,14 +37,14 @@ public class L1SummonInstance extends L1NpcInstance {
 	private boolean _isReturnToNature = false;
 	private static Random _random = new Random();
 
-	// ƒ^[ƒQƒbƒg‚ª‚¢‚È‚¢ê‡‚Ìˆ—
+	// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãŒã„ãªã„å ´åˆã®å‡¦ç†
 	@Override
 	public boolean noTarget() {
 		if (_currentPetStatus == 3) {
-			// œ ‹xŒe‚Ìê‡
+			// â— ä¼‘æ†©ã®å ´åˆ
 			return true;
 		} else if (_currentPetStatus == 4) {
-			// œ ”z”õ‚Ìê‡
+			// â— é…å‚™ã®å ´åˆ
 			if (_master != null
 					&& _master.getMapId() == getMapId()
 					&& getLocation().getTileLineDistance(_master.getLocation()) < 5) {
@@ -53,17 +53,17 @@ public class L1SummonInstance extends L1NpcInstance {
 				setDirectionMove(dir);
 				setSleepTime(calcSleepTime(getPassispeed(), MOVE_SPEED));
 			} else {
-				// ål‚ğŒ©¸‚¤‚©‚Tƒ}ƒXˆÈã‚Í‚È‚ê‚½‚ç‹xŒeó‘Ô‚É
+				// ä¸»äººã‚’è¦‹å¤±ã†ã‹ï¼•ãƒã‚¹ä»¥ä¸Šã¯ãªã‚ŒãŸã‚‰ä¼‘æ†©çŠ¶æ…‹ã«
 				_currentPetStatus = 3;
 				return true;
 			}
 		} else if (_currentPetStatus == 5) {
-			// œ Œx‰ú‚Ìê‡‚Íƒz[ƒ€‚Ö
+			// â— è­¦æˆ’ã®å ´åˆã¯ãƒ›ãƒ¼ãƒ ã¸
 			if (Math.abs(getHomeX() - getX()) > 1
 					|| Math.abs(getHomeY() - getY()) > 1) {
 				int dir = moveDirection(getHomeX(), getHomeY());
 				if (dir == -1) {
-					// ƒz[ƒ€‚ª—£‚ê‚·‚¬‚Ä‚½‚çŒ»İ’n‚ªƒz[ƒ€
+					// ãƒ›ãƒ¼ãƒ ãŒé›¢ã‚Œã™ãã¦ãŸã‚‰ç¾åœ¨åœ°ãŒãƒ›ãƒ¼ãƒ 
 					setHomeX(getX());
 					setHomeY(getY());
 				} else {
@@ -72,11 +72,11 @@ public class L1SummonInstance extends L1NpcInstance {
 				}
 			}
 		} else if (_master != null && _master.getMapId() == getMapId()) {
-			// œål‚ğ’Ç”ö
+			// â—ä¸»äººã‚’è¿½å°¾
 			if (getLocation().getTileLineDistance(_master.getLocation()) > 2) {
 				int dir = moveDirection(_master.getX(), _master.getY());
 				if (dir == -1) {
-					// ål‚ª—£‚ê‚·‚¬‚½‚ç‹xŒeó‘Ô‚É
+					// ä¸»äººãŒé›¢ã‚Œã™ããŸã‚‰ä¼‘æ†©çŠ¶æ…‹ã«
 					_currentPetStatus = 3;
 					return true;
 				} else {
@@ -85,31 +85,31 @@ public class L1SummonInstance extends L1NpcInstance {
 				}
 			}
 		} else {
-			// œ ål‚ğŒ©¸‚Á‚½‚ç‹xŒeó‘Ô‚É
+			// â— ä¸»äººã‚’è¦‹å¤±ã£ãŸã‚‰ä¼‘æ†©çŠ¶æ…‹ã«
 			_currentPetStatus = 3;
 			return true;
 		}
 		return false;
 	}
 
-	// ‚PŠÔŒv‘ª—p
+	// ï¼‘æ™‚é–“è¨ˆæ¸¬ç”¨
 	class SummonTimer implements Runnable {
 		@Override
 		public void run() {
-			if (_destroyed) { // Šù‚É”jŠü‚³‚ê‚Ä‚¢‚È‚¢‚©ƒ`ƒFƒbƒN
+			if (_destroyed) { // æ—¢ã«ç ´æ£„ã•ã‚Œã¦ã„ãªã„ã‹ãƒã‚§ãƒƒã‚¯
 				return;
 			}
 			if (_tamed) {
-				// ƒeƒCƒ~ƒ“ƒOƒ‚ƒ“ƒXƒ^[AƒNƒŠƒGƒCƒgƒ]ƒ“ƒr‚Ì‰ğ•ú
+				// ãƒ†ã‚¤ãƒŸãƒ³ã‚°ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã€ã‚¯ãƒªã‚¨ã‚¤ãƒˆã‚¾ãƒ³ãƒ“ã®è§£æ”¾
 				liberate();
 			} else {
-				// ƒTƒ‚ƒ“‚Ì‰ğU
+				// ã‚µãƒ¢ãƒ³ã®è§£æ•£
 				Death(null);
 			}
 		}
 	}
 
-	// ƒTƒ‚ƒ“ƒ‚ƒ“ƒXƒ^[—p
+	// ã‚µãƒ¢ãƒ³ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ç”¨
 	public L1SummonInstance(L1Npc template, L1Character master) {
 		super(template);
 		setId(IdFactory.getInstance().nextId());
@@ -135,13 +135,13 @@ public class L1SummonInstance extends L1NpcInstance {
 		master.addPet(this);
 	}
 
-	// ƒeƒCƒ~ƒ“ƒOƒ‚ƒ“ƒXƒ^[AƒNƒŠƒGƒCƒgƒ]ƒ“ƒr—p
+	// ãƒ†ã‚¤ãƒŸãƒ³ã‚°ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã€ã‚¯ãƒªã‚¨ã‚¤ãƒˆã‚¾ãƒ³ãƒ“ç”¨
 	public L1SummonInstance(L1NpcInstance target, L1Character master,
 			boolean isCreateZombie) {
 		super(null);
 		setId(IdFactory.getInstance().nextId());
 
-		if (isCreateZombie) { // ƒNƒŠƒGƒCƒgƒ]ƒ“ƒr
+		if (isCreateZombie) { // ã‚¯ãƒªã‚¨ã‚¤ãƒˆã‚¾ãƒ³ãƒ“
 			int npcId = 45065;
 			L1PcInstance pc = (L1PcInstance) master;
 			int level = pc.getLevel();
@@ -166,7 +166,7 @@ public class L1SummonInstance extends L1NpcInstance {
 			}
 			L1Npc template = NpcTable.getInstance().getTemplate(npcId).clone();
 			setting_template(template);
-		} else { // ƒeƒCƒ~ƒ“ƒOƒ‚ƒ“ƒXƒ^[
+		} else { // ãƒ†ã‚¤ãƒŸãƒ³ã‚°ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼
 			setting_template(target.getNpcTemplate());
 			setCurrentHpDirect(target.getCurrentHp());
 			setCurrentMpDirect(target.getCurrentMp());
@@ -193,7 +193,7 @@ public class L1SummonInstance extends L1NpcInstance {
 		_currentPetStatus = 3;
 		_tamed = true;
 
-		// ƒyƒbƒg‚ªUŒ‚’†‚¾‚Á‚½ê‡~‚ß‚³‚¹‚é
+		// ãƒšãƒƒãƒˆãŒæ”»æ’ƒä¸­ã ã£ãŸå ´åˆæ­¢ã‚ã•ã›ã‚‹
 		for (L1NpcInstance each : master.getPetList().values()) {
 			each.targetRemove(target);
 		}
@@ -208,10 +208,10 @@ public class L1SummonInstance extends L1NpcInstance {
 	}
 
 	@Override
-	public void receiveDamage(L1Character attacker, int damage) { // UŒ‚‚Å‚g‚o‚ğŒ¸‚ç‚·‚Æ‚«‚Í‚±‚±‚ğg—p
+	public void receiveDamage(L1Character attacker, int damage) { // æ”»æ’ƒã§ï¼¨ï¼°ã‚’æ¸›ã‚‰ã™ã¨ãã¯ã“ã“ã‚’ä½¿ç”¨
 		if (getCurrentHp() > 0) {
 			if (damage > 0) {
-				setHate(attacker, 0); // ƒTƒ‚ƒ“‚ÍƒwƒCƒg–³‚µ
+				setHate(attacker, 0); // ã‚µãƒ¢ãƒ³ã¯ãƒ˜ã‚¤ãƒˆç„¡ã—
 				removeSkillEffect(FOG_OF_SLEEPING);
 				if (!isExsistMaster()) {
 					_currentPetStatus = 1;
@@ -230,9 +230,9 @@ public class L1SummonInstance extends L1NpcInstance {
 			} else {
 				setCurrentHp(newHp);
 			}
-		} else if (!isDead()) // ”O‚Ì‚½‚ß
+		} else if (!isDead()) // å¿µã®ãŸã‚
 		{
-			System.out.println("ŒxFƒTƒ‚ƒ“‚Ì‚g‚oŒ¸­ˆ—‚ª³‚µ‚­s‚í‚ê‚Ä‚¢‚È‚¢‰ÓŠ‚ª‚ ‚è‚Ü‚·B¦‚à‚µ‚­‚ÍÅ‰‚©‚ç‚g‚o‚O");
+			System.out.println("è­¦å‘Šï¼šã‚µãƒ¢ãƒ³ã®ï¼¨ï¼°æ¸›å°‘å‡¦ç†ãŒæ­£ã—ãè¡Œã‚ã‚Œã¦ã„ãªã„ç®‡æ‰€ãŒã‚ã‚Šã¾ã™ã€‚â€»ã‚‚ã—ãã¯æœ€åˆã‹ã‚‰ï¼¨ï¼°ï¼");
 			Death(attacker);
 		}
 	}
@@ -245,18 +245,18 @@ public class L1SummonInstance extends L1NpcInstance {
 
 			getMap().setPassable(getLocation(), true);
 
-			// ƒAƒCƒeƒ€‰ğ•úˆ—
+			// ã‚¢ã‚¤ãƒ†ãƒ è§£æ”¾å‡¦ç†
 			L1Inventory targetInventory = _master.getInventory();
 			List<L1ItemInstance> items = _inventory.getItems();
 			for (L1ItemInstance item : items) {
-				if (_master.getInventory().checkAddItem( // —e—Êd—ÊŠm”F‹y‚ÑƒƒbƒZ[ƒW‘—M
+				if (_master.getInventory().checkAddItem( // å®¹é‡é‡é‡ç¢ºèªåŠã³ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡
 						item, item.getCount()) == L1Inventory.OK) {
 					_inventory
 							.tradeItem(item, item.getCount(), targetInventory);
-					// \f1%0‚ª%1‚ğ‚­‚ê‚Ü‚µ‚½B
+					// \f1%0ãŒ%1ã‚’ãã‚Œã¾ã—ãŸã€‚
 					((L1PcInstance) _master).sendPackets(new S_ServerMessage(
 							143, getName(), item.getLogName()));
-				} else { // ‚Ä‚È‚¢‚Ì‚Å‘«Œ³‚É—‚Æ‚·
+				} else { // æŒã¦ãªã„ã®ã§è¶³å…ƒã«è½ã¨ã™
 					targetInventory = L1World.getInstance().getInventory(
 							getX(), getY(), getMapId());
 					_inventory
@@ -278,18 +278,18 @@ public class L1SummonInstance extends L1NpcInstance {
 		_isReturnToNature = true;
 		if (!_tamed) {
 			getMap().setPassable(getLocation(), true);
-			// ƒAƒCƒeƒ€‰ğ•úˆ—
+			// ã‚¢ã‚¤ãƒ†ãƒ è§£æ”¾å‡¦ç†
 			L1Inventory targetInventory = _master.getInventory();
 			List<L1ItemInstance> items = _inventory.getItems();
 			for (L1ItemInstance item : items) {
-				if (_master.getInventory().checkAddItem( // —e—Êd—ÊŠm”F‹y‚ÑƒƒbƒZ[ƒW‘—M
+				if (_master.getInventory().checkAddItem( // å®¹é‡é‡é‡ç¢ºèªåŠã³ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡
 						item, item.getCount()) == L1Inventory.OK) {
 					_inventory
 							.tradeItem(item, item.getCount(), targetInventory);
-					// \f1%0‚ª%1‚ğ‚­‚ê‚Ü‚µ‚½B
+					// \f1%0ãŒ%1ã‚’ãã‚Œã¾ã—ãŸã€‚
 					((L1PcInstance) _master).sendPackets(new S_ServerMessage(
 							143, getName(), item.getLogName()));
-				} else { // ‚Ä‚È‚¢‚Ì‚Å‘«Œ³‚É—‚Æ‚·
+				} else { // æŒã¦ãªã„ã®ã§è¶³å…ƒã«è½ã¨ã™
 					targetInventory = L1World.getInstance().getInventory(
 							getX(), getY(), getMapId());
 					_inventory
@@ -302,7 +302,7 @@ public class L1SummonInstance extends L1NpcInstance {
 		}
 	}
 
-	// ƒIƒuƒWƒFƒNƒgÁ‹ˆ—
+	// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæ¶ˆå»å‡¦ç†
 	@Override
 	public synchronized void deleteMe() {
 		if (_destroyed) {
@@ -320,7 +320,7 @@ public class L1SummonInstance extends L1NpcInstance {
 		}
 	}
 
-	// ƒeƒCƒ~ƒ“ƒOƒ‚ƒ“ƒXƒ^[AƒNƒŠƒGƒCƒgƒ]ƒ“ƒr‚Ì‚Ì‰ğ•úˆ—
+	// ãƒ†ã‚¤ãƒŸãƒ³ã‚°ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã€ã‚¯ãƒªã‚¨ã‚¤ãƒˆã‚¾ãƒ³ãƒ“ã®æ™‚ã®è§£æ”¾å‡¦ç†
 	public void liberate() {
 		L1MonsterInstance monster = new L1MonsterInstance(getNpcTemplate());
 		monster.setId(IdFactory.getInstance().nextId());
@@ -363,7 +363,7 @@ public class L1SummonInstance extends L1NpcInstance {
 
 	@Override
 	public void onAction(L1PcInstance attacker) {
-		// XXX:NullPointerException‰ñ”ğBonAction‚Ìˆø”‚ÌŒ^‚ÍL1Character‚Ì‚Ù‚¤‚ª—Ç‚¢H
+		// XXX:NullPointerExceptionå›é¿ã€‚onActionã®å¼•æ•°ã®å‹ã¯L1Characterã®ã»ã†ãŒè‰¯ã„ï¼Ÿ
 		if (attacker == null) {
 			return;
 		}
@@ -373,13 +373,13 @@ public class L1SummonInstance extends L1NpcInstance {
 		}
 		L1PcInstance master = (L1PcInstance) cha;
 		if (master.isTeleport()) {
-			// ƒeƒŒƒ|[ƒgˆ—’†
+			// ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå‡¦ç†ä¸­
 			return;
 		}
 		if ((getZoneType() == 1 || attacker.getZoneType() == 1)
 				&& isExsistMaster()) {
-			// UŒ‚‚³‚ê‚é‘¤‚ªƒZ[ƒtƒeƒB[ƒ][ƒ“
-			// UŒ‚ƒ‚[ƒVƒ‡ƒ“‘—M
+			// æ”»æ’ƒã•ã‚Œã‚‹å´ãŒã‚»ãƒ¼ãƒ•ãƒ†ã‚£ãƒ¼ã‚¾ãƒ¼ãƒ³
+			// æ”»æ’ƒãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³é€ä¿¡
 			L1Attack attack_mortion = new L1Attack(attacker, this);
 			attack_mortion.action();
 			return;
@@ -415,22 +415,22 @@ public class L1SummonInstance extends L1NpcInstance {
 		}
 		if (status == 6) {
 			if (_tamed) {
-				// ƒeƒCƒ~ƒ“ƒOƒ‚ƒ“ƒXƒ^[AƒNƒŠƒGƒCƒgƒ]ƒ“ƒr‚Ì‰ğ•ú
+				// ãƒ†ã‚¤ãƒŸãƒ³ã‚°ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã€ã‚¯ãƒªã‚¨ã‚¤ãƒˆã‚¾ãƒ³ãƒ“ã®è§£æ”¾
 				liberate();
 			} else {
-				// ƒTƒ‚ƒ“‚Ì‰ğU
+				// ã‚µãƒ¢ãƒ³ã®è§£æ•£
 				Death(null);
 			}
 		} else {
-			// “¯‚¶ål‚Ìƒyƒbƒg‚Ìó‘Ô‚ğ‚·‚×‚ÄXV
+			// åŒã˜ä¸»äººã®ãƒšãƒƒãƒˆã®çŠ¶æ…‹ã‚’ã™ã¹ã¦æ›´æ–°
 			Object[] petList = _master.getPetList().values().toArray();
 			for (Object petObject : petList) {
 				if (petObject instanceof L1SummonInstance) {
-					// ƒTƒ‚ƒ“ƒ‚ƒ“ƒXƒ^[
+					// ã‚µãƒ¢ãƒ³ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼
 					L1SummonInstance summon = (L1SummonInstance) petObject;
 					summon.set_currentPetStatus(status);
 				} else {
-					// ƒyƒbƒg
+					// ãƒšãƒƒãƒˆ
 				}
 			}
 		}
@@ -445,12 +445,12 @@ public class L1SummonInstance extends L1NpcInstance {
 	@Override
 	public void onItemUse() {
 		if (!isActived()) {
-			// ‚P‚O‚O“‚ÌŠm—¦‚ÅƒwƒCƒXƒgƒ|[ƒVƒ‡ƒ“g—p
+			// ï¼‘ï¼ï¼ï¼…ã®ç¢ºç‡ã§ãƒ˜ã‚¤ã‚¹ãƒˆãƒãƒ¼ã‚·ãƒ§ãƒ³ä½¿ç”¨
 			useItem(USEITEM_HASTE, 100);
 		}
 		if (getCurrentHp() * 100 / getMaxHp() < 40) {
-			// ‚g‚o‚ª‚S‚O“‚«‚Á‚½‚ç
-			// ‚P‚O‚O“‚ÌŠm—¦‚Å‰ñ•œƒ|[ƒVƒ‡ƒ“g—p
+			// ï¼¨ï¼°ãŒï¼”ï¼ï¼…ãã£ãŸã‚‰
+			// ï¼‘ï¼ï¼ï¼…ã®ç¢ºç‡ã§å›å¾©ãƒãƒ¼ã‚·ãƒ§ãƒ³ä½¿ç”¨
 			useItem(USEITEM_HEAL, 100);
 		}
 	}
@@ -474,17 +474,17 @@ public class L1SummonInstance extends L1NpcInstance {
 
 	private int ActionType(String action) {
 		int status = 0;
-		if (action.equalsIgnoreCase("aggressive")) { // UŒ‚‘Ô¨
+		if (action.equalsIgnoreCase("aggressive")) { // æ”»æ’ƒæ…‹å‹¢
 			status = 1;
-		} else if (action.equalsIgnoreCase("defensive")) { // –hŒä‘Ô¨
+		} else if (action.equalsIgnoreCase("defensive")) { // é˜²å¾¡æ…‹å‹¢
 			status = 2;
-		} else if (action.equalsIgnoreCase("stay")) { // ‹xŒe
+		} else if (action.equalsIgnoreCase("stay")) { // ä¼‘æ†©
 			status = 3;
-		} else if (action.equalsIgnoreCase("extend")) { // ”z”õ
+		} else if (action.equalsIgnoreCase("extend")) { // é…å‚™
 			status = 4;
-		} else if (action.equalsIgnoreCase("alert")) { // Œx‰ú
+		} else if (action.equalsIgnoreCase("alert")) { // è­¦æˆ’
 			status = 5;
-		} else if (action.equalsIgnoreCase("dismiss")) { // ‰ğU
+		} else if (action.equalsIgnoreCase("dismiss")) { // è§£æ•£
 			status = 6;
 		}
 		return status;

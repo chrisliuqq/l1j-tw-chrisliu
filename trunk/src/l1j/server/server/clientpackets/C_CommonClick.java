@@ -43,7 +43,7 @@ public class C_CommonClick {
 			.getLogger(C_CommonClick.class.getName());
 
 	public C_CommonClick(ClientThread client) {
-		deleteCharacter(client); // 削除期限に達したキャラクターを削除する
+		deleteCharacter(client); // 蜑企勁譛滄剞縺ｫ驕斐＠縺溘く繝｣繝ｩ繧ｯ繧ｿ繝ｼ繧貞炎髯､縺吶ｋ
 		int amountOfChars = client.getAccount().countCharacters();
 		client.sendPacket(new S_CharAmount(amountOfChars, client));
 		if (amountOfChars > 0) {

@@ -86,7 +86,7 @@ public class FishingTimeController implements Runnable {
 						pc.setFishing(false);
 						pc.sendPackets(new S_CharVisualUpdate(pc));
 						pc.broadcastPacket(new S_CharVisualUpdate(pc));
-						pc.sendPackets(new S_ServerMessage(1163, "")); // ’Ş‚è‚ªI—¹‚µ‚Ü‚µ‚½B
+						pc.sendPackets(new S_ServerMessage(1163, "")); // é‡£ã‚ŠãŒçµ‚äº†ã—ã¾ã—ãŸã€‚
 						removeMember(pc);
 					}
 				}

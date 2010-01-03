@@ -39,8 +39,8 @@ public class C_BanParty extends ClientBasePacket {
 
 		L1PcInstance player = client.getActiveChar();
 		if (!player.getParty().isLeader(player)) {
-			// ƒp[ƒeƒB[ƒŠ[ƒ_[‚Å‚È‚¢ê‡
-			player.sendPackets(new S_ServerMessage(427)); // ƒp[ƒeƒB[‚ÌƒŠ[ƒ_[‚Ì‚İ‚ª’Ç•ú‚Å‚«‚Ü‚·B
+			// ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒªãƒ¼ãƒ€ãƒ¼ã§ãªã„å ´åˆ
+			player.sendPackets(new S_ServerMessage(427)); // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã®ãƒªãƒ¼ãƒ€ãƒ¼ã®ã¿ãŒè¿½æ”¾ã§ãã¾ã™ã€‚
 			return;
 		}
 
@@ -50,8 +50,8 @@ public class C_BanParty extends ClientBasePacket {
 				return;
 			}
 		}
-		// Œ©‚Â‚©‚ç‚È‚©‚Á‚½
-		player.sendPackets(new S_ServerMessage(426, s)); // %0‚Íƒp[ƒeƒB[ƒƒ“ƒo[‚Å‚Í‚ ‚è‚Ü‚¹‚ñB
+		// è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸ
+		player.sendPackets(new S_ServerMessage(426, s)); // %0ã¯ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ¡ãƒ³ãƒãƒ¼ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
 	}
 
 	@Override

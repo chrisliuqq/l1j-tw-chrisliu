@@ -47,19 +47,19 @@ public class L1Favorite implements L1CommandExecutor {
 			}
 			String faviCom = _faviCom.get(pc.getId());
 			if (arg.startsWith("set")) {
-				// ƒRƒ}ƒ“ƒh‚Ì“o˜^
+				// ã‚³ãƒãƒ³ãƒ‰ã®ç™»éŒ²
 				StringTokenizer st = new StringTokenizer(arg);
 				st.nextToken();
 				if (!st.hasMoreTokens()) {
-					pc.sendPackets(new S_SystemMessage("ƒRƒ}ƒ“ƒh‚ª‹ó‚Å‚·B"));
+					pc.sendPackets(new S_SystemMessage("ã‚³ãƒãƒ³ãƒ‰ãŒç©ºã§ã™ã€‚"));
 					return;
 				}
 				StringBuilder cmd = new StringBuilder();
-				String temp = st.nextToken(); // ƒRƒ}ƒ“ƒhƒ^ƒCƒv
+				String temp = st.nextToken(); // ã‚³ãƒãƒ³ãƒ‰ã‚¿ã‚¤ãƒ—
 				if (temp.equalsIgnoreCase(cmdName)) {
 					pc
 							.sendPackets(new S_SystemMessage(cmdName
-									+ " ©g‚Í“o˜^‚Å‚«‚Ü‚¹‚ñB"));
+									+ " è‡ªèº«ã¯ç™»éŒ²ã§ãã¾ã›ã‚“ã€‚"));
 					return;
 				}
 				cmd.append(temp + " ");
@@ -68,11 +68,11 @@ public class L1Favorite implements L1CommandExecutor {
 				}
 				faviCom = cmd.toString().trim();
 				_faviCom.put(pc.getId(), faviCom);
-				pc.sendPackets(new S_SystemMessage(faviCom + " ‚ğ“o˜^‚µ‚Ü‚µ‚½B"));
+				pc.sendPackets(new S_SystemMessage(faviCom + " ã‚’ç™»éŒ²ã—ã¾ã—ãŸã€‚"));
 			} else if (arg.startsWith("show")) {
-				pc.sendPackets(new S_SystemMessage("Œ»İ‚Ì“o˜^ƒRƒ}ƒ“ƒh: " + faviCom));
+				pc.sendPackets(new S_SystemMessage("ç¾åœ¨ã®ç™»éŒ²ã‚³ãƒãƒ³ãƒ‰: " + faviCom));
 			} else if (faviCom.isEmpty()) {
-				pc.sendPackets(new S_SystemMessage("“o˜^‚µ‚Ä‚¢‚éƒRƒ}ƒ“ƒh‚ª‚ ‚è‚Ü‚¹‚ñB"));
+				pc.sendPackets(new S_SystemMessage("ç™»éŒ²ã—ã¦ã„ã‚‹ã‚³ãƒãƒ³ãƒ‰ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"));
 			} else {
 				StringBuilder cmd = new StringBuilder();
 				StringTokenizer st = new StringTokenizer(arg);
@@ -88,12 +88,12 @@ public class L1Favorite implements L1CommandExecutor {
 				while (st.hasMoreTokens()) {
 					cmd.append(st.nextToken() + " ");
 				}
-				pc.sendPackets(new S_SystemMessage(cmd + " ‚ğÀs‚µ‚Ü‚·B"));
+				pc.sendPackets(new S_SystemMessage(cmd + " ã‚’å®Ÿè¡Œã—ã¾ã™ã€‚"));
 				GMCommands.getInstance().handleCommands(pc, cmd.toString());
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(cmdName + " set ƒRƒ}ƒ“ƒh–¼ " + "| "
-					+ cmdName + " show | " + cmdName + " [ˆø”] ‚Æ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B"));
+			pc.sendPackets(new S_SystemMessage(cmdName + " set ã‚³ãƒãƒ³ãƒ‰å " + "| "
+					+ cmdName + " show | " + cmdName + " [å¼•æ•°] ã¨å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚"));
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		}
 	}

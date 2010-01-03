@@ -37,13 +37,13 @@ public class S_War extends ServerBasePacket {
 	}
 
 	private void buildPacket(int type, String clan_name1, String clan_name2) {
-		// 1 : _ŒŒ–¿‚ª_ŒŒ–¿‚Ééí•z‚µ‚Ü‚µ‚½B
-		// 2 : _ŒŒ–¿‚ª_ŒŒ–¿‚É~•š‚µ‚Ü‚µ‚½B
-		// 3 : _ŒŒ–¿‚Æ_ŒŒ–¿‚Æ‚Ìí‘ˆ‚ªIŒ‹‚µ‚Ü‚µ‚½B
-		// 4 : _ŒŒ–¿‚ª_ŒŒ–¿‚Æ‚Ìí‘ˆ‚ÅŸ—˜‚µ‚Ü‚µ‚½B
-		// 6 : _ŒŒ–¿‚Æ_ŒŒ–¿‚ª“¯–¿‚ðŒ‹‚Ñ‚Ü‚µ‚½B
-		// 7 : _ŒŒ–¿‚Æ_ŒŒ–¿‚Æ‚Ì“¯–¿ŠÖŒW‚ª‰ðœ‚³‚ê‚Ü‚µ‚½B
-		// 8 : ‚ ‚È‚½‚ÌŒŒ–¿‚ªŒ»Ý_ŒŒ–¿‚ÆŒðí’†‚Å‚·B
+		// 1 : _è¡€ç›ŸãŒ_è¡€ç›Ÿã«å®£æˆ¦å¸ƒå‘Šã—ã¾ã—ãŸã€‚
+		// 2 : _è¡€ç›ŸãŒ_è¡€ç›Ÿã«é™ä¼ã—ã¾ã—ãŸã€‚
+		// 3 : _è¡€ç›Ÿã¨_è¡€ç›Ÿã¨ã®æˆ¦äº‰ãŒçµ‚çµã—ã¾ã—ãŸã€‚
+		// 4 : _è¡€ç›ŸãŒ_è¡€ç›Ÿã¨ã®æˆ¦äº‰ã§å‹åˆ©ã—ã¾ã—ãŸã€‚
+		// 6 : _è¡€ç›Ÿã¨_è¡€ç›ŸãŒåŒç›Ÿã‚’çµã³ã¾ã—ãŸã€‚
+		// 7 : _è¡€ç›Ÿã¨_è¡€ç›Ÿã¨ã®åŒç›Ÿé–¢ä¿‚ãŒè§£é™¤ã•ã‚Œã¾ã—ãŸã€‚
+		// 8 : ã‚ãªãŸã®è¡€ç›ŸãŒç¾åœ¨_è¡€ç›Ÿã¨äº¤æˆ¦ä¸­ã§ã™ã€‚
 
 		writeC(Opcodes.S_OPCODE_WAR);
 		writeC(type);

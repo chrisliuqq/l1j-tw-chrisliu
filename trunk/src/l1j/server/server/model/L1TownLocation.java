@@ -53,7 +53,7 @@ public class L1TownLocation {
 
 	public static final int TOWNID_OREN = 10;
 
-	// ‰º‹LA’¬Å‚È‚µ
+	// ä¸‹è¨˜ã€ç”ºç¨Žãªã—
 
 	public static final int TOWNID_ELVEN_FOREST = 11;
 
@@ -69,7 +69,7 @@ public class L1TownLocation {
 
 	public static final int TOWNID_RECLUSE_VILLAGE = 17;
 
-	// ‹AŠÒƒƒP[ƒVƒ‡ƒ“
+	// å¸°é‚„ãƒ­ã‚±ãƒ¼ã‚·ãƒ§ãƒ³
 	private static final short GETBACK_MAP_TALKING_ISLAND = 0;
 	private static final Point[] GETBACK_LOC_TALKING_ISLAND = {
 			new Point(32600, 32942), new Point(32574, 32944),
@@ -180,7 +180,7 @@ public class L1TownLocation {
 	private L1TownLocation() {
 	}
 
-	public static int[] getGetBackLoc(int town_id) { // town_id‚©‚ç‹AŠÒæ‚ÌÀ•W‚ðƒ‰ƒ“ƒ_ƒ€‚É•Ô‚·
+	public static int[] getGetBackLoc(int town_id) { // town_idã‹ã‚‰å¸°é‚„å…ˆã®åº§æ¨™ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«è¿”ã™
 		Random random = new Random();
 		int[] loc = new int[3];
 
@@ -194,82 +194,82 @@ public class L1TownLocation {
 			loc[0] = GETBACK_LOC_SILVER_KNIGHT_TOWN[rnd].getX();
 			loc[1] = GETBACK_LOC_SILVER_KNIGHT_TOWN[rnd].getY();
 			loc[2] = GETBACK_MAP_SILVER_KNIGHT_TOWN;
-		} else if (town_id == TOWNID_KENT) { // ƒPƒ“ƒg
+		} else if (town_id == TOWNID_KENT) { // ã‚±ãƒ³ãƒˆ
 			int rnd = random.nextInt(GETBACK_LOC_KENT.length);
 			loc[0] = GETBACK_LOC_KENT[rnd].getX();
 			loc[1] = GETBACK_LOC_KENT[rnd].getY();
 			loc[2] = GETBACK_MAP_KENT;
-		} else if (town_id == TOWNID_GLUDIO) { // ƒOƒ‹
+		} else if (town_id == TOWNID_GLUDIO) { // ã‚°ãƒ«
 			int rnd = random.nextInt(GETBACK_LOC_GLUDIO.length);
 			loc[0] = GETBACK_LOC_GLUDIO[rnd].getX();
 			loc[1] = GETBACK_LOC_GLUDIO[rnd].getY();
 			loc[2] = GETBACK_MAP_GLUDIO;
-		} else if (town_id == TOWNID_ORCISH_FOREST) { // ‰Î“c‘º
+		} else if (town_id == TOWNID_ORCISH_FOREST) { // ç«ç”°æ‘
 			int rnd = random.nextInt(GETBACK_LOC_ORCISH_FOREST.length);
 			loc[0] = GETBACK_LOC_ORCISH_FOREST[rnd].getX();
 			loc[1] = GETBACK_LOC_ORCISH_FOREST[rnd].getY();
 			loc[2] = GETBACK_MAP_ORCISH_FOREST;
-		} else if (town_id == TOWNID_WINDAWOOD) { // ƒEƒbƒhƒxƒbƒN
+		} else if (town_id == TOWNID_WINDAWOOD) { // ã‚¦ãƒƒãƒ‰ãƒ™ãƒƒã‚¯
 			int rnd = random.nextInt(GETBACK_LOC_WINDAWOOD.length);
 			loc[0] = GETBACK_LOC_WINDAWOOD[rnd].getX();
 			loc[1] = GETBACK_LOC_WINDAWOOD[rnd].getY();
 			loc[2] = GETBACK_MAP_WINDAWOOD;
-		} else if (town_id == TOWNID_GIRAN) { // ƒMƒ‰ƒ“
+		} else if (town_id == TOWNID_GIRAN) { // ã‚®ãƒ©ãƒ³
 			int rnd = random.nextInt(GETBACK_LOC_GIRAN.length);
 			loc[0] = GETBACK_LOC_GIRAN[rnd].getX();
 			loc[1] = GETBACK_LOC_GIRAN[rnd].getY();
 			loc[2] = GETBACK_MAP_GIRAN;
-		} else if (town_id == TOWNID_HEINE) { // ƒnƒCƒl
+		} else if (town_id == TOWNID_HEINE) { // ãƒã‚¤ãƒ
 			int rnd = random.nextInt(GETBACK_LOC_HEINE.length);
 			loc[0] = GETBACK_LOC_HEINE[rnd].getX();
 			loc[1] = GETBACK_LOC_HEINE[rnd].getY();
 			loc[2] = GETBACK_MAP_HEINE;
-		} else if (town_id == TOWNID_WERLDAN) { // ƒEƒFƒ‹ƒ_ƒ“
+		} else if (town_id == TOWNID_WERLDAN) { // ã‚¦ã‚§ãƒ«ãƒ€ãƒ³
 			int rnd = random.nextInt(GETBACK_LOC_WERLDAN.length);
 			loc[0] = GETBACK_LOC_WERLDAN[rnd].getX();
 			loc[1] = GETBACK_LOC_WERLDAN[rnd].getY();
 			loc[2] = GETBACK_MAP_WERLDAN;
-		} else if (town_id == TOWNID_OREN) { // ƒI[ƒŒƒ“
+		} else if (town_id == TOWNID_OREN) { // ã‚ªãƒ¼ãƒ¬ãƒ³
 			int rnd = random.nextInt(GETBACK_LOC_OREN.length);
 			loc[0] = GETBACK_LOC_OREN[rnd].getX();
 			loc[1] = GETBACK_LOC_OREN[rnd].getY();
 			loc[2] = GETBACK_MAP_OREN;
-		} else if (town_id == TOWNID_ELVEN_FOREST) { // ƒGƒ‹ƒt‚ÌX
+		} else if (town_id == TOWNID_ELVEN_FOREST) { // ã‚¨ãƒ«ãƒ•ã®æ£®
 			int rnd = random.nextInt(GETBACK_LOC_ELVEN_FOREST.length);
 			loc[0] = GETBACK_LOC_ELVEN_FOREST[rnd].getX();
 			loc[1] = GETBACK_LOC_ELVEN_FOREST[rnd].getY();
 			loc[2] = GETBACK_MAP_ELVEN_FOREST;
-		} else if (town_id == TOWNID_ADEN) { // ƒAƒfƒ“
+		} else if (town_id == TOWNID_ADEN) { // ã‚¢ãƒ‡ãƒ³
 			int rnd = random.nextInt(GETBACK_LOC_ADEN.length);
 			loc[0] = GETBACK_LOC_ADEN[rnd].getX();
 			loc[1] = GETBACK_LOC_ADEN[rnd].getY();
 			loc[2] = GETBACK_MAP_ADEN;
-		} else if (town_id == TOWNID_SILENT_CAVERN) { // ’¾–Ù‚Ì“´ŒA
+		} else if (town_id == TOWNID_SILENT_CAVERN) { // æ²ˆé»™ã®æ´žçªŸ
 			int rnd = random.nextInt(GETBACK_LOC_SILENT_CAVERN.length);
 			loc[0] = GETBACK_LOC_SILENT_CAVERN[rnd].getX();
 			loc[1] = GETBACK_LOC_SILENT_CAVERN[rnd].getY();
 			loc[2] = GETBACK_MAP_SILENT_CAVERN;
-		} else if (town_id == TOWNID_OUM_DUNGEON) { // ƒI[ƒ€ƒ_ƒ“ƒWƒ‡ƒ“
+		} else if (town_id == TOWNID_OUM_DUNGEON) { // ã‚ªãƒ¼ãƒ ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³
 			int rnd = random.nextInt(GETBACK_LOC_OUM_DUNGEON.length);
 			loc[0] = GETBACK_LOC_OUM_DUNGEON[rnd].getX();
 			loc[1] = GETBACK_LOC_OUM_DUNGEON[rnd].getY();
 			loc[2] = GETBACK_MAP_OUM_DUNGEON;
-		} else if (town_id == TOWNID_RESISTANCE) { // ƒŒƒVƒXƒ^ƒ“ƒX‘º
+		} else if (town_id == TOWNID_RESISTANCE) { // ãƒ¬ã‚·ã‚¹ã‚¿ãƒ³ã‚¹æ‘
 			int rnd = random.nextInt(GETBACK_LOC_RESISTANCE.length);
 			loc[0] = GETBACK_LOC_RESISTANCE[rnd].getX();
 			loc[1] = GETBACK_LOC_RESISTANCE[rnd].getY();
 			loc[2] = GETBACK_MAP_RESISTANCE;
-		} else if (town_id == TOWNID_PIRATE_ISLAND) { // ŠC‘¯“‡
+		} else if (town_id == TOWNID_PIRATE_ISLAND) { // æµ·è³Šå³¶
 			int rnd = random.nextInt(GETBACK_LOC_PIRATE_ISLAND.length);
 			loc[0] = GETBACK_LOC_PIRATE_ISLAND[rnd].getX();
 			loc[1] = GETBACK_LOC_PIRATE_ISLAND[rnd].getY();
 			loc[2] = GETBACK_MAP_PIRATE_ISLAND;
-		} else if (town_id == TOWNID_RECLUSE_VILLAGE) { // ‰B‚ê—¢
+		} else if (town_id == TOWNID_RECLUSE_VILLAGE) { // éš ã‚Œé‡Œ
 			int rnd = random.nextInt(GETBACK_LOC_RECLUSE_VILLAGE.length);
 			loc[0] = GETBACK_LOC_RECLUSE_VILLAGE[rnd].getX();
 			loc[1] = GETBACK_LOC_RECLUSE_VILLAGE[rnd].getY();
 			loc[2] = GETBACK_MAP_RECLUSE_VILLAGE;
-		} else { // ‚»‚Ì‘¼‚ÍSKT
+		} else { // ãã®ä»–ã¯SKT
 			int rnd = random.nextInt(GETBACK_LOC_SILVER_KNIGHT_TOWN.length);
 			loc[0] = GETBACK_LOC_SILVER_KNIGHT_TOWN[rnd].getX();
 			loc[1] = GETBACK_LOC_SILVER_KNIGHT_TOWN[rnd].getY();
@@ -278,149 +278,149 @@ public class L1TownLocation {
 		return loc;
 	}
 
-	public static int getTownTaxRateByNpcid(int npcid) { // npcid‚©‚ç’¬Å—¦‚ð•Ô‚·
+	public static int getTownTaxRateByNpcid(int npcid) { // npcidã‹ã‚‰ç”ºç¨ŽçŽ‡ã‚’è¿”ã™
 		int tax_rate = 0;
 
 		int town_id = getTownIdByNpcid(npcid);
 		if (town_id >= 1 && town_id <= 10) {
 			L1Town town = TownTable.getInstance().getTownTable(town_id);
-			tax_rate = town.get_tax_rate() + 2; // 2%‚ÍŒÅ’èÅ
+			tax_rate = town.get_tax_rate() + 2; // 2%ã¯å›ºå®šç¨Ž
 		}
 		return tax_rate;
 	}
 
-	public static int getTownIdByNpcid(int npcid) { // npcid‚©‚çtown_id‚ð•Ô‚·
-		// ƒAƒfƒ“éFƒAƒfƒ“‰¤‘‘Sˆæ
-		// ƒPƒ“ƒgéFƒPƒ“ƒgAƒOƒ‹[ƒfƒBƒ“
-		// ƒEƒBƒ“ƒ_ƒEƒbƒhéFƒEƒbƒhƒxƒbƒNAƒIƒAƒVƒXAƒVƒ‹ƒo[ƒiƒCƒgƒ^ƒEƒ“
-		// ƒMƒ‰ƒ“éFƒMƒ‰ƒ“A˜b‚¹‚é“‡
-		// ƒnƒCƒléFƒnƒCƒl
-		// ƒhƒ[ƒtéFƒEƒFƒ‹ƒ_ƒ“AÛ‰å‚Ì“ƒAÛ‰å‚Ì“ƒ‚Ì‘º
-		// ƒI[ƒNÔF‰Î“c‘º
-		// ƒfƒBƒAƒh—vÇFí‘ˆÅ‚Ìˆê•”
+	public static int getTownIdByNpcid(int npcid) { // npcidã‹ã‚‰town_idã‚’è¿”ã™
+		// ã‚¢ãƒ‡ãƒ³åŸŽï¼šã‚¢ãƒ‡ãƒ³çŽ‹å›½å…¨åŸŸ
+		// ã‚±ãƒ³ãƒˆåŸŽï¼šã‚±ãƒ³ãƒˆã€ã‚°ãƒ«ãƒ¼ãƒ‡ã‚£ãƒ³
+		// ã‚¦ã‚£ãƒ³ãƒ€ã‚¦ãƒƒãƒ‰åŸŽï¼šã‚¦ãƒƒãƒ‰ãƒ™ãƒƒã‚¯ã€ã‚ªã‚¢ã‚·ã‚¹ã€ã‚·ãƒ«ãƒãƒ¼ãƒŠã‚¤ãƒˆã‚¿ã‚¦ãƒ³
+		// ã‚®ãƒ©ãƒ³åŸŽï¼šã‚®ãƒ©ãƒ³ã€è©±ã›ã‚‹å³¶
+		// ãƒã‚¤ãƒåŸŽï¼šãƒã‚¤ãƒ
+		// ãƒ‰ãƒ¯ãƒ¼ãƒ•åŸŽï¼šã‚¦ã‚§ãƒ«ãƒ€ãƒ³ã€è±¡ç‰™ã®å¡”ã€è±¡ç‰™ã®å¡”ã®æ‘
+		// ã‚ªãƒ¼ã‚¯ç ¦ï¼šç«ç”°æ‘
+		// ãƒ‡ã‚£ã‚¢ãƒ‰è¦å¡žï¼šæˆ¦äº‰ç¨Žã®ä¸€éƒ¨
 
-		// XXX:‚Ü‚¾NPC‚ÍL1CastleLocation‚©‚çŽ‚Á‚Ä‚«‚½‚Ü‚Ü‚Ìó‘Ôi–¢®—j
+		// XXX:ã¾ã NPCã¯L1CastleLocationã‹ã‚‰æŒã£ã¦ããŸã¾ã¾ã®çŠ¶æ…‹ï¼ˆæœªæ•´ç†ï¼‰
 		int town_id = 0;
 
 		switch (npcid) {
-		case 70528: // ƒ^ƒEƒ“ƒ}ƒXƒ^[iTIj
-		case 50015: // ƒ‹[ƒJƒXiƒeƒŒƒ|[ƒ^[j
-		case 70010: // ƒoƒ‹ƒVƒ€iŒ¢¬‰®— “¹‹ï‰®j
-		case 70011: // ‘D’…êŠÇ—l
-		case 70012: // ƒZƒŒƒiih‰®j
-		case 70014: // ƒpƒ“ƒhƒ‰i`“¹‹ï‰®j
-		case 70532: // ƒWƒ‡ƒ“ƒ\ƒ“iƒyƒbƒg‰®j
-		case 70536: // ƒg[ƒ}i’b–è‰®j
+		case 70528: // ã‚¿ã‚¦ãƒ³ãƒžã‚¹ã‚¿ãƒ¼ï¼ˆTIï¼‰
+		case 50015: // ãƒ«ãƒ¼ã‚«ã‚¹ï¼ˆãƒ†ãƒ¬ãƒãƒ¼ã‚¿ãƒ¼ï¼‰
+		case 70010: // ãƒãƒ«ã‚·ãƒ ï¼ˆçŠ¬å°å±‹è£é“å…·å±‹ï¼‰
+		case 70011: // èˆ¹ç€å ´ç®¡ç†äºº
+		case 70012: // ã‚»ãƒ¬ãƒŠï¼ˆå®¿å±‹ï¼‰
+		case 70014: // ãƒ‘ãƒ³ãƒ‰ãƒ©ï¼ˆæ¸¯é“å…·å±‹ï¼‰
+		case 70532: // ã‚¸ãƒ§ãƒ³ã‚½ãƒ³ï¼ˆãƒšãƒƒãƒˆå±‹ï¼‰
+		case 70536: // ãƒˆãƒ¼ãƒžï¼ˆé›å†¶å±‹ï¼‰
 			town_id = TOWNID_TALKING_ISLAND;
 			break;
 
-		case 70799: // ƒ^ƒEƒ“ƒ}ƒXƒ^[iSKTj
-		case 50056: // ƒƒbƒgiƒeƒŒƒ|[ƒ^[j
-		case 70073: // ƒOƒŒƒ“i•Ší‰®j
-		case 70074: // ƒƒŠƒ“i“¹‹ï‰®j
-		case 70075: // ƒ~ƒ‰ƒ“ƒ_ih‰®j
+		case 70799: // ã‚¿ã‚¦ãƒ³ãƒžã‚¹ã‚¿ãƒ¼ï¼ˆSKTï¼‰
+		case 50056: // ãƒ¡ãƒƒãƒˆï¼ˆãƒ†ãƒ¬ãƒãƒ¼ã‚¿ãƒ¼ï¼‰
+		case 70073: // ã‚°ãƒ¬ãƒ³ï¼ˆæ­¦å™¨å±‹ï¼‰
+		case 70074: // ãƒ¡ãƒªãƒ³ï¼ˆé“å…·å±‹ï¼‰
+		case 70075: // ãƒŸãƒ©ãƒ³ãƒ€ï¼ˆå®¿å±‹ï¼‰
 			town_id = TOWNID_SILVER_KNIGHT_TOWN;
 			break;
 
-		case 70546: // ƒ^ƒEƒ“ƒ}ƒXƒ^[iKENTj
-		case 50020: // ƒXƒ^ƒ“ƒŠ[iƒeƒŒƒ|[ƒ^[j
-		case 70018: // ƒCƒ\[ƒŠƒAi“¹‹ï‰®j
-		case 70016: // ƒAƒ“ƒfƒBƒ“i•Ší‰®j
-		case 70544: // ƒŠƒbƒNiƒyƒbƒg‰®j
+		case 70546: // ã‚¿ã‚¦ãƒ³ãƒžã‚¹ã‚¿ãƒ¼ï¼ˆKENTï¼‰
+		case 50020: // ã‚¹ã‚¿ãƒ³ãƒªãƒ¼ï¼ˆãƒ†ãƒ¬ãƒãƒ¼ã‚¿ãƒ¼ï¼‰
+		case 70018: // ã‚¤ã‚½ãƒ¼ãƒªã‚¢ï¼ˆé“å…·å±‹ï¼‰
+		case 70016: // ã‚¢ãƒ³ãƒ‡ã‚£ãƒ³ï¼ˆæ­¦å™¨å±‹ï¼‰
+		case 70544: // ãƒªãƒƒã‚¯ï¼ˆãƒšãƒƒãƒˆå±‹ï¼‰
 			town_id = TOWNID_KENT;
 			break;
 
-		case 70567: // ƒ^ƒEƒ“ƒ}ƒXƒ^[iƒOƒ‹j
-		case 50024: // ƒXƒeƒB[ƒuiƒOƒ‹ƒeƒŒƒ|[ƒ^[j
-		case 70019: // ƒƒŠƒAiƒOƒ‹h‰®j
-		case 70020: // ƒƒ‹ƒRiƒOƒ‹ŒÃ‘ã•¨•i¤lj
-		case 70021: // ƒƒbƒeiƒOƒ‹“¹‹ï‰®j
-		case 70022: // ‘D’…êŠÇ—l
-		case 70024: // ƒPƒeƒBiƒOƒ‹•Ší‰®j
+		case 70567: // ã‚¿ã‚¦ãƒ³ãƒžã‚¹ã‚¿ãƒ¼ï¼ˆã‚°ãƒ«ï¼‰
+		case 50024: // ã‚¹ãƒ†ã‚£ãƒ¼ãƒ–ï¼ˆã‚°ãƒ«ãƒ†ãƒ¬ãƒãƒ¼ã‚¿ãƒ¼ï¼‰
+		case 70019: // ãƒ­ãƒªã‚¢ï¼ˆã‚°ãƒ«å®¿å±‹ï¼‰
+		case 70020: // ãƒ­ãƒ«ã‚³ï¼ˆã‚°ãƒ«å¤ä»£ç‰©å“å•†äººï¼‰
+		case 70021: // ãƒ­ãƒƒãƒ†ï¼ˆã‚°ãƒ«é“å…·å±‹ï¼‰
+		case 70022: // èˆ¹ç€å ´ç®¡ç†äºº
+		case 70024: // ã‚±ãƒ†ã‚£ï¼ˆã‚°ãƒ«æ­¦å™¨å±‹ï¼‰
 			town_id = TOWNID_GLUDIO;
 			break;
 
-		case 70815: // ‰Î“c‘ºƒ^ƒEƒ“ƒ}ƒXƒ^[
-		case 70079: // ƒWƒƒƒNƒ\ƒ“i“¹‹ï‰®j
-		case 70836: // ƒnƒ“ƒXiƒyƒbƒg‰®j
+		case 70815: // ç«ç”°æ‘ã‚¿ã‚¦ãƒ³ãƒžã‚¹ã‚¿ãƒ¼
+		case 70079: // ã‚¸ãƒ£ã‚¯ã‚½ãƒ³ï¼ˆé“å…·å±‹ï¼‰
+		case 70836: // ãƒãƒ³ã‚¹ï¼ˆãƒšãƒƒãƒˆå±‹ï¼‰
 			town_id = TOWNID_ORCISH_FOREST;
 			break;
 
-		case 70774: // ƒ^ƒEƒ“ƒ}ƒXƒ^[iWBj
-		case 50054: // ƒgƒŒƒCiƒeƒŒƒ|[ƒ^[j
-		case 70070: // ƒxƒŠƒbƒTih‰®j
-		case 70071: // ƒAƒVƒ…[ƒ‹iƒIƒAƒVƒXj
-		case 70072: // ƒGƒ‹ƒ~ƒii“¹‹ï‰®j
-		case 70773: // ƒ}[ƒrƒ“iƒyƒbƒg‰®j
+		case 70774: // ã‚¿ã‚¦ãƒ³ãƒžã‚¹ã‚¿ãƒ¼ï¼ˆWBï¼‰
+		case 50054: // ãƒˆãƒ¬ã‚¤ï¼ˆãƒ†ãƒ¬ãƒãƒ¼ã‚¿ãƒ¼ï¼‰
+		case 70070: // ãƒ™ãƒªãƒƒã‚µï¼ˆå®¿å±‹ï¼‰
+		case 70071: // ã‚¢ã‚·ãƒ¥ãƒ¼ãƒ«ï¼ˆã‚ªã‚¢ã‚·ã‚¹ï¼‰
+		case 70072: // ã‚¨ãƒ«ãƒŸãƒŠï¼ˆé“å…·å±‹ï¼‰
+		case 70773: // ãƒžãƒ¼ãƒ“ãƒ³ï¼ˆãƒšãƒƒãƒˆå±‹ï¼‰
 			town_id = TOWNID_WINDAWOOD;
 			break;
 
-		case 70594: // ƒ^ƒEƒ“ƒ}ƒXƒ^[iƒMƒ‰ƒ“j
-		case 50036: // ƒEƒBƒ‹ƒ}iƒeƒŒƒ|[ƒ^[j
-		case 70026: // ƒfƒŒƒbƒNiƒnƒ“ƒ^[j
-		case 70028: // ƒ‰ƒ“ƒ_ƒ‹i–ò•i¤lj
-		case 70029: // ƒ}[ƒKƒŒƒbƒgiH—¿•i¤lj
-		case 70030: // ƒƒCƒA[i“¹‹ï‰®j
-		case 70031: // ƒ‚[ƒŠih‰®j
-		case 70032: // ƒo[ƒWƒ‹i–h‹ï‰®j
-		case 70033: // ƒxƒŠƒ^i“¹‹ï‰®j
-		case 70038: // ƒGƒo[ƒgi•z¤lj
-		case 70039: // ƒ[ƒi[i•Ší‰®j
-		case 70043: // ƒtƒBƒŠƒbƒvi”ç¤lj
-		case 70617: // ƒAƒ‹ƒ‚ƒ“iƒyƒbƒg‰®j
-		case 70632: // ƒPƒrƒ“iƒyƒbƒg‰®j
+		case 70594: // ã‚¿ã‚¦ãƒ³ãƒžã‚¹ã‚¿ãƒ¼ï¼ˆã‚®ãƒ©ãƒ³ï¼‰
+		case 50036: // ã‚¦ã‚£ãƒ«ãƒžï¼ˆãƒ†ãƒ¬ãƒãƒ¼ã‚¿ãƒ¼ï¼‰
+		case 70026: // ãƒ‡ãƒ¬ãƒƒã‚¯ï¼ˆãƒãƒ³ã‚¿ãƒ¼ï¼‰
+		case 70028: // ãƒ©ãƒ³ãƒ€ãƒ«ï¼ˆè–¬å“å•†äººï¼‰
+		case 70029: // ãƒžãƒ¼ã‚¬ãƒ¬ãƒƒãƒˆï¼ˆé£Ÿæ–™å“å•†äººï¼‰
+		case 70030: // ãƒ¡ã‚¤ã‚¢ãƒ¼ï¼ˆé“å…·å±‹ï¼‰
+		case 70031: // ãƒ¢ãƒ¼ãƒªï¼ˆå®¿å±‹ï¼‰
+		case 70032: // ãƒãƒ¼ã‚¸ãƒ«ï¼ˆé˜²å…·å±‹ï¼‰
+		case 70033: // ãƒ™ãƒªã‚¿ï¼ˆé“å…·å±‹ï¼‰
+		case 70038: // ã‚¨ãƒãƒ¼ãƒˆï¼ˆå¸ƒå•†äººï¼‰
+		case 70039: // ãƒ¯ãƒ¼ãƒŠãƒ¼ï¼ˆæ­¦å™¨å±‹ï¼‰
+		case 70043: // ãƒ•ã‚£ãƒªãƒƒãƒ—ï¼ˆçš®å•†äººï¼‰
+		case 70617: // ã‚¢ãƒ«ãƒ¢ãƒ³ï¼ˆãƒšãƒƒãƒˆå±‹ï¼‰
+		case 70632: // ã‚±ãƒ“ãƒ³ï¼ˆãƒšãƒƒãƒˆå±‹ï¼‰
 			town_id = TOWNID_GIRAN;
 			break;
 
-		case 70860: // ƒ^ƒEƒ“ƒ}ƒXƒ^[iƒnƒCƒlj
-		case 50066: // ƒŠƒIƒ‹iƒeƒŒƒ|[ƒ^[j
-		case 70082: // ƒuƒŠƒbƒgi“¹‹ï‰®j
-		case 70083: // ƒVƒoƒ“i•Ší‰®j
-		case 70084: // ƒGƒŠ[ih‰®j
-		case 70873: // ƒGƒ‰ƒ“iƒyƒbƒg‰®j
+		case 70860: // ã‚¿ã‚¦ãƒ³ãƒžã‚¹ã‚¿ãƒ¼ï¼ˆãƒã‚¤ãƒï¼‰
+		case 50066: // ãƒªã‚ªãƒ«ï¼ˆãƒ†ãƒ¬ãƒãƒ¼ã‚¿ãƒ¼ï¼‰
+		case 70082: // ãƒ–ãƒªãƒƒãƒˆï¼ˆé“å…·å±‹ï¼‰
+		case 70083: // ã‚·ãƒãƒ³ï¼ˆæ­¦å™¨å±‹ï¼‰
+		case 70084: // ã‚¨ãƒªãƒ¼ï¼ˆå®¿å±‹ï¼‰
+		case 70873: // ã‚¨ãƒ©ãƒ³ï¼ˆãƒšãƒƒãƒˆå±‹ï¼‰
 			town_id = TOWNID_HEINE;
 			break;
 
-		case 70654: // ƒ^ƒEƒ“ƒ}ƒXƒ^[iƒEƒFƒ‹ƒ_ƒ“j
-		case 50039: // ƒŒƒXƒŠ[iƒeƒŒƒ|[ƒ^[j
-		case 70045: // ƒxƒŠ[i“¹‹ï‰®j
-		case 70044: // ƒ‰ƒ‹ƒti•Ší‰®j
-		case 70664: // ƒRƒuiƒyƒbƒg‰®j
+		case 70654: // ã‚¿ã‚¦ãƒ³ãƒžã‚¹ã‚¿ãƒ¼ï¼ˆã‚¦ã‚§ãƒ«ãƒ€ãƒ³ï¼‰
+		case 50039: // ãƒ¬ã‚¹ãƒªãƒ¼ï¼ˆãƒ†ãƒ¬ãƒãƒ¼ã‚¿ãƒ¼ï¼‰
+		case 70045: // ãƒ™ãƒªãƒ¼ï¼ˆé“å…·å±‹ï¼‰
+		case 70044: // ãƒ©ãƒ«ãƒ•ï¼ˆæ­¦å™¨å±‹ï¼‰
+		case 70664: // ã‚³ãƒ–ï¼ˆãƒšãƒƒãƒˆå±‹ï¼‰
 			town_id = TOWNID_WERLDAN;
 			break;
 
-		case 70748: // ƒ^ƒEƒ“ƒ}ƒXƒ^[iƒI[ƒŒƒ“j
-		case 50051: // ƒLƒŠƒEƒXiƒeƒŒƒ|[ƒ^[j
-		case 70059: // ƒfƒBƒRi‘‹«—vÇ“¹‹ï‰®j
-		case 70060: // ƒŠƒ“ƒ_iÛ‰å‚Ì“ƒ¸—ì–‚–@‰®j
-		case 70061: // ƒ}ƒ“ƒhƒ‰i•Ší‰®j
-		case 70062: // ƒoƒŠƒGƒXiÛ‰å‚Ì“ƒ–‚–@‰®j
-		case 70063: // ƒrƒEƒXi“¹‹ï‰®j
-		case 70065: // ƒGƒ“ƒPih‰®j
-		case 70066: // ƒNƒŠƒXƒgiÛ‰å‚Ì“ƒ–‚–@‰®j
-		case 70067: // ƒpƒSƒ‹iÛ‰å‚Ì“ƒ“¹‹ï‰®j
-		case 70068: // ƒtƒ‰ƒ“ƒRiŒÃ‘ã•¨•i¤lj
-		case 70749: // ƒ}ƒCƒ‹ƒhiƒyƒbƒg‰®j
+		case 70748: // ã‚¿ã‚¦ãƒ³ãƒžã‚¹ã‚¿ãƒ¼ï¼ˆã‚ªãƒ¼ãƒ¬ãƒ³ï¼‰
+		case 50051: // ã‚­ãƒªã‚¦ã‚¹ï¼ˆãƒ†ãƒ¬ãƒãƒ¼ã‚¿ãƒ¼ï¼‰
+		case 70059: // ãƒ‡ã‚£ã‚³ï¼ˆå›½å¢ƒè¦å¡žé“å…·å±‹ï¼‰
+		case 70060: // ãƒªãƒ³ãƒ€ï¼ˆè±¡ç‰™ã®å¡”ç²¾éœŠé­”æ³•å±‹ï¼‰
+		case 70061: // ãƒžãƒ³ãƒ‰ãƒ©ï¼ˆæ­¦å™¨å±‹ï¼‰
+		case 70062: // ãƒãƒªã‚¨ã‚¹ï¼ˆè±¡ç‰™ã®å¡”é­”æ³•å±‹ï¼‰
+		case 70063: // ãƒ“ã‚¦ã‚¹ï¼ˆé“å…·å±‹ï¼‰
+		case 70065: // ã‚¨ãƒ³ã‚±ï¼ˆå®¿å±‹ï¼‰
+		case 70066: // ã‚¯ãƒªã‚¹ãƒˆï¼ˆè±¡ç‰™ã®å¡”é­”æ³•å±‹ï¼‰
+		case 70067: // ãƒ‘ã‚´ãƒ«ï¼ˆè±¡ç‰™ã®å¡”é“å…·å±‹ï¼‰
+		case 70068: // ãƒ•ãƒ©ãƒ³ã‚³ï¼ˆå¤ä»£ç‰©å“å•†äººï¼‰
+		case 70749: // ãƒžã‚¤ãƒ«ãƒ‰ï¼ˆãƒšãƒƒãƒˆå±‹ï¼‰
 			town_id = TOWNID_OREN;
 			break;
 
-		case 50044: // ƒVƒŠƒEƒXiƒeƒŒƒ|[ƒ^[j
-		case 70057: // ƒLƒƒƒTƒŠƒ“i“¹‹ï‰®j
-		case 70048: // ƒ‰ƒIƒ“i“¹‹ï‰®j
-		case 70052: // ƒƒŠƒTi“¹‹ï‰®j
-		case 70053: // ƒVƒƒƒ‹iH—¿•i‰®j
-		case 70049: // ƒ[ƒ[ƒ“iƒ|[ƒVƒ‡ƒ“‰®j
-		case 70051: // ƒ}ƒOƒXi“¹‹ï‰®j
-		case 70047: // ƒfƒtƒ}ƒ“i•Ší‰®j
-		case 70058: // ƒtƒFƒKi–h‹ï‰®j
-		case 70054: // ƒXƒrƒ“ih‰®j
-		case 70055: // ƒGƒCƒVƒkiƒyƒbƒgƒVƒ‡ƒbƒvj
-		case 70056: // ƒ][ƒhiƒWƒvƒV[ƒ^ƒEƒ“ŒÃ‘ã•¨•i¤lj
+		case 50044: // ã‚·ãƒªã‚¦ã‚¹ï¼ˆãƒ†ãƒ¬ãƒãƒ¼ã‚¿ãƒ¼ï¼‰
+		case 70057: // ã‚­ãƒ£ã‚µãƒªãƒ³ï¼ˆé“å…·å±‹ï¼‰
+		case 70048: // ãƒ©ã‚ªãƒ³ï¼ˆé“å…·å±‹ï¼‰
+		case 70052: // ãƒ¡ãƒªã‚µï¼ˆé“å…·å±‹ï¼‰
+		case 70053: // ã‚·ãƒ£ãƒ«ï¼ˆé£Ÿæ–™å“å±‹ï¼‰
+		case 70049: // ãƒ­ãƒ¼ã‚¼ãƒ³ï¼ˆãƒãƒ¼ã‚·ãƒ§ãƒ³å±‹ï¼‰
+		case 70051: // ãƒžã‚°ã‚¹ï¼ˆé“å…·å±‹ï¼‰
+		case 70047: // ãƒ‡ãƒ•ãƒžãƒ³ï¼ˆæ­¦å™¨å±‹ï¼‰
+		case 70058: // ãƒ•ã‚§ã‚¬ï¼ˆé˜²å…·å±‹ï¼‰
+		case 70054: // ã‚¹ãƒ“ãƒ³ï¼ˆå®¿å±‹ï¼‰
+		case 70055: // ã‚¨ã‚¤ã‚·ãƒŒï¼ˆãƒšãƒƒãƒˆã‚·ãƒ§ãƒƒãƒ—ï¼‰
+		case 70056: // ã‚¾ãƒ¼ãƒ‰ï¼ˆã‚¸ãƒ—ã‚·ãƒ¼ã‚¿ã‚¦ãƒ³å¤ä»£ç‰©å“å•†äººï¼‰
 			town_id = TOWNID_ADEN;
 			break;
 
-		case 70092: // ¤l ƒGƒ}ƒ‹ƒg
-		case 70093: // ¤l ƒJƒ‹ƒv
+		case 70092: // å•†äºº ã‚¨ãƒžãƒ«ãƒˆ
+		case 70093: // å•†äºº ã‚«ãƒ«ãƒ—
 			town_id = TOWNID_OUM_DUNGEON;
 			break;
 

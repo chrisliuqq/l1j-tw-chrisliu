@@ -59,10 +59,10 @@ public class S_ServerVersion extends ServerBasePacket {
 		writeD(0x0000ee01); // auth verion
 		writeD(0x00013cdb); // npc verion
 
-		// « unknown
-		// « Old 270Lin.bin
-		// « New 270Lin.bin
-		// « isn't game time
+		// â†“ unknown
+		// â†“ Old 270Lin.bin
+		// â†“ New 270Lin.bin
+		// â†“ isn't game time
 // writeD(0x882a2cc6); // 2.70C
 		writeD(0x49c466ec);
 

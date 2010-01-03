@@ -18,7 +18,7 @@
  */
 package l1j.server.server.utils;
 
-// ‘S•”static‚É‚µ‚Ä‚à‚¢‚¢‚©‚à‚µ‚ê‚È‚¢
+// å…¨éƒ¨staticã«ã—ã¦ã‚‚ã„ã„ã‹ã‚‚ã—ã‚Œãªã„
 public class ByteArrayUtil {
 	private final byte[] _byteArray;
 

@@ -57,7 +57,7 @@ public class L1PolyMorph {
 
 	private static final int CLAW_EQUIP = 128;
 
-	private static final int BOW_EQUIP = 256; // ƒKƒ“ƒgƒŒƒbƒgŠÜ‚Ş
+	private static final int BOW_EQUIP = 256; // ã‚¬ãƒ³ãƒˆãƒ¬ãƒƒãƒˆå«ã‚€
 
 	private static final int KIRINGKU_EQUIP = 512;
 
@@ -88,12 +88,12 @@ public class L1PolyMorph {
 
 	private static final int GUARDER_EQUIP = 2048;
 
-	// •Ïg‚ÌŒ´ˆö‚ğ¦‚·bit
+	// å¤‰èº«ã®åŸå› ã‚’ç¤ºã™bit
 	public static final int MORPH_BY_ITEMMAGIC = 1;
 
 	public static final int MORPH_BY_GM = 2;
 
-	public static final int MORPH_BY_NPC = 4; // è¯ptƒPƒvƒŠƒVƒƒˆÈŠO‚ÌNPC
+	public static final int MORPH_BY_NPC = 4; // å æ˜Ÿè¡“å¸«ã‚±ãƒ—ãƒªã‚·ãƒ£ä»¥å¤–ã®NPC
 
 	public static final int MORPH_BY_KEPLISHA = 8;
 
@@ -207,13 +207,13 @@ public class L1PolyMorph {
 				if (pc.getTempCharGfx() == 6034
 						|| pc.getTempCharGfx() == 6035) {
 					pc.sendPackets(new S_ServerMessage(181));
-					// \f1‚»‚Ì‚æ‚¤‚Èƒ‚ƒ“ƒXƒ^[‚É‚Í•Ïg‚Å‚«‚Ü‚¹‚ñB
+					// \f1ãã®ã‚ˆã†ãªãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã«ã¯å¤‰èº«ã§ãã¾ã›ã‚“ã€‚
 				} else {
 				doPoly(pc, poly.getPolyId(), 7200, MORPH_BY_ITEMMAGIC);
 				pc.sendPackets(new S_CloseList(pc.getId()));
 				}
 			} else {
-				pc.sendPackets(new S_ServerMessage(181)); // \f1‚»‚Ì‚æ‚¤‚Èƒ‚ƒ“ƒXƒ^[‚É‚Í•Ïg‚Å‚«‚Ü‚¹‚ñB
+				pc.sendPackets(new S_ServerMessage(181)); // \f1ãã®ã‚ˆã†ãªãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã«ã¯å¤‰èº«ã§ãã¾ã›ã‚“ã€‚
 			}
 		}
 	}
@@ -225,25 +225,25 @@ public class L1PolyMorph {
 		}
 		if (cha instanceof L1PcInstance) {
 			L1PcInstance pc = (L1PcInstance) cha;
-			if (pc.getMapId() == 5124) { // ’Ş‚èê
-				pc.sendPackets(new S_ServerMessage(1170)); // ‚±‚±‚Å‚Í•Ïg‚Å‚«‚Ü‚¹‚ñB
+			if (pc.getMapId() == 5124) { // é‡£ã‚Šå ´
+				pc.sendPackets(new S_ServerMessage(1170)); // ã“ã“ã§ã¯å¤‰èº«ã§ãã¾ã›ã‚“ã€‚
 				return;
 			}
 			if (pc.getTempCharGfx() == 6034
 					|| pc.getTempCharGfx() == 6035) {
-				pc.sendPackets(new S_ServerMessage(181)); // \f1‚»‚Ì‚æ‚¤‚Èƒ‚ƒ“ƒXƒ^[‚É‚Í•Ïg‚Å‚«‚Ü‚¹‚ñB
+				pc.sendPackets(new S_ServerMessage(181)); // \f1ãã®ã‚ˆã†ãªãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã«ã¯å¤‰èº«ã§ãã¾ã›ã‚“ã€‚
 				return;	
 			}
 			if (!isMatchCause(polyId, cause)) {
-				pc.sendPackets(new S_ServerMessage(181)); // \f1‚»‚Ì‚æ‚¤‚Èƒ‚ƒ“ƒXƒ^[‚É‚Í•Ïg‚Å‚«‚Ü‚¹‚ñB
+				pc.sendPackets(new S_ServerMessage(181)); // \f1ãã®ã‚ˆã†ãªãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã«ã¯å¤‰èº«ã§ãã¾ã›ã‚“ã€‚
 				return;
 			}
 
  			pc.killSkillEffectTimer(SHAPE_CHANGE);
 			pc.setSkillEffect(SHAPE_CHANGE, timeSecs * 1000);
-			if (pc.getTempCharGfx() != polyId) { // “¯‚¶•Ïg‚Ìê‡‚ÍƒAƒCƒRƒ“‘—MˆÈŠO‚ª•K—v‚È‚¢
+			if (pc.getTempCharGfx() != polyId) { // åŒã˜å¤‰èº«ã®å ´åˆã¯ã‚¢ã‚¤ã‚³ãƒ³é€ä¿¡ä»¥å¤–ãŒå¿…è¦ãªã„
 				L1ItemInstance weapon = pc.getWeapon();
-				// •Ïg‚É‚æ‚Á‚Ä•Ší‚ªŠO‚ê‚é‚©
+				// å¤‰èº«ã«ã‚ˆã£ã¦æ­¦å™¨ãŒå¤–ã‚Œã‚‹ã‹
 				boolean weaponTakeoff = (weapon != null && !isEquipableWeapon(
 						polyId, weapon.getItem().getType()));
 				pc.setTempCharGfx(polyId);
@@ -272,7 +272,7 @@ public class L1PolyMorph {
 			L1MonsterInstance mob = (L1MonsterInstance) cha;
 			mob.killSkillEffectTimer(SHAPE_CHANGE);
 			mob.setSkillEffect(SHAPE_CHANGE, timeSecs * 1000);
-			if (mob.getTempCharGfx() != polyId) { // “¯‚¶•Ïg‚Ìê‡‚ÍƒAƒCƒRƒ“‘—MˆÈŠO‚ª•K—v‚È‚¢
+			if (mob.getTempCharGfx() != polyId) { // åŒã˜å¤‰èº«ã®å ´åˆã¯ã‚¢ã‚¤ã‚³ãƒ³é€ä¿¡ä»¥å¤–ãŒå¿…è¦ãªã„
 				mob.setTempCharGfx(polyId);
 				mob.broadcastPacket(new S_ChangeShape(mob.getId(), polyId));
 			}
@@ -299,7 +299,7 @@ public class L1PolyMorph {
 		}
 	}
 
-	// w’è‚µ‚½polyId‚ªweapontType‚Ì•Ší‚ğ‘•”õo—ˆ‚é‚©H
+	// æŒ‡å®šã—ãŸpolyIdãŒweapontTypeã®æ­¦å™¨ã‚’è£…å‚™å‡ºæ¥ã‚‹ã‹ï¼Ÿ
 	public static boolean isEquipableWeapon(int polyId, int weaponType) {
 		L1PolyMorph poly = PolyTable.getInstance().getTemplate(polyId);
 		if (poly == null) {
@@ -313,7 +313,7 @@ public class L1PolyMorph {
 		return true;
 	}
 
-	// w’è‚µ‚½polyId‚ªarmorType‚Ì–h‹ï‚ğ‘•”õo—ˆ‚é‚©H
+	// æŒ‡å®šã—ãŸpolyIdãŒarmorTypeã®é˜²å…·ã‚’è£…å‚™å‡ºæ¥ã‚‹ã‹ï¼Ÿ
 	public static boolean isEquipableArmor(int polyId, int armorType) {
 		L1PolyMorph poly = PolyTable.getInstance().getTemplate(polyId);
 		if (poly == null) {
@@ -327,7 +327,7 @@ public class L1PolyMorph {
 		return true;
 	}
 
-	// w’è‚µ‚½polyId‚ª‰½‚É‚æ‚Á‚Ä•Ïg‚µA‚»‚ê‚ª•Ïg‚³‚¹‚ç‚ê‚é‚©H
+	// æŒ‡å®šã—ãŸpolyIdãŒä½•ã«ã‚ˆã£ã¦å¤‰èº«ã—ã€ãã‚ŒãŒå¤‰èº«ã•ã›ã‚‰ã‚Œã‚‹ã‹ï¼Ÿ
 	public static boolean isMatchCause(int polyId, int cause) {
 		L1PolyMorph poly = PolyTable.getInstance().getTemplate(polyId);
 		if (poly == null) {

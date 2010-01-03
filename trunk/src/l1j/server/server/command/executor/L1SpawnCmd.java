@@ -40,7 +40,7 @@ public class L1SpawnCmd implements L1CommandExecutor {
 	}
 
 	private void sendErrorMessage(L1PcInstance pc, String cmdName) {
-		String errorMsg = cmdName + " npcid|name [”] [”ÍˆÍ] ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B";
+		String errorMsg = cmdName + " npcid|name [æ•°] [ç¯„å›²] ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚";
 		pc.sendPackets(new S_SystemMessage(errorMsg));
 	}
 
@@ -71,13 +71,13 @@ public class L1SpawnCmd implements L1CommandExecutor {
 
 			L1Npc npc = NpcTable.getInstance().getTemplate(npcid);
 			if (npc == null) {
-				pc.sendPackets(new S_SystemMessage("ŠY“–NPC‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB"));
+				pc.sendPackets(new S_SystemMessage("è©²å½“NPCãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚"));
 				return;
 			}
 			for (int i = 0; i < count; i++) {
 				L1SpawnUtil.spawn(pc, npcid, randomrange, 0);
 			}
-			String msg = String.format("%s(%d) (%d) ‚ğ¢ŠÒ‚µ‚Ü‚µ‚½B (”ÍˆÍ:%d)", npc
+			String msg = String.format("%s(%d) (%d) ã‚’å¬é‚„ã—ã¾ã—ãŸã€‚ (ç¯„å›²:%d)", npc
 					.get_name(), npcid, count, randomrange);
 			pc.sendPackets(new S_SystemMessage(msg));
 		} catch (NoSuchElementException e) {
@@ -86,7 +86,7 @@ public class L1SpawnCmd implements L1CommandExecutor {
 			sendErrorMessage(pc, cmdName);
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
-			pc.sendPackets(new S_SystemMessage(cmdName + " “à•”ƒGƒ‰[‚Å‚·B"));
+			pc.sendPackets(new S_SystemMessage(cmdName + " å†…éƒ¨ã‚¨ãƒ©ãƒ¼ã§ã™ã€‚"));
 		}
 	}
 }

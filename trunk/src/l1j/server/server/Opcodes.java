@@ -252,7 +252,7 @@ public class Opcodes {
 
 	public static final int S_OPCODE_SHOWRETRIEVELIST = 24;
 
-	// ITEMAMOUNT‚ÆITEMSTATUS‚Í“¯‚¶?
+	// ITEMAMOUNTã¨ITEMSTATUSã¯åŒã˜?
 	public static final int S_OPCODE_ITEMAMOUNT = 25;
 
 	public static final int S_OPCODE_ITEMSTATUS = 25;
@@ -625,8 +625,8 @@ public class Opcodes {
 	 * 
 	 * public static final int S_OPCODE_CHARDELETEOK = 10; // new addition
 	 * 
-	 * public static final int S_OPCODE_LAWFUL = 12; // ‰æ–Ê’†‰›‚ÉÂ‚¢•¶š‚ÅuAccount E has
-	 * just logged in fromv‚Æ•\¦‚³‚ê‚é public static final int S_OPCODE_BLUEMESSAGE2 =
+	 * public static final int S_OPCODE_LAWFUL = 12; // ç”»é¢ä¸­å¤®ã«é’ã„æ–‡å­—ã§ã€ŒAccount ãƒ» has
+	 * just logged in fromã€ã¨è¡¨ç¤ºã•ã‚Œã‚‹ public static final int S_OPCODE_BLUEMESSAGE2 =
 	 * 13;
 	 * 
 	 * public static final int S_OPCODE_SELECTLIST = 14;
@@ -634,7 +634,7 @@ public class Opcodes {
 	 * public static final int S_OPCODE_BOARDREAD = 15;
 	 * 
 	 * public static final int S_OPCODE_SKILLBUY = 17; //
-	 * u–‚–@ƒq[ƒ‹(4/0)‚ğK‚¤‚½‚ß‚É“n‚·Ş—¿‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·Bv‚Æ•\¦‚³‚ê‚é public static final int
+	 * ã€Œé­”æ³•ãƒ’ãƒ¼ãƒ«(4/0)ã‚’ç¿’ã†ãŸã‚ã«æ¸¡ã™ææ–™ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã€ã¨è¡¨ç¤ºã•ã‚Œã‚‹ public static final int
 	 * S_OPCODE_MATERIAL = 18; // new addition
 	 * 
 	 * public static final int S_OPCODE_HPUPDATE = 19;

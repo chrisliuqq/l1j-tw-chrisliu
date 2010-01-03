@@ -209,9 +209,9 @@ public class PacketHandler {
 			new C_Attack(abyte0, _client);
 			break;
 
-		// ƒLƒƒƒ‰ƒNƒ^[‚ÌƒVƒ‡[ƒgƒJƒbƒg‚âƒCƒ“ƒxƒ“ƒgƒŠ‚Ìó‘Ô‚ªƒvƒŒƒC’†‚É•Ï“®‚µ‚½ê‡‚É
-		// ƒVƒ‡[ƒgƒJƒbƒg‚âƒCƒ“ƒxƒ“ƒgƒŠ‚Ìó‘Ô‚ğ•t‰Á‚µ‚ÄƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‘—M‚³‚ê‚Ä‚­‚é
-		// ‘—‚ç‚ê‚Ä‚­‚éƒ^ƒCƒ~ƒ“ƒO‚ÍƒNƒ‰ƒCƒAƒ“ƒgI—¹
+		// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ã‚·ãƒ§ãƒ¼ãƒˆã‚«ãƒƒãƒˆã‚„ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªã®çŠ¶æ…‹ãŒãƒ—ãƒ¬ã‚¤ä¸­ã«å¤‰å‹•ã—ãŸå ´åˆã«
+		// ã‚·ãƒ§ãƒ¼ãƒˆã‚«ãƒƒãƒˆã‚„ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªã®çŠ¶æ…‹ã‚’ä»˜åŠ ã—ã¦ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰é€ä¿¡ã•ã‚Œã¦ãã‚‹
+		// é€ã‚‰ã‚Œã¦ãã‚‹ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã¯ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆçµ‚äº†æ™‚
 		case C_OPCODE_QUITGAME:
 			break;
 
@@ -397,13 +397,13 @@ public class PacketHandler {
 
 		default:
 			// String s = Integer.toHexString(abyte0[0] & 0xff);
-			// _log.warning("—p“r•s–¾ƒIƒyƒR[ƒh:ƒf[ƒ^“à—e");
-			// _log.warning((new StringBuilder()).append("ƒIƒyƒR[ƒh ").append(s)
+			// _log.warning("ç”¨é€”ä¸æ˜ã‚ªãƒšã‚³ãƒ¼ãƒ‰:ãƒ‡ãƒ¼ã‚¿å†…å®¹");
+			// _log.warning((new StringBuilder()).append("ã‚ªãƒšã‚³ãƒ¼ãƒ‰ ").append(s)
 			// .toString());
 			// _log.warning(new ByteArrayUtil(abyte0).dumpToString());
 			break;
 		}
-		// _log.warning((new StringBuilder()).append("ƒIƒyƒR[ƒh
+		// _log.warning((new StringBuilder()).append("ã‚ªãƒšã‚³ãƒ¼ãƒ‰
 		// ").append(i).toString());
 	}
 

@@ -41,9 +41,9 @@ public class L1Visible implements L1CommandExecutor {
 			pc.setGmInvis(false);
 			pc.sendPackets(new S_Invis(pc.getId(), 0));
 			pc.broadcastPacket(new S_OtherCharPacks(pc));
-			pc.sendPackets(new S_SystemMessage("“§–¾ó‘Ô‚ğ‰ğœ‚µ‚Ü‚µ‚½B"));
+			pc.sendPackets(new S_SystemMessage("é€æ˜çŠ¶æ…‹ã‚’è§£é™¤ã—ã¾ã—ãŸã€‚"));
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(cmdName + " ƒRƒ}ƒ“ƒhƒGƒ‰["));
+			pc.sendPackets(new S_SystemMessage(cmdName + " ã‚³ãƒãƒ³ãƒ‰ã‚¨ãƒ©ãƒ¼"));
 		}
 	}
 }

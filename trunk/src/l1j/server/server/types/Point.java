@@ -69,10 +69,10 @@ public class Point {
 	private static final int HEADING_TABLE_Y[] = { -1, -1, 0, 1, 1, 1, 0, -1 };
 
 	/**
-	 * w’è‚³‚ê‚½Œü‚«‚É‚±‚ÌÀ•W‚ğ‚Ğ‚Æ‚Âi‚ß‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸå‘ãã«ã“ã®åº§æ¨™ã‚’ã²ã¨ã¤é€²ã‚ã‚‹ã€‚
 	 * 
 	 * @param heading
-	 *            Œü‚«(0~7)
+	 *            å‘ã(0~7)
 	 */
 	public void forward(int heading) {
 		_x += HEADING_TABLE_X[heading];
@@ -80,10 +80,10 @@ public class Point {
 	}
 
 	/**
-	 * w’è‚³‚ê‚½Œü‚«‚Æ‹t•ûŒü‚É‚±‚ÌÀ•W‚ğ‚Ğ‚Æ‚Âi‚ß‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸå‘ãã¨é€†æ–¹å‘ã«ã“ã®åº§æ¨™ã‚’ã²ã¨ã¤é€²ã‚ã‚‹ã€‚
 	 * 
 	 * @param heading
-	 *            Œü‚«(0~7)
+	 *            å‘ã(0~7)
 	 */
 	public void backward(int heading) {
 		_x -= HEADING_TABLE_X[heading];
@@ -91,11 +91,11 @@ public class Point {
 	}
 
 	/**
-	 * w’è‚³‚ê‚½À•W‚Ö‚Ì’¼ü‹——£‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸåº§æ¨™ã¸ã®ç›´ç·šè·é›¢ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param pt
-	 *            À•W‚ğ•Û‚·‚éPointƒIƒuƒWƒFƒNƒg
-	 * @return À•W‚Ü‚Å‚Ì’¼ü‹——£
+	 *            åº§æ¨™ã‚’ä¿æŒã™ã‚‹Pointã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @return åº§æ¨™ã¾ã§ã®ç›´ç·šè·é›¢
 	 */
 	public double getLineDistance(Point pt) {
 		long diffX = pt.getX() - this.getX();
@@ -104,11 +104,11 @@ public class Point {
 	}
 
 	/**
-	 * w’è‚³‚ê‚½À•W‚Ü‚Å‚Ì’¼üƒ^ƒCƒ‹”‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸåº§æ¨™ã¾ã§ã®ç›´ç·šã‚¿ã‚¤ãƒ«æ•°ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param pt
-	 *            À•W‚ğ•Û‚·‚éPointƒIƒuƒWƒFƒNƒg
-	 * @return w’è‚³‚ê‚½À•W‚Ü‚Å‚Ì’¼üƒ^ƒCƒ‹”B
+	 *            åº§æ¨™ã‚’ä¿æŒã™ã‚‹Pointã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @return æŒ‡å®šã•ã‚ŒãŸåº§æ¨™ã¾ã§ã®ç›´ç·šã‚¿ã‚¤ãƒ«æ•°ã€‚
 	 */
 	public int getTileLineDistance(Point pt) {
 		return Math.max(Math.abs(pt.getX() - getX()), Math.abs(pt.getY()
@@ -116,23 +116,23 @@ public class Point {
 	}
 
 	/**
-	 * w’è‚³‚ê‚½À•W‚Ü‚Å‚Ìƒ^ƒCƒ‹”‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸåº§æ¨™ã¾ã§ã®ã‚¿ã‚¤ãƒ«æ•°ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param pt
-	 *            À•W‚ğ•Û‚·‚éPointƒIƒuƒWƒFƒNƒg
-	 * @return w’è‚³‚ê‚½À•W‚Ü‚Å‚Ìƒ^ƒCƒ‹”B
+	 *            åº§æ¨™ã‚’ä¿æŒã™ã‚‹Pointã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @return æŒ‡å®šã•ã‚ŒãŸåº§æ¨™ã¾ã§ã®ã‚¿ã‚¤ãƒ«æ•°ã€‚
 	 */
 	public int getTileDistance(Point pt) {
 		return Math.abs(pt.getX() - getX()) + Math.abs(pt.getY() - getY());
 	}
 
 	/**
-	 * w’è‚³‚ê‚½À•W‚ª‰æ–Ê“à‚ÉŒ©‚¦‚é‚©‚ğ•Ô‚· ƒvƒŒƒCƒ„[‚ÌÀ•W‚ğ(0,0)‚Æ‚·‚ê‚ÎŒ©‚¦‚é”ÍˆÍ‚ÌÀ•W‚Í
-	 * ¶ã(2,-15)‰Eã(15,-2)¶‰º(-15,2)‰E‰º(-2,15)‚Æ‚È‚éB ƒ`ƒƒƒbƒg—“‚É‰B‚ê‚ÄŒ©‚¦‚È‚¢•”•ª‚à‰æ–Ê“à‚ÉŠÜ‚Ü‚ê‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸåº§æ¨™ãŒç”»é¢å†…ã«è¦‹ãˆã‚‹ã‹ã‚’è¿”ã™ ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®åº§æ¨™ã‚’(0,0)ã¨ã™ã‚Œã°è¦‹ãˆã‚‹ç¯„å›²ã®åº§æ¨™ã¯
+	 * å·¦ä¸Š(2,-15)å³ä¸Š(15,-2)å·¦ä¸‹(-15,2)å³ä¸‹(-2,15)ã¨ãªã‚‹ã€‚ ãƒãƒ£ãƒƒãƒˆæ¬„ã«éš ã‚Œã¦è¦‹ãˆãªã„éƒ¨åˆ†ã‚‚ç”»é¢å†…ã«å«ã¾ã‚Œã‚‹ã€‚
 	 * 
 	 * @param pt
-	 *            À•W‚ğ•Û‚·‚éPointƒIƒuƒWƒFƒNƒg
-	 * @return w’è‚³‚ê‚½À•W‚ª‰æ–Ê“à‚ÉŒ©‚¦‚éê‡‚ÍtrueB‚»‚¤‚Å‚È‚¢ê‡‚ÍfalseB
+	 *            åº§æ¨™ã‚’ä¿æŒã™ã‚‹Pointã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @return æŒ‡å®šã•ã‚ŒãŸåº§æ¨™ãŒç”»é¢å†…ã«è¦‹ãˆã‚‹å ´åˆã¯trueã€‚ãã†ã§ãªã„å ´åˆã¯falseã€‚
 	 */
 	public boolean isInScreen(Point pt) {
 		int dist = this.getTileDistance(pt);
@@ -142,8 +142,8 @@ public class Point {
 		} else if (dist <= 13) {
 			return true;
 		} else {
-			// ¶‰E‚Ì‰æ–ÊŠO•”•ª‚ğœŠO
-			// ƒvƒŒƒCƒ„[‚ÌÀ•W‚ğ(15, 15)‚Æ‚µ‚½ê‡‚É(0, 0)‚É‚ ‚½‚éÀ•W‚©‚ç‚Ì‹——£‚Å”»’f
+			// å·¦å³ã®ç”»é¢å¤–éƒ¨åˆ†ã‚’é™¤å¤–
+			// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®åº§æ¨™ã‚’(15, 15)ã¨ã—ãŸå ´åˆã«(0, 0)ã«ã‚ãŸã‚‹åº§æ¨™ã‹ã‚‰ã®è·é›¢ã§åˆ¤æ–­
 			// Point pointZero = new Point(this.getX() - 15, this.getY() - 15);
 			// int dist2 = pointZero.getTileDistance(pt);
 			int dist2 = Math.abs(pt.getX() - (this.getX() - 15))
@@ -156,11 +156,11 @@ public class Point {
 	}
 
 	/**
-	 * w’è‚³‚ê‚½À•W‚Æ“¯‚¶À•W‚©‚ğ•Ô‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸåº§æ¨™ã¨åŒã˜åº§æ¨™ã‹ã‚’è¿”ã™ã€‚
 	 * 
 	 * @param pt
-	 *            À•W‚ğ•Û‚·‚éPointƒIƒuƒWƒFƒNƒg
-	 * @return w’è‚³‚ê‚½À•W‚Æ“¯‚¶À•W‚©B
+	 *            åº§æ¨™ã‚’ä¿æŒã™ã‚‹Pointã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @return æŒ‡å®šã•ã‚ŒãŸåº§æ¨™ã¨åŒã˜åº§æ¨™ã‹ã€‚
 	 */
 	public boolean isSamePoint(Point pt) {
 		return (pt.getX() == getX() && pt.getY() == getY());

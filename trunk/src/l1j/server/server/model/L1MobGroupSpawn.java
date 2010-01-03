@@ -99,7 +99,7 @@ public class L1MobGroupSpawn {
 
 			mob.setX(leader.getX() + _random.nextInt(5) - 2);
 			mob.setY(leader.getY() + _random.nextInt(5) - 2);
-			// ƒ}ƒbƒvŠOAáŠQ•¨ãA‰æ–Ê“à•¦‚«•s‰Â‚Å‰æ–Ê“à‚ÉPC‚ª‚¢‚éê‡AƒŠ[ƒ_[‚Æ“¯‚¶À•W
+			// ãƒãƒƒãƒ—å¤–ã€éšœå®³ç‰©ä¸Šã€ç”»é¢å†…æ²¸ãä¸å¯ã§ç”»é¢å†…ã«PCãŒã„ã‚‹å ´åˆã€ãƒªãƒ¼ãƒ€ãƒ¼ã¨åŒã˜åº§æ¨™
 			if (!canSpawn(mob)) {
 				mob.setX(leader.getX());
 				mob.setY(leader.getY());
@@ -126,11 +126,11 @@ public class L1MobGroupSpawn {
 
 			if (mob instanceof L1MonsterInstance) {
 				if (!_isInitSpawn && mob.getHiddenStatus() == 0) {
-					mob.onNpcAI(); // ƒ‚ƒ“ƒXƒ^[‚Ì‚`‚h‚ğŠJn
+					mob.onNpcAI(); // ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã®ï¼¡ï¼©ã‚’é–‹å§‹
 				}
 			}
 			mob.turnOnOffLight();
-			mob.startChat(L1NpcInstance.CHAT_TIMING_APPEARANCE); // ƒ`ƒƒƒbƒgŠJn
+			mob.startChat(L1NpcInstance.CHAT_TIMING_APPEARANCE); // ãƒãƒ£ãƒƒãƒˆé–‹å§‹
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		}

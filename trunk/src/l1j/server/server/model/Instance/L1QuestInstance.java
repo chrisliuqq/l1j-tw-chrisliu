@@ -94,33 +94,33 @@ public class L1QuestInstance extends L1NpcInstance {
 		broadcastPacket(new S_ChangeHeading(this));
 
 		int npcId = getNpcTemplate().get_npcId();
-		if (npcId ==  71092 || npcId == 71093) { // ’²¸ˆõ
+		if (npcId ==  71092 || npcId == 71093) { // èª¿æŸ»å“¡
 			if (pc.isKnight() && pc.getQuest().get_step(3) == 4) {
 				pc.sendPackets(new S_NPCTalkReturn(getId(), "searcherk1"));
 			} else {
 				pc.sendPackets(new S_NPCTalkReturn(getId(), "searcherk4"));
 			}
-		} else if (npcId == 71094) { // ƒGƒ“ƒfƒBƒA
+		} else if (npcId == 71094) { // ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢
 			if (pc.isDarkelf() && pc.getQuest().get_step(4) == 1) {
 				pc.sendPackets(new S_NPCTalkReturn(getId(), "endiaq1"));
 			} else {
 				pc.sendPackets(new S_NPCTalkReturn(getId(), "endiaq4"));
 			}
-		} else if (npcId == 71062) { // ƒJƒ~ƒbƒg
+		} else if (npcId == 71062) { // ã‚«ãƒŸãƒƒãƒˆ
 			if (pc.getQuest().get_step(L1Quest.QUEST_CADMUS)
 					== 2) {
 				pc.sendPackets(new S_NPCTalkReturn(getId(), "kamit1b"));
 			} else {
 				pc.sendPackets(new S_NPCTalkReturn(getId(), "kamit1"));
 			}
-		} else if (npcId == 71075) { // ”æ‚ê‰Ê‚Ä‚½ƒŠƒU[ƒhƒ}ƒ“ƒtƒ@ƒCƒ^[
+		} else if (npcId == 71075) { // ç–²ã‚Œæœã¦ãŸãƒªã‚¶ãƒ¼ãƒ‰ãƒãƒ³ãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼
 			if (pc.getQuest().get_step(L1Quest.QUEST_LIZARD)
 					== 1) {
 				pc.sendPackets(new S_NPCTalkReturn(getId(), "llizard1b"));
 			} else {
 				pc.sendPackets(new S_NPCTalkReturn(getId(), "llizard1a"));
 			}
-		} else if (npcId == 70957 || npcId == 81209) { // ƒƒC
+		} else if (npcId == 70957 || npcId == 81209) { // ãƒ­ã‚¤
 			if (pc.getQuest().get_step(L1Quest.QUEST_ROI)
 					!= 1) {
 				pc.sendPackets(new S_NPCTalkReturn(getId(), "roi1"));

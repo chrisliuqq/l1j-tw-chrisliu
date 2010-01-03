@@ -47,7 +47,7 @@ public class L1DeleteGroundItem implements L1CommandExecutor {
 		for (L1Object l1object : L1World.getInstance().getObject()) {
 			if (l1object instanceof L1ItemInstance) {
 				L1ItemInstance l1iteminstance = (L1ItemInstance) l1object;
-				if (l1iteminstance.getX() == 0 && l1iteminstance.getY() == 0) { // ’n–Êã‚ÌƒAƒCƒeƒ€‚Å‚Í‚È‚­A’N‚©‚ÌŠ—L•¨
+				if (l1iteminstance.getX() == 0 && l1iteminstance.getY() == 0) { // åœ°é¢ä¸Šã®ã‚¢ã‚¤ãƒ†ãƒ ã§ã¯ãªãã€èª°ã‹ã®æ‰€æœ‰ç‰©
 					continue;
 				}
 
@@ -59,17 +59,17 @@ public class L1DeleteGroundItem implements L1CommandExecutor {
 									l1iteminstance.getY(),
 									l1iteminstance.getMapId());
 					int itemId = l1iteminstance.getItem().getItemId();
-					if (itemId == 40314 || itemId == 40316) { // ƒyƒbƒg‚ÌƒAƒ~ƒ…ƒŒƒbƒg
+					if (itemId == 40314 || itemId == 40316) { // ãƒšãƒƒãƒˆã®ã‚¢ãƒŸãƒ¥ãƒ¬ãƒƒãƒˆ
 						PetTable.getInstance()
 								.deletePet(l1iteminstance.getId());
-					} else if (itemId >= 49016 && itemId <= 49025) { // •Öâ³
+					} else if (itemId >= 49016 && itemId <= 49025) { // ä¾¿ç®‹
 						LetterTable lettertable = new LetterTable();
 						lettertable.deleteLetter(l1iteminstance.getId());
-					} else if (itemId >= 41383 && itemId <= 41400) { // ‰Æ‹ï
+					} else if (itemId >= 41383 && itemId <= 41400) { // å®¶å…·
 						if (l1object instanceof L1FurnitureInstance) {
 							L1FurnitureInstance furniture = (L1FurnitureInstance) l1object;
 							if (furniture.getItemObjId() == l1iteminstance
-									.getId()) { // Šù‚Éˆø‚«o‚µ‚Ä‚¢‚é‰Æ‹ï
+									.getId()) { // æ—¢ã«å¼•ãå‡ºã—ã¦ã„ã‚‹å®¶å…·
 								FurnitureSpawnTable.getInstance()
 										.deleteFurniture(furniture);
 							}
@@ -82,6 +82,6 @@ public class L1DeleteGroundItem implements L1CommandExecutor {
 			}
 		}
 		L1World.getInstance().broadcastServerMessage(
-				"ƒ[ƒ‹ƒhƒ}ƒbƒvã‚ÌƒAƒCƒeƒ€‚ªGM‚É‚æ‚èíœ‚³‚ê‚Ü‚µ‚½B");
+				"ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒžãƒƒãƒ—ä¸Šã®ã‚¢ã‚¤ãƒ†ãƒ ãŒGMã«ã‚ˆã‚Šå‰Šé™¤ã•ã‚Œã¾ã—ãŸã€‚");
 	}
 }

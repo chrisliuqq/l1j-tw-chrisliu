@@ -42,14 +42,14 @@ public class C_CharReset extends ClientBasePacket {
 	private static Logger _log = Logger.getLogger(C_CharReset.class.getName());
 
 /**
- * //”z’uŠ®‰ŠúêyÉ ˆÂŠm’è 127.0.0.1 Request Work ID : 120 0000: 78 01 0d 0a 0b 0a 12 0d
+ * //é…ç½®å®ŒåˆæœŸé»æ•¸ æŒ‰ç¢ºå®š 127.0.0.1 Request Work ID : 120 0000: 78 01 0d 0a 0b 0a 12 0d
  * 
- * //’ñ¡10‹y 127.0.0.1 Request Work ID : 120 0000: 78 02 07 00 //’ñ¡1‹y 127.0.0.1
+ * //æå‡10åŠ 127.0.0.1 Request Work ID : 120 0000: 78 02 07 00 //æå‡1åŠ 127.0.0.1
  * Request Work ID : 120 0000: 78 02 00 04
  * 
- * //’ñ¡Š®“™‹‰ 127.0.0.1 Request Work ID : 120 0000: 78 02 08 00 x...
+ * //æå‡å®Œç­‰ç´š 127.0.0.1 Request Work ID : 120 0000: 78 02 08 00 x...
  * 
- * //äİ”\åZ 127.0.0.1 Request Work ID : 120 0000: 78 03 23 0a 0b 17 12 0d
+ * //è¬èƒ½è—¥ 127.0.0.1 Request Work ID : 120 0000: 78 03 23 0a 0b 17 12 0d
  */	
 
 	public C_CharReset(byte abyte0[], ClientThread clientthread) {
@@ -57,7 +57,7 @@ public class C_CharReset extends ClientBasePacket {
 		L1PcInstance pc = clientthread.getActiveChar();
 		int stage = readC();
 
-		if (stage == 0x01) { // 0x01:ƒLƒƒƒ‰ƒNƒ^[‰Šú‰»
+		if (stage == 0x01) { // 0x01:ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼åˆæœŸåŒ–
 			int str = readC();
 			int intel = readC();
 			int wis = readC();
@@ -70,7 +70,7 @@ public class C_CharReset extends ClientBasePacket {
 					dex, con, cha));
 			initCharStatus(pc, hp, mp, str, intel, wis, dex, con, cha);
 			CharacterTable.getInstance().saveCharStatus(pc);
-		} else if (stage == 0x02) { // 0x02:ƒXƒe[ƒ^ƒXÄ•ª”z
+		} else if (stage == 0x02) { // 0x02:ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å†åˆ†é…
 			int type2 = readC();
 			if (type2 == 0x00) { // 0x00:Lv1UP
 				setLevelUp(pc, 1); 
@@ -156,11 +156,11 @@ public class C_CharReset extends ClientBasePacket {
 			pc.setBonusStats(0);
 		}
 		pc.sendPackets(new S_OwnCharStatus(pc));
-		L1ItemInstance item = pc.getInventory().findItemId(49142); // Šó–]‚ÌƒƒEƒ\ƒN
+		L1ItemInstance item = pc.getInventory().findItemId(49142); // å¸Œæœ›ã®ãƒ­ã‚¦ã‚½ã‚¯
 		if (item != null) {
 			try {
 				pc.getInventory().removeItem(item, 1);
-				pc.save(); // DB‚ÉƒLƒƒƒ‰ƒNƒ^[î•ñ‚ğ‘‚«‚Ş
+				pc.save(); // DBã«ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æƒ…å ±ã‚’æ›¸ãè¾¼ã‚€
 			} catch (Exception e) {
 				_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 			}

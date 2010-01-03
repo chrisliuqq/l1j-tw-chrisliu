@@ -68,7 +68,7 @@ public class L1ShopBuyOrderList {
 		L1ShopItem shopItem = _shop.getSellingItems().get(orderNumber);
 
 		int price = (int) (shopItem.getPrice() * Config.RATE_SHOP_SELLING_PRICE);
-		// オーバーフローチェック
+		// 繧ｪ繝ｼ繝舌�ｼ繝輔Ο繝ｼ繝√ぉ繝�繧ｯ
 		for (int j = 0; j < count; j++) {
 			if (price * j < 0) {
 				return;

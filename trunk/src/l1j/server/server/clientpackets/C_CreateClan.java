@@ -43,26 +43,26 @@ public class C_CreateClan extends ClientBasePacket {
 		int i = s.length();
 
 		L1PcInstance l1pcinstance = clientthread.getActiveChar();
-		if (l1pcinstance.isCrown()) { // ƒvƒŠƒ“ƒX‚Ü‚½‚ÍƒvƒŠƒ“ƒZƒX
+		if (l1pcinstance.isCrown()) { // ãƒ—ãƒªãƒ³ã‚¹ã¾ãŸã¯ãƒ—ãƒªãƒ³ã‚»ã‚¹
 			if (l1pcinstance.getClanid() == 0) {
 
-				for (L1Clan clan : L1World.getInstance().getAllClans()) { // “¯‚¶ƒNƒ‰ƒ“–¼‚ğƒ`ƒFƒbƒN
+				for (L1Clan clan : L1World.getInstance().getAllClans()) { // åŒã˜ã‚¯ãƒ©ãƒ³åã‚’ãƒã‚§ãƒƒã‚¯
 					if (clan.getClanName().toLowerCase()
 							.equals(s.toLowerCase())) {
-						l1pcinstance.sendPackets(new S_ServerMessage(99)); // \f1“¯‚¶–¼‘O‚ÌŒŒ–¿‚ª‘¶İ‚µ‚Ü‚·B
+						l1pcinstance.sendPackets(new S_ServerMessage(99)); // \f1åŒã˜åå‰ã®è¡€ç›ŸãŒå­˜åœ¨ã—ã¾ã™ã€‚
 						return;
 					}
 				}
 				L1Clan clan = ClanTable.getInstance().createClan(l1pcinstance,
-						s); // ƒNƒ‰ƒ“‘nİ
+						s); // ã‚¯ãƒ©ãƒ³å‰µè¨­
 				if (clan != null) {
-					l1pcinstance.sendPackets(new S_ServerMessage(84, s)); // \f1%0ŒŒ–¿‚ª‘nİ‚³‚ê‚Ü‚µ‚½B
+					l1pcinstance.sendPackets(new S_ServerMessage(84, s)); // \f1%0è¡€ç›ŸãŒå‰µè¨­ã•ã‚Œã¾ã—ãŸã€‚
 				}
 			} else {
-				l1pcinstance.sendPackets(new S_ServerMessage(86)); // \f1‚·‚Å‚ÉŒŒ–¿‚ğŒ‹¬‚³‚ê‚Ä‚¢‚é‚Ì‚Åì¬‚Å‚«‚Ü‚¹‚ñB
+				l1pcinstance.sendPackets(new S_ServerMessage(86)); // \f1ã™ã§ã«è¡€ç›Ÿã‚’çµæˆã•ã‚Œã¦ã„ã‚‹ã®ã§ä½œæˆã§ãã¾ã›ã‚“ã€‚
 			}
 		} else {
-			l1pcinstance.sendPackets(new S_ServerMessage(85)); // \f1ƒvƒŠƒ“ƒX‚ÆƒvƒŠƒ“ƒZƒX‚¾‚¯‚ªŒŒ–¿‚ğ‘nİ‚Å‚«‚Ü‚·B
+			l1pcinstance.sendPackets(new S_ServerMessage(85)); // \f1ãƒ—ãƒªãƒ³ã‚¹ã¨ãƒ—ãƒªãƒ³ã‚»ã‚¹ã ã‘ãŒè¡€ç›Ÿã‚’å‰µè¨­ã§ãã¾ã™ã€‚
 		}
 	}
 

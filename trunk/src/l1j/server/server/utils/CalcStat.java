@@ -32,7 +32,7 @@ public class CalcStat {
 	}
 
 	/**
-	 * ACƒ{[ƒiƒX‚ð•Ô‚·
+	 * ACãƒœãƒ¼ãƒŠã‚¹ã‚’è¿”ã™
 	 * 
 	 * @param level
 	 * @param dex
@@ -56,7 +56,7 @@ public class CalcStat {
 	}
 
 	/**
-	 * ˆø”‚ÌWIS‚É‘Î‰ž‚·‚éMRƒ{[ƒiƒX‚ð•Ô‚·
+	 * å¼•æ•°ã®WISã«å¯¾å¿œã™ã‚‹MRãƒœãƒ¼ãƒŠã‚¹ã‚’è¿”ã™
 	 * 
 	 * @param wis
 	 * @return mrBonus
@@ -94,57 +94,57 @@ public class CalcStat {
 	}
 
 	/**
-	 * ŠeƒNƒ‰ƒX‚ÌLVUPŽž‚ÌHPã¸’l‚ð•Ô‚·
+	 * å„ã‚¯ãƒ©ã‚¹ã®LVUPæ™‚ã®HPä¸Šæ˜‡å€¤ã‚’è¿”ã™
 	 * 
 	 * @param charType
 	 * @param baseMaxHp
 	 * @param baseCon
 	 * @param originalHpup
-	 * @return HPã¸’l
+	 * @return HPä¸Šæ˜‡å€¤
 	 */
 	public static short calcStatHp(int charType, int baseMaxHp, byte baseCon, int originalHpup) {
 		short randomhp = 0;
 		if (baseCon > 15) {
 			randomhp = (short) (baseCon - 15);
 		}
-		if (charType == 0) { // ƒvƒŠƒ“ƒX
-			randomhp += (short) (11 + rnd.nextInt(2)); // ‰Šú’l•ª’Ç‰Á
+		if (charType == 0) { // ãƒ—ãƒªãƒ³ã‚¹
+			randomhp += (short) (11 + rnd.nextInt(2)); // åˆæœŸå€¤åˆ†è¿½åŠ 
 
 			if (baseMaxHp + randomhp > Config.PRINCE_MAX_HP) {
 				randomhp = (short) (Config.PRINCE_MAX_HP - baseMaxHp);
 			}
-		} else if (charType == 1) { // ƒiƒCƒg
-			randomhp += (short) (17 + rnd.nextInt(2)); // ‰Šú’l•ª’Ç‰Á
+		} else if (charType == 1) { // ãƒŠã‚¤ãƒˆ
+			randomhp += (short) (17 + rnd.nextInt(2)); // åˆæœŸå€¤åˆ†è¿½åŠ 
 
 			if (baseMaxHp + randomhp > Config.KNIGHT_MAX_HP) {
 				randomhp = (short) (Config.KNIGHT_MAX_HP - baseMaxHp);
 			}
-		} else if (charType == 2) { // ƒGƒ‹ƒt
-			randomhp += (short) (10 + rnd.nextInt(2)); // ‰Šú’l•ª’Ç‰Á
+		} else if (charType == 2) { // ã‚¨ãƒ«ãƒ•
+			randomhp += (short) (10 + rnd.nextInt(2)); // åˆæœŸå€¤åˆ†è¿½åŠ 
 
 			if (baseMaxHp + randomhp > Config.ELF_MAX_HP) {
 				randomhp = (short) (Config.ELF_MAX_HP - baseMaxHp);
 			}
-		} else if (charType == 3) { // ƒEƒBƒU[ƒh
-			randomhp += (short) (7 + rnd.nextInt(2)); // ‰Šú’l•ª’Ç‰Á
+		} else if (charType == 3) { // ã‚¦ã‚£ã‚¶ãƒ¼ãƒ‰
+			randomhp += (short) (7 + rnd.nextInt(2)); // åˆæœŸå€¤åˆ†è¿½åŠ 
 
 			if (baseMaxHp + randomhp > Config.WIZARD_MAX_HP) {
 				randomhp = (short) (Config.WIZARD_MAX_HP - baseMaxHp);
 			}
-		} else if (charType == 4) { // ƒ_[ƒNƒGƒ‹ƒt
-			randomhp += (short) (10 + rnd.nextInt(2)); // ‰Šú’l•ª’Ç‰Á
+		} else if (charType == 4) { // ãƒ€ãƒ¼ã‚¯ã‚¨ãƒ«ãƒ•
+			randomhp += (short) (10 + rnd.nextInt(2)); // åˆæœŸå€¤åˆ†è¿½åŠ 
 
 			if (baseMaxHp + randomhp > Config.DARKELF_MAX_HP) {
 				randomhp = (short) (Config.DARKELF_MAX_HP - baseMaxHp);
 			}
-		} else if (charType == 5) { // ƒhƒ‰ƒSƒ“ƒiƒCƒg
-			randomhp += (short) (13 + rnd.nextInt(2)); // ‰Šú’l•ª’Ç‰Á
+		} else if (charType == 5) { // ãƒ‰ãƒ©ã‚´ãƒ³ãƒŠã‚¤ãƒˆ
+			randomhp += (short) (13 + rnd.nextInt(2)); // åˆæœŸå€¤åˆ†è¿½åŠ 
 
 			if (baseMaxHp + randomhp > Config.DRAGONKNIGHT_MAX_HP) {
 				randomhp = (short) (Config.DRAGONKNIGHT_MAX_HP - baseMaxHp);
 			}
-		} else if (charType == 6) { // ƒCƒŠƒ…[ƒWƒ‡ƒjƒXƒg
-			randomhp += (short) (9 + rnd.nextInt(2)); // ‰Šú’l•ª’Ç‰Á
+		} else if (charType == 6) { // ã‚¤ãƒªãƒ¥ãƒ¼ã‚¸ãƒ§ãƒ‹ã‚¹ãƒˆ
+			randomhp += (short) (9 + rnd.nextInt(2)); // åˆæœŸå€¤åˆ†è¿½åŠ 
 
 			if (baseMaxHp + randomhp > Config.ILLUSIONIST_MAX_HP) {
 				randomhp = (short) (Config.ILLUSIONIST_MAX_HP - baseMaxHp);
@@ -160,13 +160,13 @@ public class CalcStat {
 	}
 
 	/**
-	 * ŠeƒNƒ‰ƒX‚ÌLVUPŽž‚ÌMPã¸’l‚ð•Ô‚·
+	 * å„ã‚¯ãƒ©ã‚¹ã®LVUPæ™‚ã®MPä¸Šæ˜‡å€¤ã‚’è¿”ã™
 	 * 
 	 * @param charType
 	 * @param baseMaxMp
 	 * @param baseWis
 	 * @param originalMpup
-	 * @return MPã¸’l
+	 * @return MPä¸Šæ˜‡å€¤
 	 */
 	public static short calcStatMp(int charType, int baseMaxMp, byte baseWis, int originalMpup) {
 		int randommp = 0;
@@ -205,40 +205,40 @@ public class CalcStat {
 
 		randommp = rnd.nextInt(seedY) + 1 + seedZ;
 
-		if (charType == 0) { // ƒvƒŠƒ“ƒX
+		if (charType == 0) { // ãƒ—ãƒªãƒ³ã‚¹
 			if (baseMaxMp + randommp > Config.PRINCE_MAX_MP) {
 				randommp = Config.PRINCE_MAX_MP - baseMaxMp;
 			}
-		} else if (charType == 1) { // ƒiƒCƒg
+		} else if (charType == 1) { // ãƒŠã‚¤ãƒˆ
 			randommp = (int) (randommp * 2 / 3);
 			if (baseMaxMp + randommp > Config.KNIGHT_MAX_MP) {
 				randommp = Config.KNIGHT_MAX_MP - baseMaxMp;
 			}
-		} else if (charType == 2) { // ƒGƒ‹ƒt
+		} else if (charType == 2) { // ã‚¨ãƒ«ãƒ•
 			randommp = (int) (randommp * 1.5);
 
 			if (baseMaxMp + randommp > Config.ELF_MAX_MP) {
 				randommp = Config.ELF_MAX_MP - baseMaxMp;
 			}
-		} else if (charType == 3) { // ƒEƒBƒU[ƒh
+		} else if (charType == 3) { // ã‚¦ã‚£ã‚¶ãƒ¼ãƒ‰
 			randommp *= 2;
 
 			if (baseMaxMp + randommp > Config.WIZARD_MAX_MP) {
 				randommp = Config.WIZARD_MAX_MP - baseMaxMp;
 			}
-		} else if (charType == 4) { // ƒ_[ƒNƒGƒ‹ƒt
+		} else if (charType == 4) { // ãƒ€ãƒ¼ã‚¯ã‚¨ãƒ«ãƒ•
 			randommp = (int) (randommp * 1.5);
 
 			if (baseMaxMp + randommp > Config.DARKELF_MAX_MP) {
 				randommp = Config.DARKELF_MAX_MP - baseMaxMp;
 			}
-		} else if (charType == 5) { // ƒhƒ‰ƒSƒ“ƒiƒCƒg
+		} else if (charType == 5) { // ãƒ‰ãƒ©ã‚´ãƒ³ãƒŠã‚¤ãƒˆ
 			randommp = (int) (randommp * 2 / 3);
 
 			if (baseMaxMp + randommp > Config.DRAGONKNIGHT_MAX_MP) {
 				randommp = Config.DRAGONKNIGHT_MAX_MP - baseMaxMp;
 			}
-		} else if (charType == 6) { // ƒCƒŠƒ…[ƒWƒ‡ƒjƒXƒg
+		} else if (charType == 6) { // ã‚¤ãƒªãƒ¥ãƒ¼ã‚¸ãƒ§ãƒ‹ã‚¹ãƒˆ
 			randommp = (int) (randommp * 5 / 3);
 
 			if (baseMaxMp + randommp > Config.ILLUSIONIST_MAX_MP) {

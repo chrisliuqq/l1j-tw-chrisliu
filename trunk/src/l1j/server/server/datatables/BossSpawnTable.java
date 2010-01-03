@@ -100,6 +100,6 @@ public class BossSpawnTable {
 			SQLUtil.close(pstm);
 			SQLUtil.close(con);
 		}
-		_log.log(Level.FINE, "総ボスモンスター数 " + spawnCount + "匹");
+		_log.log(Level.FINE, "邱上�懊せ繝｢繝ｳ繧ｹ繧ｿ繝ｼ謨ｰ " + spawnCount + "蛹ｹ");
 	}
 }

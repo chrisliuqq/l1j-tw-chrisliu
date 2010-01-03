@@ -60,7 +60,7 @@ public class S_SkillBuy extends ServerBasePacket {
 	public int Scount(L1PcInstance pc) {
 		int RC = 0;
 		switch (pc.getType()) {
-		case 0: // ŒNŽå
+		case 0: // å›ä¸»
 			if (pc.getLevel() > 20 || pc.isGm()) {
 				RC = 16;
 			} else if (pc.getLevel() > 10) {
@@ -68,13 +68,13 @@ public class S_SkillBuy extends ServerBasePacket {
 			}
 			break;
 
-		case 1: // ƒiƒCƒg
+		case 1: // ãƒŠã‚¤ãƒˆ
 			if (pc.getLevel() >= 50 || pc.isGm()) {
 				RC = 8;
 			}
 			break;
 
-		case 2: // ƒGƒ‹ƒt
+		case 2: // ã‚¨ãƒ«ãƒ•
 			if (pc.getLevel() >= 24 || pc.isGm()) {
 				RC = 23;
 			} else if (pc.getLevel() >= 16) {

@@ -85,9 +85,9 @@ public class LoginController {
 	public synchronized void login(ClientThread client, Account account)
 			throws GameServerFullException, AccountAlreadyLoginException {
 		if (!account.isValid()) {
-			// ƒpƒXƒ[ƒh”FØ‚ª‚³‚ê‚Ä‚¢‚È‚¢A‚ ‚é‚¢‚Í”FØ‚É¸”s‚µ‚½ƒAƒJƒEƒ“ƒg‚ªw’è‚³‚ê‚½B
-			// ‚±‚ÌƒR[ƒh‚ÍAƒoƒOŒŸo‚Ìˆ×‚É‚Ì‚İ‘¶İ‚·‚éB
-			throw new IllegalArgumentException("”FØ‚³‚ê‚Ä‚¢‚È‚¢ƒAƒJƒEƒ“ƒg‚Å‚·");
+			// ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰èªè¨¼ãŒã•ã‚Œã¦ã„ãªã„ã€ã‚ã‚‹ã„ã¯èªè¨¼ã«å¤±æ•—ã—ãŸã‚¢ã‚«ã‚¦ãƒ³ãƒˆãŒæŒ‡å®šã•ã‚ŒãŸã€‚
+			// ã“ã®ã‚³ãƒ¼ãƒ‰ã¯ã€ãƒã‚°æ¤œå‡ºã®ç‚ºã«ã®ã¿å­˜åœ¨ã™ã‚‹ã€‚
+			throw new IllegalArgumentException("èªè¨¼ã•ã‚Œã¦ã„ãªã„ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã§ã™");
 		}
 		if ((getMaxAllowedOnlinePlayers() <= getOnlinePlayerCount())
 				&& !account.isGameMaster()) {

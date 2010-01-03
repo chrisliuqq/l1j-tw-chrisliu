@@ -43,17 +43,17 @@ public class L1PowerKick implements L1CommandExecutor {
 
 			IpTable iptable = IpTable.getInstance();
 			if (target != null) {
-				iptable.banIp(target.getNetConnection().getIp()); // BANƒŠƒXƒg‚ÖIP‚ğ‰Á‚¦‚é
+				iptable.banIp(target.getNetConnection().getIp()); // BANãƒªã‚¹ãƒˆã¸IPã‚’åŠ ãˆã‚‹
 				pc.sendPackets(new S_SystemMessage((new StringBuilder())
-						.append(target.getName()).append("‚³‚ñ‚ğƒLƒbƒN‚µ‚Ü‚µ‚½B")
+						.append(target.getName()).append("ã•ã‚“ã‚’ã‚­ãƒƒã‚¯ã—ã¾ã—ãŸã€‚")
 						.toString()));
 				target.sendPackets(new S_Disconnect());
 			} else {
 				pc.sendPackets(new S_SystemMessage(
-						"‚»‚Ì‚æ‚¤‚È–¼‘O‚ÌƒLƒƒƒ‰ƒNƒ^[‚Íƒ[ƒ‹ƒh“à‚É‚Í‘¶İ‚µ‚Ü‚¹‚ñB"));
+						"ãã®ã‚ˆã†ãªåå‰ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¯ãƒ¯ãƒ¼ãƒ«ãƒ‰å†…ã«ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚"));
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(cmdName + " ƒLƒƒƒ‰ƒNƒ^[–¼ ‚Æ“ü—Í‚µ‚Ä‰º‚³‚¢B"));
+			pc.sendPackets(new S_SystemMessage(cmdName + " ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 }

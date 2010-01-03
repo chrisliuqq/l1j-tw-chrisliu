@@ -108,7 +108,7 @@ public abstract class ClientBasePacket {
 	}
 
 	/**
-	 * ƒNƒ‰ƒCƒAƒ“ƒgƒpƒPƒbƒg‚Ìí—Ş‚ğ•\‚·•¶š—ñ‚ğ•Ô‚·B("[C] C_DropItem" “™)
+	 * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ‘ã‚±ãƒƒãƒˆã®ç¨®é¡ã‚’è¡¨ã™æ–‡å­—åˆ—ã‚’è¿”ã™ã€‚("[C] C_DropItem" ç­‰)
 	 */
 	public String getType() {
 		return "[C] " + this.getClass().getSimpleName();

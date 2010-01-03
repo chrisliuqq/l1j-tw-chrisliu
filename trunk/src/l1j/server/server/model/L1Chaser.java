@@ -66,8 +66,8 @@ public class L1Chaser extends TimerTask {
 	}
 
 	public void begin() {
-		// ���ʎ��Ԃ�8�b�̂��߁A4�b���̃X�L���̏ꍇ�������Ԃ��l������Ǝ��ۂɂ�1�񂵂����ʂ�����Ȃ�
-		// ����ĊJ�n���Ԃ�0.9�b��ɐݒ肵�Ă���
+		// 効果時間が8秒のため、4秒毎のスキルの場合処理時間を考慮すると実際には1回しか効果が現れない
+		// よって開始時間を0.9秒後に設定しておく
 		_future = GeneralThreadPool.getInstance().scheduleAtFixedRate(this,
 				0, 1000);
 	}

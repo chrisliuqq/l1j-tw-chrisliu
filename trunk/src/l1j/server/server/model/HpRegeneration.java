@@ -101,7 +101,7 @@ public class HpRegeneration extends TimerTask {
 
 		int maxBonus = 1;
 
-		// CONƒ{[ƒiƒX
+		// CONãƒœãƒ¼ãƒŠã‚¹
 		if (11 < _pc.getLevel() && 14 <= _pc.getCon()) {
 			maxBonus = _pc.getCon() - 12;
 			if (25 < _pc.getCon()) {
@@ -127,7 +127,7 @@ public class HpRegeneration extends TimerTask {
 				|| _pc.getMapId() == 21504 || _pc.getMapId() == 22016
 				|| _pc.getMapId() == 22528 || _pc.getMapId() == 23040
 				|| _pc.getMapId() == 23552 || _pc.getMapId() == 24064
-				|| _pc.getMapId() == 24576 || _pc.getMapId() == 25088) { // h‰®
+				|| _pc.getMapId() == 24576 || _pc.getMapId() == 25088) { // å®¿å±‹
 			bonus += 5;
 		}
 		if ((_pc.getLocation().isInScreen(new Point(33055,32336))
@@ -144,22 +144,22 @@ public class HpRegeneration extends TimerTask {
 				|| _pc.hasSkillEffect(COOKING_3_6_S)) {
 			bonus += 2;
 		}
- 		if (_pc.getOriginalHpr() > 0) { // ƒIƒŠƒWƒiƒ‹CON HPR•â³
+ 		if (_pc.getOriginalHpr() > 0) { // ã‚ªãƒªã‚¸ãƒŠãƒ«CON HPRè£œæ­£
  			bonus += _pc.getOriginalHpr();
  		}
 
 		boolean inLifeStream = false;
 		if (isPlayerInLifeStream(_pc)) {
 			inLifeStream = true;
-			// ŒÃ‘ã‚Ì‹óŠÔA–‚‘°‚Ì_“a‚Å‚ÍHPR+3‚Í‚È‚­‚È‚éH
+			// å¤ä»£ã®ç©ºé–“ã€é­”æ—ã®ç¥æ®¿ã§ã¯HPR+3ã¯ãªããªã‚‹ï¼Ÿ
 			bonus += 3;
 		}
 
-		// ‹ó• ‚Æd—Ê‚Ìƒ`ƒFƒbƒN
+		// ç©ºè…¹ã¨é‡é‡ã®ãƒã‚§ãƒƒã‚¯
 		if (_pc.get_food() < 3 || isOverWeight(_pc)
 				|| _pc.hasSkillEffect(BERSERKERS)) {
 			bonus = 0;
-			// ‘•”õ‚É‚æ‚é‚g‚o‚q‘‰Á‚Í–• “xAd—Ê‚É‚æ‚Á‚Ä‚È‚­‚È‚é‚ªA Œ¸­‚Å‚ ‚éê‡‚Í–• “xAd—Ê‚ÉŠÖŒW‚È‚­Œø‰Ê‚ªc‚é
+			// è£…å‚™ã«ã‚ˆã‚‹ï¼¨ï¼°ï¼²å¢—åŠ ã¯æº€è…¹åº¦ã€é‡é‡ã«ã‚ˆã£ã¦ãªããªã‚‹ãŒã€ æ¸›å°‘ã§ã‚ã‚‹å ´åˆã¯æº€è…¹åº¦ã€é‡é‡ã«é–¢ä¿‚ãªãåŠ¹æœãŒæ®‹ã‚‹
 			if (equipHpr > 0) {
 				equipHpr = 0;
 			}
@@ -169,39 +169,39 @@ public class HpRegeneration extends TimerTask {
 		newHp += bonus + equipHpr;
 
 		if (newHp < 1) {
-			newHp = 1; // ‚g‚o‚qŒ¸­‘•”õ‚É‚æ‚Á‚Ä€–S‚Í‚µ‚È‚¢
+			newHp = 1; // ï¼¨ï¼°ï¼²æ¸›å°‘è£…å‚™ã«ã‚ˆã£ã¦æ­»äº¡ã¯ã—ãªã„
 		}
-		// …’†‚Å‚ÌŒ¸­ˆ—
-		// ƒ‰ƒCƒtƒXƒgƒŠ[ƒ€‚ÅŒ¸­‚ğ‚È‚­‚¹‚é‚©•s–¾
+		// æ°´ä¸­ã§ã®æ¸›å°‘å‡¦ç†
+		// ãƒ©ã‚¤ãƒ•ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§æ¸›å°‘ã‚’ãªãã›ã‚‹ã‹ä¸æ˜
 		if (isUnderwater(_pc)) {
 			newHp -= 20;
 			if (newHp < 1) {
 				if (_pc.isGm()) {
 					newHp = 1;
 				} else {
-					_pc.death(null); // ’‚‘§‚É‚æ‚Á‚Ä‚g‚o‚ª‚O‚É‚È‚Á‚½ê‡‚Í€–S‚·‚éB
+					_pc.death(null); // çª’æ¯ã«ã‚ˆã£ã¦ï¼¨ï¼°ãŒï¼ã«ãªã£ãŸå ´åˆã¯æ­»äº¡ã™ã‚‹ã€‚
 				}
 			}
 		}
-		// Lv50ƒNƒGƒXƒg‚ÌŒÃ‘ã‚Ì‹óŠÔ1F2F‚Å‚ÌŒ¸­ˆ—
+		// Lv50ã‚¯ã‚¨ã‚¹ãƒˆã®å¤ä»£ã®ç©ºé–“1F2Fã§ã®æ¸›å°‘å‡¦ç†
 		if (isLv50Quest(_pc) && !inLifeStream) {
 			newHp -= 10;
 			if (newHp < 1) {
 				if (_pc.isGm()) {
 					newHp = 1;
 				} else {
-					_pc.death(null); // ‚g‚o‚ª‚O‚É‚È‚Á‚½ê‡‚Í€–S‚·‚éB
+					_pc.death(null); // ï¼¨ï¼°ãŒï¼ã«ãªã£ãŸå ´åˆã¯æ­»äº¡ã™ã‚‹ã€‚
 				}
 			}
 		}
-		// –‚‘°‚Ì_“a‚Å‚ÌŒ¸­ˆ—
+		// é­”æ—ã®ç¥æ®¿ã§ã®æ¸›å°‘å‡¦ç†
 		if (_pc.getMapId() == 410 && !inLifeStream) {
 			newHp -= 10;
 			if (newHp < 1) {
 				if (_pc.isGm()) {
 					newHp = 1;
 				} else {
-					_pc.death(null); // ‚g‚o‚ª‚O‚É‚È‚Á‚½ê‡‚Í€–S‚·‚éB
+					_pc.death(null); // ï¼¨ï¼°ãŒï¼ã«ãªã£ãŸå ´åˆã¯æ­»äº¡ã™ã‚‹ã€‚
 				}
 			}
 		}
@@ -212,7 +212,7 @@ public class HpRegeneration extends TimerTask {
 	}
 
 	private boolean isUnderwater(L1PcInstance pc) {
-		// ƒEƒH[ƒ^[ƒu[ƒc‘•”õ‚©A ƒGƒ”ƒ@‚Ìj•Ÿó‘ÔAC—‚³‚ê‚½‘•”õƒZƒbƒg‚Å‚ ‚ê‚Î…’†‚Å‚Í–³‚¢‚Æ‚İ‚È‚·B
+		// ã‚¦ã‚©ãƒ¼ã‚¿ãƒ¼ãƒ–ãƒ¼ãƒ„è£…å‚™æ™‚ã‹ã€ ã‚¨ãƒ´ã‚¡ã®ç¥ç¦çŠ¶æ…‹ã€ä¿®ç†ã•ã‚ŒãŸè£…å‚™ã‚»ãƒƒãƒˆã§ã‚ã‚Œã°æ°´ä¸­ã§ã¯ç„¡ã„ã¨ã¿ãªã™ã€‚
 		if (pc.getInventory().checkEquipped(20207)) {
 			return false;
 		}
@@ -229,8 +229,8 @@ public class HpRegeneration extends TimerTask {
 	}
 
 	private boolean isOverWeight(L1PcInstance pc) {
-		// ƒGƒLƒ]ƒ`ƒbƒNƒoƒCƒ^ƒ‰ƒCƒYó‘ÔAƒAƒfƒBƒVƒ‡ƒiƒ‹ƒtƒ@ƒCƒA[ó‘Ô‚©
-		// ƒS[ƒ‹ƒfƒ“ƒEƒBƒ“ƒO‘•”õ‚Å‚ ‚ê‚ÎAd—ÊƒI[ƒo[‚Å‚Í–³‚¢‚Æ‚İ‚È‚·B
+		// ã‚¨ã‚­ã‚¾ãƒãƒƒã‚¯ãƒã‚¤ã‚¿ãƒ©ã‚¤ã‚ºçŠ¶æ…‹ã€ã‚¢ãƒ‡ã‚£ã‚·ãƒ§ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ã‚¢ãƒ¼çŠ¶æ…‹ã‹
+		// ã‚´ãƒ¼ãƒ«ãƒ‡ãƒ³ã‚¦ã‚£ãƒ³ã‚°è£…å‚™æ™‚ã§ã‚ã‚Œã°ã€é‡é‡ã‚ªãƒ¼ãƒãƒ¼ã§ã¯ç„¡ã„ã¨ã¿ãªã™ã€‚
 		if (pc.hasSkillEffect(EXOTIC_VITALIZE)
 				|| pc.hasSkillEffect(ADDITIONAL_FIRE)) {
 			return false;
@@ -248,11 +248,11 @@ public class HpRegeneration extends TimerTask {
 	}
 
 	/**
-	 * w’è‚µ‚½PC‚ªƒ‰ƒCƒtƒXƒgƒŠ[ƒ€‚Ì”ÍˆÍ“à‚É‚¢‚é‚©ƒ`ƒFƒbƒN‚·‚é
+	 * æŒ‡å®šã—ãŸPCãŒãƒ©ã‚¤ãƒ•ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®ç¯„å›²å†…ã«ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 	 * 
 	 * @param pc
 	 *            PC
-	 * @return true PC‚ªƒ‰ƒCƒtƒXƒgƒŠ[ƒ€‚Ì”ÍˆÍ“à‚É‚¢‚éê‡
+	 * @return true PCãŒãƒ©ã‚¤ãƒ•ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®ç¯„å›²å†…ã«ã„ã‚‹å ´åˆ
 	 */
 	private static boolean isPlayerInLifeStream(L1PcInstance pc) {
 		for (L1Object object : pc.getKnownObjects()) {

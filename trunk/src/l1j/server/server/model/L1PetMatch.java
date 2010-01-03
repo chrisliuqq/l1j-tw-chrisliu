@@ -112,13 +112,13 @@ public class L1PetMatch {
 			}
 		}
 
-		// PC‚ª‡ê‚É2l‚¢‚éê‡
+		// PCãŒè©¦åˆå ´ã«2äººã„ã‚‹å ´åˆ
 		if (pc1.getMapId() == PET_MATCH_MAPID[petMatchNo]
 				&& pc2.getMapId() == PET_MATCH_MAPID[petMatchNo]) {
 			return STATUS_PLAYING;
 		}
 
-		// PC‚ª‡ê‚É1l‚¢‚éê‡
+		// PCãŒè©¦åˆå ´ã«1äººã„ã‚‹å ´åˆ
 		if (pc1.getMapId() == PET_MATCH_MAPID[petMatchNo]) {
 			_pc2Name[petMatchNo] = null;
 			_pet2[petMatchNo] = null;
@@ -133,14 +133,14 @@ public class L1PetMatch {
 	}
 
 	private int decidePetMatchNo() {
-		// ‘Šè‚ª‘Ò‹@’†‚Ì‡‚ğ’T‚·
+		// ç›¸æ‰‹ãŒå¾…æ©Ÿä¸­ã®è©¦åˆã‚’æ¢ã™
 		for (int i = 0; i < MAX_PET_MATCH; i++) {
 			int status = getPetMatchStatus(i);
 			if (status == STATUS_READY1 || status == STATUS_READY2) {
 				return i;
 			}
 		}
-		// ‘Ò‹@’†‚Ì‡‚ª‚È‚¯‚ê‚Î‹ó‚¢‚Ä‚¢‚é‡‚ğ’T‚·
+		// å¾…æ©Ÿä¸­ã®è©¦åˆãŒãªã‘ã‚Œã°ç©ºã„ã¦ã„ã‚‹è©¦åˆã‚’æ¢ã™
 		for (int i = 0; i < MAX_PET_MATCH; i++) {
 			int status = getPetMatchStatus(i);
 			if (status == STATUS_NONE) {
@@ -200,7 +200,7 @@ public class L1PetMatch {
 		} else if (winNo == 2) {
 			giveMedal(pc1, petMatchNo, false);
 			giveMedal(pc2, petMatchNo, true);
-		} else if (winNo == 3) { // ˆø‚«•ª‚¯
+		} else if (winNo == 3) { // å¼•ãåˆ†ã‘
 			giveMedal(pc1, petMatchNo, false);
 			giveMedal(pc2, petMatchNo, false);
 		}
@@ -216,7 +216,7 @@ public class L1PetMatch {
 			return;
 		}
 		if (isWin) {
-			pc.sendPackets(new S_ServerMessage(1166, pc.getName())); // %0%sƒyƒbƒgƒ}ƒbƒ`‚ÅŸ—˜‚ğû‚ß‚Ü‚µ‚½B
+			pc.sendPackets(new S_ServerMessage(1166, pc.getName())); // %0%sãƒšãƒƒãƒˆãƒãƒƒãƒã§å‹åˆ©ã‚’åã‚ã¾ã—ãŸã€‚
 			L1ItemInstance item = ItemTable.getInstance().createItem(41309);
 			int count = 3;
 			if (item != null) {
@@ -224,7 +224,7 @@ public class L1PetMatch {
 						.OK) {
 					item.setCount(count);
 					pc.getInventory().storeItem(item);
-					pc.sendPackets(new S_ServerMessage(403, item.getLogName())); // %0‚ğè‚É“ü‚ê‚Ü‚µ‚½B
+					pc.sendPackets(new S_ServerMessage(403, item.getLogName())); // %0ã‚’æ‰‹ã«å…¥ã‚Œã¾ã—ãŸã€‚
 				}
 			}
 		} else {
@@ -235,7 +235,7 @@ public class L1PetMatch {
 						.OK) {
 					item.setCount(count);
 					pc.getInventory().storeItem(item);
-					pc.sendPackets(new S_ServerMessage(403, item.getLogName())); // %0‚ğè‚É“ü‚ê‚Ü‚µ‚½B
+					pc.sendPackets(new S_ServerMessage(403, item.getLogName())); // %0ã‚’æ‰‹ã«å…¥ã‚Œã¾ã—ãŸã€‚
 				}
 			}
 		}
@@ -372,7 +372,7 @@ public class L1PetMatchTimer extends TimerTask {
 					return;
 				}
 
-				if (_counter == 100) { // 5•ªŒo‚Á‚Ä‚àI‚í‚ç‚È‚¢ê‡‚Íˆø‚«•ª‚¯
+				if (_counter == 100) { // 5åˆ†çµŒã£ã¦ã‚‚çµ‚ã‚ã‚‰ãªã„å ´åˆã¯å¼•ãåˆ†ã‘
 					L1PetMatch.getInstance().endPetMatch(_petMatchNo, 3);
 					this.cancel();
 					return;
