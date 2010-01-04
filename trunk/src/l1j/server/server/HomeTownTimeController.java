@@ -82,20 +82,20 @@ public class HomeTownTimeController {
 	}
 
 	public void dailyProc() {
-		_log.info("ホームタウンシステム：日時処理開始");
+		_log.info("城鎮系統：開始處理每日事項");
 		TownTable.getInstance().updateTaxRate();
 		TownTable.getInstance().updateSalesMoneyYesterday();
 		TownTable.getInstance().load();
 	}
 
 	public void monthlyProc() {
-		_log.info("ホームタウンシステム：月時処理開始");
+		_log.info("城鎮系統：開始處理每月事項");
 		L1World.getInstance().setProcessingContributionTotal(true);
 		Collection<L1PcInstance> players = L1World.getInstance()
 				.getAllPlayers();
 		for (L1PcInstance pc : players) {
 			try {
-				// DBにキャラクター情報を書き込む
+				// 儲存所有線上玩家的資訊
 				pc.save();
 			} catch (Exception e) {
 				_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
@@ -123,7 +123,7 @@ public class HomeTownTimeController {
 			}
 			pc.setContribution(0);
 			try {
-				// DBにキャラクター情報を書き込む
+				// 儲存所有線上玩家的資訊
 				pc.save();
 			} catch (Exception e) {
 				_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
@@ -230,9 +230,9 @@ public class HomeTownTimeController {
 	}
 
 	/**
-	 * 報酬を取得しクリアする
+	 * 取得報酬
 	 * 
-	 * @return 報酬
+	 * @return int 報酬
 	 */
 	public static int getPay(int objid) {
 		Connection con = null;

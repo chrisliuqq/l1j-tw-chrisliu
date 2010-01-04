@@ -85,9 +85,9 @@ public class LoginController {
 	public synchronized void login(ClientThread client, Account account)
 			throws GameServerFullException, AccountAlreadyLoginException {
 		if (!account.isValid()) {
-			// パスワード認証がされていない、あるいは認証に失敗したアカウントが指定された。
-			// このコードは、バグ検出の為にのみ存在する。
-			throw new IllegalArgumentException("認証されていないアカウントです");
+			// 密碼驗證未指定或不驗證帳戶。
+			// 此代碼只存在的錯誤檢測。
+			throw new IllegalArgumentException("帳戶沒有通過認證");
 		}
 		if ((getMaxAllowedOnlinePlayers() <= getOnlinePlayerCount())
 				&& !account.isGameMaster()) {

@@ -69,7 +69,7 @@ public class WarTimeController implements Runnable {
 	public void run() {
 		try {
 			while (true) {
-				checkWarTime(); // 戦争時間をチェック
+				checkWarTime(); // 檢查攻城時間
 				Thread.sleep(1000);
 			}
 		} catch (Exception e1) {
@@ -97,14 +97,14 @@ public class WarTimeController implements Runnable {
 
 	private void checkWarTime() {
 		for (int i = 0; i < 8; i++) {
-			if (_war_start_time[i].before(getRealTime()) // 戦争開始
+			if (_war_start_time[i].before(getRealTime()) // 攻城開始
 					&& _war_end_time[i].after(getRealTime())) {
 				if (_is_now_war[i] == false) {
 					_is_now_war[i] = true;
-					// 旗をspawnする
+					// 招出攻城的旗子
 					L1WarSpawn warspawn = new L1WarSpawn();
 					warspawn.SpawnFlag(i + 1);
-					// 城門を修理して閉じる
+					// 修理城門並設定為關閉
 					for (L1DoorInstance door : DoorSpawnTable.getInstance()
 							.getDoorList()) {
 						if (L1CastleLocation.checkInWarArea(i + 1, door)) {
@@ -119,11 +119,11 @@ public class WarTimeController implements Runnable {
 							.getAllPlayers()) {
 						int castleId = i + 1;
 						if (L1CastleLocation.checkInWarArea(castleId, pc)
-								&& !pc.isGm()) { // 旗内に居る
+								&& !pc.isGm()) { // 剛好在攻城範圍內
 							L1Clan clan = L1World.getInstance().getClan(pc
 									.getClanname());
 							if (clan != null) {
-								if (clan.getCastleId() == castleId) { // 城主クラン員
+								if (clan.getCastleId() == castleId) { // 如果是城血盟
 									continue;
 								}
 							}
@@ -133,7 +133,7 @@ public class WarTimeController implements Runnable {
 						}
 					}
 				}
-			} else if (_war_end_time[i].before(getRealTime())) { // 戦争終了
+			} else if (_war_end_time[i].before(getRealTime())) { // 攻城結束
 				if (_is_now_war[i] == true) {
 					_is_now_war[i] = false;
 					L1World.getInstance().broadcastPacketToAll(
@@ -142,13 +142,13 @@ public class WarTimeController implements Runnable {
 							Config.ALT_WAR_INTERVAL);
 					_war_end_time[i].add(Config.ALT_WAR_INTERVAL_UNIT,
 							Config.ALT_WAR_INTERVAL);
-					_l1castle[i].setTaxRate(10); // 税率10%
-					_l1castle[i].setPublicMoney(0); // 公金クリア
+					_l1castle[i].setTaxRate(10); // 稅率10%
+					_l1castle[i].setPublicMoney(0); // 清除 public money
 					CastleTable.getInstance().updateCastle(_l1castle[i]);
 
 					int castle_id = i + 1;
 					for (L1Object l1object : L1World.getInstance().getObject()) {
-						// 戦争エリア内の旗を消す
+						// 取消攻城的旗子
 						if (l1object instanceof L1FieldObjectInstance) {
 							L1FieldObjectInstance flag = (L1FieldObjectInstance) l1object;
 							if (L1CastleLocation
@@ -156,7 +156,7 @@ public class WarTimeController implements Runnable {
 								flag.deleteMe();
 							}
 						}
-						// クラウンを消す
+						// 移除皇冠
 						if (l1object instanceof L1CrownInstance) {
 							L1CrownInstance crown = (L1CrownInstance) l1object;
 							if (L1CastleLocation.checkInWarArea(castle_id,
@@ -164,7 +164,7 @@ public class WarTimeController implements Runnable {
 								crown.deleteMe();
 							}
 						}
-						// タワーを一旦消す
+						// 移除守護塔
 						if (l1object instanceof L1TowerInstance) {
 							L1TowerInstance tower = (L1TowerInstance) l1object;
 							if (L1CastleLocation.checkInWarArea(castle_id,
@@ -173,11 +173,11 @@ public class WarTimeController implements Runnable {
 							}
 						}
 					}
-					// タワーを再出現させる
+					// 塔重新出現
 					L1WarSpawn warspawn = new L1WarSpawn();
 					warspawn.SpawnTower(castle_id);
 
-					// 城門を元に戻す
+					// 移除城門
 					for (L1DoorInstance door : DoorSpawnTable.getInstance()
 							.getDoorList()) {
 						if (L1CastleLocation.checkInWarArea(castle_id, door)) {

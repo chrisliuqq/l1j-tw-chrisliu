@@ -114,7 +114,7 @@ public class ClientThread implements Runnable, PacketOutput {
 		_in = socket.getInputStream();
 		_out = new BufferedOutputStream(socket.getOutputStream());
 
-		// PacketHandler 初期設定
+		// PacketHandler 初始化
 		_handler = new PacketHandler(this);
 	}
 
@@ -126,6 +126,7 @@ public class ClientThread implements Runnable, PacketOutput {
 		return _hostname;
 	}
 
+	// TODO: 翻譯
 	// ClientThreadによる一定間隔自動セーブを制限する為のフラグ（true:制限 false:制限無し）
 	// 現在はC_LoginToServerが実行された際にfalseとなり、
 	// C_NewCharSelectが実行された際にtrueとなる
@@ -175,14 +176,14 @@ public class ClientThread implements Runnable, PacketOutput {
 			return;
 		}
 		try {
-			// キャラクター情報
+			// 自動儲存角色資料
 			if (Config.AUTOSAVE_INTERVAL * 1000
 					< System.currentTimeMillis() - _lastSavedTime) {
 				_activeChar.save();
 				_lastSavedTime = System.currentTimeMillis();
 			}
 
-			// 所持アイテム情報
+			// 自動儲存身上道具資料
 			if (Config.AUTOSAVE_INTERVAL_INVENTORY * 1000
 					< System.currentTimeMillis() - _lastSavedTime_inventory) {
 				_activeChar.saveInventory();
@@ -197,12 +198,13 @@ public class ClientThread implements Runnable, PacketOutput {
 
 	@Override
 	public void run() {
-		_log.info("(" + _hostname + ")がサーバーに接続しました。");
-		System.out.println("利用メモリ: " + SystemUtil.getUsedMemoryMB() + "MB");
-		System.out.println("クライアント接続待機中...");
+		_log.info("(" + _hostname + ") 連結到伺服器。");
+		System.out.println("使用了 " + SystemUtil.getUsedMemoryMB() + "MB 的記憶體");
+		System.out.println("等待客戶端連接...");
 
 		Socket socket = _csocket;
 		/*
+		 * TODO: 翻譯
 		 * クライアントからのパケットをある程度制限する。 理由：不正の誤検出が多発する恐れがあるため
 		 * ex1.サーバに過負荷が掛かっている場合、負荷が落ちたときにクライアントパケットを一気に処理し、結果的に不正扱いとなる。
 		 * ex2.サーバ側のネットワーク（下り）にラグがある場合、クライアントパケットが一気に流れ込み、結果的に不正扱いとなる。
@@ -216,9 +218,9 @@ public class ClientThread implements Runnable, PacketOutput {
 		GeneralThreadPool.getInstance().execute(hcPacket);
 
 		ClientThreadObserver observer =
-				new ClientThreadObserver(Config.AUTOMATIC_KICK * 60 * 1000); // 自動切断までの時間（単位:ms）
+				new ClientThreadObserver(Config.AUTOMATIC_KICK * 60 * 1000); // 自動斷線的時間（單位:毫秒）
 
-		// クライアントスレッドの監視
+		// 是否啟用自動踢人
 		if (Config.AUTOMATIC_KICK > 0) {
 			observer.start();
 		}
@@ -258,7 +260,7 @@ public class ClientThread implements Runnable, PacketOutput {
 
 				int opcode = data[0] & 0xFF;
 
-				// 多重ログイン対策
+				// 處理多重登入
 				if (opcode == Opcodes.C_OPCODE_COMMONCLICK
 						|| opcode == Opcodes.C_OPCODE_CHANGECHAR) {
 					_loginStatus = 1;
@@ -277,26 +279,28 @@ public class ClientThread implements Runnable, PacketOutput {
 					// C_OPCODE_KEEPALIVE以外の何かしらのパケットを受け取ったらObserverへ通知
 					observer.packetReceived();
 				}
-				// nullの場合はキャラクター選択前なのでOpcodeの取捨選択はせず全て実行
+				// TODO: 翻譯
+				// 如果目前角色為 null はキャラクター選択前なのでOpcodeの取捨選択はせず全て実行
 				if (_activeChar == null) {
 					_handler.handlePacket(data, _activeChar);
 					continue;
 				}
-
+				
+				// TODO: 翻譯
 				// 以降、PacketHandlerの処理状況がClientThreadに影響を与えないようにする為の処理
 				// 目的はOpcodeの取捨選択とClientThreadとPacketHandlerの切り離し
 
-				// 破棄してはいけないOpecode群
-				// リスタート、アイテムドロップ、アイテム削除
+				// 要處理的 OPCODE
+				// 切換角色、丟道具到地上、刪除身上道具
 				if (opcode == Opcodes.C_OPCODE_CHANGECHAR
 						|| opcode == Opcodes.C_OPCODE_DROPITEM
 						|| opcode == Opcodes.C_OPCODE_DELETEINVENTORYITEM) {
 					_handler.handlePacket(data, _activeChar);
 				} else if (opcode == Opcodes.C_OPCODE_MOVECHAR) {
-					// 移動はなるべく確実に行う為、移動専用スレッドへ受け渡し
+					// 為了確保即時的移動，將移動的封包獨立出來處理
 					movePacket.requestWork(data);
 				} else {
-					// パケット処理スレッドへ受け渡し
+					// 處理其他數據的傳遞
 					hcPacket.requestWork(data);
 				}
 			}
@@ -308,13 +312,13 @@ public class ClientThread implements Runnable, PacketOutput {
 					quitGame(_activeChar);
 
 					synchronized (_activeChar) {
-						// キャラクターをワールド内から除去
+						// 從線上中登出角色
 						_activeChar.logout();
 						setActiveChar(null);
 					}
 				}
 
-				// 念のため送信
+				// 送出斷線的封包
 				sendPacket(new S_Disconnect());
 
 				StreamUtil.close(_out, _in);
@@ -328,9 +332,9 @@ public class ClientThread implements Runnable, PacketOutput {
 		_log.fine("Server thread[C] stopped");
 		if (_kick < 1) {
 			_log.info("(" + getAccountName() + ":" + _hostname
-					+ ")との接続を終了しました。");
-			System.out.println("利用メモリ: " + SystemUtil.getUsedMemoryMB() + "MB");
-			System.out.println("クライアント接続待機中...");
+					+ ")連線終止。");
+			System.out.println("使用了 " + SystemUtil.getUsedMemoryMB() + "MB 的記憶體");
+			System.out.println("等待客戶端連接...");
 		}
 		return;
 	}
@@ -343,11 +347,11 @@ public class ClientThread implements Runnable, PacketOutput {
 		StreamUtil.close(_out, _in);
 	}
 
-	private static final int M_CAPACITY = 3; // 移動要求を一辺に受け付ける最大容量
+	private static final int M_CAPACITY = 3; // 一邊移動的最大封包量
 
-	private static final int H_CAPACITY = 2;// 行動要求を一辺に受け付ける最大容量
+	private static final int H_CAPACITY = 2;// 一方接受的最高限額所需的行動
 
-	// キャラクターの行動処理スレッド
+	// 帳號處理的程序
 	class HcPacket implements Runnable {
 		private final Queue<byte[]> _queue;
 
@@ -388,7 +392,7 @@ public class ClientThread implements Runnable, PacketOutput {
 
 	private static Timer _observerTimer = new Timer();
 
-	// クライアントスレッドの監視タイマー
+	// 定時監控客戶端
 	class ClientThreadObserver extends TimerTask {
 		private int _checkct = 1;
 
@@ -416,11 +420,11 @@ public class ClientThread implements Runnable, PacketOutput {
 					return;
 				}
 
-				if (_activeChar == null // キャラクター選択前
-						|| _activeChar != null && !_activeChar.isPrivateShop()) { // 個人商店中
+				if (_activeChar == null // 選角色之前
+						|| _activeChar != null && !_activeChar.isPrivateShop()) { // 正在個人商店
 					kick();
-					_log.warning("一定時間応答が得られなかった為(" + _hostname
-							+ ")との接続を強制切断しました。");
+					_log.warning("一定時間沒有收到封包回應，所以強制切斷 (" + _hostname
+							+ ") 的連線。");
 					cancel();
 					return;
 				}
@@ -482,7 +486,7 @@ public class ClientThread implements Runnable, PacketOutput {
 	}
 
 	public static void quitGame(L1PcInstance pc) {
-		// 死亡していたら街に戻し、空腹状態にする
+		// 如果死掉回到城中，設定飽食度
 		if (pc.isDead()) {
 			int[] loc = Getback.GetBack_Location(pc, true);
 			pc.setX(loc[0]);
@@ -492,13 +496,13 @@ public class ClientThread implements Runnable, PacketOutput {
 			pc.set_food(40);
 		}
 
-		// トレードを中止する
+		// 終止交易
 		if (pc.getTradeID() != 0) { // トレード中
 			L1Trade trade = new L1Trade();
 			trade.TradeCancel(pc);
 		}
 
-		// 決闘を中止する
+		// 終止決鬥
 		if (pc.getFightId() != 0) {
 			pc.setFightId(0);
 			L1PcInstance fightPc = (L1PcInstance) L1World.getInstance()
@@ -510,18 +514,18 @@ public class ClientThread implements Runnable, PacketOutput {
 			}
 		}
 
-		// パーティーを抜ける
-		if (pc.isInParty()) { // パーティー中
+		// 離開組隊
+		if (pc.isInParty()) { // 如果有組隊
 			pc.getParty().leaveMember(pc);
 		}
 
-		// チャットパーティーを抜ける
-		if (pc.isInChatParty()) { // チャットパーティー中
+		// TODO: 離開聊天組隊(?)
+		if (pc.isInChatParty()) { // 如果在聊天組隊中(?)
 			pc.getChatParty().leaveMember(pc);
 		}
 
-		// ペットをワールドマップ上から消す
-		// サモンの表示名を変更する
+		// 移除世界地圖上的寵物
+		// 變更召喚怪物的名稱
 		Object[] petList = pc.getPetList().values().toArray();
 		for (Object petObject : petList) {
 			if (petObject instanceof L1PetInstance) {
@@ -540,14 +544,14 @@ public class ClientThread implements Runnable, PacketOutput {
 			}
 		}
 
-		// マジックドールをワールドマップ上から消す
+		// 移除世界地圖上的魔法娃娃
 		Object[] dollList = pc.getDollList().values().toArray();
 		for (Object dollObject : dollList) {
 			L1DollInstance doll = (L1DollInstance) dollObject;
 			doll.deleteDoll();
 		}
 
-		// 従者をワールドマップ上から消し、同地点に再出現させる
+		// 重新建立跟隨者
 		Object[] followerList = pc.getFollowerList().values().toArray();
 		for (Object followerObject : followerList) {
 			L1FollowerInstance follower = (L1FollowerInstance) followerObject;
@@ -558,14 +562,14 @@ public class ClientThread implements Runnable, PacketOutput {
 			follower.deleteMe();
 		}
 
-		// エンチャントをDBのcharacter_buffに保存する
+		// 儲存魔法狀態
 		CharBuffTable.DeleteBuff(pc);
 		CharBuffTable.SaveBuff(pc);
 		pc.clearSkillEffectTimer();
 
-		// pcのモニターをstopする。
+		// 停止玩家的偵測
 		pc.stopEtcMonitor();
-		// オンライン状態をOFFにし、DBにキャラクター情報を書き込む
+		// 設定線上狀態為下線
 		pc.setOnlineStatus(0);
 		try {
 			pc.save();

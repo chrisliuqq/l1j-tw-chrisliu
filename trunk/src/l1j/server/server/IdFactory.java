@@ -54,7 +54,7 @@ public class IdFactory {
 	}
 
 	private void loadState() {
-		// DBからMAXIDを求める
+		// 取得資料庫中最大的ID+1
 		Connection con = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -73,7 +73,7 @@ public class IdFactory {
 				id = FIRST_ID;
 			}
 			_curId = id;
-			_log.info("現在のオブジェクトID: " + _curId);
+			_log.info("目前的物件ID: " + _curId);
 		} catch (SQLException e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		} finally {

@@ -33,55 +33,55 @@ import l1j.server.L1DatabaseFactory;
 import l1j.server.server.utils.SQLUtil;
 
 /**
- * ログインの為の様々なインターフェースを提供する.
+ * 帳號相關資訊
  */
 public class Account {
-	/** アカウント名. */
+	/** 使用者帳號名稱 */
 	private String _name;
 
-	/** 接続先のIPアドレス. */
+	/** 來源IP位址 */
 	private String _ip;
 
-	/** パスワード(暗号化されている). */
+	/** 加密過後的密碼 */
 	private String _password;
 
-	/** 最終アクティブ日. */
+	/** 上一次登入的日期 */
 	private Timestamp _lastActive;
 
-	/** アクセスレベル(GMか？). */
+	/** 權限(是否為GM) */
 	private int _accessLevel;
 
-	/** 接続先のホスト名. */
+	/** 來源 DNS 反解 */
 	private String _host;
 
-	/** アクセス禁止の有無(Trueで禁止). */
+	/** 是否被禁止登入 (True 代表禁止). */
 	private boolean _banned;
 
-	/** キャラクターの追加スロット数 */
+	/** 可使用的角色數目 */
 	private int _characterSlot;
 
-	/** アカウントが有効か否か(Trueで有効). */
+	/** 帳戶是否有效 (True 代表有效). */
 	private boolean _isValid = false;
 
-	/** メッセージログ用. */
+	/** 紀錄用 */
 	private static Logger _log = Logger.getLogger(Account.class.getName());
 
 	/**
-	 * コンストラクタ.
+	 * 建構式
 	 */
 	private Account() {
 	}
 
 	/**
-	 * パスワードを暗号化する.
+	 * 將明文密碼加密
 	 * 
 	 * @param rawPassword
-	 *            平文のパスワード
+	 *            明文密碼
 	 * @return String
 	 * @throws NoSuchAlgorithmException
-	 *             暗号アルゴリズムが使用できない環境の時
+	 *             密碼使用不存在的演算法加密
 	 * @throws UnsupportedEncodingException
-	 *             文字のエンコードがサポートされていない時
+	 *             文字編碼不支援
 	 */
 	private static String encodePassword(final String rawPassword)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -92,16 +92,16 @@ public class Account {
 	}
 
 	/**
-	 * アカウントを新規作成する.
+	 * 建立新的帳號
 	 * 
 	 * @param name
-	 *            アカウント名
+	 *            帳號名稱
 	 * @param rawPassword
-	 *            平文パスワード
+	 *            明文密碼
 	 * @param ip
-	 *            接続先のIPアドレス
+	 *            連結時的 IP
 	 * @param host
-	 *            接続先のホスト名
+	 *            連結時的 dns 反查
 	 * @return Account
 	 */
 	public static Account create(final String name, final String rawPassword,
@@ -147,10 +147,10 @@ public class Account {
 	}
 
 	/**
-	 * アカウント情報をDBから抽出する.
+	 * 從資料庫中取得指定帳號的資料
 	 * 
 	 * @param name
-	 *            アカウント名
+	 *            帳號名稱
 	 * @return Account
 	 */
 	public static Account load(final String name) {
@@ -191,10 +191,10 @@ public class Account {
 	}
 
 	/**
-	 * 最終ログイン日をDBに反映する.
+	 * 更新最後一次登入時的日期與時間
 	 * 
 	 * @param account
-	 *            アカウント
+	 *            帳號
 	 */
 	public static void updateLastActive(final Account account, final String ip) {
 		Connection con = null;
@@ -220,7 +220,7 @@ public class Account {
 	}
 
 	/**
-	 * スロット数をDBに反映する.
+	 * 更新資料庫中角色數目
 	 * 
 	 * @param account
 	 *            アカウント
@@ -247,7 +247,7 @@ public class Account {
 	}
 
 	/**
-	 * キャラクター所有数をカウントする.
+	 * 取得帳號下的角色數目
 	 * 
 	 * @return int
 	 */
@@ -276,7 +276,7 @@ public class Account {
 	}
 
 	/**
-	 * アカウントを無効にする.
+	 * 設定該帳號為禁止登入
 	 * 
 	 * @param login
 	 *            アカウント名
@@ -299,21 +299,21 @@ public class Account {
 	}
 
 	/**
-	 * 入力されたパスワードとDB上のパスワードを照合する.
+	 * 確認輸入的密碼與資料庫中的密碼是否相同
 	 * 
 	 * @param rawPassword
-	 *            平文パスワード
+	 *            明文密碼
 	 * @return boolean
 	 */
 	public boolean validatePassword(final String rawPassword) {
-		// 認証成功後に再度認証された場合は失敗させる。
+		// 認證成功後如果再度認證就判斷為失敗
 		if (_isValid) {
 			return false;
 		}
 		try {
 			_isValid = _password.equals(encodePassword(rawPassword));
 			if (_isValid) {
-				_password = null; // 認証が成功した場合、パスワードを破棄する。
+				_password = null; // 認證成功後就將記憶體中的密碼清除
 			}
 			return _isValid;
 		} catch (Exception e) {
@@ -323,7 +323,7 @@ public class Account {
 	}
 
 	/**
-	 * アカウントが有効かどうかを返す(Trueで有効).
+	 * 取得帳號使否有效 (True 為有效).
 	 * 
 	 * @return boolean
 	 */
@@ -332,7 +332,7 @@ public class Account {
 	}
 
 	/**
-	 * アカウントがゲームマスタかどうか返す(Trueでゲームマスタ).
+	 * 取得是否為GM (True 代表為GM).
 	 * 
 	 * @return boolean
 	 */
@@ -341,7 +341,7 @@ public class Account {
 	}
 
 	/**
-	 * アカウント名を取得する.
+	 * 取得帳號名稱
 	 * 
 	 * @return String
 	 */
@@ -350,7 +350,7 @@ public class Account {
 	}
 
 	/**
-	 * 接続先のIPアドレスを取得する.
+	 * 取得連線時的 IP
 	 * 
 	 * @return String
 	 */
@@ -359,14 +359,14 @@ public class Account {
 	}
 
 	/**
-	 * 最終ログイン日を取得する.
+	 * 取得上次登入的時間
 	 */
 	public Timestamp getLastActive() {
 		return _lastActive;
 	}
 
 	/**
-	 * アクセスレベルを取得する.
+	 * 取得權限
 	 * 
 	 * @return int
 	 */
@@ -375,7 +375,7 @@ public class Account {
 	}
 
 	/**
-	 * ホスト名を取得する.
+	 * 取得 DNS 反解的域名
 	 * 
 	 * @return String
 	 */
@@ -384,7 +384,7 @@ public class Account {
 	}
 
 	/**
-	 * アクセス禁止情報を取得する.
+	 * 取得是否被禁止登入
 	 * 
 	 * @return boolean
 	 */
@@ -393,7 +393,7 @@ public class Account {
 	}
 
 	/**
-	 * キャラクターの追加スロット数を取得する.
+	 * 取得角色數目
 	 * 
 	 * @return int
 	 */
@@ -401,6 +401,12 @@ public class Account {
 		return _characterSlot;
 	}
 
+	/**
+	 * 設定角色數目
+	 * 
+	 * @param i
+	 *            欲設定的數目
+	 */
 	public void setCharacterSlot(int i) {
 		_characterSlot = i;
 	}

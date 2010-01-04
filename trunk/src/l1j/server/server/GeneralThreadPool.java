@@ -39,11 +39,11 @@ public class GeneralThreadPool {
 
 	private static final int SCHEDULED_CORE_POOL_SIZE = 10;
 
-	private Executor _executor; // 汎用ExecutorService
-	private ScheduledExecutorService _scheduler; // 汎用ScheduledExecutorService
-	private ScheduledExecutorService _pcScheduler; // プレイヤーのモニター用ScheduledExecutorService
-	// 一応L1Jデフォルトの状態で、map:4にいる何もしていないPCが1秒間に占有する実行時間は約6ms(AutoUpdate:約6ms,ExpMonitor:極小)
-	private final int _pcSchedulerPoolSize = 1 + Config.MAX_ONLINE_USERS / 20; // 適当(20Userに1つくらいの割り当て)
+	private Executor _executor; // 通用的ExecutorService
+	private ScheduledExecutorService _scheduler; // 通用的ScheduledExecutorService
+	private ScheduledExecutorService _pcScheduler; // 監測完家專用的ScheduledExecutorService
+	// L1J一応在默認狀態，地圖：4什麼也不做，籌委會是一個被佔領的第二次運行時間大約為 6毫秒(AutoUpdate:約6ms,ExpMonitor:極小)
+	private final int _pcSchedulerPoolSize = 1 + Config.MAX_ONLINE_USERS / 20; // 每 20 人增加一個 PoolSize
 
 	public static GeneralThreadPool getInstance() {
 		if (_instance == null) {
@@ -119,7 +119,7 @@ public class GeneralThreadPool {
 				TimeUnit.MILLISECONDS);
 	}
 
-	// ThreadPoolManager から拝借
+	// ThreadPoolManager 借用
 	private class PriorityThreadFactory implements ThreadFactory {
 		private final int _prio;
 

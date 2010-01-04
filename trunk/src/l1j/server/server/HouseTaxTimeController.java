@@ -63,7 +63,7 @@ public class HouseTaxTimeController implements Runnable {
 
 	private void checkTaxDeadline() {
 		for (L1House house : HouseTable.getInstance().getHouseTableList()) {
-			if (!house.isOnSale()) { // 競売中のアジトはチェックしない
+			if (!house.isOnSale()) { // 不檢查再拍賣的血盟小屋
 				if (house.getTaxDeadline().before(getRealTime())) {
 					sellHouse(house);
 				}
@@ -75,15 +75,15 @@ public class HouseTaxTimeController implements Runnable {
 		AuctionBoardTable boardTable = new AuctionBoardTable();
 		L1AuctionBoard board = new L1AuctionBoard();
 		if (board != null) {
-			// 競売掲示板に新規書き込み
+			// 在拍賣板張貼新公告
 			int houseId = house.getHouseId();
 			board.setHouseId(houseId);
 			board.setHouseName(house.getHouseName());
 			board.setHouseArea(house.getHouseArea());
 			TimeZone tz = TimeZone.getTimeZone(Config.TIME_ZONE);
 			Calendar cal = Calendar.getInstance(tz);
-			cal.add(Calendar.DATE, 5); // 5日後
-			cal.set(Calendar.MINUTE, 0); // 分、秒は切り捨て
+			cal.add(Calendar.DATE, 5); // 5天以後
+			cal.set(Calendar.MINUTE, 0); // 
 			cal.set(Calendar.SECOND, 0);
 			board.setDeadline(cal);
 			board.setPrice(100000);
@@ -93,12 +93,12 @@ public class HouseTaxTimeController implements Runnable {
 			board.setBidder("");
 			board.setBidderId(0);
 			boardTable.insertAuctionBoard(board);
-			house.setOnSale(true); // 競売中に設定
-			house.setPurchaseBasement(true); // 地下アジト未購入に設定
+			house.setOnSale(true); // 設定為拍賣中
+			house.setPurchaseBasement(true); // TODO: 翻譯 地下アジト未購入に設定
 			cal.add(Calendar.DATE, Config.HOUSE_TAX_INTERVAL);
 			house.setTaxDeadline(cal);
-			HouseTable.getInstance().updateHouse(house); // DBに書き込み
-			// 以前の所有者のアジトを消す
+			HouseTable.getInstance().updateHouse(house); // 儲存到資料庫中
+			// 取消之前的擁有者
 			for (L1Clan clan : L1World.getInstance().getAllClans()) {
 				if (clan.getHouseId() == houseId) {
 					clan.setHouseId(0);

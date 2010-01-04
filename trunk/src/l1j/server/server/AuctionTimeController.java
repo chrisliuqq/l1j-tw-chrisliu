@@ -84,17 +84,17 @@ public class AuctionTimeController implements Runnable {
 		String bidder = board.getBidder();
 		int bidderId = board.getBidderId();
 
-		if (oldOwnerId != 0 && bidderId != 0) { // 以前の所有者あり・落札者あり
+		if (oldOwnerId != 0 && bidderId != 0) { // 在前主人與得標者都存在的情況下
 			L1PcInstance oldOwnerPc = (L1PcInstance) L1World.getInstance()
 					.findObject(oldOwnerId);
 			int payPrice = (int) (price * 0.9);
-			if (oldOwnerPc != null) { // 以前の所有者がオンライン中
+			if (oldOwnerPc != null) { // 如果有前主人
 				oldOwnerPc.getInventory().storeItem(L1ItemId.ADENA, payPrice);
 				// あなたが所有していた家が最終価格%1アデナで落札されました。%n
 				// 手数料10%%を除いた残りの金額%0アデナを差し上げます。%nありがとうございました。%n%n
 				oldOwnerPc.sendPackets(new S_ServerMessage(527, String
 						.valueOf(payPrice)));
-			} else { // 以前の所有者がオフライン中
+			} else { // 沒有前主人
 				L1ItemInstance item = ItemTable.getInstance().createItem(
 						L1ItemId.ADENA);
 				item.setCount(payPrice);
@@ -109,7 +109,7 @@ public class AuctionTimeController implements Runnable {
 
 			L1PcInstance bidderPc = (L1PcInstance) L1World.getInstance()
 					.findObject(bidderId);
-			if (bidderPc != null) { // 落札者がオンライン中
+			if (bidderPc != null) { // 如果有得標者
 				// おめでとうございます。%nあなたが参加された競売は最終価格%0アデナの価格で落札されました。%n
 				// 様がご購入された家はすぐにご利用できます。%nありがとうございました。%n%n
 				bidderPc.sendPackets(new S_ServerMessage(524, String
@@ -118,7 +118,7 @@ public class AuctionTimeController implements Runnable {
 			deleteHouseInfo(houseId);
 			setHouseInfo(houseId, bidderId);
 			deleteNote(houseId);
-		} else if (oldOwnerId == 0 && bidderId != 0) { // 以前の所有者なし・落札者あり
+		} else if (oldOwnerId == 0 && bidderId != 0) { // 在先前的擁有者沒有中標
 			L1PcInstance bidderPc = (L1PcInstance) L1World.getInstance()
 					.findObject(bidderId);
 			if (bidderPc != null) { // 落札者がオンライン中
@@ -127,9 +127,10 @@ public class AuctionTimeController implements Runnable {
 				bidderPc.sendPackets(new S_ServerMessage(524, String
 						.valueOf(price), bidder));
 			}
+			
 			setHouseInfo(houseId, bidderId);
 			deleteNote(houseId);
-		} else if (oldOwnerId != 0 && bidderId == 0) { // 以前の所有者あり・落札者なし
+		} else if (oldOwnerId != 0 && bidderId == 0) { // 以前沒有人成功競投無
 			L1PcInstance oldOwnerPc = (L1PcInstance) L1World.getInstance()
 					.findObject(oldOwnerId);
 			if (oldOwnerPc != null) { // 以前の所有者がオンライン中
@@ -138,11 +139,11 @@ public class AuctionTimeController implements Runnable {
 				oldOwnerPc.sendPackets(new S_ServerMessage(528));
 			}
 			deleteNote(houseId);
-		} else if (oldOwnerId == 0 && bidderId == 0) { // 以前の所有者なし・落札者なし
-			// 締め切りを5日後に設定し再度競売にかける
+		} else if (oldOwnerId == 0 && bidderId == 0) { // 在先前的擁有者沒有中標
+			// 設定五天之後再次競標
 			Calendar cal = getRealTime();
-			cal.add(Calendar.DATE, 5); // 5日後
-			cal.set(Calendar.MINUTE, 0); // 分、秒は切り捨て
+			cal.add(Calendar.DATE, 5); // 5天後
+			cal.set(Calendar.MINUTE, 0);
 			cal.set(Calendar.SECOND, 0);
 			board.setDeadline(cal);
 			AuctionBoardTable boardTable = new AuctionBoardTable();
@@ -151,10 +152,10 @@ public class AuctionTimeController implements Runnable {
 	}
 
 	/**
-	 * 以前の所有者のアジトを消す
+	 * 取消擁有者的血盟小屋
 	 * 
 	 * @param houseId
-	 * 
+	 *            血盟小屋的編號
 	 * @return
 	 */
 	private void deleteHouseInfo(int houseId) {
@@ -167,11 +168,12 @@ public class AuctionTimeController implements Runnable {
 	}
 
 	/**
-	 * 落札者のアジトを設定する
+	 * 設定得標者血盟小屋的編號
 	 * 
 	 * @param houseId
-	 *            bidderId
-	 * 
+	 *            血盟小屋的編號
+	 * @param bidderId
+	 *            得標者的編號
 	 * @return
 	 */
 	private void setHouseInfo(int houseId, int bidderId) {
@@ -185,24 +187,24 @@ public class AuctionTimeController implements Runnable {
 	}
 
 	/**
-	 * アジトの競売状態をOFFに設定し、競売掲示板から消す
+	 * 將血盟小屋拍賣的告示取消、設定血盟小屋為不拍賣狀態
 	 * 
 	 * @param houseId
-	 * 
+	 *            血盟小屋的編號
 	 * @return
 	 */
 	private void deleteNote(int houseId) {
-		// アジトの競売状態をOFFに設定する
+		// 將血盟小屋的狀態設定為不拍賣
 		L1House house = HouseTable.getInstance().getHouseTable(houseId);
 		house.setOnSale(false);
 		Calendar cal = getRealTime();
 		cal.add(Calendar.DATE, Config.HOUSE_TAX_INTERVAL);
-		cal.set(Calendar.MINUTE, 0); // 分、秒は切り捨て
+		cal.set(Calendar.MINUTE, 0);
 		cal.set(Calendar.SECOND, 0);
 		house.setTaxDeadline(cal);
 		HouseTable.getInstance().updateHouse(house);
 
-		// 競売掲示板から消す
+		// 取消拍賣告示
 		AuctionBoardTable boardTable = new AuctionBoardTable();
 		boardTable.deleteAuctionBoard(houseId);
 	}

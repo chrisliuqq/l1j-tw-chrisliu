@@ -88,14 +88,14 @@ public class GameServer extends Thread {
 
 	@Override
 	public void run() {
-		System.out.println("利用メモリ: " + SystemUtil.getUsedMemoryMB() + "MB");
+		System.out.println("使用了 " + SystemUtil.getUsedMemoryMB() + "MB 的記憶體");
 		// 這是一個 Locale 的範例
 		// System.out.println(L1Message._memoryUse + SystemUtil.getUsedMemoryMB() + "MB");
-		System.out.println("クライアント接続待機中...");
+		System.out.println("等待客戶端連接中...");
 		while (true) {
 			try {
 				Socket socket = _serverSocket.accept();
-				System.out.println("接続試行中IP " + socket.getInetAddress());
+				System.out.println("從 " + socket.getInetAddress() + " 試圖連線");
 				String host = socket.getInetAddress().getHostAddress();
 				if (IpTable.getInstance().isBannedIp(host)) {
 					_log.info("banned IP(" + host + ")");
@@ -138,81 +138,82 @@ public class GameServer extends Thread {
 			InetAddress inetaddress = InetAddress.getByName(s);
 			inetaddress.getHostAddress();
 			_serverSocket = new ServerSocket(_port, 50, inetaddress);
-			System.out.println("サーバーセッティング: サーバーソケット生成");
+			System.out.println("伺服器成功建立在 port " + _port);
 		} else {
 			_serverSocket = new ServerSocket(_port);
-			System.out.println("サーバーセッティング: サーバーソケット生成");
+			System.out.println("伺服器成功建立在 port " + _port);
 		}
 
-		System.out.println("EXP:" + (rateXp) + "倍  Lawful:" + (LA) + "倍  カルマ:"
-				+ (rateKarma) + "倍  ドロップ率:" + (rateDropItems) + "倍  取得アデナ:"
-				+ (rateDropAdena) + "倍");
-		System.out.println("全体チャット可能Lv " + (chatlvl));
+		System.out.println("經驗值:" + (rateXp) + "倍，正義值:" + (LA) + "倍，魔族好友度:"+ (rateKarma) + "倍");
+		System.out.println("掉寶率:" + (rateDropItems) + "倍，取得金幣倍數:" + (rateDropAdena) + "倍");
+		System.out.println("全體聊天的等級: " + (chatlvl));
 		if (Config.ALT_NONPVP) { // Non-PvP設定
-			System.out.println("Non-PvP設定: 無効（PvP可能）");
+			System.out.println("Non-PvP設定: 無效（可以PvP）");
 		} else {
-			System.out.println("Non-PvP設定: 有効（PvP不可）");
+			System.out.println("Non-PvP設定: 有效（不可以PvP）");
 		}
 
 		System.out.println("=================================================");
 		System.out.println("                                  For All User...");
+		System.out.println("                                      By ChrisLiu");
+		System.out.println("                                        From 2010");
 		System.out.println("=================================================");
 
 		int maxOnlineUsers = Config.MAX_ONLINE_USERS;
-		System.out.println("接続人数制限： 最大" + (maxOnlineUsers) + "人");
+		System.out.println("連線人數上限為 " + (maxOnlineUsers) + " 人");
 		IdFactory.getInstance();
 		L1WorldMap.getInstance();
 		_loginController = LoginController.getInstance();
 		_loginController.setMaxAllowedOnlinePlayers(maxOnlineUsers);
 
-		// 全キャラクターネームロード
+		// 讀取所有角色名稱
 		CharacterTable.getInstance().loadAllCharName();
 
-		// オンライン状態リセット
+		// 初始化角色的上線狀態
 		CharacterTable.clearOnlineStatus();
 
-		// ゲーム時間時計
+		// 初始化遊戲時間
 		L1GameTimeClock.init();
 
-		// UBタイムコントローラー
+		// 初始化無限大戰
 		UbTimeController ubTimeContoroller = UbTimeController.getInstance();
 		GeneralThreadPool.getInstance().execute(ubTimeContoroller);
 
-		// 戦争タイムコントローラー
+		// 初始化攻城
 		WarTimeController warTimeController = WarTimeController.getInstance();
 		GeneralThreadPool.getInstance().execute(warTimeController);
 
-		// 精霊の石生成
+		// 設定精靈石的產生
 		if (Config.ELEMENTAL_STONE_AMOUNT > 0) {
 			ElementalStoneGenerator elementalStoneGenerator
 					= ElementalStoneGenerator.getInstance();
 			GeneralThreadPool.getInstance().execute(elementalStoneGenerator);
 		}
 
-		// ホームタウン
+		// 初始化 HomeTown 時間
 		HomeTownTimeController.getInstance();
 
-		// アジト競売タイムコントローラー
+		// 初始化盟屋拍賣
 		AuctionTimeController auctionTimeController = AuctionTimeController
 				.getInstance();
 		GeneralThreadPool.getInstance().execute(auctionTimeController);
 
-		// アジト税金タイムコントローラー
+		// 初始化盟屋的稅金
 		HouseTaxTimeController houseTaxTimeController = HouseTaxTimeController
 				.getInstance();
 		GeneralThreadPool.getInstance().execute(houseTaxTimeController);
 
-		// 釣りタイムコントローラー
+		// 初始化釣魚
 		FishingTimeController fishingTimeController = FishingTimeController
 				.getInstance();
 		GeneralThreadPool.getInstance().execute(fishingTimeController);
 
-		// NPCチャットタイムコントローラー
+		// 初始化 NPC 聊天
 		NpcChatTimeController npcChatTimeController = NpcChatTimeController
 				.getInstance();
 		GeneralThreadPool.getInstance().execute(npcChatTimeController);
 
-		// ライトタイムコントローラー
+		// 初始化 Light
 		LightTimeController lightTimeController = LightTimeController
 				.getInstance();
 		GeneralThreadPool.getInstance().execute(lightTimeController);
@@ -244,7 +245,7 @@ public class GameServer extends Thread {
 		PetTable.getInstance();
 		ClanTable.getInstance();
 		CastleTable.getInstance();
-		L1CastleLocation.setCastleTaxRate(); // これはCastleTable初期化後でなければいけない
+		L1CastleLocation.setCastleTaxRate(); // 必須在 CastleTable 初始化之後
 		GetBackRestartTable.getInstance();
 		DoorSpawnTable.getInstance();
 		GeneralThreadPool.getInstance();
@@ -263,14 +264,14 @@ public class GameServer extends Thread {
 		NpcChatTable.getInstance();
 		MailTable.getInstance();
 
-		System.out.println("ローディング完了");
+		System.out.println("初始化完畢");
 		Runtime.getRuntime().addShutdownHook(Shutdown.getInstance());
 
 		this.start();
 	}
 
 	/**
-	 * オンライン中のプレイヤー全てに対してkick、キャラクター情報の保存をする。
+	 * 踢掉世界地圖中所有的玩家與儲存資料。
 	 */
 	public void disconnectAllCharacters() {
 		Collection<L1PcInstance> players = L1World.getInstance()
@@ -279,7 +280,7 @@ public class GameServer extends Thread {
 			pc.getNetConnection().setActiveChar(null);
 			pc.getNetConnection().kick();
 		}
-		// 全員Kickした後に保存処理をする
+		// 踢除所有在線上的玩家
 		for (L1PcInstance pc : players) {
 			ClientThread.quitGame(pc);
 			L1World.getInstance().removeObject(pc);
@@ -298,16 +299,16 @@ public class GameServer extends Thread {
 			L1World world = L1World.getInstance();
 			try {
 				int secondsCount = _secondsCount;
-				world.broadcastServerMessage("ただいまより、サーバーをシャットダウンします。");
-				world.broadcastServerMessage("安全な場所でログアウトしてください");
+				world.broadcastServerMessage("伺服器即將關閉。");
+				world.broadcastServerMessage("請玩家移動到安全區域先行登出");
 				while (0 < secondsCount) {
 					if (secondsCount <= 30) {
-						world.broadcastServerMessage("ゲームが" + secondsCount
-								+ "秒後にシャットダウンします。ゲームを中断してください。");
+						world.broadcastServerMessage("伺服器將在" + secondsCount
+								+ "秒後關閉，請玩家移動到安全區域先行登出。");
 					} else {
 						if (secondsCount % 60 == 0) {
-							world.broadcastServerMessage("ゲームが" + secondsCount
-									/ 60 + "分後にシャットダウンします。");
+							world.broadcastServerMessage("伺服器將在" + secondsCount
+									/ 60 + "分鐘後關閉。");
 						}
 					}
 					Thread.sleep(1000);
@@ -315,7 +316,7 @@ public class GameServer extends Thread {
 				}
 				shutdown();
 			} catch (InterruptedException e) {
-				world.broadcastServerMessage("シャットダウンが中断されました。サーバーは通常稼動中です。");
+				world.broadcastServerMessage("已取消伺服器關機。伺服器將會正常運作。");
 				return;
 			}
 		}
@@ -325,8 +326,8 @@ public class GameServer extends Thread {
 
 	public synchronized void shutdownWithCountdown(int secondsCount) {
 		if (_shutdownThread != null) {
-			// 既にシャットダウン要求が行われている
-			// TODO エラー通知が必要かもしれない
+			// 如果正在關閉
+			// TODO 可能要有錯誤通知之類的
 			return;
 		}
 		_shutdownThread = new ServerShutdownThread(secondsCount);
@@ -340,8 +341,8 @@ public class GameServer extends Thread {
 
 	public synchronized void abortShutdown() {
 		if (_shutdownThread == null) {
-			// シャットダウン要求が行われていない
-			// TODO エラー通知が必要かもしれない
+			// 如果正在關閉
+			// TODO 可能要有錯誤通知之類的
 			return;
 		}
 
