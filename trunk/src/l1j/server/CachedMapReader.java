@@ -37,18 +37,18 @@ import l1j.server.server.model.map.L1V1Map;
 import l1j.server.server.utils.FileUtil;
 
 /**
- * テキストマップをキャッシングして読み込み時間を短縮する.
+ * 將地圖做快取的動作以減少讀取的時間。
  */
 public class CachedMapReader extends MapReader {
 
-	/** テキストマップホルダー. */
+	/** 地圖檔的路徑 */
 	private static final String MAP_DIR = "./maps/";
 
-	/** キャッシングするマップホルダー. */
+	/** cache 後地圖檔的路徑 */
 	private static final String CACHE_DIR = "./data/mapcache/";
 
 	/**
-	 * 全マップIDのリストを返す.
+	 * 傳回所有地圖的編號
 	 * 
 	 * @return ArraryList
 	 */
@@ -77,10 +77,10 @@ public class CachedMapReader extends MapReader {
 	}
 
 	/**
-	 * 指定のマップ番号のテキストマップをキャッシュマップに変更する.
+	 * 將指定編號的地圖轉成快取的地圖格式
 	 * 
 	 * @param mapId
-	 *            マップ番号
+	 *            地圖編號
 	 * @return L1V1Map
 	 * @throws IOException
 	 */
@@ -113,10 +113,10 @@ public class CachedMapReader extends MapReader {
 	}
 
 	/**
-	 * 指定のマップ番号のキャッシュマップを読み込む.
+	 * 從快取地圖中讀取特定編號的地圖
 	 * 
 	 * @param mapId
-	 *            マップ番号
+	 *            地圖編號
 	 * @return L1Map
 	 * @throws IOException
 	 */
@@ -162,7 +162,7 @@ public class CachedMapReader extends MapReader {
 	}
 
 	/**
-	 * 全てのテキストマップを読み込む.
+	 * 取得所有地圖與編號的 Mapping
 	 * 
 	 * @return Map
 	 * @throws IOException

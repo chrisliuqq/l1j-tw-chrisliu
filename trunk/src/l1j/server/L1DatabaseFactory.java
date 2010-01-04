@@ -31,40 +31,40 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
  * DBへのアクセスするための各種インターフェースを提供する.
  */
 public class L1DatabaseFactory {
-	/** インスタンス. */
+	/** 資料庫的實例 */
 	private static L1DatabaseFactory _instance;
 
-	/** DB接続情報をまとめたもの？. */
+	/** 資料庫連結的來源 */
 	private ComboPooledDataSource _source;
 
-	/** メッセージログ用. */
+	/** 紀錄用 */
 	private static Logger _log = Logger.getLogger(L1DatabaseFactory.class
 			.getName());
 
-	/* DBへのアクセスに必要な各情報 */
-	/** DB接続ドライバー. */
+	/* 連結資料庫相關的資訊 */
+	/** 資料庫連結的驅動程式 */
 	private static String _driver;
 
-	/** DBサーバのURL. */
+	/** 資料庫連結的位址 */
 	private static String _url;
 
-	/** DBサーバに接続するユーザ名. */
+	/** 登入資料庫的使用者名稱 */
 	private static String _user;
 
-	/** DBサーバに接続するパスワード. */
+	/** 登入資料庫的密碼 */
 	private static String _password;
 
 	/**
-	 * DBへのアクセスに必要な各情報の保存.
+	 * 設定資料庫登入的相關資訊
 	 * 
-	 * @param driver
-	 *            DB接続ドライバー
+	 * @param driver 
+	 *            資料庫連結的驅動程式
 	 * @param url
-	 *            DBサーバのURL
+	 *            資料庫連結的位址
 	 * @param user
-	 *            DBサーバに接続するユーザ名
+	 *            登入資料庫的使用者名稱 
 	 * @param password
-	 *            DBサーバに接続するパスワード
+	 *            登入資料庫的密碼
 	 */
 	public static void setDatabaseSettings(final String driver,
 			final String url, final String user, final String password) {
@@ -75,7 +75,7 @@ public class L1DatabaseFactory {
 	}
 
 	/**
-	 * DB接続の情報の設定とテスト接続をする.
+	 * 資料庫連結的設定與配置
 	 * 
 	 * @throws SQLException
 	 */
@@ -101,7 +101,7 @@ public class L1DatabaseFactory {
 	}
 
 	/**
-	 * サーバシャットダウン時にDBコネクションを切断する.
+	 * 伺服器關閉的時候要關閉與資料庫的連結
 	 */
 	public void shutdown() {
 		try {
@@ -117,7 +117,7 @@ public class L1DatabaseFactory {
 	}
 
 	/**
-	 * インスタンスを返す（nullなら作成する).
+	 * 取得資料庫的實例（第一次實例為 null 的時候才新建立一個).
 	 * 
 	 * @return L1DatabaseFactory
 	 * @throws SQLException
@@ -130,9 +130,9 @@ public class L1DatabaseFactory {
 	}
 
 	/**
-	 * DB接続をし、コネクションオブジェクトを返す.
+	 * 取得資料庫連結時的連線
 	 * 
-	 * @return Connection コネクションオブジェクト
+	 * @return Connection 連結對象
 	 * @throws SQLException
 	 */
 	public Connection getConnection() {

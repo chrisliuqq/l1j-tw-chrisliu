@@ -403,12 +403,12 @@ public final class Config {
 
 	public static final String CHAR_SETTINGS_CONFIG_FILE = "./config/charsettings.properties";
 
-	/** その他の設定 */
+	/** 其他設定 */
 
-	// NPCから吸えるMP限界
+	// 吸收每個 NPC 的 MP 上限
 	public static final int MANA_DRAIN_LIMIT_PER_NPC = 40;
 
-	// 一回の攻撃で吸えるMP限界(SOM、鋼鉄SOM）
+	// 每一次攻擊吸收的 MP 上限(馬那、鋼鐵馬那）
 	public static final int MANA_DRAIN_LIMIT_PER_SOM_ATTACK = 9;
 
 	public static void load() {
@@ -428,7 +428,7 @@ public final class Config {
 					"com.mysql.jdbc.Driver");
 			DB_URL = serverSettings
 					.getProperty("URL",
-							"jdbc:mysql://localhost/l1jdb?useUnicode=true&characterEncoding=sjis");
+							"jdbc:mysql://localhost/l1jdb?useUnicode=true&characterEncoding=utf8");
 			DB_LOGIN = serverSettings.getProperty("Login", "root");
 			DB_PASSWORD = serverSettings.getProperty("Password", "");
 			THREAD_P_TYPE_GENERAL = Integer.parseInt(serverSettings
@@ -438,7 +438,7 @@ public final class Config {
 			CLIENT_LANGUAGE = Integer.parseInt(serverSettings.getProperty(
 					"ClientLanguage", "4"));
 			CLIENT_LANGUAGE_CODE = LANGUAGE_CODE_ARRAY[CLIENT_LANGUAGE];
-			TIME_ZONE = serverSettings.getProperty("TimeZone", "JST");
+			TIME_ZONE = serverSettings.getProperty("TimeZone", "TST");
 			HOSTNAME_LOOKUPS = Boolean.parseBoolean(serverSettings.getProperty(
 					"HostnameLookups", "false"));
 			AUTOMATIC_KICK = Integer.parseInt(serverSettings.getProperty(
@@ -607,9 +607,9 @@ public final class Config {
 			ALT_GMSHOP = Boolean.parseBoolean(altSettings.getProperty("GMshop",
 					"false"));
 			ALT_GMSHOP_MIN_ID = Integer.parseInt(altSettings.getProperty(
-					"GMshopMinID", "0xffffffff")); // 取得失敗時は無効
+					"GMshopMinID", "0xffffffff")); // 設定錯誤時就取消GM商店
 			ALT_GMSHOP_MAX_ID = Integer.parseInt(altSettings.getProperty(
-					"GMshopMaxID", "0xffffffff")); // 取得失敗時は無効
+					"GMshopMaxID", "0xffffffff")); // 設定錯誤時就取消GM商店
 			ALT_HALLOWEENIVENT = Boolean.parseBoolean(altSettings.getProperty(
 					"HalloweenIvent", "true"));
 			ALT_JPPRIVILEGED = Boolean.parseBoolean(altSettings.getProperty(
@@ -826,11 +826,11 @@ public final class Config {
 
 	private static void validate() {
 		if (!IntRange.includes(Config.ALT_ITEM_DELETION_RANGE, 0, 5)) {
-			throw new IllegalStateException("ItemDeletionRangeの値が設定可能範囲外です。");
+			throw new IllegalStateException("ItemDeletionRange 的設定值超出範圍。");
 		}
 
 		if (!IntRange.includes(Config.ALT_ITEM_DELETION_TIME, 1, 35791)) {
-			throw new IllegalStateException("ItemDeletionTimeの値が設定可能範囲外です。");
+			throw new IllegalStateException("ItemDeletionTime 的設定值超出範圍。");
 		}
 	}
 

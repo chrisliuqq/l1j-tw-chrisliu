@@ -35,41 +35,41 @@ import l1j.server.server.model.map.L1Map;
 import l1j.server.server.model.map.L1V1Map;
 
 /**
- * テキストマップ(maps/\d*.txt)を読み込む.
+ * 地圖 (maps/\d*.txt)讀取
  */
 public class TextMapReader extends MapReader {
 
-	/** メッセージログ用. */
+	/** 紀錄用 */
 	private static Logger _log = Logger
 			.getLogger(TextMapReader.class.getName());
 
-	/** マップホルダー. */
+	/** 地圖的路徑 */
 	private static final String MAP_DIR = "./maps/";
 
-	/** MAP_INFO用 マップ番号位置. */
+	/** MAP_INFO 中編號的位置 */
 	public static final int MAPINFO_MAP_NO = 0;
 
-	/** MAP_INFO用 開始X座標の位置. */
+	/** MAP_INFO 開始X座標的位置 */
 	public static final int MAPINFO_START_X = 1;
 
-	/** MAP_INFO用 最終X座標の位置. */
+	/** MAP_INFO 結束X座標的位置 */
 	public static final int MAPINFO_END_X = 2;
 
-	/** MAP_INFO用 開始Y座標の位置. */
+	/** MAP_INFO 開始Y座標的位置  */
 	public static final int MAPINFO_START_Y = 3;
 
-	/** MAP_INFO用 開始Y座標の位置. */
+	/** MAP_INFO 結束Y座標的位置  */
 	public static final int MAPINFO_END_Y = 4;
 
 	/**
-	 * 指定のマップ番号のテキストマップを読み込む.
+	 * 依照輸入大小讀取指定編號地圖
 	 * 
 	 * @param mapId
-	 *            マップ番号
+	 *            地圖編號
 	 * @param xSize
-	 *            X座標のサイズ
+	 *            X座標大小
 	 * @param ySize
-	 *            Y座標のサイズ
+	 *            Y座標大小
 	 * @return byte[][]
 	 * @throws IOException
 	 */
@@ -83,7 +83,7 @@ public class TextMapReader extends MapReader {
 		String line;
 		while ((line = in.readLine()) != null) {
 			if (line.trim().length() == 0 || line.startsWith("#")) {
-				continue; // 空行とコメントをスキップ
+				continue; // 跳過空行與註解
 			}
 
 			int x = 0;
@@ -101,10 +101,10 @@ public class TextMapReader extends MapReader {
 	}
 
 	/**
-	 * 指定のマップ番号のテキストマップを読み込む.
+	 * 讀取指定編號的地圖
 	 * 
 	 * @param id
-	 *            マップ番号
+	 *            地圖編號
 	 * @return L1Map
 	 * @throws IOException
 	 */
@@ -137,7 +137,7 @@ public class TextMapReader extends MapReader {
 	}
 
 	/**
-	 * 全てのテキストマップを読み込む.
+	 * 取得所有地圖與編號的 Mapping
 	 * 
 	 * @return Map
 	 * @throws IOException
@@ -177,8 +177,8 @@ public class TextMapReader extends MapReader {
 	}
 
 	/**
-	 * mapInfo：マップNo、マップサイズを保持している.
-	 * 1レコードが{mapNo,StartX,EndX,StartY,EndY}で構成されている.
+	 * mapInfo：地圖編號、地圖構成大小.
+	 * 格式為 {mapNo,StartX,EndX,StartY,EndY}
 	 */
 	private static final int[][] MAP_INFO = { 
 			{ 0, 32256, 32767, 32768, 33279 },

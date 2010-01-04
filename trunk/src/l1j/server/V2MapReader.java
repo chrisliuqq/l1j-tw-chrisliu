@@ -17,15 +17,15 @@ import l1j.server.server.utils.BinaryInputStream;
 import l1j.server.server.utils.FileUtil;
 
 /**
- * テキストマップ(v2maps/\d*.txt)を読み込む（テスト用).
+ * 地圖 (v2maps/\d*.txt)讀取 (測試用)
  */
 public class V2MapReader extends MapReader {
 
-	/** マップホルダー. */
+	/** 地圖的路徑 */
 	private static final String MAP_DIR = "./v2maps/";
 
 	/**
-	 * 全マップIDのリストを返す.
+	 * 傳回所有地圖的編號
 	 * 
 	 * @return ArraryList
 	 */
@@ -54,7 +54,7 @@ public class V2MapReader extends MapReader {
 	}
 
 	/**
-	 * 全てのテキストマップを読み込む.
+	 * 取得所有地圖與編號的 Mapping
 	 * 
 	 * @return Map
 	 * @throws IOException
@@ -69,10 +69,10 @@ public class V2MapReader extends MapReader {
 	}
 
 	/**
-	 * 指定のマップ番号のキャッシュマップを読み込む.
+	 * 從地圖中讀取特定編號的地圖
 	 * 
 	 * @param mapId
-	 *            マップ番号
+	 *            地圖編號
 	 * @return L1Map
 	 * @throws IOException
 	 */

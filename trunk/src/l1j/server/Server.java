@@ -51,20 +51,20 @@ import l1j.server.server.GameServer;
 import l1j.server.telnet.TelnetServer;
 
 /**
- * l1j-jpのサーバを起動する.
+ * l1j 伺服器啟動
  */
 public class Server {
-	/** メッセージログ用. */
+	/** 紀錄用 */
 	private static Logger _log = Logger.getLogger(Server.class.getName());
 
-	/** ログ設定ファイルのフォルダー. */
+	/** 紀錄檔的路徑 */
 	private static final String LOG_PROP = "./config/log.properties";
 
 	/**
 	 * サーバメイン.
 	 * 
 	 * @param args
-	 *            コマンドライン引数
+	 *            命令列參數
 	 * @throws Exception
 	 */
 	public static void main(final String[] args) throws Exception {

@@ -25,11 +25,11 @@ import java.util.Map;
 import l1j.server.server.model.map.L1Map;
 
 /**
- * マップを読み込む為の抽象クラス.
+ * 讀取地圖的 abstract 類別
  */
 public abstract class MapReader {
 	/**
-	 * 全てのテキストマップを読み込む(抽象クラス).
+	 * 取得所有地圖與編號的 Mapping (abstract 方法).
 	 *
 	 * @return Map
 	 * @throws IOException
@@ -37,17 +37,17 @@ public abstract class MapReader {
 	public abstract Map<Integer, L1Map> read() throws IOException;
 
 	/**
-	 * 指定のマップ番号のテキストマップを読み込む.
+	 * 從快取地圖中讀取特定編號的地圖 (abstract 方法).
 	 *
 	 * @param id
-	 *            マップID
+	 *            地圖編號
 	 * @return L1Map
 	 * @throws IOException
 	 */
 	public abstract L1Map read(int id) throws IOException;
 
 	/**
-	 * 読み込むマップファイルを判断する（テキストマップ or キャッシュマップ or V2テキストマップ).
+	 * 依照設定檔中的設定來選擇讀取地圖的方法(使用V2MapReader 或 快取地圖).
 	 *
 	 * @return MapReader
 	 */
