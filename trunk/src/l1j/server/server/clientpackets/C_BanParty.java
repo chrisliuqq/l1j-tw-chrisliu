@@ -28,6 +28,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 收到由客戶端傳來離開組隊的封包
+ */
 public class C_BanParty extends ClientBasePacket {
 
 	private static final String C_BAN_PARTY = "[C] C_BanParty";
@@ -39,7 +42,7 @@ public class C_BanParty extends ClientBasePacket {
 
 		L1PcInstance player = client.getActiveChar();
 		if (!player.getParty().isLeader(player)) {
-			// パーティーリーダーでない場合
+			// 是組對對長
 			player.sendPackets(new S_ServerMessage(427)); // パーティーのリーダーのみが追放できます。
 			return;
 		}
@@ -50,7 +53,7 @@ public class C_BanParty extends ClientBasePacket {
 				return;
 			}
 		}
-		// 見つからなかった
+
 		player.sendPackets(new S_ServerMessage(426, s)); // %0はパーティーメンバーではありません。
 	}
 

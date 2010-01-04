@@ -33,6 +33,9 @@ import l1j.server.server.templates.L1Castle;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 收到由客戶端傳來改變攻城時間的封包
+ */
 public class C_ChangeWarTime extends ClientBasePacket {
 
 	private static final String C_CHANGE_WAR_TIME = "[C] C_ChangeWarTime";
@@ -48,7 +51,7 @@ public class C_ChangeWarTime extends ClientBasePacket {
 		L1Clan clan = L1World.getInstance().getClan(player.getClanname());
 		if (clan != null) {
 			int castle_id = clan.getCastleId();
-			if (castle_id != 0) { // 城主クラン
+			if (castle_id != 0) { // 有城
 				L1Castle l1castle = CastleTable.getInstance().getCastleTable(
 						castle_id);
 				Calendar cal = l1castle.getWarTime();

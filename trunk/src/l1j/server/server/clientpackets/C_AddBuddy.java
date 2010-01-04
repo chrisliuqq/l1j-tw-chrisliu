@@ -33,6 +33,9 @@ import l1j.server.server.templates.L1CharName;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理客戶端傳來增加好友的封包
+ */
 public class C_AddBuddy extends ClientBasePacket {
 
 	private static final String C_ADD_BUDDY = "[C] C_AddBuddy";

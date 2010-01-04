@@ -32,6 +32,9 @@ import l1j.server.server.serverpackets.S_LoginResult;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理要求登入的封包
+ */
 public class C_AuthLogin extends ClientBasePacket {
 
 	private static final String C_AUTH_LOGIN = "[C] C_AuthLogin";
@@ -51,7 +54,7 @@ public class C_AuthLogin extends ClientBasePacket {
 			for (ClientThread tempClient : LoginController.getInstance()
 					.getAllAccounts()) {
 				if (ip.equalsIgnoreCase(tempClient.getIp())) {
-					_log.info("2PCのログインを拒否しました。account="
+					_log.info("拒絕 2P 登入。account="
 							+ accountName + " host=" + host);
 					client.sendPacket(new S_LoginResult(
 							S_LoginResult.REASON_USER_OR_PASS_WRONG));
@@ -74,7 +77,7 @@ public class C_AuthLogin extends ClientBasePacket {
 			return;
 		}
 		if (account.isBanned()) { // BANアカウント
-			_log.info("BANアカウントのログインを拒否しました。account=" + accountName + " host="
+			_log.info("禁止登入的帳號嘗試登入。account=" + accountName + " host="
 					+ host);
 			client.sendPacket(new S_LoginResult(
 					S_LoginResult.REASON_USER_OR_PASS_WRONG));
@@ -83,19 +86,19 @@ public class C_AuthLogin extends ClientBasePacket {
 
 		try {
 			LoginController.getInstance().login(client, account);
-			Account.updateLastActive(account, ip); // 最終ログイン日を更新する
+			Account.updateLastActive(account, ip); // 更新最後一次登入的時間與IP
 			client.setAccount(account);
 			client.sendPacket(new S_LoginResult(S_LoginResult.REASON_LOGIN_OK));
 			client.sendPacket(new S_CommonNews());
 		} catch (GameServerFullException e) {
 			client.kick();
-			_log.info("接続人数上限に達している為(" + client.getHostname()
-					+ ")のログインを拒否し、切断しました。");
+			_log.info("線上人數已經飽和，切斷 (" + client.getHostname()
+					+ ") 的連線。");
 			return;
 		} catch (AccountAlreadyLoginException e) {
 			client.kick();
-			_log.info("同一IDでの重複接続の為(" + client.getHostname()
-					+ ")との接続を強制切断しました。");
+			_log.info("同個帳號已經登入，切斷 (" + client.getHostname()
+					+ ") 的連線。");
 			return;
 		}
 	}

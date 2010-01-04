@@ -46,6 +46,9 @@ import l1j.server.server.templates.L1House;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket, C_Amount
 
+/**
+ * 處理客戶端傳來拍賣的封包
+ */
 public class C_Amount extends ClientBasePacket {
 
 	private static final Logger _log = Logger.getLogger(C_Amount.class
@@ -76,7 +79,7 @@ public class C_Amount extends ClientBasePacket {
 			s1 = "";
 			s2 = "";
 		}
-		if (s1.equalsIgnoreCase("agapply")) { // 競売に入札した場合
+		if (s1.equalsIgnoreCase("agapply")) { // 如果你在拍賣競標
 			String pcName = pc.getName();
 			AuctionBoardTable boardTable = new AuctionBoardTable();
 			for (L1AuctionBoard board : boardTable.getAuctionBoardTableList()) {
@@ -91,23 +94,23 @@ public class C_Amount extends ClientBasePacket {
 				int nowPrice = board.getPrice();
 				int nowBidderId = board.getBidderId();
 				if (pc.getInventory().consumeItem(L1ItemId.ADENA, amount)) {
-					// 競売掲示板を更新
+					// 更新拍賣公告
 					board.setPrice(amount);
 					board.setBidder(pcName);
 					board.setBidderId(pc.getId());
 					boardTable.updateAuctionBoard(board);
 					if (nowBidderId != 0) {
-						// 入札者にアデナを返金
+						// 將金幣退還給投標者
 						L1PcInstance bidPc = (L1PcInstance) L1World
 								.getInstance().findObject(nowBidderId);
-						if (bidPc != null) { // オンライン中
+						if (bidPc != null) { // 玩家在線上
 							bidPc.getInventory().storeItem(L1ItemId.ADENA,
 									nowPrice);
 							// あなたが提示された金額よりももっと高い金額を提示した方が現れたため、残念ながら入札に失敗しました。%n
 							// あなたが競売に預けた%0アデナをお返しします。%nありがとうございました。%n%n
 							bidPc.sendPackets(new S_ServerMessage(525, String
 									.valueOf(nowPrice)));
-						} else { // オフライン中
+						} else { // 玩家離線中
 							L1ItemInstance item = ItemTable.getInstance()
 									.createItem(L1ItemId.ADENA);
 							item.setCount(nowPrice);
@@ -120,20 +123,20 @@ public class C_Amount extends ClientBasePacket {
 					pc.sendPackets(new S_ServerMessage(189)); // \f1アデナが不足しています。
 				}
 			}
-		} else if (s1.equalsIgnoreCase("agsell")) { // 家を売った場合
+		} else if (s1.equalsIgnoreCase("agsell")) { // 出售盟屋
 			int houseId = Integer.valueOf(s2);
 			AuctionBoardTable boardTable = new AuctionBoardTable();
 			L1AuctionBoard board = new L1AuctionBoard();
 			if (board != null) {
-				// 競売掲示板に新規書き込み
+				// 新增拍賣公告到拍賣板
 				board.setHouseId(houseId);
 				L1House house = HouseTable.getInstance().getHouseTable(houseId);
 				board.setHouseName(house.getHouseName());
 				board.setHouseArea(house.getHouseArea());
 				TimeZone tz = TimeZone.getTimeZone(Config.TIME_ZONE);
 				Calendar cal = Calendar.getInstance(tz);
-				cal.add(Calendar.DATE, 5); // 5日後
-				cal.set(Calendar.MINUTE, 0); // 分、秒は切り捨て
+				cal.add(Calendar.DATE, 5); // 5天後
+				cal.set(Calendar.MINUTE, 0); 
 				cal.set(Calendar.SECOND, 0);
 				board.setDeadline(cal);
 				board.setPrice(amount);
@@ -144,9 +147,9 @@ public class C_Amount extends ClientBasePacket {
 				board.setBidderId(0);
 				boardTable.insertAuctionBoard(board);
 
-				house.setOnSale(true); // 競売中に設定
+				house.setOnSale(true); // 設定盟屋為拍賣中
 				house.setPurchaseBasement(true); // 地下アジト未購入に設定
-				HouseTable.getInstance().updateHouse(house); // DBに書き込み
+				HouseTable.getInstance().updateHouse(house); // 更新到資料庫中
 			}
 		} else {
 			L1NpcAction action = NpcActionTable.getInstance().get(s, pc, npc);

@@ -30,6 +30,10 @@ import l1j.server.server.model.Instance.L1PcInstance;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+
+/**
+ * 收到由客戶端傳來呼叫玩家的封包
+ */
 public class C_CallPlayer extends ClientBasePacket {
 
 	private static final String C_CALL = "[C] C_Call";

@@ -28,6 +28,9 @@ import l1j.server.server.model.Instance.L1PcInstance;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket, C_RequestDoors
 
+/**
+ * 收到由客戶端傳來角色設定的封包
+ */
 public class C_CharcterConfig extends ClientBasePacket {
 
 	private static Logger _log = Logger.getLogger(C_CharcterConfig.class

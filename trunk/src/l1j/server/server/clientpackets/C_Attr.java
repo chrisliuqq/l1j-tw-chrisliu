@@ -99,26 +99,26 @@ public class C_Attr extends ClientBasePacket {
 						if (pc.getQuest().isEnd(L1Quest.QUEST_LEVEL45)) {
 							lv45quest = true;
 						}
-						if (pc.getLevel() >= 50) { // Lv50以上
-							if (lv45quest == true) { // Lv45クエストクリア済み
+						if (pc.getLevel() >= 50) { // 50級以上
+							if (lv45quest == true) { // 如果通過45級試煉
 								maxMember = charisma * 9;
 							} else {
 								maxMember = charisma * 3;
 							}
-						} else { // Lv50未満
-							if (lv45quest == true) { // Lv45クエストクリア済み
+						} else { // 還沒到50級
+							if (lv45quest == true) { // 如果通過45級試煉
 								maxMember = charisma * 6;
 							} else {
 								maxMember = charisma * 2;
 							}
 						}
-						if (Config.MAX_CLAN_MEMBER > 0) { // Clan人数の上限の設定あり
+						if (Config.MAX_CLAN_MEMBER > 0) { // 設定檔中如果有設定血盟的人數上限
 							maxMember = Config.MAX_CLAN_MEMBER;
 						}
 
-						if (joinPc.getClanid() == 0) { // クラン未加入
+						if (joinPc.getClanid() == 0) { // 加入玩家未加入血盟
 							String clanMembersName[] = clan.getAllMembers();
-							if (maxMember <= clanMembersName.length) { // 空きがない
+							if (maxMember <= clanMembersName.length) { // 血盟還有空間可以讓玩家加入
 								joinPc.sendPackets( // %0はあなたを血盟員として受け入れることができません。
 										new S_ServerMessage(188, pc.getName()));
 								return;
@@ -135,11 +135,11 @@ public class C_Attr extends ClientBasePacket {
 							joinPc.sendPackets(new S_CharTitle(joinPc.getId(), ""));
 							joinPc.broadcastPacket(new S_CharTitle(joinPc
 									.getId(), ""));
-							joinPc.save(); // DBにキャラクター情報を書き込む
+							joinPc.save(); // 儲存加入的玩家資料
 							clan.addMemberName(joinPc.getName());
 							joinPc.sendPackets(new S_ServerMessage(95,
 									clanName)); // \f1%0血盟に加入しました。
-						} else { // クラン加入済み（クラン連合）
+						} else { // 如果是王族加入（聯合血盟）
 							if (Config.CLAN_ALLIANCE) {
 								changeClan(clientthread, pc, joinPc, maxMember);
 							} else {
@@ -172,15 +172,15 @@ public class C_Attr extends ClientBasePacket {
 			} else if (c == 1) { // Yes
 				if (i == 217) {
 					L1War war = new L1War();
-					war.handleCommands(2, enemyClanName, clanName); // 模擬戦開始
+					war.handleCommands(2, enemyClanName, clanName); // 盟戰開始
 				} else if (i == 221 || i == 222) {
-					// 全戦争リストを取得
+					// 取得線上所有的盟戰
 					for (L1War war : L1World.getInstance().getWarList()) {
-						if (war.CheckClanInWar(clanName)) { // 自クランが行っている戦争を発見
+						if (war.CheckClanInWar(clanName)) { // 如果有現在的血盟
 							if (i == 221) {
-								war.SurrenderWar(enemyClanName, clanName); // 降伏
+								war.SurrenderWar(enemyClanName, clanName); // 投降
 							} else if (i == 222) {
-								war.CeaseWar(enemyClanName, clanName); // 終結
+								war.CeaseWar(enemyClanName, clanName); // 結束
 							}
 							break;
 						}
@@ -208,12 +208,12 @@ public class C_Attr extends ClientBasePacket {
 			}
 			break;
 
-		case 321: // また復活したいですか？（Y/N）
+		case 321: // 是否要復活？（Y/N）
 			c = readC();
 			L1PcInstance resusepc1 = (L1PcInstance) L1World.getInstance()
 					.findObject(pc.getTempID());
 			pc.setTempID(0);
-			if (resusepc1 != null) { // 復活スクロール
+			if (resusepc1 != null) { // 如果有這個人
 				if (c == 0) { // No
 					;
 				} else if (c == 1) { // Yes
@@ -267,7 +267,7 @@ public class C_Attr extends ClientBasePacket {
 			}
 			break;
 
-		case 325: // 動物の名前を決めてください：
+		case 325: // 決定寵物的名字
 			c = readC(); // ?
 			name = readS();
 			L1PetInstance pet = (L1PetInstance) L1World.getInstance()
@@ -276,7 +276,7 @@ public class C_Attr extends ClientBasePacket {
 			renamePet(pet, name);
 			break;
 
-		case 512: // 家の名前は？
+		case 512: // 決定盟屋的名字
 			c = readC(); // ?
 			name = readS();
 			int houseId = pc.getTempID();
@@ -284,7 +284,7 @@ public class C_Attr extends ClientBasePacket {
 			if (name.length() <= 16) {
 				L1House house = HouseTable.getInstance().getHouseTable(houseId);
 				house.setHouseName(name);
-				HouseTable.getInstance().updateHouse(house); // DBに書き込み
+				HouseTable.getInstance().updateHouse(house); // 更新到資料庫中
 			} else {
 				pc.sendPackets(new S_ServerMessage(513)); // 家の名前が長すぎます。
 			}
@@ -323,7 +323,7 @@ public class C_Attr extends ClientBasePacket {
 				}
 			}
 			pc.setPartnerId(0);
-			pc.save(); // DBにキャラクター情報を書き込む
+			pc.save(); // 將玩家資料儲存到資料庫中
 			pc.sendPackets(new S_ServerMessage(662)); // \f1あなたは結婚していません。
 			break;
 
@@ -389,7 +389,7 @@ public class C_Attr extends ClientBasePacket {
 			}
 			break;
 
-		case 951: // チャットパーティー招待を許可しますか？（Y/N）
+		case 951: // 邀請聊天組隊？（Y/N）
 			c = readC();
 			L1PcInstance chatPc = (L1PcInstance) L1World.getInstance()
 					.findObject(pc.getPartyID());
@@ -403,7 +403,7 @@ public class C_Attr extends ClientBasePacket {
 								.isGm()) {
 							chatPc.getChatParty().addMember(pc);
 						} else {
-							chatPc.sendPackets(new S_ServerMessage(417)); // これ以上パーティーメンバーを受け入れることはできません。
+							chatPc.sendPackets(new S_ServerMessage(417)); // 超過組隊人數上限
 						}
 					} else {
 						L1ChatParty chatParty = new L1ChatParty();
@@ -416,7 +416,7 @@ public class C_Attr extends ClientBasePacket {
 			}
 			break;
 
-		case 953: // パーティー招待を許可しますか？（Y/N）
+		case 953: // 組隊邀請？（Y/N）
 			c = readC();
 			L1PcInstance target = (L1PcInstance) L1World.getInstance()
 					.findObject(pc.getPartyID());
@@ -428,16 +428,16 @@ public class C_Attr extends ClientBasePacket {
 				} else if (c == 1) // Yes
 				{
 					if (target.isInParty()) {
-						// 招待主がパーティー中
+						// 隊長組隊中
 						if (target.getParty().isVacancy() || target.isGm()) {
-							// パーティーに空きがある
+							// 組隊是空的
 							target.getParty().addMember(pc);
 						} else {
-							// パーティーに空きがない
+							// 組隊滿了
 							target.sendPackets(new S_ServerMessage(417)); // これ以上パーティーメンバーを受け入れることはできません。
 						}
 					} else {
-						// 招待主がパーティー中でない
+						// 還沒有組隊，建立一個新組隊
 						L1Party party = new L1Party();
 						party.addMember(target);
 						party.addMember(pc);
@@ -448,7 +448,7 @@ public class C_Attr extends ClientBasePacket {
 			}
 			break;
 
-		case 479: // どの能力値を向上させますか？（str、dex、int、con、wis、cha）
+		case 479: // 提昇能力值？（str、dex、int、con、wis、cha）
 			if (readC() == 1) {
 				String s = readS();
 				if (!(pc.getLevel() - 50 > pc.getBonusStats())) {
@@ -461,7 +461,7 @@ public class C_Attr extends ClientBasePacket {
 						pc.setBonusStats(pc.getBonusStats() + 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
 						pc.sendPackets(new S_CharVisualUpdate(pc));
-						pc.save(); // DBにキャラクター情報を書き込む
+						pc.save(); // 將玩家資料儲存到資料庫中
 					} else {
 						pc.sendPackets(new S_ServerMessage(481));
 					}
@@ -473,7 +473,7 @@ public class C_Attr extends ClientBasePacket {
 						pc.setBonusStats(pc.getBonusStats() + 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
 						pc.sendPackets(new S_CharVisualUpdate(pc));
-						pc.save(); // DBにキャラクター情報を書き込む
+						pc.save(); // 將玩家資料儲存到資料庫中
 					} else {
 						pc.sendPackets(new S_ServerMessage(481)); // 一つの能力値の最大値は25です。他の能力値を選択してください
 					}
@@ -484,7 +484,7 @@ public class C_Attr extends ClientBasePacket {
 						pc.setBonusStats(pc.getBonusStats() + 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
 						pc.sendPackets(new S_CharVisualUpdate(pc));
-						pc.save(); // DBにキャラクター情報を書き込む
+						pc.save(); // 將玩家資料儲存到資料庫中
 					} else {
 						pc.sendPackets(new S_ServerMessage(481)); // 一つの能力値の最大値は25です。他の能力値を選択してください
 					}
@@ -495,7 +495,7 @@ public class C_Attr extends ClientBasePacket {
 						pc.setBonusStats(pc.getBonusStats() + 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
 						pc.sendPackets(new S_CharVisualUpdate(pc));
-						pc.save(); // DBにキャラクター情報を書き込む
+						pc.save(); // 將玩家資料儲存到資料庫中
 					} else {
 						pc.sendPackets(new S_ServerMessage(481)); // 一つの能力値の最大値は25です。他の能力値を選択してください
 					}
@@ -507,7 +507,7 @@ public class C_Attr extends ClientBasePacket {
 						pc.setBonusStats(pc.getBonusStats() + 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
 						pc.sendPackets(new S_CharVisualUpdate(pc));
-						pc.save(); // DBにキャラクター情報を書き込む
+						pc.save(); // 將玩家資料儲存到資料庫中
 					} else {
 						pc.sendPackets(new S_ServerMessage(481)); // 一つの能力値の最大値は25です。他の能力値を選択してください
 					}
@@ -518,7 +518,7 @@ public class C_Attr extends ClientBasePacket {
 						pc.setBonusStats(pc.getBonusStats() + 1);
 						pc.sendPackets(new S_OwnCharStatus2(pc));
 						pc.sendPackets(new S_CharVisualUpdate(pc));
-						pc.save(); // DBにキャラクター情報を書き込む
+						pc.save(); // 將玩家資料儲存到資料庫中
 					} else {
 						pc.sendPackets(new S_ServerMessage(481)); // 一つの能力値の最大値は25です。他の能力値を選択してください
 					}
@@ -543,9 +543,9 @@ public class C_Attr extends ClientBasePacket {
 		L1Clan oldClan = L1World.getInstance().getClan(oldClanName);
 		String oldClanMemberName[] = oldClan.getAllMembers();
 		int oldClanNum = oldClanMemberName.length;
-		if (clan != null && oldClan != null && joinPc.isCrown() && // 自分が君主
+		if (clan != null && oldClan != null && joinPc.isCrown() && // 自己的王族
 				joinPc.getId() == oldClan.getLeaderId()) {
-			if (maxMember < clanNum + oldClanNum) { // 空きがない
+			if (maxMember < clanNum + oldClanNum) { // 沒有空缺
 				joinPc.sendPackets( // %0はあなたを血盟員として受け入れることができません。
 						new S_ServerMessage(188, pc.getName()));
 				return;
@@ -559,9 +559,10 @@ public class C_Attr extends ClientBasePacket {
 			for (int i = 0; i < oldClanMemberName.length; i++) {
 				L1PcInstance oldClanMember = L1World.getInstance().getPlayer(
 						oldClanMemberName[i]);
-				if (oldClanMember != null) { // オンライン中の旧クランメンバー
+				if (oldClanMember != null) { // 舊血盟成員在線上
 					oldClanMember.setClanid(clanId);
 					oldClanMember.setClanname(clanName);
+					// TODO: 翻譯
 					// 血盟連合に加入した君主はガーディアン
 					// 君主が連れてきた血盟員は見習い
 					if (oldClanMember.getId() == joinPc.getId()) {
@@ -570,7 +571,7 @@ public class C_Attr extends ClientBasePacket {
 						oldClanMember.setClanRank(L1Clan.CLAN_RANK_PROBATION);
 					}
 					try {
-						// DBにキャラクター情報を書き込む
+						// 儲存玩家資料到資料庫中
 						oldClanMember.save();
 					} catch (Exception e) {
 						_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
@@ -578,7 +579,7 @@ public class C_Attr extends ClientBasePacket {
 					clan.addMemberName(oldClanMember.getName());
 					oldClanMember.sendPackets(new S_ServerMessage(95,
 							clanName)); // \f1%0血盟に加入しました。
-				} else { // オフライン中の旧クランメンバー
+				} else { // 舊血盟成員不在線上
 					try {
 						L1PcInstance offClanMember = CharacterTable
 								.getInstance().restoreCharacter(
@@ -586,14 +587,14 @@ public class C_Attr extends ClientBasePacket {
 						offClanMember.setClanid(clanId);
 						offClanMember.setClanname(clanName);
 						offClanMember.setClanRank(L1Clan.CLAN_RANK_PROBATION);
-						offClanMember.save(); // DBにキャラクター情報を書き込む
+						offClanMember.save(); // 儲存玩家資料到資料庫中
 						clan.addMemberName(offClanMember.getName());
 					} catch (Exception e) {
 						_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 					}
 				}
 			}
-			// 旧クラン削除
+			// 刪除舊盟輝
 			String emblem_file = String.valueOf(oldClanId);
 			File file = new File("emblem/" + emblem_file);
 			file.delete();
@@ -614,17 +615,17 @@ public class C_Attr extends ClientBasePacket {
 
 		L1PcInstance pc = (L1PcInstance) pet.getMaster();
 		if (PetTable.isNameExists(name)) {
-			pc.sendPackets(new S_ServerMessage(327)); // 同じ名前がすでに存在しています。
+			pc.sendPackets(new S_ServerMessage(327)); // 已經有同樣的寵物名稱了。
 			return;
 		}
 		L1Npc l1npc = NpcTable.getInstance().getTemplate(pet.getNpcId());
 		if (!(pet.getName().equalsIgnoreCase(l1npc.get_name())) ) {
-			pc.sendPackets(new S_ServerMessage(326)); // 一度決めた名前は変更できません。
+			pc.sendPackets(new S_ServerMessage(326)); // 跟NPC一樣的名稱。
 			return;
 		}
  		pet.setName(name);
 		petTemplate.set_name(name);
-		PetTable.getInstance().storePet(petTemplate); // DBに書き込み
+		PetTable.getInstance().storePet(petTemplate); // 儲存寵物資料到資料庫中
 		L1ItemInstance item = pc.getInventory().getItem(pet.getItemObjId());
 		pc.getInventory().updateItem(item); 
 		pc.sendPackets(new S_ChangeName(pet.getId(), name));
@@ -639,7 +640,7 @@ public class C_Attr extends ClientBasePacket {
 			return;
 		}
 		if (!pc.getMap().isEscapable() && !pc.isGm()) {
-			// 周辺のエネルギーがテレポートを妨害しています。そのため、ここでテレポートは使用できません。
+			// 如果地圖不能傳送，或是有其他魔法
 			pc.sendPackets(new S_ServerMessage(647));
 			L1Teleport.teleport(pc, pc.getLocation(), pc.getHeading(), false);
 			return;
@@ -653,7 +654,7 @@ public class C_Attr extends ClientBasePacket {
 		if (castleId != 0) {
 			isInWarArea = true;
 			if (WarTimeController.getInstance().isNowWar(castleId)) {
-				isInWarArea = false; // 戦争時間中は旗内でも使用可能
+				isInWarArea = false; // 戰爭也可以在時間的旗
 			}
 		}
 		short mapId = callClanPc.getMapId();
@@ -686,7 +687,7 @@ public class C_Attr extends ClientBasePacket {
 
 		if (locX == 0 && locY == 0 || !map.isPassable(locX, locY)
 				|| isExsistCharacter) {
-			// 障害物があってそこまで移動することができません。
+			// 有障礙物存在所以不能移動
 			pc.sendPackets(new S_ServerMessage(627));
 			return;
 		}

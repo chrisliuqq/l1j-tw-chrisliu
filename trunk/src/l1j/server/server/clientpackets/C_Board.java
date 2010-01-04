@@ -30,6 +30,9 @@ import l1j.server.server.model.Instance.L1BoardInstance;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket, C_Board
 
+/**
+ * 收到由客戶端傳送打開公告欄的封包
+ */
 public class C_Board extends ClientBasePacket {
 
 	private static final String C_BOARD = "[C] C_Board";
@@ -45,7 +48,7 @@ public class C_Board extends ClientBasePacket {
 		int objectId = readD();
 		L1Object obj = L1World.getInstance().findObject(objectId);
 		if (!isBoardInstance(obj)) {
-			return; // 不正クライアントでなければあり得ないが・・・
+			return; // 不可能一個無賴客戶端
 		}
 		obj.onAction(client.getActiveChar());
 	}

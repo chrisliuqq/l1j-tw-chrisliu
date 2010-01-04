@@ -36,6 +36,9 @@ import l1j.server.server.utils.CalcStat;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到客戶端傳來角色升級/出生的封包
+ */
 public class C_CharReset extends ClientBasePacket {
 
 	private static final String C_CHAR_RESET = "[C] C_CharReset";
@@ -160,7 +163,7 @@ public class C_CharReset extends ClientBasePacket {
 		if (item != null) {
 			try {
 				pc.getInventory().removeItem(item, 1);
-				pc.save(); // DBにキャラクター情報を書き込む
+				pc.save(); // 儲存玩家的資料到資料庫中
 			} catch (Exception e) {
 				_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 			}

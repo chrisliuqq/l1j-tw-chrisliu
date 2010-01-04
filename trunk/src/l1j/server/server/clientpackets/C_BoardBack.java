@@ -29,6 +29,9 @@ import l1j.server.server.model.Instance.L1BoardInstance;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket, C_BoardPage
 
+/**
+ * 收到由客戶端傳送公告欄回到上一頁的封包
+ */
 public class C_BoardBack extends ClientBasePacket {
 
 	private static final String C_BOARD_BACK = "[C] C_BoardBack";

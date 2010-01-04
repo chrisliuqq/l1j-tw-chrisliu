@@ -41,6 +41,9 @@ import static l1j.server.server.model.skill.L1SkillId.*;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來的聊天封包
+ */
 public class C_Chat extends ClientBasePacket {
 
 	private static final String C_CHAT = "[C] C_Chat";
@@ -57,23 +60,23 @@ public class C_Chat extends ClientBasePacket {
 				|| pc.hasSkillEffect(STATUS_POISON_SILENCE)) {
 			return;
 		}
-		if (pc.hasSkillEffect(1005)) { // チャット禁止中
-			pc.sendPackets(new S_ServerMessage(242)); // 現在チャット禁止中です。
+		if (pc.hasSkillEffect(1005)) { // 被魔封
+			pc.sendPackets(new S_ServerMessage(242)); // 現在不能說話。
 			return;
 		}
 
-		if (chatType == 0) { // 通常チャット
+		if (chatType == 0) { // 一般聊天
 			if (pc.isGhost() && !(pc.isGm() || pc.isMonitor())) {
 				return;
 			}
-			// GMコマンド
-			if (chatText.startsWith(".")) {
+			// GM指令
+			if (chatText.startsWith(".") && (pc.isGm() || pc.isMonitor())) {
 				String cmd = chatText.substring(1);
 				GMCommands.getInstance().handleCommands(pc, cmd);
 				return;
 			}
 
-			// トレードチャット
+			// 交易頻道
 			// 本来はchatType==12になるはずだが、行頭の$が送信されない
 			if (chatText.startsWith("$")) {
 				String text = chatText.substring(1);
@@ -107,7 +110,7 @@ public class C_Chat extends ClientBasePacket {
 					}
 				}
 			}
-		} else if (chatType == 2) { // 叫び
+		} else if (chatType == 2) { // 喊叫
 			if (pc.isGhost()) {
 				return;
 			}
@@ -138,10 +141,10 @@ public class C_Chat extends ClientBasePacket {
 					}
 				}
 			}
-		} else if (chatType == 3) { // 全体チャット
+		} else if (chatType == 3) { // 全體聊天
 			chatWorld(pc, chatText, chatType);
-		} else if (chatType == 4) { // 血盟チャット
-			if (pc.getClanid() != 0) { // クラン所属中
+		} else if (chatType == 4) { // 血盟聊天
+			if (pc.getClanid() != 0) { // 所屬血盟
 				L1Clan clan = L1World.getInstance().getClan(pc.getClanname());
 				int rank = pc.getClanRank();
 				if (clan != null
@@ -159,8 +162,8 @@ public class C_Chat extends ClientBasePacket {
 					}
 				}
 			}
-		} else if (chatType == 11) { // パーティーチャット
-			if (pc.isInParty()) { // パーティー中
+		} else if (chatType == 11) { // 組隊聊天
+			if (pc.isInParty()) { // 組隊中
 				ChatLogTable.getInstance().storeChat(pc, null, chatText,
 						chatType);
 				S_ChatPacket s_chatpacket = new S_ChatPacket(pc, chatText,
@@ -172,10 +175,10 @@ public class C_Chat extends ClientBasePacket {
 					}
 				}
 			}
-		} else if (chatType == 12) { // トレードチャット
+		} else if (chatType == 12) { // 交易聊天
 			chatWorld(pc, chatText, chatType);
-		} else if (chatType == 13) { // 連合チャット
-			if (pc.getClanid() != 0) { // クラン所属中
+		} else if (chatType == 13) { // 連合血盟
+			if (pc.getClanid() != 0) { // 在血盟中
 				L1Clan clan = L1World.getInstance().getClan(pc.getClanname());
 				int rank = pc.getClanRank();
 				if (clan != null
@@ -194,8 +197,8 @@ public class C_Chat extends ClientBasePacket {
 					}
 				}
 			}
-		} else if (chatType == 14) { // チャットパーティー
-			if (pc.isInChatParty()) { // チャットパーティー中
+		} else if (chatType == 14) { // 聊天組隊
+			if (pc.isInChatParty()) { // 聊天組隊
 				ChatLogTable.getInstance().storeChat(pc, null, chatText,
 						chatType);
 				S_ChatPacket s_chatpacket = new S_ChatPacket(pc, chatText,

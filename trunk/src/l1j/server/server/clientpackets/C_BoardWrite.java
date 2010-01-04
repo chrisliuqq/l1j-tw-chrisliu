@@ -34,6 +34,9 @@ import l1j.server.server.model.item.L1ItemId;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 收到由客戶端傳送寫入公告欄的封包
+ */
 public class C_BoardWrite extends ClientBasePacket {
 
 	private static final String C_BOARD_WRITE = "[C] C_BoardWrite";
@@ -53,7 +56,7 @@ public class C_BoardWrite extends ClientBasePacket {
 			pc.getInventory().consumeItem(L1ItemId.ADENA, 300);
 			BoardTable.getInstance().writeTopic(pc, date, title, content);
 		} else {
-			_log.warning("不正なNPCID : " + id);
+			_log.warning("不正確的 NPCID : " + id);
 		}
 	}
 

@@ -29,6 +29,9 @@ import l1j.server.server.model.Instance.L1BoardInstance;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 收到由客戶端傳送讀取公告欄的封包
+ */
 public class C_BoardRead extends ClientBasePacket {
 
 	private static final String C_BOARD_READ = "[C] C_BoardRead";

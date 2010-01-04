@@ -31,6 +31,10 @@ import l1j.server.server.templates.L1BookMark;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+
+/**
+ * 處理收到客戶端傳來新增書籤的封包
+ */
 public class C_AddBookmark extends ClientBasePacket {
 
 	private static final String C_ADD_BOOKMARK = "[C] C_AddBookmark";

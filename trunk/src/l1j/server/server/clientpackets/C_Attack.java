@@ -41,6 +41,9 @@ import static l1j.server.server.model.skill.L1SkillId.*;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理客戶端傳來攻擊的封包
+ */
 public class C_Attack extends ClientBasePacket {
 
 	private static Logger _log = Logger.getLogger(C_Attack.class.getName());
@@ -65,23 +68,23 @@ public class C_Attack extends ClientBasePacket {
 
 		L1Object target = L1World.getInstance().findObject(targetId);
 
-		// 攻撃アクションをとれる状態か確認
-		if (pc.getInventory().getWeight240() >= 197) { // 重量オーバー
+		// 確認是否可以攻擊
+		if (pc.getInventory().getWeight240() >= 197) { // 是否超重
 			pc.sendPackets(new S_ServerMessage(110)); // \f1アイテムが重すぎて戦闘することができません。
 			return;
 		}
 
-		if (pc.isInvisble()) { // インビジビリティ、ブラインドハイディング中
+		if (pc.isInvisble()) { // 是否隱形
 			return;
 		}
 
-		if (pc.isInvisDelay()) { // インビジビリティディレイ中
+		if (pc.isInvisDelay()) { // 是否在隱形解除的延遲中
 			return;
 		}
 
 		if (target instanceof L1Character) {
 			if (target.getMapId() != pc.getMapId()
-					|| pc.getLocation().getLineDistance(target.getLocation()) > 20D) { // ターゲットが異常な場所にいたら終了
+					|| pc.getLocation().getLineDistance(target.getLocation()) > 20D) { // 如果目標距離玩家太遠(外掛)
 				return;
 			}
 		}
@@ -89,12 +92,12 @@ public class C_Attack extends ClientBasePacket {
 		if (target instanceof L1NpcInstance) {
 			int hiddenStatus = ((L1NpcInstance) target).getHiddenStatus();
 			if (hiddenStatus == L1NpcInstance.HIDDEN_STATUS_SINK
-					|| hiddenStatus == L1NpcInstance.HIDDEN_STATUS_FLY) { // 地中に潜っているか、飛んでいる
+					|| hiddenStatus == L1NpcInstance.HIDDEN_STATUS_FLY) { // 如果目標躲到土裡面，或是飛起來了
 				return;
 			}
 		}
 
-		// 攻撃要求間隔をチェックする
+		// 是否要檢查攻擊的間隔
 		if (Config.CHECK_ATTACK_INTERVAL) {
 			int result;
 			result = pc.getAcceleratorChecker()
@@ -104,8 +107,8 @@ public class C_Attack extends ClientBasePacket {
 			}
 		}
 
-		// 攻撃アクションがとれる場合の処理
-		if (pc.hasSkillEffect(ABSOLUTE_BARRIER)) { // アブソルート バリアの解除
+		// 如果在絕對屏障攻擊別人
+		if (pc.hasSkillEffect(ABSOLUTE_BARRIER)) { // 取消絕對屏障
 			pc.killSkillEffectTimer(ABSOLUTE_BARRIER);
 			pc.startHpRegeneration();
 			pc.startMpRegeneration();
@@ -113,7 +116,7 @@ public class C_Attack extends ClientBasePacket {
 		}
 		pc.killSkillEffectTimer(MEDITATION);
 
-		pc.delInvis(); // 透明状態の解除
+		pc.delInvis(); // 解除隱形狀態
 
 		pc.setRegenState(REGENSTATE_ATTACK);
 
@@ -138,13 +141,13 @@ public class C_Attack extends ClientBasePacket {
 			pc.setHeading(pc.targetDirection(x, y));
 			if (weaponType == 20 && (weaponId == 190 || arrow != null)) {
 				calcOrbit(pc.getX(), pc.getY(), pc.getHeading()); // 軌道計算
-				if (arrow != null) { // 矢がある場合
+				if (arrow != null) { // 使用弓箭
 					pc.sendPackets(new S_UseArrowSkill(pc, 0, 66, _targetX,
 							_targetY, true));
 					pc.broadcastPacket(new S_UseArrowSkill(pc, 0, 66, _targetX,
 							_targetY, true));
 					pc.getInventory().removeItem(arrow, 1);
-				} else if (weaponId == 190) { // サイハの弓
+				} else if (weaponId == 190) { // 撒哈弓
 					pc.sendPackets(new S_UseArrowSkill(pc, 0, 2349, _targetX,
 							_targetY, true));
 					pc.broadcastPacket(new S_UseArrowSkill(pc, 0, 2349,
