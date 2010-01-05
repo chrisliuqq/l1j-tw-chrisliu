@@ -26,6 +26,9 @@ import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.model.item.L1ItemId;
 import l1j.server.server.serverpackets.S_SystemMessage;
 
+/**
+ * GM指令：增加金幣
+ */
 public class L1Adena implements L1CommandExecutor {
 	private static Logger _log = Logger.getLogger(L1Adena.class.getName());
 
@@ -46,11 +49,11 @@ public class L1Adena implements L1CommandExecutor {
 					count);
 			if (adena != null) {
 				pc.sendPackets(new S_SystemMessage((new StringBuilder())
-						.append(count).append("アデナを生成しました。").toString()));
+						.append(count).append(" 金幣產生。").toString()));
 			}
 		} catch (Exception e) {
 			pc.sendPackets(new S_SystemMessage((new StringBuilder()).append(
-					".adena アデナ数 と入力して下さい。").toString()));
+					"請輸入 .adena 數量。").toString()));
 		}
 	}
 }

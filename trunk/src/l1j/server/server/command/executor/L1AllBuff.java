@@ -33,6 +33,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.templates.L1Skills;
 
+/**
+ * GM指令：給對象所有魔法
+ */
 public class L1AllBuff implements L1CommandExecutor {
 	private static Logger _log = Logger.getLogger(L1AllBuff.class.getName());
 
@@ -73,7 +76,7 @@ public class L1AllBuff implements L1CommandExecutor {
 						.getBuffDuration() * 1000, L1SkillUse.TYPE_GMBUFF);
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(".allBuff キャラクター名 と入力して下さい。"));
+			pc.sendPackets(new S_SystemMessage("請輸入 .allBuff 玩家名稱。"));
 		}
 	}
 }

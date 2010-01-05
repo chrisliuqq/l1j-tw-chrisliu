@@ -30,6 +30,9 @@ import l1j.server.server.model.skill.L1SkillUse;
 import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.templates.L1Skills;
 
+/**
+ * GM指令：輔助魔法
+ */
 public class L1Buff implements L1CommandExecutor {
 	private static Logger _log = Logger.getLogger(L1Buff.class.getName());
 
@@ -78,11 +81,11 @@ public class L1Buff implements L1CommandExecutor {
 							L1SkillUse.TYPE_GMBUFF);
 				}
 			} else {
-				pc.sendPackets(new S_SystemMessage("buff系のスキルではありません。"));
+				pc.sendPackets(new S_SystemMessage("非buff類型的魔法。"));
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(cmdName
-					+ " [all|me] skillId time と入力して下さい。"));
+			pc.sendPackets(new S_SystemMessage("請輸入 " + cmdName
+					+ " [all|me] skillId time。"));
 		}
 	}
 }

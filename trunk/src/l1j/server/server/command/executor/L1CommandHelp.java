@@ -26,6 +26,9 @@ import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.templates.L1Command;
 
+/**
+ * GM指令：取得所有指令
+ */
 public class L1CommandHelp implements L1CommandExecutor {
 	private static Logger _log = Logger
 			.getLogger(L1CommandHelp.class.getName());

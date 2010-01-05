@@ -26,6 +26,9 @@ import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.serverpackets.S_Weather;
 
+/**
+ * GM指令：改變天氣
+ */
 public class L1ChangeWeather implements L1CommandExecutor {
 	private static Logger _log = Logger.getLogger(L1ChangeWeather.class
 			.getName());
@@ -46,8 +49,8 @@ public class L1ChangeWeather implements L1CommandExecutor {
 			L1World.getInstance().broadcastPacketToAll(new S_Weather(weather));
 		} catch (Exception e) {
 			pc
-					.sendPackets(new S_SystemMessage(cmdName
-							+ " 0～3、16～19 と入力して下さい。"));
+					.sendPackets(new S_SystemMessage("請輸入 " + cmdName
+							+ " 0～3、16～19。"));
 		}
 	}
 }

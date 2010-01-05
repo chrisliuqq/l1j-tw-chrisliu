@@ -25,6 +25,9 @@ import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_DoActionGFX;
 import l1j.server.server.serverpackets.S_SystemMessage;
 
+/**
+ * GM指令：執行玩家/NPC動作
+ */
 public class L1Action implements L1CommandExecutor {
 	private static Logger _log = Logger.getLogger(L1Action.class.getName());
 
@@ -42,7 +45,7 @@ public class L1Action implements L1CommandExecutor {
 			int actId = Integer.parseInt(st.nextToken(), 10);
 			pc.sendPackets(new S_DoActionGFX(pc.getId(), actId));
 		} catch (Exception exception) {
-			pc.sendPackets(new S_SystemMessage(cmdName + " actid と入力して下さい。"));
+			pc.sendPackets(new S_SystemMessage("請輸入 " + cmdName + " actid。"));
 		}
 	}
 }

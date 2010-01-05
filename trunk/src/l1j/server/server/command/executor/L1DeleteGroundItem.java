@@ -31,6 +31,10 @@ import l1j.server.server.model.Instance.L1FurnitureInstance;
 import l1j.server.server.model.Instance.L1ItemInstance;
 import l1j.server.server.model.Instance.L1PcInstance;
 
+
+/**
+ * GM指令：刪除地上道具
+ */
 public class L1DeleteGroundItem implements L1CommandExecutor {
 	private static Logger _log = Logger.getLogger(L1DeleteGroundItem.class
 			.getName());
@@ -82,6 +86,6 @@ public class L1DeleteGroundItem implements L1CommandExecutor {
 			}
 		}
 		L1World.getInstance().broadcastServerMessage(
-				"ワールドマップ上のアイテムがGMにより削除されました。");
+				"地上的垃圾被GM清除了。");
 	}
 }

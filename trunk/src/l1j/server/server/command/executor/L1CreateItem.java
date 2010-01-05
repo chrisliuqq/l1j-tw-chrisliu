@@ -30,6 +30,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.templates.L1Item;
 
+/**
+ * GM指令：創立道具
+ */
 public class L1CreateItem implements L1CommandExecutor {
 	private static Logger _log = Logger.getLogger(L1CreateItem.class.getName());
 
@@ -64,7 +67,7 @@ public class L1CreateItem implements L1CommandExecutor {
 				itemid = ItemTable.getInstance().findItemIdByNameWithoutSpace(
 						nameid);
 				if (itemid == 0) {
-					pc.sendPackets(new S_SystemMessage("該当アイテムが見つかりません。"));
+					pc.sendPackets(new S_SystemMessage("找不到符合條件項目。"));
 					return;
 				}
 			}
@@ -104,12 +107,12 @@ public class L1CreateItem implements L1CommandExecutor {
 					}
 				}
 			} else {
-				pc.sendPackets(new S_SystemMessage("指定IDのアイテムは存在しません"));
+				pc.sendPackets(new S_SystemMessage("指定的道具編號不存在"));
 			}
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 			pc.sendPackets(new S_SystemMessage(
-					".item itemid|name [個数] [エンチャント数] [鑑定状態] と入力して下さい。"));
+					"請輸入 .item itemid|name [數目] [強化等級] [鑑定狀態]。"));
 		}
 	}
 }

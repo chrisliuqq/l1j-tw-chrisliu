@@ -31,6 +31,9 @@ import l1j.server.L1DatabaseFactory;
 import l1j.server.server.templates.L1Command;
 import l1j.server.server.utils.SQLUtil;
 
+/**
+ * 處理 GM 指令
+ */
 public class L1Commands {
 	private static Logger _log = Logger.getLogger(L1Commands.class.getName());
 
@@ -41,7 +44,7 @@ public class L1Commands {
 
 	public static L1Command get(String name) {
 		/*
-		 * デバッグやテスト容易性の為に毎回DBに読みに行きます。 キャッシュするより理論上パフォーマンスは下がりますが、無視できる範囲です。
+		 * 每次為便於調試和實驗，以便讀取數據庫。緩存性能低於理論是微不足道的。
 		 */
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -80,7 +83,7 @@ public class L1Commands {
 				result.add(fromResultSet(rs));
 			}
 		} catch (SQLException e) {
-			_log.log(Level.SEVERE, "コマンド取得エラー", e);
+			_log.log(Level.SEVERE, "GET 命令錯誤", e);
 		} finally {
 			SQLUtil.close(rs);
 			SQLUtil.close(pstm);

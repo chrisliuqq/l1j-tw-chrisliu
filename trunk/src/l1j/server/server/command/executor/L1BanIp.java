@@ -26,6 +26,9 @@ import l1j.server.server.model.L1World;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_SystemMessage;
 
+/**
+ * GM指令：禁止登入
+ */
 public class L1BanIp implements L1CommandExecutor {
 	private static Logger _log = Logger.getLogger(L1BanIp.class.getName());
 
@@ -56,7 +59,7 @@ public class L1BanIp implements L1CommandExecutor {
 			for (L1PcInstance tg : L1World.getInstance().getAllPlayers()) {
 				if (s1.equals(tg.getNetConnection().getIp())) {
 					String msg = new StringBuilder().append("IP:").append(s1)
-							.append(" で接続中のプレイヤー:").append(tg.getName())
+							.append(" 連線中的角色名稱:").append(tg.getName())
 							.toString();
 					pc.sendPackets(new S_SystemMessage(msg));
 				}
@@ -65,29 +68,29 @@ public class L1BanIp implements L1CommandExecutor {
 			if ("add".equals(s2) && !isBanned) {
 				iptable.banIp(s1); // BANリストへIPを加える
 				String msg = new StringBuilder().append("IP:").append(s1)
-						.append(" をBAN IPに登録しました。").toString();
+						.append(" 被新增到封鎖名單。").toString();
 				pc.sendPackets(new S_SystemMessage(msg));
 			} else if ("del".equals(s2) && isBanned) {
 				if (iptable.liftBanIp(s1)) { // BANリストからIPを削除する
 					String msg = new StringBuilder().append("IP:").append(s1)
-							.append(" をBAN IPから削除しました。").toString();
+							.append(" 已從封鎖名單中刪除。").toString();
 					pc.sendPackets(new S_SystemMessage(msg));
 				}
 			} else {
 				// BANの確認
 				if (isBanned) {
 					String msg = new StringBuilder().append("IP:").append(s1)
-							.append(" はBAN IPに登録されています。").toString();
+							.append(" 已被登記在封鎖名單中。").toString();
 					pc.sendPackets(new S_SystemMessage(msg));
 				} else {
 					String msg = new StringBuilder().append("IP:").append(s1)
-							.append(" はBAN IPに登録されていません。").toString();
+							.append(" 尚未被登記在封鎖名單中。").toString();
 					pc.sendPackets(new S_SystemMessage(msg));
 				}
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(cmdName
-					+ " IP [ add | del ]と入力して下さい。"));
+			pc.sendPackets(new S_SystemMessage("請輸入 " + cmdName
+					+ " IP [ add | del ]。"));
 		}
 	}
 }

@@ -26,6 +26,9 @@ import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_Disconnect;
 import l1j.server.server.serverpackets.S_SystemMessage;
 
+/**
+ * GM指令：踢掉且禁止帳號登入
+ */
 public class L1AccountBanKick implements L1CommandExecutor {
 	private static Logger _log = Logger.getLogger(L1AccountBanKick.class
 			.getName());
@@ -46,14 +49,14 @@ public class L1AccountBanKick implements L1CommandExecutor {
 				// アカウントをBANする
 				Account.ban(target.getAccountName());
 				pc.sendPackets(new S_SystemMessage(target.getName()
-						+ "さんをキックしました。"));
+						+ "被您強制踢除遊戲並封鎖IP"));
 				target.sendPackets(new S_Disconnect());
 			} else {
-				pc.sendPackets(new S_SystemMessage(
-						"そのような名前のキャラクターはワールド内には存在しません。"));
+				pc.sendPackets(new S_SystemMessage(arg
+						+ "不在線上。"));
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(cmdName + " キャラクター名 と入力して下さい。"));
+			pc.sendPackets(new S_SystemMessage("請輸入 " + cmdName + " 玩家名稱。"));
 		}
 	}
 }

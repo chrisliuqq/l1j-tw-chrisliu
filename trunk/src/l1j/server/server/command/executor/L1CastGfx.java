@@ -25,6 +25,9 @@ import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_SkillSound;
 import l1j.server.server.serverpackets.S_SystemMessage;
 
+/**
+ * GM指令：castgfxid
+ */
 public class L1CastGfx implements L1CommandExecutor {
 	private static Logger _log = Logger.getLogger(L1CastGfx.class.getName());
 
@@ -44,7 +47,7 @@ public class L1CastGfx implements L1CommandExecutor {
 			pc.sendPackets(new S_SkillSound(pc.getId(), sprid));
 			pc.broadcastPacket(new S_SkillSound(pc.getId(), sprid));
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(cmdName + " castgfxid と入力して下さい。"));
+			pc.sendPackets(new S_SystemMessage("請輸入 " + cmdName + " castgfxid。"));
 		}
 	}
 }

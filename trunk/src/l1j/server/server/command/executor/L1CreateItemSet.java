@@ -30,6 +30,9 @@ import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.templates.L1Item;
 import l1j.server.server.templates.L1ItemSetItem;
 
+/**
+ * GM指令：創立套裝
+ */
 public class L1CreateItemSet implements L1CommandExecutor {
 	private static Logger _log = Logger.getLogger(L1CreateItemSet.class
 			.getName());
@@ -47,7 +50,7 @@ public class L1CreateItemSet implements L1CommandExecutor {
 			String name = new StringTokenizer(arg).nextToken();
 			List<L1ItemSetItem> list = GMCommandsConfig.ITEM_SETS.get(name);
 			if (list == null) {
-				pc.sendPackets(new S_SystemMessage(name + " 未定義のセットです"));
+				pc.sendPackets(new S_SystemMessage(name + " 是未定義的套裝。"));
 				return;
 			}
 			for (L1ItemSetItem item : list) {
@@ -64,7 +67,7 @@ public class L1CreateItemSet implements L1CommandExecutor {
 				}
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(".itemset セット名 と入力してください。"));
+			pc.sendPackets(new S_SystemMessage("請輸入 .itemset 套裝名稱。"));
 		}
 	}
 }

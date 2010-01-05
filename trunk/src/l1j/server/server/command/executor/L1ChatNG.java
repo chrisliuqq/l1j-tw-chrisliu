@@ -29,6 +29,9 @@ import l1j.server.server.serverpackets.S_SkillIconGFX;
 import l1j.server.server.serverpackets.S_SystemMessage;
 import static l1j.server.server.model.skill.L1SkillId.*;
 
+/**
+ * GM指令：禁言
+ */
 public class L1ChatNG implements L1CommandExecutor {
 	private static Logger _log = Logger.getLogger(L1ChatNG.class.getName());
 
@@ -56,8 +59,8 @@ public class L1ChatNG implements L1CommandExecutor {
 				pc.sendPackets(new S_ServerMessage(287, name)); // %0のチャットを禁じました。
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(cmdName
-					+ " キャラクター名 時間（分） と入力して下さい。"));
+			pc.sendPackets(new S_SystemMessage("請輸入 " + cmdName
+					+ " 玩家名稱 時間(分)。"));
 		}
 	}
 }

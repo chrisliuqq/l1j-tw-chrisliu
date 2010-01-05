@@ -22,7 +22,7 @@ import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_SystemMessage;
 
 /**
- * 入力された引数をそのまま返すコマンド。 テスト、デバッグ及びコマンド実装サンプル用。
+ * GM指令：返回指令被輸入不帶任何參數。測試，調試和命令執行情況的樣本。
  */
 public class L1Echo implements L1CommandExecutor {
 	private L1Echo() {

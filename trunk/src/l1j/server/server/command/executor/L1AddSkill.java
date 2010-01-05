@@ -27,6 +27,10 @@ import l1j.server.server.serverpackets.S_SkillSound;
 import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.templates.L1Skills;
 
+/**
+ * TODO: 翻譯
+ * GM指令：增加魔法
+ */
 public class L1AddSkill implements L1CommandExecutor {
 	private static Logger _log = Logger.getLogger(L1AddSkill.class.getName());
 
@@ -172,7 +176,7 @@ public class L1AddSkill implements L1CommandExecutor {
 				}
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage(cmdName + " コマンドエラー"));
+			pc.sendPackets(new S_SystemMessage(cmdName + " 指令錯誤。"));
 		}
 	}
 }
