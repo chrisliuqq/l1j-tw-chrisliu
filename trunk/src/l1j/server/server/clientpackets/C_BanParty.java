@@ -43,7 +43,7 @@ public class C_BanParty extends ClientBasePacket {
 		L1PcInstance player = client.getActiveChar();
 		if (!player.getParty().isLeader(player)) {
 			// 是組對對長
-			player.sendPackets(new S_ServerMessage(427)); // パーティーのリーダーのみが追放できます。
+			player.sendPackets(new S_ServerMessage(427)); // 只有領導者才有驅逐隊伍成員的權力。
 			return;
 		}
 
@@ -54,7 +54,7 @@ public class C_BanParty extends ClientBasePacket {
 			}
 		}
 
-		player.sendPackets(new S_ServerMessage(426, s)); // %0はパーティーメンバーではありません。
+		player.sendPackets(new S_ServerMessage(426, s)); // %0%d 不屬於任何隊伍。
 	}
 
 	@Override

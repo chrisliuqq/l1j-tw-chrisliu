@@ -73,6 +73,11 @@ import static l1j.server.server.model.skill.L1SkillId.*;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 //
+
+/**
+ * 處理收到由客戶端傳來登入到伺服器的封包
+ */
+
 public class C_LoginToServer extends ClientBasePacket {
 
 	private static final String C_LOGIN_TO_SERVER = "[C] C_LoginToServer";
@@ -88,15 +93,15 @@ public class C_LoginToServer extends ClientBasePacket {
 		String charName = readS();
 
 		if (client.getActiveChar() != null) {
-			_log.info("同一IDでの重複接続の為(" + client.getHostname()
-					+ ")との接続を強制切断しました。");
+			_log.info("同一個角色重複登入，強制切斷 " + client.getHostname()
+					+ ") 的連結");
 			client.close();
 			return;
 		}
 
 		L1PcInstance pc = L1PcInstance.load(charName);
 		if (pc == null || !login.equals(pc.getAccountName())) {
-			_log.info("無効なログインリクエスト: char=" + charName + " account=" + login
+			_log.info("無效的角色名稱: char=" + charName + " account=" + login
 					+ " host=" + client.getHostname());
 			client.close();
 			return;
@@ -104,14 +109,14 @@ public class C_LoginToServer extends ClientBasePacket {
 
 		if (Config.LEVEL_DOWN_RANGE != 0) {
 			if (pc.getHighLevel() - pc.getLevel() >= Config.LEVEL_DOWN_RANGE) {
-				_log.info("レベルダウンの許容範囲を超えたキャラクターのログインリクエスト: char="
+				_log.info("登錄請求超出了容忍的等級下降的角色: char="
 						+ charName + " account=" + login + " host=" + client.getHostname());
 				client.kick();
 				return;
 			}
 		}
 
-		_log.info("キャラクターログイン: char=" + charName + " account=" + login
+		_log.info("角色登入到伺服器中: char=" + charName + " account=" + login
 				+ " host=" + client.getHostname());
 
 		int currentHpAtLoad = pc.getCurrentHp();
@@ -132,7 +137,7 @@ public class C_LoginToServer extends ClientBasePacket {
 
 		bookmarks(pc);
 
-		// リスタート先がgetback_restartテーブルで指定されていたら移動させる
+		// 如果設定檔中設定自動回村的話
 		GetBackRestartTable gbrTable = GetBackRestartTable.getInstance();
 		L1GetBackRestart[] gbrList = gbrTable.getGetBackRestartTableList();
 		for (L1GetBackRestart gbr : gbrList) {
@@ -144,7 +149,7 @@ public class C_LoginToServer extends ClientBasePacket {
 			}
 		}
 
-		// altsettings.propertiesでGetBackがtrueなら街に移動させる
+		// altsettings.properties 中 GetBack 設定為 true 就自動回村
 		if (Config.GET_BACK) {
 			int[] loc = Getback.GetBack_Location(pc, true);
 			pc.setX(loc[0]);
@@ -152,14 +157,14 @@ public class C_LoginToServer extends ClientBasePacket {
 			pc.setMap((short) loc[2]);
 		}
 
-		// 戦争中の旗内に居た場合、城主血盟でない場合は帰還させる。
+		// 如果標記是在戰爭期間，如果不是血盟成員回到城堡。
 		int castle_id = L1CastleLocation.getCastleIdByArea(pc);
 		if (0 < castle_id) {
 			if (WarTimeController.getInstance().isNowWar(castle_id)) {
 				L1Clan clan = L1World.getInstance().getClan(pc.getClanname());
 				if (clan != null) {
 					if (clan.getCastleId() != castle_id) {
-						// 城主クランではない
+						// 沒有城堡
 						int[] loc = new int[3];
 						loc = L1CastleLocation.getGetBackLoc(castle_id);
 						pc.setX(loc[0]);
@@ -167,7 +172,7 @@ public class C_LoginToServer extends ClientBasePacket {
 						pc.setMap((short) loc[2]);
 					}
 				} else {
-					// クランに所属して居ない場合は帰還
+					// 有城堡就回到城堡
 					int[] loc = new int[3];
 					loc = L1CastleLocation.getGetBackLoc(castle_id);
 					pc.setX(loc[0]);
@@ -194,12 +199,12 @@ public class C_LoginToServer extends ClientBasePacket {
 
 		pc.sendPackets(new S_SPMR(pc));
 
-		// XXX タイトル情報はS_OwnCharPackに含まれるので多分不要
+		// XXX S_OwnCharPack 可能是不必要的
 		S_CharTitle s_charTitle = new S_CharTitle(pc.getId(), pc.getTitle());
 		pc.sendPackets(s_charTitle);
 		pc.broadcastPacket(s_charTitle);
 
-		pc.sendVisualEffectAtLogin(); // クラウン、毒、水中等の視覚効果を表示
+		pc.sendVisualEffectAtLogin(); // 皇冠，毒，水和其他視覺效果顯示
 
 		pc.sendPackets(new S_Weather(L1World.getInstance().getWeather()));
 
@@ -231,10 +236,10 @@ public class C_LoginToServer extends ClientBasePacket {
 
 		WarTimeController.getInstance().checkCastleWar(pc);
 
-		if (pc.getClanid() != 0) { // クラン所属中
+		if (pc.getClanid() != 0) { // 有血盟
 			L1Clan clan = L1World.getInstance().getClan(pc.getClanname());
 			if (clan != null) {
-				if (pc.getClanid() == clan.getClanId() && // クランを解散して、再度、同名のクランが創設された時の対策
+				if (pc.getClanid() == clan.getClanId() && // 血盟解散、又重新用同樣名字創立時的對策
 						pc.getClanname().toLowerCase().equals(
 								clan.getClanName().toLowerCase())) {
 					L1PcInstance[] clanMembers = clan.getOnlineClanMember();
@@ -245,10 +250,10 @@ public class C_LoginToServer extends ClientBasePacket {
 						}
 					}
 
-					// 全戦争リストを取得
+					// 取得所有的盟戰
 					for (L1War war : L1World.getInstance().getWarList()) {
 						boolean ret = war.CheckClanInWar(pc.getClanname());
-						if (ret) { // 戦争に参加中
+						if (ret) { // 盟戰中
 							String enemy_clan_name = war.GetEnemyClanName(pc
 									.getClanname());
 							if (enemy_clan_name != null) {
@@ -263,7 +268,7 @@ public class C_LoginToServer extends ClientBasePacket {
 					pc.setClanid(0);
 					pc.setClanname("");
 					pc.setClanRank(0);
-					pc.save(); // DBにキャラクター情報を書き込む
+					pc.save(); // 儲存玩家的資料到資料庫中
 				}
 			}
 		}
@@ -291,7 +296,7 @@ public class C_LoginToServer extends ClientBasePacket {
 		pc.startObjectAutoUpdate();
 		client.CharReStart(false);
 		pc.beginExpMonitor();
-		pc.save(); // DBにキャラクター情報を書き込む
+		pc.save(); // 儲存玩家的資料到資料庫中
 
 		pc.sendPackets(new S_OwnCharStatus(pc));
 
@@ -301,7 +306,7 @@ public class C_LoginToServer extends ClientBasePacket {
 	}
 
 	private void items(L1PcInstance pc) {
-		// DBからキャラクターと倉庫のアイテムを読み込む
+		// 從資料庫中讀取角色的道具
 		CharacterTable.getInstance().restoreInventory(pc);
 
 		pc.sendPackets(new S_InvList(pc.getInventory().getItems()));
@@ -518,32 +523,32 @@ public class C_LoginToServer extends ClientBasePacket {
 			while (rs.next()) {
 				int skillid = rs.getInt("skill_id");
 				int remaining_time = rs.getInt("remaining_time");
-				if (skillid == SHAPE_CHANGE) { // 変身
+				if (skillid == SHAPE_CHANGE) { // 變身
 					int poly_id = rs.getInt("poly_id");
 					L1PolyMorph.doPoly(pc, poly_id, remaining_time, L1PolyMorph
 							.MORPH_BY_LOGIN);
-				} else if (skillid == STATUS_BRAVE) { // ブレイブ ポーション等
+				} else if (skillid == STATUS_BRAVE) { // 勇敢藥水
 					pc.sendPackets(new S_SkillBrave(pc.getId(), 1,
 							remaining_time));
 					pc.broadcastPacket(new S_SkillBrave(pc.getId(), 1, 0));
 					pc.setBraveSpeed(1);
 					pc.setSkillEffect(skillid, remaining_time * 1000);
-				} else if (skillid == STATUS_ELFBRAVE) { // エルヴンワッフル
+				} else if (skillid == STATUS_ELFBRAVE) { // 精靈餅乾
 					pc.sendPackets(new S_SkillBrave(pc.getId(), 3,
 							remaining_time));
 					pc.broadcastPacket(new S_SkillBrave(pc.getId(), 3, 0));
 					pc.setBraveSpeed(1);
 					pc.setSkillEffect(skillid, remaining_time * 1000);
-				} else if (skillid == STATUS_HASTE) { // グリーン ポーション
+				} else if (skillid == STATUS_HASTE) { // 加速
 					pc.sendPackets(new S_SkillHaste(pc.getId(), 1,
 							remaining_time));
 					pc.broadcastPacket(new S_SkillHaste(pc.getId(), 1, 0));
 					pc.setMoveSpeed(1);
 					pc.setSkillEffect(skillid, remaining_time * 1000);
-				} else if (skillid == STATUS_BLUE_POTION) { // ブルーポーション
+				} else if (skillid == STATUS_BLUE_POTION) { // 藍色藥水
 					pc.sendPackets(new S_SkillIconGFX(34, remaining_time));
 					pc.setSkillEffect(skillid, remaining_time * 1000);
-				} else if (skillid == STATUS_CHAT_PROHIBITED) { // チャット禁止
+				} else if (skillid == STATUS_CHAT_PROHIBITED) { // 禁言
 					pc.sendPackets(new S_SkillIconGFX(36, remaining_time));
 					pc.setSkillEffect(skillid, remaining_time * 1000);
 				} else if (skillid >= COOKING_1_0_N && skillid <= COOKING_1_6_N
@@ -551,7 +556,7 @@ public class C_LoginToServer extends ClientBasePacket {
 						|| skillid >= COOKING_2_0_N && skillid <= COOKING_2_6_N
 						|| skillid >= COOKING_2_0_S && skillid <= COOKING_2_6_S
 						|| skillid >= COOKING_3_0_N && skillid <= COOKING_3_6_N
-						|| skillid >= COOKING_3_0_S && skillid <= COOKING_3_6_S) { // 料理(デザートは除く)
+						|| skillid >= COOKING_3_0_S && skillid <= COOKING_3_6_S) { // 料理
 					L1Cooking.eatCooking(pc, skillid, remaining_time);
 				} else {
 					L1SkillUse l1skilluse = new L1SkillUse();

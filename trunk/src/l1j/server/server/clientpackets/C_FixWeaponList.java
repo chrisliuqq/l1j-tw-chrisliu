@@ -28,6 +28,9 @@ import l1j.server.server.serverpackets.S_FixWeaponList;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來要求修復武器清單的封包
+ */
 public class C_FixWeaponList extends ClientBasePacket {
 
 	private static final String C_FIX_WEAPON_LIST = "[C] C_FixWeaponList";

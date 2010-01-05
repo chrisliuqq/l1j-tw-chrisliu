@@ -30,6 +30,9 @@ import l1j.server.server.model.Instance.L1PetInstance;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來選擇目標的封包
+ */
 public class C_SelectTarget extends ClientBasePacket {
 
 	private static final String C_SELECT_TARGET = "[C] C_SelectTarget";

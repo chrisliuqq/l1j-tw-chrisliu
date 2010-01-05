@@ -24,6 +24,9 @@ import l1j.server.server.ClientThread;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來維持連線的封包
+ */
 public class C_KeepALIVE extends ClientBasePacket {
 	private static Logger _log = Logger.getLogger(C_KeepALIVE.class.getName());
 	private static final String C_KEEP_ALIVE = "[C] C_KeepALIVE";

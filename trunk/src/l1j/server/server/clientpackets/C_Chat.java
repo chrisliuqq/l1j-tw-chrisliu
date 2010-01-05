@@ -61,7 +61,7 @@ public class C_Chat extends ClientBasePacket {
 			return;
 		}
 		if (pc.hasSkillEffect(1005)) { // 被魔封
-			pc.sendPackets(new S_ServerMessage(242)); // 現在不能說話。
+			pc.sendPackets(new S_ServerMessage(242)); // 你從現在被禁止閒談。
 			return;
 		}
 
@@ -246,14 +246,14 @@ public class C_Chat extends ClientBasePacket {
 						}
 					}
 				} else {
-					pc.sendPackets(new S_ServerMessage(462)); // \f1空腹のためチャットできません。
+					pc.sendPackets(new S_ServerMessage(462)); // 你太過於饑餓以致於無法談話。
 				}
 			} else {
 				pc.sendPackets(new S_ServerMessage(510)); // 現在ワールドチャットは停止中となっております。しばらくの間ご了承くださいませ。
 			}
 		} else {
 			pc.sendPackets(new S_ServerMessage(195, String
-					.valueOf(Config.GLOBAL_CHAT_LEVEL))); // レベル%0未満のキャラクターはチャットができません。
+					.valueOf(Config.GLOBAL_CHAT_LEVEL))); // 等級 %0 以下的角色無法使用公頻或買賣頻道。
 		}
 	}
 

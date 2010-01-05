@@ -33,6 +33,9 @@ import l1j.server.server.serverpackets.S_NPCTalkReturn;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket, C_NPCTalk
 
+/**
+ * 處理收到由客戶端傳來NPC講話的封包
+ */
 public class C_NPCTalk extends ClientBasePacket {
 
 	private static final String C_NPC_TALK = "[C] C_NPCTalk";
@@ -55,7 +58,7 @@ public class C_NPCTalk extends ClientBasePacket {
 			}
 			obj.onTalkAction(pc);
 		} else {
-			_log.severe("オブジェクトが見つかりません objid=" + objid);
+			_log.severe("不正確的NPC objid=" + objid);
 		}
 	}
 

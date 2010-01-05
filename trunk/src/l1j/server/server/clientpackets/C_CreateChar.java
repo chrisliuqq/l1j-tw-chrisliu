@@ -42,6 +42,9 @@ import l1j.server.server.utils.CalcInitHpMp;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來建立角色的封包
+ */
 public class C_CreateChar extends ClientBasePacket {
 
 	private static Logger _log = Logger.getLogger(C_CreateChar.class.getName());
@@ -102,7 +105,7 @@ public class C_CreateChar extends ClientBasePacket {
 		
 		if (client.getAccount().countCharacters() >= maxAmount) {
 			_log.fine("account: " + client.getAccountName()
-					+ " " + maxAmount + "を超えるキャラクター作成要求。");
+					+ " 超過角色上限數目: " + maxAmount + "。");
 			S_CharCreateStatus s_charcreatestatus1 = new S_CharCreateStatus(
 					S_CharCreateStatus.REASON_WRONG_AMOUNT);
 			client.sendPacket(s_charcreatestatus1);
@@ -229,7 +232,7 @@ public class C_CreateChar extends ClientBasePacket {
 			String skill_name = l1skills.getName();
 			int skill_id = l1skills.getSkillId();
 			SkillsTable.getInstance().spellMastery(object_id, skill_id,
-					skill_name, 0, 0); // DBに登録
+					skill_name, 0, 0); // 儲存魔法資料到資料庫中
 		}
 		Beginner.getInstance().GiveItem(pc);
 		pc.setAccountName(client.getAccountName());
@@ -274,8 +277,8 @@ public class C_CreateChar extends ClientBasePacket {
 			return false;
 		}
 
-		// XXX - 本鯖の仕様と同等か未確認
-		// 全角文字が5文字を超えるか、全体で12バイトを超えたら無効な名前とする
+		// XXX - 規則還沒確定
+		// 雙字節字符或5個字符以上或整個超過 12個字節就視為一個無效的名稱
 		if (5 < (numOfNameBytes - name.length()) || 12 < numOfNameBytes) {
 			return false;
 		}

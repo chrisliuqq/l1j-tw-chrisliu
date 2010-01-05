@@ -28,6 +28,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來的查詢PK次數封包
+ */
 public class C_CheckPK extends ClientBasePacket {
 
 	private static final String C_CHECK_PK = "[C] C_CheckPK";
@@ -39,7 +42,7 @@ public class C_CheckPK extends ClientBasePacket {
 
 		L1PcInstance player = clientthread.getActiveChar();
 		player.sendPackets(new S_ServerMessage(562, String.valueOf(player
-				.get_PKcount()))); // 現在のPK回数は%0です。
+				.get_PKcount()))); // 你的PK次數為%0次。
 	}
 
 	@Override

@@ -29,6 +29,9 @@ import l1j.server.server.model.Instance.L1PcInstance;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來刪除好友的封包
+ */
 public class C_DelBuddy extends ClientBasePacket {
 
 	private static final String C_DEL_BUDDY = "[C] C_DelBuddy";

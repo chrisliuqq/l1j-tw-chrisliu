@@ -33,6 +33,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來變更稱號的封包
+ */
 public class C_Title extends ClientBasePacket {
 
 	private static final String C_TITLE = "[C] C_Title";
@@ -60,7 +63,7 @@ public class C_Title extends ClientBasePacket {
 		}
 
 		if (isClanLeader(pc)) { // 血盟主
-			if (pc.getId() == target.getId()) { // 自分
+			if (pc.getId() == target.getId()) { // 自己
 				if (pc.getLevel() < 10) {
 					// \f1血盟員の場合、呼称を持つにはレベル10以上でなければなりません。
 					pc.sendPackets(new S_ServerMessage(197));
@@ -120,7 +123,7 @@ public class C_Title extends ClientBasePacket {
 		pc.sendPackets(new S_CharTitle(objectId, title));
 		pc.broadcastPacket(new S_CharTitle(objectId, title));
 		try {
-			pc.save(); // DBにキャラクター情報を書き迂む
+			pc.save(); // 儲存玩家的資料到資料庫中
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		}
@@ -128,7 +131,7 @@ public class C_Title extends ClientBasePacket {
 
 	private boolean isClanLeader(L1PcInstance pc) {
 		boolean isClanLeader = false;
-		if (pc.getClanid() != 0) { // クラン所属
+		if (pc.getClanid() != 0) { // 有血盟
 			L1Clan clan = L1World.getInstance().getClan(pc.getClanname());
 			if (clan != null) {
 				if (pc.isCrown() && pc.getId() == clan.getLeaderId()) { // 君主、かつ、血盟主

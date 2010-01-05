@@ -33,6 +33,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來的密語封包
+ */
 public class C_ChatWhisper extends ClientBasePacket {
 
 	private static final String C_CHAT_WHISPER = "[C] C_ChatWhisper";
@@ -44,37 +47,37 @@ public class C_ChatWhisper extends ClientBasePacket {
 		String targetName = readS();
 		String text = readS();
 		L1PcInstance whisperFrom = client.getActiveChar();
-		// チャット禁止中の場合
+		// 被魔封
 		if (whisperFrom.hasSkillEffect(1005)) {
-			whisperFrom.sendPackets(new S_ServerMessage(242)); // 現在チャット禁止中です。
+			whisperFrom.sendPackets(new S_ServerMessage(242)); // 你從現在被禁止閒談。
 			return;
 		}
-		// ウィスパー可能なLv未満の場合
+		// 等級不夠
 		if (whisperFrom.getLevel() < Config.WHISPER_CHAT_LEVEL) {
 			whisperFrom.sendPackets(new S_ServerMessage(404, String
-					.valueOf(Config.WHISPER_CHAT_LEVEL))); // %0レベル以下ではウィスパー、パーティーチャットは使用できません。
+					.valueOf(Config.WHISPER_CHAT_LEVEL))); // 等級 %0 以下無法使用密談。
 			return;
 		}
 		L1PcInstance whisperTo = L1World.getInstance().getPlayer(targetName);
-		// ワールドにいない場合
+		// 密語對象不存在
 		if (whisperTo == null) {
-			whisperFrom.sendPackets(new S_ServerMessage(73, targetName)); // \f1%0はゲームをしていません。
+			whisperFrom.sendPackets(new S_ServerMessage(73, targetName)); // \f1%0%d 不在線上。
 			return;
 		}
-		// 自分自身に対するwisの場合
+		// 自己跟自己說話
 		if (whisperTo.equals(whisperFrom)) {
 			return;
 		}
-		// 遮断されている場合
+		// 斷絕密語
 		if (whisperTo.getExcludingList().contains(whisperFrom.getName())) {
 			whisperFrom.sendPackets(new S_ServerMessage(117, whisperTo
-					.getName())); // %0があなたを遮断しました。
+					.getName())); // %0%s 斷絕你的密語。
 			return;
 		}
-		// ゲームオプションでOFFにしている場合
+		// 關閉密語
 		if (!whisperTo.isCanWhisper()) {
 			whisperFrom.sendPackets(new S_ServerMessage(205, whisperTo
-					.getName()));
+					.getName())); // \f1%0%d 目前關閉悄悄話。
 			return;
 		}
 

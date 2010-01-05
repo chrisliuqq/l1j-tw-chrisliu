@@ -32,6 +32,9 @@ import l1j.server.server.templates.L1Castle;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * TODO: 處理收到由客戶端傳來納稅的封包(?)
+ */
 public class C_Deposit extends ClientBasePacket {
 
 	private static final String C_DEPOSIT = "[C] C_Deposit";
@@ -49,7 +52,7 @@ public class C_Deposit extends ClientBasePacket {
 			L1Clan clan = L1World.getInstance().getClan(player.getClanname());
 			if (clan != null) {
 				int castle_id = clan.getCastleId();
-				if (castle_id != 0) { // 城主クラン
+				if (castle_id != 0) { // 有城堡的盟主
 					L1Castle l1castle = CastleTable.getInstance()
 							.getCastleTable(castle_id);
 					synchronized (l1castle) {

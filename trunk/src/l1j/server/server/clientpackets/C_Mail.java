@@ -36,6 +36,9 @@ import l1j.server.server.templates.L1Mail;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來信件的封包
+ */
 public class C_Mail extends ClientBasePacket {
 
 	private static final String C_MAIL = "[C] C_Mail";
@@ -51,22 +54,22 @@ public class C_Mail extends ClientBasePacket {
 		int type = readC();
 		L1PcInstance pc = client.getActiveChar();
 
-		if (type == 0x00 || type == 0x01 || type == 0x02) { // 開く
+		if (type == 0x00 || type == 0x01 || type == 0x02) { // 開啟
 			pc.sendPackets(new S_Mail(pc.getName(), type));
-		} else if (type == 0x10 || type == 0x11 || type == 0x12) { // 読む
+		} else if (type == 0x10 || type == 0x11 || type == 0x12) { // 讀取
 			int mailId = readD();
 			L1Mail mail = MailTable.getInstance().getMail(mailId);
 			if (mail.getReadStatus() == 0) {
 				MailTable.getInstance().setReadStatus(mailId);
 			}
 			pc.sendPackets(new S_Mail(mailId, type));
-		} else if (type == 0x20) { // 一般メールを書く
+		} else if (type == 0x20) { // 一般信紙
 			int unknow = readH();
 			String receiverName = readS();
 			byte[] text = readByte();
 			L1PcInstance receiver = L1World.getInstance().
 					getPlayer(receiverName);
-			if (receiver != null) { // オンライン中
+			if (receiver != null) { // 對方在線上
 				if (getMailSizeByReceiver(receiverName,
 						TYPE_NORMAL_MAIL) >= 20) {
 					pc.sendPackets(new S_Mail(type));
@@ -78,7 +81,7 @@ public class C_Mail extends ClientBasePacket {
 					receiver.sendPackets(new S_Mail(receiverName,
 							TYPE_NORMAL_MAIL));
 				}
-			} else { // オフライン中
+			} else { // 對方離線中
 				try {
 					L1PcInstance restorePc = CharacterTable.getInstance()
 							.restoreCharacter(receiverName);
@@ -97,7 +100,7 @@ public class C_Mail extends ClientBasePacket {
 					_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 				}
 			}
-		} else if (type == 0x21) { // 血盟メールを書く
+		} else if (type == 0x21) { // 血盟信紙
 			int unknow = readH();
 			String clanName = readS();
 			byte[] text = readByte();
@@ -112,17 +115,17 @@ public class C_Mail extends ClientBasePacket {
 							pc, text);
 					L1PcInstance clanPc = L1World.getInstance().
 							getPlayer(name);
-					if (clanPc != null) { // オンライン中
+					if (clanPc != null) { // 在線上
 						clanPc.sendPackets(new S_Mail(name,
 								TYPE_CLAN_MAIL));
 					}
 				}
 			}
-		} else if (type == 0x30 || type == 0x31 || type == 0x32) { // 削除
+		} else if (type == 0x30 || type == 0x31 || type == 0x32) { // 刪除
 			int mailId = readD();
 			MailTable.getInstance().deleteMail(mailId);
 			pc.sendPackets(new S_Mail(mailId, type));
-		} else if(type == 0x40) { // 保管箱に保存
+		} else if(type == 0x40) { // 保管箱儲存
 			int mailId = readD();
 			MailTable.getInstance().setMailType(mailId, TYPE_MAIL_BOX);
 			pc.sendPackets(new S_Mail(mailId, type));

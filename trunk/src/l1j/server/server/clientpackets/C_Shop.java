@@ -36,6 +36,9 @@ import l1j.server.server.templates.L1PrivateShopSellList;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來商店的封包
+ */
 public class C_Shop extends ClientBasePacket {
 
 	private static final String C_SHOP = "[C] C_Shop";
@@ -70,12 +73,12 @@ public class C_Shop extends ClientBasePacket {
 				sellObjectId = readD();
 				sellPrice = readD();
 				sellCount = readD();
-				// 取引可能なアイテムかチェック
+				// 檢查交易項目
 				checkItem = pc.getInventory().getItem(sellObjectId);
 				if (!checkItem.getItem().isTradable()) {
 					tradable = false;
 					pc.sendPackets(new S_ServerMessage(166, // \f1%0が%4%1%3%2
-							checkItem.getItem().getName(), "取引不可能です。"));
+							checkItem.getItem().getName(), "這是不可能處理。"));
 				}
 				Object[] petlist = pc.getPetList().values().toArray();
 				for (Object petObject : petlist) {
@@ -85,7 +88,7 @@ public class C_Shop extends ClientBasePacket {
 							tradable = false;
 							pc.sendPackets(new S_ServerMessage(166, // \f1%0が%4%1%3%2
 									checkItem.getItem().getName(),
-									"取引不可能です。"));
+									"這是不可能處理。"));
 							break;
 						}
 					}
@@ -104,14 +107,14 @@ public class C_Shop extends ClientBasePacket {
 				buyObjectId = readD();
 				buyPrice = readD();
 				buyCount = readD();
-				// 取引可能なアイテムかチェック
+				// 檢查交易項目
 				checkItem = pc.getInventory().getItem(buyObjectId);
 				if (!checkItem.getItem().isTradable()) {
 					tradable = false;
 					pc.sendPackets(new S_ServerMessage(166, // \f1%0が%4%1%3%2
-							checkItem.getItem().getName(), "取引不可能です。"));
+							checkItem.getItem().getName(), "這是不可能處理。"));
 				}
-				if (checkItem.getBless() >= 128) { // 封印された装備
+				if (checkItem.getBless() >= 128) { // 封印的裝備
 					// \f1%0は捨てたりまたは他人に讓ることができません。
 					pc.sendPackets(new S_ServerMessage(210, checkItem.getItem()
 							.getName()));
@@ -126,7 +129,7 @@ public class C_Shop extends ClientBasePacket {
 							tradable = false;
 							pc.sendPackets(new S_ServerMessage(166, // \f1%0が%4%1%3%2
 									checkItem.getItem().getName(),
-									"取引不可能です。"));
+									"這是不可能處理。"));
 							break;
 						}
 					}
@@ -137,7 +140,7 @@ public class C_Shop extends ClientBasePacket {
 				psbl.setBuyTotalCount(buyCount);
 				buyList.add(psbl);
 			}
-			if (!tradable) { // 取引不可能なアイテムが含まれている場合、個人商店終了
+			if (!tradable) { // 如果項目不包括在交易結束零售商
 				sellList.clear();
 				buyList.clear();
 				pc.setPrivateShop(false);

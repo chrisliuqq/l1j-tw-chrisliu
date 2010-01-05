@@ -30,6 +30,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來刪除身上道具的封包
+ */
 public class C_DeleteInventoryItem extends ClientBasePacket {
 
 	private static Logger _log = Logger.getLogger(C_DeleteInventoryItem.class
@@ -43,13 +46,13 @@ public class C_DeleteInventoryItem extends ClientBasePacket {
 		L1PcInstance pc = client.getActiveChar();
 		L1ItemInstance item = pc.getInventory().getItem(itemObjectId);
 
-		// 削除しようとしたアイテムがサーバー上に無い場合
+		// 沒有要刪除的道具
 		if (item == null) {
 			return;
 		}
 
 		if (item.getItem().isCantDelete()) {
-			// \f1削除できないアイテムや装備しているアイテムは捨てられません。
+			// \f1你不能夠放棄此樣物品。
 			pc.sendPackets(new S_ServerMessage(125));
 			return;
 		}
@@ -59,7 +62,7 @@ public class C_DeleteInventoryItem extends ClientBasePacket {
 			if (petObject instanceof L1PetInstance) {
 				L1PetInstance pet = (L1PetInstance) petObject;
 				if (item.getId() == pet.getItemObjId()) {
-					// \f1%0は捨てたりまたは他人に讓ることができません。
+					// \f1%0%d是不可轉移的…
 					pc.sendPackets(new S_ServerMessage(210, item.getItem()
 							.getName()));
 					return;

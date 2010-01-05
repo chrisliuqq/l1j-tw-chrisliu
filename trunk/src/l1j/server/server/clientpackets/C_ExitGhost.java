@@ -25,6 +25,9 @@ import l1j.server.server.model.Instance.L1PcInstance;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來結束 ghost 狀態的封包
+ */
 public class C_ExitGhost extends ClientBasePacket {
 
 	private static Logger _log = Logger.getLogger(C_ExitGhost.class

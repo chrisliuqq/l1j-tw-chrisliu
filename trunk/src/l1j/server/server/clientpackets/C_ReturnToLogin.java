@@ -26,6 +26,9 @@ import l1j.server.server.LoginController;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來回到登入畫面的封包
+ */
 public class C_ReturnToLogin extends ClientBasePacket {
 
 	private static final String C_RETURN_TO_LOGIN = "[C] C_ReturnToLogin";

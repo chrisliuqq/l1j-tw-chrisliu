@@ -32,6 +32,9 @@ import l1j.server.server.utils.FaceToFace;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來加入血盟的封包
+ */
 public class C_JoinClan extends ClientBasePacket {
 
 	private static final String C_JOIN_CLAN = "[C] C_JoinClan";
@@ -53,14 +56,14 @@ public class C_JoinClan extends ClientBasePacket {
 	}
 
 	private void JoinClan(L1PcInstance player, L1PcInstance target) {
-		if (!target.isCrown()) { // 相手がプリンスまたはプリンセス以外
+		if (!target.isCrown()) { // 如果面對的對象不是王族
 			player.sendPackets(new S_ServerMessage(92, target.getName())); // \f1%0はプリンスやプリンセスではありません。
 			return;
 		}
 
 		int clan_id = target.getClanid();
 		String clan_name = target.getClanname();
-		if (clan_id == 0) { // 相手のクランがない
+		if (clan_id == 0) { // 面對的對象沒有創立血盟
 			player.sendPackets(new S_ServerMessage(90, target.getName())); // \f1%0は血盟を創設していない状態です。
 			return;
 		}
@@ -70,13 +73,13 @@ public class C_JoinClan extends ClientBasePacket {
 			return;
 		}
 
-		if (target.getId() != clan.getLeaderId()) { // 相手が血盟主以外
+		if (target.getId() != clan.getLeaderId()) { // 面對的對象不是盟主
 			player.sendPackets(new S_ServerMessage(92, target.getName())); // \f1%0はプリンスやプリンセスではありません。
 			return;
 		}
 
-		if (player.getClanid() != 0) { // 既にクランに加入済み
-			if (player.isCrown()) { // 自分が君主
+		if (player.getClanid() != 0) { // 已經加入血盟
+			if (player.isCrown()) { // 自己是盟主
 				String player_clan_name = player.getClanname();
 				L1Clan player_clan = L1World.getInstance().getClan(
 						player_clan_name);
@@ -84,12 +87,12 @@ public class C_JoinClan extends ClientBasePacket {
 					return;
 				}
 
-				if (player.getId() != player_clan.getLeaderId()) { // 自分が血盟主以外
+				if (player.getId() != player_clan.getLeaderId()) { // 已經加入其他血盟
 					player.sendPackets(new S_ServerMessage(89)); // \f1あなたはすでに血盟に加入しています。
 					return;
 				}
 
-				if (player_clan.getCastleId() != 0 || // 自分が城主・アジト保有
+				if (player_clan.getCastleId() != 0 || // 有城堡或有血盟小屋
 						player_clan.getHouseId() != 0) {
 					player.sendPackets(new S_ServerMessage(665)); // \f1城やアジトを所有した状態で血盟を解散することはできません。
 					return;
@@ -100,7 +103,7 @@ public class C_JoinClan extends ClientBasePacket {
 			}
 		}
 
-		target.setTempID(player.getId()); // 相手のオブジェクトIDを保存しておく
+		target.setTempID(player.getId()); // 暫時保存面對的人的ID
 		target.sendPackets(new S_Message_YN(97, player.getName())); // %0が血盟に加入したがっています。承諾しますか？（Y/N）
 	}
 

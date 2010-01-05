@@ -26,6 +26,9 @@ import l1j.server.server.model.Instance.L1PcInstance;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來登入到伺服器OK的封包
+ */
 public class C_LoginToServerOK extends ClientBasePacket {
 
 	private static final String C_LOGIN_TO_SERVER_OK = "[C] C_LoginToServerOK";
@@ -41,7 +44,7 @@ public class C_LoginToServerOK extends ClientBasePacket {
 
 		L1PcInstance pc = client.getActiveChar();
 
-		if (type == 255) { // 全体チャット && Whisper
+		if (type == 255) { // 全體聊天 && 密語
 			if (button == 95 || button == 127) {
 				pc.setShowWorldChat(true); // open
 				pc.setCanWhisper(true); // open
@@ -55,19 +58,19 @@ public class C_LoginToServerOK extends ClientBasePacket {
 				pc.setShowWorldChat(false); // close
 				pc.setCanWhisper(false); // close
 			}
-		} else if (type == 0) { // 全体チャット
+		} else if (type == 0) { // 全體聊天
 			if (button == 0) { // close
 				pc.setShowWorldChat(false);
 			} else if (button == 1) { // open
 				pc.setShowWorldChat(true);
 			}
-		} else if (type == 2) { // Whisper
+		} else if (type == 2) { // 密語
 			if (button == 0) { // close
 				pc.setCanWhisper(false);
 			} else if (button == 1) { // open
 				pc.setCanWhisper(true);
 			}
-		} else if (type == 6) { // 商売チャット
+		} else if (type == 6) { // 交易頻道
 			if (button == 0) { // close
 				pc.setShowTradeChat(false);
 			} else if (button == 1) { // open

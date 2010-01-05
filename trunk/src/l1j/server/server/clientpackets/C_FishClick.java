@@ -37,6 +37,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來釣魚的封包
+ */
 public class C_FishClick extends ClientBasePacket {
 
 	private static final String C_FISHCLICK = "[C] C_FishClick";
@@ -96,11 +99,11 @@ public class C_FishClick extends ClientBasePacket {
 			} else if (chance < 171) {
 				successFishing(pc, 41252, "$5248"); // 1.0%
 			} else {
-				pc.sendPackets(new S_ServerMessage(1136, "")); // 釣りに失敗しました。
+				pc.sendPackets(new S_ServerMessage(1136, "")); // 釣魚失敗。
 			}
 		} else {
 			finishFishing(pc);
-			pc.sendPackets(new S_ServerMessage(1136, "")); // 釣りに失敗しました。
+			pc.sendPackets(new S_ServerMessage(1136, "")); // 釣魚失敗。
 		}
 	}
 
@@ -130,7 +133,7 @@ public class C_FishClick extends ClientBasePacket {
 			L1World.getInstance().getInventory(loc[0], loc[1],
 					pc.getMapId()).storeItem(item);
 		}
-		pc.sendPackets(new S_ServerMessage(1185, message)); // 釣りに成功して%0%oを釣りました。
+		pc.sendPackets(new S_ServerMessage(1185, message)); // 釣魚成功並釣到 %0%o 了。
 	}
 
 	@Override

@@ -36,6 +36,9 @@ import l1j.server.server.templates.L1Castle;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * TODO: 處理收到由客戶端傳來取得城堡稅收的封包(?)
+ */
 public class C_Drawal extends ClientBasePacket {
 
 	private static final String C_DRAWAL = "[C] C_Drawal";
@@ -69,7 +72,7 @@ public class C_Drawal extends ClientBasePacket {
 								L1ItemId.ADENA, j);
 					}
 					pc.sendPackets(new S_ServerMessage(143, "$457", "$4" + " ("
-							+ j + ")"));
+							+ j + ")")); // \f1%0%s 給你 %1%o 。
 				}
 			}
 		}

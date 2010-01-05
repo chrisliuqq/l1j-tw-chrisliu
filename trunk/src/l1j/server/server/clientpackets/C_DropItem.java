@@ -27,6 +27,9 @@ import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.model.Instance.L1PetInstance;
 import l1j.server.server.serverpackets.S_ServerMessage;
 
+/**
+ * 處理收到由客戶端傳來丟道具到地上的封包
+ */
 public class C_DropItem extends ClientBasePacket {
 	private static Logger _log = Logger.getLogger(C_DropItem.class.getName());
 	private static final String C_DROP_ITEM = "[C] C_DropItem";
@@ -47,7 +50,7 @@ public class C_DropItem extends ClientBasePacket {
 		L1ItemInstance item = pc.getInventory().getItem(objectId);
 		if (item != null) {
 			if (!item.getItem().isTradable()) {
-				// \f1%0は捨てたりまたは他人に讓ることができません。
+				// \f1%0%d是不可轉移的…
 				pc.sendPackets(new S_ServerMessage(210, item.getItem()
 						.getName()));
 				return;
@@ -58,7 +61,7 @@ public class C_DropItem extends ClientBasePacket {
 				if (petObject instanceof L1PetInstance) {
 					L1PetInstance pet = (L1PetInstance) petObject;
 					if (item.getId() == pet.getItemObjId()) {
-						// \f1%0は捨てたりまたは他人に讓ることができません。
+						// \f1%0%d是不可轉移的…
 						pc.sendPackets(new S_ServerMessage(210, item.getItem()
 								.getName()));
 						return;
@@ -67,12 +70,12 @@ public class C_DropItem extends ClientBasePacket {
 			}
 
 			if (item.isEquipped()) {
-				// \f1削除できないアイテムや装備しているアイテムは捨てられません。
+				// \f1你不能夠放棄此樣物品。
 				pc.sendPackets(new S_ServerMessage(125));
 				return;
 			}
-			if (item.getBless() >= 128) { // 封印された装備
-				// \f1%0は捨てたりまたは他人に讓ることができません。
+			if (item.getBless() >= 128) { // 封印的裝備
+				// \f1%0%d是不可轉移的…
 				pc.sendPackets(new S_ServerMessage(210, item.getItem()
 						.getName()));
 				return;

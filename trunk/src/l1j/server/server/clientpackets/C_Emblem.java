@@ -31,6 +31,9 @@ import l1j.server.server.serverpackets.S_Emblem;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來上傳盟徽的封包
+ */
 public class C_Emblem extends ClientBasePacket {
 
 	private static final String C_EMBLEM = "[C] C_Emblem";

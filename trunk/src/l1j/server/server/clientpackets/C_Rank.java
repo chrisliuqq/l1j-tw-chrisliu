@@ -32,6 +32,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來血盟階級的封包
+ */
 public class C_Rank extends ClientBasePacket {
 
 	private static final String C_RANK = "[C] C_Rank";
@@ -73,11 +76,11 @@ public class C_Rank extends ClientBasePacket {
 			return;
 		}
 
-		if (targetPc != null) { // オンライン中
-			if (pc.getClanid() == targetPc.getClanid()) { // 同じクラン
+		if (targetPc != null) { // 玩家在線上
+			if (pc.getClanid() == targetPc.getClanid()) { // 同血盟
 				try {
 					targetPc.setClanRank(rank);
-					targetPc.save(); // DBにキャラクター情報を書き込む
+					targetPc.save(); // 儲存玩家的資料到資料庫中
 					String rankString = "$772";
 					if (rank == L1Clan.CLAN_RANK_PROBATION) {
 						rankString = "$774";
@@ -98,10 +101,10 @@ public class C_Rank extends ClientBasePacket {
 			L1PcInstance restorePc = CharacterTable.getInstance()
 					.restoreCharacter(name);
 			if (restorePc != null
-					&& restorePc.getClanid() == pc.getClanid()) { // 同じクラン
+					&& restorePc.getClanid() == pc.getClanid()) { // 同じ血盟
 				try {
 					restorePc.setClanRank(rank);
-					restorePc.save(); // DBにキャラクター情報を書き込む
+					restorePc.save(); // 儲存玩家的資料到資料庫中
 				} catch (Exception e) {
 					_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 				}

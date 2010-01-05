@@ -79,7 +79,7 @@ public class C_Attr extends ClientBasePacket {
 		L1PcInstance pc = clientthread.getActiveChar();
 
 		switch (i) {
-		case 97: // %0が血盟に加入したがっています。承諾しますか？（Y/N）
+		case 97: // \f3%0%s 想加入你的血盟。你接受嗎。(Y/N) 
 			c = readC();
 			L1PcInstance joinPc = (L1PcInstance) L1World.getInstance()
 					.findObject(pc.getTempID());
@@ -87,7 +87,7 @@ public class C_Attr extends ClientBasePacket {
 			if (joinPc != null) {
 				if (c == 0) { // No
 					joinPc.sendPackets(new S_ServerMessage(96, pc
-							.getName())); // \f1%0はあなたの要請を拒絶しました。
+							.getName())); // \f1%0%s 拒絕你的請求。
 				} else if (c == 1) { // Yes
 					int clan_id = pc.getClanid();
 					String clanName = pc.getClanname();
@@ -119,14 +119,14 @@ public class C_Attr extends ClientBasePacket {
 						if (joinPc.getClanid() == 0) { // 加入玩家未加入血盟
 							String clanMembersName[] = clan.getAllMembers();
 							if (maxMember <= clanMembersName.length) { // 血盟還有空間可以讓玩家加入
-								joinPc.sendPackets( // %0はあなたを血盟員として受け入れることができません。
+								joinPc.sendPackets( // %0%s 無法接受你成為該血盟成員。
 										new S_ServerMessage(188, pc.getName()));
 								return;
 							}
 							for (L1PcInstance clanMembers : clan
 									.getOnlineClanMember()) {
 								clanMembers.sendPackets(new S_ServerMessage(94,
-										joinPc.getName())); // \f1%0が血盟の一員として受け入れられました。
+										joinPc.getName())); // \f1你接受%0當你的血盟成員。
 							}
 							joinPc.setClanid(clan_id);
 							joinPc.setClanname(clanName);
@@ -138,12 +138,12 @@ public class C_Attr extends ClientBasePacket {
 							joinPc.save(); // 儲存加入的玩家資料
 							clan.addMemberName(joinPc.getName());
 							joinPc.sendPackets(new S_ServerMessage(95,
-									clanName)); // \f1%0血盟に加入しました。
+									clanName)); // \f1加入%0血盟。
 						} else { // 如果是王族加入（聯合血盟）
 							if (Config.CLAN_ALLIANCE) {
 								changeClan(clientthread, pc, joinPc, maxMember);
 							} else {
-								joinPc.sendPackets(new S_ServerMessage(89)); // \f1あなたはすでに血盟に加入しています。
+								joinPc.sendPackets(new S_ServerMessage(89)); // \f1你已經有血盟了。
 							}
 						}
 					}
@@ -151,9 +151,9 @@ public class C_Attr extends ClientBasePacket {
 			}
 			break;
 
-		case 217: // %0血盟の%1があなたの血盟との戦争を望んでいます。戦争に応じますか？（Y/N）
-		case 221: // %0血盟が降伏を望んでいます。受け入れますか？（Y/N）
-		case 222: // %0血盟が戦争の終結を望んでいます。終結しますか？（Y/N）
+		case 217: // %0 血盟向你的血盟宣戰。是否接受？(Y/N) 
+		case 221: // %0 血盟要向你投降。是否接受？(Y/N)
+		case 222: // %0 血盟要結束戰爭。是否接受？(Y/N)
 			c = readC();
 			L1PcInstance enemyLeader = (L1PcInstance) L1World.getInstance()
 					.findObject(pc.getTempID());
@@ -165,9 +165,9 @@ public class C_Attr extends ClientBasePacket {
 			String enemyClanName = enemyLeader.getClanname();
 			if (c == 0) { // No
 				if (i == 217) {
-					enemyLeader.sendPackets(new S_ServerMessage(236, clanName)); // %0血盟があなたの血盟との戦争を拒絶しました。
+					enemyLeader.sendPackets(new S_ServerMessage(236, clanName)); // %0 血盟拒絕你的宣戰。
 				} else if (i == 221 || i == 222) {
-					enemyLeader.sendPackets(new S_ServerMessage(237, clanName)); // %0血盟があなたの提案を拒絶しました。
+					enemyLeader.sendPackets(new S_ServerMessage(237, clanName)); // %0 血盟拒絕你的提案。
 				}
 			} else if (c == 1) { // Yes
 				if (i == 217) {
@@ -189,7 +189,7 @@ public class C_Attr extends ClientBasePacket {
 			}
 			break;
 
-		case 252: // %0%sがあなたとアイテムの取引を望んでいます。取引しますか？（Y/N）
+		case 252: // \f2%0%s 要與你交易。願不願交易？ (Y/N)
 			c = readC();
 			L1PcInstance trading_partner = (L1PcInstance) L1World.getInstance()
 					.findObject(pc.getTradeID());
@@ -197,7 +197,7 @@ public class C_Attr extends ClientBasePacket {
 				if (c == 0) // No
 				{
 					trading_partner.sendPackets(new S_ServerMessage(253, pc
-							.getName())); // %0%dはあなたとの取引に応じませんでした。
+							.getName())); // %0%d 拒絕與你交易。
 					pc.setTradeID(0);
 					trading_partner.setTradeID(0);
 				} else if (c == 1) // Yes
@@ -208,7 +208,7 @@ public class C_Attr extends ClientBasePacket {
 			}
 			break;
 
-		case 321: // 是否要復活？（Y/N）
+		case 321: // 是否要復活？ (Y/N)
 			c = readC();
 			L1PcInstance resusepc1 = (L1PcInstance) L1World.getInstance()
 					.findObject(pc.getTempID());
@@ -235,7 +235,7 @@ public class C_Attr extends ClientBasePacket {
 			}
 			break;
 
-		case 322: // また復活したいですか？（Y/N）
+		case 322: // 是否要復活？ (Y/N)
 			c = readC();
 			L1PcInstance resusepc2 = (L1PcInstance) L1World.getInstance()
 					.findObject(pc.getTempID());
@@ -267,7 +267,7 @@ public class C_Attr extends ClientBasePacket {
 			}
 			break;
 
-		case 325: // 決定寵物的名字
+		case 325: // 你想叫牠什麼名字？ 
 			c = readC(); // ?
 			name = readS();
 			L1PetInstance pet = (L1PetInstance) L1World.getInstance()
@@ -276,7 +276,7 @@ public class C_Attr extends ClientBasePacket {
 			renamePet(pet, name);
 			break;
 
-		case 512: // 決定盟屋的名字
+		case 512: // 請輸入血盟小屋名稱?
 			c = readC(); // ?
 			name = readS();
 			int houseId = pc.getTempID();
@@ -286,11 +286,11 @@ public class C_Attr extends ClientBasePacket {
 				house.setHouseName(name);
 				HouseTable.getInstance().updateHouse(house); // 更新到資料庫中
 			} else {
-				pc.sendPackets(new S_ServerMessage(513)); // 家の名前が長すぎます。
+				pc.sendPackets(new S_ServerMessage(513)); // 血盟小屋名稱太長。
 			}
 			break;
 
-		case 630: // %0%sがあなたと決闘を望んでいます。応じますか？（Y/N）
+		case 630: // %0%s 要與你決鬥。你是否同意？(Y/N)
 			c = readC();
 			L1PcInstance fightPc = (L1PcInstance) L1World.getInstance()
 					.findObject(pc.getFightId());
@@ -306,7 +306,7 @@ public class C_Attr extends ClientBasePacket {
 			}
 			break;
 
-		case 653: // 離婚をするとリングは消えてしまいます。離婚を望みますか？（Y/N）
+		case 653: // 若你離婚，你的結婚戒指將會消失。你決定要離婚嗎？(Y/N)
 			c = readC();
 			L1PcInstance target653 = (L1PcInstance) L1World.getInstance()
 					.findObject(pc.getPartnerId());
@@ -316,7 +316,7 @@ public class C_Attr extends ClientBasePacket {
 				if (target653 != null) {
 					target653.setPartnerId(0);
 					target653.save();
-					target653.sendPackets(new S_ServerMessage(662)); // \f1あなたは結婚していません。
+					target653.sendPackets(new S_ServerMessage(662)); // \f1你(妳)目前未婚。
 				} else {
 					CharacterTable.getInstance().updatePartnerId(pc
 							.getPartnerId());
@@ -324,38 +324,38 @@ public class C_Attr extends ClientBasePacket {
 			}
 			pc.setPartnerId(0);
 			pc.save(); // 將玩家資料儲存到資料庫中
-			pc.sendPackets(new S_ServerMessage(662)); // \f1あなたは結婚していません。
+			pc.sendPackets(new S_ServerMessage(662)); // \f1你(妳)目前未婚。
 			break;
 
-		case 654: // %0%sあなたと結婚したがっています。%0と結婚しますか？（Y/N）
+		case 654: // %0 向你(妳)求婚，你(妳)答應嗎?
 			c = readC();
 			L1PcInstance partner = (L1PcInstance) L1World.getInstance()
 					.findObject(pc.getTempID());
 			pc.setTempID(0);
 			if (partner != null) {
 				if (c == 0) { // No
-					partner.sendPackets(new S_ServerMessage( // %0%sはあなたとの結婚を拒絶しました。
+					partner.sendPackets(new S_ServerMessage( // %0 拒絕你(妳)的求婚。
 							656, pc.getName()));
 				} else if (c == 1) { // Yes
 					pc.setPartnerId(partner.getId());
 					pc.save();
-					pc.sendPackets(new S_ServerMessage( // 皆の祝福の中で、二人の結婚が行われました。
+					pc.sendPackets(new S_ServerMessage( // 倆人的結婚在所有人的祝福下完成
 							790));
-					pc.sendPackets(new S_ServerMessage( // おめでとうございます！%0と結婚しました。
+					pc.sendPackets(new S_ServerMessage( // 恭喜!! %0 已接受你(妳)的求婚。
 							655, partner.getName()));
 
 					partner.setPartnerId(pc.getId());
 					partner.save();
-					partner.sendPackets(new S_ServerMessage( // 皆の祝福の中で、二人の結婚が行われました。
+					partner.sendPackets(new S_ServerMessage( // 恭喜!! %0 已接受你(妳)的求婚。
 							790));
-					partner.sendPackets(new S_ServerMessage( // おめでとうございます！%0と結婚しました。
+					partner.sendPackets(new S_ServerMessage( // 恭喜!! %0 已接受你(妳)的求婚。
 							655, pc.getName()));
 				}
 			}
 			break;
 
 		// コールクラン
-		case 729: // 君主が呼んでいます。召喚に応じますか？（Y/N）
+		case 729: // 盟主正在呼喚你，你要接受他的呼喚嗎？(Y/N)
 			c = readC();
 			if (c == 0) { // No
 				;
@@ -364,7 +364,7 @@ public class C_Attr extends ClientBasePacket {
 			}
 			break;
 
-		case 738: // 経験値を回復するには%0のアデナが必要です。経験値を回復しますか？
+		case 738: // 恢復經驗值需消耗%0金幣。想要恢復經驗值嗎?
 			c = readC();
 			if (c == 0) { // No
 				;
@@ -384,18 +384,18 @@ public class C_Attr extends ClientBasePacket {
 					pc.resExp();
 					pc.setExpRes(0);
 				} else {
-					pc.sendPackets(new S_ServerMessage(189)); // \f1アデナが不足しています。
+					pc.sendPackets(new S_ServerMessage(189)); // \f1金幣不足。
 				}
 			}
 			break;
 
-		case 951: // 邀請聊天組隊？（Y/N）
+		case 951: // 您要接受玩家 %0%s 提出的隊伍對話邀請嗎？(Y/N)
 			c = readC();
 			L1PcInstance chatPc = (L1PcInstance) L1World.getInstance()
 					.findObject(pc.getPartyID());
 			if (chatPc != null) {
 				if (c == 0) { // No
-					chatPc.sendPackets(new S_ServerMessage(423, pc.getName())); // %0が招待を拒否しました。
+					chatPc.sendPackets(new S_ServerMessage(423, pc.getName())); // %0%s 拒絕了您的邀請。
 					pc.setPartyID(0);
 				} else if (c == 1) { // Yes
 					if (chatPc.isInChatParty()) {
@@ -403,27 +403,27 @@ public class C_Attr extends ClientBasePacket {
 								.isGm()) {
 							chatPc.getChatParty().addMember(pc);
 						} else {
-							chatPc.sendPackets(new S_ServerMessage(417)); // 超過組隊人數上限
+							chatPc.sendPackets(new S_ServerMessage(417)); // 你的隊伍已經滿了，無法再接受隊員。
 						}
 					} else {
 						L1ChatParty chatParty = new L1ChatParty();
 						chatParty.addMember(chatPc);
 						chatParty.addMember(pc);
 						chatPc.sendPackets(new S_ServerMessage(424, pc
-								.getName())); // %0がパーティーに入りました。
+								.getName())); // %0%s 加入了您的隊伍。
 					}
 				}
 			}
 			break;
 
-		case 953: // 組隊邀請？（Y/N）
+		case 953: // 玩家 %0%s 邀請您加入隊伍？(Y/N)
 			c = readC();
 			L1PcInstance target = (L1PcInstance) L1World.getInstance()
 					.findObject(pc.getPartyID());
 			if (target != null) {
 				if (c == 0) // No
 				{
-					target.sendPackets(new S_ServerMessage(423, pc.getName())); // %0が招待を拒否しました。
+					target.sendPackets(new S_ServerMessage(423, pc.getName())); // %0%s 拒絕了您的邀請。
 					pc.setPartyID(0);
 				} else if (c == 1) // Yes
 				{
@@ -434,7 +434,7 @@ public class C_Attr extends ClientBasePacket {
 							target.getParty().addMember(pc);
 						} else {
 							// 組隊滿了
-							target.sendPackets(new S_ServerMessage(417)); // これ以上パーティーメンバーを受け入れることはできません。
+							target.sendPackets(new S_ServerMessage(417)); // 你的隊伍已經滿了，無法再接受隊員。
 						}
 					} else {
 						// 還沒有組隊，建立一個新組隊
@@ -442,7 +442,7 @@ public class C_Attr extends ClientBasePacket {
 						party.addMember(target);
 						party.addMember(pc);
 						target.sendPackets(new S_ServerMessage(424, pc
-								.getName())); // %0がパーティーに入りました。
+								.getName())); // %0%s 加入了您的隊伍。
 					}
 				}
 			}
@@ -463,7 +463,7 @@ public class C_Attr extends ClientBasePacket {
 						pc.sendPackets(new S_CharVisualUpdate(pc));
 						pc.save(); // 將玩家資料儲存到資料庫中
 					} else {
-						pc.sendPackets(new S_ServerMessage(481));
+						pc.sendPackets(new S_ServerMessage(481)); // \f1屬性最大值只能到35。 請重試一次。
 					}
 				} else if (s.toLowerCase().equals("dex".toLowerCase())) {
 					// if(l1pcinstance.get_dex() < 255)
@@ -475,7 +475,7 @@ public class C_Attr extends ClientBasePacket {
 						pc.sendPackets(new S_CharVisualUpdate(pc));
 						pc.save(); // 將玩家資料儲存到資料庫中
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // 一つの能力値の最大値は25です。他の能力値を選択してください
+						pc.sendPackets(new S_ServerMessage(481)); // \f1屬性最大值只能到35。 請重試一次。
 					}
 				} else if (s.toLowerCase().equals("con".toLowerCase())) {
 					// if(l1pcinstance.get_con() < 255)
@@ -486,7 +486,7 @@ public class C_Attr extends ClientBasePacket {
 						pc.sendPackets(new S_CharVisualUpdate(pc));
 						pc.save(); // 將玩家資料儲存到資料庫中
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // 一つの能力値の最大値は25です。他の能力値を選択してください
+						pc.sendPackets(new S_ServerMessage(481)); // \f1屬性最大值只能到35。 請重試一次。
 					}
 				} else if (s.toLowerCase().equals("int".toLowerCase())) {
 					// if(l1pcinstance.get_int() < 255)
@@ -497,7 +497,7 @@ public class C_Attr extends ClientBasePacket {
 						pc.sendPackets(new S_CharVisualUpdate(pc));
 						pc.save(); // 將玩家資料儲存到資料庫中
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // 一つの能力値の最大値は25です。他の能力値を選択してください
+						pc.sendPackets(new S_ServerMessage(481)); // \f1屬性最大值只能到35。 請重試一次。
 					}
 				} else if (s.toLowerCase().equals("wis".toLowerCase())) {
 					// if(l1pcinstance.get_wis() < 255)
@@ -509,7 +509,7 @@ public class C_Attr extends ClientBasePacket {
 						pc.sendPackets(new S_CharVisualUpdate(pc));
 						pc.save(); // 將玩家資料儲存到資料庫中
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // 一つの能力値の最大値は25です。他の能力値を選択してください
+						pc.sendPackets(new S_ServerMessage(481)); // \f1屬性最大值只能到35。 請重試一次。
 					}
 				} else if (s.toLowerCase().equals("cha".toLowerCase())) {
 					// if(l1pcinstance.get_cha() < 255)
@@ -520,7 +520,7 @@ public class C_Attr extends ClientBasePacket {
 						pc.sendPackets(new S_CharVisualUpdate(pc));
 						pc.save(); // 將玩家資料儲存到資料庫中
 					} else {
-						pc.sendPackets(new S_ServerMessage(481)); // 一つの能力値の最大値は25です。他の能力値を選択してください
+						pc.sendPackets(new S_ServerMessage(481)); // \f1屬性最大值只能到35。 請重試一次。
 					}
 				}
 			}
@@ -546,14 +546,14 @@ public class C_Attr extends ClientBasePacket {
 		if (clan != null && oldClan != null && joinPc.isCrown() && // 自己的王族
 				joinPc.getId() == oldClan.getLeaderId()) {
 			if (maxMember < clanNum + oldClanNum) { // 沒有空缺
-				joinPc.sendPackets( // %0はあなたを血盟員として受け入れることができません。
+				joinPc.sendPackets( // %0%s 無法接受你成為該血盟成員。
 						new S_ServerMessage(188, pc.getName()));
 				return;
 			}
 			L1PcInstance clanMember[] = clan.getOnlineClanMember();
 			for (int cnt = 0; cnt < clanMember.length; cnt++) {
 				clanMember[cnt].sendPackets(new S_ServerMessage(94, joinPc
-						.getName())); // \f1%0が血盟の一員として受け入れられました。
+						.getName())); // \f1你接受%0當你的血盟成員。
 			}
 
 			for (int i = 0; i < oldClanMemberName.length; i++) {
@@ -578,7 +578,7 @@ public class C_Attr extends ClientBasePacket {
 					}
 					clan.addMemberName(oldClanMember.getName());
 					oldClanMember.sendPackets(new S_ServerMessage(95,
-							clanName)); // \f1%0血盟に加入しました。
+							clanName)); // \f1加入%0血盟。
 				} else { // 舊血盟成員不在線上
 					try {
 						L1PcInstance offClanMember = CharacterTable
@@ -594,7 +594,7 @@ public class C_Attr extends ClientBasePacket {
 					}
 				}
 			}
-			// 刪除舊盟輝
+			// 刪除舊盟徽
 			String emblem_file = String.valueOf(oldClanId);
 			File file = new File("emblem/" + emblem_file);
 			file.delete();
@@ -615,12 +615,12 @@ public class C_Attr extends ClientBasePacket {
 
 		L1PcInstance pc = (L1PcInstance) pet.getMaster();
 		if (PetTable.isNameExists(name)) {
-			pc.sendPackets(new S_ServerMessage(327)); // 已經有同樣的寵物名稱了。
+			pc.sendPackets(new S_ServerMessage(327)); // 同樣的名稱已經存在。
 			return;
 		}
 		L1Npc l1npc = NpcTable.getInstance().getTemplate(pet.getNpcId());
 		if (!(pet.getName().equalsIgnoreCase(l1npc.get_name())) ) {
-			pc.sendPackets(new S_ServerMessage(326)); // 跟NPC一樣的名稱。
+			pc.sendPackets(new S_ServerMessage(326)); // 一旦你已決定就不能再變更。
 			return;
 		}
  		pet.setName(name);
@@ -640,7 +640,7 @@ public class C_Attr extends ClientBasePacket {
 			return;
 		}
 		if (!pc.getMap().isEscapable() && !pc.isGm()) {
-			// 如果地圖不能傳送，或是有其他魔法
+			// 這附近的能量影響到瞬間移動。在此地無法使用瞬間移動。
 			pc.sendPackets(new S_ServerMessage(647));
 			L1Teleport.teleport(pc, pc.getLocation(), pc.getHeading(), false);
 			return;
@@ -659,7 +659,7 @@ public class C_Attr extends ClientBasePacket {
 		}
 		short mapId = callClanPc.getMapId();
 		if (mapId != 0 && mapId != 4 && mapId != 304 || isInWarArea) {
-			// \f1あなたのパートナーは今あなたが行けない所でプレイ中です。
+			// \f1你的情人在你無法傳送前往的地區。
 			pc.sendPackets(new S_ServerMessage(547));
 			return;
 		}
@@ -687,7 +687,7 @@ public class C_Attr extends ClientBasePacket {
 
 		if (locX == 0 && locY == 0 || !map.isPassable(locX, locY)
 				|| isExsistCharacter) {
-			// 有障礙物存在所以不能移動
+			// 因你要去的地方有障礙物以致於無法直接傳送到該處。
 			pc.sendPackets(new S_ServerMessage(627));
 			return;
 		}

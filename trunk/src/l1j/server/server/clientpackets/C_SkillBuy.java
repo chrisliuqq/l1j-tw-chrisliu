@@ -28,6 +28,9 @@ import l1j.server.server.serverpackets.S_SkillBuy;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來買魔法的封包
+ */
 public class C_SkillBuy extends ClientBasePacket {
 
 	private static final String C_SKILL_BUY = "[C] C_SkillBuy";

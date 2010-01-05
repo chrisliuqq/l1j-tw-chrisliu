@@ -31,6 +31,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來血盟的封包
+ */
 public class C_Pledge extends ClientBasePacket {
 
 	private static final String C_PLEDGE = "[C] C_Pledge";

@@ -119,6 +119,11 @@ import static l1j.server.server.model.skill.L1SkillId.*;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 //
+
+/**
+ * TODO: 翻譯，太多了= =
+ * 處理收到由客戶端傳來使用道具的封包
+ */
 public class C_ItemUSe extends ClientBasePacket {
 
 	private static final String C_ITEM_USE = "[C] C_ItemUSe";
@@ -136,14 +141,14 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 		L1ItemInstance l1iteminstance = pc.getInventory().getItem(itemObjid);
 
-		if (l1iteminstance.getItem().getUseType() == -1) { // none:使用できないアイテム
+		if (l1iteminstance.getItem().getUseType() == -1) { // none:不能使用的道具
 			pc
 					.sendPackets(new S_ServerMessage(74, l1iteminstance
 							.getLogName())); // \f1%0は使用できません。
 			return;
 		}
 		int pcObjid = pc.getId();
-		if (pc.isTeleport()) { // テレポート処理中
+		if (pc.isTeleport()) { // 傳送中
 			return;
 		}
 		if (l1iteminstance == null && pc.isDead() == true) {

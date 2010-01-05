@@ -29,6 +29,9 @@ import l1j.server.server.serverpackets.S_OwnCharPack;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來搭船的封包
+ */
 public class C_Ship extends ClientBasePacket {
 
 	private static final String C_SHIP = "[C] C_Ship";

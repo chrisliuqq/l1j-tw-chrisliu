@@ -40,6 +40,10 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 import l1j.server.server.templates.L1PrivateShopBuyList;
 import l1j.server.server.templates.L1PrivateShopSellList;
 
+/**
+ * TODO 翻譯，好多
+ * 處理收到由客戶端傳來取得結果的封包
+ */
 public class C_Result extends ClientBasePacket {
 
 	private static Logger _log = Logger.getLogger(C_Result.class
@@ -65,7 +69,7 @@ public class C_Result extends ClientBasePacket {
 		if (findObject != null) {
 			int diffLocX = Math.abs(pc.getX() - findObject.getX());
 			int diffLocY = Math.abs(pc.getY() - findObject.getY());
-			// 3マス以上離れた場合アクション無効
+			// 3格以上的距離視為無效要求
 			if (diffLocX > 3 || diffLocY > 3) {
 				return;
 			}
@@ -79,7 +83,7 @@ public class C_Result extends ClientBasePacket {
 		}
 
 		if (resultType == 0 && size != 0
-				&& npcImpl.equalsIgnoreCase("L1Merchant")) { // アイテム購入
+				&& npcImpl.equalsIgnoreCase("L1Merchant")) { // 買道具
 			L1Shop shop = ShopTable.getInstance().get(npcId);
 			L1ShopBuyOrderList orderList = shop.newBuyOrderList();
 			for (int i = 0; i < size; i++) {
@@ -87,7 +91,7 @@ public class C_Result extends ClientBasePacket {
 			}
 			shop.sellItems(pc, orderList);
 		} else if (resultType == 1 && size != 0
-				&& npcImpl.equalsIgnoreCase("L1Merchant")) { // アイテム売却
+				&& npcImpl.equalsIgnoreCase("L1Merchant")) { // 賣道具
 			L1Shop shop = ShopTable.getInstance().get(npcId);
 			L1ShopSellOrderList orderList = shop.newSellOrderList(pc);
 			for (int i = 0; i < size; i++) {
@@ -95,7 +99,7 @@ public class C_Result extends ClientBasePacket {
 			}
 			shop.buyItems(orderList);
 		} else if (resultType == 2 && size != 0
-				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // 自分の倉庫に格納
+				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // 自己的倉庫
 			int objectId, count;
 			for (int i = 0; i < size; i++) {
 				tradable = true;
@@ -145,14 +149,14 @@ public class C_Result extends ClientBasePacket {
 				}
 			}
 		} else if (resultType == 3 && size != 0
-				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // 自分の倉庫から取り出し
+				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // 從倉庫取出東西
 			int objectId, count;
 			L1ItemInstance item;
 			for (int i = 0; i < size; i++) {
 				objectId = readD();
 				count = readD();
 				item = pc.getDwarfInventory().getItem(objectId);
-				if (pc.getInventory().checkAddItem(item, count) == L1Inventory.OK) // 容量重量確認及びメッセージ送信
+				if (pc.getInventory().checkAddItem(item, count) == L1Inventory.OK) // 檢查重量與容量
 				{
 					if (pc.getInventory().consumeItem(L1ItemId.ADENA, 30)) {
 						pc.getDwarfInventory().tradeItem(item, count,
@@ -167,9 +171,9 @@ public class C_Result extends ClientBasePacket {
 				}
 			}
 		} else if (resultType == 4 && size != 0
-				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // クラン倉庫に格納
+				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // 儲存道具到倉庫
 			int objectId, count;
-			if (pc.getClanid() != 0) { // クラン所属
+			if (pc.getClanid() != 0) { // 有血盟
 				for (int i = 0; i < size; i++) {
 					tradable = true;
 					objectId = readD();
@@ -184,7 +188,7 @@ public class C_Result extends ClientBasePacket {
 							pc.sendPackets(new S_ServerMessage(210, item
 									.getItem().getName())); // \f1%0は捨てたりまたは他人に讓ることができません。
 						}
-						if (item.getBless() >= 128) { // 封印された装備
+						if (item.getBless() >= 128) { // 被封印的裝備
 							tradable = false;
 							pc.sendPackets(new S_ServerMessage(210, item
 									.getItem().getName())); // \f1%0は捨てたりまたは他人に讓ることができません。
@@ -231,7 +235,7 @@ public class C_Result extends ClientBasePacket {
 				pc.sendPackets(new S_ServerMessage(208)); // \f1血盟倉庫を使用するには血盟に加入していなくてはなりません。
 			}
 		} else if (resultType == 5 && size != 0
-				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // クラン倉庫から取り出し
+				&& npcImpl.equalsIgnoreCase("L1Dwarf") && level >= 5) { // 從克萊因倉庫中取出道具
 			int objectId, count;
 			L1ItemInstance item;
 

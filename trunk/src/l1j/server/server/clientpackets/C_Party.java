@@ -30,6 +30,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來隊伍的封包
+ */
 public class C_Party extends ClientBasePacket {
 
 	private static final String C_PARTY = "[C] C_Party";

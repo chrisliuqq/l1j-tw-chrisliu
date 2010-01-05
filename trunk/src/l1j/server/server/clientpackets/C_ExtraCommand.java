@@ -29,6 +29,9 @@ import static l1j.server.server.model.skill.L1SkillId.*;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來額外動作指令的封包
+ */
 public class C_ExtraCommand extends ClientBasePacket {
 	private static final String C_EXTRA_COMMAND = "[C] C_ExtraCommand";
 	private static Logger _log = Logger.getLogger(C_ExtraCommand.class
@@ -42,20 +45,20 @@ public class C_ExtraCommand extends ClientBasePacket {
 		if (pc.isGhost()) {
 			return;
 		}
-		if (pc.isInvisble()) { // インビジビリティ、ブラインドハイディング中
+		if (pc.isInvisble()) { // 隱形中
 			return;
 		}
-		if (pc.isTeleport()) { // テレポート処理中
+		if (pc.isTeleport()) { // 傳送中
 			return;
 		}
-		if (pc.hasSkillEffect(SHAPE_CHANGE)) { // 念の為、変身中は他プレイヤーに送信しない
+		if (pc.hasSkillEffect(SHAPE_CHANGE)) { // 變深中
 			int gfxId = pc.getTempCharGfx();
-			if (gfxId != 6080 && gfxId != 6094) { // 騎馬用ヘルム変身は例外
+			if (gfxId != 6080 && gfxId != 6094) { // 騎馬用的變身例外
 				return;
 			}
 		}
 		S_DoActionGFX gfx = new S_DoActionGFX(pc.getId(), actionId);
-		pc.broadcastPacket(gfx); // 周りのプレイヤーに送信
+		pc.broadcastPacket(gfx); // 將動作送給附近的玩家
 	}
 
 	@Override

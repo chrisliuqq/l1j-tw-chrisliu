@@ -33,6 +33,9 @@ import l1j.server.server.templates.L1PetItem;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來使用寵物道具的封包
+ */
 public class C_UsePetItem extends ClientBasePacket {
 
 	private static final String C_USE_PET_ITEM = "[C] C_UsePetItem";

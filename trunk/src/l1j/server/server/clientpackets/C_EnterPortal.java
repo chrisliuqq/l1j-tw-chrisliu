@@ -28,6 +28,9 @@ import l1j.server.server.model.Instance.L1PcInstance;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來進入傳點的封包
+ */
 public class C_EnterPortal extends ClientBasePacket {
 
 	private static final String C_ENTER_PORTAL = "[C] C_EnterPortal";
@@ -40,10 +43,10 @@ public class C_EnterPortal extends ClientBasePacket {
 		int locx = readH();
 		int locy = readH();
 		L1PcInstance pc = client.getActiveChar();
-		if (pc.isTeleport()) { // テレポート処理中
+		if (pc.isTeleport()) { // 傳送中
 			return;
 		}
-		// ダンジョンにテレポート
+		// 取得傳送的點
 		Dungeon.getInstance().dg(locx, locy, pc.getMap().getId(), pc);
 	}
 

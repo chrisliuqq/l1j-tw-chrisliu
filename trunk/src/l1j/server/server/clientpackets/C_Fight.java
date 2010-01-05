@@ -30,6 +30,9 @@ import l1j.server.server.utils.FaceToFace;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來決鬥的封包
+ */
 public class C_Fight extends ClientBasePacket {
 
 	private static final String C_FIGHT = "[C] C_Fight";
@@ -47,15 +50,15 @@ public class C_Fight extends ClientBasePacket {
 		if (target != null) {
 			if (!target.isParalyzed()) {
 				if (pc.getFightId() != 0) {
-					pc.sendPackets(new S_ServerMessage(633)); // \f1あなたはすでにほかの人と決闘中です。
+					pc.sendPackets(new S_ServerMessage(633)); // \f1你已經與其他人決鬥中。
 					return;
 				} else if (target.getFightId() != 0) {
-					target.sendPackets(new S_ServerMessage(634)); // \f1すでにほかの人と決闘中です。
+					target.sendPackets(new S_ServerMessage(634)); // \f11對方已經與其他人決鬥中。
 					return;
 				}
 				pc.setFightId(target.getId());
 				target.setFightId(pc.getId());
-				target.sendPackets(new S_Message_YN(630, pc.getName())); // %0%sがあなたと決闘を望んでいます。応じますか？（Y/N）
+				target.sendPackets(new S_Message_YN(630, pc.getName())); // %0%s 要與你決鬥。你是否同意？(Y/N)
 			}
 		}
 	}

@@ -99,6 +99,10 @@ import l1j.server.server.templates.L1Skills;
 import l1j.server.server.templates.L1Town;
 import static l1j.server.server.model.skill.L1SkillId.*;
 
+/**
+ * TODO: 翻譯，好多
+ * 處理收到由客戶端傳來NPC動作的封包
+ */
 public class C_NPCAction extends ClientBasePacket {
 
 	private static final String	C_NPC_ACTION	= "[C] C_NPCAction";
@@ -113,9 +117,9 @@ public class C_NPCAction extends ClientBasePacket {
 		String s = readS();
 
 		String s2 = null;
-		if (s.equalsIgnoreCase("select") // 競売掲示板のリストを選択
-				|| s.equalsIgnoreCase("map") // アジトの位置を確かめる
-				|| s.equalsIgnoreCase("apply")) { // 競売に参加する
+		if (s.equalsIgnoreCase("select") // 拍賣公告板的選擇
+				|| s.equalsIgnoreCase("map") // 地圖位置的確認
+				|| s.equalsIgnoreCase("apply")) { // 參加拍賣
 			s2 = readS();
 		} else if (s.equalsIgnoreCase("ent")) {
 			L1Object obj = L1World.getInstance().findObject(objid);
@@ -144,7 +148,7 @@ public class C_NPCAction extends ClientBasePacket {
 				L1NpcInstance npc = (L1NpcInstance) obj;
 				int difflocx = Math.abs(pc.getX() - npc.getX());
 				int difflocy = Math.abs(pc.getY() - npc.getY());
-				// 3マス以上離れた場合アクション無効
+				// 3格以上的距離對話無效
 				if (difflocx > 3 || difflocy > 3) {
 					return;
 				}
@@ -200,16 +204,16 @@ public class C_NPCAction extends ClientBasePacket {
 		}
 
 		/*
-		 * アクション個別処理
+		 * 個別處理行動
 		 */
 		if (s.equalsIgnoreCase("buy")) {
 			L1NpcInstance npc = (L1NpcInstance) obj;
-			// "sell"のみ表示されるはずのNPCをチェックする。
+			// sell 應該指給 NPC 檢查
 			if (isNpcSellOnly(npc)) {
 				return;
 			}
 
-			// 販売リスト表示
+			// 販賣清單
 			pc.sendPackets(new S_ShopSellList(objid));
 		} else if (s.equalsIgnoreCase("sell")) {
 			int npcid = ((L1NpcInstance) obj).getNpcTemplate().get_npcId();
@@ -246,18 +250,18 @@ public class C_NPCAction extends ClientBasePacket {
 				}
 			} else { // 一般商人
 
-				// 買い取りリスト表示
+				// 可以買的物品清單
 				pc.sendPackets(new S_ShopBuyList(objid, pc));
 			}
-		} else if (s.equalsIgnoreCase("retrieve")) { // 「個人倉庫：アイテムを受け取る」
+		} else if (s.equalsIgnoreCase("retrieve")) { // 「個人倉庫：領取物品」
 			if (pc.getLevel() >= 5) {
 				pc.sendPackets(new S_RetrieveList(objid, pc));
 			}
-		} else if (s.equalsIgnoreCase("retrieve-elven")) { // 「エルフ倉庫：荷物を受け取る」
+		} else if (s.equalsIgnoreCase("retrieve-elven")) { // 「妖精倉庫：領取物品」
 			if (pc.getLevel() >= 5 && pc.isElf()) {
 				pc.sendPackets(new S_RetrieveElfList(objid, pc));
 			}
-		} else if (s.equalsIgnoreCase("retrieve-pledge")) { // 「血盟倉庫：荷物を受け取る」
+		} else if (s.equalsIgnoreCase("retrieve-pledge")) { // 「血盟倉庫：領取物品」
 			if (pc.getLevel() >= 5) {
 				if (pc.getClanid() == 0) {
 					// \f1血盟倉庫を使用するには血盟に加入していなくてはなりません。
@@ -304,7 +308,7 @@ public class C_NPCAction extends ClientBasePacket {
 
 				}
 			}
-		} else if (s.equalsIgnoreCase("fix")) { // 武器を修理する
+		} else if (s.equalsIgnoreCase("fix")) { // 武器的修理
 
 		} else if (s.equalsIgnoreCase("room")) { // 部屋を借りる
 

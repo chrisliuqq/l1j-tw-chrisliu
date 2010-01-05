@@ -35,6 +35,9 @@ import l1j.server.server.serverpackets.S_Weather;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來重新的封包
+ */
 public class C_Restart extends ClientBasePacket {
 
 	private static Logger _log = Logger.getLogger(C_Restart.class.getName());

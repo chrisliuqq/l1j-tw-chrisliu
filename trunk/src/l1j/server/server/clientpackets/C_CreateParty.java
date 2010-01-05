@@ -31,6 +31,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來建立組隊的封包
+ */
 public class C_CreateParty extends ClientBasePacket {
 
 	private static final String C_CREATE_PARTY = "[C] C_CreateParty";
@@ -43,7 +46,7 @@ public class C_CreateParty extends ClientBasePacket {
 		L1PcInstance pc = client.getActiveChar();
 
 		int type = readC();
-		if (type == 0 || type == 1) { // パーティー(パーティー自動分配ON/OFFで異なる)
+		if (type == 0 || type == 1) { // 自動接受組隊 on 與 off 的同
 			int targetId = readD();
 			L1Object temp = L1World.getInstance().findObject(targetId);
 			if (temp instanceof L1PcInstance) {
@@ -52,7 +55,7 @@ public class C_CreateParty extends ClientBasePacket {
 					return;
 				}
 				if (targetPc.isInParty()) {
-					// すでに他のパーティーに所属しているため招待できません
+					// 您無法邀請已經參加其他隊伍的人。
 					pc.sendPackets(new S_ServerMessage(415));
 					return;
 				}
@@ -60,24 +63,24 @@ public class C_CreateParty extends ClientBasePacket {
 				if (pc.isInParty()) {
 					if (pc.getParty().isLeader(pc)) {
 						targetPc.setPartyID(pc.getId());
-						// \f2%0\f>%sから \fUパーティー\f> に招待されました。応じますか？（Y/N）
+						// 玩家 %0%s 邀請您加入隊伍？(Y/N)
 						targetPc.sendPackets(new S_Message_YN(953, pc
 								.getName()));
 					} else {
-						// パーティーのリーダーのみが招待できます。
+						// 只有領導者才能邀請其他的成員。
 						pc.sendPackets(new S_ServerMessage(416));
 					}
 				} else {
 					targetPc.setPartyID(pc.getId());
-					// \f2%0\f>%sから \fUパーティー\f> に招待されました。応じますか？（Y/N）
+					// 玩家 %0%s 邀請您加入隊伍？(Y/N)
 					targetPc.sendPackets(new S_Message_YN(953, pc.getName()));
 				}
 			}
-		} else if (type == 2) { // チャットパーティー
+		} else if (type == 2) { // 聊天組隊
 			String name = readS();
 			L1PcInstance targetPc = L1World.getInstance().getPlayer(name);
 			if (targetPc == null) {
-				// %0という名前の人はいません。
+				// 沒有叫%0的人。
 				pc.sendPackets(new S_ServerMessage(109));
 				return;
 			}
@@ -85,7 +88,7 @@ public class C_CreateParty extends ClientBasePacket {
 				return;
 			}
 			if (targetPc.isInChatParty()) {
-				// すでに他のパーティーに所属しているため招待できません
+				// 您無法邀請已經參加其他隊伍的人。
 				pc.sendPackets(new S_ServerMessage(415));
 				return;
 			}
@@ -93,15 +96,15 @@ public class C_CreateParty extends ClientBasePacket {
 			if (pc.isInChatParty()) {
 				if (pc.getChatParty().isLeader(pc)) {
 					targetPc.setPartyID(pc.getId());
-					// \f2%0\f>%sから\fUチャットパーティー\f>に招待されました。応じますか？（Y/N）
+					// 您要接受玩家 %0%s 提出的隊伍對話邀請嗎？(Y/N)
 					targetPc.sendPackets(new S_Message_YN(951, pc.getName()));
 				} else {
-					// パーティーのリーダーのみが招待できます。
+					// 只有領導者才能邀請其他的成員。
 					pc.sendPackets(new S_ServerMessage(416));
 				}
 			} else {
 				targetPc.setPartyID(pc.getId());
-				// \f2%0\f>%sから\fUチャットパーティー\f>に招待されました。応じますか？（Y/N）
+				// 您要接受玩家 %0%s 提出的隊伍對話邀請嗎？(Y/N)
 				targetPc.sendPackets(new S_Message_YN(951, pc.getName()));
 			}
 		}

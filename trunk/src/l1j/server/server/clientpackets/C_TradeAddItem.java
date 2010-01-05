@@ -33,6 +33,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來增加交易物品的封包
+ */
 public class C_TradeAddItem extends ClientBasePacket {
 	private static final String C_TRADE_ADD_ITEM = "[C] C_TradeAddItem";
 	private static Logger _log = Logger.getLogger(C_TradeAddItem.class
@@ -51,7 +54,7 @@ public class C_TradeAddItem extends ClientBasePacket {
 			pc.sendPackets(new S_ServerMessage(210, item.getItem().getName())); // \f1%0は捨てたりまたは他人に讓ることができません。
 			return;
 		}
-		if (item.getBless() >= 128) { // 封印された装備
+		if (item.getBless() >= 128) { // 封印的裝備
 			// \f1%0は捨てたりまたは他人に讓ることができません。
 			pc.sendPackets(new S_ServerMessage(210, item.getItem().getName()));
 			return;
@@ -78,7 +81,7 @@ public class C_TradeAddItem extends ClientBasePacket {
 			return;
 		}
 		if (tradingPartner.getInventory().checkAddItem(item, itemcount)
-				!= L1Inventory.OK) { // 容量重量確認及びメッセージ送信
+				!= L1Inventory.OK) { // 檢查容量與重量
 			tradingPartner.sendPackets(new S_ServerMessage(270)); // \f1持っているものが重くて取引できません。
 			pc.sendPackets(new S_ServerMessage(271)); // \f1相手が物を持ちすぎていて取引できません。
 			return;

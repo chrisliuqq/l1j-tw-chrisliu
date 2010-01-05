@@ -27,6 +27,9 @@ import l1j.server.server.model.Instance.L1PcInstance;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來離開組隊的封包
+ */
 public class C_LeaveParty extends ClientBasePacket {
 
 	private static final String C_LEAVE_PARTY = "[C] C_LeaveParty";
@@ -37,7 +40,7 @@ public class C_LeaveParty extends ClientBasePacket {
 		super(decrypt);
 
 		L1PcInstance player = client.getActiveChar();
-		if (player.isInParty()) // パーティー中
+		if (player.isInParty()) // 組隊中
 		{
 			player.getParty().leaveMember(player);
 		}

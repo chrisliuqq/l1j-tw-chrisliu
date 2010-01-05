@@ -24,6 +24,9 @@ import l1j.server.server.ClientThread;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.templates.L1BookMark;
 
+/**
+ * 處理收到由客戶端傳來刪除書籤的封包
+ */
 public class C_DeleteBookmark extends ClientBasePacket {
 	private static final String C_DETELE_BOOKMARK = "[C] C_DeleteBookmark";
 	private static Logger _log = Logger.getLogger(C_DeleteBookmark.class

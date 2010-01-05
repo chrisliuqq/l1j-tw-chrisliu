@@ -28,6 +28,9 @@ import l1j.server.server.serverpackets.S_PrivateShop;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來商店清單的封包
+ */
 public class C_ShopList extends ClientBasePacket {
 
 	private static final String C_SHOP_LIST = "[C] C_ShopList";

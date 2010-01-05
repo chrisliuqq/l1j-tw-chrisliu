@@ -30,6 +30,9 @@ import l1j.server.server.serverpackets.S_PetInventory;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來寵物選單的封包
+ */
 public class C_PetMenu extends ClientBasePacket {
 
 	private static final String C_PET_MENU = "[C] C_PetMenu";

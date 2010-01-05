@@ -31,6 +31,9 @@ import l1j.server.server.model.item.L1ItemId;
 import l1j.server.server.serverpackets.S_AttackPacket;
 import l1j.server.server.serverpackets.S_ServerMessage;
 
+/**
+ * 處理收到由客戶端傳來撿起道具的封包
+ */
 public class C_PickUpItem extends ClientBasePacket {
 
 	private static final String C_PICK_UP_ITEM = "[C] C_PickUpItem";
@@ -50,10 +53,10 @@ public class C_PickUpItem extends ClientBasePacket {
 			return;
 		}
 
-		if (pc.isInvisble()) { // インビジ状態
+		if (pc.isInvisble()) { // 隱身狀態
 			return;
 		}
-		if (pc.isInvisDelay()) { // インビジディレイ状態
+		if (pc.isInvisDelay()) { // 還在解除隱身的延遲
 			return;
 		}
 
@@ -79,15 +82,15 @@ public class C_PickUpItem extends ClientBasePacket {
 				if (inventoryItem != null) {
 					inventoryItemCount = inventoryItem.getCount();
 				}
-				// 拾った後に2Gを超過しないようにチェック
+				// 超過20億
 				if ((long) inventoryItemCount + (long) pickupCount > 2000000000L) {
 					pc.sendPackets(new S_ServerMessage(166, // \f1%0が%4%1%3%2
-							"所持しているアデナ", "2,000,000,000を超過するので拾えません。"));
+							"你身上的金幣已經超過", "2,000,000,000了，所以不能撿取金幣。"));
 					return;
 				}
 			}
 
-			if (pc.getInventory().checkAddItem( // 容量重量確認及びメッセージ送信
+			if (pc.getInventory().checkAddItem( // 檢查容量與重量
 					item, pickupCount) == L1Inventory.OK) {
 				if (item.getX() != 0 && item.getY() != 0) { // ワールドマップ上のアイテム
 					groundInventory.tradeItem(item, pickupCount, pc

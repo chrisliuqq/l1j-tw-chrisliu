@@ -30,6 +30,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來交易OK的封包
+ */
 public class C_TradeOK extends ClientBasePacket {
 
 	private static final String C_TRADE_CANCEL = "[C] C_TradeOK";
@@ -45,10 +48,9 @@ public class C_TradeOK extends ClientBasePacket {
 		if (trading_partner != null) {
 			player.setTradeOk(true);
 
-			if (player.getTradeOk() && trading_partner.getTradeOk()) // 共にOKを押した
+			if (player.getTradeOk() && trading_partner.getTradeOk()) // 同時都壓OK
 			{
-				// (180 - 16)個未満ならトレード成立。
-				// 本来は重なるアイテム（アデナ等）を既に持っている場合を考慮しないければいけない。
+				// 檢查身上的空間是否還有 (180 - 16)
 				if (player.getInventory().getSize() < (180 - 16)
 						&& trading_partner.getInventory().getSize() < (180 - 16)) // お互いのアイテムを相手に渡す
 				{

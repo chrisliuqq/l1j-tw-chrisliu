@@ -34,6 +34,9 @@ import l1j.server.server.serverpackets.S_DeleteCharOK;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket, C_DeleteChar
 
+/**
+ * 處理收到由客戶端傳來刪除角色的封包
+ */
 public class C_DeleteChar extends ClientBasePacket {
 
 	private static final String C_DELETE_CHAR = "[C] RequestDeleteChar";
@@ -69,7 +72,7 @@ public class C_DeleteChar extends ClientBasePacket {
 					Timestamp deleteTime = new Timestamp(System
 							.currentTimeMillis() + 604800000); // 7日後
 					pc.setDeleteTime(deleteTime);
-					pc.save(); // DBにキャラクター情報を書き込む
+					pc.save(); // 儲存到資料庫中
 				} else {
 					if (pc.isCrown()) {
 						pc.setType(0);
@@ -87,7 +90,7 @@ public class C_DeleteChar extends ClientBasePacket {
 						pc.setType(6);
 					}
 					pc.setDeleteTime(null);
-					pc.save(); // DBにキャラクター情報を書き込む
+					pc.save(); // 儲存到資料庫中
 				}
 				client.sendPacket(new S_DeleteCharOK(S_DeleteCharOK
 						.DELETE_CHAR_AFTER_7DAYS));

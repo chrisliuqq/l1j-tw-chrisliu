@@ -65,11 +65,11 @@ public class C_BanClan extends ClientBasePacket {
 						tempPc.save(); // 儲存玩家的資料到資料庫中
 						clan.delMemberName(tempPc.getName());
 						tempPc.sendPackets(new S_ServerMessage(238, pc
-								.getClanname())); // あなたは%0血盟から追放されました。
+								.getClanname())); // 你被 %0 血盟驅逐了。
 						pc.sendPackets(new S_ServerMessage(240, tempPc
-								.getName())); // %0があなたの血盟から追放されました。
+								.getName())); // %0%o 被你從你的血盟驅逐了。
 					} else {
-						pc.sendPackets(new S_ServerMessage(109, s)); // %0という名前の人はいません。
+						pc.sendPackets(new S_ServerMessage(109, s)); // 沒有叫%0的人。
 					}
 				} else { // 玩家離線中
 					try {
@@ -83,16 +83,16 @@ public class C_BanClan extends ClientBasePacket {
 							restorePc.save(); // 儲存玩家的資料到資料庫中
 							clan.delMemberName(restorePc.getName());
 							pc.sendPackets(new S_ServerMessage(240, restorePc
-									.getName())); // %0があなたの血盟から追放されました。
+									.getName())); // %0%o 被你從你的血盟驅逐了。
 						} else {
-							pc.sendPackets(new S_ServerMessage(109, s)); // %0という名前の人はいません。
+							pc.sendPackets(new S_ServerMessage(109, s)); // %0%o 被你從你的血盟驅逐了。
 						}
 					} catch (Exception e) {
 						_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 					}
 				}
 			} else {
-				pc.sendPackets(new S_ServerMessage(518)); // この命令は血盟の君主のみが利用できます。
+				pc.sendPackets(new S_ServerMessage(518)); // 血盟君主才可使用此命令。
 			}
 		}
 	}

@@ -23,6 +23,9 @@ import java.util.logging.Logger;
 import l1j.server.server.ClientThread;
 import l1j.server.server.model.Instance.L1PcInstance;
 
+/**
+ * 處理收到由客戶端傳來斷線的封包
+ */
 public class C_Disconnect extends ClientBasePacket {
 	private static final String C_DISCONNECT = "[C] C_Disconnect";
 	private static Logger _log = Logger.getLogger(C_Disconnect.class.getName());

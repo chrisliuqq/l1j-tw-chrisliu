@@ -30,6 +30,9 @@ import l1j.server.server.utils.FaceToFace;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來結婚的封包
+ */
 public class C_Propose extends ClientBasePacket {
 
 	private static final String C_PROPOSE = "[C] C_Propose";
@@ -40,7 +43,7 @@ public class C_Propose extends ClientBasePacket {
 		int c = readC();
 
 		L1PcInstance pc = clientthread.getActiveChar();
-		if (c == 0) { // /propose（/プロポーズ）
+		if (c == 0) { // /propose（/結婚）
 			if (pc.isGhost()) {
 				return;
 			}
@@ -63,7 +66,7 @@ public class C_Propose extends ClientBasePacket {
 						&& pc.getMapId() == 4 && target.getX() >= 33974
 						&& target.getX() <= 33976 && target.getY() >= 33362
 						&& target.getY() <= 33365 && target.getMapId() == 4) {
-					target.setTempID(pc.getId()); // 相手のオブジェクトIDを保存しておく
+					target.setTempID(pc.getId()); // 暫時儲存對象的角色ID
 					target.sendPackets(new S_Message_YN(654, pc.getName())); // %0%sあなたと結婚したがっています。%0と結婚しますか？（Y/N）
 				}
 			}

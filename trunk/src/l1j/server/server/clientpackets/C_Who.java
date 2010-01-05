@@ -31,6 +31,9 @@ import l1j.server.server.serverpackets.S_WhoCharinfo;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來查詢線上人數的封包
+ */
 public class C_Who extends ClientBasePacket {
 
 	private static final String C_WHO = "[C] C_Who";
@@ -52,7 +55,8 @@ public class C_Who extends ClientBasePacket {
 				S_WhoAmount s_whoamount = new S_WhoAmount(amount);
 				pc.sendPackets(s_whoamount);
 			}
-			// 対象が居ない場合はメッセージ表示する？わかる方修正お願いします。
+			// TODO: ChrisLiu: SystemMessage 109
+			// 顯示消息如果目標是不存在？正方修知道，謝謝你。
 		}
 	}
 

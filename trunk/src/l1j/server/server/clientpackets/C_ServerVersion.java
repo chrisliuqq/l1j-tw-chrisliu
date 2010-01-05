@@ -26,6 +26,9 @@ import l1j.server.server.serverpackets.S_ServerVersion;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來要求伺服器版本的封包
+ */
 public class C_ServerVersion extends ClientBasePacket {
 
 	private static final String C_SERVER_VERSION = "[C] C_ServerVersion";

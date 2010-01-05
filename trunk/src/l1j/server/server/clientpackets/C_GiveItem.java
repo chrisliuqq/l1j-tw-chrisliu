@@ -38,6 +38,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 import l1j.server.server.templates.L1Npc;
 import l1j.server.server.templates.L1PetType;
 
+/**
+ * 處理收到由客戶端傳來給道具的封包
+ */
 public class C_GiveItem extends ClientBasePacket {
 	private static Logger _log = Logger.getLogger(C_GiveItem.class.getName());
 	private static final String C_GIVE_ITEM = "[C] C_GiveItem";
@@ -73,15 +76,15 @@ public class C_GiveItem extends ClientBasePacket {
 			return;
 		}
 		if (item.isEquipped()) {
-			pc.sendPackets(new S_ServerMessage(141)); // \f1装備しているものは、人に渡すことができません。
+			pc.sendPackets(new S_ServerMessage(141)); // \f1你不能夠將轉移已經裝備的物品。
 			return;
 		}
 		if (!item.getItem().isTradable()) {
-			pc.sendPackets(new S_ServerMessage(210, item.getItem().getName())); // \f1%0は捨てたりまたは他人に讓ることができません。
+			pc.sendPackets(new S_ServerMessage(210, item.getItem().getName())); // \f1%0%d是不可轉移的…
 			return;
 		}
-		if (item.getBless() >= 128) { // 封印された装備
-			// \f1%0は捨てたりまたは他人に讓ることができません。
+		if (item.getBless() >= 128) { // 封印的裝備
+			// \f1%0%d是不可轉移的…
 			pc.sendPackets(new S_ServerMessage(210, item.getItem().getName()));
 			return;
 		}
@@ -89,7 +92,7 @@ public class C_GiveItem extends ClientBasePacket {
 			if (petObject instanceof L1PetInstance) {
 				L1PetInstance pet = (L1PetInstance) petObject;
 				if (item.getId() == pet.getItemObjId()) {
-					// \f1%0は捨てたりまたは他人に讓ることができません。
+					// \f1%0%d是不可轉移的…
 					pc.sendPackets(new S_ServerMessage(210, item.getItem()
 							.getName()));
 					return;
@@ -97,7 +100,7 @@ public class C_GiveItem extends ClientBasePacket {
 			}
 		}
 		if (targetInv.checkAddItem(item, count) != L1Inventory.OK) {
-			pc.sendPackets(new S_ServerMessage(942)); // 相手のアイテムが重すぎるため、これ以上あげられません。
+			pc.sendPackets(new S_ServerMessage(942)); // 對方的負重太重，無法再給予。
 			return;
 		}
 		item = inv.tradeItem(item, count, targetInv);
@@ -120,10 +123,10 @@ public class C_GiveItem extends ClientBasePacket {
 	}
 
 	private final static String receivableImpls[] = new String[] { "L1Npc", // NPC
-			"L1Monster", // モンスター
-			"L1Guardian", // エルフの森の守護者
-			"L1Teleporter", // テレポーター
-			"L1Guard" }; // ガード
+			"L1Monster", // 怪物
+			"L1Guardian", // 妖精森林的守護者
+			"L1Teleporter", // 傳送師
+			"L1Guard" }; // 警衛
 
 	private boolean isNpcItemReceivable(L1Npc npc) {
 		for (String impl : receivableImpls) {
@@ -146,17 +149,17 @@ public class C_GiveItem extends ClientBasePacket {
 			petcost += ((L1NpcInstance) pet).getPetcost();
 		}
 		int charisma = pc.getCha();
-		if (pc.isCrown()) { // 君主
+		if (pc.isCrown()) { // 王族
 			charisma += 6;
-		} else if (pc.isElf()) { // エルフ
+		} else if (pc.isElf()) { // 妖精
 			charisma += 12;
-		} else if (pc.isWizard()) { // WIZ
+		} else if (pc.isWizard()) { // 法師
 			charisma += 6;
-		} else if (pc.isDarkelf()) { // DE
+		} else if (pc.isDarkelf()) { // 黑暗妖精
 			charisma += 6;
-		} else if (pc.isDragonKnight()) { // ドラゴンナイト
+		} else if (pc.isDragonKnight()) { // 龍騎士
 			charisma += 6;
-		} else if (pc.isIllusionist()) { // イリュージョニスト
+		} else if (pc.isIllusionist()) { // 幻術師
 			charisma += 6;
 		}
 		charisma -= petcost;
@@ -164,13 +167,13 @@ public class C_GiveItem extends ClientBasePacket {
 		L1PcInventory inv = pc.getInventory();
 		if (charisma >= 6 && inv.getSize() < 180) {
 			if (isTamePet(target)) {
-				L1ItemInstance petamu = inv.storeItem(40314, 1); // ペットのアミュレット
+				L1ItemInstance petamu = inv.storeItem(40314, 1); // 漂浮之眼的肉
 				if (petamu != null) {
 					new L1PetInstance(target, pc, petamu.getId());
 					pc.sendPackets(new S_ItemName(petamu));
 				}
 			} else {
-				pc.sendPackets(new S_ServerMessage(324)); // てなずけるのに失敗しました。
+				pc.sendPackets(new S_ServerMessage(324)); // 馴養失敗。
 			}
 		}
 	}

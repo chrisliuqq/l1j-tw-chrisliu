@@ -31,6 +31,9 @@ import l1j.server.server.templates.L1Castle;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來稅率的封包
+ */
 public class C_TaxRate extends ClientBasePacket {
 
 	private static final String C_TAX_RATE = "[C] C_TaxRate";
@@ -47,7 +50,7 @@ public class C_TaxRate extends ClientBasePacket {
 			L1Clan clan = L1World.getInstance().getClan(player.getClanname());
 			if (clan != null) {
 				int castle_id = clan.getCastleId();
-				if (castle_id != 0) { // 城主クラン
+				if (castle_id != 0) { // 有城堡
 					L1Castle l1castle = CastleTable.getInstance()
 							.getCastleTable(castle_id);
 					if (j >= 10 && j <= 50) {

@@ -31,6 +31,9 @@ import l1j.server.server.model.Instance.L1PcInstance;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來NPC講話動作的封包
+ */
 public class C_NPCTalkAction extends ClientBasePacket {
 
 	private static final String C_NPC_TALK_ACTION = "[C] C_NPCTalkAction";

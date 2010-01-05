@@ -36,6 +36,9 @@ import l1j.server.server.serverpackets.S_CharAmount;
 import l1j.server.server.serverpackets.S_CharPacks;
 import l1j.server.server.utils.SQLUtil;
 
+/**
+ * 處理收到由客戶端傳來的角色選擇畫面封包
+ */
 public class C_CommonClick {
 	private static final String C_COMMON_CLICK = "[C] C_CommonClick";
 
@@ -43,7 +46,7 @@ public class C_CommonClick {
 			.getLogger(C_CommonClick.class.getName());
 
 	public C_CommonClick(ClientThread client) {
-		deleteCharacter(client); // 削除期限に達したキャラクターを削除する
+		deleteCharacter(client); // 到達刪除期限，刪除角色
 		int amountOfChars = client.getAccount().countCharacters();
 		client.sendPacket(new S_CharAmount(amountOfChars, client));
 		if (amountOfChars > 0) {

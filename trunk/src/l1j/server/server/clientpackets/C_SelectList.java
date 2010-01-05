@@ -39,6 +39,9 @@ import l1j.server.server.templates.L1Pet;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來選擇清單的封包
+ */
 public class C_SelectList extends ClientBasePacket {
 
 	private static final String C_SELECT_LIST = "[C] C_SelectList";
@@ -52,14 +55,14 @@ public class C_SelectList extends ClientBasePacket {
 		int npcObjectId = readD();
 		L1PcInstance pc = clientthread.getActiveChar();
 
-		if (npcObjectId != 0) { // 武器の修理
+		if (npcObjectId != 0) { // 武器的修理
 			L1Object obj = L1World.getInstance().findObject(npcObjectId);
 			if (obj != null) {
 				if (obj instanceof L1NpcInstance) {
 					L1NpcInstance npc = (L1NpcInstance) obj;
 					int difflocx = Math.abs(pc.getX() - npc.getX());
 					int difflocy = Math.abs(pc.getY() - npc.getY());
-					// 3マス以上離れた場合アクション無効
+					// 3格以上的距離視為無效請求
 					if (difflocx > 3 || difflocy > 3) {
 						return;
 					}
@@ -74,7 +77,7 @@ public class C_SelectList extends ClientBasePacket {
 			}
 			item.set_durability(0);
 			pcInventory.updateItem(item, L1PcInventory.COL_DURABILITY);
-		} else { // ペットの引き出し
+		} else { // 領出寵物
 			int petCost = 0;
 			int petCount = 0;
 			int divisor = 6;
@@ -83,17 +86,17 @@ public class C_SelectList extends ClientBasePacket {
 				petCost += ((L1NpcInstance) pet).getPetcost();
 			}
 			int charisma = pc.getCha();
-			if (pc.isCrown()) { // 君主
+			if (pc.isCrown()) { // 王族
 				charisma += 6;
-			} else if (pc.isElf()) { // エルフ
+			} else if (pc.isElf()) { // 妖精
 				charisma += 12;
-			} else if (pc.isWizard()) { // WIZ
+			} else if (pc.isWizard()) { // 法師
 				charisma += 6;
-			} else if (pc.isDarkelf()) { // DE
+			} else if (pc.isDarkelf()) { // 黑暗妖精
 				charisma += 6;
-			} else if (pc.isDragonKnight()) { // ドラゴンナイト
+			} else if (pc.isDragonKnight()) { // 龍騎士
 				charisma += 6;
-			} else if (pc.isIllusionist()) { // イリュージョニスト
+			} else if (pc.isIllusionist()) { // 幻術師
 				charisma += 6;
 			}
 

@@ -24,6 +24,9 @@ import l1j.server.server.ClientThread;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_PacketBox;
 
+/**
+ * 處理收到由客戶端傳來選擇新角色的封包
+ */
 public class C_NewCharSelect extends ClientBasePacket {
 	private static final String C_NEW_CHAR_SELECT = "[C] C_NewCharSelect";
 	private static Logger _log = Logger.getLogger(C_NewCharSelect.class

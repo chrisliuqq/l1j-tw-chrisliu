@@ -26,6 +26,10 @@ import l1j.server.server.ClientThread;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * TODO: 尚未實裝僱用傭兵的處理
+ * 處理收到由客戶端傳來僱用傭兵的封包
+ */
 public class C_HireSoldier extends ClientBasePacket {
 
 	private static final String C_HIRE_SOLDIER = "[C] C_HireSoldier";

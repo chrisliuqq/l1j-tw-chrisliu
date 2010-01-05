@@ -31,6 +31,9 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來的聊天組隊封包
+ */
 public class C_ChatParty extends ClientBasePacket {
 
 	private static final String C_CHAT_PARTY = "[C] C_ChatParty";
@@ -45,22 +48,22 @@ public class C_ChatParty extends ClientBasePacket {
 		}
 
 		int type = readC();
-		if (type == 0) { // /chatbanishコマンド
+		if (type == 0) { // /chatbanish 的命令
 			String name = readS();
 
 			if (!pc.isInChatParty()) {
-				// パーティーに加入していません。
+				// 沒有加入聊天組隊
 				pc.sendPackets(new S_ServerMessage(425));
 				return;
 			}
 			if (!pc.getChatParty().isLeader(pc)) {
-				// パーティーのリーダーのみが追放できます。
+				// 只有隊長可以踢人
 				pc.sendPackets(new S_ServerMessage(427));
 				return;
 			}
 			L1PcInstance targetPc = L1World.getInstance().getPlayer(name);
 			if (targetPc == null) {
-				// %0という名前の人はいません。
+				// 沒有叫%0的人。
 				pc.sendPackets(new S_ServerMessage(109));
 				return;
 			}
@@ -74,21 +77,20 @@ public class C_ChatParty extends ClientBasePacket {
 					return;
 				}
 			}
-			// 見つからなかった
-			// %0はパーティーメンバーではありません。
+			// %0%d 不屬於任何隊伍。
 			pc.sendPackets(new S_ServerMessage(426, name));
-		} else if (type == 1) { // /chatoutpartyコマンド
+		} else if (type == 1) { // /chatoutparty 的命令
 			if (pc.isInChatParty()) {
 				pc.getChatParty().leaveMember(pc);
 			}
-		} else if (type == 2) { // /chatpartyコマンド
+		} else if (type == 2) { // /chatparty 的命令
 			L1ChatParty chatParty = pc.getChatParty();
 			if (pc.isInChatParty()) {
 				pc.sendPackets(new S_Party("party", pc.getId(), chatParty
 						.getLeader().getName(), chatParty
 						.getMembersNameList()));
 			} else {
-				pc.sendPackets(new S_ServerMessage(425)); // パーティーに加入していません。
+				pc.sendPackets(new S_ServerMessage(425)); // 您並沒有參加任何隊伍。
 // pc.sendPackets(new S_Party("party", pc.getId()));
 			}
 		}

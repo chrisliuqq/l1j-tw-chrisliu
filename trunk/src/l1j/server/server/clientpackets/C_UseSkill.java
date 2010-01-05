@@ -35,6 +35,9 @@ import static l1j.server.server.model.skill.L1SkillId.*;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來使用魔法的封包
+ */
 public class C_UseSkill extends ClientBasePacket {
 
 	private static Logger _log = Logger.getLogger(C_UseSkill.class.getName());
@@ -62,10 +65,10 @@ public class C_UseSkill extends ClientBasePacket {
 			return;
 		}
 
-		// 要求間隔をチェックする
+		// 檢查使用魔法的間隔
 		if (Config.CHECK_SPELL_INTERVAL) {
 			int result;
-			// FIXME どのスキルがdir/no dirであるかの判断が適当
+			// FIXME 判斷有向及無向的魔法
 			if (SkillsTable.getInstance().getTemplate(skillId).getActionId() ==
 						ActionCodes.ACTION_SkillAttack) {
 				result = pc.getAcceleratorChecker().checkInterval(
@@ -104,7 +107,7 @@ public class C_UseSkill extends ClientBasePacket {
 			}
 		}
 
-		if (pc.hasSkillEffect(ABSOLUTE_BARRIER)) { // アブソルート バリアの解除
+		if (pc.hasSkillEffect(ABSOLUTE_BARRIER)) { // 解除絕對屏障
 			pc.killSkillEffectTimer(ABSOLUTE_BARRIER);
 			pc.startHpRegeneration();
 			pc.startMpRegeneration();

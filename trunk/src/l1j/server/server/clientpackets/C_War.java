@@ -35,6 +35,10 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * TODO 翻譯，好多
+ * 處理收到由客戶端傳來盟戰的封包
+ */
 public class C_War extends ClientBasePacket {
 
 	private static final String C_WAR = "[C] C_War";
@@ -50,16 +54,16 @@ public class C_War extends ClientBasePacket {
 		String clanName = player.getClanname();
 		int clanId = player.getClanid();
 
-		if (!player.isCrown()) { // 君主以外
+		if (!player.isCrown()) { // 不是王族
 			player.sendPackets(new S_ServerMessage(478)); // \f1プリンスとプリンセスのみ戦争を布告できます。
 			return;
 		}
-		if (clanId == 0) { // クラン未所属
+		if (clanId == 0) { // 沒有血盟
 			player.sendPackets(new S_ServerMessage(272)); // \f1戦争するためにはまず血盟を創設しなければなりません。
 			return;
 		}
 		L1Clan clan = L1World.getInstance().getClan(clanName);
-		if (clan == null) { // 自クランが見つからない
+		if (clan == null) { // 找不到血盟
 			return;
 		}
 
@@ -74,7 +78,7 @@ public class C_War extends ClientBasePacket {
 
 		L1Clan enemyClan = null;
 		String enemyClanName = null;
-		for (L1Clan checkClan : L1World.getInstance().getAllClans()) { // クラン名をチェック
+		for (L1Clan checkClan : L1World.getInstance().getAllClans()) { // 取得所有的血盟
 			if (checkClan.getClanName().toLowerCase().equals(s.toLowerCase())) {
 				enemyClan = checkClan;
 				enemyClanName = checkClan.getClanName();
@@ -86,10 +90,10 @@ public class C_War extends ClientBasePacket {
 		}
 
 		boolean inWar = false;
-		List<L1War> warList = L1World.getInstance().getWarList(); // 全戦争リストを取得
+		List<L1War> warList = L1World.getInstance().getWarList(); // 取得所有的盟戰
 		for (L1War war : warList) {
-			if (war.CheckClanInWar(clanName)) { // 自クランが既に戦争中
-				if (type == 0) { // 宣戦布告
+			if (war.CheckClanInWar(clanName)) { // 檢查是否在盟戰中
+				if (type == 0) { // 宣戰公告
 					player.sendPackets(new S_ServerMessage(234)); // \f1あなたの血盟はすでに戦争中です。
 					return;
 				}
@@ -101,16 +105,16 @@ public class C_War extends ClientBasePacket {
 			return;
 		}
 
-		if (clan.getCastleId() != 0) { // 自クランが城主
-			if (type == 0) { // 宣戦布告
+		if (clan.getCastleId() != 0) { // 有城堡
+			if (type == 0) { // 宣戰公告
 				player.sendPackets(new S_ServerMessage(474)); // あなたはすでに城を所有しているので、他の城を取ることは出来ません。
 				return;
-			} else if (type == 2 || type == 3) { // 降伏、終結
+			} else if (type == 2 || type == 3) { // 投降、或是結束
 				return;
 			}
 		}
 
-		if (enemyClan.getCastleId() == 0 && // 相手クランが城主ではなく、自キャラがLv15以下
+		if (enemyClan.getCastleId() == 0 && // 對方王族等級低於15
 				player.getLevel() <= 15) {
 			player.sendPackets(new S_ServerMessage(232)); // \f1レベル15以下の君主は宣戦布告できません。
 			return;

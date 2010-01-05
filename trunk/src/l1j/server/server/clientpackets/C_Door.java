@@ -34,6 +34,9 @@ import l1j.server.server.templates.L1House;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket, C_Door
 
+/**
+ * 處理收到由客戶端傳來開關門的封包
+ */
 public class C_Door extends ClientBasePacket {
 
 	private static Logger _log = Logger.getLogger(C_Door.class
@@ -54,22 +57,22 @@ public class C_Door extends ClientBasePacket {
 			return;
 		}
 
-		if ((door.getDoorId() >= 5001 && door.getDoorId() <= 5010)) { // 水晶の洞窟
+		if ((door.getDoorId() >= 5001 && door.getDoorId() <= 5010)) { // 水晶洞窟
 			return;
-		} else if (door.getDoorId() == 6006) { // TIC2F
+		} else if (door.getDoorId() == 6006) { // 冒險洞穴二樓
 			if (door.getOpenStatus() == ActionCodes.ACTION_Open) {
 				return;
 			}
-			if (pc.getInventory().consumeItem(40163,1)) { // ゴールデンキー
+			if (pc.getInventory().consumeItem(40163,1)) { //黃金鑰匙
 				door.open();
 				CloseTimer closetimer = new CloseTimer(door);
 				closetimer.begin();
 			}
-		} else if (door.getDoorId() == 6007) { // TIC2F
+		} else if (door.getDoorId() == 6007) { // 冒險洞穴二樓
 			if (door.getOpenStatus() == ActionCodes.ACTION_Open) {
 				return;
 			}
-			if (pc.getInventory().consumeItem(40313,1)) { // パールシルバーキー
+			if (pc.getInventory().consumeItem(40313,1)) { // 銀鑰匙
 				door.open();
 				CloseTimer closetimer = new CloseTimer(door);
 				closetimer.begin();

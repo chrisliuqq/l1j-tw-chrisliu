@@ -31,13 +31,16 @@ import l1j.server.server.serverpackets.S_ServerMessage;
 // Referenced classes of package l1j.server.server.clientpackets:
 // ClientBasePacket
 
+/**
+ * 處理收到由客戶端傳來封鎖密語的封包
+ */
 public class C_Exclude extends ClientBasePacket {
 
 	private static final String C_EXCLUDE = "[C] C_Exclude";
 	private static Logger _log = Logger.getLogger(C_Exclude.class.getName());
 
 	/**
-	 * C_1 /exclude コマンドを打った時に送られる
+	 * C_1 輸入 /exclude 指令的時候 
 	 */
 	public C_Exclude(byte[] decrypt, ClientThread client) {
 		super(decrypt);
@@ -49,7 +52,7 @@ public class C_Exclude extends ClientBasePacket {
 		try {
 			L1ExcludingList exList = pc.getExcludingList();
 			if (exList.isFull()) {
-				pc.sendPackets(new S_ServerMessage(472)); // \f1遮断されたユーザーが多すぎます。
+				pc.sendPackets(new S_ServerMessage(472)); // 被拒絕的玩家太多。
 				return;
 			}
 			if (exList.contains(name)) {
