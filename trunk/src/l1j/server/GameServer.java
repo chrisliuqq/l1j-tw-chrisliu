@@ -60,6 +60,7 @@ public class GameServer extends Thread {
 				.println("線上玩家： " + Config.GAME_SERVER_MAX_ONLINE_USER + " 倍");
 		System.out.println("ＰＫ系統： " + Config.RATE_EXP + "");
 		System.out.println("-------------------------------------------");
+
 		// 初始化唯一的 key
 		IdFactory.getInstance();
 		// 初始化 ThreadPool

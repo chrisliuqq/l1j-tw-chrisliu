@@ -42,7 +42,6 @@ public final class Opcodes {
 
 		S_OPCODE_INITIAL_KEY = Integer.parseInt(_properties.getProperty(
 				"S_OPCODE_INITIAL_KEY", "30"));
-
 	}
 
 	private static final Logger _log = Logger
