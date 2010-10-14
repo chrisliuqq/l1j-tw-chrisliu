@@ -85,6 +85,10 @@ public class TextMapReader {
 		File folder = new java.io.File(Config.DIR_MAP);
 		String[] list = folder.list();
 		for (String filename : list) {
+			// 跳過 .svn 資料夾
+			if (filename.startsWith(".")) {
+				continue;
+			}
 			int mapId = Integer.parseInt(filename.substring(0,
 					filename.indexOf(46)));
 			try {
