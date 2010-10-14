@@ -60,7 +60,6 @@ public class GameServer extends Thread {
 				.println("線上玩家： " + Config.GAME_SERVER_MAX_ONLINE_USER + " 倍");
 		System.out.println("ＰＫ系統： " + Config.RATE_EXP + "");
 		System.out.println("-------------------------------------------");
-
 		// 初始化唯一的 key
 		IdFactory.getInstance();
 		// 初始化 ThreadPool
@@ -120,9 +119,8 @@ public class GameServer extends Thread {
 		// 初始化 NPC
 		NpcTable.getInstance();
 
-		if (!NpcTable.getInstance().isInitialized()) {
+		if (!NpcTable.getInstance().isInitialized())
 			throw new Exception("初始化 NpcTable 的時候發生問題。");
-		}
 
 		// FIXME: ChrisLiu.20101014: 先跳過這些
 		/*
@@ -177,6 +175,7 @@ public class GameServer extends Thread {
 		return _gameServer;
 	}
 
+	@Override
 	public void run() {
 		System.out.println("記憶體使用量: " + SystemUtil.getUsedMemoryMB() + "MB");
 		System.out.println("等待客戶端連線中...");
