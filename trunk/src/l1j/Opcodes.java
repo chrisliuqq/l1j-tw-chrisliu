@@ -15,10 +15,7 @@ import java.util.logging.Logger;
  * @author ChrisLiu
  */
 // XXX: ChrisLiu.2010/10/15: 將 OPCODE 改為用檔案設定，方便開發者測試 OPCODE，改 OPCODE 不用在重編核心了
-public final class Opcodes {
-
-	private Opcodes() throws Exception {
-	}
+public class Opcodes {
 
 	public final int i = 0;
 	public static final int S_OPCODE_INITIAL_KEY;
