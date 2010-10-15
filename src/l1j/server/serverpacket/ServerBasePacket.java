@@ -4,47 +4,42 @@
 package l1j.server.serverpacket;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import l1j.Config;
+import l1j.Opcodes;
 
 /**
  * @author ChrisLiu
  */
-public abstract class ServerBasePacket {
+public class ServerBasePacket extends Opcodes {
 
-	private static final String CLIENT_LANGUAGE_CODE = Config.CLIENT_LANGUAGE_CODE;
+	protected final static String CLIENT_LANGUAGE_CODE = Config.CLIENT_LANGUAGE_CODE;
+	protected Random _random = new Random();
+	protected ByteArrayOutputStream _bao = new ByteArrayOutputStream();
 
-	ByteArrayOutputStream _bao = new ByteArrayOutputStream();
-
-	protected ServerBasePacket() {
-	}
-
-	protected void writeD(int value) {
+	protected void writeInt(int value) {
 		_bao.write(value & 0xff);
 		_bao.write(value >> 8 & 0xff);
 		_bao.write(value >> 16 & 0xff);
 		_bao.write(value >> 24 & 0xff);
 	}
 
-	protected void writeH(int value) {
+	protected void writeShort(int value) {
 		_bao.write(value & 0xff);
 		_bao.write(value >> 8 & 0xff);
 	}
 
-	protected void writeC(int value) {
+	protected void writeByte(int value) {
 		_bao.write(value & 0xff);
 	}
 
-	protected void writeP(int value) {
-		_bao.write(value);
-	}
-
-	protected void writeL(long value) {
-		_bao.write((int) (value & 0xff));
-	}
+	// XXX: ChrisLiu.2010/10/15: 暫時移掉，不知道哪會用到
+	// protected void writePureInt(int value) {
+	// _bao.write(value);
+	// }
 
 	protected void writeF(double org) {
 		long value = Double.doubleToRawLongBits(org);
@@ -90,20 +85,35 @@ public abstract class ServerBasePacket {
 
 		if (padding != 0) {
 			for (int i = padding; i < 4; i++) {
-				writeC(0x00);
+				writeByte(0x00);
 			}
 		}
 
-		return _bao.toByteArray();
+		// 定義暫存資料
+		byte[] Bytes = _bao.toByteArray().clone();
+		// 清除資料
+		_bao.reset();
+		_bao = null;
+
+		return Bytes;
 	}
 
-	/**
-	 * 取得封包內容
-	 * 
-	 * @return 回傳封包內容
-	 * @throws IOException
-	 */
-	public abstract byte[] getContent() throws IOException;
+	protected void randomByte() {
+		// 1 x 1
+		writeByte((byte) _random.nextInt(256));
+	}
+
+	protected void randomShort() {
+		// 1 x 2
+		randomByte();
+		randomByte();
+	}
+
+	protected void randomInt() {
+		// 2 x 2
+		randomShort();
+		randomShort();
+	}
 
 	/**
 	 * 回傳此類別的名稱
