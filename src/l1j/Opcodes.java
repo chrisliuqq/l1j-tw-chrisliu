@@ -18,7 +18,18 @@ import java.util.logging.Logger;
 public class Opcodes {
 
 	public final int i = 0;
-	public static final int S_OPCODE_INITIAL_KEY;
+
+	// For DEBUG
+	// Server 端的 OPCODE
+	public static final int DEBUG_S_OPCODE_INITIAL_KEY;
+	// Client 端的 OPCODE
+	public static final int DEBUG_C_OPCODE_CLIENT_VERSION;
+
+	// For Normal
+	// Server 端的 OPCODE
+	public static final int S_OPCODE_INITIAL_KEY = 256;
+	// Client 端的 OPCODE
+	public static final int C_OPCODE_CLIENT_VERSION = 256;
 
 	static {
 		InputStream _is = null;
@@ -36,9 +47,12 @@ public class Opcodes {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		S_OPCODE_INITIAL_KEY = Integer.parseInt(_properties.getProperty(
-				"S_OPCODE_INITIAL_KEY", "30"));
+		// Server 端的 OPCODE
+		DEBUG_S_OPCODE_INITIAL_KEY = Integer.parseInt(_properties.getProperty(
+				"S_OPCODE_INITIAL_KEY", "256"));
+		// Client 端的 OPCODE
+		DEBUG_C_OPCODE_CLIENT_VERSION = Integer.parseInt(_properties
+				.getProperty("C_OPCODE_CLIENT_VERSION", "256"));
 	}
 
 	private static final Logger _log = Logger
