@@ -11,10 +11,10 @@ import l1j.Opcodes;
 // FIXME: ChrisLiu.2010/10/15: 這邊優先要改，尚未完成
 public class S_InitialKey extends ServerBasePacket {
 
-	private byte[] bs = new byte[15];
-
 	/**
 	 * 初始化金鑰的建構子
+	 * 
+	 * @return
 	 */
 	public byte[] S_InitialKey() {
 		writeByte(Opcodes.S_OPCODE_INITIAL_KEY);
