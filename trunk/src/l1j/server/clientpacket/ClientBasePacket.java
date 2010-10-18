@@ -81,7 +81,6 @@ public class ClientBasePacket {
 
 		try {
 			System.arraycopy(_data, _off, result, 0, _data.length - _off);
-
 			_off = _data.length;
 		} catch (Exception e) {
 		}
