@@ -8,12 +8,11 @@ import java.util.logging.Logger;
 import l1j.Config;
 import l1j.Opcodes;
 import l1j.server.clientpacket.C_ClinetVersion;
-import l1j.server.model.instance.L1PcInstance;
 
 /**
  * @author ChrisLiu
  */
-public class PacketHandler {
+public class ClientPacketHandler {
 
 	private final ClientThread _client;
 
@@ -22,7 +21,7 @@ public class PacketHandler {
 	 * 
 	 * @param clientThread
 	 */
-	public PacketHandler(ClientThread clientThread) {
+	public ClientPacketHandler(ClientThread clientThread) {
 		_client = clientThread;
 	}
 
@@ -33,8 +32,7 @@ public class PacketHandler {
 	 * @param object
 	 * @throws Exception
 	 */
-	public void handlePacket(byte abyte0[], L1PcInstance object)
-			throws Exception {
+	public void handlePacket(byte abyte0[]) throws Exception {
 		int oc = abyte0[0] & 0xff;
 
 		// XXX: ChrisLiu.2010/10/18: 開發、DEBUG 時用的
@@ -53,5 +51,5 @@ public class PacketHandler {
 	}
 
 	private static Logger _log = Logger
-			.getLogger(PacketHandler.class.getName());
+			.getLogger(ClientPacketHandler.class.getName());
 }
