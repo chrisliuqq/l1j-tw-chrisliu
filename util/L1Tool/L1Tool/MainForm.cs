@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -16,6 +17,8 @@ namespace L1Tool
 		// XXX: ChrisLiu.20101020: 雖然可以採用內建的 Resource 來儲存設定，但是我還是喜歡 ini 的方法，可以直接用文字編輯器修改是很大的誘因。
 		private Setting _setting;
 		private string lineage_path;
+		private string map_path;
+		private DirectoryInfo[] mapDirectory;
 
         public MainForm()
         {
@@ -26,12 +29,45 @@ namespace L1Tool
 			_fbd.ShowNewFolderButton = false;
 			if (_setting.getLineagePath() != "")
 			{
-				_fbd.SelectedPath = _setting.getLineagePath();
+				lineage_path = _setting.getLineagePath();
+				map_path = lineage_path + @"\map\";
+				_fbd.SelectedPath = lineage_path;
 			}
 
         }
 
-        private void ToolStripMenuItem_About_Click(object sender, EventArgs e)
+
+
+		#region -----地圖相關-----
+
+		private void loadMapDirectoryInfo()
+		{
+			if (checkMapFolder())
+			{
+				mapDirectory = new DirectoryInfo(map_path).GetDirectories();
+				Ctrl.SetText(this.labelMainMapPath, "是，共包含了 " + mapDirectory.Count() + " 個地圖。");
+			}
+		}
+
+		private bool checkMapFolder()
+		{
+			return Directory.Exists(map_path);
+		}
+
+		#endregion
+
+		#region -----表單顯示與更新-----
+
+		private void refreshTabMainLabel()
+		{
+			this.labelMainPath.Text = lineage_path;
+			this.labelMainMapPath.Text = checkMapFolder() ? "是" : "否";
+		}
+
+		#endregion
+
+		#region -----表單事件-----
+		private void ToolStripMenuItem_About_Click(object sender, EventArgs e)
         {
             AboutForm.getInstance().ShowDialog();
         }
@@ -56,5 +92,44 @@ namespace L1Tool
 				
 			}
 		}
-    }
+
+		private void buttonMapRefresh_Click(object sender, EventArgs e)
+		{
+			refreshTabMainLabel();
+			loadMapDirectoryInfo();
+		}
+
+		#endregion
+
+
+
+	}
+
+	#region -----跨執行序相關-----
+	//CtrlHelper
+	public static class Ctrl
+	{
+		public static void SetValue(
+			Control ctrl,
+			string property,
+			object value)
+		{
+			if (ctrl.InvokeRequired)
+			{
+				Action<Control, string, object> d =
+					new Action<Control, string, object>(SetValue);
+				ctrl.Invoke(d, ctrl, property, value);
+				return;
+			}
+			ctrl.GetType().GetProperty(property)
+				.SetValue(ctrl, value, null);
+		}
+		public static void SetText(
+			Control ctrl,
+			string value)
+		{
+			SetValue(ctrl, "Text", value);
+		}
+	}
+	#endregion
 }
