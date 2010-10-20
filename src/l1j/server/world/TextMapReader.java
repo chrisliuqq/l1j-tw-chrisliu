@@ -30,9 +30,9 @@ public class TextMapReader {
 	 * @return byte[][]
 	 * @throws IOException
 	 */
-	public V1Map read(final int mapId) throws IOException {
+	public L1Map read(final int mapId) throws IOException {
 
-		V1Map map;
+		L1Map map;
 		int attribute, startX, startY, endX, endY;
 		LineNumberReader in = new LineNumberReader(new BufferedReader(
 				new FileReader(Config.DIR_MAP + mapId + ".txt")));
@@ -67,7 +67,7 @@ public class TextMapReader {
 			}
 			y++;
 		}
-		map = new V1Map(mapId, mapTile, startX, startY, attribute);
+		map = new L1Map(mapId, mapTile, startX, startY, attribute);
 		in.close();
 		return map;
 	}
