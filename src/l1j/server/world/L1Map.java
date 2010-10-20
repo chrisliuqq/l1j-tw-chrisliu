@@ -33,7 +33,7 @@ public class L1Map {
 	private final int USE_RESURRECTION = 0x0010;
 	private final int USE_PAINWAND = 0x0020;
 	private final int ENABLED_DEATH_PENALTY = 0x0040;
-	private final int TALE_PET = 0x0080;
+	private final int TAKE_PET = 0x0080;
 	private final int RECALL_PET = 0x0100;
 	private final int USABLE_ITEM = 0x0200;
 	private final int USABLE_SKILL = 0x0400;
@@ -74,7 +74,7 @@ public class L1Map {
 		_isUsePainwand = (attribute & USE_PAINWAND) == 1 ? true : false;
 		_isEnabledDeathPenalty = (attribute & ENABLED_DEATH_PENALTY) == 1 ? true
 				: false;
-		_isTakePet = (attribute & TALE_PET) == 1 ? true : false;
+		_isTakePet = (attribute & TAKE_PET) == 1 ? true : false;
 		_isRecallPet = (attribute & RECALL_PET) == 1 ? true : false;
 		_isUsableItem = (attribute & USABLE_ITEM) == 1 ? true : false;
 		_isUsableSkill = (attribute & USABLE_SKILL) == 1 ? true : false;

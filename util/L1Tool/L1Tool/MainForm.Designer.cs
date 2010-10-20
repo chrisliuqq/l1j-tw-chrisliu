@@ -37,18 +37,23 @@
 			this.ToolStripMenuItem_About = new System.Windows.Forms.ToolStripMenuItem();
 			this.tabControlMain = new System.Windows.Forms.TabControl();
 			this.tabPageMain = new System.Windows.Forms.TabPage();
+			this.buttonMapRefresh = new System.Windows.Forms.Button();
 			this.labelMainMapPath = new System.Windows.Forms.Label();
 			this.labelMainMapPathDesc = new System.Windows.Forms.Label();
 			this.labelMainPath = new System.Windows.Forms.Label();
 			this.labelMainPathDesc = new System.Windows.Forms.Label();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.tabPageMap = new System.Windows.Forms.TabPage();
+			this.button1 = new System.Windows.Forms.Button();
+			this.buttonOutput = new System.Windows.Forms.Button();
+			this.listBoxMapList = new System.Windows.Forms.ListBox();
 			this.statusStripMain = new System.Windows.Forms.StatusStrip();
 			this.toolStripProgressBarMain = new System.Windows.Forms.ToolStripProgressBar();
 			this.toolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
-			this.buttonMapRefresh = new System.Windows.Forms.Button();
+			this.labelMapInfo = new System.Windows.Forms.Label();
 			this.menuStripMain.SuspendLayout();
 			this.tabControlMain.SuspendLayout();
 			this.tabPageMain.SuspendLayout();
+			this.tabPageMap.SuspendLayout();
 			this.statusStripMain.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -110,7 +115,7 @@
 			// tabControlMain
 			// 
 			this.tabControlMain.Controls.Add(this.tabPageMain);
-			this.tabControlMain.Controls.Add(this.tabPage2);
+			this.tabControlMain.Controls.Add(this.tabPageMap);
 			this.tabControlMain.Location = new System.Drawing.Point(12, 27);
 			this.tabControlMain.Name = "tabControlMain";
 			this.tabControlMain.SelectedIndex = 0;
@@ -131,6 +136,16 @@
 			this.tabPageMain.TabIndex = 0;
 			this.tabPageMain.Text = "首頁";
 			this.tabPageMain.UseVisualStyleBackColor = true;
+			// 
+			// buttonMapRefresh
+			// 
+			this.buttonMapRefresh.Location = new System.Drawing.Point(371, 355);
+			this.buttonMapRefresh.Name = "buttonMapRefresh";
+			this.buttonMapRefresh.Size = new System.Drawing.Size(75, 23);
+			this.buttonMapRefresh.TabIndex = 4;
+			this.buttonMapRefresh.Text = "重新整理";
+			this.buttonMapRefresh.UseVisualStyleBackColor = true;
+			this.buttonMapRefresh.Click += new System.EventHandler(this.buttonMapRefresh_Click);
 			// 
 			// labelMainMapPath
 			// 
@@ -165,15 +180,48 @@
 			this.labelMainPathDesc.TabIndex = 0;
 			this.labelMainPathDesc.Text = "設定的天堂路徑：";
 			// 
-			// tabPage2
+			// tabPageMap
 			// 
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(452, 384);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "tabPage2";
-			this.tabPage2.UseVisualStyleBackColor = true;
+			this.tabPageMap.Controls.Add(this.labelMapInfo);
+			this.tabPageMap.Controls.Add(this.button1);
+			this.tabPageMap.Controls.Add(this.buttonOutput);
+			this.tabPageMap.Controls.Add(this.listBoxMapList);
+			this.tabPageMap.Location = new System.Drawing.Point(4, 22);
+			this.tabPageMap.Name = "tabPageMap";
+			this.tabPageMap.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageMap.Size = new System.Drawing.Size(452, 384);
+			this.tabPageMap.TabIndex = 1;
+			this.tabPageMap.Text = "地圖";
+			this.tabPageMap.UseVisualStyleBackColor = true;
+			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(290, 355);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(75, 23);
+			this.button1.TabIndex = 2;
+			this.button1.Text = "重新讀取";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// buttonOutput
+			// 
+			this.buttonOutput.Location = new System.Drawing.Point(371, 355);
+			this.buttonOutput.Name = "buttonOutput";
+			this.buttonOutput.Size = new System.Drawing.Size(75, 23);
+			this.buttonOutput.TabIndex = 1;
+			this.buttonOutput.Text = "轉檔";
+			this.buttonOutput.UseVisualStyleBackColor = true;
+			// 
+			// listBoxMapList
+			// 
+			this.listBoxMapList.FormattingEnabled = true;
+			this.listBoxMapList.ItemHeight = 12;
+			this.listBoxMapList.Location = new System.Drawing.Point(6, 6);
+			this.listBoxMapList.Name = "listBoxMapList";
+			this.listBoxMapList.Size = new System.Drawing.Size(120, 292);
+			this.listBoxMapList.TabIndex = 0;
+			this.listBoxMapList.SelectedIndexChanged += new System.EventHandler(this.listBoxMapList_SelectedIndexChanged);
 			// 
 			// statusStripMain
 			// 
@@ -197,15 +245,13 @@
 			this.toolStripStatusLabelStatus.Name = "toolStripStatusLabelStatus";
 			this.toolStripStatusLabelStatus.Size = new System.Drawing.Size(0, 17);
 			// 
-			// buttonMapRefresh
+			// labelMapInfo
 			// 
-			this.buttonMapRefresh.Location = new System.Drawing.Point(371, 355);
-			this.buttonMapRefresh.Name = "buttonMapRefresh";
-			this.buttonMapRefresh.Size = new System.Drawing.Size(75, 23);
-			this.buttonMapRefresh.TabIndex = 4;
-			this.buttonMapRefresh.Text = "重新整理";
-			this.buttonMapRefresh.UseVisualStyleBackColor = true;
-			this.buttonMapRefresh.Click += new System.EventHandler(this.buttonMapRefresh_Click);
+			this.labelMapInfo.AutoSize = true;
+			this.labelMapInfo.Location = new System.Drawing.Point(148, 21);
+			this.labelMapInfo.Name = "labelMapInfo";
+			this.labelMapInfo.Size = new System.Drawing.Size(0, 12);
+			this.labelMapInfo.TabIndex = 3;
 			// 
 			// MainForm
 			// 
@@ -228,6 +274,8 @@
 			this.tabControlMain.ResumeLayout(false);
 			this.tabPageMain.ResumeLayout(false);
 			this.tabPageMain.PerformLayout();
+			this.tabPageMap.ResumeLayout(false);
+			this.tabPageMap.PerformLayout();
 			this.statusStripMain.ResumeLayout(false);
 			this.statusStripMain.PerformLayout();
 			this.ResumeLayout(false);
@@ -246,7 +294,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparatorFile;
 		private System.Windows.Forms.TabControl tabControlMain;
 		private System.Windows.Forms.TabPage tabPageMain;
-		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.TabPage tabPageMap;
 		private System.Windows.Forms.StatusStrip statusStripMain;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelStatus;
 		private System.Windows.Forms.ToolStripProgressBar toolStripProgressBarMain;
@@ -255,6 +303,10 @@
 		private System.Windows.Forms.Label labelMainPath;
 		private System.Windows.Forms.Label labelMainMapPath;
 		private System.Windows.Forms.Button buttonMapRefresh;
+		private System.Windows.Forms.ListBox listBoxMapList;
+		private System.Windows.Forms.Button buttonOutput;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Label labelMapInfo;
     }
 }
 
