@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using L1Tool.util;
 
 namespace L1Tool
 {
@@ -19,6 +20,7 @@ namespace L1Tool
 		private string lineage_path;
 		private string map_path;
 		private DirectoryInfo[] mapDirectory;
+		private MapPackage mp;
 
         public MainForm()
         {
@@ -99,7 +101,23 @@ namespace L1Tool
 			loadMapDirectoryInfo();
 		}
 
+		private void button1_Click(object sender, EventArgs e)
+		{
+			mp = new MapPackage(mapDirectory);
+			mp.loadClientMap(false);
+			this.listBoxMapList.Items.AddRange(mp.getMapIdList().ToArray());
+		}
+
+		private void listBoxMapList_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			int select = int.Parse(((ListBox)sender).SelectedItem.ToString());
+			MapSet ms = mp.getMapSet(select);
+			labelMapInfo.Text = string.Format("地圖編號：{0}\n地圖名稱：{1}\n地圖屬性：{2}", ms.mapId, ms.mapName, ms.mapAttr);
+		}
+
 		#endregion
+
+
 
 
 
