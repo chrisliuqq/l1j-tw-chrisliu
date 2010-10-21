@@ -17,7 +17,7 @@ public class C_ClinetVersion extends ClientBasePacket {
 		read(abyte0);
 
 		// FIXME: ChrisLiu.2010/10/18: 優先修改 ClientThread 的架構，後面才好寫下去
-		client.sendPacket(ver);
+		// client.sendPacket(ver);
 	}
 
 }

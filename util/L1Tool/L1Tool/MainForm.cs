@@ -19,6 +19,7 @@ namespace L1Tool
 		private Setting _setting;
 		private string lineage_path;
 		private string map_path;
+		private string map_output_path;
 		private DirectoryInfo[] mapDirectory;
 		private MapPackage mp;
 
@@ -26,6 +27,7 @@ namespace L1Tool
         {
             InitializeComponent();
 			_setting = new Setting(Application.StartupPath + @"\settings.ini");
+			map_output_path = Application.StartupPath + @"\map\";
 			_fbd = new FolderBrowserDialog();
 			_fbd.Description = "設定天堂的遊戲目錄";
 			_fbd.ShowNewFolderButton = false;
@@ -35,6 +37,7 @@ namespace L1Tool
 				map_path = lineage_path + @"\map\";
 				_fbd.SelectedPath = lineage_path;
 			}
+			checkOutputFolder();
 
         }
 
@@ -54,6 +57,14 @@ namespace L1Tool
 		private bool checkMapFolder()
 		{
 			return Directory.Exists(map_path);
+		}
+
+		private void checkOutputFolder()
+		{
+			if (!Directory.Exists(map_output_path))
+			{
+				Directory.CreateDirectory(map_output_path);
+			}
 		}
 
 		#endregion
@@ -101,21 +112,30 @@ namespace L1Tool
 			loadMapDirectoryInfo();
 		}
 
-		private void button1_Click(object sender, EventArgs e)
-		{
-			mp = new MapPackage(mapDirectory);
-			mp.loadClientMap(false);
-			this.listBoxMapList.Items.AddRange(mp.getMapIdList().ToArray());
-		}
-
 		private void listBoxMapList_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			int select = int.Parse(((ListBox)sender).SelectedItem.ToString());
 			MapSet ms = mp.getMapSet(select);
-			labelMapInfo.Text = string.Format("地圖編號：{0}\n地圖名稱：{1}\n地圖屬性：{2}", ms.mapId, ms.mapName, ms.mapAttr);
+			labelMapInfo.Text = string.Format("地圖編號：{0}\n地圖名稱：{1}\n地圖屬性：{2}\nStartX：{3}\nEndX：{4}\nLengthX：{5}\nLengthY：{6}", ms.mapId, ms.mapName, ms.mapAttr, ms.startX, ms.endX, ms.lengthX, ms.lengthY);
+		}
+
+		private void buttonOutput_Click(object sender, EventArgs e)
+		{
+			mp.outputMap(int.Parse(listBoxMapList.SelectedItem.ToString()));
+		}
+
+		private void buttonMapReload_Click(object sender, EventArgs e)
+		{
+			mp = new MapPackage(mapDirectory, map_output_path);
+			mp.loadClientMap(false);
+			this.listBoxMapList.Items.AddRange(mp.getMapIdList().ToArray());
 		}
 
 		#endregion
+
+
+
+
 
 
 

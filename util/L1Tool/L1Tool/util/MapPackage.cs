@@ -14,13 +14,15 @@ namespace L1Tool.util
 		private Hashtable _bufTable;
 		private string _mapDataPath;
 		private ArrayList _mapIdList;
+		private string _mapOutputFolder;
 		
-		public MapPackage(DirectoryInfo[] map)
+		public MapPackage(DirectoryInfo[] map, string mapOutputFolder)
 		{
 			_mapFolderInfo = map;
 			_mapDataPath = @"map.dat";
 			_mapIdList = new ArrayList();
 			_mapSets = new Hashtable();
+			_mapOutputFolder = mapOutputFolder;
 		}
 
 		public void loadClientMap(bool readTile)
@@ -35,7 +37,6 @@ namespace L1Tool.util
 			}
 
 			loadMapSets(ref _mapSets);
-			//_mapIdList.Sort(new myComparer(myComparer.CompareType.intType));
 			_mapIdList.Sort(new myComparer());
 		}
 
@@ -83,6 +84,42 @@ namespace L1Tool.util
 		{
 			return (MapSet) _mapSets[mapId];
 		}
+
+		public void outputMap(int mapId)
+		{
+			MapSet ms = (MapSet)_mapSets[mapId];
+			ms.tile = readTile(ms);
+			using (BinaryWriter br = new BinaryWriter(File.Open(_mapOutputFolder + @"\" + mapId.ToString() + @".txt", FileMode.Create)))
+			{
+				int i = 0, j = 0;
+				// 依照順序寫入 short 地圖id, startx, endx, starty, endy, attribute
+				br.Write(BitReverse((short)ms.mapId));
+				br.Write(BitReverse((short)ms.startX));
+				br.Write(BitReverse((short)ms.endX));
+				br.Write(BitReverse((short)ms.startY));
+				br.Write(BitReverse((short)ms.endY));
+				br.Write(BitReverse((short)ms.mapAttr));
+				// 寫入地圖格式
+				//ms.tile
+				for (i = 0; i < ms.lengthX; i++)
+				{
+					for (j = 0; j < ms.lengthY; j++)
+					{
+						br.Write((byte)ms.tile[i,j]);
+					}
+				}
+			}
+		}
+		// LSB MSB to MSB LSB 
+		private Byte[] BitReverse(short nOffset)
+		{
+			byte[] baArray = new byte[2];
+			baArray[1] = (byte)(nOffset & 0x00FF);
+			nOffset = (short)(nOffset >> 8);
+			baArray[0] = (byte)(nOffset & 0x00FF);
+			return baArray;
+		}
+
 
 		private void readMap(DirectoryInfo di, ref MapSet ms, bool isReadTile)
 		{
@@ -139,8 +176,8 @@ namespace L1Tool.util
 			ms.startX = ms.endX - area_x + 1;
 			ms.startY = ms.endY - area_y + 1;
 			ms.mapFolder = di;
-			ms.minAreaX = max_areax;
-			ms.minAreaY = max_areay;
+			ms.minAreaX = min_areax;
+			ms.minAreaY = min_areay;
 
 			if (!isReadTile)
 			{

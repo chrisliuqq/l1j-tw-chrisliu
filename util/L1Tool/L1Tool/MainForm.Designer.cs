@@ -43,13 +43,13 @@
 			this.labelMainPath = new System.Windows.Forms.Label();
 			this.labelMainPathDesc = new System.Windows.Forms.Label();
 			this.tabPageMap = new System.Windows.Forms.TabPage();
-			this.button1 = new System.Windows.Forms.Button();
+			this.labelMapInfo = new System.Windows.Forms.Label();
+			this.buttonMapReload = new System.Windows.Forms.Button();
 			this.buttonOutput = new System.Windows.Forms.Button();
 			this.listBoxMapList = new System.Windows.Forms.ListBox();
 			this.statusStripMain = new System.Windows.Forms.StatusStrip();
 			this.toolStripProgressBarMain = new System.Windows.Forms.ToolStripProgressBar();
 			this.toolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
-			this.labelMapInfo = new System.Windows.Forms.Label();
 			this.menuStripMain.SuspendLayout();
 			this.tabControlMain.SuspendLayout();
 			this.tabPageMain.SuspendLayout();
@@ -183,7 +183,7 @@
 			// tabPageMap
 			// 
 			this.tabPageMap.Controls.Add(this.labelMapInfo);
-			this.tabPageMap.Controls.Add(this.button1);
+			this.tabPageMap.Controls.Add(this.buttonMapReload);
 			this.tabPageMap.Controls.Add(this.buttonOutput);
 			this.tabPageMap.Controls.Add(this.listBoxMapList);
 			this.tabPageMap.Location = new System.Drawing.Point(4, 22);
@@ -194,15 +194,23 @@
 			this.tabPageMap.Text = "地圖";
 			this.tabPageMap.UseVisualStyleBackColor = true;
 			// 
-			// button1
+			// labelMapInfo
 			// 
-			this.button1.Location = new System.Drawing.Point(290, 355);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 2;
-			this.button1.Text = "重新讀取";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.labelMapInfo.AutoSize = true;
+			this.labelMapInfo.Location = new System.Drawing.Point(148, 21);
+			this.labelMapInfo.Name = "labelMapInfo";
+			this.labelMapInfo.Size = new System.Drawing.Size(0, 12);
+			this.labelMapInfo.TabIndex = 3;
+			// 
+			// buttonMapReload
+			// 
+			this.buttonMapReload.Location = new System.Drawing.Point(290, 355);
+			this.buttonMapReload.Name = "buttonMapReload";
+			this.buttonMapReload.Size = new System.Drawing.Size(75, 23);
+			this.buttonMapReload.TabIndex = 2;
+			this.buttonMapReload.Text = "重新讀取";
+			this.buttonMapReload.UseVisualStyleBackColor = true;
+			this.buttonMapReload.Click += new System.EventHandler(this.buttonMapReload_Click);
 			// 
 			// buttonOutput
 			// 
@@ -210,8 +218,9 @@
 			this.buttonOutput.Name = "buttonOutput";
 			this.buttonOutput.Size = new System.Drawing.Size(75, 23);
 			this.buttonOutput.TabIndex = 1;
-			this.buttonOutput.Text = "轉檔";
+			this.buttonOutput.Text = "輸出";
 			this.buttonOutput.UseVisualStyleBackColor = true;
+			this.buttonOutput.Click += new System.EventHandler(this.buttonOutput_Click);
 			// 
 			// listBoxMapList
 			// 
@@ -244,14 +253,6 @@
 			// 
 			this.toolStripStatusLabelStatus.Name = "toolStripStatusLabelStatus";
 			this.toolStripStatusLabelStatus.Size = new System.Drawing.Size(0, 17);
-			// 
-			// labelMapInfo
-			// 
-			this.labelMapInfo.AutoSize = true;
-			this.labelMapInfo.Location = new System.Drawing.Point(148, 21);
-			this.labelMapInfo.Name = "labelMapInfo";
-			this.labelMapInfo.Size = new System.Drawing.Size(0, 12);
-			this.labelMapInfo.TabIndex = 3;
 			// 
 			// MainForm
 			// 
@@ -305,7 +306,7 @@
 		private System.Windows.Forms.Button buttonMapRefresh;
 		private System.Windows.Forms.ListBox listBoxMapList;
 		private System.Windows.Forms.Button buttonOutput;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button buttonMapReload;
 		private System.Windows.Forms.Label labelMapInfo;
     }
 }
