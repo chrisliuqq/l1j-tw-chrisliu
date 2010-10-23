@@ -12,7 +12,7 @@ import l1j.Config;
  */
 public class ClientBasePacket {
 
-	private static final String CLIENT_LANGUAGE_CODE = Config.CLIENT_LANGUAGE_CODE; // 5.06
+	private static final String CLIENT_LANGUAGE_CODE = Config.CLIENT_LANGUAGE_CODE;
 	private boolean _check;
 	private byte[] _data;
 	private int _off;

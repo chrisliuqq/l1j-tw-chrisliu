@@ -104,6 +104,8 @@ public final class Config {
 			CLIENT_LANGUAGE_CODE = LANGUAGE_CODE_ARRAY[CLIENT_LANGUAGE];
 			SERVER_PASSWORD_SALT = _properties.getProperty("PasswordSalt",
 					"l1jc");
+			AUTO_CREATE_ACCOUNT = Boolean.parseBoolean(_properties.getProperty(
+					"AutoCreateAccount", "True"));
 		} catch (Exception e) {
 		}
 
@@ -198,6 +200,10 @@ public final class Config {
 	 * 帳號加密的算法數值
 	 */
 	public static String SERVER_PASSWORD_SALT;
+	/**
+	 * 登入時自動建立帳號
+	 */
+	public static boolean AUTO_CREATE_ACCOUNT;
 	// -----------------------------------------------------------------------------
 	// 資料庫伺服器相關 /** Database Server Settings */
 	// -----------------------------------------------------------------------------

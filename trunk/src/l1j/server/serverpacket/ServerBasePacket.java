@@ -11,6 +11,10 @@ import java.util.logging.Logger;
 import l1j.Config;
 import l1j.Opcodes;
 
+// FIXME: ChrisLiu.2010/10/24: 考慮要不要將所有的 ServerPacket 都弄成 static，
+// 這樣就不用每次都 new一次整個封包
+// 把 ServerPacket 當作是一個靜態方法，用來產生封包，而不是每次都要產生一次。
+
 /**
  * @author ChrisLiu
  */
