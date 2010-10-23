@@ -26,9 +26,7 @@ public class WorldMap {
 			_maps = in.read();
 			if (_maps == null) throw new RuntimeException("讀取失敗");
 		} catch (Exception e) {
-			// 復歸不能
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
-
 			System.exit(0);
 		}
 		_log.info("讀取地圖檔案共花費 " + timer.get() + " ms。");

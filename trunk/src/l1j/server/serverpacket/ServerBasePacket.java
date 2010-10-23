@@ -41,7 +41,7 @@ public class ServerBasePacket extends Opcodes {
 	// _bao.write(value);
 	// }
 
-	protected void writeF(double org) {
+	protected void writeFloat(double org) {
 		long value = Double.doubleToRawLongBits(org);
 		_bao.write((int) (value & 0xff));
 		_bao.write((int) (value >> 8 & 0xff));
@@ -53,7 +53,7 @@ public class ServerBasePacket extends Opcodes {
 		_bao.write((int) (value >> 56 & 0xff));
 	}
 
-	protected void writeS(String text) {
+	protected void writeString(String text) {
 		try {
 			if (text != null) {
 				_bao.write(text.getBytes(CLIENT_LANGUAGE_CODE));
@@ -73,6 +73,12 @@ public class ServerBasePacket extends Opcodes {
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		}
+	}
+
+	protected Object writeBoolean(boolean b) {
+		_bao.write(b ? 1 : 0);
+
+		return null;
 	}
 
 	/**

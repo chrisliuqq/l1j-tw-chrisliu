@@ -17,18 +17,32 @@ import java.util.logging.Logger;
 // XXX: ChrisLiu.2010/10/15: 將 OPCODE 改為用檔案設定，方便開發者測試 OPCODE，改 OPCODE 不用在重編核心了
 public class Opcodes {
 
-	public final int i = 0;
-
 	// For DEBUG
 	// Server 端的 OPCODE
+	/**
+	 * 初始化金鑰的 OPCODE
+	 */
 	public static final int DEBUG_S_OPCODE_INITIAL_KEY;
 	// Client 端的 OPCODE
+	/**
+	 * 與伺服器要求版本 OPCODE
+	 */
 	public static final int DEBUG_C_OPCODE_CLIENT_VERSION;
 
 	// For Normal
 	// Server 端的 OPCODE
+	/**
+	 * 初始化金鑰的 OPCODE
+	 */
 	public static final int S_OPCODE_INITIAL_KEY = 256;
+	/**
+	 * 回傳伺服器版本 OPCODE
+	 */
+	public static final int S_OPCODE_SERVER_VERSION = 256;
 	// Client 端的 OPCODE
+	/**
+	 * 與伺服器要求版本 OPCODE
+	 */
 	public static final int C_OPCODE_CLIENT_VERSION = 256;
 
 	static {
@@ -55,6 +69,8 @@ public class Opcodes {
 				.getProperty("C_OPCODE_CLIENT_VERSION", "256"));
 	}
 
+	@SuppressWarnings("unused")
 	private static final Logger _log = Logger
 			.getLogger(Opcodes.class.getName());
+
 }

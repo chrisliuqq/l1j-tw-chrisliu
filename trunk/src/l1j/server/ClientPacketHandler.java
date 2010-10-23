@@ -29,7 +29,6 @@ public class ClientPacketHandler {
 	 * 處理收到且解密過的 client 封包
 	 * 
 	 * @param abyte0
-	 * @param object
 	 * @throws Exception
 	 */
 	public void handlePacket(byte abyte0[]) throws Exception {
@@ -50,6 +49,7 @@ public class ClientPacketHandler {
 		}
 	}
 
-	private static Logger _log = Logger
-			.getLogger(ClientPacketHandler.class.getName());
+	@SuppressWarnings("unused")
+	private static Logger _log = Logger.getLogger(ClientPacketHandler.class
+			.getName());
 }

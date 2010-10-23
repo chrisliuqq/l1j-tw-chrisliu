@@ -23,10 +23,6 @@ public class BinaryMapReader {
 	 * 
 	 * @param mapId
 	 *            地圖編號
-	 * @param xSize
-	 *            X座標的大小
-	 * @param ySize
-	 *            Y座標的大小
 	 * @return byte[][]
 	 * @throws IOException
 	 */
@@ -75,7 +71,7 @@ public class BinaryMapReader {
 			System.out.println(x + "," + y);
 			y++;
 		}
-		map = new L1Map(mapId, mapTile, startX, startY, attribute);
+		map = new L1Map(mapid, mapTile, startX, startY, attribute);
 		dis.close();
 		return map;
 	}
