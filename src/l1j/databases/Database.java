@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import l1j.Config;
+import l1j.server.model.Account;
 import l1j.util.SQLUtil;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
@@ -32,7 +33,7 @@ public class Database {
 
 	private PreparedStatement pstm = null;
 
-	private Database() throws SQLException {
+	private Database() {
 
 		if (Config.DB_MAX_CONNECTIONS < 2) {
 			Config.DB_MAX_CONNECTIONS = 2;
@@ -88,21 +89,21 @@ public class Database {
 			int error = e.getErrorCode();
 			String msg = null;
 			switch (error) {
-			case 0:
-				msg = "驅動程式錯誤";
-				break;
-			case 1045:
-				msg = "使用者名稱或密碼錯誤";
-				break;
-			case 1049:
-				msg = "資料庫錯誤";
-				break;
-			case 1130:
-				msg = "遠端連線錯誤";
-				break;
-			default:
-				msg = "SQLException";
-				break;
+				case 0:
+					msg = "驅動程式錯誤";
+					break;
+				case 1045:
+					msg = "使用者名稱或密碼錯誤";
+					break;
+				case 1049:
+					msg = "資料庫錯誤";
+					break;
+				case 1130:
+					msg = "遠端連線錯誤";
+					break;
+				default:
+					msg = "SQLException";
+					break;
 			}
 			_log.log(Level.SEVERE, msg, e);
 		} catch (Exception e) {
@@ -116,7 +117,7 @@ public class Database {
 	 * @return Database 資料庫連線的實體
 	 * @throws SQLException
 	 */
-	public static Database getInstance() throws SQLException {
+	public static Database getInstance() {
 		synchronized (Database.class) {
 			if (_instance == null) {
 				_instance = new Database();
@@ -183,9 +184,11 @@ public class Database {
 
 	/**
 	 * 執行不返回結果的查詢
-	 * @param sql 要查詢的 sql 語法
+	 * 
+	 * @param sql
+	 *            要查詢的 sql 語法
 	 */
-	public void executeQuery(String sql) {
+	public void execute(String sql) {
 		Connection con = getConnection();
 
 		try {
@@ -196,6 +199,125 @@ public class Database {
 		} finally {
 			SQLUtil.close(pstm, con);
 		}
+	}
+
+	/**
+	 * 執行不返回結果的查詢
+	 * 
+	 * @param sql
+	 *            要查詢的 sql 語法
+	 * @param params
+	 *            參數
+	 */
+	public void execute(String sql, Object[] params) {
+		Connection con = getConnection();
+
+		try {
+			pstm = con.prepareStatement(sql);
+			setParams(pstm, params);
+			pstm.execute();
+		} catch (SQLException e) {
+			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+		} finally {
+			SQLUtil.close(pstm, con);
+		}
+	}
+
+	/**
+	 * 執行要返回結果的查詢
+	 * 
+	 * @param sql
+	 *            要查詢的 sql 語法
+	 * @param params
+	 *            參數
+	 * @param object
+	 *            要回傳的物件型態
+	 * @return 回傳的類型不一定固定，因此用 Object
+	 */
+	public Object executeQuery(String sql, Object[] params, Object object) {
+		Connection con = getConnection();
+		ResultSet rs = null;
+		try {
+			pstm = con.prepareStatement(sql);
+			if (null != params && 0 < params.length) {
+				setParams(pstm, params);
+			}
+			rs = pstm.executeQuery();
+			object = transRStoObject(object, rs);
+		} catch (SQLException e) {
+			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+		} finally {
+			SQLUtil.close(pstm, con);
+		}
+		return object;
+	}
+
+	/**
+	 * 執行更新的查詢
+	 * 
+	 * @param sql
+	 *            要執行的 sql 語法
+	 * @param params
+	 *            參數
+	 * @param object
+	 *            要回傳的物件型態
+	 * @return 回傳的類型不一定固定，因此用 Object
+	 */
+	public void executeUpdate(String sql, Object[] params) {
+		Connection con = getConnection();
+		ResultSet rs = null;
+		try {
+			pstm = con.prepareStatement(sql);
+			if (null != params && 0 < params.length) {
+				setParams(pstm, params);
+			}
+			pstm.executeUpdate();
+		} catch (SQLException e) {
+			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+		} finally {
+			SQLUtil.close(pstm, con);
+		}
+	}
+
+	/**
+	 * 將 PreparedStatement 的 SQL 加上對應的參數
+	 * 
+	 * @param pstmt
+	 * @param params
+	 */
+	private void setParams(PreparedStatement pstmt, Object[] params) {
+		if (null != params) {
+			for (int i = 0, paramNum = params.length; i < paramNum; i++) {
+				try {
+					pstmt.setObject(i + 1, params[i]);
+				} catch (SQLException e) {
+					_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+				}
+			}
+		}
+	}
+
+	/**
+	 * 將 ResultSet 結果轉為對應的物件
+	 * 
+	 * @param object
+	 *            物件
+	 * @param rs
+	 *            ResultSet 物件
+	 */
+	private Object transRStoObject(Object object, ResultSet rs) {
+		try {
+			if (!rs.next()) return null;
+			if (object instanceof Account) {
+				object = new Account();
+				((Account) object).setUsername(rs.getString("username"));
+				((Account) object).setPermission(rs.getInt("permission"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return object;
 	}
 
 	private static Logger _log = Logger.getLogger(Database.class.getName());

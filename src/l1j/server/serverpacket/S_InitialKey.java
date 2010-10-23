@@ -15,8 +15,6 @@ public class S_InitialKey extends ServerBasePacket {
 
 	/**
 	 * 初始化金鑰的建構子
-	 * 
-	 * @return
 	 */
 	public S_InitialKey() {
 		writeByte(Opcodes.S_OPCODE_INITIAL_KEY);
@@ -32,6 +30,11 @@ public class S_InitialKey extends ServerBasePacket {
 		seed |= getBytes()[4] << 24 & 0xff000000;
 	}
 
+	/**
+	 * 回傳初始化的金鑰
+	 * 
+	 * @return int seed
+	 */
 	public int getKey() {
 		return seed;
 	}

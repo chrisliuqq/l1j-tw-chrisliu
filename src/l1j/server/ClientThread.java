@@ -32,6 +32,7 @@ public class ClientThread implements Runnable {
 	private ClientPacketHandler _handler;
 	private L1PcInstance _activeChar;
 	private LineageKeys _clkey;
+	@SuppressWarnings("unused")
 	private int _kick;
 	private boolean _isStopClientLoop = false;
 
@@ -64,7 +65,6 @@ public class ClientThread implements Runnable {
 	public void run() {
 		_log.info("客戶端 (" + _hostname + ") 連線開始。");
 		_log.info("記憶體使用量: " + SystemUtil.getUsedMemoryMB() + "MB");
-		Socket socket = _csocket;
 
 		// XXX: ChrisLiu.2010/10/14: 2021原有的，先註解起來慢慢研究
 		// HcPacket movePacket = new HcPacket(M_CAPACITY);
@@ -186,6 +186,9 @@ public class ClientThread implements Runnable {
 	}
 
 	private ArrayList<byte[]> _byteBox;// 位元盒子
+	/**
+	 * 最大位元數
+	 */
 	public static final int _maxBytes = 1440;// 最大位元數
 
 	/**
@@ -205,7 +208,6 @@ public class ClientThread implements Runnable {
 	 *            封包
 	 * @param sendOut
 	 *            是否被送出(true立即送出 false累積封包資料等待送出)
-	 * @throws IOException
 	 */
 	public void sendPacket(ServerBasePacket packet, boolean sendOut) {
 		if (packet != null) {
