@@ -16,8 +16,6 @@ public class C_ClinetVersion extends ClientBasePacket {
 	 */
 	public C_ClinetVersion(byte[] data, ClientThread client) {
 		read(data);
-
-		// FIXME: ChrisLiu.2010/10/18: 優先修改 ClientThread 的架構，後面才好寫下去
 		client.sendPacket(new S_ServerVersion());
 	}
 

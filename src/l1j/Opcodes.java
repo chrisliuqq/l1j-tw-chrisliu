@@ -39,6 +39,9 @@ public class Opcodes {
 	 * 回傳伺服器版本 OPCODE
 	 */
 	public static final int S_OPCODE_SERVER_VERSION = 256;
+	public static final int S_OPCODE_LOGIN_FAILD = 256;
+	public static final int S_OPCODE_LOGIN_OK = 256;
+	public static final int S_OPCODE_DISCONNECT = 256;
 	// Client 端的 OPCODE
 	/**
 	 * 與伺服器要求版本 OPCODE

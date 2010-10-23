@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import l1j.server.encryption.LineageEncryption;
 import l1j.server.encryption.LineageKeys;
 import l1j.server.model.instance.L1PcInstance;
+import l1j.server.serverpacket.S_Disconnect;
 import l1j.server.serverpacket.S_InitialKey;
 import l1j.server.serverpacket.ServerBasePacket;
 import l1j.util.StreamUtil;
@@ -32,8 +33,6 @@ public class ClientThread implements Runnable {
 	private ClientPacketHandler _handler;
 	private L1PcInstance _activeChar;
 	private LineageKeys _clkey;
-	@SuppressWarnings("unused")
-	private int _kick;
 	private boolean _isStopClientLoop = false;
 
 	/**
@@ -129,6 +128,8 @@ public class ClientThread implements Runnable {
 				_handler.handlePacket(data);
 			} catch (Exception e) {
 				// TODO: handle exception
+			} finally {
+				data = null;
 			}
 		}
 	}
@@ -180,9 +181,50 @@ public class ClientThread implements Runnable {
 	 *            因為什麼原因被踢
 	 */
 	public void kick(int msgId) {
-		// sendPacket(new S_Disconnect(msgId));
-		_kick = 1;
+		sendPacket(new S_Disconnect(msgId));
+		clientStop();
 		StreamUtil.close(_out, _in);
+	}
+
+	private void clientStop() {
+		if (_isStopClientLoop) return;
+
+		// 清空所有資料
+		try {
+			// 此連結的輸入流置于“流的末尾”。
+			_csocket.shutdownInput();
+			// 禁用此連結的輸出流。
+			_csocket.shutdownOutput();
+			// 關閉此連結。
+			_csocket.close();
+			// 鑰匙取消登記
+			LineageEncryption.KeyPut.remove(_clkey);
+		} catch (Exception e) {
+		}
+		// XXX: ChrisLiu.2010/10/24: 尚未實做
+		/*
+		 * String userName = getUserName(); if
+		 * (_userAll.inLoginServer(userName)) {
+		 * _userAll.removeLoginServer(userName); } else if
+		 * (_userAll.inGameServer(userName)) {
+		 * _userAll.removeGameServer(userName); // 將角色移除
+		 * getPlayer().deleteObject(); } if (userName != null) { // 帳號狀態變更
+		 * D_Account.getAccount().upOnLine(userName, 0); }
+		 */
+		// 清空用戶來源位址
+		_ip = null;
+		// 清空回應者
+		_handler = null;
+		// 清空加密與解密種子
+		_clkey = null;
+		// 清空封包傳輸組
+		_out = null;
+		// 清空客戶端封包
+		_csocket = null;
+		// 清空客戶端輸入流
+		_out = null;
+		// 已停止為真
+		_isStopClientLoop = true;
 	}
 
 	private ArrayList<byte[]> _byteBox;// 位元盒子
