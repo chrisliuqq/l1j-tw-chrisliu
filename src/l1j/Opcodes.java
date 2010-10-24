@@ -42,6 +42,11 @@ public class Opcodes {
 	public static final int S_OPCODE_LOGIN_FAILD = 256;
 	public static final int S_OPCODE_LOGIN_OK = 256;
 	public static final int S_OPCODE_DISCONNECT = 256;
+	/**
+	 * 回傳帳號所擁有的角色數量
+	 */
+	public static final int S_OPCODE_CHAR_COUNT = 256;
+	public static final int S_OPCODE_CHAR_INFO = 256;
 	// Client 端的 OPCODE
 	/**
 	 * 與伺服器要求版本 OPCODE
