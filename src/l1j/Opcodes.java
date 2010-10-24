@@ -42,6 +42,8 @@ public class Opcodes {
 	public static final int S_OPCODE_LOGIN_FAILD = 256;
 	public static final int S_OPCODE_LOGIN_OK = 256;
 	public static final int S_OPCODE_DISCONNECT = 256;
+	public static final int S_OPCODE_LOGIN_GAME = 256;
+	public static final int S_OPCODE_PACKETBOX = 256;
 	/**
 	 * 回傳帳號所擁有的角色數量
 	 */

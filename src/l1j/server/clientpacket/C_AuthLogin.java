@@ -87,6 +87,7 @@ public class C_AuthLogin extends ClientBasePacket {
 		client.sendPacket(new S_LoginResult(S_LoginResult.EVENT_LOGIN_OK));
 		account.updateLastLogin(client.getAddress());
 		LoginController.getInstance().login(account.getUsername(), client);
+		client.setUsername(username);
 
 		// 如果有公告的話
 		if (Announcements.getInstance().getCount() > 0) {

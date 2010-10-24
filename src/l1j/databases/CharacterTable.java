@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import l1j.server.model.instance.L1PcInstance;
 import l1j.server.serverpacket.S_CharacterList;
 
 /**
@@ -23,6 +24,20 @@ public class CharacterTable {
 		Database.getInstance().execute(
 				"UPDATE `characters` SET `OnlineStatus`=0");
 
+	}
+
+	/**
+	 * 更新角色上線的狀態
+	 * 
+	 * @param charName
+	 *            角色的名稱
+	 * @param status
+	 *            狀態
+	 */
+	public static void updateOnlineStatus(String charName, int status) {
+		Database.getInstance().executeUpdate(
+				"UPDATE `characters` SET `OnlineStatus`=? WHERE `char_name`=?",
+				new Object[] { status, charName });
 	}
 
 	/**
@@ -61,6 +76,14 @@ public class CharacterTable {
 		}
 		return characterPacks
 				.toArray(new S_CharacterList[characterPacks.size()]);
+	}
+
+	public static L1PcInstance loadCharacter(String charName) {
+		L1PcInstance pc = new L1PcInstance();
+		Database.getInstance().executeQuery(
+				"SELECT * FROM `characters` WHERE `char_name`=? LIMIT 1",
+				new Object[] { charName }, pc);
+		return pc;
 	}
 
 	private static Logger _log = Logger.getLogger(CharacterTable.class

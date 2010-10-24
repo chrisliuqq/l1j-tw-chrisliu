@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import l1j.Config;
 import l1j.server.model.Account;
+import l1j.server.model.instance.L1PcInstance;
 import l1j.util.SQLUtil;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
@@ -312,6 +313,14 @@ public class Database {
 				object = new Account();
 				((Account) object).setUsername(rs.getString("username"));
 				((Account) object).setPermission(rs.getInt("permission"));
+			} else if (object instanceof L1PcInstance) {
+				object = new L1PcInstance();
+				/*
+				 * ((L1PcInstance)
+				 * object).setUsername(rs.getString("username"));
+				 * ((L1PcInstance)
+				 * object).setPermission(rs.getInt("permission"));
+				 */
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
