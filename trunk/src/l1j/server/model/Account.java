@@ -21,7 +21,6 @@ public class Account {
 
 	private boolean _onlineStatus = false;
 
-	@SuppressWarnings("unused")
 	public void updateOnlineStatus(int status) {
 		Database.getInstance().executeUpdate(
 				"UPDATE `account` SET `online_status`=? WHERE `username`=?",
@@ -29,8 +28,7 @@ public class Account {
 		setOnlineStatus(status == 0 ? false : true);
 	}
 
-	@SuppressWarnings("unused")
-	private void updateLastLogin(String ip) {
+	public void updateLastLogin(String ip) {
 		Database.getInstance()
 				.executeUpdate(
 						"UPDATE `account` SET `online_status`=1, `last_login`=?, `ip`=? WHERE `username`=?",

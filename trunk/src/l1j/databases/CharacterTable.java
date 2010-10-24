@@ -3,7 +3,13 @@
  */
 package l1j.databases;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.logging.Logger;
+
+import l1j.server.serverpacket.S_CharacterList;
 
 /**
  * @author ChrisLiu
@@ -17,6 +23,44 @@ public class CharacterTable {
 		Database.getInstance().execute(
 				"UPDATE `characters` SET `OnlineStatus`=0");
 
+	}
+
+	/**
+	 * 取得帳號中所有的角色清單，只用於登入時的人物列表
+	 * 
+	 * @param account
+	 * @return
+	 */
+	public static S_CharacterList[] getCharacterListPackage(String account) {
+		Connection con = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		ArrayList<S_CharacterList> characterPacks = new ArrayList<S_CharacterList>();
+		try {
+			con = Database.getInstance().getConnection();
+			pstm = con
+					.prepareStatement("SELECT * FROM `character` WHERE `account`=? ORDER BY `objid` LIMIT 8");
+			pstm.setString(1, account);
+			rs = pstm.executeQuery();
+
+			while (rs.next()) {
+
+				characterPacks.add(new S_CharacterList(rs.getString("name"), rs
+						.getString("clan_name"), rs.getByte("type"), rs
+						.getByte("sex"), rs.getShort("lawful"), rs
+						.getShort("curhp"), rs.getShort("curmp"), rs
+						.getByte("def"), rs.getByte("level"),
+						rs.getByte("str"), rs.getByte("dex"),
+						rs.getByte("con"), rs.getByte("cha"),
+						rs.getByte("wis"), rs.getByte("intel"), rs
+								.getByte("perm")));
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return characterPacks
+				.toArray(new S_CharacterList[characterPacks.size()]);
 	}
 
 	private static Logger _log = Logger.getLogger(CharacterTable.class

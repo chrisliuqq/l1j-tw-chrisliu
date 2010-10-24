@@ -10,9 +10,12 @@ import java.util.logging.Logger;
 
 import l1j.Config;
 import l1j.databases.AccountTable;
+import l1j.databases.CharacterTable;
 import l1j.server.Announcements;
 import l1j.server.ClientThread;
+import l1j.server.LoginController;
 import l1j.server.model.Account;
+import l1j.server.serverpacket.S_CharacterList;
 import l1j.server.serverpacket.S_LoginResult;
 
 /**
@@ -82,13 +85,25 @@ public class C_AuthLogin extends ClientBasePacket {
 		}
 
 		client.sendPacket(new S_LoginResult(S_LoginResult.EVENT_LOGIN_OK));
+		account.updateLastLogin(client.getAddress());
+		LoginController.getInstance().login(account.getUsername(), client);
 
 		// 如果有公告的話
 		if (Announcements.getInstance().getCount() > 0) {
 			// foreach 送出公告
-			// XXX: ChrisLiu.2010/10/24: 暫時寫到這，最近要後製影片+轉檔，都沒時間了 Q_____Q
-			// 下次要從這邊開始寫
+
+		} else {
+			// 進入角色清單
+			S_CharacterList[] chars = CharacterTable
+					.getCharacterListPackage(username);
+			client.sendPacket(new S_CharacterList().getCount(chars.length),
+					false);
+			for (S_CharacterList charPack : chars) {
+				client.sendPacket(charPack, false);
+			}
+			client.sendPacket((byte[]) null, true);
 		}
+
 	}
 
 	private static Logger _log = Logger.getLogger(C_AuthLogin.class.getName());

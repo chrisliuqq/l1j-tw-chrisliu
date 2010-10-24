@@ -295,6 +295,66 @@ public class ClientThread implements Runnable {
 		}
 	}
 
+	/**
+	 * 送出封包(封包是否被送出)
+	 * 
+	 * @param data
+	 *            封包
+	 * @param sendOut
+	 *            是否被送出(true立即送出 false累積封包資料等待送出)
+	 */
+	public void sendPacket(byte[] data, boolean sendOut) {
+		if (data != null) {
+
+			synchronized (this) {
+				try {
+
+					if (_clkey != null) {
+						data = LineageEncryption.encrypt(data, _clkey);
+					}
+
+					_byteBox.add(data);
+
+				} catch (Exception e) {
+					_log.severe(e.getLocalizedMessage());
+				}
+			}
+		}
+
+		if (sendOut) {
+			try {
+				// 將此 byte 陣列輸出流的全部內容寫入到指定的輸出流參數中
+				for (byte[] encryptData : _byteBox) {
+					// 封包長度 + 2 , 請勿變動
+					int length = encryptData.length + 2;
+
+					// 將資料寫入緩衝器中
+					_out.write(length & 0xFF);
+					_out.write(length >> 8 & 0xFF);
+					_out.write(encryptData);
+				}
+
+				// 將緩衝器內的資料送出並且將緩衝器內的資料清除
+				_out.flush();
+
+				// 將此 ByteBox 陣列輸出流的 count 字段重置為零，從而丟棄輸出流中目前已累積的所有輸出。
+				_byteBox.clear();// 清空資料
+			} catch (Exception e) {
+				_log.severe(e.getLocalizedMessage());
+			}
+
+		}
+	}
+
+	/**
+	 * 取得客戶端連線的ip
+	 * 
+	 * @return
+	 */
+	public String getAddress() {
+		return _ip;
+	}
+
 	private static Logger _log = Logger.getLogger(ClientThread.class.getName());
 
 }
