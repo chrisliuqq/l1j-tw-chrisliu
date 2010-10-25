@@ -22,6 +22,7 @@ import l1j.util.StreamUtil;
  */
 // XXX: ChrisLiu.2010/10/24: 未來考慮加上跟網頁結合實現多筆公告，並作個管理公告的介面。
 // XXX: ChrisLiu.2010/10/24: 短期內先改成讀取公告資料夾底下的所有 txt 檔並顯示。
+// XXX: ChrisLiu.2010/10/26: 有機會要重新整個改寫
 public class Announcements {
 
 	private Announcements() {

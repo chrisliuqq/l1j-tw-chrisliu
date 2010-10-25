@@ -13,12 +13,11 @@ public class S_LoginResult extends ServerBasePacket {
 	 * @param status
 	 */
 	public S_LoginResult(int status) {
-		if (status == 0) {
-			writeByte(Opcodes.S_OPCODE_LOGIN_OK);
-		} else {
-			writeByte(Opcodes.S_OPCODE_LOGIN_FAILD);
-		}
-
+		/*
+		 * if (status == 0) { writeByte(Opcodes.S_OPCODE_LOGIN_OK); } else {
+		 * writeByte(Opcodes.S_OPCODE_LOGIN_FAILD); }
+		 */
+		writeByte(Opcodes.S_OPCODE_LOGINRESULT);
 		writeByte(status);
 
 		for (int Count = 0; Count < 3; Count++) {
