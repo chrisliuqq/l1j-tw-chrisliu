@@ -11,8 +11,8 @@ import l1j.server.serverpacket.S_LoginGame;
 /**
  * @author ChrisLiu
  */
-public class LoginToGame extends ClientBasePacket {
-	public LoginToGame(byte[] data, ClientThread client) {
+public class C_LoginToGame extends ClientBasePacket {
+	public C_LoginToGame(byte[] data, ClientThread client) {
 		read(data);
 
 		// 取得角色名稱
@@ -25,8 +25,6 @@ public class LoginToGame extends ClientBasePacket {
 		// 設定上線狀態
 		pc.updateOnlineStatus(1);
 
-		pc.sendPacket(new S_LoginGame(1), false);
-		// UNKNOWN 的封包
-		pc.sendPacket(new S_LoginGame(2), false);
+		pc.sendPacket(new S_LoginGame(), false);
 	}
 }
