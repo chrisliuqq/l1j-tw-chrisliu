@@ -5,9 +5,11 @@ package l1j.server;
 
 import java.util.logging.Logger;
 
-import l1j.Config;
 import l1j.Opcodes;
+import l1j.server.clientpacket.C_AuthLogin;
 import l1j.server.clientpacket.C_ClinetVersion;
+import l1j.server.clientpacket.C_LoginClick;
+import l1j.server.clientpacket.C_LoginToGame;
 
 /**
  * @author ChrisLiu
@@ -31,21 +33,22 @@ public class ClientPacketHandler {
 	 * @param abyte0
 	 * @throws Exception
 	 */
-	public void handlePacket(byte abyte0[]) throws Exception {
-		int oc = abyte0[0] & 0xff;
+	public void handlePacket(byte data[]) throws Exception {
+		int oc = data[0] & 0xff;
 
-		// XXX: ChrisLiu.2010/10/18: 開發、DEBUG 時用的
-		// 因為 switch 不能用非 inline 的變數，所以要測試時用 if 來判斷
-		if (Config.DEBUG) {
-			if (oc == Opcodes.DEBUG_C_OPCODE_CLIENT_VERSION) {
-				new C_ClinetVersion(abyte0, _client);
-			}
-		} else {
-			switch (oc) {
-				case Opcodes.C_OPCODE_CLIENT_VERSION:
-					new C_ClinetVersion(abyte0, _client);
-					break;
-			}
+		switch (oc) {
+			case Opcodes.C_OPCODE_REQUEST_LOGIN:
+				new C_AuthLogin(data, _client);
+				break;
+			case Opcodes.C_OPCODE_CLIENT_VERSION:
+				new C_ClinetVersion(data, _client);
+				break;
+			case Opcodes.C_OPCODE_LOGIN_CLICK:
+				new C_LoginClick(data, _client);
+				break;
+			case Opcodes.C_OPCODE_LOGIM_TO_SERVER:
+				new C_LoginToGame(data, _client);
+				break;
 		}
 	}
 
