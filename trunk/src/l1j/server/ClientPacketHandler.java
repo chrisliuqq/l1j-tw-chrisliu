@@ -30,7 +30,7 @@ public class ClientPacketHandler {
 	/**
 	 * 處理收到且解密過的 client 封包
 	 * 
-	 * @param abyte0
+	 * @param data
 	 * @throws Exception
 	 */
 	public void handlePacket(byte data[]) throws Exception {
