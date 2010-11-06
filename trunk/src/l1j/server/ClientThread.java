@@ -36,6 +36,14 @@ public class ClientThread implements Runnable {
 	private boolean _isStopClientLoop = false;
 	private String _username;
 
+	private ArrayList<byte[]> _byteBox;// 位元盒子
+	/**
+	 * 最大位元數
+	 */
+	public static final int _maxBytes = 1440 - 2; // 最大位元數 1440 - 2 拿來放封包大小
+
+	private short packageLength = 0;
+
 	/**
 	 * 使用與 clinet 連線來建立執行序的建構子
 	 * 
@@ -228,12 +236,6 @@ public class ClientThread implements Runnable {
 		_isStopClientLoop = true;
 	}
 
-	private ArrayList<byte[]> _byteBox;// 位元盒子
-	/**
-	 * 最大位元數
-	 */
-	public static final int _maxBytes = 1440;// 最大位元數
-
 	/**
 	 * 送出伺服器封包
 	 * 
@@ -265,6 +267,9 @@ public class ClientThread implements Runnable {
 	 *            是否被送出(true立即送出 false累積封包資料等待送出)
 	 */
 	public void sendPacket(byte[] data, boolean sendOut) {
+		// XXX: ChrisLiu.2010/11/7: 超過 1440 的封包大小時就自動送出，必且將此封包加到下一個 queue 中
+		boolean reAddPackage = false;
+
 		if (data != null) {
 
 			synchronized (this) {
@@ -274,7 +279,13 @@ public class ClientThread implements Runnable {
 						data = LineageEncryption.encrypt(data, _clkey);
 					}
 
-					_byteBox.add(data);
+					if (packageLength + data.length < _maxBytes) {
+						packageLength += data.length;
+						_byteBox.add(data);
+					} else {
+						reAddPackage = true;
+						sendOut = true;
+					}
 
 				} catch (Exception e) {
 					_log.severe(e.getLocalizedMessage());
@@ -300,6 +311,14 @@ public class ClientThread implements Runnable {
 
 				// 將此 ByteBox 陣列輸出流的 count 字段重置為零，從而丟棄輸出流中目前已累積的所有輸出。
 				_byteBox.clear();// 清空資料
+
+				if (reAddPackage) {
+					packageLength += data.length;
+					_byteBox.add(data);
+				} else {
+					packageLength = 0;
+				}
+
 			} catch (Exception e) {
 				_log.severe(e.getLocalizedMessage());
 			}
