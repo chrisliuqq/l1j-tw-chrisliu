@@ -78,6 +78,10 @@ public class CharacterTable {
 				.toArray(new S_CharacterList[characterPacks.size()]);
 	}
 
+	/**
+	 * @param charName
+	 * @return L1PcInstance
+	 */
 	public static L1PcInstance loadCharacter(String charName) {
 		L1PcInstance pc = new L1PcInstance();
 		Database.getInstance().executeQuery(
@@ -86,6 +90,6 @@ public class CharacterTable {
 		return pc;
 	}
 
-	private static Logger _log = Logger.getLogger(CharacterTable.class
+	private final static Logger _log = Logger.getLogger(CharacterTable.class
 			.getName());
 }

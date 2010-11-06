@@ -3,8 +3,13 @@
  */
 package l1j.server.model.instance;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.logging.Logger;
+
 import l1j.databases.CharacterTable;
 import l1j.server.ClientThread;
+import l1j.server.model.Bookmark;
 import l1j.server.serverpacket.ServerBasePacket;
 
 /**
@@ -13,8 +18,14 @@ import l1j.server.serverpacket.ServerBasePacket;
 public class L1PcInstance {
 
 	private ClientThread _client;
+	private int _charId;
 	private String _charName;
 	private boolean _isOnline;
+	private ArrayList<Bookmark> _bookmarks;
+
+	public L1PcInstance() {
+		_bookmarks = new ArrayList<Bookmark>();
+	}
 
 	/**
 	 * 回傳是否在開個人商店
@@ -106,4 +117,29 @@ public class L1PcInstance {
 			// _lock.unlock();
 		}
 	}
+
+	/**
+	 * @return 回傳角色的專有id
+	 */
+	public int getCharId() {
+		return this._charId;
+	}
+
+	/**
+	 * @param bookmark
+	 */
+	public void addBookmark(Bookmark bookmark) {
+		this._bookmarks.add(bookmark);
+	}
+
+	/**
+	 * @param bookmarks
+	 */
+	public void addBookmark(Bookmark[] bookmarks) {
+		this._bookmarks.addAll(Arrays.asList(bookmarks));
+	}
+
+	private final static Logger _log = Logger.getLogger(L1PcInstance.class
+			.getName());
+
 }
