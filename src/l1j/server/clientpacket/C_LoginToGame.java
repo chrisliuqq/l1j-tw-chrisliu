@@ -10,6 +10,7 @@ import l1j.databases.CharacterTable;
 import l1j.server.ClientThread;
 import l1j.server.model.Bookmark;
 import l1j.server.model.instance.L1PcInstance;
+import l1j.server.serverpacket.S_Bookmark;
 import l1j.server.serverpacket.S_LoginGame;
 
 /**
@@ -54,9 +55,14 @@ public class C_LoginToGame extends ClientBasePacket {
 	}
 
 	private void getBookmarks(L1PcInstance pc) {
-		Bookmark[] bookmark = BookmarkTable.getBookmarks(pc);
-		pc.addBookmark(bookmark);
-		// pc.sendPacket(packet, sendOut)
+		Bookmark[] bookmarks = BookmarkTable.getBookmarks(pc);
+		pc.addBookmark(bookmarks);
+		for (Bookmark bookmark : bookmarks) {
+			pc.sendPacket(
+					new S_Bookmark(bookmark.getName(), bookmark.getMapId(),
+							bookmark.getId()), false);
+		}
+		pc.sendPacket((byte[]) null, true);
 	}
 
 	private void getSkills(L1PcInstance pc) {

@@ -48,6 +48,27 @@ public class Bookmark {
 		this._mapId = mapId;
 	}
 
+	/**
+	 * @return the _id
+	 */
+	public int getId() {
+		return _id;
+	}
+
+	/**
+	 * @return the _name
+	 */
+	public String getName() {
+		return _name;
+	}
+
+	/**
+	 * @return the _mapId
+	 */
+	public short getMapId() {
+		return _mapId;
+	}
+
 	private final static Logger _log = Logger.getLogger(Bookmark.class
 			.getName());
 }
