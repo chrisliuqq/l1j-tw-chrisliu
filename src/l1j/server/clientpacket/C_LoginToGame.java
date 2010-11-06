@@ -3,8 +3,12 @@
  */
 package l1j.server.clientpacket;
 
+import java.util.logging.Logger;
+
+import l1j.databases.BookmarkTable;
 import l1j.databases.CharacterTable;
 import l1j.server.ClientThread;
+import l1j.server.model.Bookmark;
 import l1j.server.model.instance.L1PcInstance;
 import l1j.server.serverpacket.S_LoginGame;
 
@@ -50,7 +54,9 @@ public class C_LoginToGame extends ClientBasePacket {
 	}
 
 	private void getBookmarks(L1PcInstance pc) {
-
+		Bookmark[] bookmark = BookmarkTable.getBookmarks(pc);
+		pc.addBookmark(bookmark);
+		// pc.sendPacket(packet, sendOut)
 	}
 
 	private void getSkills(L1PcInstance pc) {
@@ -63,4 +69,7 @@ public class C_LoginToGame extends ClientBasePacket {
 
 	private void getEffects(L1PcInstance pc) {
 	}
+
+	private final static Logger _log = Logger.getLogger(C_LoginToGame.class
+			.getName());
 }
